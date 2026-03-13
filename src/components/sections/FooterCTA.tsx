@@ -71,7 +71,7 @@ export default function FooterCTA() {
               no obligation.
             </p>
             <p className="mt-3 text-sm text-slate-500 italic">
-              For established Erie, PA businesses ready to invest in a premium web presence.
+              For Erie business owners who are passionate about what they do and ready to grow beyond word-of-mouth.
             </p>
 
             <div className="mt-8 space-y-4">

@@ -58,9 +58,9 @@ export default function Hero() {
 
             <AnimateIn delay={0.7} className="mt-6">
               <p className="max-w-lg text-lg leading-relaxed text-slate-600 md:text-xl">
-                National chains have fast, accessible, AI-optimized websites.
-                Your Erie business deserves the same — without the corporate
-                budget.
+                Word-of-mouth got you here. A website that works 24/7 is how
+                you scale. We build Erie businesses the same digital presence
+                that national brands use to grow — without the corporate budget.
               </p>
             </AnimateIn>
 

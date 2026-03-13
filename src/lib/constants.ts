@@ -153,6 +153,10 @@ export const FAQ_ITEMS = [
     answer: 'We migrate everything. Your text, images, blog posts, and SEO metadata all transfer over. We also improve your content structure for better SEO and AI readability during the migration.',
   },
   {
+    question: 'Word-of-mouth has always worked for us. Why do we need this?',
+    answer: 'Word-of-mouth is powerful — and it\'s not going away. But it has a ceiling. You can only grow as fast as people talk about you. A premium web presence doesn\'t replace word-of-mouth — it amplifies it. When someone hears your name, the first thing they do is Google you. When AI assistants recommend businesses in Erie, yours needs to be there. This is for business owners who are passionate about what they do and want to continuously grow — reaching new customers who\'ve never heard of you yet. Word-of-mouth gets you started. A site that works 24/7 is how you scale.',
+  },
+  {
     question: 'What if my business changes after launch?',
     answer: 'That\'s exactly what the $50/month covers. We get it right the first time — but businesses grow. You add a new service, target a different market, or want to rewrite your messaging? Send us a text or email and we push the update. No meetings. No waiting weeks. No extra invoices. We handle the structural changes so your site always reflects where your business is right now.',
   },

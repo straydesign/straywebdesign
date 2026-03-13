@@ -45,7 +45,7 @@ export default function CallToAction() {
             No credit card. No commitment. Just data about your site.
           </p>
           <p className="mt-2 text-xs text-slate-400">
-            For established Erie businesses ready to invest in their online presence.
+            For Erie business owners who are passionate about what they do and ready to grow.
           </p>
         </AnimateIn>
       </div>

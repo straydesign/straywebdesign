@@ -83,9 +83,10 @@ export default function Services() {
             </div>
           </div>
           <p className="mx-auto mt-6 max-w-md text-sm text-slate-400">
-            This isn&apos;t for everyone. We work with established Erie businesses
-            who are serious about competing online — not startups looking for
-            the cheapest option.
+            This is for Erie business owners who are passionate about what
+            they do and want to keep growing. If you care about your business
+            enough to want a digital presence that matches — this is for you.
+            Not the cheapest option, but the one that scales with your ambition.
           </p>
         </AnimateIn>
       </div>
