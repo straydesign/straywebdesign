@@ -73,7 +73,12 @@ export default function Services() {
             <div className="mt-4 border-t border-slate-200 pt-4">
               <p className="text-sm font-semibold text-navy">$50/mo after launch</p>
               <p className="text-xs text-slate-500">
-                Hosting, bug fixes, and small changes — all included. No surprise invoices.
+                Hosting, bug fixes, and content changes — all included. No surprise invoices.
+              </p>
+              <p className="mt-2 text-xs text-slate-400">
+                No meetings to update a headline. No waiting weeks for a text change.
+                When your business evolves — new services, new market, new messaging —
+                send us a text and we push the update.
               </p>
             </div>
           </div>

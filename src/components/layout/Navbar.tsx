@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react';
 import { NAV_LINKS, SITE } from '@/lib/constants';
 import { cn } from '@/lib/utils';
+import StrayLogo from '@/components/ui/StrayLogo';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,11 +47,12 @@ export default function Navbar() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
           <a
-            href="#"
-            className="font-display text-xl font-bold text-navy"
+            href="/"
+            className="flex items-center gap-2 font-display text-xl font-bold text-navy"
             aria-label={SITE.name}
           >
-            stray<span className="text-electric">web</span>design
+            <StrayLogo width={36} height={18} />
+            <span>stray<span className="text-electric">web</span>design</span>
           </a>
 
           {/* Desktop Links */}

@@ -24,7 +24,7 @@ export const NAV_LINKS = [
   { label: 'Process', href: '#plan' },
   { label: 'Results', href: '#success' },
   { label: 'Services', href: '#services' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Resources', href: '/resources' },
   { label: 'Contact', href: '#contact' },
 ] as const;
 
@@ -151,6 +151,10 @@ export const FAQ_ITEMS = [
   {
     question: 'What about my existing content?',
     answer: 'We migrate everything. Your text, images, blog posts, and SEO metadata all transfer over. We also improve your content structure for better SEO and AI readability during the migration.',
+  },
+  {
+    question: 'What if my business changes after launch?',
+    answer: 'That\'s exactly what the $50/month covers. We get it right the first time — but businesses grow. You add a new service, target a different market, or want to rewrite your messaging? Send us a text or email and we push the update. No meetings. No waiting weeks. No extra invoices. We handle the structural changes so your site always reflects where your business is right now.',
   },
   {
     question: 'How much does it cost?',
