@@ -152,7 +152,7 @@ body {
   pointer-events: none;
   z-index: 9999;
   transition: transform 0.15s ease, opacity 0.15s ease;
-  mix-blend-mode: difference;
+  mix-blend-mode: normal;
 }
 .custom-cursor.hovering {
   transform: scale(2.5);
