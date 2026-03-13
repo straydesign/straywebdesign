@@ -76,15 +76,28 @@ export default function Guide() {
                 <summary className="cursor-pointer text-sm font-medium text-navy">
                   Why not 100% performance?
                 </summary>
-                <p className="mt-2 text-xs leading-relaxed text-slate-500">
-                  We could hit 100 — but you&apos;d lose the premium feel. Scroll
-                  animations, smooth scrolling, 3D card effects, and polished
-                  interactions require JavaScript that adds a few points of overhead.
-                  The tradeoff is worth it: a site that feels modern, professional,
-                  and engaging converts better than a bare-bones page with a perfect
-                  score. Your competitors&apos; WordPress sites score 30-50. We score 95+
-                  <em> and</em> deliver the visual polish that builds trust.
-                </p>
+                <div className="mt-2 space-y-2 text-xs leading-relaxed text-slate-500">
+                  <p>
+                    We optimize everything we can — your JPG and PNG logos get
+                    converted to SVG so they scale perfectly at any size without
+                    losing quality. All images are compressed, converted to modern
+                    formats, and lazy-loaded. Fonts are preloaded and subset to
+                    only the characters your site uses.
+                  </p>
+                  <p>
+                    The last few points come from the visual effects that make
+                    your site feel premium: scroll-triggered animations, smooth
+                    scrolling, interactive cards, and polished transitions. These
+                    require a small amount of JavaScript — that&apos;s the 96 vs 100.
+                  </p>
+                  <p>
+                    The tradeoff is worth it. A site that feels modern and
+                    engaging converts better than a bare-bones page with a
+                    perfect score. Your competitors&apos; WordPress sites score
+                    30-50. We score 96 <em>and</em> deliver the polish that
+                    builds trust.
+                  </p>
+                </div>
               </details>
             </div>
           </AnimateIn>
