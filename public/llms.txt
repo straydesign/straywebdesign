@@ -1,0 +1,52 @@
+# Stray Web Design
+
+> Premium web design agency building fast, accessible, AI-ready websites for small businesses.
+
+## About
+
+Stray Web Design builds custom, high-performance websites for small businesses. We replace slow, outdated WordPress sites with modern, blazing-fast alternatives that score 95-100 on Google Lighthouse across all categories: Performance, Accessibility, Best Practices, and SEO.
+
+## Services
+
+- **Performance-First Websites**: Sub-1-second load times, Core Web Vitals optimized, global CDN delivery
+- **Accessibility Built In**: WCAG AA compliant, keyboard navigable, screen reader tested
+- **AI & LLM Ready**: Structured data (JSON-LD), FAQ schema, llms.txt for AI assistant discoverability
+- **Responsive Design**: Mobile-first, touch-optimized, fluid typography
+
+## Technology Stack
+
+- Next.js (React framework)
+- TypeScript
+- Tailwind CSS
+- Framer Motion (animations)
+- Vercel (hosting & CDN)
+
+## Why Not WordPress?
+
+WordPress powers 43% of the web, but its plugin-heavy architecture leads to:
+- Slow page loads (4-8 seconds average)
+- Security vulnerabilities from outdated plugins
+- Poor Core Web Vitals scores
+- No native AI/LLM optimization
+- Ongoing maintenance burden
+
+Our custom-built sites eliminate all of these problems with zero plugins, zero maintenance, and perfect Lighthouse scores.
+
+## Pricing
+
+- Standard business sites start at $2,500
+- Premium sites with advanced animations and integrations start at $5,000
+- Every project includes a free site audit
+
+## Contact
+
+- Website: https://straywebdesign.co
+- Email: tom@straywebdesign.co
+
+## Key Differentiators
+
+1. **Lighthouse 100s**: We target perfect scores across all categories
+2. **GEO Optimized**: Generative Engine Optimization for AI assistant visibility
+3. **Zero Maintenance**: No plugins to update, no databases to manage
+4. **Custom Design**: Never templates — every site is designed from scratch
+5. **Modern Stack**: React, TypeScript, edge deployment — built for 2025 and beyond
