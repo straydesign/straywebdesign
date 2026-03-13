@@ -43,7 +43,7 @@ export default function Failure() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-8">
         <AnimateIn className="mx-auto max-w-3xl text-center">
-          <span className="mb-4 inline-block text-sm font-semibold tracking-wide text-amber-400 uppercase">
+          <span className="mb-4 inline-block text-sm font-semibold tracking-wide text-violet-400 uppercase">
             The Stakes
           </span>
           <h2 className="font-display text-3xl font-bold text-white md:text-4xl lg:text-5xl">
@@ -64,7 +64,7 @@ export default function Failure() {
                 key={stat.label}
                 className="rounded-xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur-sm"
               >
-                <div className="font-display text-3xl font-bold text-amber-400 md:text-4xl">
+                <div className="font-display text-3xl font-bold text-violet-400 md:text-4xl">
                   <CountUp value={stat.value} suffix={stat.suffix} />
                 </div>
                 <p className="mt-2 text-sm text-slate-400">{stat.label}</p>
@@ -81,7 +81,7 @@ export default function Failure() {
           {FAILURE_POINTS.map((point) => (
             <StaggerItem key={point.title}>
               <div className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
-                <point.icon className="mb-4 h-8 w-8 text-amber-400" />
+                <point.icon className="mb-4 h-8 w-8 text-violet-400" />
                 <h3 className="font-display text-lg font-bold text-white">
                   {point.title}
                 </h3>

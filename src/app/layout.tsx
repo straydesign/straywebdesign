@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Bricolage_Grotesque } from 'next/font/google';
+import { Inter, Outfit } from 'next/font/google';
 import { SmoothScroll } from '@/components/layout/SmoothScroll';
 import { CustomCursor } from '@/components/ui/CustomCursor';
 import './globals.css';
@@ -10,11 +10,11 @@ const inter = Inter({
   variable: '--font-family-inter',
 });
 
-const bricolage = Bricolage_Grotesque({
+const outfit = Outfit({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-family-bricolage',
-  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-family-outfit',
+  weight: ['400', '500', '600', '700', '800', '900'],
 });
 
 export const metadata: Metadata = {
@@ -59,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${bricolage.variable}`}>
+    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
       <head>
         <script
           type="application/ld+json"

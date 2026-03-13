@@ -2,7 +2,7 @@ export const COLORS = {
   navy: '#0F172A',
   electric: '#3B82F6',
   warmWhite: '#FAFAF9',
-  accent: '#F59E0B',
+  accent: '#8B5CF6',
   darkNavy: '#020617',
   lightGray: '#F1F5F9',
   mediumGray: '#94A3B8',

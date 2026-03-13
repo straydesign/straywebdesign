@@ -38,7 +38,7 @@ export default function TechnologyGap() {
                   <li>&#x2022; llms.txt for AI assistant discoverability</li>
                 </ul>
               </div>
-              <div className="rounded-xl border border-amber-200/60 bg-amber-50 p-5">
+              <div className="rounded-xl border border-violet-200/60 bg-violet-50 p-5">
                 <h3 className="font-display font-semibold text-navy">
                   What is GEO?
                 </h3>

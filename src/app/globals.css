@@ -4,14 +4,14 @@
   --navy: #0F172A;
   --electric: #3B82F6;
   --warm-white: #FAFAF9;
-  --accent: #F59E0B;
+  --accent: #8B5CF6;
   --dark-navy: #020617;
   --light-gray: #F1F5F9;
   --medium-gray: #94A3B8;
 }
 
 @theme inline {
-  --font-display: var(--font-family-bricolage);
+  --font-display: var(--font-family-outfit);
   --font-body: var(--font-family-inter);
   --color-navy: var(--navy);
   --color-electric: var(--electric);
