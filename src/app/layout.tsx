@@ -24,7 +24,11 @@ export const metadata: Metadata = {
   keywords: [
     'web design Erie PA',
     'Erie web designer',
-    'small business website Erie',
+    'dental practice website Erie',
+    'financial advisor website Erie',
+    'car dealership website Erie',
+    'IT services website Erie',
+    'chiropractor website Erie',
     'premium web design',
     'fast website',
     'accessible website',
@@ -49,6 +53,9 @@ export const metadata: Metadata = {
     description:
       'Erie businesses deserve enterprise-grade websites. Compete with the big guys. Free site audit.',
   },
+  alternates: {
+    canonical: '/',
+  },
   robots: {
     index: true,
     follow: true,
@@ -63,6 +70,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
       <head>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-9D1W0XLS34"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-9D1W0XLS34');`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
