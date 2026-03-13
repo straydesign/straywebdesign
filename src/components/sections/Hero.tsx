@@ -58,9 +58,9 @@ export default function Hero() {
 
             <AnimateIn delay={0.7} className="mt-6">
               <p className="max-w-lg text-lg leading-relaxed text-slate-600 md:text-xl">
-                Word-of-mouth got you here. A website that works 24/7 is how
-                you scale. We build Erie businesses the same digital presence
-                that national brands use to grow — without the corporate budget.
+                You&apos;re spending on ads to drive traffic — but where does that
+                traffic land? We build Erie businesses the same digital presence
+                that national brands use to convert visitors into customers.
               </p>
             </AnimateIn>
 
