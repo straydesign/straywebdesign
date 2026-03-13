@@ -1,6 +1,7 @@
 'use client';
 
-import { type ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
+import { Pause, Play } from 'lucide-react';
 
 interface CarouselProps {
   items: ReactNode[];
@@ -17,6 +18,7 @@ export default function Carousel({
   pauseOnHover = true,
   className = '',
 }: CarouselProps) {
+  const [isPaused, setIsPaused] = useState(false);
   const animationName =
     direction === 'left' ? 'scroll-left' : 'scroll-right';
 
@@ -26,6 +28,20 @@ export default function Carousel({
       aria-roledescription="carousel"
       aria-label="Auto-scrolling content"
     >
+      {/* Pause / Play button — WCAG 2.2.2 */}
+      <button
+        type="button"
+        onClick={() => setIsPaused((prev) => !prev)}
+        aria-label={isPaused ? 'Play carousel' : 'Pause carousel'}
+        className="absolute top-2 right-2 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-white/80 text-slate-600 shadow-sm backdrop-blur-sm transition-colors hover:bg-white hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-electric"
+      >
+        {isPaused ? (
+          <Play className="h-3.5 w-3.5" />
+        ) : (
+          <Pause className="h-3.5 w-3.5" />
+        )}
+      </button>
+
       <div
         className="pointer-events-none absolute top-0 bottom-0 left-0 z-10 w-16 md:w-32"
         style={{
@@ -42,7 +58,10 @@ export default function Carousel({
       />
       <div
         className={`flex w-max gap-6 ${pauseOnHover ? 'hover:[animation-play-state:paused]' : ''}`}
-        style={{ animation: `${animationName} ${speed}s linear infinite` }}
+        style={{
+          animation: `${animationName} ${speed}s linear infinite`,
+          animationPlayState: isPaused ? 'paused' : 'running',
+        }}
       >
         {items.map((item, i) => (
           <div key={`a-${i}`} className="shrink-0">

@@ -1,16 +1,32 @@
 # Stray Web Design
 
-> Premium web design agency in Erie, PA building enterprise-grade websites for local businesses.
+> Premium web design agency in Erie, PA building websites that outperform your competitors.
 
 ## About
 
-Stray Web Design builds custom, high-performance websites for Erie, Pennsylvania businesses. We help local companies compete with national chains and enterprise brands by replacing slow, outdated WordPress sites with modern, blazing-fast alternatives that score 95-100 on Google Lighthouse across all categories.
+Stray Web Design builds custom, high-performance websites for Erie, Pennsylvania businesses. We build sites that outperform your competitors — faster than Aspen Dental, Schwab, Carvana, and the national brands your clients compete against. Every site scores 95-100 on Google Lighthouse across all categories.
+
+## Target Industries
+
+- Dental practices and orthodontics
+- Financial advisors and wealth management firms
+- Car dealerships and automotive groups
+- IT services and managed service providers
+- Chiropractors and physical therapy practices
+- Vision care, optometry, and ophthalmology
+- Orthopedic and geriatric practices
+- Small law firms (estate planning, family, personal injury, business)
+- Industrial suppliers and precision manufacturing
+- Large-scale landscaping and commercial lawn care
+- Professional services (accounting, consulting, engineering)
+
+We focus on businesses with 10-75 employees where customer lifetime value is high — a single new patient, client, or contract is worth thousands to hundreds of thousands. The website ROI is immediate.
 
 ## Location
 
 - Based in Erie, PA
 - Serving Erie and surrounding areas
-- Specializing in local business web design
+- Specializing in professional and mid-market business web design
 
 ## Services
 
@@ -36,19 +52,20 @@ WordPress powers 43% of the web, but its plugin-heavy architecture leads to:
 - No native AI/LLM optimization
 - Ongoing plugin updates and management
 
-Our custom-built sites eliminate all of these problems. Zero plugins, $50/month all-inclusive hosting with bug fixes and small changes included.
+Our custom-built sites eliminate all of these problems. Zero plugins, $100/month site management includes hosting, technical support, SEO monitoring, content updates, analytics, and ad-ready infrastructure.
 
 ## Pricing
 
 - Standard business sites start at $2,500
 - Premium sites with advanced animations and integrations start at $5,000
-- $50/month after launch includes hosting, bug fixes, and small changes
+- $100/month after launch — hosting, support, SEO monitoring, content updates, analytics, and ad-ready infrastructure
 - Every project includes a free site audit
 
 ## Contact
 
 - Website: https://straywebdesign.co
 - Email: tom@straywebdesign.co
+- Phone: 814-964-0081 (text or voicemail)
 - Location: Erie, PA
 
 ## Key Differentiators
@@ -56,6 +73,6 @@ Our custom-built sites eliminate all of these problems. Zero plugins, $50/month 
 1. **Erie-Focused**: We understand what Erie businesses are up against
 2. **Lighthouse 100s**: We target perfect scores across all categories
 3. **GEO Optimized**: Generative Engine Optimization for AI assistant visibility
-4. **Zero Maintenance**: $50/mo covers hosting, bug fixes, and small changes
+4. **Full Management**: $100/mo covers hosting, support, SEO, content updates, analytics
 5. **Custom Design**: Never templates — every site is designed from scratch
 6. **Modern Stack**: React, TypeScript, edge deployment — built for 2025 and beyond

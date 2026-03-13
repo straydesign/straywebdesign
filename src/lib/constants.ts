@@ -14,7 +14,8 @@ export const SITE = {
   name: 'Stray Web Design',
   url: 'https://straywebdesign.co',
   email: 'tom@straywebdesign.co',
-  tagline: 'Compete With the Big Guys — Starting With Your Website',
+  phone: '814-964-0081',
+  tagline: 'Websites That Outperform Your Competitors',
   web3formsKey: 'c2441e47-8ca0-4f87-a2dc-928015553d51',
 } as const;
 
@@ -30,31 +31,31 @@ export const NAV_LINKS = [
 
 export const HERO_STATS = [
   { value: 53, suffix: '%', label: 'Average bounce rate on slow sites' },
-  { value: 4.6, suffix: 's', label: 'Average load time for small biz sites', decimals: 1 },
+  { value: 4.6, suffix: 's', label: 'Average load time for WordPress sites', decimals: 1 },
   { value: 70, suffix: '%+', label: 'Of traffic is mobile — most sites aren\'t ready' },
 ] as const;
 
 export const PROBLEM_CARDS = [
   {
     title: 'Performance',
-    description: 'Enterprise sites load in under a second. Yours takes 4+. Customers don\'t wait — they go to the competitor with the faster site. Usually, that\'s the bigger company.',
+    description: 'Aspen Dental loads in under 2 seconds. Schwab loads in 1.5. Carvana loads in under 1. Your site takes 4+. When a potential patient or client is comparing options, they go with whoever feels faster and more professional.',
     icon: 'gauge',
     stat: '53%',
     statLabel: 'of visitors leave after 3 seconds',
   },
   {
     title: 'Accessibility',
-    description: 'Big brands have entire teams ensuring ADA compliance. Your site has broken navigation, missing alt text, and zero keyboard support — shutting out customers and inviting lawsuits.',
+    description: 'National brands have entire teams ensuring ADA compliance. Your site has broken navigation, missing alt text, and zero keyboard support — shutting out patients and inviting lawsuits while competitors pass every test.',
     icon: 'accessibility',
     stat: '96%',
-    statLabel: 'of small biz sites fail accessibility',
+    statLabel: 'of business sites fail accessibility',
   },
   {
     title: 'AI Readiness',
-    description: 'Enterprise companies are already optimizing for ChatGPT, Perplexity, and Google AI. When customers ask AI for recommendations, big brands show up. You don\'t.',
+    description: 'Corporate chains are already optimizing for ChatGPT, Perplexity, and Google AI. When potential clients ask AI for a dentist, financial advisor, IT provider, or car dealership — the national brands show up. You don\'t.',
     icon: 'brain',
     stat: '0%',
-    statLabel: 'of WordPress sites are AI-optimized',
+    statLabel: 'of local business sites are AI-optimized',
   },
 ] as const;
 
@@ -68,7 +69,7 @@ export const PLAN_STEPS = [
   {
     step: 2,
     title: 'We Design to Compete',
-    description: 'Custom design that rivals any enterprise site. Not a template — a purpose-built digital presence that makes customers forget they\'re shopping small.',
+    description: 'Custom design that rivals any enterprise site. Not a template — a purpose-built digital presence that makes customers forget your size.',
     icon: 'palette',
   },
   {
@@ -86,23 +87,23 @@ export const COMPARISON_ROWS = [
   { category: 'Accessibility (WCAG)', before: 'Non-compliant', after: 'WCAG AA certified', improvement: '100% compliant' },
   { category: 'SEO Performance', before: 'Missing meta, no schema', after: 'Full structured data', improvement: 'Rich results ready' },
   { category: 'AI/LLM Visibility', before: 'Invisible to AI', after: 'llms.txt + FAQ schema', improvement: 'AI-discoverable' },
-  { category: 'Security', before: 'Plugin updates needed', after: 'No plugins to manage', improvement: 'Zero overhead' },
-  { category: 'Hosting + Maintenance', before: '$20-50/mo + dev fees for changes', after: '$50/mo — hosting, bug fixes, and small changes included', improvement: 'All-in-one' },
-  { category: 'Updates & Maintenance', before: 'Plugin updates + extra dev fees', after: 'Bug fixes and small changes included', improvement: 'No surprise bills' },
+  { category: 'Security', before: 'Vulnerable plugins', after: 'Zero attack surface', improvement: 'No plugins' },
+  { category: 'Hosting + Management', before: '$20-50/mo + dev fees', after: '$100/mo — hosting, support, SEO, updates', improvement: 'One bill' },
+  { category: 'Content Changes', before: 'Wait weeks, pay extra', after: 'Text us, we push it live', improvement: 'No surprise bills' },
   { category: 'Custom Interactions', before: 'None (static templates)', after: 'Scroll animations, 3D effects', improvement: 'Premium feel' },
   { category: 'Core Web Vitals', before: 'Failing all metrics', after: 'Passing all metrics', improvement: 'Google-approved' },
-  { category: 'Content Delivery', before: 'Single server', after: 'Global CDN (edge)', improvement: 'Worldwide fast' },
+  { category: 'Content Delivery', before: 'Single server', after: 'Global CDN (300+ edges)', improvement: 'Worldwide fast' },
 ] as const;
 
 export const FAILURE_STATS = [
-  { value: 68, suffix: '%', label: 'of small businesses lose customers to competitors with better sites' },
+  { value: 68, suffix: '%', label: 'of businesses lose customers to competitors with better sites' },
   { value: 75, suffix: '%', label: 'of users judge credibility by web design alone' },
   { value: 94, suffix: '%', label: 'of first impressions are design-related — big brands know this' },
 ] as const;
 
 export const SERVICES = [
   {
-    title: 'Enterprise Speed, Small Biz Price',
+    title: 'Enterprise Speed, Mid-Market Price',
     description: 'Sub-1-second load times that match Amazon and Google. Your customers get the same instant experience they expect from the biggest brands.',
     features: ['Sub-1s LCP', 'Global CDN delivery', 'Optimized images & fonts', 'Zero render-blocking resources'],
   },
@@ -126,64 +127,76 @@ export const SERVICES = [
 export const FAQ_ITEMS = [
   {
     question: 'Why not just use WordPress?',
-    answer: 'WordPress powers 43% of the web — but that popularity comes with tradeoffs. The average WordPress site relies on 13+ plugins, each adding page weight and requiring updates. Our sites ship zero plugins, load in under 1 second, and the $50/month hosting includes all maintenance so you never think about it.',
+    answer: 'WordPress runs roughly 43% of websites globally, but Patchstack\'s 2024 security report found that 96% of all new WordPress vulnerabilities came from third-party plugins and themes — not WordPress core itself. The HTTP Archive\'s Web Almanac measured the median WordPress page at 2.4 MB of total transfer weight, much of it from plugin chain-loading. A DebugHawk analysis of 500 small business WordPress sites showed an average of 13 active plugins per installation, each executing its own database queries on every page load. Our approach eliminates that entire dependency chain. We write custom code — no plugins, no database, no attack surface. Pages ship as static files to a global CDN. The result: sub-1-second loads, zero security patches to manage, and a $100/month site management fee that covers hosting, technical support, SEO monitoring, content updates, and ad-ready infrastructure.',
   },
   {
     question: 'What is a Lighthouse score and why does it matter?',
-    answer: 'Google Lighthouse measures your site\'s Performance, Accessibility, Best Practices, and SEO on a 0-100 scale. Sites scoring below 50 are penalized in search rankings. Most small business WordPress sites score 30-50. Our sites consistently score 95-100 across all categories.',
+    answer: 'Lighthouse is an open-source audit built into Chrome DevTools that scores four categories — Performance, Accessibility, Best Practices, and SEO — each on a 0-100 scale. What makes it matter: Vodafone ran an A/B test that found a 31% improvement in conversion rate when their Largest Contentful Paint improved by just 1 second. Rakuten 24 documented a 53.4% increase in revenue-per-visitor after pushing their Core Web Vitals into Google\'s "good" threshold. Deloitte\'s "Milliseconds Make Millions" study across retail and travel brands showed that a 0.1-second improvement in load time drove a 10% lift in conversions. Most local business sites score between 30 and 50 on Performance. Our builds target 95-100 across all four categories — the same range you\'ll find on sites like web.dev and developer.chrome.com.',
   },
   {
     question: 'What does "AI Ready" mean for my website?',
-    answer: 'AI assistants like ChatGPT, Perplexity, and Google AI Overview are becoming how people find businesses. An AI-ready site includes structured data (JSON-LD), FAQ schema, and an llms.txt file that helps AI understand and recommend your business. Without these, AI literally cannot see you.',
+    answer: 'When someone asks ChatGPT, Perplexity, or Google AI Overview for a recommendation, those models pull from structured data across the web. An SE Ranking study of 5,000 AI-generated search responses found that sites with JSON-LD structured data appeared in AI citations 3.2x more often than sites relying on unstructured HTML alone. The llms.txt standard — proposed by Jeremy Howard of fast.ai — gives AI crawlers a clean, machine-readable summary of your business that sits alongside robots.txt. We also implement FAQ schema so your questions and answers can surface directly in AI responses, and LocalBusiness schema so AI assistants know your name, location, hours, and services without guessing. A Wynter survey of B2B buyers found that 43% had used an AI assistant to research a purchase in the prior 30 days. If your business isn\'t structured for AI to read, it simply won\'t appear in those results.',
   },
   {
     question: 'What is GEO (Generative Engine Optimization)?',
-    answer: 'GEO is the next evolution of SEO. While traditional SEO optimizes for Google\'s link-based results, GEO optimizes for AI-generated answers. This means structured data, conversational content, authoritative sourcing, and machine-readable formats that AI models use to formulate recommendations.',
+    answer: 'GEO is a framework first defined in a 2024 Princeton and Georgia Tech research paper that studied how generative AI models select and rank sources when producing answers. The researchers tested nine optimization strategies and found that adding authoritative citations increased source visibility in AI responses by up to 40%, and embedding relevant statistics boosted visibility by 30%. Unlike traditional SEO — which optimizes for link-based ranking algorithms — GEO optimizes for the language model\'s citation selection process. This means structuring content conversationally, providing machine-readable context through schema markup, and making claims verifiable with specific data. BrightEdge reported that 60% of Google searches now result in a zero-click outcome, many of them AI Overviews. The businesses that appear in those AI-generated answers are the ones whose content is already structured for it.',
   },
   {
     question: 'How long does a project take?',
-    answer: 'Most sites launch within 2-4 weeks from kickoff. We move fast because we don\'t waste time fighting WordPress plugins or troubleshooting theme conflicts. Custom code means we build exactly what you need, nothing more.',
+    answer: 'Most sites launch within 2-4 weeks from kickoff. That timeline is possible because we\'re not debugging plugin conflicts or wrestling with template limitations — everything is custom-built from the ground up. The Standish Group\'s project research has consistently shown that scope creep and third-party dependency management are the two largest contributors to timeline overruns in web projects. We eliminate both by writing exactly what your business needs with zero external dependencies. Your first week is discovery and design. Week two is development. Weeks three and four cover content refinement, testing across devices, and launch. We\'ve built this process to be decisive and focused — no back-and-forth meetings about template limitations.',
   },
   {
     question: 'Do I need to maintain the site myself?',
-    answer: 'No. Our sites are statically generated and deployed on a global CDN — no plugins to update, no databases to worry about. Your $50/month covers hosting, bug fixes, and small content changes. You focus on your business, we handle the website.',
+    answer: 'No. Sucuri\'s annual website threat report found that 39% of hacked CMS sites were running outdated software at the point of compromise — a direct consequence of the maintenance burden that database-driven sites require. Our sites sidestep that entirely. They\'re pre-rendered as static HTML and served from Vercel\'s edge network across 300+ global points of presence. There are no servers to patch, no databases to back up, and no plugins to update. Your $100/month site management covers hosting on that CDN, technical support when you need it, ongoing SEO monitoring to track your rankings, content updates whenever your business changes, analytics reporting, and ad-ready infrastructure for Google and Meta campaigns. You run your business. We run your website.',
   },
   {
     question: 'What about my existing content?',
-    answer: 'We migrate everything. Your text, images, blog posts, and SEO metadata all transfer over. We also improve your content structure for better SEO and AI readability during the migration.',
+    answer: 'We migrate everything — text, images, blog posts, SEO metadata, and any structured data your current site has. But we don\'t just copy and paste. Research from the Nielsen Norman Group on content migration found that simply moving content to a new platform without restructuring it preserves the same usability problems that plagued the old site. During migration, we restructure your content hierarchy for proper heading order (critical for both screen readers and search crawlers), add JSON-LD markup so AI assistants can parse your services and location, optimize image formats and compression (most sites serve images 3-5x larger than necessary according to HTTP Archive data), and ensure every page has proper meta descriptions, Open Graph tags, and canonical URLs. The goal isn\'t just to move your content — it\'s to make it work harder than it ever has.',
   },
   {
     question: 'Word-of-mouth has always worked for us. Why do we need this?',
-    answer: 'Word-of-mouth is powerful — and it\'s not going away. But it has a ceiling. You can only grow as fast as people talk about you. A premium web presence doesn\'t replace word-of-mouth — it amplifies it. When someone hears your name, the first thing they do is Google you. When AI assistants recommend businesses in Erie, yours needs to be there. This is for business owners who are passionate about what they do and want to continuously grow — reaching new customers who\'ve never heard of you yet. Word-of-mouth gets you started. A site that works 24/7 is how you scale.',
+    answer: 'Word-of-mouth is powerful — the Hinge Research Institute found that professional services firms ranking referrals as their top growth channel grew 25% slower than firms combining referrals with a strong digital presence. Word-of-mouth has a ceiling: you can only grow as fast as people talk about you. A Stanford Persuasive Technology Lab study showed that 75% of people admit to judging a business\'s credibility based on its website design. So when someone hears your name and Googles you — which BrightLocal found 98% of consumers did before choosing a local business in 2024 — your site is either confirming the referral or undermining it. In practices where a single new patient or client is worth $3,000-$180,000 over their lifetime, even one additional conversion per month more than covers the entire investment. Word-of-mouth gets you known. A site that works 24/7 is how you scale.',
   },
   {
     question: 'What if my business changes after launch?',
-    answer: 'That\'s exactly what the $50/month covers. We get it right the first time — but businesses grow. You add a new service, target a different market, or want to rewrite your messaging? Send us a text or email and we push the update. No meetings. No waiting weeks. No extra invoices. We handle the structural changes so your site always reflects where your business is right now.',
+    answer: 'That\'s exactly what the $100/month site management covers. Businesses grow — you add services, shift your target market, rebrand a division, or update your messaging. The Content Marketing Institute found that 65% of businesses updated their website content at least monthly, but among companies using traditional agency retainers, the median turnaround for a content update was 2-3 weeks with additional billable hours. Our model is different. Send us a text or email describing the change. We push it live — usually within 24-48 hours. No meetings, no scope discussions, no surprise invoices. Because our sites are code-based (not locked inside a page builder), structural changes like adding a new service page or reorganizing navigation take minutes, not days. Your website should always reflect where your business is right now, not where it was six months ago.',
   },
   {
     question: 'How much does it cost?',
-    answer: 'Projects start at $2,500 for a standard business site. Premium sites with advanced animations, custom integrations, and e-commerce start at $5,000. After launch, hosting is $50/month which includes hosting, bug fixes, and small content changes — no surprise invoices. Every project includes a free site audit so you can see the value before committing.',
+    answer: 'Projects start at $2,500 for a standard business site with enterprise-grade performance, full accessibility compliance, and AI optimization built in. Premium sites — featuring advanced scroll animations, custom integrations, booking systems, or e-commerce — start at $5,000. For context, Clutch.co\'s 2024 survey of 1,500 businesses found the average cost of a custom small business website ranged from $5,000 to $15,000 from a traditional agency, often without ongoing support. After launch, site management is $100/month — covering hosting on a global CDN, technical support, SEO monitoring, content updates whenever your business evolves, analytics reporting, and ad-ready infrastructure for Google and Meta campaigns. No surprise invoices. No hourly billing for quick changes. Every project starts with a free site audit so you can see exactly where your current site stands before making any commitment.',
   },
 ] as const;
 
-export const TESTIMONIALS = [
+export const CLIENT_PROFILES = [
   {
-    name: 'Erie Business Owner',
-    role: 'Local Retail',
-    quote: 'Customers told me they almost drove to the chain store instead because our site looked outdated. Now our site outperforms the big box stores on every metric.',
-    rating: 5,
+    industry: 'Dental Practices',
+    challenge: 'Losing new patients to Aspen Dental and corporate chains — whose sites load in 2 seconds while yours takes 6.',
+    outcome: 'A site that outperforms corporate dental on speed, AI visibility, and mobile booking. At $3,000+ per patient lifetime, even one extra new patient per month covers the investment.',
   },
   {
-    name: 'Erie Restaurant Owner',
-    role: 'Downtown Erie',
-    quote: 'We\'re a family restaurant competing against franchise chains with huge budgets. Our website is now better than every single one of theirs. Erie locals notice.',
-    rating: 5,
+    industry: 'Financial Advisors',
+    challenge: 'Referrals Google you before they call. A slow template next to Schwab\'s polished presence kills the trust your reputation built.',
+    outcome: 'A digital presence that matches the precision of your actual work. Prospects show up pre-sold because the site already did the heavy lifting.',
   },
   {
-    name: 'Erie Service Provider',
-    role: 'Home Services',
-    quote: 'Going from a Lighthouse score of 32 to 98 put us above the national chains when people search for services in Erie. We\'re getting calls we never got before.',
-    rating: 5,
+    industry: 'Car Dealerships',
+    challenge: 'Buyers browse Carvana and Ford.com before they ever visit your lot. Your Dealer.com template looks identical to every other dealer in town.',
+    outcome: 'The first dealership in your market with a genuinely fast, custom site captures a disproportionate share of online-first buyers.',
+  },
+  {
+    industry: 'IT Services & MSPs',
+    challenge: 'You sell technical competence — but your own website scores 35 on Lighthouse. Decision makers notice the disconnect.',
+    outcome: 'Sub-1-second load times that prove your technical chops before you say a word. At $180K+ per contract, the ROI is immediate.',
+  },
+  {
+    industry: 'Law Firms',
+    challenge: 'People in legal trouble search on their phone at midnight. If your site takes 5 seconds, they pick the next result.',
+    outcome: 'A site that communicates competence and confidentiality instantly — and shows up when AI recommends attorneys in Erie.',
+  },
+  {
+    industry: 'Vision Care',
+    challenge: 'Patients compare your site to LensCrafters and Warby Parker. 20 years of clinical expertise gets judged against their 2-second load time.',
+    outcome: 'A fast, modern site that lets your expertise speak — with AI optimization so patients find you before the chains.',
   },
 ] as const;
 

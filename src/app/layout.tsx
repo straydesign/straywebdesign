@@ -87,6 +87,8 @@ export default function RootLayout({
               '@type': 'ProfessionalService',
               name: 'Stray Web Design',
               url: 'https://straywebdesign.co',
+              email: 'tom@straywebdesign.co',
+              telephone: '814-964-0081',
               description:
                 'Premium web design agency in Erie, PA building fast, accessible, AI-ready websites for local businesses.',
               priceRange: '$$',
