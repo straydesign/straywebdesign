@@ -86,9 +86,9 @@ export const COMPARISON_ROWS = [
   { category: 'Accessibility (WCAG)', before: 'Non-compliant', after: 'WCAG AA certified', improvement: '100% compliant' },
   { category: 'SEO Performance', before: 'Missing meta, no schema', after: 'Full structured data', improvement: 'Rich results ready' },
   { category: 'AI/LLM Visibility', before: 'Invisible to AI', after: 'llms.txt + FAQ schema', improvement: 'AI-discoverable' },
-  { category: 'Security', before: 'Plugin vulnerabilities', after: 'No attack surface', improvement: 'Zero plugins' },
+  { category: 'Security', before: 'Plugin updates needed', after: 'No plugins to manage', improvement: 'Zero overhead' },
   { category: 'Hosting + Maintenance', before: '$20-50/mo + dev fees for changes', after: '$50/mo — hosting, bug fixes, and small changes included', improvement: 'All-in-one' },
-  { category: 'Updates & Maintenance', before: 'Weekly plugin updates, extra dev costs', after: 'Bug fixes and small changes included', improvement: 'No surprise bills' },
+  { category: 'Updates & Maintenance', before: 'Plugin updates + extra dev fees', after: 'Bug fixes and small changes included', improvement: 'No surprise bills' },
   { category: 'Custom Interactions', before: 'None (static templates)', after: 'Scroll animations, 3D effects', improvement: 'Premium feel' },
   { category: 'Core Web Vitals', before: 'Failing all metrics', after: 'Passing all metrics', improvement: 'Google-approved' },
   { category: 'Content Delivery', before: 'Single server', after: 'Global CDN (edge)', improvement: 'Worldwide fast' },
@@ -126,7 +126,7 @@ export const SERVICES = [
 export const FAQ_ITEMS = [
   {
     question: 'Why not just use WordPress?',
-    answer: 'WordPress powers 43% of the web — but that popularity is its weakness. The average WordPress site loads 13+ plugins, each adding weight, security vulnerabilities, and maintenance burden. Our sites ship zero plugins, load in under 1 second, and require zero maintenance updates.',
+    answer: 'WordPress powers 43% of the web — but that popularity comes with tradeoffs. The average WordPress site relies on 13+ plugins, each adding page weight and requiring updates. Our sites ship zero plugins, load in under 1 second, and the $50/month hosting includes all maintenance so you never think about it.',
   },
   {
     question: 'What is a Lighthouse score and why does it matter?',
@@ -146,7 +146,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: 'Do I need to maintain the site myself?',
-    answer: 'No. Unlike WordPress sites that require weekly plugin updates, security patches, and database maintenance, our sites are statically generated and deployed on a global CDN. There are no plugins to update, no databases to manage, and no security vulnerabilities to patch.',
+    answer: 'No. Our sites are statically generated and deployed on a global CDN — no plugins to update, no databases to worry about. Your $50/month covers hosting, bug fixes, and small content changes. You focus on your business, we handle the website.',
   },
   {
     question: 'What about my existing content?',

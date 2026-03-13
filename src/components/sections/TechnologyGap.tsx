@@ -21,9 +21,9 @@ export default function TechnologyGap() {
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-slate-600">
               Enterprise brands don&apos;t use WordPress. They use custom-built
-              platforms optimized for speed, security, and AI. WordPress&apos;s
-              plugin-heavy architecture from 2003 can&apos;t match what modern
-              businesses need to compete.
+              platforms optimized for speed, performance, and AI. WordPress&apos;s
+              plugin-heavy architecture adds page weight and complexity that
+              holds your site back from competing at the top level.
             </p>
             <div className="mt-8 space-y-4">
               <div className="rounded-xl border border-slate-200/60 bg-white p-5">

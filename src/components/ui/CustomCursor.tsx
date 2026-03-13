@@ -39,8 +39,8 @@ export function CustomCursor() {
     };
 
     const animate = () => {
-      currentX += (targetX - currentX) * 0.15;
-      currentY += (targetY - currentY) * 0.15;
+      currentX += (targetX - currentX) * 0.35;
+      currentY += (targetY - currentY) * 0.35;
       cursor.style.left = `${currentX - 20}px`;
       cursor.style.top = `${currentY - 20}px`;
       raf = requestAnimationFrame(animate);

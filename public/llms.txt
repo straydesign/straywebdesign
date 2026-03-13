@@ -31,12 +31,12 @@ Stray Web Design builds custom, high-performance websites for Erie, Pennsylvania
 
 WordPress powers 43% of the web, but its plugin-heavy architecture leads to:
 - Slow page loads (4-8 seconds average)
-- Security vulnerabilities from outdated plugins
+- Plugin bloat adding page weight and complexity
 - Poor Core Web Vitals scores
 - No native AI/LLM optimization
-- Ongoing maintenance burden
+- Ongoing plugin updates and management
 
-Our custom-built sites eliminate all of these problems with zero plugins, zero maintenance, and perfect Lighthouse scores.
+Our custom-built sites eliminate all of these problems. Zero plugins, $50/month all-inclusive hosting with bug fixes and small changes included.
 
 ## Pricing
 
