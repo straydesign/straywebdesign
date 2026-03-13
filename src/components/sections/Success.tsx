@@ -6,7 +6,7 @@ import ComparisonTable from '@/components/ui/ComparisonTable';
 import GradientText from '@/components/ui/GradientText';
 
 const SUCCESS_METRICS = [
-  { value: 98, suffix: '+', label: 'Lighthouse Performance Score' },
+  { value: 96, suffix: '+', label: 'Lighthouse Performance Score' },
   { value: 100, suffix: '', label: 'Accessibility Score' },
   { value: 0.8, suffix: 's', label: 'Average Load Time', decimals: 1 },
   { value: 40, suffix: '%+', label: 'More Contact Submissions' },

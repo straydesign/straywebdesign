@@ -41,8 +41,8 @@ export function CustomCursor() {
     const animate = () => {
       currentX += (targetX - currentX) * 0.15;
       currentY += (targetY - currentY) * 0.15;
-      cursor.style.left = `${currentX - 8}px`;
-      cursor.style.top = `${currentY - 8}px`;
+      cursor.style.left = `${currentX - 20}px`;
+      cursor.style.top = `${currentY - 20}px`;
       raf = requestAnimationFrame(animate);
     };
 
