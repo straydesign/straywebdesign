@@ -87,8 +87,8 @@ export const COMPARISON_ROWS = [
   { category: 'SEO Performance', before: 'Missing meta, no schema', after: 'Full structured data', improvement: 'Rich results ready' },
   { category: 'AI/LLM Visibility', before: 'Invisible to AI', after: 'llms.txt + FAQ schema', improvement: 'AI-discoverable' },
   { category: 'Security', before: 'Plugin vulnerabilities', after: 'No attack surface', improvement: 'Zero plugins' },
-  { category: 'Hosting Cost', before: '$20-50/mo + plugins', after: '$0-20/mo on Vercel', improvement: 'Up to 100% savings' },
-  { category: 'Updates & Maintenance', before: 'Weekly plugin updates', after: 'Zero maintenance', improvement: 'Set and forget' },
+  { category: 'Hosting + Maintenance', before: '$20-50/mo + dev fees for changes', after: '$50/mo — hosting, bug fixes, and small changes included', improvement: 'All-in-one' },
+  { category: 'Updates & Maintenance', before: 'Weekly plugin updates, extra dev costs', after: 'Bug fixes and small changes included', improvement: 'No surprise bills' },
   { category: 'Custom Interactions', before: 'None (static templates)', after: 'Scroll animations, 3D effects', improvement: 'Premium feel' },
   { category: 'Core Web Vitals', before: 'Failing all metrics', after: 'Passing all metrics', improvement: 'Google-approved' },
   { category: 'Content Delivery', before: 'Single server', after: 'Global CDN (edge)', improvement: 'Worldwide fast' },
@@ -154,27 +154,27 @@ export const FAQ_ITEMS = [
   },
   {
     question: 'How much does it cost?',
-    answer: 'Projects start at $2,500 for a standard business site. Premium sites with advanced animations, custom integrations, and e-commerce start at $5,000. Every project includes a free site audit so you can see the value before committing.',
+    answer: 'Projects start at $2,500 for a standard business site. Premium sites with advanced animations, custom integrations, and e-commerce start at $5,000. After launch, hosting is $50/month which includes hosting, bug fixes, and small content changes — no surprise invoices. Every project includes a free site audit so you can see the value before committing.',
   },
 ] as const;
 
 export const TESTIMONIALS = [
   {
-    name: 'Recent Client',
-    role: 'Local Business Owner',
-    quote: 'Customers used to tell me they almost went to the chain competitor because our site looked amateur. Now our site outperforms theirs on every metric.',
+    name: 'Erie Business Owner',
+    role: 'Local Retail',
+    quote: 'Customers told me they almost drove to the chain store instead because our site looked outdated. Now our site outperforms the big box stores on every metric.',
     rating: 5,
   },
   {
-    name: 'Recent Client',
-    role: 'Restaurant Owner',
-    quote: 'We\'re a small family restaurant competing against franchise chains with huge budgets. Our website is now better than every single one of theirs. It actually levels the playing field.',
+    name: 'Erie Restaurant Owner',
+    role: 'Downtown Erie',
+    quote: 'We\'re a family restaurant competing against franchise chains with huge budgets. Our website is now better than every single one of theirs. Erie locals notice.',
     rating: 5,
   },
   {
-    name: 'Recent Client',
-    role: 'Service Provider',
-    quote: 'Going from a Lighthouse score of 32 to 98 put us above the national chains in Google results. We\'re getting customers who never would have found us before.',
+    name: 'Erie Service Provider',
+    role: 'Home Services',
+    quote: 'Going from a Lighthouse score of 32 to 98 put us above the national chains when people search for services in Erie. We\'re getting calls we never got before.',
     rating: 5,
   },
 ] as const;

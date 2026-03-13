@@ -48,7 +48,7 @@ export default function Hero() {
           <div>
             <AnimateIn delay={0.1}>
               <span className="mb-4 inline-block rounded-full border border-electric/20 bg-electric/5 px-4 py-1.5 text-sm font-medium text-electric">
-                Enterprise-Grade Websites for Small Business
+                Enterprise-Grade Websites for Erie Businesses
               </span>
             </AnimateIn>
 
@@ -58,8 +58,9 @@ export default function Hero() {
 
             <AnimateIn delay={0.7} className="mt-6">
               <p className="max-w-lg text-lg leading-relaxed text-slate-600 md:text-xl">
-                Big brands have fast, accessible, AI-optimized websites. Your
-                business deserves the same — without the enterprise price tag.
+                National chains have fast, accessible, AI-optimized websites.
+                Your Erie business deserves the same — without the corporate
+                budget.
               </p>
             </AnimateIn>
 

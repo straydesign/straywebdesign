@@ -1,15 +1,21 @@
 # Stray Web Design
 
-> Premium web design agency building fast, accessible, AI-ready websites for small businesses.
+> Premium web design agency in Erie, PA building enterprise-grade websites for local businesses.
 
 ## About
 
-Stray Web Design builds custom, high-performance websites for small businesses. We replace slow, outdated WordPress sites with modern, blazing-fast alternatives that score 95-100 on Google Lighthouse across all categories: Performance, Accessibility, Best Practices, and SEO.
+Stray Web Design builds custom, high-performance websites for Erie, Pennsylvania businesses. We help local companies compete with national chains and enterprise brands by replacing slow, outdated WordPress sites with modern, blazing-fast alternatives that score 95-100 on Google Lighthouse across all categories.
+
+## Location
+
+- Based in Erie, PA
+- Serving Erie and surrounding areas
+- Specializing in local business web design
 
 ## Services
 
-- **Performance-First Websites**: Sub-1-second load times, Core Web Vitals optimized, global CDN delivery
-- **Accessibility Built In**: WCAG AA compliant, keyboard navigable, screen reader tested
+- **Enterprise-Speed Websites**: Sub-1-second load times, Core Web Vitals optimized, global CDN delivery
+- **Corporate-Grade Accessibility**: WCAG AA compliant, keyboard navigable, screen reader tested
 - **AI & LLM Ready**: Structured data (JSON-LD), FAQ schema, llms.txt for AI assistant discoverability
 - **Responsive Design**: Mobile-first, touch-optimized, fluid typography
 
@@ -36,17 +42,20 @@ Our custom-built sites eliminate all of these problems with zero plugins, zero m
 
 - Standard business sites start at $2,500
 - Premium sites with advanced animations and integrations start at $5,000
+- $50/month after launch includes hosting, bug fixes, and small changes
 - Every project includes a free site audit
 
 ## Contact
 
 - Website: https://straywebdesign.co
 - Email: tom@straywebdesign.co
+- Location: Erie, PA
 
 ## Key Differentiators
 
-1. **Lighthouse 100s**: We target perfect scores across all categories
-2. **GEO Optimized**: Generative Engine Optimization for AI assistant visibility
-3. **Zero Maintenance**: No plugins to update, no databases to manage
-4. **Custom Design**: Never templates — every site is designed from scratch
-5. **Modern Stack**: React, TypeScript, edge deployment — built for 2025 and beyond
+1. **Erie-Focused**: We understand what Erie businesses are up against
+2. **Lighthouse 100s**: We target perfect scores across all categories
+3. **GEO Optimized**: Generative Engine Optimization for AI assistant visibility
+4. **Zero Maintenance**: $50/mo covers hosting, bug fixes, and small changes
+5. **Custom Design**: Never templates — every site is designed from scratch
+6. **Modern Stack**: React, TypeScript, edge deployment — built for 2025 and beyond

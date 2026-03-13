@@ -32,10 +32,10 @@ export default function Guide() {
                 <GradientText>Punch Above Their Weight.</GradientText>
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-slate-600">
-                I&apos;ve audited hundreds of small business sites and compared them
+                I&apos;ve audited hundreds of Erie business sites and compared them
                 to enterprise competitors. The gap is real — but it&apos;s fixable.
-                You don&apos;t need a million-dollar budget. You need the right
-                builder.
+                You don&apos;t need a corporate budget. You need a builder who
+                understands what Erie businesses are up against.
               </p>
             </AnimateIn>
 

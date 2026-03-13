@@ -18,24 +18,26 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: 'Stray Web Design — Enterprise-Grade Websites for Small Business',
+  title: 'Stray Web Design — Enterprise-Grade Websites for Erie, PA Businesses',
   description:
-    'Compete with the big guys — starting with your website. We build blazing-fast, accessible, AI-ready websites that give small businesses enterprise-grade web presence. Free site audit.',
+    'Erie businesses deserve enterprise-grade websites. Blazing-fast, accessible, AI-ready sites that help you compete with the big guys. Free site audit.',
   keywords: [
-    'web design',
-    'small business website',
+    'web design Erie PA',
+    'Erie web designer',
+    'small business website Erie',
     'premium web design',
     'fast website',
     'accessible website',
     'AI ready website',
     'Lighthouse score',
     'Core Web Vitals',
+    'Erie Pennsylvania',
   ],
   metadataBase: new URL('https://straywebdesign.co'),
   openGraph: {
-    title: 'Stray Web Design — Enterprise-Grade Websites for Small Business',
+    title: 'Stray Web Design — Enterprise-Grade Websites for Erie, PA Businesses',
     description:
-      'Enterprise-grade web presence for small businesses. Compete with the big guys. Free site audit.',
+      'Erie businesses deserve enterprise-grade websites. Compete with the big guys. Free site audit.',
     url: 'https://straywebdesign.co',
     siteName: 'Stray Web Design',
     locale: 'en_US',
@@ -43,9 +45,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Stray Web Design — Enterprise-Grade Websites for Small Business',
+    title: 'Stray Web Design — Enterprise-Grade Websites for Erie, PA Businesses',
     description:
-      'Enterprise-grade web presence for small businesses. Compete with the big guys. Free site audit.',
+      'Erie businesses deserve enterprise-grade websites. Compete with the big guys. Free site audit.',
   },
   robots: {
     index: true,
@@ -70,10 +72,21 @@ export default function RootLayout({
               name: 'Stray Web Design',
               url: 'https://straywebdesign.co',
               description:
-                'Premium web design agency building fast, accessible, AI-ready websites for small businesses.',
+                'Premium web design agency in Erie, PA building fast, accessible, AI-ready websites for local businesses.',
               priceRange: '$$',
               serviceType: 'Web Design',
-              areaServed: 'United States',
+              areaServed: {
+                '@type': 'City',
+                name: 'Erie',
+                addressRegion: 'PA',
+                addressCountry: 'US',
+              },
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Erie',
+                addressRegion: 'PA',
+                addressCountry: 'US',
+              },
               sameAs: [],
             }),
           }}

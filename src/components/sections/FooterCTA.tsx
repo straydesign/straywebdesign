@@ -70,6 +70,9 @@ export default function FooterCTA() {
               where you stand — and deliver a roadmap to close the gap. Free,
               no obligation.
             </p>
+            <p className="mt-3 text-sm text-slate-500 italic">
+              For established Erie, PA businesses ready to invest in a premium web presence.
+            </p>
 
             <div className="mt-8 space-y-4">
               <div className="flex items-start gap-3">

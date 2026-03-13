@@ -44,6 +44,9 @@ export default function CallToAction() {
           <p className="text-sm text-slate-400">
             No credit card. No commitment. Just data about your site.
           </p>
+          <p className="mt-2 text-xs text-slate-400">
+            For established Erie businesses ready to invest in their online presence.
+          </p>
         </AnimateIn>
       </div>
     </section>
