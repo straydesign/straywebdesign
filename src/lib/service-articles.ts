@@ -1,5 +1,106 @@
 export const SERVICE_ARTICLES = [
   {
+    slug: 'ai-receptionist-for-small-business',
+    type: 'blog' as const,
+    title: 'Your Phone Is Ringing. Nobody\'s Answering. An AI Receptionist Fixes That.',
+    description:
+      'The average small business misses 38% of incoming calls. Voicemail catches less than 3% of those callers. An AI receptionist responds in seconds, qualifies leads, and books appointments — 24/7, for less than minimum wage.',
+    readTime: '9 min read',
+    date: '2026-03-14',
+    tag: 'AI',
+    content: `## One Practice Recovered $47,088 From Missed Calls Alone
+
+Not new marketing. Not a new hygienist. Just answering calls they'd been missing.
+
+Peerlogic tracked the data across 26 dental practices: the average office answers just 62% of incoming calls. Of those answered calls, only 42% result in a booked appointment. A multi-practice group recovered 244 appointments worth $204,000 by fixing this single bottleneck.
+
+And it's not unique to dental. Invoca's call tracking data across home services businesses shows a 27% unanswered call rate, with less than 3% of callers who hit voicemail actually leaving a message. Your voicemail is not a safety net. It's a dead end.
+
+The math is brutal: for every 100 calls, roughly 74 potential customers vanish — unanswered calls compounded by poor conversion on the ones you do pick up. An AI receptionist eliminates the first variable entirely. Every call gets answered, every time, in seconds.
+
+## Your Best Customers Call After You Close
+
+Forty-seven percent of all bookings happen after you lock the door. That number comes from TrueLark's dataset of 8 million real AI-to-patient conversations across dental, beauty, and wellness businesses — not a survey, not an estimate.
+
+The average practice in their data missed 300 calls per month, and 65% of those missed calls came from potential new patients. Not existing clients rescheduling. New patients. First impressions. The calls you most need to land.
+
+A law firm, a veterinary clinic, a plumber, an accountant — the person who finally decides to call at 8:47 PM after staring at your website for twenty minutes is your highest-intent lead. They've done the research. They're ready to commit. And they get voicemail.
+
+An AI receptionist doesn't close at 6 PM. It doesn't take lunch breaks or put callers on hold while dealing with the person at the front desk. It answers at 8:47 PM with the same precision it had at 8:47 AM.
+
+But answering is only half the equation. What matters next is how fast.
+
+## The 5-Minute Window That Changes Everything
+
+Respond to a lead within 5 minutes and you're 21 times more likely to qualify them than if you wait 30 minutes. Respond within 1 minute and conversion rates jump 391%.
+
+That's from a three-year MIT study — Dr. James Oldroyd, 15,000 leads, 100,000 call attempts, published through the Kellogg School and InsideSales.com. The sample size accounts for industry variation, geography, and lead source. The conclusion is unambiguous: speed wins. Not quality of pitch, not price, not brand recognition — speed.
+
+The average business response time? Over 40 hours. Only 0.1% of inbound leads are engaged within 5 minutes.
+
+An AI receptionist responds in seconds. That alone moves a business from the 40-hour average into the top 0.1% of response speed. For a dental practice where a new patient averages $3,000-$15,000 in lifetime value, or a law firm where a single retained client can be worth $10,000-$180,000, the math from speed alone dwarfs whatever you're spending on Google Ads.
+
+Speed matters — but only if the customer is willing to call in the first place. Increasingly, they aren't.
+
+## Nobody Under 40 Wants to Call You Anyway
+
+Eighty-one percent of millennials experience genuine anxiety before making a phone call. Not mild preference for texting. Anxiety. BankMyCell documented this across 1,200 US respondents — 75% avoid calls because they consider them "time-consuming," and 88% would choose unlimited data over calls and SMS combined.
+
+This isn't a generational quirk. It's a structural shift in how your customer base communicates. Millennials — now aged 28-43 — are the primary decision-makers for home services, legal needs, dental care, veterinary visits, and automotive purchases. They're your market. And they'd rather text, chat, or book online than pick up the phone.
+
+Half of Gen Z and millennial workers feel uncomfortable making business phone calls, according to Robert Walters' workplace survey. Only 16% consider phone calls an "effective use of time."
+
+An AI receptionist meets customers where they are — text-back when a call goes unanswered, chat on your website, online booking without ever speaking to a human. Not because human interaction isn't valuable, but because the barrier to picking up the phone is now high enough to cost you customers.
+
+And even if you wanted to solve this the old way — hire someone to sit at the desk — good luck.
+
+## You Can't Hire a Receptionist Either
+
+Fifty-four percent of small business owners are currently hiring or trying to hire. Of those, 85% report few or no qualified applicants. Twenty-seven percent cite "quality of labor" as their single most important business problem. That's from NFIB's monthly Small Business Economic Trends survey — the authoritative voice of small business in America.
+
+Here's the double bind: the generation you'd be hiring also doesn't want to answer phones. You're trying to fill a role that the available workforce actively dislikes. Even when you do hire, turnover for front desk and receptionist roles runs 30-40% annually according to Bureau of Labor Statistics data.
+
+An AI receptionist costs $50-$300 per month. A full-time receptionist costs $28,000-$38,000 annually in salary alone, plus benefits, training, PTO, and the inevitable two-week gap when they quit and you start hiring again. There's no two-week notice. No W-2. No sick days in December when your other receptionist is already on vacation.
+
+Meanwhile, even when you do reach a lead, a different problem is waiting.
+
+## Spam Has Trained Your Customers to Ignore You Too
+
+Eighty-six percent of calls from unknown numbers go unanswered. One in three workers say their company has lost money because they couldn't connect with someone by phone. That's Hiya's 2025 State of the Call report — 12,000 consumers across six countries.
+
+Even when you call back a lead, they don't answer. They've been trained by years of spam calls to ignore unknown numbers. The callback loop is broken. You call, they see an unknown number, they let it ring. You leave a voicemail they'll never listen to. They move on.
+
+An AI receptionist bypasses this loop entirely. When a call comes in, the AI answers live, gathers information, and sends a confirmation text with your business name attached. When following up, it texts from a recognized number with context: "Hi Sarah, this is Happy Paws Grooming following up on your call about grooming for your golden retriever. Here's a link to book your appointment." No spam suspicion. No voicemail black hole.
+
+## First Call Resolution Is the Only Metric That Matters
+
+For every 1% improvement in first-call resolution, customer satisfaction improves by 1% and operating costs drop by 1%. Ninety-five percent of customers will continue doing business with a company that resolves their issue on the first call. That's from SQM Group's benchmarking data across 25 years of North American call centers.
+
+The implication is direct: answering isn't enough. You have to resolve. An AI receptionist that can answer FAQs ("What are your hours?" "How much is a full groom?" "Do you accept cats?"), book appointments into your calendar, and route urgent calls to the right person delivers first-call resolution at rates human receptionists rarely match — because it never says "let me check on that" or "can I put you on hold?"
+
+Good first-call resolution for human-staffed centers falls between 70-79%. AI receptionists trained on a business's complete service catalog, pricing, and policies consistently exceed 80% — they never forget a price, never misquote hours, and never give wrong information because they're having a bad day.
+
+But resolution rates only matter if the phone gets answered in the first place — and the data on that is getting worse.
+
+## The Clio Secret Shopper Study
+
+Clio doesn't just survey law firms. They hire secret shoppers to actually call them. Their 2024 Legal Trends Report found that only 40% of law firms answer their phone — down from 56% in 2019. The answer rate is getting worse, not better.
+
+But here's the finding that matters: firms that modernize their intake process see 50% more incoming clients and earn 50% more revenue. Not firms that spend more on marketing. Not firms that hire more associates. Firms that fix how they handle first contact.
+
+This isn't a legal industry anomaly. The same dynamic plays out in every professional services business. The practice that answers every call, responds to every inquiry, and makes booking effortless captures a disproportionate share of the market — not because they're better at their craft, but because they're better at being available.
+
+## What We Build
+
+Try it yourself: we built a working AI assistant for a pet grooming business at [happypawsgrooming.xyz](https://happypawsgrooming.xyz). Chat with it. Ask about pricing, hours, breed restrictions. This is what your customer experiences when nobody's at the desk — trained specifically on that business's services, voice, and policies.
+
+We build these for real businesses. The AI is configured around your specific services, pricing, hours, and brand voice — trained on your actual FAQ patterns, not generic scripts. It handles inbound calls, sends text-backs when calls go unanswered, books appointments directly into your calendar, qualifies leads with the right questions, and runs 24/7 with a weekly performance dashboard showing exactly how many leads the AI caught before you would have.
+
+Because the lead that calls at 8:47 PM is often your best lead. They've been thinking about it all day. They finally picked up the phone. The businesses that answer win those leads. The businesses that send them to voicemail wonder why their marketing isn't working.
+
+It's not the marketing. It's the phone.`,
+  },
+  {
     slug: 'custom-website-design-vs-templates',
     type: 'blog' as const,
     title: 'Custom Website Design vs. Templates: The Real Cost of Looking Like Everyone Else',

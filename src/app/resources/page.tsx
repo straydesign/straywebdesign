@@ -22,6 +22,18 @@ const TAG_COLORS: Record<string, string> = {
   Restaurant: 'bg-emerald-50 text-emerald-600',
   'Home Services': 'bg-orange-50 text-orange-600',
   'Professional Services': 'bg-indigo-50 text-indigo-600',
+  AI: 'bg-violet-50 text-violet-600',
+  'Web Design': 'bg-blue-50 text-blue-600',
+  Conversion: 'bg-amber-50 text-amber-600',
+  Mobile: 'bg-purple-50 text-purple-600',
+  'Local SEO': 'bg-emerald-50 text-emerald-600',
+  Development: 'bg-teal-50 text-teal-600',
+  'Technical SEO': 'bg-cyan-50 text-cyan-600',
+  Migration: 'bg-orange-50 text-orange-600',
+  Services: 'bg-blue-50 text-blue-600',
+  Analytics: 'bg-purple-50 text-purple-600',
+  Advertising: 'bg-red-50 text-red-600',
+  Reliability: 'bg-emerald-50 text-emerald-600',
 };
 
 export default function ResourcesPage() {

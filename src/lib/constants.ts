@@ -122,6 +122,11 @@ export const SERVICES = [
     description: 'The same polished mobile experience your customers get from major brands. Touch-optimized, fluid, and beautiful on every screen.',
     features: ['Mobile-first approach', 'Touch-optimized', 'Fluid typography', 'Adaptive layouts'],
   },
+  {
+    title: 'AI Receptionist That Never Misses a Call',
+    description: 'Your phone rings at 9 PM — the AI answers, qualifies the lead, and books the appointment. 24/7 coverage for less than minimum wage.',
+    features: ['24/7 call answering', 'Missed call text-back', 'Appointment scheduling', 'Lead qualification'],
+  },
 ] as const;
 
 export const FAQ_ITEMS = [

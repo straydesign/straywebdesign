@@ -1,12 +1,12 @@
 'use client';
 
-import { Zap, Accessibility, Brain, Smartphone, Check } from 'lucide-react';
+import { Zap, Accessibility, Brain, Smartphone, MessageSquare, Check } from 'lucide-react';
 import AnimateIn, { StaggerContainer, StaggerItem } from '@/components/ui/AnimateIn';
 import TiltCard from '@/components/ui/TiltCard';
 import GradientText from '@/components/ui/GradientText';
 import { SERVICES } from '@/lib/constants';
 
-const ICONS = [Zap, Accessibility, Brain, Smartphone];
+const ICONS = [Zap, Accessibility, Brain, Smartphone, MessageSquare];
 
 export default function Services() {
   return (
