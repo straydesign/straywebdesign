@@ -17,10 +17,10 @@ export default function ComparisonTable({ className = '' }: { className?: string
                 Category
               </th>
               <th className="px-5 py-4 font-display text-sm font-semibold text-red-600 md:px-6">
-                Before (WordPress)
+                Your Site Now
               </th>
               <th className="px-5 py-4 font-display text-sm font-semibold text-emerald-600 md:px-6">
-                After (Custom)
+                After Stray Web Design
               </th>
               <th className="px-5 py-4 font-display text-sm font-semibold text-electric md:px-6">
                 Improvement

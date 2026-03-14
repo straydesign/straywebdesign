@@ -45,7 +45,7 @@ export default function CallToAction() {
             No credit card. No commitment. Just data about your site.
           </p>
           <p className="mt-2 text-xs text-slate-400">
-            For Erie business owners who are passionate about what they do and ready to grow.
+            For dental practices, financial firms, dealerships, and professional services where every new client matters.
           </p>
         </AnimateIn>
       </div>

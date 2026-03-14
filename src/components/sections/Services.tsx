@@ -18,7 +18,7 @@ export default function Services() {
           </span>
           <h2 className="font-display text-3xl font-bold text-navy md:text-4xl lg:text-5xl">
             Enterprise Features,{' '}
-            <GradientText>Small Business Prices</GradientText>
+            <GradientText>Mid-Market Prices</GradientText>
           </h2>
           <p className="mt-4 text-lg text-slate-600">
             The same performance, accessibility, and AI optimization that
@@ -71,22 +71,24 @@ export default function Services() {
               Premium sites from $5,000 &middot; Free audit included
             </p>
             <div className="mt-4 border-t border-slate-200 pt-4">
-              <p className="text-sm font-semibold text-navy">$50/mo after launch</p>
+              <p className="text-sm font-semibold text-navy">$100/mo after launch</p>
               <p className="text-xs text-slate-500">
-                Hosting, bug fixes, and content changes — all included. No surprise invoices.
+                Hosting, technical support, SEO monitoring, content updates,
+                analytics, and ad-ready infrastructure.
               </p>
               <p className="mt-2 text-xs text-slate-400">
-                No meetings to update a headline. No waiting weeks for a text change.
-                When your business evolves — new services, new market, new messaging —
-                send us a text and we push the update.
+                Your site is a living extension of your business. When it
+                evolves, we evolve with it. Text us, we push the update. No
+                meetings. No invoices. No waiting.
               </p>
             </div>
           </div>
           <p className="mx-auto mt-6 max-w-md text-sm text-slate-400">
-            This is for Erie business owners who are passionate about what
-            they do and want to keep growing. If you care about your business
-            enough to want a digital presence that matches — this is for you.
-            Not the cheapest option, but the one that scales with your ambition.
+            Built for practices, firms, and services where every new client
+            or patient is worth thousands over their lifetime. Dental,
+            financial, legal, vision care, dealerships, IT, landscaping,
+            orthopedic, chiropractic — if your CLV is high, your website
+            should be working harder than anything else in your business.
           </p>
         </AnimateIn>
       </div>

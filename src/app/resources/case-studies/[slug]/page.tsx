@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import ArticleLayout from '@/components/layout/ArticleLayout';
-import { getResourcesByType, getResourceBySlug } from '@/lib/resources';
+import { getResourcesByType, getResourceBySlug, getResourcePath } from '@/lib/resources';
 
 export function generateStaticParams() {
   return getResourcesByType('case-study').map((r) => ({ slug: r.slug }));
@@ -13,6 +13,7 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
     return {
       title: `${resource.title} — Stray Web Design`,
       description: resource.description,
+      alternates: { canonical: getResourcePath(resource) },
     };
   });
 }

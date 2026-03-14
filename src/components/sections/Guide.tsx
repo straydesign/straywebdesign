@@ -28,14 +28,15 @@ export default function Guide() {
                 Your Guide
               </span>
               <h2 className="font-display text-3xl font-bold text-navy md:text-4xl">
-                I Help Small Businesses{' '}
+                I Help Practices &amp; Firms{' '}
                 <GradientText>Punch Above Their Weight.</GradientText>
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-slate-600">
-                I&apos;ve audited hundreds of Erie business sites and compared them
-                to enterprise competitors. The gap is real — but it&apos;s fixable.
-                You don&apos;t need a corporate budget. You need a builder who
-                understands what Erie businesses are up against.
+                I&apos;ve audited hundreds of dental offices, financial firms,
+                dealerships, and professional services across Erie. The gap
+                between them and enterprise competitors is real — but it&apos;s
+                fixable. You don&apos;t need a corporate budget. You need a
+                builder who understands what high-CLV businesses are up against.
               </p>
             </AnimateIn>
 

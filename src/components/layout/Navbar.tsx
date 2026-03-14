@@ -1,13 +1,22 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { NAV_LINKS, SITE } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 import StrayLogo from '@/components/ui/StrayLogo';
 
+function resolveHref(href: string, pathname: string): string {
+  if (href.startsWith('#') && pathname !== '/') {
+    return `/${href}`;
+  }
+  return href;
+}
+
 export default function Navbar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { scrollYProgress } = useScroll();
@@ -60,14 +69,14 @@ export default function Navbar() {
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
-                href={link.href}
+                href={resolveHref(link.href, pathname)}
                 className="text-sm font-medium text-slate-600 transition-colors hover:text-navy"
               >
                 {link.label}
               </a>
             ))}
             <a
-              href="#contact"
+              href={resolveHref('#contact', pathname)}
               className="rounded-lg bg-electric px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-electric/90"
             >
               Free Audit
@@ -103,7 +112,7 @@ export default function Navbar() {
                 {NAV_LINKS.map((link) => (
                   <a
                     key={link.href}
-                    href={link.href}
+                    href={resolveHref(link.href, pathname)}
                     className="text-base font-medium text-slate-600 transition-colors hover:text-navy"
                     onClick={() => setIsOpen(false)}
                   >
@@ -111,7 +120,7 @@ export default function Navbar() {
                   </a>
                 ))}
                 <a
-                  href="#contact"
+                  href={resolveHref('#contact', pathname)}
                   className="mt-2 rounded-lg bg-electric px-5 py-3 text-center text-sm font-semibold text-white"
                   onClick={() => setIsOpen(false)}
                 >

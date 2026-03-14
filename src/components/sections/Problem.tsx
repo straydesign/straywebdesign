@@ -21,13 +21,13 @@ export default function Problem() {
             The Problem
           </span>
           <h2 className="font-display text-3xl font-bold text-navy md:text-4xl lg:text-5xl">
-            The Gap Between You and{' '}
-            <GradientText>The Big Guys</GradientText>
+            Your Competitors Are{' '}
+            <GradientText>Already Ahead</GradientText>
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-slate-600">
-            Enterprise companies invest millions in web performance, accessibility,
-            and AI optimization. Your WordPress site can&apos;t keep up — and
-            customers notice the difference. It&apos;s not a fair fight. Yet.
+            Corporate chains and national brands invest millions in web performance,
+            accessibility, and AI optimization. Your site can&apos;t keep up — and
+            customers notice the difference before they ever call you.
           </p>
         </AnimateIn>
 

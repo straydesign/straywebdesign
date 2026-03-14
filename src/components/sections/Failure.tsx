@@ -9,21 +9,21 @@ import { FAILURE_STATS } from '@/lib/constants';
 const FAILURE_POINTS = [
   {
     icon: TrendingDown,
-    title: 'Enterprise Competitors Invest Daily',
+    title: 'Your Competitors Invest Daily',
     description:
-      'While you maintain WordPress plugins, big brands ship performance updates, AI optimizations, and accessibility improvements. The gap grows every week.',
+      'Aspen Dental, Schwab, Carvana, BrightView — they ship performance updates, AI optimizations, and accessibility improvements every week. The gap between their site and yours widens every day.',
   },
   {
     icon: AlertTriangle,
     title: 'Google Favors the Fast',
     description:
-      'Google\'s Core Web Vitals reward enterprise-grade performance. Your WordPress site fails these metrics — pushing you below competitors in every search.',
+      'Google\'s Core Web Vitals directly affect your ranking. 99.6% of dealership sites fail. 94.8% of business sites fail accessibility. Your competitors\' corporate sites pass — and Google rewards them.',
   },
   {
     icon: Clock,
     title: 'Customers Choose the Better Experience',
     description:
-      'When a customer compares your 4-second load time to a competitor\'s instant page load, they don\'t wait. They go where the experience matches their expectations.',
+      'When a patient compares your 4-second load time to a competitor\'s instant page load, they don\'t wait. They go where the experience matches their expectations — and they never come back.',
   },
 ];
 

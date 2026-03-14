@@ -11,7 +11,7 @@ import { HERO_STATS } from '@/lib/constants';
 
 const LIGHTHOUSE_COMPARISONS = [
   {
-    label: 'Typical WordPress Site',
+    label: 'Your Competitors Right Now',
     scores: { performance: 32, accessibility: 45, bestPractices: 56, seo: 62 },
   },
   {
@@ -48,19 +48,20 @@ export default function Hero() {
           <div>
             <AnimateIn delay={0.1}>
               <span className="mb-4 inline-block rounded-full border border-electric/20 bg-electric/5 px-4 py-1.5 text-sm font-medium text-electric">
-                Enterprise-Grade Websites for Erie Businesses
+                For Practices, Dealerships &amp; Professional Services in Erie
               </span>
             </AnimateIn>
 
             <h1 className="font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-navy md:text-5xl lg:text-6xl">
-              <WordReveal text="Compete With the Big Guys — Starting With Your Website" delay={0.3} />
+              <WordReveal text="Websites That Outperform Your Competitors" delay={0.3} />
             </h1>
 
             <AnimateIn delay={0.7} className="mt-6">
               <p className="max-w-lg text-lg leading-relaxed text-slate-600 md:text-xl">
-                You&apos;re spending on ads to drive traffic — but where does that
-                traffic land? We build Erie businesses the same digital presence
-                that national brands use to convert visitors into customers.
+                Your competitors spend millions on digital. You don&apos;t have to.
+                We build dental practices, financial firms, dealerships, and
+                professional services sites that load faster, rank higher, and
+                convert better than the national brands they compete against.
               </p>
             </AnimateIn>
 
