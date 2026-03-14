@@ -33,7 +33,6 @@
     <tspan fill="#0F172A">stray</tspan><tspan fill="#3B82F6">web</tspan><tspan fill="#0F172A">design</tspan>
   </text>
 
-  <line x1="50" y1="105" x2="1450" y2="105" stroke="#E2E8F0" stroke-width="1"/>
 
   <text x="750" y="150" text-anchor="middle" font-family="Outfit, system-ui, sans-serif" font-size="14" font-weight="800" letter-spacing="4" fill="#3B82F6">OUR SERVICES</text>
 
