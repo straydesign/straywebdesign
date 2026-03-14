@@ -148,7 +148,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: 'How long does a project take?',
-    answer: 'Most sites launch within 2-4 weeks from kickoff. That timeline is possible because we\'re not debugging plugin conflicts or wrestling with template limitations — everything is custom-built from the ground up. The Standish Group\'s project research has consistently shown that scope creep and third-party dependency management are the two largest contributors to timeline overruns in web projects. We eliminate both by writing exactly what your business needs with zero external dependencies. Your first week is discovery and design. Week two is development. Weeks three and four cover content refinement, testing across devices, and launch. We\'ve built this process to be decisive and focused — no back-and-forth meetings about template limitations.',
+    answer: 'Your website can be live in three days — not three months. That speed is possible because we\'re not debugging plugin conflicts or wrestling with template limitations — everything is custom-built from the ground up. The Standish Group\'s project research has consistently shown that scope creep and third-party dependency management are the two largest contributors to timeline overruns in web projects. We eliminate both by writing exactly what your business needs with zero external dependencies. Day one is discovery and design. Day two is development. Day three covers content refinement, testing across devices, and launch. We\'ve built this process to be decisive and focused — no back-and-forth meetings about template limitations.',
   },
   {
     question: 'Do I need to maintain the site myself?',
