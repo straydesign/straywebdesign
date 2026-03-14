@@ -5,6 +5,14 @@ export const alt = 'Stray Web Design — Enterprise-Grade Websites for Erie, PA'
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
+const SERVICES = [
+  { icon: '⚡', label: 'Enterprise Speed' },
+  { icon: '♿', label: 'Accessibility' },
+  { icon: '🧠', label: 'AI-Ready' },
+  { icon: '📱', label: 'Mobile-First' },
+  { icon: '💬', label: 'AI Receptionist' },
+];
+
 export default function OGImage() {
   return new ImageResponse(
     (
@@ -17,7 +25,7 @@ export default function OGImage() {
           alignItems: 'center',
           justifyContent: 'center',
           backgroundColor: '#FFFFFF',
-          padding: '60px 80px',
+          padding: '40px 60px',
         }}
       >
         {/* Top accent line */}
@@ -36,24 +44,22 @@ export default function OGImage() {
         <div
           style={{
             display: 'flex',
-            fontSize: '80px',
+            fontSize: '72px',
             fontWeight: 800,
             letterSpacing: '-3px',
-            marginBottom: '28px',
+            marginBottom: '16px',
           }}
         >
-          <span style={{ color: '#0F172A' }}>stray</span>
-          <span style={{ color: '#3B82F6' }}>web</span>
-          <span style={{ color: '#0F172A' }}>design</span>
+          <span style={{ color: '#3B82F6' }}>stray web design</span>
         </div>
 
         {/* Tagline */}
         <div
           style={{
-            fontSize: '28px',
+            fontSize: '26px',
             fontWeight: 500,
             color: '#475569',
-            marginBottom: '20px',
+            marginBottom: '12px',
             textAlign: 'center',
           }}
         >
@@ -63,21 +69,69 @@ export default function OGImage() {
         {/* Location */}
         <div
           style={{
-            fontSize: '18px',
+            fontSize: '16px',
             fontWeight: 600,
             color: '#3B82F6',
             letterSpacing: '6px',
             textTransform: 'uppercase',
+            marginBottom: '36px',
           }}
         >
           Erie, PA
+        </div>
+
+        {/* Services row */}
+        <div
+          style={{
+            display: 'flex',
+            gap: '20px',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          {SERVICES.map((service) => (
+            <div
+              key={service.label}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '8px',
+              }}
+            >
+              <div
+                style={{
+                  width: '72px',
+                  height: '72px',
+                  borderRadius: '18px',
+                  backgroundColor: '#DBEAFE',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '32px',
+                }}
+              >
+                {service.icon}
+              </div>
+              <span
+                style={{
+                  fontSize: '14px',
+                  fontWeight: 700,
+                  color: '#0F172A',
+                  textAlign: 'center',
+                }}
+              >
+                {service.label}
+              </span>
+            </div>
+          ))}
         </div>
 
         {/* Bottom accent */}
         <div
           style={{
             position: 'absolute',
-            bottom: '40px',
+            bottom: '30px',
             display: 'flex',
             gap: '8px',
           }}
