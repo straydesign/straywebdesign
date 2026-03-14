@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 500" width="1500" height="500">
+  <defs>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#60A5FA"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1500" height="500" fill="#FFFFFF"/>
+
+  <!-- Top accent line -->
+  <rect width="1500" height="4" fill="url(#accent)"/>
+
+  <!-- Cat logo top-left -->
+  <g transform="translate(50, 28) scale(1.4)">
+    <path d="M39.33,12.75c13.44.07,17.56-.07,17.66.67.11.83-4.89,2.3-6.92,2.83-3.84.99-12.62,4.3-12.43,5.65.38,2.66,15.63,2.58,19.49,2.54,38-.34,82.24-4.93,82.36-4.15.05.31-10.58,3.21-25.85,5.28-14,1.9-25.43,2.23-26.7,7-.41,1.53.05,3.65,1.22,7.95.7,2.58,2.02,6.35,3.56,11.54.1.33.46,1.57.55,3.23.1,1.86-.11,4.71-.91,4.87-.78.16-1.88-2.33-2.74-4.27-4.16-9.27-6.29-13.86-7.78-15.38-3.2-3.26-7.81-3.4-17.05-3.67-.62-.02-5.85-.1-12.31,1.61-5.28,1.39-6.39,2.66-6.86,3.65-1,2.09-.26,4.91.53,7.94.48,1.82,1.03,3.64,1.35,5.5.08.45.39,1.25.34,2.34,0,.12-.15,2.7-.99,2.9-1.09.26-3.46-4.67-8.14-14.54-.17-.35-1.96-4.14-4.87-8.62-1.32-2.02-3.24-4.72-6.38-5.66-2.57-.77-3.54.08-8.17.53-2.64.26-8.48.82-11.44-2.54-2.21-2.5-1.79-6-1.7-6.64.57-4.02,3.76-6.36,5-7.26,1.62-1.18,4.72-2.96,18.74-3.33,2.6-.07,2.7-.01,10.46.03h-.02,0Z" fill="none" stroke="#3B82F6" stroke-miterlimit="10" stroke-width="3.6"/>
+  </g>
+
+  <!-- Brand name next to logo -->
+  <text x="264" y="72" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5">
+    <tspan fill="#0F172A">stray</tspan><tspan fill="#3B82F6">web</tspan><tspan fill="#0F172A">design</tspan>
+  </text>
+
+  <!-- Divider line -->
+  <line x1="50" y1="105" x2="1450" y2="105" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Section title -->
+  <text x="750" y="150" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="4" fill="#3B82F6" text-transform="uppercase">OUR SERVICES</text>
+
+  <!-- ROW 1: Web Design Services (y=185) -->
+
+  <!-- Custom Web Design -->
+  <g transform="translate(110, 185)">
+    <rect x="-8" y="-8" width="46" height="46" rx="10" fill="#EFF6FF"/>
+    <rect x="4" y="6" width="22" height="16" rx="2" fill="none" stroke="#3B82F6" stroke-width="2"/>
+    <line x1="10" y1="22" x2="20" y2="22" stroke="#3B82F6" stroke-width="2"/>
+    <line x1="15" y1="22" x2="15" y2="28" stroke="#3B82F6" stroke-width="2"/>
+    <circle cx="15" cy="14" r="3" fill="#3B82F6" opacity="0.4"/>
+    <text x="48" y="20" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Custom Web Design</text>
+  </g>
+
+  <!-- Website Redesign -->
+  <g transform="translate(380, 185)">
+    <rect x="-8" y="-8" width="46" height="46" rx="10" fill="#EFF6FF"/>
+    <path d="M8,15 A7,7 0 1,1 15,22" fill="none" stroke="#3B82F6" stroke-width="2"/>
+    <polygon points="8,11 8,19 12,15" fill="#3B82F6"/>
+    <text x="48" y="20" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Website Redesign</text>
+  </g>
+
+  <!-- Landing Pages -->
+  <g transform="translate(650, 185)">
+    <rect x="-8" y="-8" width="46" height="46" rx="10" fill="#EFF6FF"/>
+    <rect x="5" y="4" width="20" height="22" rx="2" fill="none" stroke="#3B82F6" stroke-width="2"/>
+    <line x1="10" y1="10" x2="20" y2="10" stroke="#3B82F6" stroke-width="1.5"/>
+    <line x1="10" y1="14" x2="18" y2="14" stroke="#3B82F6" stroke-width="1.5"/>
+    <rect x="10" y="18" width="10" height="4" rx="1" fill="#3B82F6"/>
+    <text x="48" y="20" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Landing Pages</text>
+  </g>
+
+  <!-- Mobile-First Design -->
+  <g transform="translate(920, 185)">
+    <rect x="-8" y="-8" width="46" height="46" rx="10" fill="#EFF6FF"/>
+    <rect x="8" y="3" width="14" height="24" rx="3" fill="none" stroke="#3B82F6" stroke-width="2"/>
+    <line x1="13" y1="23" x2="17" y2="23" stroke="#3B82F6" stroke-width="1.5"/>
+    <text x="48" y="20" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Mobile-First Design</text>
+  </g>
+
+  <!-- Content Migration -->
+  <g transform="translate(1190, 185)">
+    <rect x="-8" y="-8" width="46" height="46" rx="10" fill="#EFF6FF"/>
+    <rect x="3" y="8" width="10" height="14" rx="1" fill="none" stroke="#3B82F6" stroke-width="1.5"/>
+    <rect x="17" y="8" width="10" height="14" rx="1" fill="none" stroke="#3B82F6" stroke-width="1.5"/>
+    <path d="M13,13 L17,13" stroke="#3B82F6" stroke-width="1.5" marker-end="none"/>
+    <polygon points="16,11 19,13 16,15" fill="#3B82F6"/>
+    <text x="48" y="20" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Content Migration</text>
+  </g>
+
+  <!-- ROW 2: SEO & AI Services (y=260) -->
+
+  <!-- Local SEO -->
+  <g transform="translate(110, 260)">
+    <rect x="-8" y="-8" width="46" height="46" rx="10" fill="#F0FDF4"/>
+    <circle cx="15" cy="12" r="7" fill="none" stroke="#10B981" stroke-width="2"/>
+    <line x1="20" y1="17" x2="26" y2="23" stroke="#10B981" stroke-width="2"/>
+    <circle cx="15" cy="12" r="2" fill="#10B981"/>
+    <text x="48" y="20" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Local SEO</text>
+  </g>
+
+  <!-- AI Search Optimization -->
+  <g transform="translate(380, 260)">
+    <rect x="-8" y="-8" width="46" height="46" rx="10" fill="#F0FDF4"/>
+    <circle cx="13" cy="15" r="8" fill="none" stroke="#10B981" stroke-width="2"/>
+    <path d="M18,20 L24,26" stroke="#10B981" stroke-width="2"/>
+    <path d="M10,13 L13,10 L16,13" fill="none" stroke="#10B981" stroke-width="1.5"/>
+    <text x="48" y="20" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">AI Search Optimization</text>
+  </g>
+
+  <!-- GEO Optimization -->
+  <g transform="translate(650, 260)">
+    <rect x="-8" y="-8" width="46" height="46" rx="10" fill="#F0FDF4"/>
+    <circle cx="15" cy="15" r="9" fill="none" stroke="#10B981" stroke-width="2"/>
+    <line x1="6" y1="15" x2="24" y2="15" stroke="#10B981" stroke-width="1"/>
+    <line x1="15" y1="6" x2="15" y2="24" stroke="#10B981" stroke-width="1"/>
+    <ellipse cx="15" cy="15" rx="5" ry="9" fill="none" stroke="#10B981" stroke-width="1"/>
+    <text x="48" y="20" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">GEO Optimization</text>
+  </g>
+
+  <!-- Structured Data -->
+  <g transform="translate(920, 260)">
+    <rect x="-8" y="-8" width="46" height="46" rx="10" fill="#F0FDF4"/>
+    <text x="6" y="20" font-family="monospace" font-size="16" font-weight="700" fill="#10B981">{/}</text>
+    <text x="48" y="20" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Structured Data</text>
+  </g>
+
+  <!-- AI-Ready Websites -->
+  <g transform="translate(1190, 260)">
+    <rect x="-8" y="-8" width="46" height="46" rx="10" fill="#F0FDF4"/>
+    <circle cx="15" cy="15" r="8" fill="none" stroke="#10B981" stroke-width="2"/>
+    <circle cx="15" cy="15" r="3" fill="#10B981"/>
+    <line x1="15" y1="7" x2="15" y2="4" stroke="#10B981" stroke-width="1.5"/>
+    <line x1="15" y1="23" x2="15" y2="26" stroke="#10B981" stroke-width="1.5"/>
+    <line x1="7" y1="15" x2="4" y2="15" stroke="#10B981" stroke-width="1.5"/>
+    <line x1="23" y1="15" x2="26" y2="15" stroke="#10B981" stroke-width="1.5"/>
+    <text x="48" y="20" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">AI-Ready Websites</text>
+  </g>
+
+  <!-- ROW 3: Performance & Managed Services (y=335) -->
+
+  <!-- Performance Optimization -->
+  <g transform="translate(110, 335)">
+    <rect x="-8" y="-8" width="46" height="46" rx="10" fill="#FFF7ED"/>
+    <polygon points="15,4 18,14 26,14 20,20 22,28 15,23 8,28 10,20 4,14 12,14" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+    <polygon points="15,8 17,14 22,14 18,18 19,23 15,20 11,23 12,18 8,14 13,14" fill="#F59E0B" opacity="0.3"/>
+    <text x="48" y="20" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Performance Optimization</text>
+  </g>
+
+  <!-- WCAG Accessibility -->
+  <g transform="translate(380, 335)">
+    <rect x="-8" y="-8" width="46" height="46" rx="10" fill="#FFF7ED"/>
+    <circle cx="15" cy="8" r="3" fill="none" stroke="#F59E0B" stroke-width="2"/>
+    <line x1="15" y1="11" x2="15" y2="21" stroke="#F59E0B" stroke-width="2"/>
+    <line x1="8" y1="15" x2="22" y2="15" stroke="#F59E0B" stroke-width="2"/>
+    <line x1="15" y1="21" x2="10" y2="28" stroke="#F59E0B" stroke-width="2"/>
+    <line x1="15" y1="21" x2="20" y2="28" stroke="#F59E0B" stroke-width="2"/>
+    <text x="48" y="20" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">WCAG Accessibility</text>
+  </g>
+
+  <!-- Uptime Monitoring -->
+  <g transform="translate(650, 335)">
+    <rect x="-8" y="-8" width="46" height="46" rx="10" fill="#FFF7ED"/>
+    <circle cx="15" cy="15" r="9" fill="none" stroke="#F59E0B" stroke-width="2"/>
+    <line x1="15" y1="15" x2="15" y2="9" stroke="#F59E0B" stroke-width="2"/>
+    <line x1="15" y1="15" x2="20" y2="18" stroke="#F59E0B" stroke-width="2"/>
+    <circle cx="15" cy="15" r="1.5" fill="#F59E0B"/>
+    <text x="48" y="20" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Uptime Monitoring</text>
+  </g>
+
+  <!-- Google Analytics -->
+  <g transform="translate(920, 335)">
+    <rect x="-8" y="-8" width="46" height="46" rx="10" fill="#FFF7ED"/>
+    <rect x="5" y="18" width="5" height="8" rx="1" fill="#F59E0B"/>
+    <rect x="12" y="12" width="5" height="14" rx="1" fill="#F59E0B"/>
+    <rect x="19" y="6" width="5" height="20" rx="1" fill="#F59E0B"/>
+    <text x="48" y="20" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Google Analytics</text>
+  </g>
+
+  <!-- Google & Meta Ads -->
+  <g transform="translate(1190, 335)">
+    <rect x="-8" y="-8" width="46" height="46" rx="10" fill="#FFF7ED"/>
+    <rect x="4" y="6" width="22" height="18" rx="2" fill="none" stroke="#F59E0B" stroke-width="2"/>
+    <path d="M4,10 L15,17 L26,10" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+    <text x="48" y="20" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Google &amp; Meta Ads</text>
+  </g>
+
+  <!-- ROW 4: Extra services (y=410) -->
+
+  <!-- Website Management -->
+  <g transform="translate(110, 410)">
+    <rect x="-8" y="-8" width="46" height="46" rx="10" fill="#EEF2FF"/>
+    <path d="M8,10 L15,5 L22,10 L22,22 L8,22 Z" fill="none" stroke="#6366F1" stroke-width="2"/>
+    <rect x="12" y="16" width="6" height="6" fill="none" stroke="#6366F1" stroke-width="1.5"/>
+    <text x="48" y="20" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Website Management</text>
+  </g>
+
+  <!-- AI Email Response -->
+  <g transform="translate(380, 410)">
+    <rect x="-8" y="-8" width="46" height="46" rx="10" fill="#EEF2FF"/>
+    <rect x="4" y="8" width="22" height="14" rx="2" fill="none" stroke="#6366F1" stroke-width="2"/>
+    <path d="M4,10 L15,18 L26,10" fill="none" stroke="#6366F1" stroke-width="1.5"/>
+    <circle cx="24" cy="8" r="4" fill="#6366F1"/>
+    <text x="21" y="10" font-family="system-ui, sans-serif" font-size="6" font-weight="700" fill="white">AI</text>
+    <text x="48" y="20" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">AI Email Response</text>
+  </g>
+
+  <!-- Bottom accent line -->
+  <rect y="496" width="1500" height="4" fill="url(#accent)"/>
+
+  <!-- URL bottom-right -->
+  <text x="1450" y="478" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="500" fill="#94A3B8">straywebdesign.co</text>
+</svg>
