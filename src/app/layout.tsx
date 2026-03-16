@@ -63,8 +63,7 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = [
-  {
+const professionalServiceSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     name: 'Stray Web Design',
@@ -136,36 +135,37 @@ const jsonLd = [
       ],
     },
     sameAs: [],
+};
+
+const webSiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Stray Web Design',
+  url: 'https://straywebdesign.co',
+  description:
+    'Enterprise-grade websites for Erie, PA businesses. Fast, accessible, AI-ready.',
+};
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Stray Web Design',
+  url: 'https://straywebdesign.co',
+  logo: 'https://straywebdesign.co/images/logo-blue-white-square.png',
+  founder: {
+    '@type': 'Person',
+    name: 'Tom Sesler',
+    url: 'https://tomsesler.com',
   },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'Stray Web Design',
-    url: 'https://straywebdesign.co',
-    description:
-      'Enterprise-grade websites for Erie, PA businesses. Fast, accessible, AI-ready.',
+  foundingDate: '2024',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '814-964-0081',
+    email: 'tom@straydesign.co',
+    contactType: 'sales',
+    availableLanguage: 'English',
   },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'Stray Web Design',
-    url: 'https://straywebdesign.co',
-    logo: 'https://straywebdesign.co/images/logo-blue-white-square.png',
-    founder: {
-      '@type': 'Person',
-      name: 'Tom Sesler',
-      url: 'https://tomsesler.com',
-    },
-    foundingDate: '2024',
-    contactPoint: {
-      '@type': 'ContactPoint',
-      telephone: '814-964-0081',
-      email: 'tom@straydesign.co',
-      contactType: 'sales',
-      availableLanguage: 'English',
-    },
-  },
-];
+};
 
 export default function RootLayout({
   children,
@@ -185,7 +185,19 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd),
+            __html: JSON.stringify(professionalServiceSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(webSiteSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
           }}
         />
       </head>

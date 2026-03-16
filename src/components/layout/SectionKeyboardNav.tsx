@@ -3,10 +3,14 @@
 import { useEffect } from 'react';
 
 /**
- * Adds section-level keyboard navigation.
- * - ArrowDown / ArrowUp: jump between sections when a section is focused
- * - Sections are marked with tabindex="0" and role="region" (via <section> + aria-label)
- * - Screen readers can use landmark navigation (d/Shift+d in VoiceOver, r/Shift+r in NVDA)
+ * WCAG 2.1 Section-Level Keyboard Navigation
+ *
+ * - All sections get tabindex="0" and role="region" → Tab lands on each section
+ * - ArrowDown/ArrowUp: jump between sections when a section is focused
+ * - Enter: moves focus to the first interactive element inside the section
+ * - Escape: from inside a section, returns focus to the section itself
+ * - Screen readers announce section name via aria-label on each <section>
+ * - Landmark navigation (VoiceOver: Ctrl+Option+Cmd+J, NVDA: d) also works
  */
 export default function SectionKeyboardNav() {
   useEffect(() => {
@@ -14,35 +18,54 @@ export default function SectionKeyboardNav() {
       document.querySelectorAll<HTMLElement>('main section[aria-label]')
     );
 
-    // Make all sections focusable
     for (const section of sections) {
       section.setAttribute('tabindex', '0');
+      section.setAttribute('role', 'region');
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
       const active = document.activeElement as HTMLElement | null;
       if (!active) return;
 
-      // Only handle arrows when a section itself is focused
-      const currentSection = active.closest('main section[aria-label]');
-      if (currentSection !== active) return;
+      // When a section itself is focused
+      const isSection = sections.includes(active);
+      if (isSection) {
+        const currentIndex = sections.indexOf(active);
 
-      const currentIndex = sections.indexOf(active);
-      if (currentIndex === -1) return;
-
-      if (e.key === 'ArrowDown' || e.key === 'j') {
-        e.preventDefault();
-        const next = sections[currentIndex + 1];
-        if (next) {
-          next.focus();
-          next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (e.key === 'ArrowDown' || e.key === 'j') {
+          e.preventDefault();
+          const next = sections[currentIndex + 1];
+          if (next) {
+            next.focus();
+            next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        } else if (e.key === 'ArrowUp' || e.key === 'k') {
+          e.preventDefault();
+          const prev = sections[currentIndex - 1];
+          if (prev) {
+            prev.focus();
+            prev.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        } else if (e.key === 'Enter') {
+          // Enter dives into the section — focus first interactive element
+          e.preventDefault();
+          const firstFocusable = active.querySelector<HTMLElement>(
+            'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"]):not(section)'
+          );
+          if (firstFocusable) {
+            firstFocusable.focus();
+          }
         }
-      } else if (e.key === 'ArrowUp' || e.key === 'k') {
-        e.preventDefault();
-        const prev = sections[currentIndex - 1];
-        if (prev) {
-          prev.focus();
-          prev.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+
+      // Escape from inside a section returns to the section
+      if (e.key === 'Escape') {
+        const parentSection = active.closest<HTMLElement>('main section[aria-label]');
+        if (parentSection) {
+          e.preventDefault();
+          parentSection.focus();
+          parentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }
     };
