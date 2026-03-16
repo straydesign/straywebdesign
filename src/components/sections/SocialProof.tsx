@@ -16,7 +16,7 @@ function ProfileCard({
   outcome: string;
 }) {
   return (
-    <div className="w-[340px] rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm">
+    <div className="w-[300px] rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm sm:w-[340px]">
       <p className="mb-3 text-sm font-semibold tracking-wide text-electric uppercase">
         {industry}
       </p>

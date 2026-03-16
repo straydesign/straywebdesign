@@ -40,7 +40,7 @@ export default function Guide() {
               </p>
             </AnimateIn>
 
-            <AnimateIn delay={0.2} className="mt-8 grid grid-cols-2 gap-4">
+            <AnimateIn delay={0.2} className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
               {CREDENTIALS.map((cred) => (
                 <div
                   key={cred.label}
@@ -60,15 +60,15 @@ export default function Guide() {
 
           {/* Right: Lighthouse scores */}
           <AnimateIn direction="right" delay={0.3}>
-            <div className="rounded-2xl border border-slate-200/60 bg-white p-8 shadow-sm">
+            <div className="rounded-2xl border border-slate-200/60 bg-white p-5 shadow-sm sm:p-8">
               <h3 className="mb-6 text-center font-display text-lg font-semibold text-navy">
                 Our Standard: Near-Perfect Scores
               </h3>
-              <div className="flex justify-center gap-8">
-                <LighthouseGauge score={96} label="Performance" delay={0.5} />
-                <LighthouseGauge score={100} label="Accessibility" delay={0.7} />
-                <LighthouseGauge score={100} label="Best Practices" delay={0.9} />
-                <LighthouseGauge score={100} label="SEO" delay={1.1} />
+              <div className="grid grid-cols-2 justify-items-center gap-4 sm:flex sm:justify-center sm:gap-8">
+                <LighthouseGauge score={96} label="Performance" size={80} delay={0.5} />
+                <LighthouseGauge score={100} label="Accessibility" size={80} delay={0.7} />
+                <LighthouseGauge score={100} label="Best Practices" size={80} delay={0.9} />
+                <LighthouseGauge score={100} label="SEO" size={80} delay={1.1} />
               </div>
               <p className="mt-6 text-center text-sm text-slate-500">
                 Every site we build targets 95+ across all Lighthouse categories.

@@ -10,6 +10,7 @@ export default function ComparisonTable({ className = '' }: { className?: string
   return (
     <div className={cn('overflow-hidden rounded-xl border border-slate-200/60 bg-white', className)}>
       <div className="overflow-x-auto">
+        <p className="mb-2 text-xs text-slate-400 sm:hidden">Swipe to see full comparison →</p>
         <table className="w-full min-w-[600px] text-left">
           <thead>
             <tr className="border-b border-slate-200 bg-slate-50">

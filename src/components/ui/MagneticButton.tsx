@@ -55,7 +55,7 @@ export default function MagneticButton({
   const sizes = {
     sm: 'px-5 py-2.5 text-sm',
     md: 'px-7 py-3.5 text-base',
-    lg: 'px-9 py-4.5 text-lg',
+    lg: 'px-6 py-3.5 text-base sm:px-9 sm:py-4.5 sm:text-lg',
   };
 
   const buttonClasses = cn(

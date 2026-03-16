@@ -64,7 +64,7 @@ export default function Services() {
 
         {/* Pricing hint */}
         <AnimateIn delay={0.3} className="mt-12 text-center">
-          <div className="inline-block rounded-2xl border border-slate-200/60 bg-light-gray px-8 py-6">
+          <div className="inline-block rounded-2xl border border-slate-200/60 bg-light-gray px-5 py-5 sm:px-8 sm:py-6">
             <p className="text-sm text-slate-500">Projects start at</p>
             <p className="font-display text-3xl font-bold text-navy">$2,500</p>
             <p className="mt-1 text-sm text-slate-500">

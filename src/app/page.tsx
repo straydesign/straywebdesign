@@ -1,5 +1,6 @@
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import SectionKeyboardNav from '@/components/layout/SectionKeyboardNav';
 import Hero from '@/components/sections/Hero';
 import Problem from '@/components/sections/Problem';
 import Guide from '@/components/sections/Guide';
@@ -16,6 +17,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
+      <SectionKeyboardNav />
       <main id="main">
         <Hero />
         <Problem />

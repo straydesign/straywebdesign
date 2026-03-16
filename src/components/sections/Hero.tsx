@@ -47,7 +47,7 @@ export default function Hero() {
           {/* Left: Copy */}
           <div>
             <AnimateIn delay={0.1}>
-              <span className="mb-4 inline-block rounded-full border border-electric/20 bg-electric/5 px-4 py-1.5 text-sm font-medium text-electric">
+              <span className="mb-4 inline-block rounded-xl border border-electric/20 bg-electric/5 px-4 py-1.5 text-sm font-medium text-electric sm:rounded-full">
                 For Practices, Dealerships &amp; Professional Services in Erie
               </span>
             </AnimateIn>
@@ -77,7 +77,7 @@ export default function Hero() {
 
             {/* Stats */}
             <AnimateIn delay={1.1} className="mt-12">
-              <div className="grid grid-cols-3 gap-6">
+              <div className="grid grid-cols-3 gap-3 sm:gap-6">
                 {HERO_STATS.map((stat) => (
                   <div key={stat.label}>
                     <div className="font-display text-2xl font-bold text-navy md:text-3xl">

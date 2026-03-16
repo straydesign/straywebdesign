@@ -38,6 +38,12 @@ body {
   outline-offset: 2px;
 }
 
+/* Section-level focus for keyboard navigation (subtle inner glow) */
+main section[aria-label]:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 3px var(--electric);
+}
+
 /* Skip navigation link */
 .skip-link {
   position: absolute;
