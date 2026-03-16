@@ -80,7 +80,12 @@ export default function Failure() {
         >
           {FAILURE_POINTS.map((point) => (
             <StaggerItem key={point.title}>
-              <div className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+              <section
+                tabIndex={0}
+                role="region"
+                aria-label={point.title}
+                className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-dark-navy"
+              >
                 <point.icon className="mb-4 h-8 w-8 text-violet-400" />
                 <h3 className="font-display text-lg font-bold text-white">
                   {point.title}
@@ -88,7 +93,7 @@ export default function Failure() {
                 <p className="mt-2 text-sm leading-relaxed text-slate-400">
                   {point.description}
                 </p>
-              </div>
+              </section>
             </StaggerItem>
           ))}
         </StaggerContainer>
