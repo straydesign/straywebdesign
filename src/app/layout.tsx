@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Inter, Outfit } from 'next/font/google';
 import { SmoothScroll } from '@/components/layout/SmoothScroll';
 import { CustomCursor } from '@/components/ui/CustomCursor';
@@ -14,7 +15,7 @@ const outfit = Outfit({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-family-outfit',
-  weight: ['400', '500', '600', '700', '800', '900'],
+  weight: ['600', '700', '800'],
 });
 
 export const metadata: Metadata = {
@@ -62,6 +63,110 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: 'Stray Web Design',
+    url: 'https://straywebdesign.co',
+    email: 'tom@straydesign.co',
+    telephone: '814-964-0081',
+    description:
+      'Premium web design agency in Erie, PA building fast, accessible, AI-ready websites for local businesses.',
+    priceRange: '$$',
+    serviceType: 'Web Design',
+    logo: 'https://straywebdesign.co/images/logo-blue-white-square.png',
+    image: 'https://straywebdesign.co/images/services-cover.png',
+    foundingDate: '2024',
+    founder: {
+      '@type': 'Person',
+      name: 'Tom Sesler',
+      url: 'https://tomsesler.com',
+    },
+    areaServed: {
+      '@type': 'City',
+      name: 'Erie',
+      addressRegion: 'PA',
+      addressCountry: 'US',
+    },
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Erie',
+      addressRegion: 'PA',
+      addressCountry: 'US',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '814-964-0081',
+      email: 'tom@straydesign.co',
+      contactType: 'sales',
+      availableLanguage: 'English',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Web Design Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Enterprise-Grade Website',
+            description:
+              'Custom-built website with sub-1s load times, WCAG AA accessibility, and AI optimization.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Site Management',
+            description:
+              'Monthly hosting, SEO monitoring, content updates, analytics, and ad-ready infrastructure.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'AI Receptionist',
+            description:
+              '24/7 AI-powered call answering, lead qualification, and appointment scheduling.',
+          },
+        },
+      ],
+    },
+    sameAs: [],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Stray Web Design',
+    url: 'https://straywebdesign.co',
+    description:
+      'Enterprise-grade websites for Erie, PA businesses. Fast, accessible, AI-ready.',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Stray Web Design',
+    url: 'https://straywebdesign.co',
+    logo: 'https://straywebdesign.co/images/logo-blue-white-square.png',
+    founder: {
+      '@type': 'Person',
+      name: 'Tom Sesler',
+      url: 'https://tomsesler.com',
+    },
+    foundingDate: '2024',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '814-964-0081',
+      email: 'tom@straydesign.co',
+      contactType: 'sales',
+      availableLanguage: 'English',
+    },
+  },
+];
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -70,43 +175,17 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
       <head>
-        <script
-          async
+        <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-9D1W0XLS34"
+          strategy="afterInteractive"
         />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-9D1W0XLS34');`,
-          }}
-        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-9D1W0XLS34');`}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'ProfessionalService',
-              name: 'Stray Web Design',
-              url: 'https://straywebdesign.co',
-              email: 'tom@straydesign.co',
-              telephone: '814-964-0081',
-              description:
-                'Premium web design agency in Erie, PA building fast, accessible, AI-ready websites for local businesses.',
-              priceRange: '$$',
-              serviceType: 'Web Design',
-              areaServed: {
-                '@type': 'City',
-                name: 'Erie',
-                addressRegion: 'PA',
-                addressCountry: 'US',
-              },
-              address: {
-                '@type': 'PostalAddress',
-                addressLocality: 'Erie',
-                addressRegion: 'PA',
-                addressCountry: 'US',
-              },
-              sameAs: [],
-            }),
+            __html: JSON.stringify(jsonLd),
           }}
         />
       </head>
