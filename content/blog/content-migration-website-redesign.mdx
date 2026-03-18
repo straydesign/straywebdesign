@@ -1,0 +1,71 @@
+---
+title: "Website Migration: How to Redesign Without Losing Your Rankings, Your Traffic, or Your Mind"
+description: "Over 50% of CMS migrations miss their goals. Broken redirects alone can vaporize 50-90% of organic traffic. Here's how to migrate without burning your SEO to the ground."
+date: "2026-03-13"
+tag: "Migration"
+type: "blog"
+author: "Tom Sesler"
+schema: "BlogPosting"
+---
+
+## The Redesign That Killed a Business's Traffic
+
+I've seen it happen three times in the last year. A business hires someone to redesign their website. New look, new CMS, new everything. They launch on a Friday, celebrate over the weekend, and by Tuesday they're calling in a panic because their phone stopped ringing.
+
+What happened? Nobody set up redirects. Every URL on the old site — every page Google had indexed, every link anyone had ever shared, every backlink from other sites — now returns a 404 error. Google crawls the new site, finds that all the pages it knew about are gone, and drops the site from search results. Organic traffic falls off a cliff.
+
+Search Engine Journal documented one case where a poorly executed site migration caused a 30% drop in organic traffic. That's actually a mild outcome. Sites without any redirect strategy can lose 50-90% of their organic traffic within weeks. And recovery isn't automatic. Technical fixes take 1-2 weeks if Google re-crawls quickly. Content-related recovery takes 4-6 weeks. Backlink recovery takes 2-3 months. Core ranking recovery from a botched migration can take several months — if it happens at all.
+
+Over 50% of CMS migrations miss their stated goals. That's an industry-wide failure rate, and it's almost entirely caused by treating the migration as a design project instead of a technical operation.
+
+## Why Migrations Fail
+
+The typical migration disaster follows a predictable pattern:
+
+**Nobody inventoried the old site.** Before you move, you need to know exactly what you have. Every URL. Every page's organic traffic contribution. Every inbound backlink. Every piece of content that ranks for something. Every image, PDF, and downloadable resource. Without this inventory, you don't know what to preserve — and you inevitably lose things you didn't realize mattered.
+
+**URL structures changed without redirect mapping.** Your old site had /services/residential-plumbing. Your new site has /what-we-do/plumbing-for-homes. Without a 301 redirect from the old URL to the new one, every existing link to that page — from Google, from other websites, from your own social media posts — breaks. Each broken link leaks ranking authority. Chain redirects (old → intermediate → new) lose about 15% of organic traffic per hop. Direct 301s are the only clean option.
+
+**Content got "consolidated" without thinking about SEO.** Someone decides that 15 service pages should become 5 broader pages. That might be a good UX decision, but each of those 15 pages had its own keyword rankings, its own backlinks, its own organic traffic. Merging them without redirect mapping and content strategy means 10 pages' worth of SEO equity evaporates.
+
+**The dev team didn't talk to the SEO team.** Or more commonly for small businesses — there was no SEO consideration at all. The developer focused on making the new site look good and function correctly. Nobody checked whether the old site's meta titles, descriptions, heading structures, and internal link architecture were preserved. Nobody ran a crawl comparison between old and new.
+
+**Nobody tested before launching.** Staging environments exist for a reason. A pre-launch crawl with Screaming Frog or a similar tool catches broken links, missing redirects, orphaned pages, and structural issues before they affect real traffic. Launching without this step is like performing surgery without an X-ray.
+
+## The CMS Switch: What You're Really Changing
+
+WordPress still powers 43.4% of all websites, but W3Techs data shows it declining for the first time — down nearly 5% between 2023 and 2024. Wix grew 32.6% year-over-year. Cloud-based CMS platforms captured 63.5% of market share in 2024. The migration trend is real, and almost always the right long-term decision. But the migration itself is where things go wrong.
+
+When you switch CMS platforms, you're changing more than the design. You're changing database structure — WordPress uses MySQL with a specific schema; Drupal is completely different; headless platforms use APIs. Moving content between these systems isn't copy-paste, it's translation. You're changing URL architecture — every CMS has its own conventions, and if the new one generates different URLs (it almost certainly will), every page needs a redirect. You're changing media handling — images and PDFs move to different paths, breaking every internal reference and external link. And you're changing metadata — page titles, meta descriptions, Open Graph tags, structured data, all stored differently in each CMS.
+
+## The Migration Playbook
+
+Here's how we handle content migrations at Stray Web Design. Nothing revolutionary — just methodical execution that most redesign projects skip entirely.
+
+**Phase 1: Full site audit.** Before touching the new design, we crawl the existing site. Every URL cataloged. Traffic data pulled from Google Analytics and Search Console. Backlink profile exported. Ranking keywords identified. If a page has traffic, rankings, or backlinks, it gets protected.
+
+**Phase 2: Redirect mapping.** A complete spreadsheet: old URL to new URL, one-to-one. No chains. No "we'll figure it out later." Pages being consolidated get special attention — the page with the strongest backlink authority becomes the redirect target.
+
+**Phase 3: Content migration with metadata.** Content moves with its SEO assets intact — page titles, meta descriptions, heading structures, internal links, image alt text, structured data. This isn't a fresh start. It's a platform change with content continuity.
+
+**Phase 4: Pre-launch validation.** The new site goes to staging. Full crawl comparison: old versus new. Every URL checked for a redirect. Every internal link validated. Every piece of structured data tested against Google's Rich Results validator.
+
+**Phase 5: Launch and monitor.** New sitemap submitted to Search Console immediately. Crawl errors monitored daily for two weeks. Organic traffic watched in real time. If a previously high-traffic URL spikes in 404s, we fix it within hours.
+
+**Phase 6: Post-launch reconciliation.** At 30 and 90 days, we compare organic traffic, keyword rankings, and Core Web Vitals to pre-migration baselines. A well-executed migration shows stable or improved traffic within 4-6 weeks.
+
+## The Downtime Question
+
+Industry data puts average website downtime costs at roughly $14,000 per minute for mid-sized companies. Even for small businesses, hours of downtime means missed leads and confused customers.
+
+Our approach eliminates this entirely: build the new site in parallel. The old site stays live until the DNS switches. Zero downtime. The new site is built, tested, and populated before the old site knows anything has changed. Most agencies build the new site on the same server, take the old one down to "install" the new, and hope nothing breaks. That approach turns every launch into a coin flip.
+
+## When to Migrate (and When Not To)
+
+Not every outdated site needs a full migration. If your current site has strong rankings and decent traffic, sometimes the better play is to optimize in place — speed, structured data, accessibility, content — rather than risk the disruption.
+
+Migrate when your CMS is end-of-life, has critical security vulnerabilities, or fundamentally can't support what you need. Migrate when performance issues are structural, not configuration. Migrate when platform costs exceed what a modern alternative would cost.
+
+But if you do migrate, do it right. The planning phase should take as long as the design phase. The redirect map should be complete before the first wireframe is drawn. And the person handling your SEO needs to be in the room from day one — not brought in after launch to "clean up" the traffic drop.
+
+"We'll figure out the redirects later" is the most expensive sentence in web development.

@@ -1,0 +1,110 @@
+---
+title: "AI-Ready Website Development: The Technical Checklist That Gets Your Business Cited"
+description: "Structured data makes GPT-4 3.4x more accurate about your business. Here's the exact implementation checklist we use to make Erie websites visible to every AI platform."
+date: "2026-03-13"
+tag: "Development"
+type: "blog"
+author: "Tom Sesler"
+schema: "BlogPosting"
+---
+
+## Your Website Was Built for Humans and Google. AI Needs Something Different.
+
+Every website you've ever had was built with two audiences in mind: human visitors and Google's crawler. You wrote compelling copy for the humans. You added meta tags and title tags for Google. That worked for 20 years.
+
+It's not enough anymore. ChatGPT, Perplexity, Google's AI Overviews, Claude, and Gemini are now surfaces where your customers discover businesses. And they read your site differently than Google does. They don't care about your keyword density. They care about whether your content is structured in a way they can extract, understand, and confidently recommend.
+
+The Datos/SparkToro Q4 2025 report shows AI platform visits grew nearly 50% year-over-year. Ahrefs measured a 58% reduction in clicks to the top organic result when AI Overviews appear. Whether any single projection lands precisely or not, the direction is undeniable. AI is where discovery is moving. And "AI-ready" isn't a marketing term — it's a specific set of technical implementations that determine whether your business shows up in AI answers or gets skipped entirely.
+
+## The Technical Stack That Makes AI Understand Your Business
+
+The exact checklist we implement for every site follows. This isn't theory — these are the specific technical changes backed by research data.
+
+### 1. JSON-LD Structured Data (The Single Most Important Thing)
+
+JSON-LD is machine-readable code embedded in your website that tells AI exactly what your business is. Not through interpretation — through explicit declaration.
+
+SE Ranking's LLM citation study found that pages loading under 0.4 seconds average 6.7 ChatGPT citations versus 2.1 for pages over 1.13 seconds — and sites with profiles on review platforms have 3x higher citation rates. Structured data is the connective tissue between those signals. It gives AI an explicit, machine-readable map of your business instead of forcing it to guess from paragraphs of text.
+
+Here's what we implement as a minimum:
+
+- **LocalBusiness type** (or the most specific subtype: DentalPractice, LegalService, FinancialService, AutoDealer, etc.)
+- **Address, geo coordinates, service area** — so AI knows exactly where you operate
+- **OpeningHoursSpecification** — Sterling Sky's research confirmed Google now uses hours as a ranking factor, and AI platforms parse them too
+- **Service listings** with descriptions and, where appropriate, price ranges
+- **Credentials and certifications** — your CFP, DDS, bar admission, whatever establishes authority
+- **Review aggregate data** — your rating and review count, pulled from Google
+- **FAQPage schema** — dedicated markup for every question-answer pair on your site
+
+Only about 12.4% of all registered domains have any structured data implemented. In Erie's small business market, that number is dramatically lower. We've audited dozens of local businesses — not one independent practice or firm had comprehensive JSON-LD.
+
+### 2. Semantic HTML Architecture
+
+AI models parse your HTML to understand content hierarchy. A page with a clear `<main>` element, proper heading structure (H1 > H2 > H3, never skipping levels), `<nav>` for navigation, `<article>` for content blocks, and `<footer>` for contact info — AI reads that structure and understands the relationships between your content.
+
+A page that's a soup of `<div>` tags with CSS making things look right visually? AI has no idea what's a heading, what's a sidebar, what's your main content. It guesses. And when AI guesses, it's less likely to cite you confidently.
+
+Semantic HTML also helps with accessibility — screen readers use the same structural cues. So you're simultaneously making your site AI-readable, accessible to users with disabilities, and better for traditional SEO. It's a three-for-one technical decision.
+
+### 3. FAQ Content Strategy with Schema Markup
+
+The Princeton/Georgia Tech GEO paper (Aggarwal et al., published at ACM SIGKDD 2024) studied how content optimization affects visibility in generative engine responses. Their findings: adding relevant statistics to content improved visibility by up to 40%. Content with clear, citation-ready statements — what they call "fluency optimization" — combined with statistics addition, produced the maximum performance gains.
+
+What this means in practice: your FAQ content shouldn't be marketing copy disguised as questions. It should be direct, factual, specific answers that AI can extract verbatim.
+
+Bad: "How much does a website cost? At our agency, we believe in delivering exceptional value through our comprehensive web solutions."
+
+Good: "How much does a website cost in Erie, PA? Custom business websites in Erie typically range from $3,000 to $15,000 depending on scope. Template-based sites cost $500-$2,000 but come with significant performance and customization limitations. Our custom-built sites start at $X."
+
+The second version gives AI a specific, citable answer. The first gives it nothing to work with.
+
+### 4. Page Performance as a Citation Factor
+
+SE Ranking's 2025 LLM citation study revealed something that connects web development directly to AI visibility: pages loading in under 0.4 seconds average 6.7 citations from ChatGPT. Pages loading over 1.13 seconds average 2.1 citations. Fast pages get cited 3x more.
+
+This makes technical sense. When ChatGPT or Perplexity browses the web to answer a query, it crawls pages in real time. A page that loads slowly gets deprioritized or skipped — the AI has limited time per query and prioritizes sources that respond quickly.
+
+The performance targets we hit on every build:
+
+- **Largest Contentful Paint (LCP):** Under 1 second (most WordPress sites: 4-8 seconds)
+- **Interaction to Next Paint (INP):** Under 100ms (most WordPress sites: 300-500ms)
+- **Cumulative Layout Shift (CLS):** Under 0.05 (most WordPress sites: 0.2-0.5)
+- **Time to First Byte (TTFB):** Under 200ms (critical for AI crawler response)
+
+Pinterest rebuilt for performance and saw a 15% increase in SEO traffic alongside a 15% increase in signup conversions. Walmart measured a 2% conversion gain for every single second of speed improvement. Performance isn't a nice-to-have. It's a revenue multiplier that also determines your AI visibility.
+
+### 5. Content That AI Can Cite Confidently
+
+Semrush's 2025 study of AI citations found that 97% of AI Overview citations come from pages already ranking in the top 20 organic results. Half of ChatGPT's citations reference business or service websites directly. But the Aggarwal GEO paper's research shows that how content is written — not just whether it exists — determines citation rates.
+
+The key principles from the research:
+
+- **Declarative statements over hedging.** "Erie County has 160 general dentists across approximately 60 practices" is citable. "There are many dentists in the Erie area" is not.
+- **Statistics embedded naturally.** The GEO paper found statistics addition improved visibility by up to 40%. Every key claim should be backed by a specific number.
+- **Quotable paragraph structure.** AI extracts 1-3 sentence chunks. If your key value proposition is buried in a 200-word paragraph, AI will skip it. If it's a clean, standalone statement — AI can grab it.
+- **Local specificity.** "We serve Erie, Millcreek, Harborcreek, Fairview, and the surrounding communities in Erie County" gives AI geographic context that generic "we serve the local area" does not.
+
+### 6. Entity Establishment Across the Web
+
+SE Ranking's citation study found that domains with brand mentions on platforms like Reddit and Quora have roughly 4x higher chances of being cited by ChatGPT. Domains with profiles on review platforms (Trustpilot, G2, Yelp) have 3x higher citation rates.
+
+This means your website alone isn't enough. AI builds confidence in recommending a business based on how many independent sources corroborate that the business exists, is active, and is trusted. Your Google Business Profile, Yelp listing, industry directory profiles, local Chamber of Commerce listing, BBB profile, and mentions in local media — they all feed into AI's confidence level.
+
+We build the website. But we also audit the entire digital footprint and identify gaps where your business should appear but doesn't.
+
+## Why This Matters More for Small Businesses Than Big Ones
+
+Authoritas' AI Overview research found that AI Overviews appear most frequently for medium-volume search terms (501-2,400 searches/month) and problem-solving queries. That's exactly where local businesses compete. Not on high-volume national queries — on the mid-tail searches where someone is looking for a specific service in a specific area.
+
+Big national brands already have the domain authority and link profiles that AI trusts by default. Small businesses have to earn that trust through technical precision — structured data, fast loading, consistent entity presence, and citable content.
+
+The good news: in Erie, nobody has done this yet. We've audited the local market extensively. Not one independent dental practice, law firm, financial advisory, or IT services company has comprehensive AI-ready infrastructure. The first businesses to implement it will own the AI recommendation space for their categories. And once established, that advantage is extremely difficult for competitors to displace.
+
+## What You Should Check Right Now
+
+1. Go to Google's Rich Results Test (search.google.com/test/rich-results) and enter your URL. If it finds nothing — AI can't understand your business.
+2. Ask ChatGPT "best [your service] in Erie PA." Are you mentioned? Is the information accurate?
+3. Run your site through PageSpeed Insights. If your mobile score is below 50, AI crawlers are deprioritizing you.
+4. Check if your business information is consistent across Google, Yelp, Facebook, and your website. Any discrepancy weakens your AI signals.
+
+If those checks come back clean, you're in better shape than 95% of Erie businesses. They won't.

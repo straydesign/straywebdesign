@@ -76,3 +76,46 @@ Our custom-built sites eliminate all of these problems. Zero plugins, $100/month
 4. **Full Management**: $100/mo covers hosting, support, SEO, content updates, analytics
 5. **Custom Design**: Never templates — every site is designed from scratch
 6. **Modern Stack**: React, TypeScript, edge deployment — built for 2025 and beyond
+
+## Blog Posts (29)
+
+- [Your Phone Is Ringing. Nobody's Answering. An AI Receptionist Fixes That.](https://straywebdesign.co/resources/blog/ai-receptionist-for-small-business) — AI (2026-03-14)
+- [AI Email Response for Small Business: Stop Losing Leads at 9 PM](https://straywebdesign.co/resources/blog/ai-email-response-setup-business) — AI (2026-03-13)
+- [AI-Ready Website Development: The Technical Checklist That Gets Your Business Cited](https://straywebdesign.co/resources/blog/ai-ready-website-development-guide) — Development (2026-03-13)
+- [AI SEO: How to Show Up When ChatGPT and Perplexity Answer Your Customers' Questions](https://straywebdesign.co/resources/blog/ai-seo-optimization-how-to-show-up) — AI & SEO (2026-03-13)
+- [Website Migration: How to Redesign Without Losing Your Rankings, Your Traffic, or Your Mind](https://straywebdesign.co/resources/blog/content-migration-website-redesign) — Migration (2026-03-13)
+- [Custom Website Design vs. Templates: The Real Cost of Looking Like Everyone Else](https://straywebdesign.co/resources/blog/custom-website-design-vs-templates) — Web Design (2026-03-13)
+- [GEO: Why Generative Engine Optimization Is the Service Your Business Needs Before Your Competitors Figure It Out](https://straywebdesign.co/resources/blog/geo-optimization-generative-engine-service) — AI & SEO (2026-03-13)
+- [Google Analytics for Small Business: You're Probably Measuring Nothing Useful](https://straywebdesign.co/resources/blog/google-analytics-setup-small-business) — Analytics (2026-03-13)
+- [Running Google or Meta Ads? Your Website Is Probably Wasting Half Your Budget.](https://straywebdesign.co/resources/blog/google-meta-ads-website-infrastructure) — Advertising (2026-03-13)
+- [Landing Page Design That Actually Converts (Not Just Looks Pretty)](https://straywebdesign.co/resources/blog/landing-page-design-that-converts) — Conversion (2026-03-13)
+- [Local SEO for Small Businesses: The Revenue Channel Erie Owners Are Ignoring](https://straywebdesign.co/resources/blog/local-seo-small-business-erie) — Local SEO (2026-03-13)
+- [Mobile Website Design for Small Business: It's Not Optional Anymore](https://straywebdesign.co/resources/blog/mobile-website-design-small-business) — Mobile (2026-03-13)
+- [Structured Data: The Invisible Code That Makes Google and AI Actually Understand Your Business](https://straywebdesign.co/resources/blog/structured-data-schema-markup-business) — Technical SEO (2026-03-13)
+- [Website Accessibility Isn't Optional — It's a Lawsuit Waiting to Happen](https://straywebdesign.co/resources/blog/website-accessibility-wcag-compliance-guide) — Accessibility (2026-03-13)
+- [What $100/Month Website Management Actually Gets You (and What Happens Without It)](https://straywebdesign.co/resources/blog/website-management-service-erie) — Services (2026-03-13)
+- [Your Website Is Slow — and It's Costing You More Than You Think](https://straywebdesign.co/resources/blog/website-performance-optimization-speed) — Performance (2026-03-13)
+- [Your Website Went Down Last Tuesday. You Didn't Know Until Friday.](https://straywebdesign.co/resources/blog/website-uptime-monitoring-why-it-matters) — Reliability (2026-03-13)
+- [When to Redesign Your Business Website (and When You're Just Throwing Money Away)](https://straywebdesign.co/resources/blog/when-to-redesign-your-business-website) — Web Design (2026-03-13)
+- [Your Dental Practice Website Is Losing Patients to Corporate Chains](https://straywebdesign.co/resources/blog/dental-practice-website-losing-patients) — Dental (2026-03-10)
+- [Financial Advisors: Your Website Is Your First Impression — and It's Costing You Clients](https://straywebdesign.co/resources/blog/financial-advisor-website-first-impression) — Financial (2026-03-05)
+- [Erie Car Dealerships: Your Website Matters More Than Your Lot](https://straywebdesign.co/resources/blog/erie-car-dealerships-website-matters-more-than-lot) — Automotive (2026-02-28)
+- [IT Services: Your Website Should Close Deals While You Sleep](https://straywebdesign.co/resources/blog/it-services-website-should-close-deals) — IT Services (2026-02-20)
+- [What Is AI Readiness — and Why Erie Practices and Firms Need It Now](https://straywebdesign.co/resources/blog/what-is-ai-readiness-and-why-erie-businesses-need-it) — AI & SEO (2026-02-15)
+- [Core Web Vitals Explained for Practices and Firms (No Jargon)](https://straywebdesign.co/resources/blog/core-web-vitals-explained-for-practices-and-firms) — Performance (2026-02-10)
+- [Small Law Firms: Your Website Is Your Lobby — and Right Now It Looks Like a Waiting Room](https://straywebdesign.co/resources/blog/small-law-firms-your-website-is-your-lobby) — Legal (2026-02-08)
+- [Chiropractors and PTs: Your Patients Are Finding Someone Else Before They Find You](https://straywebdesign.co/resources/blog/chiropractors-pt-your-website-is-losing-patients) — Healthcare (2026-02-05)
+- [Vision Care: Your Patients Can See the Difference Between Your Site and LensCrafters'](https://straywebdesign.co/resources/blog/vision-care-optometry-website-patients-see-the-difference) — Vision Care (2026-02-01)
+- [Large-Scale Landscaping: Your Website Has Zero Curb Appeal](https://straywebdesign.co/resources/blog/landscaping-lawn-care-companies-digital-curb-appeal) — Landscaping (2026-01-28)
+- [Orthopedic and Geriatric Practices: Patient Trust Starts Before They Walk In](https://straywebdesign.co/resources/blog/orthopedics-geriatrics-patient-trust-starts-online) — Healthcare (2026-01-25)
+
+## White Papers (2)
+
+- [The WordPress Performance Gap: Why 43% of the Web Is Falling Behind](https://straywebdesign.co/resources/white-papers/the-wordpress-performance-gap) — Analysis (2026-03-08)
+- [GEO: The Complete Guide to Generative Engine Optimization](https://straywebdesign.co/resources/white-papers/geo-generative-engine-optimization-guide) — AI & SEO (2026-02-20)
+
+## Case Studies (3)
+
+- [What a Dental Practice Website Transformation Actually Looks Like](https://straywebdesign.co/resources/case-studies/dental-practice-website-transformation) — Dental (2026-03-12)
+- [What a Financial Advisor Website Transformation Actually Looks Like](https://straywebdesign.co/resources/case-studies/financial-advisor-website-transformation) — Financial (2026-03-01)
+- [What a Dealership Website Transformation Actually Looks Like](https://straywebdesign.co/resources/case-studies/car-dealership-website-transformation) — Automotive (2026-02-15)

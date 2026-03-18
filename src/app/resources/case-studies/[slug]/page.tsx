@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import ArticleLayout from '@/components/layout/ArticleLayout';
-import { getResourcesByType, getResourceBySlug, getResourcePath } from '@/lib/resources';
+import { getResourcesByType, getResourceBySlug, getResourcePath, getCompiledArticle } from '@/lib/content';
 
 export function generateStaticParams() {
   return getResourcesByType('case-study').map((r) => ({ slug: r.slug }));
@@ -20,7 +20,11 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
 
 export default async function CaseStudy({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const resource = getResourceBySlug(slug);
-  if (!resource || resource.type !== 'case-study') notFound();
-  return <ArticleLayout resource={resource} />;
+  const article = await getCompiledArticle('case-study', slug);
+  if (!article) notFound();
+  return (
+    <ArticleLayout meta={article.meta} jsonLd={article.jsonLd}>
+      {article.content}
+    </ArticleLayout>
+  );
 }

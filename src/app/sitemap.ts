@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { RESOURCES, getResourcePath } from '@/lib/resources';
+import { RESOURCES, getResourcePath } from '@/lib/content';
 
 const BASE_URL = 'https://straywebdesign.co';
 

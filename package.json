@@ -4,17 +4,22 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 4790",
+    "prebuild": "node scripts/generate-llms-txt.mjs",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
     "clsx": "^2.1.1",
     "framer-motion": "^12.36.0",
+    "gray-matter": "^4.0.3",
     "lenis": "^1.3.18",
     "lucide-react": "^0.577.0",
     "next": "16.1.6",
+    "next-mdx-remote": "^6.0.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "reading-time": "^1.5.0",
+    "remark-gfm": "^4.0.1",
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
