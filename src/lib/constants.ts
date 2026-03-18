@@ -26,7 +26,15 @@ export const NAV_LINKS = [
   { label: 'Results', href: '#success' },
   { label: 'Services', href: '#services' },
   { label: 'Resources', href: '/resources' },
+  { label: 'Book a Call', href: '/book' },
   { label: 'Contact', href: '#contact' },
+] as const;
+
+export const BOOKING_TIMING_OPTIONS = [
+  'This week',
+  'Next week',
+  'Within 2 weeks',
+  'Flexible',
 ] as const;
 
 export const HERO_STATS = [
