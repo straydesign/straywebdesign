@@ -20,14 +20,9 @@ export const SITE = {
 } as const;
 
 export const NAV_LINKS = [
-  { label: 'Problem', href: '#problem' },
-  { label: 'About', href: '#guide' },
-  { label: 'Process', href: '#plan' },
-  { label: 'Results', href: '#success' },
-  { label: 'Services', href: '#services' },
+  { label: 'Home', href: '/' },
   { label: 'Resources', href: '/resources' },
   { label: 'Book a Call', href: '/book' },
-  { label: 'Contact', href: '#contact' },
 ] as const;
 
 export const BOOKING_TIMING_OPTIONS = [
