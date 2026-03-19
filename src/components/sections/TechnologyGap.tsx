@@ -85,7 +85,7 @@ export default function TechnologyGap() {
                   <li>&#x2022; Automatic image optimization (AVIF, WebP, responsive sizing)</li>
                 </ul>
               </div>
-              <div className="rounded-xl border border-violet-200/60 bg-violet-50 p-5">
+              <div className="rounded-xl border border-blue-200/60 bg-blue-50 p-5">
                 <h3 className="font-display font-semibold text-navy">
                   What is GEO?
                 </h3>
