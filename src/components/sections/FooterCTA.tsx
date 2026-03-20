@@ -63,7 +63,7 @@ export default function FooterCTA() {
             </span>
             <h2 className="font-display text-3xl font-bold text-white md:text-4xl lg:text-5xl">
               See How You Stack Up Against{' '}
-              <GradientText>The Competition</GradientText>
+              <GradientText scrollLinked>The Competition</GradientText>
             </h2>
             <p className="mt-4 text-lg text-slate-400">
               Send us your URL and a competitor&apos;s. We&apos;ll show you exactly

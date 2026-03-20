@@ -21,7 +21,7 @@ export default function Results() {
           </span>
           <h2 className="font-display text-3xl font-bold text-navy md:text-4xl lg:text-5xl">
             From Underdog to{' '}
-            <GradientText>Top Competitor</GradientText>
+            <GradientText scrollLinked>Top Competitor</GradientText>
           </h2>
         </AnimateIn>
 

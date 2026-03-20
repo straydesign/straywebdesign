@@ -51,7 +51,7 @@ export default function SocialProof() {
           </span>
           <h2 className="font-display text-3xl font-bold text-navy md:text-4xl lg:text-5xl">
             Industries Where{' '}
-            <GradientText>Every Client Counts</GradientText>
+            <GradientText scrollLinked>Every Client Counts</GradientText>
           </h2>
           <p className="mt-4 text-lg text-slate-600">
             We work with businesses where a single new patient, client, or

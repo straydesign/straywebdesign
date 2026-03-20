@@ -27,7 +27,7 @@ export default function Services() {
           </span>
           <h2 className="font-display text-3xl font-bold text-navy md:text-4xl lg:text-5xl">
             Enterprise Features,{' '}
-            <GradientText>Mid-Market Prices</GradientText>
+            <GradientText scrollLinked>Mid-Market Prices</GradientText>
           </h2>
         </AnimateIn>
 

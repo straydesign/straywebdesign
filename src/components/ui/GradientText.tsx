@@ -1,19 +1,69 @@
 'use client';
 
-import { type ReactNode } from 'react';
+import { useRef, type ReactNode } from 'react';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 interface GradientTextProps {
   children: ReactNode;
   className?: string;
   animate?: boolean;
+  scrollLinked?: boolean;
+}
+
+function ScrollLinkedGradientText({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className: string;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
+
+  const backgroundPosition = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ['0% 50%', '100% 50%']
+  );
+
+  return (
+    <motion.span
+      ref={ref}
+      className={cn('bg-clip-text text-transparent', className)}
+      style={{
+        backgroundImage: 'linear-gradient(90deg, var(--electric), var(--accent), var(--electric))',
+        backgroundSize: '200% 100%',
+        backgroundPosition,
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+      }}
+    >
+      {children}
+    </motion.span>
+  );
 }
 
 export default function GradientText({
   children,
   className = '',
   animate = true,
+  scrollLinked = false,
 }: GradientTextProps) {
+  const prefersReducedMotion = useReducedMotion();
+
+  if (scrollLinked && !prefersReducedMotion) {
+    return (
+      <ScrollLinkedGradientText className={className}>
+        {children}
+      </ScrollLinkedGradientText>
+    );
+  }
+
   return (
     <span
       className={cn(animate && 'text-gradient-animated', className)}

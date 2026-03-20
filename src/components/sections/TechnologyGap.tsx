@@ -15,7 +15,7 @@ export default function FAQ() {
           </span>
           <h2 className="font-display text-3xl font-bold text-navy md:text-4xl lg:text-5xl">
             Frequently Asked{' '}
-            <GradientText>Questions</GradientText>
+            <GradientText scrollLinked>Questions</GradientText>
           </h2>
         </AnimateIn>
 
