@@ -1,12 +1,14 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { NAV_LINKS, SITE } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 import StrayLogo from '@/components/ui/StrayLogo';
+
+/* ─── Helpers ─────────────────────────────────────────────── */
 
 function resolveHref(href: string, pathname: string): string {
   if (href.startsWith('#') && pathname !== '/') {
@@ -15,18 +17,77 @@ function resolveHref(href: string, pathname: string): string {
   return href;
 }
 
+/**
+ * Auto-detect whether the navbar is currently over a dark section.
+ * Uses IntersectionObserver scoped to the top ~70px of the viewport
+ * and queries for elements with dark Tailwind bg classes.
+ * Re-runs whenever the route changes so new pages are picked up.
+ */
+function useOverDark(pathname: string) {
+  const [overDark, setOverDark] = useState(true);
+  const activeDarkRef = useRef(new Set<Element>());
+
+  useEffect(() => {
+    const activeDark = activeDarkRef.current;
+    activeDark.clear();
+
+    // Auto-find dark sections by Tailwind bg classes or explicit data attr
+    const darkSections = document.querySelectorAll(
+      '[data-navbar-dark], .bg-navy, .bg-slate-900, .bg-slate-950, .bg-gray-900'
+    );
+
+    // Filter out elements inside the nav itself
+    const targets = Array.from(darkSections).filter(
+      (el) => !el.closest('nav')
+    );
+
+    if (targets.length === 0) {
+      setOverDark(false);
+      return;
+    }
+
+    // Observe only the top strip of the viewport where the navbar sits
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            activeDark.add(entry.target);
+          } else {
+            activeDark.delete(entry.target);
+          }
+        }
+        setOverDark(activeDark.size > 0);
+      },
+      { rootMargin: '0px 0px -93% 0px' }
+    );
+
+    targets.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  return overDark;
+}
+
+/* ─── Desktop Dropdown ────────────────────────────────────── */
+
 type NavLink = (typeof NAV_LINKS)[number];
 
-function DesktopDropdown({ link, pathname, ghost }: { link: NavLink; pathname: string; ghost: boolean }) {
+function DesktopDropdown({
+  link,
+  pathname,
+  ghost,
+}: {
+  link: NavLink;
+  pathname: string;
+  ghost: boolean;
+}) {
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const linkClass = cn(
     'text-sm font-medium transition-colors duration-300',
-    ghost
-      ? 'text-white/80 hover:text-white'
-      : 'text-slate-600 hover:text-navy'
+    ghost ? 'text-white/80 hover:text-white' : 'text-slate-600 hover:text-navy'
   );
 
   if (!('children' in link) || !link.children) {
@@ -74,7 +135,10 @@ function DesktopDropdown({ link, pathname, ghost }: { link: NavLink; pathname: s
         }}
       >
         {link.label}
-        <ChevronDown className={cn('h-3.5 w-3.5 transition-transform', open && 'rotate-180')} aria-hidden="true" />
+        <ChevronDown
+          className={cn('h-3.5 w-3.5 transition-transform', open && 'rotate-180')}
+          aria-hidden="true"
+        />
       </button>
       <AnimatePresence>
         {open && (
@@ -103,6 +167,8 @@ function DesktopDropdown({ link, pathname, ghost }: { link: NavLink; pathname: s
   );
 }
 
+/* ─── Navbar ──────────────────────────────────────────────── */
+
 export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
@@ -110,6 +176,8 @@ export default function Navbar() {
   const [expandedMobile, setExpandedMobile] = useState<string | null>(null);
   const { scrollYProgress } = useScroll();
   const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+  const overDark = useOverDark(pathname);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -123,7 +191,9 @@ export default function Navbar() {
     } else {
       document.body.style.overflow = '';
     }
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [isOpen]);
 
   return (
@@ -140,20 +210,25 @@ export default function Navbar() {
       <nav
         className={cn(
           'fixed top-[3px] right-0 left-0 z-50 transition-all duration-300 bg-transparent',
-          scrolled && 'backdrop-blur-sm'
+          scrolled && !overDark && 'backdrop-blur-sm'
         )}
         aria-label="Main navigation"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
+          {/* Logo */}
           <a
             href="/"
             className={cn(
               'flex items-center gap-2 font-display text-xl font-bold transition-colors duration-300',
-              scrolled ? 'text-navy' : 'text-white'
+              overDark ? 'text-white' : 'text-navy'
             )}
             aria-label={SITE.name}
           >
-            <StrayLogo width={36} height={18} color={scrolled ? '#3B82F6' : '#ffffff'} />
+            <StrayLogo
+              width={36}
+              height={18}
+              color={overDark ? '#ffffff' : '#3B82F6'}
+            />
             <span
               style={{
                 WebkitTextStroke: '0.5px white',
@@ -167,7 +242,12 @@ export default function Navbar() {
           {/* Desktop Links */}
           <div className="hidden items-center gap-7 md:flex">
             {NAV_LINKS.map((link) => (
-              <DesktopDropdown key={link.href} link={link} pathname={pathname} ghost={!scrolled} />
+              <DesktopDropdown
+                key={link.href}
+                link={link}
+                pathname={pathname}
+                ghost={overDark}
+              />
             ))}
             <a
               href={resolveHref('#contact', pathname)}
@@ -185,9 +265,19 @@ export default function Navbar() {
             aria-expanded={isOpen}
           >
             {isOpen ? (
-              <X className={cn('h-6 w-6 transition-colors duration-300', scrolled ? 'text-navy' : 'text-white')} />
+              <X
+                className={cn(
+                  'h-6 w-6 transition-colors duration-300',
+                  overDark ? 'text-white' : 'text-navy'
+                )}
+              />
             ) : (
-              <Menu className={cn('h-6 w-6 transition-colors duration-300', scrolled ? 'text-navy' : 'text-white')} />
+              <Menu
+                className={cn(
+                  'h-6 w-6 transition-colors duration-300',
+                  overDark ? 'text-white' : 'text-navy'
+                )}
+              />
             )}
           </button>
         </div>
@@ -213,11 +303,19 @@ export default function Navbar() {
                         <>
                           <button
                             className="flex w-full items-center justify-between text-base font-medium text-slate-600 transition-colors hover:text-navy"
-                            onClick={() => setExpandedMobile(isExpanded ? null : link.label)}
+                            onClick={() =>
+                              setExpandedMobile(isExpanded ? null : link.label)
+                            }
                             aria-expanded={isExpanded}
                           >
                             {link.label}
-                            <ChevronDown className={cn('h-4 w-4 transition-transform', isExpanded && 'rotate-180')} aria-hidden="true" />
+                            <ChevronDown
+                              className={cn(
+                                'h-4 w-4 transition-transform',
+                                isExpanded && 'rotate-180'
+                              )}
+                              aria-hidden="true"
+                            />
                           </button>
                           <AnimatePresence>
                             {isExpanded && (
