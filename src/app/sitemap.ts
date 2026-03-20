@@ -27,12 +27,10 @@ export async function generateSitemaps() {
   ];
 }
 
-export default async function sitemap({
-  id: rawId,
-}: {
-  id: number;
-}): Promise<MetadataRoute.Sitemap> {
-  const id = Number(rawId);
+export default async function sitemap(
+  props: { id: Promise<number> }
+): Promise<MetadataRoute.Sitemap> {
+  const id = Number(await props.id);
 
   // ─── Chunk 0: Core pages ─────────────────────────────────
   if (id === 0) {
