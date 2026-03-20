@@ -9,7 +9,17 @@ import GrainOverlay from '@/components/ui/GrainOverlay';
 import MagneticButton from '@/components/ui/MagneticButton';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import { SERVICES, getServiceBySlug, getAllServiceSlugs } from '@/data/services';
-import { CheckCircle, ArrowRight } from 'lucide-react';
+import {
+  CheckCircle,
+  ArrowRight,
+  PhoneIncoming,
+  Database,
+  UserRoundSearch,
+  MousePointerClick,
+  CalendarCheck,
+  ArrowDownToLine,
+  TrendingUp,
+} from 'lucide-react';
 
 export function generateStaticParams() {
   return getAllServiceSlugs().map((slug) => ({ slug }));
@@ -40,6 +50,16 @@ function parseStat(stat: string): { value: number; prefix?: string; suffix?: str
     suffix: match[3] || undefined,
   };
 }
+
+const ARCH_ICONS: Record<string, typeof PhoneIncoming> = {
+  'phone-incoming': PhoneIncoming,
+  database: Database,
+  'user-round-search': UserRoundSearch,
+  'mouse-pointer-click': MousePointerClick,
+  'calendar-check': CalendarCheck,
+  'arrow-down-to-line': ArrowDownToLine,
+  'trending-up': TrendingUp,
+};
 
 export default async function ServicePage({
   params,
@@ -182,6 +202,60 @@ export default async function ServicePage({
             </StaggerContainer>
           </div>
         </section>
+
+        {/* Architecture Deep Dive */}
+        {service.architecture && service.architecture.length > 0 && (
+          <section className="relative overflow-hidden bg-navy py-16 md:py-24" aria-label="System architecture">
+            <GrainOverlay />
+            <div className="relative z-10 mx-auto max-w-3xl px-5 md:px-8">
+              <AnimateIn>
+                <p className="text-center text-sm font-semibold uppercase tracking-wider text-electric">
+                  Under the Hood
+                </p>
+                <h2 className="mt-3 text-center font-display text-2xl font-bold text-white md:text-3xl">
+                  How the System Actually Works
+                </h2>
+                <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
+                  This isn&apos;t a chatbot reading a script. It&apos;s a full customer intelligence
+                  system connected to your business data, your calendar, and your CRM.
+                </p>
+              </AnimateIn>
+
+              <div className="relative mt-14">
+                {/* Vertical connecting line */}
+                <div
+                  className="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-electric via-electric/40 to-transparent md:left-6"
+                  aria-hidden="true"
+                />
+
+                <div className="space-y-10">
+                  {service.architecture.map((layer, i) => {
+                    const Icon = ARCH_ICONS[layer.icon] ?? Database;
+                    return (
+                      <AnimateIn key={i} delay={i * 0.08}>
+                        <div className="relative flex gap-5 md:gap-6">
+                          {/* Node dot */}
+                          <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-electric bg-navy md:h-12 md:w-12">
+                            <Icon className="h-4 w-4 text-electric md:h-5 md:w-5" />
+                          </div>
+                          {/* Content */}
+                          <div className="pt-1">
+                            <h3 className="font-display text-base font-bold text-white md:text-lg">
+                              {layer.title}
+                            </h3>
+                            <p className="mt-2 text-sm leading-relaxed text-slate-400 md:text-base">
+                              {layer.description}
+                            </p>
+                          </div>
+                        </div>
+                      </AnimateIn>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Process */}
         <section className="bg-light-gray py-16 md:py-20" aria-label="How it works">

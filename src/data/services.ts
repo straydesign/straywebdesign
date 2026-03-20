@@ -14,6 +14,11 @@ export interface Service {
   readonly faqs: readonly { readonly question: string; readonly answer: string }[];
   readonly keywords: readonly string[];
   readonly relatedServices: readonly string[];
+  readonly architecture?: readonly {
+    readonly icon: string;
+    readonly title: string;
+    readonly description: string;
+  }[];
 }
 
 export const SERVICES = [
@@ -262,6 +267,50 @@ export const SERVICES = [
       "AI call handling",
     ],
     relatedServices: ["website-design", "analytics-setup", "website-management"],
+    architecture: [
+      {
+        icon: "phone-incoming",
+        title: "Instant Caller Recognition",
+        description:
+          "The moment a call comes in, the system matches the phone number against your customer database. Returning customers are recognized before the AI says hello — their name, history, preferences, and past appointments are already loaded into the conversation.",
+      },
+      {
+        icon: "database",
+        title: "Your Business Knowledge Base",
+        description:
+          "Your entire operation — services, pricing tiers, staff bios, hours, policies, common questions — is structured into a custom knowledge base that the AI draws from in real time. Not a generic script. Every answer comes from YOUR business data.",
+      },
+      {
+        icon: "user-round-search",
+        title: "Living Customer Profiles",
+        description:
+          "Every caller gets a profile that grows with each interaction. Contact info, full call transcripts, appointment history, preferences, internal notes. When Sarah calls back three weeks later, the AI remembers she prefers Tuesdays at 2 PM with Dr. Miller.",
+      },
+      {
+        icon: "mouse-pointer-click",
+        title: "Website Behavior Context",
+        description:
+          "When connected to your website, the AI knows what pages a caller browsed before picking up the phone. Someone visited your emergency plumbing page at 11 PM and then called? The AI opens with 'Are you calling about an emergency?' — not a generic greeting.",
+      },
+      {
+        icon: "calendar-check",
+        title: "Live Calendar + Booking",
+        description:
+          "A direct API connection to your scheduling system means the AI checks real-time availability, books the slot, sends a text confirmation to the customer, and adds it to your calendar. No double-booking. No phone tag. Done in 30 seconds.",
+      },
+      {
+        icon: "arrow-down-to-line",
+        title: "CRM Pipeline Integration",
+        description:
+          "New leads auto-create in your CRM with full context — what they asked about, contact info, a conversation-based lead score, and a link to the call recording. Your sales pipeline fills itself. Nothing is manually entered. Nothing falls through.",
+      },
+      {
+        icon: "trending-up",
+        title: "Gets Smarter Every Week",
+        description:
+          "We review call transcripts, identify knowledge gaps, and refine the AI's responses on an ongoing basis. The more calls it handles for your specific business, the sharper it gets. Month three is a different system than month one.",
+      },
+    ],
   },
   {
     slug: "seo-optimization",
