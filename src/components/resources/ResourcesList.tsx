@@ -52,6 +52,25 @@ const TAG_COLORS: Record<string, string> = {
   'Technical SEO': 'bg-cyan-50 text-cyan-600',
   'Vision Care': 'bg-sky-50 text-sky-600',
   'Web Design': 'bg-blue-50 text-blue-600',
+  Restaurants: 'bg-emerald-50 text-emerald-600',
+  'Salons & Spas': 'bg-pink-50 text-pink-600',
+  'Real Estate': 'bg-violet-50 text-violet-600',
+  HVAC: 'bg-orange-50 text-orange-600',
+  Plumbing: 'bg-cyan-50 text-cyan-600',
+  Electrical: 'bg-yellow-50 text-yellow-700',
+  Roofing: 'bg-stone-100 text-stone-600',
+  Insurance: 'bg-blue-50 text-blue-700',
+  Accounting: 'bg-green-50 text-green-700',
+  Veterinary: 'bg-rose-50 text-rose-600',
+  Fitness: 'bg-purple-50 text-purple-600',
+  'Cost Analysis': 'bg-amber-50 text-amber-700',
+  'Speed & Performance': 'bg-blue-50 text-blue-600',
+  'AI Integration': 'bg-indigo-50 text-indigo-600',
+  ROI: 'bg-emerald-50 text-emerald-700',
+  Comparison: 'bg-slate-100 text-slate-700',
+  'Erie PA': 'bg-sky-50 text-sky-700',
+  Finance: 'bg-emerald-50 text-emerald-600',
+  Manufacturing: 'bg-zinc-100 text-zinc-600',
 };
 
 export default function ResourcesList({ resources }: { resources: ResourceCard[] }) {
@@ -103,7 +122,7 @@ export default function ResourcesList({ resources }: { resources: ResourceCard[]
                 >
                   {resource.tag}
                 </span>
-                <span className="text-xs text-slate-400">
+                <span className="text-xs text-slate-500">
                   {resource.readTime}
                 </span>
               </div>

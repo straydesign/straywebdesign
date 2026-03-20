@@ -74,9 +74,9 @@ export default function Hero() {
                   key={comp.label}
                   className="rounded-2xl border border-slate-200/60 bg-white/80 p-6 shadow-sm backdrop-blur-sm"
                 >
-                  <h3 className="mb-4 text-center font-display text-sm font-semibold text-slate-500">
+                  <h2 className="mb-4 text-center font-display text-sm font-semibold text-slate-500">
                     {comp.label}
-                  </h3>
+                  </h2>
                   <div className="flex justify-center gap-6">
                     <LighthouseGauge
                       score={comp.scores.performance}

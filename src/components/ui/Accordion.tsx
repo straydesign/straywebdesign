@@ -11,7 +11,7 @@ interface AccordionItem {
 }
 
 interface AccordionProps {
-  items: AccordionItem[];
+  items: readonly AccordionItem[];
   className?: string;
 }
 
@@ -27,25 +27,33 @@ export default function Accordion({ items, className = '' }: AccordionProps) {
             key={index}
             className="overflow-hidden rounded-xl border border-slate-200/60 bg-white"
           >
-            <button
-              onClick={() => setOpenIndex(isOpen ? null : index)}
-              className="flex w-full items-center justify-between gap-4 p-5 text-left font-semibold text-navy transition-colors hover:bg-slate-50 md:p-6"
-              aria-expanded={isOpen}
-            >
-              <span className="font-display text-base md:text-lg">
-                {item.question}
-              </span>
-              <motion.span
-                animate={{ rotate: isOpen ? 180 : 0 }}
-                transition={{ duration: 0.2 }}
-                className="shrink-0"
+            <h3 className="m-0">
+              <button
+                onClick={() => setOpenIndex(isOpen ? null : index)}
+                className="flex w-full items-center justify-between gap-4 p-5 text-left font-semibold text-navy transition-colors hover:bg-slate-50 md:p-6"
+                aria-expanded={isOpen}
+                aria-controls={`accordion-panel-${index}`}
+                id={`accordion-trigger-${index}`}
               >
-                <ChevronDown className="h-5 w-5 text-medium-gray" />
-              </motion.span>
-            </button>
+                <span className="font-display text-base md:text-lg">
+                  {item.question}
+                </span>
+                <motion.span
+                  animate={{ rotate: isOpen ? 180 : 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="shrink-0"
+                  aria-hidden="true"
+                >
+                  <ChevronDown className="h-5 w-5 text-medium-gray" />
+                </motion.span>
+              </button>
+            </h3>
             <AnimatePresence>
               {isOpen && (
                 <motion.div
+                  id={`accordion-panel-${index}`}
+                  role="region"
+                  aria-labelledby={`accordion-trigger-${index}`}
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}

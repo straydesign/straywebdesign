@@ -21,6 +21,33 @@ export const SITE = {
 
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },
+  {
+    label: 'Services',
+    href: '/services',
+    children: [
+      { label: 'Website Design', href: '/services/website-design' },
+      { label: 'AI Receptionist', href: '/services/ai-receptionist' },
+      { label: 'SEO Optimization', href: '/services/seo-optimization' },
+      { label: 'Website Management', href: '/services/website-management' },
+      { label: 'Landing Pages', href: '/services/landing-pages' },
+      { label: 'Analytics Setup', href: '/services/analytics-setup' },
+    ],
+  },
+  {
+    label: 'Industries',
+    href: '/industries',
+    children: [
+      { label: 'Dental Practices', href: '/industries/dental' },
+      { label: 'Financial Advisors', href: '/industries/financial-advisors' },
+      { label: 'Car Dealerships', href: '/industries/car-dealerships' },
+      { label: 'IT Services', href: '/industries/it-services' },
+      { label: 'Law Firms', href: '/industries/law-firms' },
+      { label: 'Restaurants', href: '/industries/restaurants' },
+      { label: 'Real Estate', href: '/industries/real-estate' },
+      { label: 'HVAC', href: '/industries/hvac' },
+      { label: 'View All Industries', href: '/industries' },
+    ],
+  },
   { label: 'Resources', href: '/resources' },
   { label: 'Book a Call', href: '/book' },
 ] as const;

@@ -106,6 +106,26 @@ export function getResourceBySlug(slug: string): Resource | undefined {
   return RESOURCES.find((r) => r.slug === slug);
 }
 
+/** Get resources matching a specific tag */
+export function getResourcesByTag(tag: string, limit?: number): Resource[] {
+  const filtered = RESOURCES.filter((r) => r.tag === tag);
+  return limit ? filtered.slice(0, limit) : filtered;
+}
+
+/** Get related resources — same tag first, then most recent, excluding the given slug */
+export function getRelatedResources(slug: string, tag: string, limit = 3): (Resource & { path: string })[] {
+  const sameTag = RESOURCES.filter((r) => r.slug !== slug && r.tag === tag);
+  const others = RESOURCES.filter((r) => r.slug !== slug && r.tag !== tag);
+  const combined = [...sameTag, ...others].slice(0, limit);
+  return combined.map((r) => ({ ...r, path: getResourcePath(r) }));
+}
+
+/** Get all unique tags across resources */
+export function getAllTags(): string[] {
+  const tags = new Set(RESOURCES.map((r) => r.tag));
+  return [...tags].sort();
+}
+
 export function getResourcePath(resource: Pick<Resource, 'type' | 'slug'>): string {
   return `/resources/${TYPE_TO_DIR[resource.type]}/${resource.slug}`;
 }

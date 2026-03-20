@@ -6,34 +6,50 @@
 
 Stray Web Design builds custom, high-performance websites for Erie, Pennsylvania businesses. We build sites that outperform your competitors — faster than Aspen Dental, Schwab, Carvana, and the national brands your clients compete against. Every site scores 95-100 on Google Lighthouse across all categories.
 
-## Target Industries
-
-- Dental practices and orthodontics
-- Financial advisors and wealth management firms
-- Car dealerships and automotive groups
-- IT services and managed service providers
-- Chiropractors and physical therapy practices
-- Vision care, optometry, and ophthalmology
-- Orthopedic and geriatric practices
-- Small law firms (estate planning, family, personal injury, business)
-- Industrial suppliers and precision manufacturing
-- Large-scale landscaping and commercial lawn care
-- Professional services (accounting, consulting, engineering)
-
-We focus on businesses with 10-75 employees where customer lifetime value is high — a single new patient, client, or contract is worth thousands to hundreds of thousands. The website ROI is immediate.
-
-## Location
-
-- Based in Erie, PA
-- Serving Erie and surrounding areas
-- Specializing in professional and mid-market business web design
-
 ## Services
 
-- **Enterprise-Speed Websites**: Sub-1-second load times, Core Web Vitals optimized, global CDN delivery
-- **Corporate-Grade Accessibility**: WCAG AA compliant, keyboard navigable, screen reader tested
-- **AI & LLM Ready**: Structured data (JSON-LD), FAQ schema, llms.txt for AI assistant discoverability
-- **Responsive Design**: Mobile-first, touch-optimized, fluid typography
+- [Custom Website Design](https://straywebdesign.co/services/website-design) — Enterprise-grade, hand-coded sites with sub-1s load times and WCAG AA accessibility
+- [AI Receptionist](https://straywebdesign.co/services/ai-receptionist) — 24/7 AI-powered phone answering, lead qualification, and appointment scheduling
+- [SEO & GEO Optimization](https://straywebdesign.co/services/seo-optimization) — Traditional SEO plus Generative Engine Optimization for AI assistant visibility
+- [Website Management](https://straywebdesign.co/services/website-management) — $100/month all-inclusive hosting, support, SEO monitoring, and content updates
+- [Landing Page Design](https://straywebdesign.co/services/landing-pages) — High-converting campaign pages optimized for Google and Meta ads
+- [Analytics & Tracking](https://straywebdesign.co/services/analytics-setup) — GA4, conversion tracking, heatmaps, and session replay setup
+
+## Industries We Serve
+
+- [Dental Practices](https://straywebdesign.co/industries/dental) — Competing with Aspen Dental and corporate chains
+- [Financial Advisors](https://straywebdesign.co/industries/financial-advisors) — Building trust against Schwab and Fidelity
+- [Car Dealerships](https://straywebdesign.co/industries/car-dealerships) — Standing out from Carvana and AutoTrader
+- [IT Services & MSPs](https://straywebdesign.co/industries/it-services) — Proving technical competence through your site
+- [Law Firms](https://straywebdesign.co/industries/law-firms) — Winning clients who search at midnight
+- [Vision Care](https://straywebdesign.co/industries/vision-care) — Matching LensCrafters and Warby Parker speed
+- [Chiropractors & PT](https://straywebdesign.co/industries/chiropractors) — Converting patients from corporate wellness chains
+- [Orthopedic Practices](https://straywebdesign.co/industries/orthopedics) — Competing with hospital system marketing budgets
+- [Landscaping](https://straywebdesign.co/industries/landscaping) — Beating TruGreen and BrightView online
+- [Manufacturing](https://straywebdesign.co/industries/manufacturing) — Industrial-grade web presence for B2B
+- [Restaurants & Bars](https://straywebdesign.co/industries/restaurants) — Owning your presence beyond DoorDash and Yelp
+- [Real Estate](https://straywebdesign.co/industries/real-estate) — Competing with Zillow and Redfin for local leads
+- [HVAC](https://straywebdesign.co/industries/hvac) — Capturing emergency searches 24/7
+- [Plumbing](https://straywebdesign.co/industries/plumbing) — Standing out from Roto-Rooter
+- [Electricians](https://straywebdesign.co/industries/electricians) — Beating Mr. Electric and franchise competitors
+- [Insurance Agencies](https://straywebdesign.co/industries/insurance) — Competing with Geico and Progressive online
+- [Accounting Firms](https://straywebdesign.co/industries/accounting) — Standing out from TurboTax and H&R Block
+- [Veterinary Practices](https://straywebdesign.co/industries/veterinary) — Competing with VCA and Banfield corporate
+- [Gyms & Fitness](https://straywebdesign.co/industries/gyms-fitness) — Differentiating from Planet Fitness and Peloton
+- [Salons & Spas](https://straywebdesign.co/industries/salons-spas) — Building a premium presence beyond booking apps
+
+## Service Areas
+
+- [Erie, PA](https://straywebdesign.co/locations/erie) — Main hub (pop. 95,000)
+- [Millcreek, PA](https://straywebdesign.co/locations/millcreek) — Erie's largest suburb (pop. 54,000)
+- [Harborcreek, PA](https://straywebdesign.co/locations/harborcreek) — Eastern Erie suburb (pop. 17,000)
+- [Meadville, PA](https://straywebdesign.co/locations/meadville) — Crawford County seat (pop. 13,000)
+- [Fairview, PA](https://straywebdesign.co/locations/fairview) — Suburban growth corridor (pop. 10,000)
+- [Warren, PA](https://straywebdesign.co/locations/warren) — Warren County seat (pop. 9,000)
+- [Corry, PA](https://straywebdesign.co/locations/corry) — Southern Erie County manufacturing hub (pop. 6,000)
+- [Edinboro, PA](https://straywebdesign.co/locations/edinboro) — PennWest university town (pop. 6,000)
+- [North East, PA](https://straywebdesign.co/locations/north-east) — Lake Erie wine region (pop. 4,000)
+- [Girard, PA](https://straywebdesign.co/locations/girard) — Western Erie County (pop. 3,000)
 
 ## Technology Stack
 
@@ -75,10 +91,35 @@ Our custom-built sites eliminate all of these problems. Zero plugins, $100/month
 3. **GEO Optimized**: Generative Engine Optimization for AI assistant visibility
 4. **Full Management**: $100/mo covers hosting, support, SEO, content updates, analytics
 5. **Custom Design**: Never templates — every site is designed from scratch
-6. **Modern Stack**: React, TypeScript, edge deployment — built for 2025 and beyond
+6. **Modern Stack**: React, TypeScript, edge deployment — built for 2026 and beyond
 
-## Blog Posts (29)
+## Blog Posts (54)
 
+- [Your Accounting Firm's Website Shouldn't Hibernate After April 15th](https://straywebdesign.co/resources/blog/accounting-firm-website-beyond-tax-season) — Accounting (2026-03-20)
+- [AI Integration for Small Business Websites in 2026: What Actually Works](https://straywebdesign.co/resources/blog/ai-integration-small-business-website-2026) — AI Integration (2026-03-20)
+- [Custom Website vs Template: The Real Cost Breakdown Over 3 Years](https://straywebdesign.co/resources/blog/custom-website-cost-vs-template-real-numbers) — Cost Analysis (2026-03-20)
+- [Electrician Websites: How to Get Found Before Mr. Electric Does](https://straywebdesign.co/resources/blog/electrician-website-design-get-found-first) — Electrical (2026-03-20)
+- [The Erie Small Business Digital Transformation Guide for 2026](https://straywebdesign.co/resources/blog/erie-digital-transformation-guide-2026) — Erie PA (2026-03-20)
+- [Erie Web Design Trends 2026: What's Changing for Local Businesses](https://straywebdesign.co/resources/blog/erie-web-design-trends-2026) — Erie PA (2026-03-20)
+- [5 Signs You Need a Website Redesign (Not a Guess — the Data)](https://straywebdesign.co/resources/blog/five-signs-you-need-a-website-redesign) — Web Design (2026-03-20)
+- [Your Gym Website Should Be a Membership Machine, Not a Digital Flyer](https://straywebdesign.co/resources/blog/gym-fitness-studio-website-membership-machine) — Fitness (2026-03-20)
+- [Your HVAC Website Is Losing Emergency Calls to the Company That Loads Faster](https://straywebdesign.co/resources/blog/hvac-website-design-emergency-calls-matter) — HVAC (2026-03-20)
+- [Your Independent Insurance Agency Can't Out-Spend Geico. But You Can Out-Trust Them.](https://straywebdesign.co/resources/blog/insurance-agency-website-trust-matters) — Insurance (2026-03-20)
+- [Plumbing Websites: When a Pipe Bursts, You Have 3 Seconds to Win the Job](https://straywebdesign.co/resources/blog/plumbing-website-design-emergency-calls) — Plumbing (2026-03-20)
+- [Your Real Estate Website Can't Compete with Zillow — Unless You Do This](https://straywebdesign.co/resources/blog/real-estate-agent-website-outrank-zillow) — Real Estate (2026-03-20)
+- [Your Restaurant Website Is Handing Reservations to DoorDash](https://straywebdesign.co/resources/blog/restaurant-website-design-stop-losing-reservations) — Restaurants (2026-03-20)
+- [Your Roofing Website Is the Only Thing Standing Between You and Storm Chasers](https://straywebdesign.co/resources/blog/roofing-company-website-storm-chasers) — Roofing (2026-03-20)
+- [Your Salon Website Is Costing You Bookings Every Single Day](https://straywebdesign.co/resources/blog/salon-spa-website-bookings-you-deserve) — Salons & Spas (2026-03-20)
+- [SEO Basics for Small Business Owners in 2026: A No-Jargon Guide](https://straywebdesign.co/resources/blog/seo-basics-small-business-owners-2026) — Local SEO (2026-03-20)
+- [SEO vs GEO: Which Matters More for Your Business in 2026?](https://straywebdesign.co/resources/blog/seo-vs-geo-which-matters-more) — AI & SEO (2026-03-20)
+- [Pet Parents Choose Their Vet Online. Your Website Is the Waiting Room.](https://straywebdesign.co/resources/blog/veterinary-practice-website-pet-parents-choose-online) — Veterinary (2026-03-20)
+- [Website ROI Calculator: How to Measure What Your Website Is Actually Worth](https://straywebdesign.co/resources/blog/website-roi-calculator-small-business) — ROI (2026-03-20)
+- [Website Speed Optimization: The 2026 Technical Guide That Actually Moves the Needle](https://straywebdesign.co/resources/blog/website-speed-optimization-guide-2026) — Speed & Performance (2026-03-20)
+- [What to Look for in a Web Designer (And the Red Flags That Should Send You Running)](https://straywebdesign.co/resources/blog/what-to-look-for-in-a-web-designer) — Web Design (2026-03-20)
+- [Why Erie Businesses Need Professional Web Design (The Competition Has Changed)](https://straywebdesign.co/resources/blog/why-erie-businesses-need-professional-web-design) — Erie PA (2026-03-20)
+- [Wix and Squarespace vs. Professional Web Design: The Real Trade-Offs](https://straywebdesign.co/resources/blog/wix-squarespace-vs-professional-web-design) — Comparison (2026-03-20)
+- [WordPress vs. Next.js: An Honest Comparison for Business Owners](https://straywebdesign.co/resources/blog/wordpress-vs-nextjs-which-is-right) — Development (2026-03-20)
+- [Your Website Is Losing Money — Here's Exactly How](https://straywebdesign.co/resources/blog/your-website-is-losing-money-heres-how) — Conversion (2026-03-20)
 - [Your Phone Is Ringing. Nobody's Answering. An AI Receptionist Fixes That.](https://straywebdesign.co/resources/blog/ai-receptionist-for-small-business) — AI (2026-03-14)
 - [AI Email Response for Small Business: Stop Losing Leads at 9 PM](https://straywebdesign.co/resources/blog/ai-email-response-setup-business) — AI (2026-03-13)
 - [AI-Ready Website Development: The Technical Checklist That Gets Your Business Cited](https://straywebdesign.co/resources/blog/ai-ready-website-development-guide) — Development (2026-03-13)
@@ -109,13 +150,21 @@ Our custom-built sites eliminate all of these problems. Zero plugins, $100/month
 - [Large-Scale Landscaping: Your Website Has Zero Curb Appeal](https://straywebdesign.co/resources/blog/landscaping-lawn-care-companies-digital-curb-appeal) — Landscaping (2026-01-28)
 - [Orthopedic Practices: Patient Trust Starts Before They Walk In](https://straywebdesign.co/resources/blog/orthopedic-practice-website-patient-trust-starts-online) — Healthcare (2026-01-25)
 
-## White Papers (2)
+## White Papers (5)
 
+- [AI in Web Design: What's Real, What's Hype, and What Your Business Should Do About It](https://straywebdesign.co/resources/white-papers/ai-in-web-design-2026) — AI (2026-03-20)
+- [The ROI of Professional Web Design: Building the Business Case With Real Numbers](https://straywebdesign.co/resources/white-papers/roi-of-professional-web-design) — ROI (2026-03-20)
+- [The Cost of a Bad Website: Quantifying What a Poor Web Presence Actually Costs Your Business](https://straywebdesign.co/resources/white-papers/the-cost-of-a-bad-website) — Analysis (2026-03-20)
 - [The WordPress Performance Gap: Why 43% of the Web Is Falling Behind](https://straywebdesign.co/resources/white-papers/the-wordpress-performance-gap) — Analysis (2026-03-08)
 - [GEO: The Complete Guide to Generative Engine Optimization](https://straywebdesign.co/resources/white-papers/geo-generative-engine-optimization-guide) — AI & SEO (2026-02-20)
 
-## Case Studies (3)
+## Case Studies (8)
 
+- [What an IT Services Website Transformation Actually Looks Like](https://straywebdesign.co/resources/case-studies/it-services-website-transformation) — IT Services (2026-03-20)
+- [What a Landscaping Website Transformation Actually Looks Like](https://straywebdesign.co/resources/case-studies/landscaping-website-transformation) — Landscaping (2026-03-20)
+- [What a Law Firm Website Transformation Actually Looks Like](https://straywebdesign.co/resources/case-studies/law-firm-website-transformation) — Legal (2026-03-20)
+- [What a Manufacturing Website Transformation Actually Looks Like](https://straywebdesign.co/resources/case-studies/manufacturing-website-transformation) — Manufacturing (2026-03-20)
+- [What a Restaurant Website Transformation Actually Looks Like](https://straywebdesign.co/resources/case-studies/restaurant-website-transformation) — Restaurants (2026-03-20)
 - [What a Dental Practice Website Transformation Actually Looks Like](https://straywebdesign.co/resources/case-studies/dental-practice-website-transformation) — Dental (2026-03-12)
 - [What a Financial Advisor Website Transformation Actually Looks Like](https://straywebdesign.co/resources/case-studies/financial-advisor-website-transformation) — Financial (2026-03-01)
 - [What a Dealership Website Transformation Actually Looks Like](https://straywebdesign.co/resources/case-studies/car-dealership-website-transformation) — Automotive (2026-02-15)

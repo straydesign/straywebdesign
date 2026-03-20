@@ -3,22 +3,39 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import AnimateIn from '@/components/ui/AnimateIn';
 import MagneticButton from '@/components/ui/MagneticButton';
-import type { ResourceMeta } from '@/lib/content';
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
+import RelatedPosts from '@/components/resources/RelatedPosts';
+import type { ResourceMeta, Resource } from '@/lib/content';
 import type { ReactNode } from 'react';
 
 interface ArticleLayoutProps {
   meta: ResourceMeta;
   children: ReactNode;
   jsonLd: Record<string, unknown>;
+  relatedPosts?: (Resource & { path: string })[];
 }
 
-export default function ArticleLayout({ meta, children, jsonLd }: ArticleLayoutProps) {
+export default function ArticleLayout({ meta, children, jsonLd, relatedPosts = [] }: ArticleLayoutProps) {
   const typeLabel =
     meta.type === 'blog'
       ? 'Blog'
       : meta.type === 'white-paper'
         ? 'White Paper'
         : 'Case Study';
+
+  const typeDir =
+    meta.type === 'blog'
+      ? 'blog'
+      : meta.type === 'white-paper'
+        ? 'white-papers'
+        : 'case-studies';
+
+  const breadcrumbs = [
+    { label: 'Home', href: '/' },
+    { label: 'Resources', href: '/resources' },
+    { label: typeLabel, href: `/resources#${meta.type}` },
+    { label: meta.title },
+  ];
 
   return (
     <>
@@ -30,6 +47,7 @@ export default function ArticleLayout({ meta, children, jsonLd }: ArticleLayoutP
         />
         <article className="mx-auto max-w-3xl px-5 md:px-8">
           <AnimateIn>
+            <Breadcrumbs items={breadcrumbs} />
             <a
               href="/resources"
               className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition-colors hover:text-navy"
@@ -45,7 +63,7 @@ export default function ArticleLayout({ meta, children, jsonLd }: ArticleLayoutP
               <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
                 {meta.tag}
               </span>
-              <span className="text-xs text-slate-400">
+              <span className="text-xs text-slate-500">
                 {meta.readTime}
               </span>
             </div>
@@ -58,7 +76,7 @@ export default function ArticleLayout({ meta, children, jsonLd }: ArticleLayoutP
               {meta.description}
             </p>
 
-            <div className="mt-3 text-sm text-slate-400">
+            <div className="mt-3 text-sm text-slate-500">
               Published{' '}
               {new Date(meta.date).toLocaleDateString('en-US', {
                 year: 'numeric',
@@ -74,6 +92,10 @@ export default function ArticleLayout({ meta, children, jsonLd }: ArticleLayoutP
               {children}
             </div>
           </AnimateIn>
+
+          {relatedPosts.length > 0 && (
+            <RelatedPosts posts={relatedPosts} />
+          )}
 
           <AnimateIn delay={0.3}>
             <hr className="my-10 border-slate-200" />

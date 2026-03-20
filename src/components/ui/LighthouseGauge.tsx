@@ -58,9 +58,9 @@ export default function LighthouseGauge({
   const offset = circumference - (animatedScore / 100) * circumference;
 
   return (
-    <div ref={ref} className={`flex flex-col items-center gap-2 ${className}`}>
+    <div ref={ref} className={`flex flex-col items-center gap-2 ${className}`} role="img" aria-label={`${label}: ${score} out of 100`}>
       <div className="relative" style={{ width: size, height: size }}>
-        <svg width={size} height={size} className="-rotate-90">
+        <svg width={size} height={size} className="-rotate-90" aria-hidden="true">
           <circle
             cx={size / 2}
             cy={size / 2}

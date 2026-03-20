@@ -88,7 +88,7 @@ export default function SocialProof() {
         {/* Tech stack */}
         <StaggerContainer className="mt-8 text-center" staggerDelay={0.1}>
           <StaggerItem>
-            <p className="text-sm font-semibold tracking-wide text-slate-400 uppercase">
+            <p className="text-sm font-semibold tracking-wide text-slate-500 uppercase">
               Built with modern technology
             </p>
           </StaggerItem>

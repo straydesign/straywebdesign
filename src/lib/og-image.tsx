@@ -6,6 +6,9 @@ const typeLabels: Record<string, string> = {
   blog: 'Blog',
   'white-paper': 'White Paper',
   'case-study': 'Case Study',
+  service: 'Service',
+  industry: 'Industry',
+  location: 'Location',
 };
 
 const tagColors: Record<string, string> = {

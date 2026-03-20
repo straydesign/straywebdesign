@@ -69,7 +69,7 @@ export default function Carousel({
           </div>
         ))}
         {items.map((item, i) => (
-          <div key={`b-${i}`} className="shrink-0" aria-hidden>
+          <div key={`b-${i}`} className="shrink-0" aria-hidden="true">
             {item}
           </div>
         ))}
