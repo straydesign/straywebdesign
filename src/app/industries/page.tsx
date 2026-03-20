@@ -56,7 +56,7 @@ export default function IndustriesIndex() {
                     <h2 className="font-display text-base font-bold text-navy group-hover:text-electric transition-colors">
                       {industry.name}
                     </h2>
-                    <p className="mt-2 flex-1 text-xs leading-relaxed text-slate-600 line-clamp-3">
+                    <p className="mt-2 flex-1 text-xs leading-relaxed text-slate-600">
                       {industry.description}
                     </p>
                     <div className="mt-3 text-xs text-slate-500">
