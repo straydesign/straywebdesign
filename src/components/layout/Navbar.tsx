@@ -17,17 +17,21 @@ function resolveHref(href: string, pathname: string): string {
 
 type NavLink = (typeof NAV_LINKS)[number];
 
-function DesktopDropdown({ link, pathname }: { link: NavLink; pathname: string }) {
+function DesktopDropdown({ link, pathname, ghost }: { link: NavLink; pathname: string; ghost: boolean }) {
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  const linkClass = cn(
+    'text-sm font-medium transition-colors duration-300',
+    ghost
+      ? 'text-white/80 hover:text-white'
+      : 'text-slate-600 hover:text-navy'
+  );
+
   if (!('children' in link) || !link.children) {
     return (
-      <a
-        href={resolveHref(link.href, pathname)}
-        className="text-sm font-medium text-slate-600 transition-colors hover:text-navy"
-      >
+      <a href={resolveHref(link.href, pathname)} className={linkClass}>
         {link.label}
       </a>
     );
@@ -58,7 +62,7 @@ function DesktopDropdown({ link, pathname }: { link: NavLink; pathname: string }
       onKeyDown={handleKeyDown}
     >
       <button
-        className="flex items-center gap-1 text-sm font-medium text-slate-600 transition-colors hover:text-navy"
+        className={cn('flex items-center gap-1', linkClass)}
         aria-expanded={open}
         aria-haspopup="true"
         onClick={() => setOpen((prev) => !prev)}
@@ -135,27 +139,35 @@ export default function Navbar() {
 
       <nav
         className={cn(
-          'fixed top-[3px] right-0 left-0 z-50 transition-all duration-300',
-          scrolled
-            ? 'bg-white/90 shadow-sm backdrop-blur-xl'
-            : 'bg-transparent'
+          'fixed top-[3px] right-0 left-0 z-50 transition-all duration-300 bg-transparent',
+          scrolled && 'backdrop-blur-sm'
         )}
         aria-label="Main navigation"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
           <a
             href="/"
-            className="flex items-center gap-2 font-display text-xl font-bold text-navy"
+            className={cn(
+              'flex items-center gap-2 font-display text-xl font-bold transition-colors duration-300',
+              scrolled ? 'text-navy' : 'text-white'
+            )}
             aria-label={SITE.name}
           >
-            <StrayLogo width={36} height={18} />
-            <span>stray<span className="text-electric">web</span>design</span>
+            <StrayLogo width={36} height={18} color={scrolled ? '#3B82F6' : '#ffffff'} />
+            <span
+              style={{
+                WebkitTextStroke: '0.5px white',
+                paintOrder: 'stroke fill',
+              }}
+            >
+              stray<span className="text-electric">web</span>design
+            </span>
           </a>
 
           {/* Desktop Links */}
           <div className="hidden items-center gap-7 md:flex">
             {NAV_LINKS.map((link) => (
-              <DesktopDropdown key={link.href} link={link} pathname={pathname} />
+              <DesktopDropdown key={link.href} link={link} pathname={pathname} ghost={!scrolled} />
             ))}
             <a
               href={resolveHref('#contact', pathname)}
@@ -173,9 +185,9 @@ export default function Navbar() {
             aria-expanded={isOpen}
           >
             {isOpen ? (
-              <X className="h-6 w-6 text-navy" />
+              <X className={cn('h-6 w-6 transition-colors duration-300', scrolled ? 'text-navy' : 'text-white')} />
             ) : (
-              <Menu className="h-6 w-6 text-navy" />
+              <Menu className={cn('h-6 w-6 transition-colors duration-300', scrolled ? 'text-navy' : 'text-white')} />
             )}
           </button>
         </div>
