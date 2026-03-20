@@ -103,7 +103,7 @@ const professionalServiceSchema = {
     },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Web Design Services',
+      name: 'Web Design & AI Services',
       itemListElement: [
         {
           '@type': 'Offer',
@@ -130,6 +130,33 @@ const professionalServiceSchema = {
             name: 'AI Receptionist',
             description:
               '24/7 AI-powered call answering, lead qualification, and appointment scheduling.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Multi-Channel AI Agents',
+            description:
+              'Unified AI brain across phone, SMS, and web chat with consistent responses and after-hours coverage.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Smart Scheduling & CRM Integration',
+            description:
+              'Automated booking with calendar sync and CRM auto-updates for Salesforce, HubSpot, and GoHighLevel.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Analytics & Personalization',
+            description:
+              'Visitor tracking, smart content personalization, conversion prediction, and heatmaps.',
           },
         },
       ],

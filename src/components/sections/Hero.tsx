@@ -1,13 +1,10 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
 import WordReveal from '@/components/ui/WordReveal';
-import CountUp from '@/components/ui/CountUp';
 import MagneticButton from '@/components/ui/MagneticButton';
 import AnimateIn from '@/components/ui/AnimateIn';
 import LighthouseGauge from '@/components/ui/LighthouseGauge';
-import { HERO_STATS } from '@/lib/constants';
 
 const LIGHTHOUSE_COMPARISONS = [
   {
@@ -58,41 +55,14 @@ export default function Hero() {
 
             <AnimateIn delay={0.7} className="mt-6">
               <p className="max-w-lg text-lg leading-relaxed text-slate-600 md:text-xl">
-                Your competitors spend millions on digital. You don&apos;t have to.
-                We build dental practices, financial firms, dealerships, and
-                professional services sites that load faster, rank higher, and
-                convert better than the national brands they compete against.
+                Enterprise-grade sites for practices, firms, and dealerships — at a fraction of the cost.
               </p>
             </AnimateIn>
 
-            <AnimateIn delay={0.9} className="mt-8 flex flex-wrap gap-4">
-              <MagneticButton href="#problem" variant="primary" size="lg">
-                See What&apos;s Wrong With Your Site
-                <ArrowDown className="h-4 w-4" />
-              </MagneticButton>
-              <MagneticButton href="#contact" variant="ghost" size="lg">
+            <AnimateIn delay={0.9} className="mt-8">
+              <MagneticButton href="#contact" variant="primary" size="lg">
                 Get Free Audit
               </MagneticButton>
-            </AnimateIn>
-
-            {/* Stats */}
-            <AnimateIn delay={1.1} className="mt-12">
-              <div className="grid grid-cols-3 gap-3 sm:gap-6">
-                {HERO_STATS.map((stat) => (
-                  <div key={stat.label}>
-                    <div className="font-display text-2xl font-bold text-navy md:text-3xl">
-                      <CountUp
-                        value={stat.value}
-                        suffix={stat.suffix}
-                        decimals={'decimals' in stat ? stat.decimals : 0}
-                      />
-                    </div>
-                    <p className="mt-1 text-xs leading-snug text-slate-500 md:text-sm">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
             </AnimateIn>
           </div>
 

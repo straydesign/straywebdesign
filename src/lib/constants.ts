@@ -32,103 +32,77 @@ export const BOOKING_TIMING_OPTIONS = [
   'Flexible',
 ] as const;
 
-export const HERO_STATS = [
-  { value: 53, suffix: '%', label: 'Average bounce rate on slow sites' },
-  { value: 4.6, suffix: 's', label: 'Average load time for WordPress sites', decimals: 1 },
-  { value: 70, suffix: '%+', label: 'Of traffic is mobile — most sites aren\'t ready' },
-] as const;
-
-export const PROBLEM_CARDS = [
+export const FOUNDATION_SERVICES = [
   {
-    title: 'Performance',
-    description: 'Aspen Dental loads in under 2 seconds. Schwab loads in 1.5. Carvana loads in under 1. Your site takes 4+. When a potential patient or client is comparing options, they go with whoever feels faster and more professional.',
-    icon: 'gauge',
-    stat: '53%',
-    statLabel: 'of visitors leave after 3 seconds',
+    title: 'Enterprise-Grade Performance',
+    description:
+      'Sub-1-second load times, WCAG AA accessibility, mobile-first layouts, and Core Web Vitals that match Fortune 500 sites — at a fraction of the cost.',
+    features: [
+      'Sub-1s LCP & global CDN delivery',
+      'WCAG AA compliant & keyboard navigable',
+      'Mobile-first, touch-optimized layouts',
+      'Core Web Vitals passing all metrics',
+      'Semantic HTML for SEO & screen readers',
+    ],
   },
   {
-    title: 'Accessibility',
-    description: 'National brands have entire teams ensuring ADA compliance. Your site has broken navigation, missing alt text, and zero keyboard support — shutting out patients and inviting lawsuits while competitors pass every test.',
-    icon: 'accessibility',
-    stat: '96%',
-    statLabel: 'of business sites fail accessibility',
-  },
-  {
-    title: 'AI Readiness',
-    description: 'Corporate chains are already optimizing for ChatGPT, Perplexity, and Google AI. When potential clients ask AI for a dentist, financial advisor, IT provider, or car dealership — the national brands show up. You don\'t.',
-    icon: 'brain',
-    stat: '0%',
-    statLabel: 'of local business sites are AI-optimized',
+    title: 'AI & Search Optimized',
+    description:
+      'Structured data that gets you cited by ChatGPT, Perplexity, and Google AI Overview — plus traditional SEO that keeps you ranking in classic search.',
+    features: [
+      'JSON-LD structured data for rich results',
+      'llms.txt for AI crawler discoverability',
+      'FAQ schema for AI-generated answers',
+      'GEO (Generative Engine Optimization)',
+      'Full meta, Open Graph & canonical setup',
+    ],
   },
 ] as const;
 
-export const PLAN_STEPS = [
+export const ADDON_SERVICES = [
   {
-    step: 1,
-    title: 'We Audit the Gap',
-    description: 'Free Lighthouse report showing exactly where you stand vs. enterprise competitors. Performance, accessibility, SEO, AI readiness — we measure it all.',
-    icon: 'search',
+    title: 'AI Receptionist',
+    description:
+      'Your phone rings at 9 PM — the AI answers, qualifies the lead, and books the appointment. 24/7 coverage that never calls in sick.',
+    features: [
+      '24/7 call answering & voicemail',
+      'Missed call text-back',
+      'Lead qualification & routing',
+      'Natural, on-brand conversations',
+    ],
   },
   {
-    step: 2,
-    title: 'We Design to Compete',
-    description: 'Custom design that rivals any enterprise site. Not a template — a purpose-built digital presence that makes customers forget your size.',
-    icon: 'palette',
+    title: 'Multi-Channel AI Agents',
+    description:
+      'One AI brain across phone, SMS, and web chat. Consistent answers everywhere your customers reach out — including after hours.',
+    features: [
+      'Phone + SMS + web chat coverage',
+      'Consistent responses across channels',
+      'After-hours & weekend coverage',
+      'Seamless handoff to your team',
+    ],
   },
   {
-    step: 3,
-    title: 'We Level the Playing Field',
-    description: 'Enterprise-grade performance, accessibility, and AI optimization — at a fraction of the cost. Your site competes with the big guys on every metric.',
-    icon: 'rocket',
-  },
-] as const;
-
-export const COMPARISON_ROWS = [
-  { category: 'Page Load Speed', before: '4-8 seconds', after: 'Under 1 second', improvement: '8x faster' },
-  { category: 'Mobile Experience', before: 'Broken layouts, tiny text', after: 'Mobile-first, touch-optimized', improvement: 'Fully responsive' },
-  { category: 'Google Lighthouse', before: '30-50 score', after: '95-100 score', improvement: '2-3x higher' },
-  { category: 'Accessibility (WCAG)', before: 'Non-compliant', after: 'WCAG AA certified', improvement: '100% compliant' },
-  { category: 'SEO Performance', before: 'Missing meta, no schema', after: 'Full structured data', improvement: 'Rich results ready' },
-  { category: 'AI/LLM Visibility', before: 'Invisible to AI', after: 'llms.txt + FAQ schema', improvement: 'AI-discoverable' },
-  { category: 'Security', before: 'Vulnerable plugins', after: 'Zero attack surface', improvement: 'No plugins' },
-  { category: 'Hosting + Management', before: '$20-50/mo + dev fees', after: '$100/mo — hosting, support, SEO, updates', improvement: 'One bill' },
-  { category: 'Content Changes', before: 'Wait weeks, pay extra', after: 'Text us, we push it live', improvement: 'No surprise bills' },
-  { category: 'Custom Interactions', before: 'None (static templates)', after: 'Scroll animations, 3D effects', improvement: 'Premium feel' },
-  { category: 'Core Web Vitals', before: 'Failing all metrics', after: 'Passing all metrics', improvement: 'Google-approved' },
-  { category: 'Content Delivery', before: 'Single server', after: 'Global CDN (300+ edges)', improvement: 'Worldwide fast' },
-] as const;
-
-export const FAILURE_STATS = [
-  { value: 68, suffix: '%', label: 'of businesses lose customers to competitors with better sites' },
-  { value: 75, suffix: '%', label: 'of users judge credibility by web design alone' },
-  { value: 94, suffix: '%', label: 'of first impressions are design-related — big brands know this' },
-] as const;
-
-export const SERVICES = [
-  {
-    title: 'Enterprise Speed, Mid-Market Price',
-    description: 'Sub-1-second load times that match Amazon and Google. Your customers get the same instant experience they expect from the biggest brands.',
-    features: ['Sub-1s LCP', 'Global CDN delivery', 'Optimized images & fonts', 'Zero render-blocking resources'],
+    title: 'Smart Scheduling & CRM',
+    description:
+      'Automated booking that syncs with your calendar and pushes leads straight into your CRM. No double-bookings, no manual entry.',
+    features: [
+      'Google Calendar & Outlook sync',
+      'Auto-update Salesforce / HubSpot / GHL',
+      'Confirmation & reminder sequences',
+      'No-show follow-up automation',
+    ],
   },
   {
-    title: 'Corporate-Grade Accessibility',
-    description: 'The same WCAG AA compliance that Fortune 500 companies invest millions to achieve — built into your site from day one.',
-    features: ['WCAG AA compliant', 'Keyboard navigable', 'Screen reader tested', 'Color contrast verified'],
-  },
-  {
-    title: 'AI-Ready Before the Big Guys',
-    description: 'Most enterprises are just starting to optimize for AI. We put you ahead of the curve with structured data and LLM visibility from launch.',
-    features: ['llms.txt for AI crawlers', 'JSON-LD structured data', 'FAQ schema markup', 'GEO optimized'],
-  },
-  {
-    title: 'Mobile Experience That Rivals Anyone',
-    description: 'The same polished mobile experience your customers get from major brands. Touch-optimized, fluid, and beautiful on every screen.',
-    features: ['Mobile-first approach', 'Touch-optimized', 'Fluid typography', 'Adaptive layouts'],
-  },
-  {
-    title: 'AI Receptionist That Never Misses a Call',
-    description: 'Your phone rings at 9 PM — the AI answers, qualifies the lead, and books the appointment. 24/7 coverage for less than minimum wage.',
-    features: ['24/7 call answering', 'Missed call text-back', 'Appointment scheduling', 'Lead qualification'],
+    title: 'Analytics & Personalization',
+    description:
+      'Know who visits your site, what they care about, and what makes them convert. Data-driven insights that turn traffic into revenue.',
+    features: [
+      'Visitor tracking & session replay',
+      'Smart content personalization',
+      'Conversion prediction & heatmaps',
+      'Monthly performance reports',
+    ],
   },
 ] as const;
 
@@ -148,6 +122,14 @@ export const FAQ_ITEMS = [
   {
     question: 'What is GEO (Generative Engine Optimization)?',
     answer: 'GEO is a framework first defined in a 2024 Princeton and Georgia Tech research paper that studied how generative AI models select and rank sources when producing answers. The researchers tested nine optimization strategies and found that adding authoritative citations increased source visibility in AI responses by up to 40%, and embedding relevant statistics boosted visibility by 30%. Unlike traditional SEO — which optimizes for link-based ranking algorithms — GEO optimizes for the language model\'s citation selection process. This means structuring content conversationally, providing machine-readable context through schema markup, and making claims verifiable with specific data. BrightEdge reported that 60% of Google searches now result in a zero-click outcome, many of them AI Overviews. The businesses that appear in those AI-generated answers are the ones whose content is already structured for it.',
+  },
+  {
+    question: 'What can the AI Receptionist do?',
+    answer: 'It answers your phone 24/7 with natural, on-brand conversations — qualifying leads, answering common questions, and booking appointments while you sleep. When a potential patient calls your dental office at 9 PM, the AI greets them by name (if they\'re a returning caller), answers questions about services and insurance, and books them into your next available slot. Missed calls get an instant text-back so you never lose a lead to voicemail. The AI handles call routing for multi-location businesses, sends confirmation texts, and pushes every interaction into your CRM. It\'s not a robotic phone tree — it\'s a conversational agent trained on your specific business, services, and tone. For practices where a single new patient is worth $3,000-$5,000, one extra booking per week pays for the service many times over.',
+  },
+  {
+    question: 'How do the AI add-on services work?',
+    answer: 'Every add-on connects to your existing tools and workflows — no rip-and-replace required. The Multi-Channel AI Agent uses the same knowledge base across phone, SMS, and web chat, so customers get consistent answers whether they call, text, or message at 2 AM. Smart Scheduling syncs with Google Calendar or Outlook and auto-updates your CRM (Salesforce, HubSpot, GoHighLevel) when appointments are booked, rescheduled, or cancelled. Analytics & Personalization tracks visitor behavior, identifies high-intent prospects, and can dynamically adjust page content based on what a visitor cares about — a returning dental patient sees hygiene scheduling while a new visitor sees your intro offer. All add-ons are billed monthly with no long-term contracts, and we handle setup, training, and ongoing optimization.',
   },
   {
     question: 'How long does a project take?',
@@ -178,33 +160,33 @@ export const FAQ_ITEMS = [
 export const CLIENT_PROFILES = [
   {
     industry: 'Dental Practices',
-    challenge: 'Losing new patients to Aspen Dental and corporate chains — whose sites load in 2 seconds while yours takes 6.',
-    outcome: 'A site that outperforms corporate dental on speed, AI visibility, and mobile booking. At $3,000+ per patient lifetime, even one extra new patient per month covers the investment.',
+    challenge: 'Losing new patients to Aspen Dental and corporate chains with faster, polished sites.',
+    outcome: 'A site that outperforms corporate dental on speed, AI visibility, and mobile booking.',
   },
   {
     industry: 'Financial Advisors',
-    challenge: 'Referrals Google you before they call. A slow template next to Schwab\'s polished presence kills the trust your reputation built.',
-    outcome: 'A digital presence that matches the precision of your actual work. Prospects show up pre-sold because the site already did the heavy lifting.',
+    challenge: 'Referrals Google you before they call — a slow template next to Schwab kills the trust.',
+    outcome: 'A digital presence that matches the precision of your work. Prospects arrive pre-sold.',
   },
   {
     industry: 'Car Dealerships',
-    challenge: 'Buyers browse Carvana and Ford.com before they ever visit your lot. Your Dealer.com template looks identical to every other dealer in town.',
-    outcome: 'The first dealership in your market with a genuinely fast, custom site captures a disproportionate share of online-first buyers.',
+    challenge: 'Buyers browse Carvana and Ford.com before visiting your lot. Your template looks like every other dealer.',
+    outcome: 'The first dealership with a genuinely fast, custom site captures a disproportionate share.',
   },
   {
     industry: 'IT Services & MSPs',
-    challenge: 'You sell technical competence — but your own website scores 35 on Lighthouse. Decision makers notice the disconnect.',
-    outcome: 'Sub-1-second load times that prove your technical chops before you say a word. At $180K+ per contract, the ROI is immediate.',
+    challenge: 'You sell technical competence — but your own site scores 35 on Lighthouse.',
+    outcome: 'Sub-1-second load times that prove your technical chops before you say a word.',
   },
   {
     industry: 'Law Firms',
     challenge: 'People in legal trouble search on their phone at midnight. If your site takes 5 seconds, they pick the next result.',
-    outcome: 'A site that communicates competence and confidentiality instantly — and shows up when AI recommends attorneys in Erie.',
+    outcome: 'A site that communicates competence instantly — and shows up when AI recommends attorneys.',
   },
   {
     industry: 'Vision Care',
-    challenge: 'Patients compare your site to LensCrafters and Warby Parker. 20 years of clinical expertise gets judged against their 2-second load time.',
-    outcome: 'A fast, modern site that lets your expertise speak — with AI optimization so patients find you before the chains.',
+    challenge: 'Patients compare your site to LensCrafters and Warby Parker\'s 2-second load time.',
+    outcome: 'A fast, modern site that lets your expertise speak — with AI optimization built in.',
   },
 ] as const;
 

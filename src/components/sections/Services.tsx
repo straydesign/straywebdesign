@@ -1,12 +1,21 @@
 'use client';
 
-import { Zap, Accessibility, Brain, Smartphone, MessageSquare, Check } from 'lucide-react';
+import {
+  Zap,
+  Search,
+  Phone,
+  MessageCircle,
+  CalendarCheck,
+  BarChart3,
+  Check,
+} from 'lucide-react';
 import AnimateIn, { StaggerContainer, StaggerItem } from '@/components/ui/AnimateIn';
 import TiltCard from '@/components/ui/TiltCard';
 import GradientText from '@/components/ui/GradientText';
-import { SERVICES } from '@/lib/constants';
+import { FOUNDATION_SERVICES, ADDON_SERVICES } from '@/lib/constants';
 
-const ICONS = [Zap, Accessibility, Brain, Smartphone, MessageSquare];
+const FOUNDATION_ICONS = [Zap, Search];
+const ADDON_ICONS = [Phone, MessageCircle, CalendarCheck, BarChart3];
 
 export default function Services() {
   return (
@@ -20,47 +29,83 @@ export default function Services() {
             Enterprise Features,{' '}
             <GradientText>Mid-Market Prices</GradientText>
           </h2>
-          <p className="mt-4 text-lg text-slate-600">
-            The same performance, accessibility, and AI optimization that
-            enterprise brands pay millions for — built for your business
-            at a fraction of the cost.
-          </p>
         </AnimateIn>
 
-        <StaggerContainer
-          className="mt-14 grid gap-6 md:grid-cols-2"
-          staggerDelay={0.1}
-        >
-          {SERVICES.map((service, idx) => {
-            const Icon = ICONS[idx];
-            return (
-              <StaggerItem key={service.title}>
-                <TiltCard className="h-full" glowColor="rgba(59,130,246,0.1)">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-electric/10">
-                    <Icon className="h-6 w-6 text-electric" />
-                  </div>
-                  <h3 className="font-display text-xl font-bold text-navy">
-                    {service.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                    {service.description}
-                  </p>
-                  <ul className="mt-5 space-y-2">
-                    {service.features.map((feature) => (
-                      <li
-                        key={feature}
-                        className="flex items-center gap-2 text-sm text-slate-600"
-                      >
-                        <Check className="h-4 w-4 shrink-0 text-emerald-500" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </TiltCard>
-              </StaggerItem>
-            );
-          })}
-        </StaggerContainer>
+        {/* Tier 1: Foundation — Every Site Includes */}
+        <AnimateIn delay={0.1} className="mt-14">
+          <h3 className="mb-6 text-center font-display text-lg font-semibold text-navy">
+            Every Site Includes
+          </h3>
+          <StaggerContainer className="grid gap-6 md:grid-cols-2" staggerDelay={0.1}>
+            {FOUNDATION_SERVICES.map((service, idx) => {
+              const Icon = FOUNDATION_ICONS[idx];
+              return (
+                <StaggerItem key={service.title}>
+                  <TiltCard className="h-full" glowColor="rgba(59,130,246,0.1)">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-electric/10">
+                      <Icon className="h-6 w-6 text-electric" />
+                    </div>
+                    <h4 className="font-display text-xl font-bold text-navy">
+                      {service.title}
+                    </h4>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                      {service.description}
+                    </p>
+                    <ul className="mt-5 space-y-2">
+                      {service.features.map((feature) => (
+                        <li
+                          key={feature}
+                          className="flex items-center gap-2 text-sm text-slate-600"
+                        >
+                          <Check className="h-4 w-4 shrink-0 text-emerald-500" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </TiltCard>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
+        </AnimateIn>
+
+        {/* Tier 2: AI-Powered Add-Ons */}
+        <AnimateIn delay={0.2} className="mt-16">
+          <h3 className="mb-6 text-center font-display text-lg font-semibold text-navy">
+            AI-Powered Add-Ons
+          </h3>
+          <StaggerContainer className="grid gap-6 sm:grid-cols-2" staggerDelay={0.08}>
+            {ADDON_SERVICES.map((service, idx) => {
+              const Icon = ADDON_ICONS[idx];
+              return (
+                <StaggerItem key={service.title}>
+                  <TiltCard className="h-full" glowColor="rgba(59,130,246,0.08)">
+                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-electric/10">
+                      <Icon className="h-5 w-5 text-electric" />
+                    </div>
+                    <h4 className="font-display text-lg font-bold text-navy">
+                      {service.title}
+                    </h4>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                      {service.description}
+                    </p>
+                    <ul className="mt-4 space-y-1.5">
+                      {service.features.map((feature) => (
+                        <li
+                          key={feature}
+                          className="flex items-center gap-2 text-sm text-slate-600"
+                        >
+                          <Check className="h-3.5 w-3.5 shrink-0 text-emerald-500" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </TiltCard>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
+        </AnimateIn>
 
         {/* Pricing hint */}
         <AnimateIn delay={0.3} className="mt-12 text-center">
@@ -73,23 +118,10 @@ export default function Services() {
             <div className="mt-4 border-t border-slate-200 pt-4">
               <p className="text-sm font-semibold text-navy">$100/mo after launch</p>
               <p className="text-xs text-slate-500">
-                Hosting, technical support, SEO monitoring, content updates,
-                analytics, and ad-ready infrastructure.
-              </p>
-              <p className="mt-2 text-xs text-slate-400">
-                Your site is a living extension of your business. When it
-                evolves, we evolve with it. Text us, we push the update. No
-                meetings. No invoices. No waiting.
+                Hosting, support, SEO monitoring, content updates, analytics, and ad-ready infrastructure.
               </p>
             </div>
           </div>
-          <p className="mx-auto mt-6 max-w-md text-sm text-slate-400">
-            Built for practices, firms, and services where every new client
-            or patient is worth thousands over their lifetime. Dental,
-            financial, legal, vision care, dealerships, IT, landscaping,
-            orthopedic, chiropractic — if your CLV is high, your website
-            should be working harder than anything else in your business.
-          </p>
         </AnimateIn>
       </div>
     </section>

@@ -70,10 +70,6 @@ export default function FooterCTA() {
               where you stand — and deliver a roadmap to close the gap. Free,
               no obligation.
             </p>
-            <p className="mt-3 text-sm text-slate-500 italic">
-              For dental practices, financial advisors, dealerships, law firms, IT services, vision care, landscaping companies, and professional services — where a single new client is worth thousands.
-            </p>
-
             <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href={`mailto:${SITE.email}`}
