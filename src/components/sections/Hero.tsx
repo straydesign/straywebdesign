@@ -6,7 +6,6 @@ import WordReveal from '@/components/ui/WordReveal';
 import MagneticButton from '@/components/ui/MagneticButton';
 import AnimateIn from '@/components/ui/AnimateIn';
 import LighthouseGauge from '@/components/ui/LighthouseGauge';
-import PersonalizedText from '@/components/ui/PersonalizedText';
 
 const HeroScene = dynamic(() => import('@/components/3d/HeroScene'), {
   ssr: false,
@@ -49,7 +48,7 @@ export default function Hero() {
           <div>
             <AnimateIn delay={0.1}>
               <span className="mb-4 inline-block rounded-xl border border-white/20 bg-white/5 px-4 py-1.5 text-sm font-medium text-electric backdrop-blur-sm sm:rounded-full">
-                <PersonalizedText field="badge" fallback="For Practices, Dealerships & Professional Services in Erie" />
+                For Practices, Dealerships &amp; Professional Services in Erie
               </span>
             </AnimateIn>
 
@@ -59,13 +58,13 @@ export default function Hero() {
 
             <AnimateIn delay={0.7} className="mt-6">
               <p className="max-w-lg text-lg leading-relaxed text-slate-300 md:text-xl">
-                <PersonalizedText field="subheadline" fallback="Enterprise-grade sites for practices, firms, and dealerships — at a fraction of the cost." />
+                Enterprise-grade sites for practices, firms, and dealerships — at a fraction of the cost.
               </p>
             </AnimateIn>
 
             <AnimateIn delay={0.9} className="mt-8">
               <MagneticButton href="#contact" variant="primary" size="lg">
-                <PersonalizedText field="cta" fallback="Get Free Audit" />
+                Get Free Audit
               </MagneticButton>
             </AnimateIn>
           </div>
