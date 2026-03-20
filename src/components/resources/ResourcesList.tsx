@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { BookOpen, FileText, BarChart3, ArrowRight } from 'lucide-react';
 import AnimateIn, { StaggerContainer, StaggerItem } from '@/components/ui/AnimateIn';
 import { cn } from '@/lib/utils';
@@ -109,7 +110,7 @@ export default function ResourcesList({ resources }: { resources: ResourceCard[]
       >
         {filtered.map((resource) => (
           <StaggerItem key={resource.slug}>
-            <a
+            <Link
               href={resource.path}
               className="group flex h-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
             >
@@ -136,7 +137,7 @@ export default function ResourcesList({ resources }: { resources: ResourceCard[]
                 Read more
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
               </div>
-            </a>
+            </Link>
           </StaggerItem>
         ))}
       </StaggerContainer>

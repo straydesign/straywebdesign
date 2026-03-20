@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 
 export interface BreadcrumbItem {
@@ -43,12 +44,12 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
                     {item.label}
                   </span>
                 ) : (
-                  <a
+                  <Link
                     href={item.href}
                     className="transition-colors hover:text-navy"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 )}
               </li>
             );

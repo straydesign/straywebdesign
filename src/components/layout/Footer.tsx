@@ -1,7 +1,9 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { SITE } from '@/lib/constants';
+import SoundToggle from '@/components/ui/SoundToggle';
 
 const SERVICE_LINKS = [
   { label: 'Website Design', href: '/services/website-design' },
@@ -39,9 +41,9 @@ export default function Footer() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="/" className="font-display text-xl font-bold text-navy">
+            <Link href="/" className="font-display text-xl font-bold text-navy">
               stray<span className="text-electric">web</span>design
-            </a>
+            </Link>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-500">
               Your business is serious. Your website should be too. We
               build sites you&apos;re proud to share — living, breathing
@@ -57,12 +59,12 @@ export default function Footer() {
             <ul className="space-y-2">
               {SERVICE_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-slate-500 transition-colors hover:text-navy"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -76,12 +78,12 @@ export default function Footer() {
             <ul className="space-y-2">
               {INDUSTRY_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-slate-500 transition-colors hover:text-navy"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -114,13 +116,13 @@ export default function Footer() {
               </li>
               <li className="pt-2">
                 {QUICK_LINKS.map((link) => (
-                  <a
+                  <Link
                     key={link.href}
                     href={link.href.startsWith('#') && pathname !== '/' ? `/${link.href}` : link.href}
                     className="mr-4 text-sm text-slate-500 transition-colors hover:text-navy"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </li>
             </ul>
@@ -131,9 +133,12 @@ export default function Footer() {
           <p className="text-sm text-slate-500">
             &copy; {currentYear} {SITE.name}. All rights reserved.
           </p>
-          <p className="text-sm text-slate-500">
-            Built with performance, accessibility, and AI in mind.
-          </p>
+          <div className="flex items-center gap-4">
+            <SoundToggle />
+            <p className="text-sm text-slate-500">
+              Built with performance, accessibility, and AI in mind.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

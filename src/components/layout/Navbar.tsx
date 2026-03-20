@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { NAV_LINKS, SITE } from '@/lib/constants';
@@ -92,9 +93,9 @@ function DesktopDropdown({
 
   if (!('children' in link) || !link.children) {
     return (
-      <a href={resolveHref(link.href, pathname)} className={linkClass}>
+      <Link href={resolveHref(link.href, pathname)} className={linkClass}>
         {link.label}
-      </a>
+      </Link>
     );
   }
 
@@ -151,14 +152,14 @@ function DesktopDropdown({
             className="absolute top-full left-0 z-50 mt-2 w-56 rounded-xl border border-slate-200/60 bg-white py-2 shadow-xl"
           >
             {link.children.map((child) => (
-              <a
+              <Link
                 key={child.href}
                 href={child.href}
                 role="menuitem"
                 className="block px-4 py-2 text-sm text-slate-600 transition-colors hover:bg-slate-50 hover:text-navy"
               >
                 {child.label}
-              </a>
+              </Link>
             ))}
           </motion.div>
         )}
@@ -216,7 +217,7 @@ export default function Navbar() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
           {/* Logo */}
-          <a
+          <Link
             href="/"
             className={cn(
               'flex items-center gap-2 font-display text-xl font-bold transition-colors duration-300',
@@ -237,7 +238,7 @@ export default function Navbar() {
             >
               stray<span className="text-electric">web</span>design
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Links */}
           <div className="hidden items-center gap-7 md:flex">
@@ -249,12 +250,12 @@ export default function Navbar() {
                 ghost={overDark}
               />
             ))}
-            <a
+            <Link
               href={resolveHref('#contact', pathname)}
               className="rounded-lg bg-electric px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-electric/90"
             >
               Free Audit
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Toggle */}
@@ -328,14 +329,14 @@ export default function Navbar() {
                               >
                                 <div className="mt-2 flex flex-col gap-2 pl-4">
                                   {link.children.map((child) => (
-                                    <a
+                                    <Link
                                       key={child.href}
                                       href={child.href}
                                       className="text-sm text-slate-500 transition-colors hover:text-navy"
                                       onClick={() => setIsOpen(false)}
                                     >
                                       {child.label}
-                                    </a>
+                                    </Link>
                                   ))}
                                 </div>
                               </motion.div>
@@ -343,24 +344,24 @@ export default function Navbar() {
                           </AnimatePresence>
                         </>
                       ) : (
-                        <a
+                        <Link
                           href={resolveHref(link.href, pathname)}
                           className="text-base font-medium text-slate-600 transition-colors hover:text-navy"
                           onClick={() => setIsOpen(false)}
                         >
                           {link.label}
-                        </a>
+                        </Link>
                       )}
                     </div>
                   );
                 })}
-                <a
+                <Link
                   href={resolveHref('#contact', pathname)}
                   className="mt-2 rounded-lg bg-electric px-5 py-3 text-center text-sm font-semibold text-white"
                   onClick={() => setIsOpen(false)}
                 >
                   Get Free Audit
-                </a>
+                </Link>
               </div>
             </motion.div>
           )}

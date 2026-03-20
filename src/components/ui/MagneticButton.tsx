@@ -1,8 +1,14 @@
 'use client';
 
-import { useRef, useState, type ReactNode, type CSSProperties } from 'react';
+import { useRef, useState, useCallback, type ReactNode, type CSSProperties } from 'react';
+import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { playClick } from '@/lib/sounds';
+
+function isInternal(href: string): boolean {
+  return href.startsWith('/') || href.startsWith('#');
+}
 
 interface MagneticButtonProps {
   children: ReactNode;
@@ -38,10 +44,29 @@ export default function MagneticButton({
     const centerY = rect.top + rect.height / 2;
     const distX = e.clientX - centerX;
     const distY = e.clientY - centerY;
-    setPosition({ x: distX * 0.2, y: distY * 0.2 });
+    const dist = Math.sqrt(distX * distX + distY * distY);
+    // Only activate magnetic pull within 80px of button center
+    if (dist > 80) {
+      setPosition({ x: 0, y: 0 });
+      return;
+    }
+    const strength = 0.15 * (1 - dist / 80);
+    setPosition({ x: distX * strength, y: distY * strength });
   };
 
   const handleMouseLeave = () => setPosition({ x: 0, y: 0 });
+
+  const handleClick = useCallback(() => {
+    playClick();
+    try {
+      if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
+        navigator.vibrate(10);
+      }
+    } catch {
+      // Vibration not available
+    }
+    onClick?.();
+  }, [onClick]);
 
   const variants = {
     primary:
@@ -74,14 +99,18 @@ export default function MagneticButton({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {href ? (
-        <a href={href} className={buttonClasses} style={style}>
+      {href && isInternal(href) ? (
+        <Link href={href} className={buttonClasses} style={style} onClick={handleClick}>
+          {children}
+        </Link>
+      ) : href ? (
+        <a href={href} className={buttonClasses} style={style} onClick={handleClick}>
           {children}
         </a>
       ) : (
         <button
           type={type}
-          onClick={onClick}
+          onClick={handleClick}
           className={buttonClasses}
           style={style}
           disabled={disabled}

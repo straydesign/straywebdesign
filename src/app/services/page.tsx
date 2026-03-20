@@ -5,8 +5,8 @@ import AnimateIn, { StaggerContainer, StaggerItem } from '@/components/ui/Animat
 import GrainOverlay from '@/components/ui/GrainOverlay';
 import MagneticButton from '@/components/ui/MagneticButton';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
+import ServiceCard from '@/components/ui/ServiceCard';
 import { SERVICES } from '@/data/services';
-import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Services — Stray Web Design',
@@ -50,21 +50,7 @@ export default function ServicesIndex() {
             <StaggerContainer className="grid gap-6 md:grid-cols-2 lg:grid-cols-3" staggerDelay={0.1}>
               {SERVICES.map((service) => (
                 <StaggerItem key={service.slug}>
-                  <a
-                    href={`/services/${service.slug}`}
-                    className="group flex h-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
-                  >
-                    <h2 className="font-display text-lg font-bold text-navy group-hover:text-electric transition-colors">
-                      {service.name}
-                    </h2>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">
-                      {service.description}
-                    </p>
-                    <div className="mt-4 flex items-center gap-1 text-sm font-medium text-electric">
-                      Learn more
-                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                    </div>
-                  </a>
+                  <ServiceCard service={service} />
                 </StaggerItem>
               ))}
             </StaggerContainer>

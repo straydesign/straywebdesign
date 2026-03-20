@@ -1,5 +1,6 @@
 import type { MDXComponents } from 'mdx/types';
 import type { ReactNode } from 'react';
+import Link from 'next/link';
 
 /** MDX component overrides — replicates the existing ArticleLayout styles exactly */
 export const mdxComponents: MDXComponents = {
@@ -15,16 +16,26 @@ export const mdxComponents: MDXComponents = {
     <p className="my-4 leading-relaxed text-slate-600">{children}</p>
   ),
 
-  a: ({ href, children }: { href?: string; children?: ReactNode }) => (
-    <a
-      href={href}
-      className="text-electric underline hover:text-electric/80"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {children}
-    </a>
-  ),
+  a: ({ href, children }: { href?: string; children?: ReactNode }) => {
+    const isInternal = href?.startsWith('/') || href?.startsWith('#');
+    if (isInternal && href) {
+      return (
+        <Link href={href} className="text-electric underline hover:text-electric/80">
+          {children}
+        </Link>
+      );
+    }
+    return (
+      <a
+        href={href}
+        className="text-electric underline hover:text-electric/80"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {children}
+      </a>
+    );
+  },
 
   strong: ({ children }: { children?: ReactNode }) => (
     <strong className="font-semibold text-navy">{children}</strong>

@@ -2,9 +2,7 @@
 
 import { Component, Suspense, useCallback, useRef, useState, type ReactNode } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Environment, Float } from '@react-three/drei';
 import { useReducedMotion } from 'framer-motion';
-import StrayLogo3D from './StrayLogo3D';
 import ShaderBackground from './ShaderBackground';
 
 class SceneErrorBoundary extends Component<
@@ -34,18 +32,7 @@ function SceneContent({
   mousePosition: { x: number; y: number };
 }) {
   return (
-    <>
-      <ShaderBackground mousePosition={mousePosition} />
-      <group position={[0, 0, 1]}>
-        <Float speed={1.5} rotationIntensity={0.3} floatIntensity={0.3}>
-          <StrayLogo3D />
-        </Float>
-      </group>
-      <ambientLight intensity={0.4} />
-      <directionalLight position={[5, 5, 5]} intensity={1.2} />
-      <directionalLight position={[-3, -2, 4]} intensity={0.4} color="#8B5CF6" />
-      <Environment preset="city" environmentIntensity={0.6} />
-    </>
+    <ShaderBackground mousePosition={mousePosition} />
   );
 }
 

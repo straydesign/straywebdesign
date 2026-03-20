@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import AnimateIn, { StaggerContainer, StaggerItem } from '@/components/ui/AnimateIn';
 import { cn } from '@/lib/utils';
@@ -77,7 +78,7 @@ export default function RelatedPosts({ posts }: { posts: RelatedResource[] }) {
         <StaggerContainer className="mt-6 grid gap-4 md:grid-cols-3" staggerDelay={0.1}>
           {posts.map((post) => (
             <StaggerItem key={post.slug}>
-              <a
+              <Link
                 href={post.path}
                 className="group flex h-full flex-col rounded-xl border border-slate-200/60 bg-white p-5 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
               >
@@ -99,7 +100,7 @@ export default function RelatedPosts({ posts }: { posts: RelatedResource[] }) {
                   Read more
                   <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
                 </div>
-              </a>
+              </Link>
             </StaggerItem>
           ))}
         </StaggerContainer>

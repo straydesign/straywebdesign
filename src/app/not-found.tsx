@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import StrayLogo from '@/components/ui/StrayLogo';
 import GrainOverlay from '@/components/ui/GrainOverlay';
 
@@ -7,9 +8,9 @@ export default function NotFound() {
       <GrainOverlay />
 
       <div className="relative z-10 mx-auto flex max-w-lg flex-col items-center text-center">
-        <a href="/" aria-label="Go to homepage">
+        <Link href="/" aria-label="Go to homepage">
           <StrayLogo color="#3B82F6" width={64} height={32} />
-        </a>
+        </Link>
 
         <p className="mt-8 font-display text-8xl font-bold text-electric/20 md:text-9xl">
           404
@@ -25,18 +26,18 @@ export default function NotFound() {
         </p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a
+          <Link
             href="/"
             className="inline-flex items-center justify-center rounded-lg bg-electric px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-electric/25 transition-all hover:bg-electric/90 hover:shadow-xl hover:shadow-electric/30"
           >
             Go home
-          </a>
-          <a
+          </Link>
+          <Link
             href="/services"
             className="inline-flex items-center justify-center rounded-lg border-2 border-slate-600 px-7 py-3.5 text-base font-semibold text-slate-300 transition-all hover:border-white hover:text-white"
           >
             View services
-          </a>
+          </Link>
         </div>
       </div>
     </div>

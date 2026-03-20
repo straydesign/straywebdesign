@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
 import { EASE_SMOOTH } from '@/lib/constants';
 import StrayLogo from '@/components/ui/StrayLogo';
@@ -41,9 +42,9 @@ export default function Error({ error, reset }: ErrorProps) {
 
       <div className="relative z-10 mx-auto flex max-w-lg flex-col items-center text-center">
         <motion.div {...fadeUp}>
-          <a href="/" aria-label="Go to homepage">
+          <Link href="/" aria-label="Go to homepage">
             <StrayLogo color="#3B82F6" width={64} height={32} />
-          </a>
+          </Link>
         </motion.div>
 
         <motion.p
@@ -79,12 +80,12 @@ export default function Error({ error, reset }: ErrorProps) {
           >
             Try again
           </button>
-          <a
+          <Link
             href="/"
             className="inline-flex items-center justify-center rounded-lg border-2 border-slate-600 px-7 py-3.5 text-base font-semibold text-slate-300 transition-all hover:border-white hover:text-white"
           >
             Go home
-          </a>
+          </Link>
         </motion.div>
       </div>
     </div>

@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Inter, Outfit } from 'next/font/google';
-import { SmoothScroll } from '@/components/layout/SmoothScroll';
-import { CustomCursor } from '@/components/ui/CustomCursor';
+import ClientShell, { ClientExtras } from '@/components/layout/ClientShell';
 import './globals.css';
 
 const inter = Inter({
@@ -204,9 +203,9 @@ export default function RootLayout({
       <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-9D1W0XLS34"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="gtag-init" strategy="afterInteractive">
+        <Script id="gtag-init" strategy="lazyOnload">
           {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-9D1W0XLS34');`}
         </Script>
         <link
@@ -238,10 +237,10 @@ export default function RootLayout({
         <a href="#main" className="skip-link">
           Skip to main content
         </a>
-        <SmoothScroll>
-          <CustomCursor />
+        <ClientShell>
           {children}
-        </SmoothScroll>
+        </ClientShell>
+        <ClientExtras />
       </body>
     </html>
   );
