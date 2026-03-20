@@ -100,18 +100,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  // ─── Programmatic pages (location/industry/service) ────────
-  const programmatic = LOCATIONS.flatMap((location) =>
-    INDUSTRIES.flatMap((industry) =>
-      SERVICES.map((service) => ({
-        url: `${BASE_URL}/locations/${location.slug}/${industry.slug}/${service.slug}`,
-        lastModified: CONTENT_BLITZ,
-        changeFrequency: 'monthly' as const,
-        priority: 0.5,
-      }))
-    )
-  );
-
   return [
     ...core,
     ...servicePages,
@@ -120,6 +108,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...tagPages,
     ...locationHubs,
     ...locationIndustry,
-    ...programmatic,
   ];
 }

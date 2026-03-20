@@ -2,13 +2,13 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import AnimateIn, { StaggerContainer, StaggerItem } from '@/components/ui/AnimateIn';
+import AnimateIn from '@/components/ui/AnimateIn';
 import GrainOverlay from '@/components/ui/GrainOverlay';
 import MagneticButton from '@/components/ui/MagneticButton';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import Accordion from '@/components/ui/Accordion';
 import { getAllLocationSlugs, getLocationBySlug } from '@/data/locations';
-import { INDUSTRIES, getAllIndustrySlugs, getIndustryBySlug } from '@/data/industries';
+import { getAllIndustrySlugs, getIndustryBySlug } from '@/data/industries';
 import { SERVICES } from '@/data/services';
 import { getIntersectionContent, getIntersectionFaqs } from '@/data/intersections';
 import { ArrowRight } from 'lucide-react';
@@ -71,6 +71,16 @@ export default async function LocationIndustryPage({
     },
     {
       '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://straywebdesign.co' },
+        { '@type': 'ListItem', position: 2, name: 'Locations', item: 'https://straywebdesign.co/locations' },
+        { '@type': 'ListItem', position: 3, name: location.name, item: `https://straywebdesign.co/locations/${locSlug}` },
+        { '@type': 'ListItem', position: 4, name: industry.shortName },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
       '@type': 'FAQPage',
       mainEntity: faqs.map((faq) => ({
         '@type': 'Question',
@@ -130,28 +140,44 @@ export default async function LocationIndustryPage({
               <h2 className="text-center font-display text-2xl font-bold text-navy md:text-3xl">
                 Our Services for {industry.name} in {location.name}
               </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-center text-slate-600">
+                Every service is built specifically for how {industry.name.toLowerCase()} attract and
+                retain {industry.patientOrClientTerm} in the {location.name} market.
+              </p>
             </AnimateIn>
-            <StaggerContainer className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3" staggerDelay={0.1}>
-              {SERVICES.map((service) => (
-                <StaggerItem key={service.slug}>
-                  <a
-                    href={`/locations/${locSlug}/${indSlug}/${service.slug}`}
-                    className="group flex h-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
-                  >
-                    <h3 className="font-display font-bold text-navy group-hover:text-electric transition-colors">
-                      {service.name}
-                    </h3>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
-                      {service.description}
-                    </p>
-                    <div className="mt-4 flex items-center gap-1 text-sm font-medium text-electric">
-                      Learn more
-                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+            <div className="mt-12 space-y-6">
+              {SERVICES.map((service, i) => (
+                <AnimateIn key={service.slug} delay={i * 0.08}>
+                  <div className="rounded-xl border border-slate-200/60 bg-white p-6 md:p-8">
+                    <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                      <div className="flex-1">
+                        <h3 className="font-display text-lg font-bold text-navy md:text-xl">
+                          {service.name}
+                        </h3>
+                        <p className="mt-2 leading-relaxed text-slate-600">
+                          {service.description}
+                        </p>
+                        <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+                          {service.features.slice(0, 4).map((feature) => (
+                            <li key={feature.title} className="flex items-start gap-2 text-sm text-slate-600">
+                              <span className="mt-0.5 text-electric">✓</span>
+                              <span>{feature.title}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <a
+                        href={`/services/${service.slug}`}
+                        className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-electric/10 px-4 py-2.5 text-sm font-semibold text-electric transition-colors hover:bg-electric/20"
+                      >
+                        Learn more
+                        <ArrowRight className="h-3.5 w-3.5" />
+                      </a>
                     </div>
-                  </a>
-                </StaggerItem>
+                  </div>
+                </AnimateIn>
               ))}
-            </StaggerContainer>
+            </div>
           </div>
         </section>
 
@@ -178,6 +204,27 @@ export default async function LocationIndustryPage({
                 </AnimateIn>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Location Context */}
+        <section className="py-16 md:py-20">
+          <div className="mx-auto max-w-3xl px-5 md:px-8">
+            <AnimateIn>
+              <h2 className="font-display text-2xl font-bold text-navy md:text-3xl">
+                Why {location.name} for Your {industry.shortName} Business
+              </h2>
+              <p className="mt-4 leading-relaxed text-slate-600">
+                {location.businessContext}
+              </p>
+              {location.nearbyAreas.length > 0 && (
+                <p className="mt-4 leading-relaxed text-slate-600">
+                  We also serve {industry.name.toLowerCase()} in{' '}
+                  {location.nearbyAreas.join(', ')} and the surrounding {location.name} area.
+                  Every site we build is optimized to rank across these communities.
+                </p>
+              )}
+            </AnimateIn>
           </div>
         </section>
 
