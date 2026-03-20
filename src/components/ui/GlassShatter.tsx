@@ -161,7 +161,7 @@ function pushShard(
     // Horizontal drift — away from impact
     driftX: (cx - ix) * (0.4 + rng() * 0.5),
     gradientAngle: rng() * 360,
-    fillOpacity: 0.06 + rng() * 0.1,
+    fillOpacity: 0.12 + rng() * 0.18,
   });
 }
 
@@ -207,15 +207,15 @@ export default function GlassShatter({ delay = 2.0 }: GlassShatterProps) {
             style={{
               left: '18%',
               top: '44%',
-              width: 24,
-              height: 24,
+              width: 40,
+              height: 40,
               background:
-                'radial-gradient(circle, rgba(255,255,255,0.7), rgba(200,220,255,0.3) 40%, transparent 70%)',
+                'radial-gradient(circle, rgba(255,255,255,0.9), rgba(200,220,255,0.5) 40%, transparent 70%)',
               borderRadius: '50%',
               transform: 'translate(-50%, -50%)',
             }}
             initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 4, opacity: [0, 1, 0] }}
+            animate={{ scale: 6, opacity: [0, 1, 0] }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
           />
@@ -239,8 +239,8 @@ export default function GlassShatter({ delay = 2.0 }: GlassShatterProps) {
                 y1={`${c.y1}%`}
                 x2={`${c.x2}%`}
                 y2={`${c.y2}%`}
-                stroke="rgba(255,255,255,0.7)"
-                strokeWidth="0.6"
+                stroke="rgba(255,255,255,0.9)"
+                strokeWidth="1"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
                 transition={{ duration: 0.15, delay: i * 0.008, ease: 'easeOut' }}
@@ -257,8 +257,8 @@ export default function GlassShatter({ delay = 2.0 }: GlassShatterProps) {
           className="absolute inset-0"
           style={{
             clipPath: `polygon(${shard.polygon})`,
-            background: `linear-gradient(${shard.gradientAngle}deg, rgba(255,255,255,${shard.fillOpacity}), rgba(180,210,255,${shard.fillOpacity * 0.3}))`,
-            filter: 'drop-shadow(0 0 1px rgba(255,255,255,0.15))',
+            background: `linear-gradient(${shard.gradientAngle}deg, rgba(255,255,255,${shard.fillOpacity}), rgba(180,210,255,${shard.fillOpacity * 0.4}), rgba(255,255,255,${shard.fillOpacity * 0.6}))`,
+            filter: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.5)) drop-shadow(0 0 3px rgba(200,220,255,0.12))',
             willChange: phase === 'shattering' ? 'transform, opacity' : 'auto',
           }}
           initial={{ opacity: 0, y: 0, x: 0, rotate: 0 }}
@@ -268,10 +268,10 @@ export default function GlassShatter({ delay = 2.0 }: GlassShatterProps) {
                   y: `${shard.fallY}vh`,
                   x: shard.driftX,
                   rotate: shard.rotation,
-                  opacity: [shard.fillOpacity * 2.5, shard.fillOpacity * 2, 0],
+                  opacity: [1, 0.7, 0],
                 }
               : phase === 'intact' || phase === 'cracking'
-                ? { opacity: shard.fillOpacity * 2.5 }
+                ? { opacity: 1 }
                 : { opacity: 0 }
           }
           transition={
