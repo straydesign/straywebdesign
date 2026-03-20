@@ -71,6 +71,12 @@ export const FOUNDATION_SERVICES = [
       'Core Web Vitals passing all metrics',
       'Semantic HTML for SEO & screen readers',
     ],
+    process: [
+      { step: 1, title: 'Site Audit', description: 'We Lighthouse your current site and your top competitors so you see exactly where you stand.' },
+      { step: 2, title: 'Custom Build', description: 'Hand-coded from scratch — zero plugins, zero page builders, optimized at every layer.' },
+      { step: 3, title: 'Edge Deploy', description: 'Your site ships to 300+ global CDN locations for sub-1-second loads everywhere.' },
+      { step: 4, title: 'Ongoing Monitoring', description: 'Monthly Core Web Vitals tracking and performance reports so scores never slip.' },
+    ],
   },
   {
     title: 'AI & Search Optimized',
@@ -82,6 +88,12 @@ export const FOUNDATION_SERVICES = [
       'FAQ schema for AI-generated answers',
       'GEO (Generative Engine Optimization)',
       'Full meta, Open Graph & canonical setup',
+    ],
+    process: [
+      { step: 1, title: 'Content Audit', description: 'Map your existing content and identify gaps AI assistants and search engines penalize.' },
+      { step: 2, title: 'Schema Markup', description: 'Add JSON-LD, FAQ, and LocalBusiness structured data so machines can read you.' },
+      { step: 3, title: 'AI Optimization', description: 'llms.txt, conversational content structure, and citation-ready formatting for AI answers.' },
+      { step: 4, title: 'Track & Iterate', description: 'Monitor AI citations, search rankings, and click-through rates monthly.' },
     ],
   },
 ] as const;
@@ -97,6 +109,12 @@ export const ADDON_SERVICES = [
       'Lead qualification & routing',
       'Natural, on-brand conversations',
     ],
+    process: [
+      { step: 1, title: 'Discovery', description: 'We learn your services, tone, FAQs, and booking rules.' },
+      { step: 2, title: 'AI Training', description: 'The receptionist is trained on your specific business knowledge.' },
+      { step: 3, title: 'Integration', description: 'Connect to your phone system, calendar, and CRM.' },
+      { step: 4, title: 'Go Live', description: '24/7 coverage with continuous learning from real calls.' },
+    ],
   },
   {
     title: 'Multi-Channel AI Agents',
@@ -107,6 +125,12 @@ export const ADDON_SERVICES = [
       'Consistent responses across channels',
       'After-hours & weekend coverage',
       'Seamless handoff to your team',
+    ],
+    process: [
+      { step: 1, title: 'Knowledge Base', description: 'Build a unified brain from your FAQs, services, and policies.' },
+      { step: 2, title: 'Channel Setup', description: 'Deploy the same AI across phone, SMS, and web chat.' },
+      { step: 3, title: 'Conversation Testing', description: 'Simulate real conversations across every channel.' },
+      { step: 4, title: 'Launch', description: 'Consistent AI responses everywhere, with team handoff rules.' },
     ],
   },
   {
@@ -119,6 +143,12 @@ export const ADDON_SERVICES = [
       'Confirmation & reminder sequences',
       'No-show follow-up automation',
     ],
+    process: [
+      { step: 1, title: 'Calendar Sync', description: 'Connect Google Calendar, Outlook, or your existing system.' },
+      { step: 2, title: 'CRM Integration', description: 'Wire up Salesforce, HubSpot, or GoHighLevel.' },
+      { step: 3, title: 'Workflow Design', description: 'Set confirmation, reminder, and no-show follow-up sequences.' },
+      { step: 4, title: 'Activate', description: 'Automated booking with zero double-bookings from day one.' },
+    ],
   },
   {
     title: 'Analytics & Personalization',
@@ -129,6 +159,12 @@ export const ADDON_SERVICES = [
       'Smart content personalization',
       'Conversion prediction & heatmaps',
       'Monthly performance reports',
+    ],
+    process: [
+      { step: 1, title: 'Tracking Setup', description: 'Install visitor tracking, heatmaps, and session replay.' },
+      { step: 2, title: 'Funnel Mapping', description: 'Define your conversion paths and identify drop-off points.' },
+      { step: 3, title: 'Personalization Rules', description: 'Configure dynamic content based on visitor behavior.' },
+      { step: 4, title: 'Monthly Reports', description: 'Actionable insights delivered to your inbox every month.' },
     ],
   },
 ] as const;
