@@ -91,7 +91,34 @@ export default function MagneticButton({
     className
   );
 
-  const content = (
+  // On touch/mobile: skip the motion wrapper entirely — magnetic pull has no meaning without hover
+  const isTouchDevice = typeof window !== 'undefined' && ('ontouchstart' in window || window.innerWidth < 768);
+
+  const innerElement = href && isInternal(href) ? (
+    <Link href={href} className={buttonClasses} style={style} onClick={handleClick}>
+      {children}
+    </Link>
+  ) : href ? (
+    <a href={href} className={buttonClasses} style={style} onClick={handleClick}>
+      {children}
+    </a>
+  ) : (
+    <button
+      type={type}
+      onClick={handleClick}
+      className={buttonClasses}
+      style={style}
+      disabled={disabled}
+    >
+      {children}
+    </button>
+  );
+
+  if (isTouchDevice) {
+    return <div>{innerElement}</div>;
+  }
+
+  return (
     <motion.div
       ref={ref}
       animate={{ x: position.x, y: position.y }}
@@ -99,27 +126,7 @@ export default function MagneticButton({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {href && isInternal(href) ? (
-        <Link href={href} className={buttonClasses} style={style} onClick={handleClick}>
-          {children}
-        </Link>
-      ) : href ? (
-        <a href={href} className={buttonClasses} style={style} onClick={handleClick}>
-          {children}
-        </a>
-      ) : (
-        <button
-          type={type}
-          onClick={handleClick}
-          className={buttonClasses}
-          style={style}
-          disabled={disabled}
-        >
-          {children}
-        </button>
-      )}
+      {innerElement}
     </motion.div>
   );
-
-  return content;
 }

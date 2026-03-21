@@ -1,6 +1,6 @@
 'use client';
 
-import { type ReactNode } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 
 const SmoothScroll = dynamic(
@@ -25,11 +25,28 @@ export default function ClientShell({ children }: { children: ReactNode }) {
   );
 }
 
+/**
+ * Deferred extras — ChatWidget loads after 4s idle to avoid TBT impact.
+ * CustomCursor is lightweight and loads immediately (desktop only via its own check).
+ */
 export function ClientExtras() {
+  const [showChat, setShowChat] = useState(false);
+
+  useEffect(() => {
+    // Defer chat widget — it's not critical for initial experience
+    const hasIdleCallback = typeof window.requestIdleCallback === 'function';
+    if (hasIdleCallback) {
+      const id = window.requestIdleCallback(() => setShowChat(true), { timeout: 5000 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const timer = setTimeout(() => setShowChat(true), 4000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <CustomCursor />
-      <ChatWidget />
+      {showChat && <ChatWidget />}
     </>
   );
 }

@@ -1,8 +1,17 @@
 'use client';
 
-import { type ReactNode } from 'react';
+import { type ReactNode, useMemo } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { EASE_SMOOTH } from '@/lib/constants';
+
+// Detect mobile once at module level to avoid blur filter perf hit
+let _isMobile: boolean | null = null;
+function isMobile(): boolean {
+  if (_isMobile === null) {
+    _isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  }
+  return _isMobile;
+}
 
 type Direction = 'up' | 'down' | 'left' | 'right';
 
@@ -45,6 +54,7 @@ export default function AnimateIn({
     );
 
   const offset = offsets[direction];
+  const mobile = isMobile();
   return (
     <motion.div
       className={className}
@@ -52,13 +62,13 @@ export default function AnimateIn({
       id={id}
       initial={{
         opacity: 0,
-        filter: 'blur(4px)',
+        ...(mobile ? {} : { filter: 'blur(4px)' }),
         x: offset.x * distance,
         y: offset.y * distance,
       }}
       whileInView={{
         opacity: 1,
-        filter: 'blur(0px)',
+        ...(mobile ? {} : { filter: 'blur(0px)' }),
         x: 0,
         y: 0,
       }}
@@ -114,19 +124,20 @@ export function StaggerItem({
   duration?: number;
 }) {
   const offset = offsets[direction];
+  const mobile = isMobile();
   return (
     <motion.div
       className={className}
       variants={{
         hidden: {
           opacity: 0,
-          filter: 'blur(4px)',
+          ...(mobile ? {} : { filter: 'blur(4px)' }),
           x: offset.x * distance,
           y: offset.y * distance,
         },
         visible: {
           opacity: 1,
-          filter: 'blur(0px)',
+          ...(mobile ? {} : { filter: 'blur(0px)' }),
           x: 0,
           y: 0,
           transition: { duration, ease: EASE_SMOOTH },

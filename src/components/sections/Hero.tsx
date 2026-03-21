@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import WordReveal from '@/components/ui/WordReveal';
@@ -27,6 +28,20 @@ export default function Hero() {
   const y = useTransform(scrollYProgress, [0, 0.3], [0, -60]);
   const opacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
 
+  // Defer GlassShatter — skip on mobile (kills TBT), defer on desktop
+  const [showShatter, setShowShatter] = useState(false);
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) return; // Skip entirely on mobile — 100+ animated elements destroy TBT
+    const hasIdleCallback = typeof window.requestIdleCallback === 'function';
+    if (hasIdleCallback) {
+      const id = window.requestIdleCallback(() => setShowShatter(true), { timeout: 3000 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const timer = setTimeout(() => setShowShatter(true), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section
       className="relative flex min-h-screen items-center overflow-hidden bg-navy"
@@ -39,8 +54,8 @@ export default function Hero() {
         <div className="absolute inset-0 animate-[drift_20s_ease-in-out_infinite] bg-[radial-gradient(ellipse_50%_40%_at_60%_30%,rgba(59,130,246,0.06),transparent)]" />
       </div>
 
-      {/* Glass shatter effect — triggers after word reveal completes */}
-      <GlassShatter delay={1.8} />
+      {/* Glass shatter effect — deferred, skipped on mobile */}
+      {showShatter && <GlassShatter delay={1.8} />}
 
       <motion.div
         className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-28 pb-16 md:px-8 md:pt-36 md:pb-24"

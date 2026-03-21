@@ -16,26 +16,43 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
 
     let cancelled = false;
 
-    import('lenis').then(({ default: Lenis }) => {
+    // Defer Lenis initialization to after page is interactive
+    const initLenis = () => {
       if (cancelled) return;
+      import('lenis').then(({ default: Lenis }) => {
+        if (cancelled) return;
 
-      const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        touchMultiplier: 2,
-      });
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          touchMultiplier: 2,
+        });
 
-      function raf(time: number) {
-        lenis.raf(time);
+        function raf(time: number) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
         requestAnimationFrame(raf);
-      }
-      requestAnimationFrame(raf);
 
-      destroyRef.current = () => lenis.destroy();
-    });
+        destroyRef.current = () => lenis.destroy();
+      });
+    };
 
+    // Use requestIdleCallback to defer — reduces TBT during initial load
+    const hasIdleCallback = typeof window.requestIdleCallback === 'function';
+    if (hasIdleCallback) {
+      const id = window.requestIdleCallback(initLenis, { timeout: 3000 });
+      return () => {
+        cancelled = true;
+        window.cancelIdleCallback(id);
+        destroyRef.current?.();
+        destroyRef.current = null;
+      };
+    }
+    const timer = setTimeout(initLenis, 1500);
     return () => {
       cancelled = true;
+      clearTimeout(timer);
       destroyRef.current?.();
       destroyRef.current = null;
     };

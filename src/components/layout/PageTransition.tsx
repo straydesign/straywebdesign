@@ -8,21 +8,15 @@ interface PageTransitionProps {
   children: ReactNode;
 }
 
+// Use only opacity + y on mobile (filter: blur triggers expensive repaints)
 const variants = {
   hidden: {
     opacity: 0,
-    y: 12,
-    filter: 'blur(4px)',
+    y: 8,
   },
   enter: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
-  },
-  exit: {
-    opacity: 0,
-    y: -8,
-    filter: 'blur(4px)',
   },
 };
 
@@ -41,7 +35,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
       initial="hidden"
       animate="enter"
       transition={{
-        duration: 0.35,
+        duration: 0.25,
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
     >
