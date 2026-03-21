@@ -45,18 +45,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // ─── Resources (blog posts, white papers, case studies) ────
-  const resourcePages = RESOURCES.map((resource) => ({
+  // ─── Resources (blog posts + white papers only) ─────────────
+  // Case studies excluded — hypothetical transformations, not real client work yet.
+  const resourcePages = RESOURCES.filter((r) => r.type !== 'case-study').map((resource) => ({
     url: `${BASE_URL}${getResourcePath(resource)}`,
     lastModified: resource.date,
     changeFrequency: 'monthly' as const,
-    priority: resource.type === 'case-study' ? 0.7 : 0.6,
+    priority: 0.6,
   }));
 
   // Excluded from sitemap (pages still live, just not pushed to Google):
   // - /industries, /industries/[slug] — 22 template-driven pages
   // - /locations, /locations/[slug] — 12 template-driven hubs
   // - /locations/[location]/[industry] — 264 programmatic pages
+  // - /resources/case-studies/[slug] — 8 hypothetical transformation stories
   // - /resources/tag/[tag] — ~42 thin aggregation pages (also noindexed)
   // Let Google discover these organically once the domain builds trust.
 
