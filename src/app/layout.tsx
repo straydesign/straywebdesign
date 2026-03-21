@@ -12,9 +12,10 @@ const inter = Inter({
 
 const outfit = Outfit({
   subsets: ['latin'],
-  display: 'swap',
+  display: 'optional',
   variable: '--font-family-outfit',
   weight: ['600', '700', '800'],
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
