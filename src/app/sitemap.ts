@@ -1,8 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { RESOURCES, getResourcePath } from '@/lib/content';
 import { SERVICES } from '@/data/services';
-import { INDUSTRIES } from '@/data/industries';
-import { LOCATIONS } from '@/data/locations';
 
 const BASE_URL = 'https://straywebdesign.co';
 
@@ -37,18 +35,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.9,
     },
-    {
-      url: `${BASE_URL}/industries`,
-      lastModified: CONTENT_BLITZ,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/locations`,
-      lastModified: CONTENT_BLITZ,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
   ];
 
   // ─── Service pages ─────────────────────────────────────────
@@ -59,15 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // ─── Industry pages ────────────────────────────────────────
-  const industryPages = INDUSTRIES.map((industry) => ({
-    url: `${BASE_URL}/industries/${industry.slug}`,
-    lastModified: CONTENT_BLITZ,
-    changeFrequency: 'monthly' as const,
-    priority: 0.8,
-  }));
-
-  // ─── Resources + tags ──────────────────────────────────────
+  // ─── Resources (blog posts, white papers, case studies) ────
   const resourcePages = RESOURCES.map((resource) => ({
     url: `${BASE_URL}${getResourcePath(resource)}`,
     lastModified: resource.date,
@@ -75,23 +53,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: resource.type === 'case-study' ? 0.7 : 0.6,
   }));
 
-  // Tag pages excluded — thin aggregation pages, noindexed
-  // Location × industry pages excluded — 264 programmatic pages too many for a new domain.
-  // They stay live and crawlable but we don't push Google to index them yet.
+  // Excluded from sitemap (pages still live, just not pushed to Google):
+  // - /industries, /industries/[slug] — 22 template-driven pages
+  // - /locations, /locations/[slug] — 12 template-driven hubs
+  // - /locations/[location]/[industry] — 264 programmatic pages
+  // - /resources/tag/[tag] — ~42 thin aggregation pages (also noindexed)
+  // Let Google discover these organically once the domain builds trust.
 
-  // ─── Location hubs ─────────────────────────────────────────
-  const locationHubs = LOCATIONS.map((location) => ({
-    url: `${BASE_URL}/locations/${location.slug}`,
-    lastModified: CONTENT_BLITZ,
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }));
-
-  return [
-    ...core,
-    ...servicePages,
-    ...industryPages,
-    ...resourcePages,
-    ...locationHubs,
-  ];
+  return [...core, ...servicePages, ...resourcePages];
 }
