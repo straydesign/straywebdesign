@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { RESOURCES, getResourcePath, getAllTags } from '@/lib/content';
+import { RESOURCES, getResourcePath } from '@/lib/content';
 import { SERVICES } from '@/data/services';
 import { INDUSTRIES } from '@/data/industries';
 import { LOCATIONS } from '@/data/locations';
@@ -75,12 +75,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: resource.type === 'case-study' ? 0.7 : 0.6,
   }));
 
-  const tagPages = getAllTags().map((tag) => ({
-    url: `${BASE_URL}/resources/tag/${encodeURIComponent(tag)}`,
-    lastModified: CONTENT_BLITZ,
-    changeFrequency: 'weekly' as const,
-    priority: 0.5,
-  }));
+  // Tag pages excluded — thin aggregation pages, noindexed
+  // Location × industry pages excluded — 264 programmatic pages too many for a new domain.
+  // They stay live and crawlable but we don't push Google to index them yet.
 
   // ─── Location hubs ─────────────────────────────────────────
   const locationHubs = LOCATIONS.map((location) => ({
@@ -90,23 +87,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  // ─── Location + industry pages ─────────────────────────────
-  const locationIndustry = LOCATIONS.flatMap((location) =>
-    INDUSTRIES.map((industry) => ({
-      url: `${BASE_URL}/locations/${location.slug}/${industry.slug}`,
-      lastModified: CONTENT_BLITZ,
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    }))
-  );
-
   return [
     ...core,
     ...servicePages,
     ...industryPages,
     ...resourcePages,
-    ...tagPages,
     ...locationHubs,
-    ...locationIndustry,
   ];
 }

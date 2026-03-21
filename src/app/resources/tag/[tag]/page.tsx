@@ -25,6 +25,7 @@ export async function generateMetadata({
     title: `${tag} Resources — Stray Web Design`,
     description: `Browse our ${tag.toLowerCase()} resources: blog posts, white papers, and case studies.`,
     alternates: { canonical: `/resources/tag/${encodeURIComponent(tag)}` },
+    robots: { index: false, follow: true },
   };
 }
 
