@@ -63,7 +63,7 @@ function HeroInner() {
         <div>
           {/* Paragraph — render immediately visible for LCP */}
           <p className="max-w-lg text-lg leading-relaxed text-slate-300 md:text-xl">
-            Sub-1-second load times. Perfect Lighthouse scores. AI-ready from day one — at a fraction of agency cost.
+            Sub-1-second load times. 90+ performance scores. AI-ready from day one — at a fraction of agency cost.
           </p>
 
           <AnimateIn delay={0.3} className="mt-8">
