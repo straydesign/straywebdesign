@@ -14,6 +14,16 @@ const variants = {
   enter: { opacity: 1, y: 0 },
 };
 
+/**
+ * Module-level flag: tracks whether the app has completed its first render.
+ * Persists across component remounts (template.tsx remounts on every nav).
+ *
+ * CRITICAL for LCP: On the FIRST render (SSR + initial hydration), content must
+ * be visible immediately — no opacity:0 initial state. The page transition
+ * animation only fires on SUBSEQUENT route navigations (when pathname changes).
+ */
+let hasHydrated = false;
+
 export default function PageTransition({ children }: PageTransitionProps) {
   const pathname = usePathname();
 
@@ -21,21 +31,22 @@ export default function PageTransition({ children }: PageTransitionProps) {
     return <>{children}</>;
   }
 
-  // Mobile: CSS page transition (no framer-motion execution)
+  // Mobile: skip page transition entirely — no framer-motion needed
   if (isMobile()) {
-    return (
-      <div key={pathname} className="css-page-transition">
-        {children}
-      </div>
-    );
+    return <div key={pathname}>{children}</div>;
   }
 
-  // Desktop: framer-motion
+  // First render: skip entrance animation to avoid LCP delay.
+  // initial={false} tells framer-motion to start in the "enter" state (opacity:1).
+  // Subsequent navigations: play the entrance animation normally.
+  const skipInitial = !hasHydrated;
+  hasHydrated = true;
+
   return (
     <motion.div
       key={pathname}
       variants={variants}
-      initial="hidden"
+      initial={skipInitial ? false : 'hidden'}
       animate="enter"
       transition={{
         duration: 0.25,
