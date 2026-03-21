@@ -19,7 +19,7 @@ const LIGHTHOUSE_COMPARISONS = [
   },
   {
     label: 'After Stray Web Design',
-    scores: { performance: 96, accessibility: 100, bestPractices: 100, seo: 100 },
+    scores: { performance: 95, accessibility: 96, bestPractices: 96, seo: 100 },
   },
 ];
 
