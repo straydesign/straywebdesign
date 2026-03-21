@@ -1,6 +1,6 @@
 'use client';
 
-import { type ReactNode, useMemo } from 'react';
+import { type ReactNode } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { EASE_SMOOTH } from '@/lib/constants';
 
