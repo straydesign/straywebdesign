@@ -1,17 +1,10 @@
 'use client';
 
-import { type ReactNode } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { type ReactNode, type CSSProperties } from 'react';
+import { motion } from 'framer-motion';
 import { EASE_SMOOTH } from '@/lib/constants';
-
-// Detect mobile once at module level to avoid blur filter perf hit
-let _isMobile: boolean | null = null;
-function isMobile(): boolean {
-  if (_isMobile === null) {
-    _isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  }
-  return _isMobile;
-}
+import { isMobile, prefersReducedMotion } from '@/lib/mobile';
+import { useAnimateInView } from '@/lib/use-animate-in-view';
 
 type Direction = 'up' | 'down' | 'left' | 'right';
 
@@ -21,7 +14,7 @@ interface AnimateInProps {
   delay?: number;
   duration?: number;
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
   distance?: number;
   once?: boolean;
   id?: string;
@@ -32,6 +25,13 @@ const offsets: Record<Direction, { x: number; y: number }> = {
   down: { x: 0, y: -1 },
   left: { x: 1, y: 0 },
   right: { x: -1, y: 0 },
+};
+
+const DIRECTION_KEYFRAMES: Record<Direction, string> = {
+  up: 'css-fade-up',
+  down: 'css-fade-down',
+  left: 'css-fade-left',
+  right: 'css-fade-right',
 };
 
 export default function AnimateIn({
@@ -45,16 +45,40 @@ export default function AnimateIn({
   once = true,
   id,
 }: AnimateInProps) {
-  const prefersReducedMotion = useReducedMotion();
-  if (prefersReducedMotion)
+  const mobile = isMobile();
+  const [mobileRef, inView] = useAnimateInView({ once: true, margin: '-50px' });
+
+  // Reduced motion: render static
+  if (prefersReducedMotion()) {
     return (
       <div className={className} style={style} id={id}>
         {children}
       </div>
     );
+  }
 
+  // Mobile: CSS animation + IntersectionObserver
+  if (mobile) {
+    const animationStyle: CSSProperties = inView
+      ? {
+          animation: `${DIRECTION_KEYFRAMES[direction]} ${duration}s cubic-bezier(0.25, 0.1, 0.25, 1) ${delay}s both`,
+        }
+      : { opacity: 0 };
+
+    return (
+      <div
+        ref={mobileRef}
+        className={className}
+        style={{ ...style, ...animationStyle }}
+        id={id}
+      >
+        {children}
+      </div>
+    );
+  }
+
+  // Desktop: framer-motion with blur filter
   const offset = offsets[direction];
-  const mobile = isMobile();
   return (
     <motion.div
       className={className}
@@ -62,13 +86,13 @@ export default function AnimateIn({
       id={id}
       initial={{
         opacity: 0,
-        ...(mobile ? {} : { filter: 'blur(4px)' }),
+        filter: 'blur(4px)',
         x: offset.x * distance,
         y: offset.y * distance,
       }}
       whileInView={{
         opacity: 1,
-        ...(mobile ? {} : { filter: 'blur(0px)' }),
+        filter: 'blur(0px)',
         x: 0,
         y: 0,
       }}
@@ -91,8 +115,9 @@ export function StaggerContainer({
   staggerDelay?: number;
   once?: boolean;
 }) {
-  const prefersReducedMotion = useReducedMotion();
-  if (prefersReducedMotion) return <div className={className}>{children}</div>;
+  if (prefersReducedMotion() || isMobile()) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div
@@ -123,21 +148,37 @@ export function StaggerItem({
   distance?: number;
   duration?: number;
 }) {
-  const offset = offsets[direction];
   const mobile = isMobile();
+  const [mobileRef, inView] = useAnimateInView({ once: true, margin: '-50px' });
+
+  if (mobile) {
+    const animationStyle: CSSProperties = inView
+      ? {
+          animation: `${DIRECTION_KEYFRAMES[direction]} ${duration}s cubic-bezier(0.25, 0.1, 0.25, 1) both`,
+        }
+      : { opacity: 0 };
+
+    return (
+      <div ref={mobileRef} className={className} style={animationStyle}>
+        {children}
+      </div>
+    );
+  }
+
+  const offset = offsets[direction];
   return (
     <motion.div
       className={className}
       variants={{
         hidden: {
           opacity: 0,
-          ...(mobile ? {} : { filter: 'blur(4px)' }),
+          filter: 'blur(4px)',
           x: offset.x * distance,
           y: offset.y * distance,
         },
         visible: {
           opacity: 1,
-          ...(mobile ? {} : { filter: 'blur(0px)' }),
+          filter: 'blur(0px)',
           x: 0,
           y: 0,
           transition: { duration, ease: EASE_SMOOTH },

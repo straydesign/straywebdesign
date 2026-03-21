@@ -5,8 +5,8 @@ import {
   useInView,
   useMotionValue,
   useSpring,
-  useReducedMotion,
 } from 'framer-motion';
+import { isMobile, prefersReducedMotion } from '@/lib/mobile';
 
 interface CountUpProps {
   value: number;
@@ -17,7 +17,66 @@ interface CountUpProps {
   className?: string;
 }
 
-export default function CountUp({
+/** Mobile: vanilla JS count-up with IntersectionObserver */
+function MobileCountUp({
+  value,
+  suffix = '',
+  prefix = '',
+  decimals = 0,
+  duration = 2,
+  className = '',
+}: CountUpProps) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [display, setDisplay] = useState('0');
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || hasAnimated.current) return;
+        hasAnimated.current = true;
+        observer.disconnect();
+
+        if (prefersReducedMotion()) {
+          setDisplay(value.toFixed(decimals));
+          return;
+        }
+
+        const start = performance.now();
+        const durationMs = duration * 1000;
+
+        function animate(now: number) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / durationMs, 1);
+          // Ease-out cubic
+          const eased = 1 - Math.pow(1 - progress, 3);
+          setDisplay((eased * value).toFixed(decimals));
+          if (progress < 1) requestAnimationFrame(animate);
+        }
+
+        requestAnimationFrame(animate);
+      },
+      { rootMargin: '-50px' }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [value, decimals, duration]);
+
+  return (
+    <span ref={ref} className={className}>
+      {prefix}
+      {display}
+      {suffix}
+    </span>
+  );
+}
+
+/** Desktop: framer-motion spring-based count-up */
+function DesktopCountUp({
   value,
   suffix = '',
   prefix = '',
@@ -27,7 +86,7 @@ export default function CountUp({
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-50px' });
-  const prefersReducedMotion = useReducedMotion();
+  const reduced = prefersReducedMotion();
   const [display, setDisplay] = useState('0');
 
   const motionValue = useMotionValue(0);
@@ -39,12 +98,12 @@ export default function CountUp({
 
   useEffect(() => {
     if (!isInView) return;
-    if (prefersReducedMotion) {
+    if (reduced) {
       setDisplay(value.toFixed(decimals));
       return;
     }
     motionValue.set(value);
-  }, [isInView, value, motionValue, prefersReducedMotion, decimals]);
+  }, [isInView, value, motionValue, reduced, decimals]);
 
   useEffect(() => {
     const unsubscribe = springValue.on('change', (latest) => {
@@ -60,4 +119,11 @@ export default function CountUp({
       {suffix}
     </span>
   );
+}
+
+export default function CountUp(props: CountUpProps) {
+  if (isMobile()) {
+    return <MobileCountUp {...props} />;
+  }
+  return <DesktopCountUp {...props} />;
 }

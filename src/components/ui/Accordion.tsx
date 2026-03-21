@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { isMobile } from '@/lib/mobile';
 
 interface AccordionItem {
   question: string;
@@ -17,6 +18,7 @@ interface AccordionProps {
 
 export default function Accordion({ items, className = '' }: AccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const mobile = isMobile();
 
   return (
     <div className={cn('space-y-3', className)}>
@@ -38,33 +40,57 @@ export default function Accordion({ items, className = '' }: AccordionProps) {
                 <span className="font-display text-base md:text-lg">
                   {item.question}
                 </span>
-                <motion.span
-                  animate={{ rotate: isOpen ? 180 : 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="shrink-0"
-                  aria-hidden="true"
-                >
-                  <ChevronDown className="h-5 w-5 text-medium-gray" />
-                </motion.span>
+                {mobile ? (
+                  <span
+                    className={cn('shrink-0 css-chevron-rotate', isOpen && 'open')}
+                    aria-hidden="true"
+                  >
+                    <ChevronDown className="h-5 w-5 text-medium-gray" />
+                  </span>
+                ) : (
+                  <motion.span
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="shrink-0"
+                    aria-hidden="true"
+                  >
+                    <ChevronDown className="h-5 w-5 text-medium-gray" />
+                  </motion.span>
+                )}
               </button>
             </h3>
-            <AnimatePresence>
-              {isOpen && (
-                <motion.div
-                  id={`accordion-panel-${index}`}
-                  role="region"
-                  aria-labelledby={`accordion-trigger-${index}`}
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                >
+            {mobile ? (
+              <div
+                id={`accordion-panel-${index}`}
+                role="region"
+                aria-labelledby={`accordion-trigger-${index}`}
+                className={cn('css-accordion-panel', isOpen && 'open')}
+              >
+                <div>
                   <div className="px-5 pb-5 leading-relaxed text-slate-600 md:px-6 md:pb-6">
                     {item.answer}
                   </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                </div>
+              </div>
+            ) : (
+              <AnimatePresence>
+                {isOpen && (
+                  <motion.div
+                    id={`accordion-panel-${index}`}
+                    role="region"
+                    aria-labelledby={`accordion-trigger-${index}`}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                  >
+                    <div className="px-5 pb-5 leading-relaxed text-slate-600 md:px-6 md:pb-6">
+                      {item.answer}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            )}
           </div>
         );
       })}

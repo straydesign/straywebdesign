@@ -168,6 +168,89 @@ main section[aria-label]:focus-visible {
   border-color: var(--electric);
 }
 
+/* ─── Mobile CSS Animations (replace framer-motion on mobile) ─── */
+
+/* Base: hidden state for all animated elements */
+.css-animate {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+.css-animate.css-in-view {
+  animation-fill-mode: both;
+}
+
+/* Directional entrance animations */
+.css-animate-up { transform: translateY(24px); }
+.css-animate-down { transform: translateY(-24px); }
+.css-animate-left { transform: translateX(24px); }
+.css-animate-right { transform: translateX(-24px); }
+
+@keyframes css-fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes css-fade-down {
+  from { opacity: 0; transform: translateY(-24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes css-fade-left {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes css-fade-right {
+  from { opacity: 0; transform: translateX(-24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes css-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Word reveal — each word fades in */
+@keyframes css-word-reveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.css-word-reveal-word {
+  opacity: 0;
+  display: inline-block;
+}
+.css-word-reveal-visible .css-word-reveal-word {
+  animation: css-word-reveal 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+}
+
+/* Page transition */
+@keyframes css-page-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.css-page-transition {
+  animation: css-page-enter 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Chevron rotation for accordions */
+.css-chevron-rotate {
+  transition: transform 0.2s ease;
+}
+.css-chevron-rotate.open {
+  transform: rotate(180deg);
+}
+
+/* Accordion panel expand/collapse */
+.css-accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.css-accordion-panel.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.css-accordion-panel > div {
+  overflow: hidden;
+}
+
 /* Section transition spacing */
 .section-padding {
   padding-top: 6rem;

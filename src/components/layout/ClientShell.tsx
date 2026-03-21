@@ -2,11 +2,7 @@
 
 import { type ReactNode, useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
-
-const SmoothScroll = dynamic(
-  () => import('@/components/layout/SmoothScroll').then((mod) => ({ default: mod.SmoothScroll })),
-  { ssr: false }
-);
+import { SmoothScroll } from '@/components/layout/SmoothScroll';
 
 const CustomCursor = dynamic(
   () => import('@/components/ui/CustomCursor').then((mod) => ({ default: mod.CustomCursor })),

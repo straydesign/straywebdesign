@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, useInView, useReducedMotion } from 'framer-motion';
+import { isMobile, prefersReducedMotion } from '@/lib/mobile';
 
 interface LighthouseGaugeProps {
   score: number;
@@ -25,9 +25,8 @@ export default function LighthouseGauge({
   delay = 0,
 }: LighthouseGaugeProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
-  const prefersReducedMotion = useReducedMotion();
   const [animatedScore, setAnimatedScore] = useState(0);
+  const hasAnimated = useRef(false);
 
   const strokeWidth = 8;
   const radius = (size - strokeWidth) / 2;
@@ -35,25 +34,40 @@ export default function LighthouseGauge({
   const color = getScoreColor(score);
 
   useEffect(() => {
-    if (!isInView) return;
-    if (prefersReducedMotion) {
-      setAnimatedScore(score);
-      return;
-    }
-    const start = performance.now();
-    const duration = 1500;
+    const el = ref.current;
+    if (!el) return;
 
-    function animate(now: number) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setAnimatedScore(Math.round(eased * score));
-      if (progress < 1) requestAnimationFrame(animate);
-    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || hasAnimated.current) return;
+        hasAnimated.current = true;
+        observer.disconnect();
 
-    const timeout = setTimeout(() => requestAnimationFrame(animate), delay * 1000);
-    return () => clearTimeout(timeout);
-  }, [isInView, score, delay, prefersReducedMotion]);
+        if (prefersReducedMotion()) {
+          setAnimatedScore(score);
+          return;
+        }
+
+        const start = performance.now();
+        const duration = 1500;
+
+        function animate(now: number) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          setAnimatedScore(Math.round(eased * score));
+          if (progress < 1) requestAnimationFrame(animate);
+        }
+
+        const timeout = setTimeout(() => requestAnimationFrame(animate), delay * 1000);
+        return () => clearTimeout(timeout);
+      },
+      { rootMargin: '-50px' }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [score, delay]);
 
   const offset = circumference - (animatedScore / 100) * circumference;
 
@@ -69,7 +83,7 @@ export default function LighthouseGauge({
             stroke="#e2e8f0"
             strokeWidth={strokeWidth}
           />
-          <motion.circle
+          <circle
             cx={size / 2}
             cy={size / 2}
             r={radius}
@@ -79,7 +93,7 @@ export default function LighthouseGauge({
             strokeLinecap="round"
             strokeDasharray={circumference}
             strokeDashoffset={offset}
-            style={{ transition: 'stroke 0.5s ease' }}
+            style={{ transition: 'stroke-dashoffset 0.1s ease, stroke 0.5s ease' }}
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">

@@ -2,9 +2,10 @@
 
 import { useRef, useState, useCallback, type ReactNode, type CSSProperties } from 'react';
 import Link from 'next/link';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { playClick } from '@/lib/sounds';
+import { isMobile, prefersReducedMotion } from '@/lib/mobile';
 
 function isInternal(href: string): boolean {
   return href.startsWith('/') || href.startsWith('#');
@@ -35,17 +36,17 @@ export default function MagneticButton({
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const prefersReducedMotion = useReducedMotion();
+  const mobile = isMobile();
+  const reduced = prefersReducedMotion();
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (prefersReducedMotion || !ref.current) return;
+    if (reduced || !ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
     const distX = e.clientX - centerX;
     const distY = e.clientY - centerY;
     const dist = Math.sqrt(distX * distX + distY * distY);
-    // Only activate magnetic pull within 80px of button center
     if (dist > 80) {
       setPosition({ x: 0, y: 0 });
       return;
@@ -91,9 +92,6 @@ export default function MagneticButton({
     className
   );
 
-  // On touch/mobile: skip the motion wrapper entirely — magnetic pull has no meaning without hover
-  const isTouchDevice = typeof window !== 'undefined' && ('ontouchstart' in window || window.innerWidth < 768);
-
   const innerElement = href && isInternal(href) ? (
     <Link href={href} className={buttonClasses} style={style} onClick={handleClick}>
       {children}
@@ -114,7 +112,8 @@ export default function MagneticButton({
     </button>
   );
 
-  if (isTouchDevice) {
+  // Mobile/touch: plain div wrapper (no motion.div overhead)
+  if (mobile) {
     return <div>{innerElement}</div>;
   }
 

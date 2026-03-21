@@ -1,7 +1,8 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { isMobile, prefersReducedMotion } from '@/lib/mobile';
 
 interface ParallaxWindowProps {
   imageUrl: string;
@@ -10,14 +11,14 @@ interface ParallaxWindowProps {
   overlayOpacity?: number;
 }
 
-export default function ParallaxWindow({
+/** Desktop version with scroll-linked parallax */
+function ParallaxWindowDesktop({
   imageUrl,
   alt,
   height = '60vh',
   overlayOpacity = 0.15,
 }: ParallaxWindowProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const prefersReducedMotion = useReducedMotion();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -37,11 +38,7 @@ export default function ParallaxWindow({
     >
       <motion.div
         className="absolute inset-0"
-        style={
-          prefersReducedMotion
-            ? undefined
-            : { y, scale }
-        }
+        style={{ y, scale }}
       >
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -53,11 +50,48 @@ export default function ParallaxWindow({
         />
       </motion.div>
 
-      {/* Subtle overlay for contrast with surrounding sections */}
       <div
         className="absolute inset-0 bg-navy"
         style={{ opacity: overlayOpacity }}
       />
     </div>
   );
+}
+
+/** Mobile/reduced-motion version: static background */
+function ParallaxWindowStatic({
+  imageUrl,
+  alt,
+  height = '60vh',
+  overlayOpacity = 0.15,
+}: ParallaxWindowProps) {
+  return (
+    <div
+      className="relative w-full overflow-hidden"
+      style={{ height }}
+      role="img"
+      aria-label={alt}
+    >
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(${imageUrl})`,
+            height: '100%',
+          }}
+        />
+      </div>
+      <div
+        className="absolute inset-0 bg-navy"
+        style={{ opacity: overlayOpacity }}
+      />
+    </div>
+  );
+}
+
+export default function ParallaxWindow(props: ParallaxWindowProps) {
+  if (isMobile() || prefersReducedMotion()) {
+    return <ParallaxWindowStatic {...props} />;
+  }
+  return <ParallaxWindowDesktop {...props} />;
 }

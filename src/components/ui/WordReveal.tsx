@@ -1,15 +1,9 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { EASE_SMOOTH } from '@/lib/constants';
-
-let _isMobile: boolean | null = null;
-function isMobile(): boolean {
-  if (_isMobile === null) {
-    _isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  }
-  return _isMobile;
-}
+import { isMobile, prefersReducedMotion } from '@/lib/mobile';
+import { useAnimateInView } from '@/lib/use-animate-in-view';
 
 interface WordRevealProps {
   text: string;
@@ -24,13 +18,40 @@ export default function WordReveal({
   delay = 0,
   stagger = 0.06,
 }: WordRevealProps) {
-  const prefersReducedMotion = useReducedMotion();
   const words = text.split(' ');
+  const mobile = isMobile();
+  const [mobileRef, inView] = useAnimateInView({ once: true, margin: '-50px' });
 
-  if (prefersReducedMotion) {
+  if (prefersReducedMotion()) {
     return <span className={className}>{text}</span>;
   }
 
+  // Mobile: CSS word-by-word reveal
+  if (mobile) {
+    return (
+      <span
+        ref={mobileRef}
+        className={`${className} ${inView ? 'css-word-reveal-visible' : ''}`}
+      >
+        {words.map((word, i) => (
+          <span
+            key={`${word}-${i}`}
+            className="css-word-reveal-word"
+            style={
+              inView
+                ? { animationDelay: `${delay + i * stagger}s` }
+                : undefined
+            }
+          >
+            {word}
+            {i < words.length - 1 && '\u00A0'}
+          </span>
+        ))}
+      </span>
+    );
+  }
+
+  // Desktop: framer-motion with blur
   return (
     <motion.span
       className={className}
@@ -49,12 +70,12 @@ export default function WordReveal({
           variants={{
             hidden: {
               opacity: 0,
-              ...(isMobile() ? {} : { filter: 'blur(8px)' }),
+              filter: 'blur(8px)',
               y: 10,
             },
             visible: {
               opacity: 1,
-              ...(isMobile() ? {} : { filter: 'blur(0px)' }),
+              filter: 'blur(0px)',
               y: 0,
               transition: { duration: 0.4, ease: EASE_SMOOTH },
             },

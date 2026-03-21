@@ -1,12 +1,13 @@
 'use client';
 
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { NAV_LINKS, SITE } from '@/lib/constants';
 import { cn } from '@/lib/utils';
+import { isMobile } from '@/lib/mobile';
 import StrayLogo from '@/components/ui/StrayLogo';
 
 /* ─── Helpers ─────────────────────────────────────────────── */
@@ -18,12 +19,6 @@ function resolveHref(href: string, pathname: string): string {
   return href;
 }
 
-/**
- * Auto-detect whether the navbar is currently over a dark section.
- * Uses IntersectionObserver scoped to the top ~70px of the viewport
- * and queries for elements with dark Tailwind bg classes.
- * Re-runs whenever the route changes so new pages are picked up.
- */
 function useOverDark(pathname: string) {
   const [overDark, setOverDark] = useState(true);
   const activeDarkRef = useRef(new Set<Element>());
@@ -32,12 +27,10 @@ function useOverDark(pathname: string) {
     const activeDark = activeDarkRef.current;
     activeDark.clear();
 
-    // Auto-find dark sections by Tailwind bg classes or explicit data attr
     const darkSections = document.querySelectorAll(
       '[data-navbar-dark], .bg-navy, .bg-slate-900, .bg-slate-950, .bg-gray-900'
     );
 
-    // Filter out elements inside the nav itself
     const targets = Array.from(darkSections).filter(
       (el) => !el.closest('nav')
     );
@@ -47,7 +40,6 @@ function useOverDark(pathname: string) {
       return;
     }
 
-    // Observe only the top strip of the viewport where the navbar sits
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -67,6 +59,47 @@ function useOverDark(pathname: string) {
   }, [pathname]);
 
   return overDark;
+}
+
+/* ─── Scroll Progress (desktop only) ─── */
+
+function DesktopScrollProgress() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+  return (
+    <motion.div
+      className="fixed top-0 right-0 left-0 z-[60] h-[3px] origin-left bg-electric"
+      style={{ scaleX }}
+      role="progressbar"
+      aria-label="Page scroll progress"
+      aria-hidden="true"
+    />
+  );
+}
+
+function MobileScrollProgress() {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    function handleScroll() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(docHeight > 0 ? scrollTop / docHeight : 0);
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div
+      className="fixed top-0 right-0 left-0 z-[60] h-[3px] origin-left bg-electric"
+      style={{ transform: `scaleX(${progress})` }}
+      role="progressbar"
+      aria-label="Page scroll progress"
+      aria-hidden="true"
+    />
+  );
 }
 
 /* ─── Desktop Dropdown ────────────────────────────────────── */
@@ -175,8 +208,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [expandedMobile, setExpandedMobile] = useState<string | null>(null);
-  const { scrollYProgress } = useScroll();
-  const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const mobile = isMobile();
 
   const overDark = useOverDark(pathname);
 
@@ -200,13 +232,7 @@ export default function Navbar() {
   return (
     <>
       {/* Scroll Progress Bar */}
-      <motion.div
-        className="fixed top-0 right-0 left-0 z-[60] h-[3px] origin-left bg-electric"
-        style={{ scaleX }}
-        role="progressbar"
-        aria-label="Page scroll progress"
-        aria-hidden="true"
-      />
+      {mobile ? <MobileScrollProgress /> : <DesktopScrollProgress />}
 
       <nav
         className={cn(
@@ -283,89 +309,161 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.2 }}
-              className="absolute inset-x-0 top-full max-h-[80vh] overflow-y-auto bg-white/95 px-5 py-6 shadow-xl backdrop-blur-xl md:hidden"
-            >
-              <div className="flex flex-col gap-3">
-                {NAV_LINKS.map((link) => {
-                  const hasChildren = 'children' in link && link.children;
-                  const isExpanded = expandedMobile === link.label;
+        {/* Mobile Menu — CSS transitions on mobile, framer-motion on desktop */}
+        {mobile ? (
+          <div
+            className={cn(
+              'absolute inset-x-0 top-full max-h-[80vh] overflow-y-auto bg-white/95 px-5 shadow-xl backdrop-blur-xl md:hidden transition-all duration-200',
+              isOpen ? 'py-6 opacity-100 translate-y-0' : 'py-0 opacity-0 -translate-y-4 pointer-events-none h-0 overflow-hidden'
+            )}
+          >
+            <div className="flex flex-col gap-3">
+              {NAV_LINKS.map((link) => {
+                const hasChildren = 'children' in link && link.children;
+                const isExpanded = expandedMobile === link.label;
 
-                  return (
-                    <div key={link.href}>
-                      {hasChildren ? (
-                        <>
-                          <button
-                            className="flex w-full items-center justify-between text-base font-medium text-slate-600 transition-colors hover:text-navy"
-                            onClick={() =>
-                              setExpandedMobile(isExpanded ? null : link.label)
-                            }
-                            aria-expanded={isExpanded}
-                          >
-                            {link.label}
-                            <ChevronDown
-                              className={cn(
-                                'h-4 w-4 transition-transform',
-                                isExpanded && 'rotate-180'
-                              )}
-                              aria-hidden="true"
-                            />
-                          </button>
-                          <AnimatePresence>
-                            {isExpanded && (
-                              <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: 'auto', opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="overflow-hidden"
-                              >
-                                <div className="mt-2 flex flex-col gap-2 pl-4">
-                                  {link.children.map((child) => (
-                                    <Link
-                                      key={child.href}
-                                      href={child.href}
-                                      className="text-sm text-slate-500 transition-colors hover:text-navy"
-                                      onClick={() => setIsOpen(false)}
-                                    >
-                                      {child.label}
-                                    </Link>
-                                  ))}
-                                </div>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </>
-                      ) : (
-                        <Link
-                          href={resolveHref(link.href, pathname)}
-                          className="text-base font-medium text-slate-600 transition-colors hover:text-navy"
-                          onClick={() => setIsOpen(false)}
+                return (
+                  <div key={link.href}>
+                    {hasChildren ? (
+                      <>
+                        <button
+                          className="flex w-full items-center justify-between text-base font-medium text-slate-600 transition-colors hover:text-navy"
+                          onClick={() =>
+                            setExpandedMobile(isExpanded ? null : link.label)
+                          }
+                          aria-expanded={isExpanded}
                         >
                           {link.label}
-                        </Link>
-                      )}
-                    </div>
-                  );
-                })}
-                <Link
-                  href={resolveHref('#contact', pathname)}
-                  className="mt-2 rounded-lg bg-electric px-5 py-3 text-center text-sm font-semibold text-white"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Get Free Audit
-                </Link>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                          <ChevronDown
+                            className={cn(
+                              'h-4 w-4 css-chevron-rotate',
+                              isExpanded && 'open'
+                            )}
+                            aria-hidden="true"
+                          />
+                        </button>
+                        <div className={cn('css-accordion-panel', isExpanded && 'open')}>
+                          <div>
+                            <div className="mt-2 flex flex-col gap-2 pl-4">
+                              {link.children.map((child) => (
+                                <Link
+                                  key={child.href}
+                                  href={child.href}
+                                  className="text-sm text-slate-500 transition-colors hover:text-navy"
+                                  onClick={() => setIsOpen(false)}
+                                >
+                                  {child.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <Link
+                        href={resolveHref(link.href, pathname)}
+                        className="text-base font-medium text-slate-600 transition-colors hover:text-navy"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    )}
+                  </div>
+                );
+              })}
+              <Link
+                href={resolveHref('#contact', pathname)}
+                className="mt-2 rounded-lg bg-electric px-5 py-3 text-center text-sm font-semibold text-white"
+                onClick={() => setIsOpen(false)}
+              >
+                Get Free Audit
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.2 }}
+                className="absolute inset-x-0 top-full max-h-[80vh] overflow-y-auto bg-white/95 px-5 py-6 shadow-xl backdrop-blur-xl md:hidden"
+              >
+                <div className="flex flex-col gap-3">
+                  {NAV_LINKS.map((link) => {
+                    const hasChildren = 'children' in link && link.children;
+                    const isExpanded = expandedMobile === link.label;
+
+                    return (
+                      <div key={link.href}>
+                        {hasChildren ? (
+                          <>
+                            <button
+                              className="flex w-full items-center justify-between text-base font-medium text-slate-600 transition-colors hover:text-navy"
+                              onClick={() =>
+                                setExpandedMobile(isExpanded ? null : link.label)
+                              }
+                              aria-expanded={isExpanded}
+                            >
+                              {link.label}
+                              <ChevronDown
+                                className={cn(
+                                  'h-4 w-4 transition-transform',
+                                  isExpanded && 'rotate-180'
+                                )}
+                                aria-hidden="true"
+                              />
+                            </button>
+                            <AnimatePresence>
+                              {isExpanded && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: 'auto', opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="overflow-hidden"
+                                >
+                                  <div className="mt-2 flex flex-col gap-2 pl-4">
+                                    {link.children.map((child) => (
+                                      <Link
+                                        key={child.href}
+                                        href={child.href}
+                                        className="text-sm text-slate-500 transition-colors hover:text-navy"
+                                        onClick={() => setIsOpen(false)}
+                                      >
+                                        {child.label}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </>
+                        ) : (
+                          <Link
+                            href={resolveHref(link.href, pathname)}
+                            className="text-base font-medium text-slate-600 transition-colors hover:text-navy"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            {link.label}
+                          </Link>
+                        )}
+                      </div>
+                    );
+                  })}
+                  <Link
+                    href={resolveHref('#contact', pathname)}
+                    className="mt-2 rounded-lg bg-electric px-5 py-3 text-center text-sm font-semibold text-white"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Get Free Audit
+                  </Link>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        )}
       </nav>
     </>
   );

@@ -1,8 +1,9 @@
 'use client';
 
 import { useRef, type ReactNode } from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { isMobile, prefersReducedMotion } from '@/lib/mobile';
 
 interface GradientTextProps {
   children: ReactNode;
@@ -54,9 +55,11 @@ export default function GradientText({
   animate = true,
   scrollLinked = false,
 }: GradientTextProps) {
-  const prefersReducedMotion = useReducedMotion();
+  const reduced = prefersReducedMotion();
+  const mobile = isMobile();
 
-  if (scrollLinked && !prefersReducedMotion) {
+  // On mobile or reduced motion: use CSS gradient animation (no framer-motion scroll hooks)
+  if (scrollLinked && !reduced && !mobile) {
     return (
       <ScrollLinkedGradientText className={className}>
         {children}
