@@ -1,15 +1,15 @@
 'use client';
 
-import { useRef, useEffect, useState, type ReactNode, type CSSProperties } from 'react';
+import { useRef, type ReactNode, type CSSProperties } from 'react';
 import {
   motion,
   useMotionValue,
   useSpring,
   useTransform,
-  useReducedMotion,
 } from 'framer-motion';
 import { SPRING_CONFIG } from '@/lib/constants';
 import { cn } from '@/lib/utils';
+import { isMobile, prefersReducedMotion } from '@/lib/mobile';
 
 interface TiltCardProps {
   children: ReactNode;
@@ -19,7 +19,28 @@ interface TiltCardProps {
   glowColor?: string;
 }
 
-export default function TiltCard({
+/** Mobile: lightweight static card (no framer-motion hooks) */
+function TiltCardStatic({
+  children,
+  className = '',
+  style,
+}: TiltCardProps) {
+  return (
+    <div
+      className={cn(
+        'relative overflow-hidden rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm md:p-8',
+        className
+      )}
+      style={style}
+    >
+      <div className="pointer-events-none absolute top-0 right-0 left-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+      <div className="relative z-10">{children}</div>
+    </div>
+  );
+}
+
+/** Desktop: 3D tilt with spring physics */
+function TiltCardDesktop({
   children,
   className = '',
   style,
@@ -27,14 +48,9 @@ export default function TiltCard({
   glowColor = 'rgba(59, 130, 246, 0.15)',
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const prefersReducedMotion = useReducedMotion();
+  const reduced = prefersReducedMotion();
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
-  // Disable tilt on touch/mobile — no hover capability, saves layout/paint cost
-  const [isTouch, setIsTouch] = useState(true); // default true for SSR safety
-  useEffect(() => {
-    setIsTouch('ontouchstart' in window || window.innerWidth < 768);
-  }, []);
 
   const rotateX = useSpring(
     useTransform(mouseY, [0, 1], [6, -6]),
@@ -47,8 +63,10 @@ export default function TiltCard({
   const glossX = useTransform(mouseX, [0, 1], [0, 100]);
   const glossY = useTransform(mouseY, [0, 1], [0, 100]);
 
+  const shouldTilt = !noTilt && !reduced;
+
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (noTilt || prefersReducedMotion || isTouch || !ref.current) return;
+    if (!shouldTilt || !ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     mouseX.set((e.clientX - rect.left) / rect.width);
     mouseY.set((e.clientY - rect.top) / rect.height);
@@ -58,24 +76,6 @@ export default function TiltCard({
     mouseX.set(0.5);
     mouseY.set(0.5);
   };
-
-  const shouldTilt = !noTilt && !prefersReducedMotion && !isTouch;
-
-  // On mobile/touch: render a lightweight static card — no motion.div overhead
-  if (isTouch) {
-    return (
-      <div
-        className={cn(
-          'relative overflow-hidden rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm md:p-8',
-          className
-        )}
-        style={style}
-      >
-        <div className="pointer-events-none absolute top-0 right-0 left-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
-        <div className="relative z-10">{children}</div>
-      </div>
-    );
-  }
 
   return (
     <motion.div
@@ -109,4 +109,11 @@ export default function TiltCard({
       <div className="relative z-10">{children}</div>
     </motion.div>
   );
+}
+
+export default function TiltCard(props: TiltCardProps) {
+  if (isMobile()) {
+    return <TiltCardStatic {...props} />;
+  }
+  return <TiltCardDesktop {...props} />;
 }
