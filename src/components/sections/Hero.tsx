@@ -1,16 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import MagneticButton from '@/components/ui/MagneticButton';
 import AnimateIn from '@/components/ui/AnimateIn';
 import LighthouseGauge from '@/components/ui/LighthouseGauge';
 import { isMobile } from '@/lib/mobile';
 
-const GlassShatter = dynamic(() => import('@/components/ui/GlassShatter'), {
-  ssr: false,
-});
+const GlassShatter = lazy(() => import('@/components/ui/GlassShatter'));
 
 const LIGHTHOUSE_COMPARISONS = [
   {
@@ -147,7 +144,11 @@ export default function Hero() {
       </div>
 
       {/* Glass shatter effect — deferred, skipped on mobile */}
-      {showShatter && <GlassShatter delay={1.8} />}
+      {showShatter && (
+        <Suspense fallback={null}>
+          <GlassShatter delay={1.8} />
+        </Suspense>
+      )}
 
       {mobile ? <HeroContentMobile /> : <HeroContentDesktop />}
     </section>
