@@ -2,20 +2,19 @@
 
 import AnimateIn from '@/components/ui/AnimateIn';
 import Accordion from '@/components/ui/Accordion';
-import GradientText from '@/components/ui/GradientText';
 import { FAQ_ITEMS } from '@/lib/constants';
 
 export default function FAQ() {
   return (
-    <section id="faq" className="bg-light-gray py-14 md:py-20" aria-label="FAQ">
+    <section id="faq" className="border-t border-slate-200 bg-white py-16 md:py-20" aria-label="FAQ">
       <div className="mx-auto max-w-3xl px-5 md:px-8">
         <AnimateIn>
-          <h2 className="font-display text-3xl font-bold text-navy md:text-4xl">
-            Questions We Get Asked
-          </h2>
+          <p className="text-sm font-semibold tracking-widest text-slate-400 uppercase">
+            FAQ
+          </p>
         </AnimateIn>
 
-        <AnimateIn delay={0.2} className="mt-10">
+        <AnimateIn delay={0.1} className="mt-8">
           <Accordion items={[...FAQ_ITEMS]} />
         </AnimateIn>
       </div>
