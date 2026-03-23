@@ -71,7 +71,7 @@ The second-biggest performance killer is JavaScript. The median website ships 50
 
 ### Ship Less JavaScript
 
-Every kilobyte of JavaScript costs more than a kilobyte of an image. Images only need to be decoded. JavaScript needs to be downloaded, parsed, compiled, and executed — and it blocks the main thread during execution, which directly hurts your [INP score](/resources/blog/core-web-vitals-explained-for-practices-and-firms).
+Every kilobyte of JavaScript costs more than a kilobyte of an image. Images only need to be decoded. JavaScript needs to be downloaded, parsed, compiled, and executed — and it blocks the main thread during execution, which directly hurts your [INP score](/resources/blog/website-speed-optimization-guide-2026).
 
 Audit your JavaScript bundles. Remove jQuery if you're not using it (you're probably not — it's 2026). Remove analytics scripts you never check. Remove that chat widget that nobody uses.
 
@@ -110,7 +110,7 @@ This is why we build on Next.js with static generation. Your pages are pre-built
 
 ## Core Web Vitals: The Targets
 
-Google's [Core Web Vitals](/resources/blog/core-web-vitals-explained-for-practices-and-firms) are the specific metrics that matter for both user experience and search ranking:
+Google's [Core Web Vitals](/resources/blog/website-speed-optimization-guide-2026) are the specific metrics that matter for both user experience and search ranking:
 
 ### LCP (Largest Contentful Paint) — Target: Under 2.5s
 
@@ -192,7 +192,7 @@ Before launching any site, verify:
 - [ ] CDN configured with proper cache headers
 - [ ] Third-party scripts audited and deferred
 - [ ] Core Web Vitals passing on both mobile and desktop
-- [ ] [Google Analytics set up](/resources/blog/google-analytics-setup-small-business) and tracking real user metrics
+- [ ] [Google Analytics set up](/services/analytics-setup) and tracking real user metrics
 
 ## What This Looks Like in Practice
 
