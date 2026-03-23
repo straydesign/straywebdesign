@@ -77,25 +77,46 @@ function generateShatterData(seed: number = 42) {
   // Concentric stress rings — tighter near impact (dense fragmentation)
   const RINGS = [0, 4, 10, 18, 30, 48, 72, 110, 160];
 
+  // Pre-compute ALL grid vertices up front so adjacent shards share exact edges.
+  // vertexGrid[ringIdx][radialGlobalIdx] = [x, y]
+  // Using global radial index (position in allRadials) ensures the same vertex
+  // is referenced regardless of which ring's activeRadials list we're iterating.
+  const vertexGrid: [number, number][][] = [];
+
+  for (let ringIdx = 0; ringIdx < RINGS.length; ringIdx++) {
+    const ringVerts: [number, number][] = [];
+    for (let radIdx = 0; radIdx < allRadials.length; radIdx++) {
+      const r = RINGS[ringIdx];
+      const angle = allRadials[radIdx].angle;
+      // Perturb radius slightly — computed once per vertex, not per shard
+      const prevRing = ringIdx > 0 ? RINGS[ringIdx - 1] : 0;
+      const nextRing = ringIdx < RINGS.length - 1 ? RINGS[ringIdx + 1] : RINGS[ringIdx];
+      const span = nextRing - prevRing;
+      const perturbScale = span * 0.04;
+      const perturb = ringIdx === 0 ? 0 : (rng() - 0.5) * perturbScale;
+      ringVerts.push(polar(IX, IY, r + perturb, angle));
+    }
+    vertexGrid.push(ringVerts);
+  }
+
   const shards: Shard[] = [];
 
   for (let r = 0; r < RINGS.length - 1; r++) {
-    // Collect radials active at this ring level
-    const activeRadials = allRadials.filter((rad) => rad.maxRing >= r);
-    if (activeRadials.length < 2) continue;
+    // Collect global indices of radials active at this ring level
+    const activeIndices = allRadials
+      .map((rad, idx) => (rad.maxRing >= r ? idx : -1))
+      .filter((idx) => idx !== -1);
+    if (activeIndices.length < 2) continue;
 
-    for (let a = 0; a < activeRadials.length; a++) {
-      const a1 = activeRadials[a].angle;
-      const a2 = activeRadials[(a + 1) % activeRadials.length].angle;
-      const rInner = RINGS[r];
-      const rOuter = RINGS[r + 1];
-      const perturbScale = (rOuter - rInner) * 0.08;
+    for (let a = 0; a < activeIndices.length; a++) {
+      const gi1 = activeIndices[a];
+      const gi2 = activeIndices[(a + 1) % activeIndices.length];
 
-      // Four corners — perturbed for irregularity
-      const p1 = polar(IX, IY, rInner + rng() * perturbScale, a1);
-      const p2 = polar(IX, IY, rInner + rng() * perturbScale, a2);
-      const p3 = polar(IX, IY, rOuter - rng() * perturbScale, a2);
-      const p4 = polar(IX, IY, rOuter - rng() * perturbScale, a1);
+      // Four corners from pre-computed grid — shared exactly between neighbors
+      const p1 = vertexGrid[r][gi1];
+      const p2 = vertexGrid[r][gi2];
+      const p3 = vertexGrid[r + 1][gi2];
+      const p4 = vertexGrid[r + 1][gi1];
 
       const pts: [number, number][] = [p1, p2, p3, p4];
 
