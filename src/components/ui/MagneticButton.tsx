@@ -85,7 +85,7 @@ export default function MagneticButton({
   };
 
   const buttonClasses = cn(
-    'inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-all duration-200 cursor-pointer',
+    'inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-all duration-200 cursor-pointer active:scale-[0.98]',
     variants[variant],
     sizes[size],
     disabled && 'opacity-50 cursor-not-allowed',

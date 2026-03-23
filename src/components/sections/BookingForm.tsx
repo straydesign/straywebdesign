@@ -59,7 +59,7 @@ export default function BookingForm() {
   };
 
   return (
-    <div className="relative min-h-screen bg-navy text-white">
+    <div className="relative min-h-[100dvh] bg-navy text-white">
       <GrainOverlay />
 
       {/* Back link */}
@@ -159,7 +159,7 @@ export default function BookingForm() {
             {/* Right: Form */}
             <AnimateIn direction="right" delay={0.2}>
               {status === 'success' ? (
-                <div className="flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-white/5 p-10 text-center backdrop-blur-sm">
+                <div className="flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-white/5 p-10 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-sm">
                   <CheckCircle className="mb-4 h-12 w-12 text-emerald-400" />
                   <h2 className="font-display text-xl font-bold text-white">
                     Request Received!
@@ -178,7 +178,7 @@ export default function BookingForm() {
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur-sm md:p-8"
+                  className="rounded-2xl border border-white/10 bg-white/5 p-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-sm md:p-8"
                 >
                   <div className="space-y-4">
                     <div className="grid gap-4 sm:grid-cols-2">

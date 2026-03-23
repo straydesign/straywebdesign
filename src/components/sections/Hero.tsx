@@ -75,7 +75,7 @@ function LighthouseComparison() {
         {LIGHTHOUSE_COMPARISONS.map((comp, idx) => (
           <div
             key={comp.label}
-            className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-sm backdrop-blur-md"
+            className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md"
           >
             <h2 className="mb-4 text-center font-display text-sm font-semibold text-slate-300">
               {comp.label}
@@ -139,7 +139,7 @@ function LighthouseComparison() {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md">
               <p className="mb-4 text-sm text-slate-400">
                 These are Google Lighthouse scores — the same audit Google uses to rank your site. Higher scores mean more traffic, more trust, and more customers.
               </p>
@@ -211,7 +211,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative flex min-h-screen items-center overflow-hidden bg-navy"
+      className="relative flex min-h-[100dvh] items-center overflow-hidden bg-navy"
       aria-label="Hero"
       data-navbar-dark
     >

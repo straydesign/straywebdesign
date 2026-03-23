@@ -37,7 +37,7 @@ export default function Error({ error, reset }: ErrorProps) {
         };
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-navy px-5">
+    <div className="relative flex min-h-[100dvh] flex-col items-center justify-center overflow-hidden bg-navy px-5">
       <GrainOverlay />
 
       <div className="relative z-10 mx-auto flex max-w-lg flex-col items-center text-center">

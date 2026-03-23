@@ -1,14 +1,9 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import { Inter, Outfit } from 'next/font/google';
+import { GeistSans } from 'geist/font/sans';
+import { Outfit } from 'next/font/google';
 import ClientShell, { ClientExtras } from '@/components/layout/ClientShell';
 import './globals.css';
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-family-inter',
-});
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -200,7 +195,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
+    <html lang="en" className={`${GeistSans.variable} ${outfit.variable}`}>
       <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-9D1W0XLS34"
@@ -234,7 +229,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${GeistSans.className} antialiased`}>
         <a href="#main" className="skip-link">
           Skip to main content
         </a>
