@@ -17,7 +17,7 @@ export default function WhitePaperError({ error, reset }: ErrorProps) {
   return (
     <>
       <Navbar />
-      <main id="main" className="min-h-screen pt-28 pb-20">
+      <main id="main" className="min-h-[100dvh] pt-28 pb-20">
         <div className="mx-auto max-w-3xl px-5 text-center md:px-8">
           <p className="text-sm font-semibold uppercase tracking-wider text-electric">
             Something went wrong

@@ -5,7 +5,7 @@ export default function BlogPostLoading() {
   return (
     <>
       <Navbar />
-      <main id="main" className="min-h-screen pt-28 pb-20">
+      <main id="main" className="min-h-[100dvh] pt-28 pb-20">
         <article className="mx-auto max-w-3xl px-5 md:px-8">
           {/* Breadcrumb skeleton */}
           <div className="skeleton h-4 w-64" />

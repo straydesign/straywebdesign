@@ -93,7 +93,7 @@ export default async function LocationIndustryPage({
   return (
     <>
       <Navbar />
-      <main id="main" className="min-h-screen">
+      <main id="main" className="min-h-[100dvh]">
         {jsonLd.map((schema, i) => (
           <script
             key={i}

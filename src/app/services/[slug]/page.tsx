@@ -108,7 +108,7 @@ export default async function ServicePage({
   return (
     <>
       <Navbar />
-      <main id="main" className="min-h-screen">
+      <main id="main" className="min-h-[100dvh]">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

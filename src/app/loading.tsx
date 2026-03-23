@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-warm-white">
+    <div className="flex min-h-[100dvh] items-center justify-center bg-warm-white">
       <div className="flex flex-col items-center gap-8">
         {/* Animated logo pulse */}
         <svg

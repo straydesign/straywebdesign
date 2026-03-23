@@ -54,7 +54,7 @@ export default async function TagPage({
   return (
     <>
       <Navbar />
-      <main id="main" className="min-h-screen">
+      <main id="main" className="min-h-[100dvh]">
         <section className="relative overflow-hidden bg-navy pt-28 pb-20">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-5xl px-5 md:px-8">

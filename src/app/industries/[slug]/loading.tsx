@@ -6,7 +6,7 @@ export default function IndustryLoading() {
   return (
     <>
       <Navbar />
-      <main id="main" className="min-h-screen">
+      <main id="main" className="min-h-[100dvh]">
         {/* Hero skeleton */}
         <section className="relative overflow-hidden bg-navy pt-28 pb-20">
           <GrainOverlay />

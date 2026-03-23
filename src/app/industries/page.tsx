@@ -19,7 +19,7 @@ export default function IndustriesIndex() {
   return (
     <>
       <Navbar />
-      <main id="main" className="min-h-screen">
+      <main id="main" className="min-h-[100dvh]">
         <section className="relative overflow-hidden bg-navy pt-28 pb-20" aria-label="Industries overview">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-5xl px-5 md:px-8">

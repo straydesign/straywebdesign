@@ -14,7 +14,7 @@ export default function ResourcesPage() {
   return (
     <>
       <Navbar />
-      <main id="main" className="min-h-screen pt-28 pb-20">
+      <main id="main" className="min-h-[100dvh] pt-28 pb-20">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <AnimateIn className="mx-auto max-w-3xl text-center">
             <span className="mb-4 inline-block text-sm font-semibold tracking-wide text-electric uppercase">

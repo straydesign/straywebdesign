@@ -40,7 +40,7 @@ export default function ArticleLayout({ meta, children, jsonLd, relatedPosts = [
   return (
     <>
       <Navbar />
-      <main id="main" className="min-h-screen pt-28 pb-20">
+      <main id="main" className="min-h-[100dvh] pt-28 pb-20">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
