@@ -49,7 +49,7 @@ export default function FooterCTA() {
   return (
     <section
       id="contact"
-      className="section-padding relative bg-navy text-white"
+      className="relative bg-navy py-16 text-white md:py-24"
       aria-label="Contact"
     >
       <GrainOverlay />

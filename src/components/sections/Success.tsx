@@ -13,16 +13,16 @@ const RESULTS_METRICS = [
 
 export default function Results() {
   return (
-    <section id="results" className="section-padding bg-light-gray" aria-label="Results">
+    <section id="results" className="bg-light-gray py-16 md:py-24" aria-label="Results">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <AnimateIn className="mx-auto max-w-3xl text-center">
-          <span className="mb-4 inline-block text-sm font-semibold tracking-wide text-electric uppercase">
-            Proven Results
-          </span>
+        <AnimateIn className="max-w-2xl">
           <h2 className="font-display text-3xl font-bold text-navy md:text-4xl lg:text-5xl">
             From Underdog to{' '}
             <GradientText scrollLinked>Top Competitor</GradientText>
           </h2>
+          <p className="mt-3 text-lg text-slate-600">
+            Real numbers from sites we&apos;ve shipped.
+          </p>
         </AnimateIn>
 
         <AnimateIn delay={0.2} className="mt-12">
@@ -30,16 +30,16 @@ export default function Results() {
             {RESULTS_METRICS.map((metric) => (
               <div
                 key={metric.label}
-                className="rounded-xl border border-slate-200/60 bg-white p-6 text-center"
+                className="border-l-2 border-electric bg-white py-5 pl-5 pr-4"
               >
-                <div className="font-display text-3xl font-bold text-electric md:text-4xl">
+                <div className="font-mono text-3xl font-bold tracking-tight text-navy md:text-4xl">
                   <CountUp
                     value={metric.value}
                     suffix={metric.suffix}
                     decimals={metric.decimals ?? 0}
                   />
                 </div>
-                <p className="mt-2 text-sm text-slate-500">{metric.label}</p>
+                <p className="mt-1.5 text-sm text-slate-500">{metric.label}</p>
               </div>
             ))}
           </div>

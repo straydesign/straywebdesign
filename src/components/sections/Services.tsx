@@ -116,7 +116,7 @@ function ProcessToggle({
 
 export default function Services() {
   return (
-    <section id="services" className="section-padding bg-white" aria-label="Services">
+    <section id="services" className="bg-white py-20 md:py-28" aria-label="Services">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <AnimateIn className="mx-auto max-w-3xl text-center">
           <span className="mb-4 inline-block text-sm font-semibold tracking-wide text-electric uppercase">

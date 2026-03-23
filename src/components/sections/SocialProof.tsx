@@ -23,18 +23,18 @@ function ProfileCard({
   outcome: string;
 }) {
   return (
-    <div className="w-[300px] rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm sm:w-[340px]">
+    <div className="w-[300px] rounded-xl border border-white/10 bg-white/5 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-sm sm:w-[340px]">
       <p className="mb-3 text-sm font-semibold tracking-wide text-electric uppercase">
         {industry}
       </p>
-      <p className="text-sm leading-relaxed text-slate-600">
-        <span className="font-semibold text-navy">The problem: </span>
+      <p className="text-sm leading-relaxed text-slate-400">
+        <span className="font-semibold text-white">The problem: </span>
         {challenge}
       </p>
-      <div className="mt-4 border-t border-slate-100 pt-4">
+      <div className="mt-4 border-t border-white/10 pt-4">
         <div className="flex items-start gap-2">
-          <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
-          <p className="text-sm leading-relaxed text-slate-600">{outcome}</p>
+          <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
+          <p className="text-sm leading-relaxed text-slate-400">{outcome}</p>
         </div>
       </div>
     </div>
@@ -43,17 +43,17 @@ function ProfileCard({
 
 export default function SocialProof() {
   return (
-    <section className="section-padding bg-white" aria-label="Industries and credentials">
+    <section className="bg-slate-950 py-20 text-white md:py-28" aria-label="Industries and credentials">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <AnimateIn className="mx-auto max-w-3xl text-center">
           <span className="mb-4 inline-block text-sm font-semibold tracking-wide text-electric uppercase">
             Who We Build For
           </span>
-          <h2 className="font-display text-3xl font-bold text-navy md:text-4xl lg:text-5xl">
+          <h2 className="font-display text-3xl font-bold text-white md:text-4xl lg:text-5xl">
             Industries Where{' '}
             <GradientText scrollLinked>Every Client Counts</GradientText>
           </h2>
-          <p className="mt-4 text-lg text-slate-600">
+          <p className="mt-4 text-lg text-slate-400">
             We work with businesses where a single new patient, client, or
             contract is worth thousands. The website ROI is immediate.
           </p>
@@ -75,10 +75,10 @@ export default function SocialProof() {
               {CREDENTIALS.map(({ icon: Icon, label }) => (
                 <div
                   key={label}
-                  className="flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2"
+                  className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2"
                 >
                   <Icon className="h-4 w-4 text-electric" />
-                  <span className="text-sm font-medium text-slate-600">{label}</span>
+                  <span className="text-sm font-medium text-slate-300">{label}</span>
                 </div>
               ))}
             </div>
@@ -88,7 +88,7 @@ export default function SocialProof() {
         {/* Tech stack */}
         <StaggerContainer className="mt-8 text-center" staggerDelay={0.1}>
           <StaggerItem>
-            <p className="text-sm font-semibold tracking-wide text-slate-500 uppercase">
+            <p className="text-sm font-semibold tracking-wide uppercase text-slate-400">
               Built with modern technology
             </p>
           </StaggerItem>
@@ -98,7 +98,7 @@ export default function SocialProof() {
                 (tech) => (
                   <span
                     key={tech}
-                    className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-500"
+                    className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-400"
                   >
                     {tech}
                   </span>

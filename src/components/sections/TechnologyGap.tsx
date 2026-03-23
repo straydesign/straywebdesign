@@ -7,15 +7,11 @@ import { FAQ_ITEMS } from '@/lib/constants';
 
 export default function FAQ() {
   return (
-    <section id="faq" className="section-padding bg-light-gray" aria-label="FAQ">
+    <section id="faq" className="bg-light-gray py-14 md:py-20" aria-label="FAQ">
       <div className="mx-auto max-w-3xl px-5 md:px-8">
-        <AnimateIn className="text-center">
-          <span className="mb-4 inline-block text-sm font-semibold tracking-wide text-electric uppercase">
-            Common Questions
-          </span>
-          <h2 className="font-display text-3xl font-bold text-navy md:text-4xl lg:text-5xl">
-            Frequently Asked{' '}
-            <GradientText scrollLinked>Questions</GradientText>
+        <AnimateIn>
+          <h2 className="font-display text-3xl font-bold text-navy md:text-4xl">
+            Questions We Get Asked
           </h2>
         </AnimateIn>
 
