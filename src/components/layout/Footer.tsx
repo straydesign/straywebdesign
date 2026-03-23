@@ -51,42 +51,43 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Services */}
-          <div>
-            <h3 className="mb-3 font-display text-sm font-semibold text-navy">
-              Services
-            </h3>
-            <ul className="space-y-2">
-              {SERVICE_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-slate-500 transition-colors hover:text-navy"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Services + Industries — side by side on mobile */}
+          <div className="grid grid-cols-2 gap-6 sm:contents">
+            <div>
+              <h3 className="mb-3 font-display text-sm font-semibold text-navy">
+                Services
+              </h3>
+              <ul className="space-y-2">
+                {SERVICE_LINKS.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-slate-500 transition-colors hover:text-navy"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Industries */}
-          <div>
-            <h3 className="mb-3 font-display text-sm font-semibold text-navy">
-              Industries
-            </h3>
-            <ul className="space-y-2">
-              {INDUSTRY_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-slate-500 transition-colors hover:text-navy"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <div>
+              <h3 className="mb-3 font-display text-sm font-semibold text-navy">
+                Industries
+              </h3>
+              <ul className="space-y-2">
+                {INDUSTRY_LINKS.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-slate-500 transition-colors hover:text-navy"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Contact */}
