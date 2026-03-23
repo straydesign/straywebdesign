@@ -1,7 +1,7 @@
 'use client';
 
 import { lazy, Suspense, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import MagneticButton from '@/components/ui/MagneticButton';
 import AnimateIn from '@/components/ui/AnimateIn';
 import LighthouseGauge from '@/components/ui/LighthouseGauge';
@@ -11,12 +11,35 @@ const GlassShatter = lazy(() => import('@/components/ui/GlassShatter'));
 
 const LIGHTHOUSE_COMPARISONS = [
   {
-    label: 'Before',
+    label: 'Your Competitors',
     scores: { performance: 32, accessibility: 45, bestPractices: 56, seo: 62 },
   },
   {
     label: 'Your Site',
-    scores: { performance: 95, accessibility: 96, bestPractices: 96, seo: 100 },
+    scores: { performance: 95, accessibility: 100, bestPractices: 100, seo: 100 },
+  },
+];
+
+const SCORE_EXPLANATIONS = [
+  {
+    label: 'Performance',
+    description:
+      'How fast your site loads. Every second of delay costs you 7% in conversions. Sites scoring below 50 lose the majority of mobile visitors before they see a single word.',
+  },
+  {
+    label: 'Accessibility',
+    description:
+      'Whether everyone can use your site — including the 1 in 4 adults with a disability. Low scores mean broken forms, unreadable text, and potential ADA lawsuits. Over 4,100 were filed in 2024.',
+  },
+  {
+    label: 'Best Practices',
+    description:
+      'Security, modern code standards, and browser compatibility. Low scores signal outdated technology, missing HTTPS, and vulnerabilities that put your business at risk.',
+  },
+  {
+    label: 'SEO',
+    description:
+      'How visible you are to Google and AI search. Missing meta tags, broken heading structure, and no structured data mean you rank below competitors who have them.',
   },
 ];
 
@@ -39,6 +62,99 @@ function HeroContentMobile() {
   return (
     <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-28 pb-16">
       <HeroInner />
+    </div>
+  );
+}
+
+function LighthouseComparison() {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div className="space-y-6">
+      <div className="space-y-8">
+        {LIGHTHOUSE_COMPARISONS.map((comp, idx) => (
+          <div
+            key={comp.label}
+            className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-sm backdrop-blur-md"
+          >
+            <h2 className="mb-4 text-center font-display text-sm font-semibold text-slate-300">
+              {comp.label}
+            </h2>
+            <div className="flex justify-center gap-6">
+              <LighthouseGauge
+                score={comp.scores.performance}
+                label="Perf"
+                size={90}
+                delay={idx * 0.8 + 0.5}
+              />
+              <LighthouseGauge
+                score={comp.scores.accessibility}
+                label="A11y"
+                size={90}
+                delay={idx * 0.8 + 0.7}
+              />
+              <LighthouseGauge
+                score={comp.scores.bestPractices}
+                label="BP"
+                size={90}
+                delay={idx * 0.8 + 0.9}
+              />
+              <LighthouseGauge
+                score={comp.scores.seo}
+                label="SEO"
+                size={90}
+                delay={idx * 0.8 + 1.1}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="text-center">
+        <button
+          onClick={() => setExpanded((prev) => !prev)}
+          className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-slate-300 backdrop-blur-sm transition-colors hover:bg-white/10 hover:text-white"
+        >
+          What does this mean?
+          <motion.svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            animate={{ rotate: expanded ? 180 : 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </motion.svg>
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {expanded && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="overflow-hidden"
+          >
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md">
+              <p className="mb-4 text-sm text-slate-400">
+                These are Google Lighthouse scores — the same audit Google uses to rank your site. Higher scores mean more traffic, more trust, and more customers.
+              </p>
+              <div className="space-y-3">
+                {SCORE_EXPLANATIONS.map((item) => (
+                  <div key={item.label}>
+                    <p className="text-sm font-semibold text-white">{item.label}</p>
+                    <p className="text-sm leading-relaxed text-slate-400">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -71,44 +187,7 @@ function HeroInner() {
         </div>
 
         <AnimateIn direction="right" delay={0.3} className="hidden lg:block">
-          <div className="space-y-8">
-            {LIGHTHOUSE_COMPARISONS.map((comp, idx) => (
-              <div
-                key={comp.label}
-                className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-sm backdrop-blur-md"
-              >
-                <h2 className="mb-4 text-center font-display text-sm font-semibold text-slate-300">
-                  {comp.label}
-                </h2>
-                <div className="flex justify-center gap-6">
-                  <LighthouseGauge
-                    score={comp.scores.performance}
-                    label="Perf"
-                    size={90}
-                    delay={idx * 0.8 + 0.5}
-                  />
-                  <LighthouseGauge
-                    score={comp.scores.accessibility}
-                    label="A11y"
-                    size={90}
-                    delay={idx * 0.8 + 0.7}
-                  />
-                  <LighthouseGauge
-                    score={comp.scores.bestPractices}
-                    label="BP"
-                    size={90}
-                    delay={idx * 0.8 + 0.9}
-                  />
-                  <LighthouseGauge
-                    score={comp.scores.seo}
-                    label="SEO"
-                    size={90}
-                    delay={idx * 0.8 + 1.1}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
+          <LighthouseComparison />
         </AnimateIn>
       </div>
     </>
