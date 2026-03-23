@@ -3,6 +3,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import SectionKeyboardNav from '@/components/layout/SectionKeyboardNav';
 import Hero from '@/components/sections/Hero';
+import Marquee from '@/components/ui/Marquee';
 
 function SectionSkeleton() {
   return (
@@ -44,6 +45,7 @@ export default function Home() {
       <SectionKeyboardNav />
       <main id="main">
         <Hero />
+        <Marquee />
         <Services />
         <Success />
         <SocialProof />

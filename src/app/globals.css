@@ -86,6 +86,12 @@ main section[aria-label]:focus-visible {
   border-radius: 0.5rem;
 }
 
+/* Kinetic marquee */
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* Carousel infinite scroll */
 @keyframes scroll-left {
   0% { transform: translateX(0); }
