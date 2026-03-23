@@ -212,7 +212,7 @@ export default function Services() {
             <p className="text-sm text-slate-500">Projects start at</p>
             <p className="font-display text-3xl font-bold text-navy">$2,500</p>
             <p className="mt-1 text-sm text-slate-500">
-              Premium sites from $5,000 &middot; Free audit included
+              Free audit included
             </p>
             <div className="mt-4 border-t border-slate-200 pt-4">
               <p className="text-sm font-semibold text-navy">$100/mo after launch</p>

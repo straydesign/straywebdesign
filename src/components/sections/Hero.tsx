@@ -11,11 +11,11 @@ const GlassShatter = lazy(() => import('@/components/ui/GlassShatter'));
 
 const LIGHTHOUSE_COMPARISONS = [
   {
-    label: 'Your Competitors Right Now',
+    label: 'Before',
     scores: { performance: 32, accessibility: 45, bestPractices: 56, seo: 62 },
   },
   {
-    label: 'After Stray Web Design',
+    label: 'Your Site',
     scores: { performance: 95, accessibility: 96, bestPractices: 96, seo: 100 },
   },
 ];
