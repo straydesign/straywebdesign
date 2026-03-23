@@ -9,6 +9,8 @@ interface CarouselProps {
   direction?: 'left' | 'right';
   pauseOnHover?: boolean;
   className?: string;
+  /** CSS color for the fade edges. Defaults to warm-white. */
+  fadeColor?: string;
 }
 
 export default function Carousel({
@@ -17,6 +19,7 @@ export default function Carousel({
   direction = 'left',
   pauseOnHover = true,
   className = '',
+  fadeColor,
 }: CarouselProps) {
   const [isPaused, setIsPaused] = useState(false);
   const animationName =
@@ -45,15 +48,13 @@ export default function Carousel({
       <div
         className="pointer-events-none absolute top-0 bottom-0 left-0 z-10 w-16 md:w-32"
         style={{
-          background:
-            'linear-gradient(to right, var(--warm-white), transparent)',
+          background: `linear-gradient(to right, ${fadeColor ?? 'var(--warm-white)'}, transparent)`,
         }}
       />
       <div
         className="pointer-events-none absolute top-0 right-0 bottom-0 z-10 w-16 md:w-32"
         style={{
-          background:
-            'linear-gradient(to left, var(--warm-white), transparent)',
+          background: `linear-gradient(to left, ${fadeColor ?? 'var(--warm-white)'}, transparent)`,
         }}
       />
       <div

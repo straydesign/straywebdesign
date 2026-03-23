@@ -4,6 +4,7 @@ import Footer from '@/components/layout/Footer';
 import SectionKeyboardNav from '@/components/layout/SectionKeyboardNav';
 import Hero from '@/components/sections/Hero';
 import Marquee from '@/components/ui/Marquee';
+import ParallaxReveal from '@/components/ui/ParallaxReveal';
 
 function SectionSkeleton() {
   return (
@@ -47,6 +48,10 @@ export default function Home() {
         <Hero />
         <Marquee />
         <Services />
+        <ParallaxReveal
+          text="Your competitors are still loading."
+          subtext="By the time their page renders, your visitor already converted."
+        />
         <Success />
         <SocialProof />
         <TechnologyGap />

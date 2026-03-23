@@ -6,6 +6,7 @@ import MagneticButton from '@/components/ui/MagneticButton';
 import AnimateIn from '@/components/ui/AnimateIn';
 import LighthouseGauge from '@/components/ui/LighthouseGauge';
 import { isMobile } from '@/lib/mobile';
+import TextScramble from '@/components/ui/TextScramble';
 
 const GlassShatter = lazy(() => import('@/components/ui/GlassShatter'));
 
@@ -163,21 +164,17 @@ function HeroInner() {
   return (
     <>
       {/* Badge — render immediately visible for LCP, no AnimateIn wrapper */}
-      <span className="mb-6 inline-block rounded-xl border border-white/20 bg-white/5 px-4 py-1.5 text-sm font-medium text-electric backdrop-blur-sm sm:rounded-full">
+      <span className="mb-4 inline-block rounded-xl border border-white/20 bg-white/5 px-4 py-1.5 text-sm font-medium text-electric backdrop-blur-sm sm:rounded-full">
         For Practices, Dealerships &amp; Professional Services in Erie
       </span>
 
-      {/* h1 — LCP element: "SHATTER" as massive typographic moment */}
-      <h1>
-        <span className="block font-display text-[clamp(4rem,15vw,12rem)] font-black leading-[0.85] tracking-tighter text-white">
-          Shatter
-        </span>
-        <span className="mt-2 block font-display text-[clamp(1.5rem,4vw,2.75rem)] font-bold leading-tight tracking-tight text-slate-400">
-          What You Thought Was Possible
-        </span>
+      {/* h1 — LCP element with text scramble on "Shatter" */}
+      <h1 className="text-balance font-display text-[clamp(2.25rem,7vw,5rem)] font-extrabold leading-[1.08] tracking-tight text-white">
+        <TextScramble text="Shatter" />{' '}
+        What You Thought Was Possible
       </h1>
 
-      <div className="mt-10 grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+      <div className="mt-8 grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           {/* Paragraph — render immediately visible for LCP */}
           <p className="max-w-lg text-lg leading-relaxed text-slate-300 md:text-xl">

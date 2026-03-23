@@ -62,6 +62,7 @@ export default function SocialProof() {
         <AnimateIn delay={0.2} className="mt-12">
           <Carousel
             speed={30}
+            fadeColor="#020617"
             items={CLIENT_PROFILES.map((p, i) => (
               <ProfileCard key={i} {...p} />
             ))}
