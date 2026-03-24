@@ -46,7 +46,7 @@ const LIGHTHOUSE_COMPARISONS = [
   },
   {
     label: 'Your Site',
-    scores: { performance: 95, accessibility: 100, bestPractices: 100, seo: 100 },
+    scores: { performance: 90, accessibility: 100, bestPractices: 100, seo: 100 },
   },
 ];
 
