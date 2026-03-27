@@ -108,16 +108,19 @@ main section[aria-label]:focus-visible {
   50% { background-position: 100% 50%; }
 }
 
-/* Blink — lids closed (visible) by default, briefly open to reveal photo */
+/* Blink — photo always visible, blue lids flash shut briefly */
 @keyframes blink {
-  0%, 100% { transform: scaleY(1); }
-  40%, 55% { transform: scaleY(0); }
+  0%, 100% { transform: scaleY(0); }
+  45% { transform: scaleY(0); }
+  48% { transform: scaleY(1); }
+  52% { transform: scaleY(1); }
+  55% { transform: scaleY(0); }
 }
 
 .blink-lid-top,
 .blink-lid-bottom {
-  transform: scaleY(1);
-  animation: blink 4s ease-in-out 1s infinite;
+  transform: scaleY(0);
+  animation: blink 3.5s ease-in-out 2s infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
