@@ -202,7 +202,7 @@ export default async function LocationPage({
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-slate-300">
                 Free site audit for {location.name} businesses. We&apos;ll show you exactly
-                where you stand vs. the local competition.
+                exactly where your site stands right now.
               </p>
               <div className="mt-8">
                 <MagneticButton href="/book" variant="primary">

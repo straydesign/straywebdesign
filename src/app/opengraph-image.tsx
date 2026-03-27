@@ -63,7 +63,7 @@ export default function OGImage() {
             textAlign: 'center',
           }}
         >
-          Websites That Outperform Your Competitors
+          Websites That Actually Perform
         </div>
 
         {/* Location */}

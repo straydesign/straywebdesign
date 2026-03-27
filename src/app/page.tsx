@@ -49,8 +49,8 @@ export default function Home() {
         <Marquee />
         <Services />
         <ParallaxReveal
-          text="Your competitors are still loading."
-          subtext="By the time their page renders, your visitor already converted."
+          text="Your site should load before they blink."
+          subtext="Sub-second load times. Every page. Every device."
         />
         <Success />
         <SocialProof />

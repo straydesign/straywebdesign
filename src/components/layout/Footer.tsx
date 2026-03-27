@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { SITE } from '@/lib/constants';
 import SoundToggle from '@/components/ui/SoundToggle';
+import StrayLogo from '@/components/ui/StrayLogo';
 
 const SERVICE_LINKS = [
   { label: 'Website Design', href: '/services/website-design' },
@@ -41,8 +42,11 @@ export default function Footer() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="font-display text-xl font-bold text-navy">
-              stray<span className="text-electric">web</span>design
+            <Link href="/" className="inline-flex items-center gap-3">
+              <StrayLogo color="#2563EB" width={48} height={24} />
+              <span className="font-display text-xl font-bold text-navy">
+                stray<span className="text-electric">web</span>design
+              </span>
             </Link>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-500">
               Your business is serious. Your website should be too. We

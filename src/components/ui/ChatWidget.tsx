@@ -16,7 +16,7 @@ export default function ChatWidget() {
     {
       role: 'assistant',
       content:
-        "Hi! I'm the Stray Web Design assistant. Ask me anything about our services, or I can help you get started with a free site audit.",
+        "Hey, thanks for checking out the site. I'm Tom — if you have any questions about what we do or want to talk through your project, fire away.",
     },
   ]);
   const [input, setInput] = useState('');
@@ -158,7 +158,7 @@ export default function ChatWidget() {
               <div className="flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-emerald-400" />
                 <span className="text-sm font-semibold text-white">
-                  Stray Web Design
+                  Tom — Stray Web Design
                 </span>
               </div>
               <button

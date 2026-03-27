@@ -16,7 +16,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: 'Stray Web Design — Enterprise-Grade Websites for Erie, PA Businesses',
   description:
-    'Erie businesses deserve enterprise-grade websites. Blazing-fast, accessible, AI-ready sites that help you compete with the big guys. Free site audit.',
+    'Erie businesses deserve enterprise-grade websites. Blazing-fast, accessible, AI-ready sites built to perform. Free site audit.',
   keywords: [
     'web design Erie PA',
     'Erie web designer',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Stray Web Design — Enterprise-Grade Websites for Erie, PA Businesses',
     description:
-      'Erie businesses deserve enterprise-grade websites. Compete with the big guys. Free site audit.',
+      'Erie businesses deserve enterprise-grade websites. Built to perform. Free site audit.',
     url: 'https://straywebdesign.co',
     siteName: 'Stray Web Design',
     locale: 'en_US',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Stray Web Design — Enterprise-Grade Websites for Erie, PA Businesses',
     description:
-      'Erie businesses deserve enterprise-grade websites. Compete with the big guys. Free site audit.',
+      'Erie businesses deserve enterprise-grade websites. Built to perform. Free site audit.',
   },
   alternates: {
     canonical: '/',

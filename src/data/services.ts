@@ -49,7 +49,7 @@ export const SERVICES = [
       {
         title: "Sub-1s Load Times",
         description:
-          "Image optimization, code splitting, edge caching, and zero render-blocking resources. Your site loads before competitors' sites even start painting.",
+          "Image optimization, code splitting, edge caching, and zero render-blocking resources. Your site loads before visitors even finish blinking.",
       },
       {
         title: "Conversion-Optimized",
@@ -108,7 +108,7 @@ export const SERVICES = [
       {
         question: "Why not use WordPress like everyone else?",
         answer:
-          "WordPress powers 43% of the web — and that is exactly the problem. It is slow, requires constant plugin updates, and is the #1 target for hackers. Our Next.js sites load 3-5x faster, need zero plugin maintenance, and are inherently more secure. Your competitors are on WordPress. That is your advantage.",
+          "WordPress powers 43% of the web — and that is exactly the problem. It is slow, requires constant plugin updates, and is the #1 target for hackers. Our Next.js sites load 3-5x faster, need zero plugin maintenance, and are inherently more secure. The difference is obvious the moment someone visits your site.",
       },
       {
         question: "How long does a custom website take?",
@@ -152,7 +152,7 @@ export const SERVICES = [
     description:
       "A 24/7 AI-powered phone system that answers calls, qualifies leads, books appointments, and sends missed-call text-backs — so you never lose a customer to voicemail again.",
     longDescription:
-      "62% of calls to small businesses go unanswered. Every missed call is a lost customer walking straight to your competitor. Our AI Receptionist answers every call instantly with natural, human-like conversation — qualifying leads, booking appointments, answering FAQs, and texting back missed callers automatically. It works nights, weekends, and holidays without breaks, sick days, or overtime pay. Your customers get instant service. You get qualified leads delivered to your inbox. No more playing phone tag. No more losing business at 8 PM on a Tuesday.",
+      "62% of calls to small businesses go unanswered. Every missed call is a lost customer who moves on. Our AI Receptionist answers every call instantly with natural, human-like conversation — qualifying leads, booking appointments, answering FAQs, and texting back missed callers automatically. It works nights, weekends, and holidays without breaks, sick days, or overtime pay. Your customers get instant service. You get qualified leads delivered to your inbox. No more playing phone tag. No more losing business at 8 PM on a Tuesday.",
     features: [
       {
         title: "24/7 Live Answering",
@@ -319,7 +319,7 @@ export const SERVICES = [
     description:
       "Rank on Google and get recommended by AI assistants. We combine traditional SEO with Generative Engine Optimization — JSON-LD, llms.txt, FAQ schema, and local SEO that puts you in front of customers however they search.",
     longDescription:
-      "SEO is no longer just about Google. 40% of Gen Z uses TikTok and AI chatbots as their primary search tool. When someone asks ChatGPT or Gemini 'best restaurant in Erie' or 'web designer near me,' your business needs to show up. We do traditional SEO — technical audits, keyword strategy, backlink building, local pack optimization — and layer on Generative Engine Optimization (GEO). That means structured data, llms.txt files, FAQ schema, and content architecture that AI systems can parse and recommend. Your competitors are optimizing for one search engine. We optimize for all of them.",
+      "SEO is no longer just about Google. 40% of Gen Z uses TikTok and AI chatbots as their primary search tool. When someone asks ChatGPT or Gemini 'best restaurant in Erie' or 'web designer near me,' your business needs to show up. We do traditional SEO — technical audits, keyword strategy, backlink building, local pack optimization — and layer on Generative Engine Optimization (GEO). That means structured data, llms.txt files, FAQ schema, and content architecture that AI systems can parse and recommend. Most businesses optimize for one search engine. We optimize for all of them.",
     features: [
       {
         title: "Technical SEO Audit",
@@ -339,7 +339,7 @@ export const SERVICES = [
       {
         title: "Keyword Strategy",
         description:
-          "Data-driven keyword research targeting high-intent, low-competition terms your competitors are ignoring. We prioritize keywords that drive revenue, not just traffic.",
+          "Data-driven keyword research targeting high-intent, low-competition terms most businesses overlook. We prioritize keywords that drive revenue, not just traffic.",
       },
       {
         title: "JSON-LD Schema Markup",
@@ -349,7 +349,7 @@ export const SERVICES = [
       {
         title: "Content Optimization",
         description:
-          "Existing pages rewritten for search intent, readability, and conversion. New content strategy targeting gaps in your competitors' coverage.",
+          "Existing pages rewritten for search intent, readability, and conversion. New content strategy targeting untapped opportunities in your market.",
       },
       {
         title: "Backlink Building",

@@ -18,10 +18,10 @@ export default function SectionKeyboardNav() {
       document.querySelectorAll<HTMLElement>('main section[aria-label]')
     );
 
-    for (const section of sections) {
-      section.setAttribute('tabindex', '0');
-      section.setAttribute('role', 'region');
-    }
+    // Attributes added via useEffect cause hydration mismatches.
+    // Sections with aria-label are already implicit regions per ARIA spec,
+    // and the keyboard handler below handles focus programmatically.
+
 
     const handleKeyDown = (e: KeyboardEvent) => {
       const active = document.activeElement as HTMLElement | null;

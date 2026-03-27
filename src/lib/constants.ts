@@ -223,17 +223,17 @@ export const FAQ_ITEMS = [
 export const CLIENT_PROFILES = [
   {
     industry: 'Dental Practices',
-    challenge: 'Losing new patients to Aspen Dental and corporate chains with faster, polished sites.',
+    challenge: 'New patients judge your practice by your website before they ever walk in.',
     outcome: 'A site that outperforms corporate dental on speed, AI visibility, and mobile booking.',
   },
   {
     industry: 'Financial Advisors',
-    challenge: 'Referrals Google you before they call — a slow template next to Schwab kills the trust.',
+    challenge: 'Referrals Google you before they call — a slow template site undermines the trust you\'ve built.',
     outcome: 'A digital presence that matches the precision of your work. Prospects arrive pre-sold.',
   },
   {
     industry: 'Car Dealerships',
-    challenge: 'Buyers browse Carvana and Ford.com before visiting your lot. Your template looks like every other dealer.',
+    challenge: 'Buyers research online before they ever set foot on your lot. Your template looks like every other dealer.',
     outcome: 'The first dealership with a genuinely fast, custom site captures a disproportionate share.',
   },
   {
@@ -248,7 +248,7 @@ export const CLIENT_PROFILES = [
   },
   {
     industry: 'Vision Care',
-    challenge: 'Patients compare your site to LensCrafters and Warby Parker\'s 2-second load time.',
+    challenge: 'Patients expect the same speed and polish from your site as the brands they shop online.',
     outcome: 'A fast, modern site that lets your expertise speak — with AI optimization built in.',
   },
 ] as const;
