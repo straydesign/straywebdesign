@@ -48,6 +48,7 @@ export const NAV_LINKS = [
       { label: 'View All Industries', href: '/industries' },
     ],
   },
+  { label: 'Work', href: '/work' },
   { label: 'Resources', href: '/resources' },
   { label: 'Book a Call', href: '/book' },
 ] as const;
