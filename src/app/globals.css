@@ -108,6 +108,30 @@ main section[aria-label]:focus-visible {
   50% { background-position: 100% 50%; }
 }
 
+/* Blink animation — eyelid closing/opening effect */
+@keyframes blink-close {
+  0%, 85%, 100% { transform: scaleY(0); }
+  90%, 95% { transform: scaleY(1); }
+}
+
+.blink-lid-top {
+  animation: blink-close 4s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.blink-lid-bottom {
+  animation: blink-close 4s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blink-lid-top,
+  .blink-lid-bottom {
+    animation: none;
+    transform: scaleY(0);
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

@@ -43,7 +43,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-3">
-              <StrayLogo color="#2563EB" width={48} height={24} />
+              <StrayLogo color="#2563EB" width={64} height={32} />
               <span className="font-display text-xl font-bold text-navy">
                 stray<span className="text-electric">web</span>design
               </span>
