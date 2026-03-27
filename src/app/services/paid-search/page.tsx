@@ -112,7 +112,7 @@ export default function PaidSearchPage() {
   const service = getServiceBySlug('paid-search');
   if (!service) throw new Error('Service "paid-search" not found in data');
   const relatedServices = SERVICES.filter((s) =>
-    service.relatedServices.includes(s.slug)
+    (service.relatedServices ?? []).includes(s.slug)
   );
 
   const jsonLd = {
