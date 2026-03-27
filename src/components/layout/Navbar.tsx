@@ -7,7 +7,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { NAV_LINKS, SITE } from '@/lib/constants';
 import { cn } from '@/lib/utils';
-import { isMobile } from '@/lib/mobile';
+import { useClientEnv } from '@/lib/use-client-env';
 import StrayLogo from '@/components/ui/StrayLogo';
 
 /* ─── Helpers ─────────────────────────────────────────────── */
@@ -208,7 +208,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [expandedMobile, setExpandedMobile] = useState<string | null>(null);
-  const mobile = isMobile();
+  const { mobile } = useClientEnv();
 
   const overDark = useOverDark(pathname);
 
@@ -256,12 +256,7 @@ export default function Navbar() {
               height={18}
               color={overDark ? '#ffffff' : '#3B82F6'}
             />
-            <span
-              style={{
-                WebkitTextStroke: '0.5px white',
-                paintOrder: 'stroke fill',
-              }}
-            >
+            <span>
               stray<span className="text-electric">web</span>design
             </span>
           </Link>
