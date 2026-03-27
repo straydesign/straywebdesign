@@ -61,10 +61,10 @@ export default function ParallaxReveal({ text, subtext, className = '', backgrou
         </>
       )}
 
-      {/* Blink — two lids that start open and blink shut briefly */}
+      {/* Blink — blue eyelids that close in over the photo */}
       <div className="pointer-events-none absolute inset-0 z-20">
-        <div className="blink-lid-top absolute inset-x-0 top-0 h-1/2 origin-bottom bg-slate-950" />
-        <div className="blink-lid-bottom absolute inset-x-0 bottom-0 h-1/2 origin-top bg-slate-950" />
+        <div className="blink-lid-top absolute inset-x-0 top-0 h-1/2 origin-bottom bg-electric" />
+        <div className="blink-lid-bottom absolute inset-x-0 bottom-0 h-1/2 origin-top bg-electric" />
       </div>
 
       {/* Content */}
