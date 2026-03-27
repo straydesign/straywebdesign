@@ -42,11 +42,8 @@ export default function Footer() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-3">
-              <StrayLogo color="#2563EB" width={64} height={32} />
-              <span className="font-display text-xl font-bold text-navy">
-                stray<span className="text-electric">web</span>design
-              </span>
+            <Link href="/" className="font-display text-xl font-bold text-navy">
+              stray<span className="text-electric">web</span>design
             </Link>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-500">
               Your business is serious. Your website should be too. We
@@ -135,14 +132,14 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-slate-200 pt-8 sm:flex-row">
-          <p className="text-sm text-slate-500">
-            &copy; {currentYear} {SITE.name}. All rights reserved.
-          </p>
+          <div className="flex items-center gap-3">
+            <StrayLogo color="#94A3B8" width={32} height={16} />
+            <p className="text-sm text-slate-400">
+              &copy; {currentYear} {SITE.name}
+            </p>
+          </div>
           <div className="flex items-center gap-4">
             <SoundToggle />
-            <p className="text-sm text-slate-500">
-              Built with performance, accessibility, and AI in mind.
-            </p>
           </div>
         </div>
       </div>
