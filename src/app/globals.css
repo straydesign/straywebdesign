@@ -108,25 +108,24 @@ main section[aria-label]:focus-visible {
   50% { background-position: 100% 50%; }
 }
 
-/* Blink — photo lids stay closed (showing image) most of the time, briefly open */
-@keyframes blink {
-  0%, 5% { transform: scaleY(0); }
-  10% { transform: scaleY(1); }
-  85% { transform: scaleY(1); }
-  92%, 100% { transform: scaleY(0); }
+/* Blink — image flashes over blue background like a quick blink */
+@keyframes blink-flash {
+  0%, 100% { opacity: 0; }
+  8% { opacity: 0; }
+  12% { opacity: 1; }
+  82% { opacity: 1; }
+  88% { opacity: 0; }
 }
 
-.blink-lid-top,
-.blink-lid-bottom {
-  transform: scaleY(0);
-  animation: blink 6s ease-in-out 1s infinite;
+.blink-flash {
+  opacity: 0;
+  animation: blink-flash 5s ease-in-out 1.5s infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .blink-lid-top,
-  .blink-lid-bottom {
+  .blink-flash {
     animation: none;
-    transform: scaleY(0);
+    opacity: 0;
   }
 }
 

@@ -29,28 +29,12 @@ export default function ParallaxReveal({ text, subtext, className = '', backgrou
       ref={ref}
       className={`relative flex h-[50vh] items-center justify-center overflow-hidden bg-electric md:h-[60vh] ${className}`}
     >
-      {/* Blink — photo lids that flash shut briefly to show the image */}
+      {/* Blink — single full image overlay that flashes in via opacity */}
       {backgroundImage && (
-        <div className="pointer-events-none absolute inset-0 z-20">
-          {/* Top lid — clips top half */}
-          <div className="blink-lid-top absolute inset-x-0 top-0 h-1/2 origin-bottom overflow-hidden">
-            <img
-              src={backgroundImage}
-              alt=""
-              className="absolute top-0 left-0 h-auto w-full min-h-full object-cover object-center"
-              style={{ minHeight: '200%' }}
-            />
-          </div>
-          {/* Bottom lid — clips bottom half */}
-          <div className="blink-lid-bottom absolute inset-x-0 bottom-0 h-1/2 origin-top overflow-hidden">
-            <img
-              src={backgroundImage}
-              alt=""
-              className="absolute bottom-0 left-0 h-auto w-full min-h-full object-cover object-center"
-              style={{ minHeight: '200%' }}
-            />
-          </div>
-        </div>
+        <div
+          className="blink-flash pointer-events-none absolute inset-0 z-20"
+          style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+        />
       )}
 
       {/* Content — highest layer */}
