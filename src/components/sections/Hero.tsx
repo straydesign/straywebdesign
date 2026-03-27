@@ -20,7 +20,11 @@ const SLIDES = [
   },
   {
     badge: 'Enterprise-Grade Web Design',
-    headline: 'If you can dream it we can build it.',
+    headline: (
+      <>
+        If you can dream it,<br />we can build it.
+      </>
+    ),
     body: 'Hand-coded. Zero templates. Every pixel intentional. We build sites that make your competitors wonder who made yours.',
     cta: { label: 'See Our Work', href: '#services' },
   },
