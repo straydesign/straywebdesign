@@ -108,16 +108,17 @@ main section[aria-label]:focus-visible {
   50% { background-position: 100% 50%; }
 }
 
-/* Blink animation — eyelid briefly closes then reopens */
+/* Blink animation — lids are closed, open briefly to reveal, then close again */
 @keyframes blink {
-  0%, 42%, 48%, 100% { transform: scaleY(0); }
-  45% { transform: scaleY(1); }
+  0%, 100% { transform: scaleY(1); }
+  15%, 85% { transform: scaleY(0); }
+  90%, 95% { transform: scaleY(1); }
 }
 
 .blink-lid-top,
 .blink-lid-bottom {
-  transform: scaleY(0);
-  animation: blink 5s ease-in-out 1s infinite;
+  transform: scaleY(1);
+  animation: blink 5s ease-in-out 0.5s infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
