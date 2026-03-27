@@ -816,6 +816,119 @@ export const SERVICES = [
     ],
     relatedServices: ["seo-optimization", "landing-pages", "website-management"],
   },
+  {
+    slug: "paid-search",
+    name: "Paid Search & Google Ads",
+    shortName: "Paid Search",
+    description:
+      "Google Ads campaigns built on conversion data, not guesswork. Landing pages, ad copy, tracking, and weekly optimization for Erie PA businesses.",
+    longDescription:
+      "Most businesses waste half their ad budget sending traffic to pages that were never designed to convert. We build the full stack — targeted ad copy, dedicated landing pages, conversion tracking, and weekly optimization — so every dollar you spend on Google Ads brings back measurable results. No mystery spend. No vanity metrics. Just qualified leads showing up in your inbox.",
+    features: [
+      {
+        title: "Keyword Research & Strategy",
+        description:
+          "Deep analysis of your market, competitors, and search intent to find high-converting keywords your competitors are missing.",
+      },
+      {
+        title: "Dedicated Landing Pages",
+        description:
+          "Custom-built pages that match every ad — one message, one action, maximum conversions. No more dumping traffic on your homepage.",
+      },
+      {
+        title: "Ad Copy & Creative",
+        description:
+          "Headlines, descriptions, and sitelinks written to earn the click. A/B tested and refined weekly based on performance data.",
+      },
+      {
+        title: "Conversion Tracking",
+        description:
+          "Full-funnel tracking from click to customer. Know exactly which ads and keywords are driving calls, forms, and revenue.",
+      },
+      {
+        title: "Weekly Optimization",
+        description:
+          "Bid adjustments, negative keyword pruning, ad rotation, and budget reallocation based on real performance data — not autopilot.",
+      },
+      {
+        title: "Transparent Reporting",
+        description:
+          "Weekly reports showing clicks, conversions, cost-per-lead, and return on ad spend. No jargon, no fluff — just the numbers that matter.",
+      },
+    ],
+    benefits: [
+      { stat: "5.2x", label: "Return on Ad Spend" },
+      { stat: "$23", label: "Average Cost Per Lead" },
+      { stat: "11.4%", label: "Landing Page Conv. Rate" },
+      { stat: "342", label: "Monthly Conversions" },
+    ],
+    process: [
+      {
+        step: 1,
+        title: "Market & Competitor Audit",
+        description:
+          "We analyze your market, competitors' ad spend, and search landscape to find opportunities and build a targeting strategy.",
+      },
+      {
+        step: 2,
+        title: "Campaign & Landing Page Build",
+        description:
+          "We write ad copy, build dedicated landing pages, set up conversion tracking, and configure your campaigns for launch.",
+      },
+      {
+        step: 3,
+        title: "Launch & Monitor",
+        description:
+          "Campaigns go live with close monitoring. We watch early data, adjust bids, and ensure tracking is capturing every conversion.",
+      },
+      {
+        step: 4,
+        title: "Optimize & Scale",
+        description:
+          "Weekly optimization cycles — kill underperformers, scale winners, test new copy, and continuously lower your cost per lead.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How much should I budget for Google Ads?",
+        answer:
+          "Most local businesses see results starting at $1,500-3,000/month in ad spend. We help you find the right budget based on your market, competition, and goals — and scale up once we prove ROI.",
+      },
+      {
+        question: "How is this different from boosting posts on Facebook?",
+        answer:
+          "Google Ads targets people actively searching for what you sell — they already have intent. Social ads interrupt people scrolling. Both have a place, but search ads typically convert 3-5x higher for local services.",
+      },
+      {
+        question: "How soon will I see results?",
+        answer:
+          "You will see traffic and data within days of launch. Most campaigns hit a performance groove within 2-4 weeks as we optimize targeting, bids, and landing pages based on real data.",
+      },
+      {
+        question: "Do I need a new website to run Google Ads?",
+        answer:
+          "Not necessarily — but you need a dedicated landing page for each campaign. Sending ad traffic to your homepage is the #1 reason ads fail. We build conversion-focused landing pages included in every campaign.",
+      },
+      {
+        question: "What if I have run ads before and they did not work?",
+        answer:
+          "Most failed campaigns have the same root cause: generic ads pointing to a generic page with no tracking. We fix all three — targeted copy, dedicated pages, and full-funnel tracking — so you can see exactly what is working.",
+      },
+    ],
+    keywords: [
+      "Google Ads management Erie PA",
+      "paid search Erie",
+      "PPC management",
+      "Google Ads agency",
+      "search engine marketing Erie",
+      "pay per click advertising",
+      "landing page optimization",
+      "conversion rate optimization",
+      "local PPC management",
+      "Google Ads for small business",
+    ],
+    relatedServices: ["website-design", "landing-pages", "analytics-setup"],
+  },
 ] as const;
 
 export type ServiceSlug = (typeof SERVICES)[number]["slug"];
