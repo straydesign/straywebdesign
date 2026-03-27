@@ -61,11 +61,8 @@ export default function ParallaxReveal({ text, subtext, className = '', backgrou
         </>
       )}
 
-      {/* Blink overlay — eyelid closing effect */}
-      <div className="pointer-events-none absolute inset-0 z-20">
-        <div className="blink-lid-top absolute inset-x-0 top-0 h-1/2 origin-bottom bg-slate-950" />
-        <div className="blink-lid-bottom absolute inset-x-0 bottom-0 h-1/2 origin-top bg-slate-950" />
-      </div>
+      {/* Blink overlay — eye-shaped reveal that blinks */}
+      <div className="blink-eye pointer-events-none absolute inset-0 z-20 bg-slate-950" />
 
       {/* Content */}
       {mobile || reduced ? (
