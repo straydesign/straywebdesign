@@ -14,11 +14,7 @@ const GlassShatter = lazy(() => import('@/components/ui/GlassShatter'));
 const SLIDES = [
   {
     badge: 'For Practices, Dealerships & Professional Services in Erie',
-    headline: (
-      <>
-        <TextScramble text="Shatter" /> What You Thought Was Possible
-      </>
-    ),
+    headline: 'Shatter What You Thought Was Possible',
     body: 'Sub-1-second load times. 90+ performance scores. AI-ready from day one — at a fraction of agency cost.',
     cta: { label: 'Get Free Audit', href: '#contact' },
   },
