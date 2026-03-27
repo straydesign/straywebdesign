@@ -30,7 +30,7 @@ export default function FAQ() {
 
         <AnimateIn delay={0.1} className="mt-8">
           <div
-            className="flex flex-wrap gap-2.5"
+            className="flex flex-wrap justify-between gap-y-2.5 gap-x-2"
             role="tablist"
             aria-label="Frequently asked questions"
           >

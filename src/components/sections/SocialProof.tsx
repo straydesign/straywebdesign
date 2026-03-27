@@ -1,17 +1,10 @@
 'use client';
 
-import { ArrowRight, Award, Code2, Paintbrush, ShieldCheck } from 'lucide-react';
-import AnimateIn, { StaggerContainer, StaggerItem } from '@/components/ui/AnimateIn';
+import { ArrowRight } from 'lucide-react';
+import AnimateIn from '@/components/ui/AnimateIn';
 import GradientText from '@/components/ui/GradientText';
 import Carousel from '@/components/ui/Carousel';
 import { CLIENT_PROFILES } from '@/lib/constants';
-
-const CREDENTIALS = [
-  { icon: Award, label: 'Lighthouse 100s' },
-  { icon: Code2, label: 'Modern Stack' },
-  { icon: Paintbrush, label: 'Custom Design' },
-  { icon: ShieldCheck, label: 'Zero Plugins' },
-];
 
 function ProfileCard({
   industry,
@@ -69,45 +62,7 @@ export default function SocialProof() {
           />
         </AnimateIn>
 
-        {/* Credential badges */}
-        <StaggerContainer className="mt-12 text-center" staggerDelay={0.08}>
-          <StaggerItem>
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              {CREDENTIALS.map(({ icon: Icon, label }) => (
-                <div
-                  key={label}
-                  className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2"
-                >
-                  <Icon className="h-4 w-4 text-electric" />
-                  <span className="text-sm font-medium text-slate-300">{label}</span>
-                </div>
-              ))}
-            </div>
-          </StaggerItem>
-        </StaggerContainer>
-
-        {/* Tech stack */}
-        <StaggerContainer className="mt-8 text-center" staggerDelay={0.1}>
-          <StaggerItem>
-            <p className="text-sm font-semibold tracking-wide uppercase text-slate-400">
-              Built with modern technology
-            </p>
-          </StaggerItem>
-          <StaggerItem>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-6 text-slate-300">
-              {['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Vercel'].map(
-                (tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-400"
-                  >
-                    {tech}
-                  </span>
-                )
-              )}
-            </div>
-          </StaggerItem>
-        </StaggerContainer>
+        {/* Credential badges and tech stack removed — not important */}
       </div>
     </section>
   );
