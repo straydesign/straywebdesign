@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { isMobile } from '@/lib/mobile';
+import { useClientEnv } from '@/lib/use-client-env';
 import type { Service } from '@/data/services';
 
 interface ServiceCardProps {
@@ -14,7 +14,7 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ service, className }: ServiceCardProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const mobile = isMobile();
+  const { mobile } = useClientEnv();
 
   return (
     <div

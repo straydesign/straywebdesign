@@ -6,7 +6,7 @@ import {
   useMotionValue,
   useSpring,
 } from 'framer-motion';
-import { isMobile, prefersReducedMotion } from '@/lib/mobile';
+import { useClientEnv } from '@/lib/use-client-env';
 
 interface CountUpProps {
   value: number;
@@ -26,6 +26,7 @@ function MobileCountUp({
   duration = 2,
   className = '',
 }: CountUpProps) {
+  const { reducedMotion } = useClientEnv();
   const ref = useRef<HTMLSpanElement>(null);
   const [display, setDisplay] = useState('0');
   const hasAnimated = useRef(false);
@@ -40,7 +41,7 @@ function MobileCountUp({
         hasAnimated.current = true;
         observer.disconnect();
 
-        if (prefersReducedMotion()) {
+        if (reducedMotion) {
           setDisplay(value.toFixed(decimals));
           return;
         }
@@ -64,7 +65,7 @@ function MobileCountUp({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [value, decimals, duration]);
+  }, [value, decimals, duration, reducedMotion]);
 
   return (
     <span ref={ref} className={className}>
@@ -84,9 +85,9 @@ function DesktopCountUp({
   duration = 2,
   className = '',
 }: CountUpProps) {
+  const { reducedMotion: reduced } = useClientEnv();
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-50px' });
-  const reduced = prefersReducedMotion();
   const [display, setDisplay] = useState('0');
 
   const motionValue = useMotionValue(0);
@@ -122,7 +123,8 @@ function DesktopCountUp({
 }
 
 export default function CountUp(props: CountUpProps) {
-  if (isMobile()) {
+  const { mobile } = useClientEnv();
+  if (mobile) {
     return <MobileCountUp {...props} />;
   }
   return <DesktopCountUp {...props} />;

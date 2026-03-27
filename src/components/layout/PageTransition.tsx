@@ -1,9 +1,8 @@
 'use client';
 
-import { type ReactNode } from 'react';
+import { type ReactNode, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import { isMobile, prefersReducedMotion } from '@/lib/mobile';
 
 interface PageTransitionProps {
   children: ReactNode;
@@ -15,38 +14,34 @@ const variants = {
 };
 
 /**
- * Module-level flag: tracks whether the app has completed its first render.
- * Persists across component remounts (template.tsx remounts on every nav).
- *
- * CRITICAL for LCP: On the FIRST render (SSR + initial hydration), content must
- * be visible immediately — no opacity:0 initial state. The page transition
- * animation only fires on SUBSEQUENT route navigations (when pathname changes).
+ * Page transition wrapper. Renders a plain div on the initial SSR + hydration
+ * pass (no Framer Motion) to avoid hydration mismatches. After mount, subsequent
+ * route navigations use motion.div for an entrance animation.
  */
-let hasHydrated = false;
-
 export default function PageTransition({ children }: PageTransitionProps) {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
 
-  if (prefersReducedMotion()) {
-    return <>{children}</>;
-  }
+  useEffect(() => {
+    // Skip animation on mobile / reduced motion
+    const mobile = window.innerWidth < 768;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!mobile && !reducedMotion) {
+      setMounted(true);
+    }
+  }, []);
 
-  // Mobile: skip page transition entirely — no framer-motion needed
-  if (isMobile()) {
+  // SSR + first hydration: plain div, no Framer Motion, zero mismatch risk
+  if (!mounted) {
     return <div key={pathname}>{children}</div>;
   }
 
-  // First render: skip entrance animation to avoid LCP delay.
-  // initial={false} tells framer-motion to start in the "enter" state (opacity:1).
-  // Subsequent navigations: play the entrance animation normally.
-  const skipInitial = !hasHydrated;
-  hasHydrated = true;
-
+  // Client-side navigations: animate in
   return (
     <motion.div
       key={pathname}
       variants={variants}
-      initial={skipInitial ? false : 'hidden'}
+      initial="hidden"
       animate="enter"
       transition={{
         duration: 0.25,

@@ -2,7 +2,7 @@
 
 import { useRef, type ReactNode, type HTMLAttributes } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { isMobile, prefersReducedMotion } from '@/lib/mobile';
+import { useClientEnv } from '@/lib/use-client-env';
 
 interface HorizontalScrollProps extends HTMLAttributes<HTMLElement> {
   children: ReactNode[];
@@ -71,7 +71,8 @@ function HorizontalScrollStatic({
 }
 
 export default function HorizontalScroll(props: HorizontalScrollProps) {
-  if (isMobile() || prefersReducedMotion()) {
+  const { mobile, reducedMotion } = useClientEnv();
+  if (mobile || reducedMotion) {
     return <HorizontalScrollStatic {...props} />;
   }
   return <HorizontalScrollAnimated {...props} />;

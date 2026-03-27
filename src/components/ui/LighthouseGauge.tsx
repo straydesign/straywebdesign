@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { isMobile, prefersReducedMotion } from '@/lib/mobile';
+import { useClientEnv } from '@/lib/use-client-env';
 
 interface LighthouseGaugeProps {
   score: number;
@@ -24,6 +24,7 @@ export default function LighthouseGauge({
   className = '',
   delay = 0,
 }: LighthouseGaugeProps) {
+  const { reducedMotion } = useClientEnv();
   const ref = useRef<HTMLDivElement>(null);
   const [animatedScore, setAnimatedScore] = useState(0);
   const hasAnimated = useRef(false);
@@ -43,7 +44,7 @@ export default function LighthouseGauge({
         hasAnimated.current = true;
         observer.disconnect();
 
-        if (prefersReducedMotion()) {
+        if (reducedMotion) {
           setAnimatedScore(score);
           return;
         }
@@ -67,7 +68,7 @@ export default function LighthouseGauge({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [score, delay]);
+  }, [score, delay, reducedMotion]);
 
   const offset = circumference - (animatedScore / 100) * circumference;
 

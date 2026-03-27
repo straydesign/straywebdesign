@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import MagneticButton from '@/components/ui/MagneticButton';
 import AnimateIn from '@/components/ui/AnimateIn';
 import LighthouseGauge from '@/components/ui/LighthouseGauge';
-import { isMobile, prefersReducedMotion } from '@/lib/mobile';
+import { useClientEnv } from '@/lib/use-client-env';
 import TextScramble from '@/components/ui/TextScramble';
 
 const GlassShatter = lazy(() => import('@/components/ui/GlassShatter'));
@@ -273,8 +273,7 @@ function HeroContentMobile({ activeSlide, onSelect }: { activeSlide: number; onS
 
 /* ── Main hero ─────────────────────────────────────────────────── */
 export default function Hero() {
-  const mobile = isMobile();
-  const reduced = prefersReducedMotion();
+  const { mobile, reducedMotion: reduced } = useClientEnv();
   const [activeSlide, setActiveSlide] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const pausedRef = useRef(false);

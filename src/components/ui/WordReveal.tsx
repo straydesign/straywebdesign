@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { EASE_SMOOTH } from '@/lib/constants';
-import { isMobile, prefersReducedMotion } from '@/lib/mobile';
+import { useClientEnv } from '@/lib/use-client-env';
 import { useAnimateInView } from '@/lib/use-animate-in-view';
 
 interface WordRevealProps {
@@ -19,10 +19,10 @@ export default function WordReveal({
   stagger = 0.06,
 }: WordRevealProps) {
   const words = text.split(' ');
-  const mobile = isMobile();
+  const { mobile, reducedMotion } = useClientEnv();
   const [mobileRef, inView] = useAnimateInView({ once: true, margin: '-50px' });
 
-  if (prefersReducedMotion()) {
+  if (reducedMotion) {
     return <span className={className}>{text}</span>;
   }
 

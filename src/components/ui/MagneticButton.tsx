@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { playClick } from '@/lib/sounds';
-import { isMobile, prefersReducedMotion } from '@/lib/mobile';
+import { useClientEnv } from '@/lib/use-client-env';
 
 function isInternal(href: string): boolean {
   return href.startsWith('/') || href.startsWith('#');
@@ -36,8 +36,7 @@ export default function MagneticButton({
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const mobile = isMobile();
-  const reduced = prefersReducedMotion();
+  const { mobile, reducedMotion: reduced } = useClientEnv();
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (reduced || !ref.current) return;

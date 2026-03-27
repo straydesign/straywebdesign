@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import AnimateIn from '@/components/ui/AnimateIn';
-import { isMobile, prefersReducedMotion } from '@/lib/mobile';
+import { useClientEnv } from '@/lib/use-client-env';
 
 interface ComparisonSide {
   label: string;
@@ -131,7 +131,8 @@ function PinnedComparisonAnimated({
 }
 
 export default function PinnedComparison(props: PinnedComparisonProps) {
-  if (isMobile() || prefersReducedMotion()) {
+  const { mobile, reducedMotion } = useClientEnv();
+  if (mobile || reducedMotion) {
     return <PinnedComparisonStatic {...props} />;
   }
   return <PinnedComparisonAnimated {...props} />;

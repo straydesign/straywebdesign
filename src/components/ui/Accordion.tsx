@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { isMobile } from '@/lib/mobile';
+import { useClientEnv } from '@/lib/use-client-env';
 
 interface AccordionItem {
   question: string;
@@ -18,7 +18,7 @@ interface AccordionProps {
 
 export default function Accordion({ items, className = '' }: AccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const mobile = isMobile();
+  const { mobile } = useClientEnv();
 
   return (
     <div className={cn('space-y-3', className)}>

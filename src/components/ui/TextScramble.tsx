@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
-import { prefersReducedMotion } from '@/lib/mobile';
+import { useClientEnv } from '@/lib/use-client-env';
 
 const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*';
 
@@ -20,11 +20,12 @@ export default function TextScramble({
   speed = 60,
   className = '',
 }: TextScrambleProps) {
+  const { reducedMotion } = useClientEnv();
   const [display, setDisplay] = useState(text);
   const resolved = useRef(false);
 
   useEffect(() => {
-    if (prefersReducedMotion() || resolved.current) return;
+    if (reducedMotion || resolved.current) return;
 
     let frame: number;
     const chars = text.split('');
@@ -65,7 +66,7 @@ export default function TextScramble({
       clearTimeout(timer);
       clearTimeout(frame);
     };
-  }, [text, delay, speed]);
+  }, [text, delay, speed, reducedMotion]);
 
   return <span className={className}>{display}</span>;
 }

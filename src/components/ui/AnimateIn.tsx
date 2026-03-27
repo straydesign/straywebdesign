@@ -3,7 +3,7 @@
 import { type ReactNode, type CSSProperties } from 'react';
 import { motion } from 'framer-motion';
 import { EASE_SMOOTH } from '@/lib/constants';
-import { isMobile, prefersReducedMotion } from '@/lib/mobile';
+import { useClientEnv } from '@/lib/use-client-env';
 import { useAnimateInView } from '@/lib/use-animate-in-view';
 
 type Direction = 'up' | 'down' | 'left' | 'right';
@@ -45,11 +45,11 @@ export default function AnimateIn({
   once = true,
   id,
 }: AnimateInProps) {
-  const mobile = isMobile();
+  const { mobile, reducedMotion } = useClientEnv();
   const [mobileRef, inView] = useAnimateInView({ once: true, margin: '-50px' });
 
   // Reduced motion: render static
-  if (prefersReducedMotion()) {
+  if (reducedMotion) {
     return (
       <div className={className} style={style} id={id}>
         {children}
@@ -115,7 +115,9 @@ export function StaggerContainer({
   staggerDelay?: number;
   once?: boolean;
 }) {
-  if (prefersReducedMotion() || isMobile()) {
+  const { mobile, reducedMotion } = useClientEnv();
+
+  if (reducedMotion || mobile) {
     return <div className={className}>{children}</div>;
   }
 
@@ -148,7 +150,7 @@ export function StaggerItem({
   distance?: number;
   duration?: number;
 }) {
-  const mobile = isMobile();
+  const { mobile } = useClientEnv();
   const [mobileRef, inView] = useAnimateInView({ once: true, margin: '-50px' });
 
   if (mobile) {

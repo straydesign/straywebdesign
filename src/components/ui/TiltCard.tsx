@@ -9,7 +9,7 @@ import {
 } from 'framer-motion';
 import { SPRING_CONFIG } from '@/lib/constants';
 import { cn } from '@/lib/utils';
-import { isMobile, prefersReducedMotion } from '@/lib/mobile';
+import { useClientEnv } from '@/lib/use-client-env';
 
 interface TiltCardProps {
   children: ReactNode;
@@ -48,7 +48,7 @@ function TiltCardDesktop({
   glowColor = 'rgba(59, 130, 246, 0.15)',
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduced = prefersReducedMotion();
+  const { reducedMotion: reduced } = useClientEnv();
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
 
@@ -112,7 +112,8 @@ function TiltCardDesktop({
 }
 
 export default function TiltCard(props: TiltCardProps) {
-  if (isMobile()) {
+  const { mobile } = useClientEnv();
+  if (mobile) {
     return <TiltCardStatic {...props} />;
   }
   return <TiltCardDesktop {...props} />;
