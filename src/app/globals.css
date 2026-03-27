@@ -108,25 +108,23 @@ main section[aria-label]:focus-visible {
   50% { background-position: 100% 50%; }
 }
 
-/* Blink — dark overlay with eye-shaped hole that opens/closes */
-/* clip-path cuts an ellipse out of the dark overlay to reveal content */
-@keyframes eye-blink {
-  0%        { clip-path: inset(0 0 0 0); }
-  8%, 80%   { clip-path: ellipse(55% 45% at 50% 50%); }
-  88%, 92%  { clip-path: ellipse(55% 2% at 50% 50%); }
-  96%       { clip-path: ellipse(55% 45% at 50% 50%); }
-  100%      { clip-path: ellipse(55% 45% at 50% 50%); }
+/* Blink — lids are open (hidden), briefly close (visible), reopen */
+@keyframes blink {
+  0%, 40%, 50%, 100% { transform: scaleY(0); }
+  44%, 46% { transform: scaleY(1); }
 }
 
-.blink-eye {
-  clip-path: inset(0 0 0 0);
-  animation: eye-blink 5s ease-in-out 0.3s infinite;
+.blink-lid-top,
+.blink-lid-bottom {
+  transform: scaleY(0);
+  animation: blink 4s ease-in-out 2s infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .blink-eye {
+  .blink-lid-top,
+  .blink-lid-bottom {
     animation: none;
-    clip-path: ellipse(55% 45% at 50% 50%);
+    transform: scaleY(0);
   }
 }
 
