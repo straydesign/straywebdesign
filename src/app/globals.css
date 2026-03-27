@@ -108,25 +108,30 @@ main section[aria-label]:focus-visible {
   50% { background-position: 100% 50%; }
 }
 
-/* Blink — image flashes over blue background like a quick blink */
-@keyframes blink-flash {
-  0%, 100% { opacity: 0; }
-  8% { opacity: 0; }
-  12% { opacity: 1; }
-  82% { opacity: 1; }
-  88% { opacity: 0; }
+/* Blink — top lid slides down, bottom lid slides up, then both retreat */
+@keyframes lid-top {
+  0%, 100% { transform: translateY(-100%); }
+  12%, 82% { transform: translateY(0); }
 }
 
-.blink-flash {
-  opacity: 0;
-  animation: blink-flash 5s ease-in-out 1.5s infinite;
+@keyframes lid-bottom {
+  0%, 100% { transform: translateY(100%); }
+  12%, 82% { transform: translateY(0); }
+}
+
+.blink-lid-top {
+  transform: translateY(-100%);
+  animation: lid-top 5s ease-in-out 1.5s infinite;
+}
+
+.blink-lid-bottom {
+  transform: translateY(100%);
+  animation: lid-bottom 5s ease-in-out 1.5s infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .blink-flash {
-    animation: none;
-    opacity: 0;
-  }
+  .blink-lid-top { animation: none; transform: translateY(-100%); }
+  .blink-lid-bottom { animation: none; transform: translateY(100%); }
 }
 
 /* Custom scrollbar */
