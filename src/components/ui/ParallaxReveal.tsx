@@ -32,14 +32,20 @@ export default function ParallaxReveal({ text, subtext, className = '', backgrou
       {/* Blink — photo lids that flash shut briefly to show the image */}
       {backgroundImage && (
         <div className="pointer-events-none absolute inset-0 z-20">
-          <div
-            className="blink-lid-top absolute inset-x-0 top-0 h-1/2 origin-bottom bg-cover bg-center"
-            style={{ backgroundImage: `url(${backgroundImage})`, backgroundPosition: 'center top' }}
-          />
-          <div
-            className="blink-lid-bottom absolute inset-x-0 bottom-0 h-1/2 origin-top bg-cover bg-center"
-            style={{ backgroundImage: `url(${backgroundImage})`, backgroundPosition: 'center bottom' }}
-          />
+          {/* Top lid — clips top half of full image */}
+          <div className="blink-lid-top absolute inset-x-0 top-0 h-1/2 origin-bottom overflow-hidden">
+            <div
+              className="absolute inset-x-0 top-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${backgroundImage})`, height: '200%' }}
+            />
+          </div>
+          {/* Bottom lid — clips bottom half of full image */}
+          <div className="blink-lid-bottom absolute inset-x-0 bottom-0 h-1/2 origin-top overflow-hidden">
+            <div
+              className="absolute inset-x-0 bottom-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${backgroundImage})`, height: '200%' }}
+            />
+          </div>
         </div>
       )}
 
