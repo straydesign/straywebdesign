@@ -51,6 +51,7 @@ export default function Home() {
         <ParallaxReveal
           text="Your site should load before they blink."
           subtext="Sub-second load times. Every page. Every device."
+          backgroundImage="/images/eye-screen.jpg"
         />
         <Success />
         <SocialProof />
