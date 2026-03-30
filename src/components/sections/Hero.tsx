@@ -14,8 +14,8 @@ const GlassShatter = lazy(() => import('@/components/ui/GlassShatter'));
 const SLIDES = [
   {
     badge: 'For Practices, Dealerships & Professional Services in Erie',
-    headline: 'Scale Your Business Through an Exceptional Digital Presence',
-    body: 'Sub-1-second load times. 90+ performance scores. AI-ready from day one — at a fraction of agency cost.',
+    headline: 'Are You Ready to Develop an Exceptional Digital Presence?',
+    body: 'The world is changing rapidly. Your competitors are investing in their online presence — are you ready to compete?',
     cta: { label: 'Get Free Audit', href: '#contact' },
   },
   {
