@@ -6,8 +6,8 @@ const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX = 10;
 const ipRequestCounts = new Map<string, { count: number; resetAt: number }>();
 
-/* Track IPs that already had a lead captured to avoid duplicate submissions */
-const capturedLeads = new Map<string, number>();
+/* Track which conversations already had a transcript sent */
+const sentTranscripts = new Map<string, { messageCount: number; lastSent: number }>();
 
 function checkRateLimit(ip: string): boolean {
   const now = Date.now();
@@ -26,35 +26,41 @@ function checkRateLimit(ip: string): boolean {
   return true;
 }
 
-/* ── Lead extraction ──────────────────────────────────────── */
+/* ── Lead & transcript extraction ─────────────────────────── */
 
 const EMAIL_RE = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 const PHONE_RE = /(?:\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/;
 
-interface ExtractedLead {
-  email?: string;
-  phone?: string;
-  transcript: string;
+function formatTranscript(messages: Array<{ role: string; content: string }>): string {
+  return messages
+    .map((m) => `${m.role === 'user' ? 'VISITOR' : 'ASSISTANT'}: ${m.content}`)
+    .join('\n\n');
 }
 
-function extractLead(messages: Array<{ role: string; content: string }>): ExtractedLead | null {
-  const userMessages = messages.filter((m) => m.role === 'user');
-  const allUserText = userMessages.map((m) => m.content).join(' ');
+function extractContactInfo(messages: Array<{ role: string; content: string }>): { email?: string; phone?: string } {
+  const allUserText = messages
+    .filter((m) => m.role === 'user')
+    .map((m) => m.content)
+    .join(' ');
 
-  const email = allUserText.match(EMAIL_RE)?.[0];
-  const phone = allUserText.match(PHONE_RE)?.[0];
-
-  if (!email && !phone) return null;
-
-  const transcript = messages
-    .map((m) => `${m.role === 'user' ? 'Visitor' : 'Tom'}: ${m.content}`)
-    .join('\n');
-
-  return { email, phone, transcript };
+  return {
+    email: allUserText.match(EMAIL_RE)?.[0],
+    phone: allUserText.match(PHONE_RE)?.[0],
+  };
 }
 
-async function submitLead(lead: ExtractedLead, ip: string): Promise<void> {
+async function sendTranscript(
+  messages: Array<{ role: string; content: string }>,
+  ip: string,
+  hasContactInfo: boolean,
+): Promise<void> {
   const WEB3FORMS_KEY = 'c2441e47-8ca0-4f87-a2dc-928015553d51';
+  const { email, phone } = extractContactInfo(messages);
+  const transcript = formatTranscript(messages);
+  const userMsgCount = messages.filter((m) => m.role === 'user').length;
+
+  const subjectPrefix = hasContactInfo ? 'LEAD' : 'Chat';
+  const subject = `${subjectPrefix}: ${email || phone || `Anonymous (${userMsgCount} msgs)`}`;
 
   try {
     await fetch('https://api.web3forms.com/submit', {
@@ -62,17 +68,19 @@ async function submitLead(lead: ExtractedLead, ip: string): Promise<void> {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         access_key: WEB3FORMS_KEY,
-        from_name: 'straywebdesign.co — Chat Lead',
-        subject: `Chat Lead: ${lead.email || lead.phone || 'Unknown'}`,
-        email: lead.email || 'no-email@chat-lead.straywebdesign.co',
-        phone: lead.phone || '',
+        from_name: 'straywebdesign.co — Chat Transcript',
+        subject,
+        email: email || 'chat-transcript@straywebdesign.co',
+        phone: phone || '',
         source: 'Chat Widget',
         ip_address: ip,
-        message: `A visitor shared contact info during a chat conversation.\n\nEmail: ${lead.email || 'Not provided'}\nPhone: ${lead.phone || 'Not provided'}\n\n--- Conversation Transcript ---\n\n${lead.transcript}`,
+        has_contact_info: hasContactInfo ? 'Yes' : 'No',
+        visitor_messages: String(userMsgCount),
+        message: `${hasContactInfo ? `CONTACT INFO DETECTED\nEmail: ${email || 'N/A'}\nPhone: ${phone || 'N/A'}\n\n` : ''}--- Full Transcript (${messages.length} messages) ---\n\n${transcript}`,
       }),
     });
   } catch {
-    // Fire and forget — don't block the chat response
+    // Fire and forget
   }
 }
 
@@ -111,17 +119,22 @@ export async function POST(request: NextRequest) {
       content: String(msg.content).slice(0, 2000),
     }));
 
-  // Extract and submit lead info (fire and forget, non-blocking)
-  const now = Date.now();
-  const lastCapture = capturedLeads.get(ip);
-  const shouldCapture = !lastCapture || now - lastCapture > 30 * 60 * 1000; // 30min cooldown
+  // Send transcript when conversation reaches meaningful length
+  // Send at 3 user messages, then again every 3 additional messages
+  const userMsgCount = sanitizedMessages.filter((m: { role: string }) => m.role === 'user').length;
+  const prev = sentTranscripts.get(ip);
+  const prevCount = prev?.messageCount ?? 0;
+  const { email, phone } = extractContactInfo(sanitizedMessages);
+  const hasContactInfo = Boolean(email || phone);
 
-  if (shouldCapture) {
-    const lead = extractLead(sanitizedMessages);
-    if (lead) {
-      capturedLeads.set(ip, now);
-      submitLead(lead, ip);
-    }
+  const shouldSend =
+    (userMsgCount >= 3 && !prev) ||                          // First send at 3 messages
+    (userMsgCount >= prevCount + 3) ||                       // Every 3 additional messages
+    (hasContactInfo && (!prev || !prev.lastSent));           // Immediately on contact info
+
+  if (shouldSend) {
+    sentTranscripts.set(ip, { messageCount: userMsgCount, lastSent: Date.now() });
+    sendTranscript(sanitizedMessages, ip, hasContactInfo);
   }
 
   const client = new Anthropic({ apiKey });
