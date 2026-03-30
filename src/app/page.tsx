@@ -4,7 +4,6 @@ import Footer from '@/components/layout/Footer';
 import SectionKeyboardNav from '@/components/layout/SectionKeyboardNav';
 import Hero from '@/components/sections/Hero';
 import Marquee from '@/components/ui/Marquee';
-import ParallaxReveal from '@/components/ui/ParallaxReveal';
 
 function SectionSkeleton() {
   return (
@@ -48,11 +47,6 @@ export default function Home() {
         <Hero />
         <Marquee />
         <Services />
-        <ParallaxReveal
-          text="Your site should load before they blink."
-          subtext="Sub-second load times. Every page. Every device."
-          backgroundImage="/images/eye-screen.jpg"
-        />
         <Success />
         <SocialProof />
         <TechnologyGap />
