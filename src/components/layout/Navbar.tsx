@@ -203,7 +203,7 @@ export default function Navbar() {
             <StrayLogo
               width={36}
               height={18}
-              color="#16a34a"
+              color="#2563EB"
             />
             <span>
               stray<span className="text-accent">web</span>design

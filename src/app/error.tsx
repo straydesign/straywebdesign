@@ -43,7 +43,7 @@ export default function Error({ error, reset }: ErrorProps) {
       <div className="relative z-10 mx-auto flex max-w-lg flex-col items-center text-center">
         <motion.div {...fadeUp}>
           <Link href="/" aria-label="Go to homepage">
-            <StrayLogo color="#16a34a" width={64} height={32} />
+            <StrayLogo color="#2563EB" width={64} height={32} />
           </Link>
         </motion.div>
 

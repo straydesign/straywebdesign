@@ -8,13 +8,13 @@
   --text-secondary: #52525b;
   --text-tertiary: #71717a;
   --text-placeholder: #a1a1aa;
-  --accent: #16a34a;
+  --accent: #2563EB;
   --border-default: #e4e4e7;
   --border-strong: #d4d4d8;
 
   /* Legacy aliases — keep for any remaining references */
   --navy: #18181b;
-  --electric: #16a34a;
+  --electric: #2563EB;
   --warm-white: #f4f4f5;
   --dark-navy: #18181b;
   --light-gray: #f4f4f5;
