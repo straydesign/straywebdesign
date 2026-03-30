@@ -27,17 +27,17 @@ export default function Accordion({ items, className = '' }: AccordionProps) {
         return (
           <div
             key={index}
-            className="overflow-hidden rounded-xl border border-slate-200/60 bg-white"
+            className="overflow-hidden border border-border-default bg-surface-card"
           >
             <h3 className="m-0">
               <button
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="flex w-full items-center justify-between gap-4 p-5 text-left font-semibold text-navy transition-colors hover:bg-slate-50 md:p-6"
+                className="flex w-full items-center justify-between gap-4 p-5 text-left font-semibold text-text-primary transition-colors hover:bg-surface-sunken md:p-6"
                 aria-expanded={isOpen}
                 aria-controls={`accordion-panel-${index}`}
                 id={`accordion-trigger-${index}`}
               >
-                <span className="font-display text-base md:text-lg">
+                <span className="font-mono text-base md:text-lg">
                   {item.question}
                 </span>
                 {mobile ? (
@@ -67,7 +67,7 @@ export default function Accordion({ items, className = '' }: AccordionProps) {
                 className={cn('css-accordion-panel', isOpen && 'open')}
               >
                 <div>
-                  <div className="px-5 pb-5 leading-relaxed text-slate-600 md:px-6 md:pb-6">
+                  <div className="px-5 pb-5 leading-relaxed text-text-secondary md:px-6 md:pb-6">
                     {item.answer}
                   </div>
                 </div>
@@ -84,7 +84,7 @@ export default function Accordion({ items, className = '' }: AccordionProps) {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                   >
-                    <div className="px-5 pb-5 leading-relaxed text-slate-600 md:px-6 md:pb-6">
+                    <div className="px-5 pb-5 leading-relaxed text-text-secondary md:px-6 md:pb-6">
                       {item.answer}
                     </div>
                   </motion.div>

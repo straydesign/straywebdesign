@@ -81,7 +81,7 @@ export default function LighthouseGauge({
             cy={size / 2}
             r={radius}
             fill="none"
-            stroke="#e2e8f0"
+            stroke="#e4e4e7"
             strokeWidth={strokeWidth}
           />
           <circle
@@ -99,14 +99,14 @@ export default function LighthouseGauge({
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
           <span
-            className="font-display text-2xl font-bold"
+            className="font-mono text-2xl font-bold"
             style={{ color }}
           >
             {animatedScore}
           </span>
         </div>
       </div>
-      <span className="text-sm font-medium text-slate-600">{label}</span>
+      <span className="text-sm font-medium text-text-secondary">{label}</span>
     </div>
   );
 }

@@ -33,22 +33,22 @@ function PinnedComparisonStatic({
   return (
     <section className="py-20">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <h2 className="text-center font-display text-3xl font-bold text-navy md:text-4xl">
+        <h2 className="text-center font-mono text-3xl font-bold text-text-primary md:text-4xl">
           {title}
         </h2>
         {subtitle && (
-          <p className="mt-4 text-center text-lg text-slate-600">{subtitle}</p>
+          <p className="mt-4 text-center text-lg text-text-secondary">{subtitle}</p>
         )}
         <div className="mt-12 grid gap-8 md:grid-cols-2">
           {[before, after].map((side) => (
-            <div key={side.label} className={`rounded-2xl border-2 p-6 ${accentColors[side.accent]}`}>
-              <h3 className="font-display text-xl font-bold">{side.label}</h3>
-              <div className="mt-4 aspect-video overflow-hidden rounded-lg bg-slate-100">
+            <div key={side.label} className={`border-2 p-6 ${accentColors[side.accent]}`}>
+              <h3 className="font-mono text-xl font-bold">{side.label}</h3>
+              <div className="mt-4 aspect-video overflow-hidden bg-surface-sunken">
                 <img src={side.imageUrl} alt={side.label} className="h-full w-full object-cover" />
               </div>
               <ul className="mt-4 space-y-2">
                 {side.points.map((point) => (
-                  <li key={point} className="text-sm text-slate-600">
+                  <li key={point} className="text-sm text-text-secondary">
                     {side.accent === 'red' ? '\u2715' : '\u2713'} {point}
                   </li>
                 ))}
@@ -82,24 +82,24 @@ function PinnedComparisonAnimated({
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <div className="mx-auto w-full max-w-7xl px-5 md:px-8">
           <AnimateIn className="mb-8 text-center">
-            <h2 className="font-display text-3xl font-bold text-navy md:text-4xl">
+            <h2 className="font-mono text-3xl font-bold text-text-primary md:text-4xl">
               {title}
             </h2>
             {subtitle && (
-              <p className="mt-4 text-lg text-slate-600">{subtitle}</p>
+              <p className="mt-4 text-lg text-text-secondary">{subtitle}</p>
             )}
           </AnimateIn>
 
           <div className="relative grid grid-cols-2 gap-6">
             {/* Before side */}
-            <div className={`rounded-2xl border-2 p-6 ${accentColors[before.accent]}`}>
-              <h3 className="font-display text-xl font-bold">{before.label}</h3>
-              <div className="mt-4 aspect-video overflow-hidden rounded-lg bg-slate-100">
+            <div className={`border-2 p-6 ${accentColors[before.accent]}`}>
+              <h3 className="font-mono text-xl font-bold">{before.label}</h3>
+              <div className="mt-4 aspect-video overflow-hidden bg-surface-sunken">
                 <img src={before.imageUrl} alt={before.label} className="h-full w-full object-cover" />
               </div>
               <motion.ul className="mt-4 space-y-2" style={{ opacity: pointsOpacity }}>
                 {before.points.map((point) => (
-                  <li key={point} className="text-sm text-slate-600">
+                  <li key={point} className="text-sm text-text-secondary">
                     {'\u2715'} {point}
                   </li>
                 ))}
@@ -108,16 +108,16 @@ function PinnedComparisonAnimated({
 
             {/* After side */}
             <motion.div
-              className={`rounded-2xl border-2 p-6 ${accentColors[after.accent]}`}
+              className={`border-2 p-6 ${accentColors[after.accent]}`}
               style={{ opacity: afterOpacity }}
             >
-              <h3 className="font-display text-xl font-bold">{after.label}</h3>
-              <div className="mt-4 aspect-video overflow-hidden rounded-lg bg-slate-100">
+              <h3 className="font-mono text-xl font-bold">{after.label}</h3>
+              <div className="mt-4 aspect-video overflow-hidden bg-surface-sunken">
                 <img src={after.imageUrl} alt={after.label} className="h-full w-full object-cover" />
               </div>
               <motion.ul className="mt-4 space-y-2" style={{ opacity: pointsOpacity }}>
                 {after.points.map((point) => (
-                  <li key={point} className="text-sm text-slate-600">
+                  <li key={point} className="text-sm text-text-secondary">
                     {'\u2713'} {point}
                   </li>
                 ))}

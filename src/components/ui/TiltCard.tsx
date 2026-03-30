@@ -28,12 +28,12 @@ function TiltCardStatic({
   return (
     <div
       className={cn(
-        'relative overflow-hidden rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm md:p-8',
+        'relative overflow-hidden border border-border-default bg-surface-card p-6 md:p-8',
         className
       )}
       style={style}
     >
-      <div className="pointer-events-none absolute top-0 right-0 left-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+      <div className="pointer-events-none absolute top-0 right-0 left-0 h-px bg-gradient-to-r from-transparent via-border-default to-transparent" />
       <div className="relative z-10">{children}</div>
     </div>
   );
@@ -81,7 +81,7 @@ function TiltCardDesktop({
     <motion.div
       ref={ref}
       className={cn(
-        'relative overflow-hidden rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm transition-shadow hover:shadow-lg md:p-8',
+        'relative overflow-hidden border border-border-default bg-surface-card p-6 md:p-8',
         className
       )}
       style={{
@@ -95,7 +95,7 @@ function TiltCardDesktop({
     >
       {shouldTilt && (
         <motion.div
-          className="pointer-events-none absolute inset-0 rounded-xl"
+          className="pointer-events-none absolute inset-0"
           style={{
             background: useTransform(
               [glossX, glossY],
@@ -105,7 +105,7 @@ function TiltCardDesktop({
           }}
         />
       )}
-      <div className="pointer-events-none absolute top-0 right-0 left-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+      <div className="pointer-events-none absolute top-0 right-0 left-0 h-px bg-gradient-to-r from-transparent via-border-default to-transparent" />
       <div className="relative z-10">{children}</div>
     </motion.div>
   );

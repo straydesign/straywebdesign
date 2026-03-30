@@ -18,12 +18,12 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="border-t border-slate-200 bg-white py-16 md:py-20"
+      className="border-t border-border-default bg-surface-card py-16 md:py-20"
       aria-label="FAQ"
     >
       <div className="mx-auto max-w-3xl px-5 md:px-8">
         <AnimateIn>
-          <p className="text-sm font-semibold tracking-widest text-slate-400 uppercase">
+          <p className="font-mono text-[11px] font-semibold uppercase tracking-widest text-text-tertiary">
             FAQ
           </p>
         </AnimateIn>
@@ -41,10 +41,10 @@ export default function FAQ() {
                 aria-selected={activeIndex === index}
                 aria-controls="faq-answer-panel"
                 onClick={() => handlePillClick(index)}
-                className={`flex-grow rounded-full px-4 py-2 text-center text-sm font-medium transition-all duration-200 cursor-pointer ${
+                className={`flex-grow px-4 py-2 text-center font-mono text-sm font-medium transition-all duration-200 cursor-pointer ${
                   activeIndex === index
-                    ? 'bg-electric text-white shadow-sm'
-                    : 'bg-slate-100 text-navy hover:bg-slate-200'
+                    ? 'bg-accent text-white'
+                    : 'bg-surface-sunken text-text-primary hover:bg-border-default'
                 }`}
               >
                 {item.question}
@@ -65,11 +65,11 @@ export default function FAQ() {
               transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
               className="overflow-hidden"
             >
-              <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-6 md:p-8">
-                <h3 className="text-lg font-semibold text-navy">
+              <div className="mt-6 border border-border-default bg-surface-page p-6 md:p-8">
+                <h3 className="font-mono text-lg font-semibold text-text-primary">
                   {activeItem.question}
                 </h3>
-                <p className="mt-3 leading-relaxed text-slate-600">
+                <p className="mt-3 font-mono leading-relaxed text-text-secondary">
                   {activeItem.answer}
                 </p>
               </div>

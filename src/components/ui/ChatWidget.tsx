@@ -135,7 +135,7 @@ export default function ChatWidget() {
             exit={{ scale: 0, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             onClick={() => setIsOpen(true)}
-            className="fixed right-6 bottom-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-electric text-white shadow-lg shadow-electric/30 transition-colors hover:bg-electric/90"
+            className="fixed right-6 bottom-6 z-50 flex h-14 w-14 items-center justify-center bg-accent text-white transition-colors hover:bg-accent/90"
             aria-label="Open chat"
           >
             <MessageCircle className="h-6 w-6" />
@@ -151,19 +151,19 @@ export default function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed right-6 bottom-6 z-50 flex h-[480px] w-[360px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl"
+            className="fixed right-6 bottom-6 z-50 flex h-[480px] w-[360px] flex-col overflow-hidden border border-border-default bg-surface-card"
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-slate-200 bg-navy px-4 py-3">
+            <div className="flex items-center justify-between border-b border-border-default bg-surface-page px-4 py-3">
               <div className="flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-emerald-400" />
-                <span className="text-sm font-semibold text-white">
+                <span className="text-sm font-semibold text-text-primary">
                   Tom — Stray Web Design
                 </span>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="rounded-lg p-1 text-white/70 transition-colors hover:text-white"
+                className="p-1 text-text-tertiary transition-colors hover:text-text-primary"
                 aria-label="Close chat"
               >
                 <X className="h-4 w-4" />
@@ -177,14 +177,14 @@ export default function ChatWidget() {
                   <div
                     key={i}
                     className={cn(
-                      'max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed',
+                      'max-w-[85%] px-3.5 py-2.5 text-sm leading-relaxed',
                       msg.role === 'user'
-                        ? 'ml-auto bg-electric text-white'
-                        : 'bg-slate-100 text-slate-700'
+                        ? 'ml-auto bg-accent text-white'
+                        : 'bg-surface-sunken text-text-primary'
                     )}
                   >
                     {msg.content || (
-                      <Loader2 className="h-4 w-4 animate-spin text-slate-400" />
+                      <Loader2 className="h-4 w-4 animate-spin text-text-tertiary" />
                     )}
                   </div>
                 ))}
@@ -193,7 +193,7 @@ export default function ChatWidget() {
             </div>
 
             {/* Input */}
-            <div className="border-t border-slate-200 px-3 py-3">
+            <div className="border-t border-border-default px-3 py-3">
               <div className="flex items-center gap-2">
                 <input
                   ref={inputRef}
@@ -202,13 +202,13 @@ export default function ChatWidget() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Ask about our services..."
-                  className="flex-1 rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 outline-none transition-colors placeholder:text-slate-400 focus:border-electric"
+                  className="flex-1 border border-border-default px-3 py-2 text-sm text-text-primary outline-none transition-colors placeholder:text-text-tertiary focus:border-accent"
                   disabled={isStreaming}
                 />
                 <button
                   onClick={sendMessage}
                   disabled={!input.trim() || isStreaming}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-electric text-white transition-colors hover:bg-electric/90 disabled:opacity-50"
+                  className="flex h-9 w-9 items-center justify-center bg-accent text-white transition-colors hover:bg-accent/90 disabled:opacity-50"
                   aria-label="Send message"
                 >
                   {isStreaming ? (

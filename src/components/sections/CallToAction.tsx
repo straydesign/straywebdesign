@@ -19,11 +19,11 @@ export default function CallToAction() {
 
       <div className="mx-auto max-w-4xl px-5 text-center md:px-8">
         <AnimateIn>
-          <h2 className="font-display text-3xl font-bold text-navy md:text-4xl lg:text-5xl">
+          <h2 className="font-mono text-3xl font-bold text-text-primary md:text-4xl lg:text-5xl">
             Ready to{' '}
             <GradientText>Close the Gap?</GradientText>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-text-secondary">
             See exactly how your site stacks up against enterprise competitors.
             Free audit — we&apos;ll show you the gap and how to close it.
           </p>
@@ -41,10 +41,10 @@ export default function CallToAction() {
         </AnimateIn>
 
         <AnimateIn delay={0.4} className="mt-8">
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-text-secondary">
             No credit card. No commitment. Just data about your site.
           </p>
-          <p className="mt-2 text-xs text-slate-500">
+          <p className="mt-2 text-xs text-text-secondary">
             For dental practices, financial firms, dealerships, and professional services where every new client matters.
           </p>
         </AnimateIn>

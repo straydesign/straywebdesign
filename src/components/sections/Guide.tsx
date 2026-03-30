@@ -24,14 +24,14 @@ export default function Guide() {
           {/* Left: Empathy + Authority */}
           <div>
             <AnimateIn>
-              <span className="mb-4 inline-block text-sm font-semibold tracking-wide text-electric uppercase">
+              <span className="mb-4 inline-block text-sm font-semibold tracking-wide text-accent uppercase">
                 Your Guide
               </span>
-              <h2 className="font-display text-3xl font-bold text-navy md:text-4xl">
+              <h2 className="font-mono text-3xl font-bold text-text-primary md:text-4xl">
                 I Help Practices &amp; Firms{' '}
                 <GradientText>Punch Above Their Weight.</GradientText>
               </h2>
-              <p className="mt-4 text-lg leading-relaxed text-slate-600">
+              <p className="mt-4 text-lg leading-relaxed text-text-secondary">
                 I&apos;ve audited hundreds of dental offices, financial firms,
                 dealerships, and professional services across Erie. The gap
                 between them and enterprise competitors is real — but it&apos;s
@@ -44,14 +44,14 @@ export default function Guide() {
               {CREDENTIALS.map((cred) => (
                 <div
                   key={cred.label}
-                  className="flex items-start gap-3 rounded-xl border border-slate-200/60 bg-white p-4"
+                  className="flex items-start gap-3 border border-border-default bg-surface-card p-4"
                 >
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-electric/10">
-                    <cred.icon className="h-4 w-4 text-electric" />
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center bg-accent/10">
+                    <cred.icon className="h-4 w-4 text-accent" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-navy">{cred.label}</p>
-                    <p className="text-xs text-slate-500">{cred.description}</p>
+                    <p className="text-sm font-semibold text-text-primary">{cred.label}</p>
+                    <p className="text-xs text-text-secondary">{cred.description}</p>
                   </div>
                 </div>
               ))}
@@ -60,8 +60,8 @@ export default function Guide() {
 
           {/* Right: Lighthouse scores */}
           <AnimateIn direction="right" delay={0.3}>
-            <div className="rounded-2xl border border-slate-200/60 bg-white p-5 shadow-sm sm:p-8">
-              <h3 className="mb-6 text-center font-display text-lg font-semibold text-navy">
+            <div className="border border-border-default bg-surface-card p-5 sm:p-8">
+              <h3 className="mb-6 text-center font-mono text-lg font-semibold text-text-primary">
                 Our Standard: Near-Perfect Scores
               </h3>
               <div className="grid grid-cols-2 justify-items-center gap-4 sm:flex sm:justify-center sm:gap-8">
@@ -70,14 +70,14 @@ export default function Guide() {
                 <LighthouseGauge score={100} label="Best Practices" size={80} delay={0.9} />
                 <LighthouseGauge score={100} label="SEO" size={80} delay={1.1} />
               </div>
-              <p className="mt-6 text-center text-sm text-slate-500">
+              <p className="mt-6 text-center text-sm text-text-secondary">
                 Every site we build targets 95+ across all Lighthouse categories.
               </p>
-              <details className="mt-4 rounded-lg border border-slate-200/60 bg-slate-50 px-4 py-3">
-                <summary className="cursor-pointer text-sm font-medium text-navy">
+              <details className="mt-4 border border-border-default bg-surface-sunken px-4 py-3">
+                <summary className="cursor-pointer text-sm font-medium text-text-primary">
                   Why not 100% performance?
                 </summary>
-                <div className="mt-2 space-y-2 text-xs leading-relaxed text-slate-500">
+                <div className="mt-2 space-y-2 text-xs leading-relaxed text-text-secondary">
                   <p>
                     We optimize everything we can — your JPG and PNG logos get
                     converted to SVG so they scale perfectly at any size without

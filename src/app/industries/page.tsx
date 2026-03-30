@@ -20,7 +20,7 @@ export default function IndustriesIndex() {
     <>
       <Navbar />
       <main id="main" className="min-h-[100dvh]">
-        <section className="relative overflow-hidden bg-navy pt-28 pb-20" aria-label="Industries overview">
+        <section className="relative overflow-hidden bg-surface-page pt-28 pb-20" aria-label="Industries overview">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-5xl px-5 md:px-8">
             <AnimateIn>
@@ -30,13 +30,13 @@ export default function IndustriesIndex() {
                   { label: 'Industries' },
                 ]}
               />
-              <p className="text-sm font-semibold uppercase tracking-wider text-electric">
+              <p className="text-sm font-semibold uppercase tracking-wider text-accent">
                 Industries We Serve
               </p>
-              <h1 className="mt-4 font-display text-3xl font-bold leading-tight text-white md:text-5xl">
+              <h1 className="mt-4 font-mono text-3xl font-bold leading-tight text-text-primary md:text-5xl">
                 Built for your industry, not a template
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-tertiary">
                 Every industry has different challenges, different competitors, and different
                 customer journeys. We build websites that understand yours.
               </p>
@@ -51,19 +51,19 @@ export default function IndustriesIndex() {
                 <StaggerItem key={industry.slug}>
                   <a
                     href={`/industries/${industry.slug}`}
-                    className="group flex h-full flex-col rounded-xl border border-slate-200/60 bg-white p-5 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
+                    className="group flex h-full flex-col border border-border-default bg-surface-card p-5 transition-all hover:-translate-y-1"
                   >
-                    <h2 className="font-display text-base font-bold text-navy group-hover:text-electric transition-colors">
+                    <h2 className="font-mono text-base font-bold text-text-primary group-hover:text-accent transition-colors">
                       {industry.name}
                     </h2>
-                    <p className="mt-2 flex-1 text-xs leading-relaxed text-slate-600">
+                    <p className="mt-2 flex-1 text-xs leading-relaxed text-text-secondary">
                       {industry.description}
                     </p>
-                    <div className="mt-3 text-xs text-slate-500">
+                    <div className="mt-3 text-xs text-text-secondary">
                       {industry.patientOrClientTerm} worth{' '}
-                      <span className="font-semibold text-navy">{industry.lifetimeValue}</span>
+                      <span className="font-semibold text-text-primary">{industry.lifetimeValue}</span>
                     </div>
-                    <div className="mt-3 flex items-center gap-1 text-xs font-medium text-electric">
+                    <div className="mt-3 flex items-center gap-1 text-xs font-medium text-accent">
                       Learn more
                       <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
                     </div>
@@ -74,14 +74,14 @@ export default function IndustriesIndex() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-navy py-16 md:py-20" aria-label="Call to action">
+        <section className="relative overflow-hidden bg-surface-page py-16 md:py-20" aria-label="Call to action">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-3xl px-5 text-center md:px-8">
             <AnimateIn>
-              <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
+              <h2 className="font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 Don&apos;t see your industry?
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-slate-300">
+              <p className="mx-auto mt-4 max-w-xl text-text-tertiary">
                 We build custom websites for any business where customer lifetime
                 value matters. Book a free audit and we&apos;ll show you the opportunity.
               </p>

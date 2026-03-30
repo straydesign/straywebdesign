@@ -120,10 +120,10 @@ function TagPill({ tag, onClick, isActive }: { tag: TagInfo; onClick: () => void
   return (
     <button
       onClick={onClick}
-      className={`rounded-full border px-3 py-1 text-xs font-medium transition-all duration-200 cursor-pointer ${
+      className={`border px-3 py-1 font-mono text-xs font-medium uppercase tracking-wider transition-all duration-200 cursor-pointer ${
         isActive
-          ? 'border-electric bg-electric text-white'
-          : 'border-slate-200 text-slate-500 hover:border-slate-300 hover:text-navy'
+          ? 'border-accent bg-accent text-white'
+          : 'border-border-default text-text-secondary hover:border-border-strong hover:text-text-primary'
       }`}
     >
       {tag.label}
@@ -140,22 +140,22 @@ function TagDetail({ tag, onClose }: { tag: TagInfo; onClose: () => void }) {
       transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
       className="overflow-hidden"
     >
-      <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-5 md:p-6">
+      <div className="mt-4 border border-border-default bg-surface-page p-5 md:p-6">
         <div className="flex items-start justify-between gap-4">
-          <h4 className="font-display text-base font-bold text-navy">{tag.label}</h4>
-          <button onClick={onClose} className="shrink-0 rounded-lg p-1 text-slate-400 transition-colors hover:text-navy" aria-label="Close">
+          <h4 className="font-mono text-base font-bold text-text-primary">{tag.label}</h4>
+          <button onClick={onClose} className="shrink-0 p-1 text-text-tertiary transition-colors hover:text-text-primary" aria-label="Close">
             <X className="h-4 w-4" />
           </button>
         </div>
-        <p className="mt-2 text-sm leading-relaxed text-slate-600">{tag.what}</p>
+        <p className="mt-2 font-mono text-sm leading-relaxed text-text-secondary">{tag.what}</p>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
-          <div className="rounded-xl bg-white p-4">
-            <p className="text-xs font-semibold tracking-wider text-slate-400 uppercase">The standard</p>
-            <p className="mt-1.5 text-sm leading-relaxed text-slate-500">{tag.standard}</p>
+          <div className="border border-border-default bg-surface-card p-4">
+            <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-text-tertiary">The standard</p>
+            <p className="mt-1.5 font-mono text-sm leading-relaxed text-text-secondary">{tag.standard}</p>
           </div>
-          <div className="rounded-xl bg-white p-4 ring-1 ring-electric/20">
-            <p className="text-xs font-semibold tracking-wider text-electric uppercase">What we do</p>
-            <p className="mt-1.5 text-sm leading-relaxed text-slate-700">{tag.ours}</p>
+          <div className="border border-accent/30 bg-surface-card p-4">
+            <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-accent">What we do</p>
+            <p className="mt-1.5 font-mono text-sm leading-relaxed text-text-primary">{tag.ours}</p>
           </div>
         </div>
       </div>
@@ -168,27 +168,27 @@ export default function Services() {
   const [activeAiTag, setActiveAiTag] = useState<number | null>(null);
 
   return (
-    <section id="services" className="bg-white" aria-label="Services">
+    <section id="services" className="bg-surface-card" aria-label="Services">
       {/* Editorial feature 1 — Performance */}
       <div className="mx-auto max-w-7xl px-5 pt-24 md:px-8 md:pt-32">
         <div className="grid items-end gap-8 md:grid-cols-12">
           <AnimateIn className="md:col-span-7">
-            <p className="text-sm font-semibold tracking-widest text-electric uppercase">
+            <p className="font-mono text-[11px] font-semibold uppercase tracking-widest text-accent">
               01
             </p>
-            <h2 className="mt-4 font-display text-[clamp(2rem,5vw,4rem)] font-bold leading-[1.05] tracking-tight text-navy">
+            <h2 className="mt-4 font-mono text-[clamp(2rem,5vw,4rem)] font-bold leading-[1.05] tracking-tight text-text-primary">
               Performance is not a feature.{' '}
-              <span className="text-slate-400">It&apos;s the foundation.</span>
+              <span className="text-text-tertiary">It&apos;s the foundation.</span>
             </h2>
           </AnimateIn>
           <AnimateIn delay={0.15} className="md:col-span-5 md:pb-2">
-            <p className="max-w-md text-lg leading-relaxed text-slate-500">
+            <p className="max-w-md font-mono text-lg leading-relaxed text-text-secondary">
               Sub-1-second loads. Lighthouse 100s. WCAG AA accessible. Your site
               will outperform Fortune 500 companies on every metric Google measures.
             </p>
             <Link
               href="/services/website-design"
-              className="group mt-5 inline-flex items-center gap-2 text-sm font-semibold text-navy transition-colors hover:text-electric"
+              className="group mt-5 inline-flex items-center gap-2 font-mono text-sm font-semibold text-text-primary transition-colors hover:text-accent"
             >
               How we build
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -224,32 +224,32 @@ export default function Services() {
 
       {/* Divider */}
       <div className="mx-auto mt-20 max-w-7xl px-5 md:mt-28 md:px-8">
-        <div className="border-t border-slate-200" />
+        <div className="border-t border-border-default" />
       </div>
 
       {/* Editorial feature 2 — AI & Search */}
       <div className="mx-auto max-w-7xl px-5 pt-20 md:px-8 md:pt-28">
         <div className="grid items-end gap-8 md:grid-cols-12">
           <AnimateIn className="md:col-span-5 md:pb-2">
-            <p className="max-w-md text-lg leading-relaxed text-slate-500">
+            <p className="max-w-md font-mono text-lg leading-relaxed text-text-secondary">
               Structured data, llms.txt, and GEO mean ChatGPT and Perplexity
               cite your business — not someone else.
             </p>
             <Link
               href="/services/seo-optimization"
-              className="group mt-5 inline-flex items-center gap-2 text-sm font-semibold text-navy transition-colors hover:text-electric"
+              className="group mt-5 inline-flex items-center gap-2 font-mono text-sm font-semibold text-text-primary transition-colors hover:text-accent"
             >
               See the strategy
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </AnimateIn>
           <AnimateIn delay={0.15} className="md:col-span-7 md:order-first lg:order-last">
-            <p className="text-sm font-semibold tracking-widest text-electric uppercase">
+            <p className="font-mono text-[11px] font-semibold uppercase tracking-widest text-accent">
               02
             </p>
-            <h2 className="mt-4 font-display text-[clamp(2rem,5vw,4rem)] font-bold leading-[1.05] tracking-tight text-navy">
+            <h2 className="mt-4 font-mono text-[clamp(2rem,5vw,4rem)] font-bold leading-[1.05] tracking-tight text-text-primary">
               Built for the search engines{' '}
-              <span className="text-slate-400">that don&apos;t exist yet.</span>
+              <span className="text-text-tertiary">that don&apos;t exist yet.</span>
             </h2>
           </AnimateIn>
         </div>
@@ -282,22 +282,22 @@ export default function Services() {
 
       {/* Divider */}
       <div className="mx-auto mt-20 max-w-7xl px-5 md:mt-28 md:px-8">
-        <div className="border-t border-slate-200" />
+        <div className="border-t border-border-default" />
       </div>
 
       {/* Add-ons — tight editorial strip */}
       <div className="mx-auto max-w-7xl px-5 pt-16 pb-24 md:px-8 md:pt-20 md:pb-32">
         <AnimateIn>
-          <p className="text-sm font-semibold tracking-widest text-electric uppercase">
+          <p className="font-mono text-[11px] font-semibold uppercase tracking-widest text-accent">
             Also Available
           </p>
-          <h3 className="mt-4 font-display text-2xl font-bold text-navy md:text-3xl">
+          <h3 className="mt-4 font-mono text-2xl font-bold text-text-primary md:text-3xl">
             AI-Powered <GradientText>Add-Ons</GradientText>
           </h3>
         </AnimateIn>
 
         <AnimateIn delay={0.15} className="mt-10">
-          <div className="grid gap-px overflow-hidden rounded-xl border border-slate-200 bg-slate-200 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-px overflow-hidden border border-border-default bg-border-default sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 name: 'AI Receptionist',
@@ -323,17 +323,17 @@ export default function Services() {
               <Link
                 key={addon.name}
                 href={addon.href}
-                className="group flex flex-col justify-between bg-white p-6 transition-colors hover:bg-slate-50"
+                className="group flex flex-col justify-between bg-surface-card p-6 transition-colors hover:bg-surface-page"
               >
                 <div>
-                  <p className="font-display text-base font-bold text-navy">
+                  <p className="font-mono text-base font-bold text-text-primary">
                     {addon.name}
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-500">
+                  <p className="mt-2 font-mono text-sm leading-relaxed text-text-secondary">
                     {addon.line}
                   </p>
                 </div>
-                <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-electric opacity-0 transition-opacity group-hover:opacity-100">
+                <div className="mt-4 flex items-center gap-1 font-mono text-xs font-semibold text-accent opacity-0 transition-opacity group-hover:opacity-100">
                   Learn more
                   <ArrowRight className="h-3 w-3" />
                 </div>
@@ -345,14 +345,14 @@ export default function Services() {
         {/* Pricing — bold, not hidden */}
         <AnimateIn delay={0.2} className="mt-16 md:mt-20">
           <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:gap-8">
-            <p className="font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-none tracking-tight text-navy">
+            <p className="font-mono text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-none tracking-tighter text-text-primary">
               $2,500
             </p>
             <div>
-              <p className="text-lg text-slate-500">
-                to launch. <span className="font-semibold text-navy">$100/mo</span> after.
+              <p className="font-mono text-lg text-text-secondary">
+                to launch. <span className="font-semibold text-text-primary">$100/mo</span> after.
               </p>
-              <p className="mt-1 text-sm text-slate-400">
+              <p className="mt-1 font-mono text-sm text-text-tertiary">
                 Hosting, support, SEO monitoring, content updates, analytics, ad infrastructure.
               </p>
             </div>

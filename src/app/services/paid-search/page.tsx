@@ -26,20 +26,20 @@ function GoogleAdMockup({ business, headline1, headline2, description, url, site
   sitelinks: readonly string[];
 }) {
   return (
-    <div className="rounded-xl border border-slate-200/60 bg-white p-5 shadow-sm">
+    <div className="border border-border-default bg-surface-card p-5">
       {/* Ad label */}
       <div className="flex items-center gap-2 text-xs">
         <span className="rounded bg-amber-100 px-1.5 py-0.5 font-semibold text-amber-800">
           Sponsored
         </span>
-        <span className="text-slate-500">{url}</span>
+        <span className="text-text-secondary">{url}</span>
       </div>
       {/* Headlines */}
       <a className="mt-2 block text-lg font-medium leading-snug text-[#1a0dab] hover:underline md:text-xl">
         {headline1} — {headline2}
       </a>
       {/* Description */}
-      <p className="mt-1.5 text-sm leading-relaxed text-slate-600">
+      <p className="mt-1.5 text-sm leading-relaxed text-text-secondary">
         {description}
       </p>
       {/* Sitelinks */}
@@ -61,11 +61,11 @@ function SearchResultMockup({ title, url, description }: {
 }) {
   return (
     <div className="py-3">
-      <span className="text-xs text-slate-500">{url}</span>
+      <span className="text-xs text-text-secondary">{url}</span>
       <p className="mt-0.5 text-base font-medium text-[#1a0dab] md:text-lg">
         {title}
       </p>
-      <p className="mt-1 text-sm leading-relaxed text-slate-600">
+      <p className="mt-1 text-sm leading-relaxed text-text-secondary">
         {description}
       </p>
     </div>
@@ -79,9 +79,9 @@ function MetricCard({ icon: Icon, value, label, trend }: {
   trend?: string;
 }) {
   return (
-    <div className="rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
+    <div className="border border-border-default bg-surface-card p-5">
       <div className="flex items-center justify-between">
-        <Icon className="h-5 w-5 text-electric" />
+        <Icon className="h-5 w-5 text-accent" />
         {trend && (
           <span className="flex items-center gap-1 text-xs font-medium text-emerald-400">
             <TrendingUp className="h-3 w-3" />
@@ -89,10 +89,10 @@ function MetricCard({ icon: Icon, value, label, trend }: {
           </span>
         )}
       </div>
-      <p className="mt-3 font-display text-2xl font-bold text-white md:text-3xl">
+      <p className="mt-3 font-mono text-2xl font-bold text-text-primary md:text-3xl">
         {value}
       </p>
-      <p className="mt-1 text-sm text-slate-400">{label}</p>
+      <p className="mt-1 text-sm text-text-tertiary">{label}</p>
     </div>
   );
 }
@@ -153,7 +153,7 @@ export default function PaidSearchPage() {
         />
 
         {/* Hero — The Pitch */}
-        <section className="relative overflow-hidden bg-navy pt-28 pb-20 md:pb-28" aria-label="Paid search overview">
+        <section className="relative overflow-hidden bg-surface-page pt-28 pb-20 md:pb-28" aria-label="Paid search overview">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-5xl px-5 md:px-8">
             <AnimateIn>
@@ -164,20 +164,20 @@ export default function PaidSearchPage() {
                   { label: 'Paid Search' },
                 ]}
               />
-              <p className="text-sm font-semibold uppercase tracking-wider text-electric">
+              <p className="text-sm font-semibold uppercase tracking-wider text-accent">
                 Paid Search & Google Ads
               </p>
-              <h1 className="mt-4 max-w-3xl font-display text-3xl font-bold leading-tight text-white md:text-5xl">
+              <h1 className="mt-4 max-w-3xl font-mono text-3xl font-bold leading-tight text-text-primary md:text-5xl">
                 Stop hoping your ads work.
-                <span className="text-electric"> Know they do.</span>
+                <span className="text-accent"> Know they do.</span>
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-tertiary">
                 Imagine being excited to share your website with a friend or a potential
                 client — and knowing that when you run ads, they will actually convert.
                 Not because you got lucky. Because every piece — the ad, the landing page,
                 the tracking — was built to work together.
               </p>
-              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-300">
+              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-text-tertiary">
                 Let&apos;s stop leaving that up to chance. Proven methods to be seen,
                 and proven systems to convert the customers who find you.
               </p>
@@ -191,7 +191,7 @@ export default function PaidSearchPage() {
         </section>
 
         {/* Stats */}
-        <section className="border-b border-slate-200 bg-white py-12" aria-label="Key statistics">
+        <section className="border-b border-border-default bg-surface-card py-12" aria-label="Key statistics">
           <div className="mx-auto max-w-5xl px-5 md:px-8">
             <StaggerContainer className="grid grid-cols-2 gap-8 md:grid-cols-4" staggerDelay={0.15}>
               {service.benefits.map((benefit, i) => {
@@ -199,14 +199,14 @@ export default function PaidSearchPage() {
                 return (
                   <StaggerItem key={i}>
                     <div className="text-center">
-                      <div className="font-display text-3xl font-bold text-navy md:text-4xl">
+                      <div className="font-mono text-3xl font-bold text-text-primary md:text-4xl">
                         <CountUp
                           value={parsed.value}
                           prefix={parsed.prefix}
                           suffix={parsed.suffix}
                         />
                       </div>
-                      <p className="mt-2 text-sm text-slate-600">{benefit.label}</p>
+                      <p className="mt-2 text-sm text-text-secondary">{benefit.label}</p>
                     </div>
                   </StaggerItem>
                 );
@@ -220,13 +220,13 @@ export default function PaidSearchPage() {
           <div className="mx-auto max-w-5xl px-5 md:px-8">
             <AnimateIn>
               <div className="text-center">
-                <p className="text-sm font-semibold uppercase tracking-wider text-electric">
+                <p className="text-sm font-semibold uppercase tracking-wider text-accent">
                   The Problem
                 </p>
-                <h2 className="mt-3 font-display text-2xl font-bold text-navy md:text-3xl">
+                <h2 className="mt-3 font-mono text-2xl font-bold text-text-primary md:text-3xl">
                   Most businesses send ad traffic here
                 </h2>
-                <p className="mx-auto mt-4 max-w-xl text-slate-600">
+                <p className="mx-auto mt-4 max-w-xl text-text-secondary">
                   A homepage with ten different messages, five navigation options, and
                   zero connection to the ad they just clicked. Then they wonder why their
                   cost-per-lead is $200.
@@ -242,7 +242,7 @@ export default function PaidSearchPage() {
                     <div className="h-2 w-2 rounded-full bg-red-500" />
                     <span className="text-sm font-semibold text-red-600">Without us — Traffic hits your homepage</span>
                   </div>
-                  <div className="rounded-xl border-2 border-red-200 bg-red-50/50 p-6">
+                  <div className="border-2 border-red-200 bg-red-50/50 p-6">
                     <div className="space-y-3">
                       <div className="h-3 w-3/4 rounded bg-red-200" />
                       <div className="flex gap-3">
@@ -279,7 +279,7 @@ export default function PaidSearchPage() {
                     <div className="h-2 w-2 rounded-full bg-emerald-500" />
                     <span className="text-sm font-semibold text-emerald-600">With us — Traffic hits a dedicated page</span>
                   </div>
-                  <div className="rounded-xl border-2 border-emerald-200 bg-emerald-50/50 p-6">
+                  <div className="border-2 border-emerald-200 bg-emerald-50/50 p-6">
                     <div className="space-y-3">
                       <div className="h-4 w-2/3 rounded bg-emerald-300" />
                       <div className="h-2 w-1/2 rounded bg-emerald-200" />
@@ -304,7 +304,7 @@ export default function PaidSearchPage() {
                           <div className="mt-1 h-2 w-1/2 rounded bg-emerald-200/40" />
                         </div>
                       </div>
-                      <div className="mx-auto mt-2 h-10 w-2/3 rounded-lg bg-emerald-400" />
+                      <div className="mx-auto mt-2 h-10 w-2/3 bg-emerald-400" />
                     </div>
                     <div className="mt-6 flex items-center gap-2 text-sm text-emerald-600">
                       <Target className="h-4 w-4" />
@@ -319,18 +319,18 @@ export default function PaidSearchPage() {
         </section>
 
         {/* Live Ad Mockup — What Your Ads Look Like */}
-        <section className="relative overflow-hidden bg-navy py-16 md:py-24" aria-label="Ad mockup preview">
+        <section className="relative overflow-hidden bg-surface-page py-16 md:py-24" aria-label="Ad mockup preview">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-5xl px-5 md:px-8">
             <AnimateIn>
               <div className="text-center">
-                <p className="text-sm font-semibold uppercase tracking-wider text-electric">
+                <p className="text-sm font-semibold uppercase tracking-wider text-accent">
                   What It Looks Like
                 </p>
-                <h2 className="mt-3 font-display text-2xl font-bold text-white md:text-3xl">
+                <h2 className="mt-3 font-mono text-2xl font-bold text-text-primary md:text-3xl">
                   Your business, top of Google
                 </h2>
-                <p className="mx-auto mt-4 max-w-xl text-slate-400">
+                <p className="mx-auto mt-4 max-w-xl text-text-tertiary">
                   This is what it looks like when someone searches for your services.
                   Your ad — above every organic result, above every competitor.
                 </p>
@@ -340,12 +340,12 @@ export default function PaidSearchPage() {
             <AnimateIn delay={0.2}>
               <div className="mx-auto mt-12 max-w-2xl">
                 {/* Google search bar mockup */}
-                <div className="rounded-t-xl border border-b-0 border-slate-200 bg-white p-4">
-                  <div className="flex items-center gap-3 rounded-full border border-slate-300 bg-white px-4 py-2.5 shadow-sm">
-                    <Search className="h-4 w-4 text-slate-400" />
-                    <span className="text-sm text-slate-800 md:text-base">best web designer near me</span>
+                <div className="rounded-t-xl border border-b-0 border-border-default bg-surface-card p-4">
+                  <div className="flex items-center gap-3 rounded-full border border-border-strong bg-surface-card px-4 py-2.5">
+                    <Search className="h-4 w-4 text-text-tertiary" />
+                    <span className="text-sm text-text-primary md:text-base">best web designer near me</span>
                   </div>
-                  <div className="mt-3 flex gap-4 border-b border-slate-200 pb-2 text-xs text-slate-500">
+                  <div className="mt-3 flex gap-4 border-b border-border-default pb-2 text-xs text-text-secondary">
                     <span className="border-b-2 border-[#1a73e8] pb-2 font-medium text-[#1a73e8]">All</span>
                     <span>Images</span>
                     <span>Maps</span>
@@ -354,11 +354,11 @@ export default function PaidSearchPage() {
                 </div>
 
                 {/* Search results */}
-                <div className="rounded-b-xl border border-t-0 border-slate-200 bg-white px-4 pb-6">
+                <div className="rounded-b-xl border border-t-0 border-border-default bg-surface-card px-4 pb-6">
                   <div className="divide-y divide-slate-100">
                     {/* Your ad — highlighted */}
                     <div className="relative py-4">
-                      <div className="absolute -inset-x-2 -inset-y-1 rounded-lg bg-electric/5 ring-1 ring-electric/20" />
+                      <div className="absolute -inset-x-2 -inset-y-1 bg-accent/10 ring-1 ring-accent/20" />
                       <div className="relative">
                         <GoogleAdMockup
                           business="Your Business"
@@ -368,7 +368,7 @@ export default function PaidSearchPage() {
                           url="yourbusiness.com"
                           sitelinks={['Free Audit', 'Our Work', 'Pricing', 'Contact']}
                         />
-                        <div className="mt-2 flex items-center gap-1.5 text-xs font-medium text-electric">
+                        <div className="mt-2 flex items-center gap-1.5 text-xs font-medium text-accent">
                           <Sparkles className="h-3 w-3" />
                           <span>This is your ad. Above everyone else.</span>
                         </div>
@@ -408,18 +408,18 @@ export default function PaidSearchPage() {
         </section>
 
         {/* Dashboard Mockup — Performance Metrics */}
-        <section className="relative overflow-hidden bg-dark-navy py-16 md:py-24" aria-label="Campaign performance">
+        <section className="relative overflow-hidden bg-surface-page py-16 md:py-24" aria-label="Campaign performance">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-5xl px-5 md:px-8">
             <AnimateIn>
               <div className="text-center">
-                <p className="text-sm font-semibold uppercase tracking-wider text-electric">
+                <p className="text-sm font-semibold uppercase tracking-wider text-accent">
                   Full Visibility
                 </p>
-                <h2 className="mt-3 font-display text-2xl font-bold text-white md:text-3xl">
+                <h2 className="mt-3 font-mono text-2xl font-bold text-text-primary md:text-3xl">
                   Know exactly where every dollar goes
                 </h2>
-                <p className="mx-auto mt-4 max-w-xl text-slate-400">
+                <p className="mx-auto mt-4 max-w-xl text-text-tertiary">
                   No black boxes. No mystery spend. Weekly reports that show you clicks,
                   conversions, cost-per-lead, and return on every dollar invested.
                 </p>
@@ -458,8 +458,8 @@ export default function PaidSearchPage() {
             {/* Mini funnel */}
             <AnimateIn delay={0.35}>
               <div className="mx-auto mt-12 max-w-2xl">
-                <div className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
-                  <p className="text-sm font-semibold uppercase tracking-wider text-slate-400">
+                <div className="border border-border-default bg-surface-card p-6">
+                  <p className="text-sm font-semibold uppercase tracking-wider text-text-tertiary">
                     Your Conversion Funnel
                   </p>
                   <div className="mt-5 space-y-3">
@@ -471,12 +471,12 @@ export default function PaidSearchPage() {
                       { label: 'Revenue Generated', value: '$41,040', width: '85%' },
                     ].map((row) => (
                       <div key={row.label} className="flex items-center gap-4">
-                        <div className="w-36 shrink-0 text-right text-sm text-slate-400 md:w-44">
+                        <div className="w-36 shrink-0 text-right text-sm text-text-tertiary md:w-44">
                           {row.label}
                         </div>
                         <div className="flex-1">
                           <div
-                            className="flex h-8 items-center rounded bg-gradient-to-r from-electric to-electric/60 px-3 text-xs font-semibold text-white transition-all duration-1000"
+                            className="flex h-8 items-center rounded bg-gradient-to-r from-accent to-accent/60 px-3 text-xs font-semibold text-white transition-all duration-1000"
                             style={{ width: row.width }}
                           >
                             {row.value}
@@ -496,11 +496,11 @@ export default function PaidSearchPage() {
           <div className="mx-auto max-w-3xl px-5 md:px-8">
             <AnimateIn>
               <div className="text-center">
-                <h2 className="font-display text-2xl font-bold text-navy md:text-3xl">
+                <h2 className="font-mono text-2xl font-bold text-text-primary md:text-3xl">
                   This is the difference
                 </h2>
                 <div className="mx-auto mt-8 max-w-xl text-left">
-                  <div className="space-y-6 text-lg leading-relaxed text-slate-600">
+                  <div className="space-y-6 text-lg leading-relaxed text-text-secondary">
                     <p>
                       Right now, someone in your city is searching for exactly what you sell.
                     </p>
@@ -514,7 +514,7 @@ export default function PaidSearchPage() {
                     <p>
                       If it is not? That customer goes to whoever showed up instead.
                     </p>
-                    <p className="font-semibold text-navy">
+                    <p className="font-semibold text-text-primary">
                       We make sure it is you. Every time someone searches, your business
                       is there — with the right message, the right page, and the right
                       reason to choose you.
@@ -530,21 +530,21 @@ export default function PaidSearchPage() {
         <section className="bg-light-gray py-16 md:py-20" aria-label="Features included">
           <div className="mx-auto max-w-5xl px-5 md:px-8">
             <AnimateIn>
-              <h2 className="text-center font-display text-2xl font-bold text-navy md:text-3xl">
+              <h2 className="text-center font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 What&apos;s Included
               </h2>
             </AnimateIn>
             <StaggerContainer className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3" staggerDelay={0.1}>
               {service.features.map((feature, i) => (
                 <StaggerItem key={i}>
-                  <div className="rounded-xl border border-slate-200/60 bg-white p-6">
+                  <div className="border border-border-default bg-surface-card p-6">
                     <div className="flex items-start gap-3">
-                      <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-electric" />
+                      <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
                       <div>
-                        <h3 className="font-display font-bold text-navy">
+                        <h3 className="font-mono font-bold text-text-primary">
                           {feature.title}
                         </h3>
-                        <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                        <p className="mt-2 text-sm leading-relaxed text-text-secondary">
                           {feature.description}
                         </p>
                       </div>
@@ -560,7 +560,7 @@ export default function PaidSearchPage() {
         <section className="py-16 md:py-20" aria-label="How it works">
           <div className="mx-auto max-w-3xl px-5 md:px-8">
             <AnimateIn>
-              <h2 className="text-center font-display text-2xl font-bold text-navy md:text-3xl">
+              <h2 className="text-center font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 How It Works
               </h2>
             </AnimateIn>
@@ -568,14 +568,14 @@ export default function PaidSearchPage() {
               {service.process.map((step, i) => (
                 <AnimateIn key={i} delay={i * 0.1}>
                   <div className="flex gap-5">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-electric font-display text-lg font-bold text-white">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent font-mono text-lg font-bold text-text-primary">
                       {step.step}
                     </div>
                     <div>
-                      <h3 className="font-display text-lg font-bold text-navy">
+                      <h3 className="font-mono text-lg font-bold text-text-primary">
                         {step.title}
                       </h3>
-                      <p className="mt-2 leading-relaxed text-slate-600">
+                      <p className="mt-2 leading-relaxed text-text-secondary">
                         {step.description}
                       </p>
                     </div>
@@ -590,7 +590,7 @@ export default function PaidSearchPage() {
         <section className="bg-light-gray py-16 md:py-20" aria-label="Frequently asked questions">
           <div className="mx-auto max-w-3xl px-5 md:px-8">
             <AnimateIn>
-              <h2 className="text-center font-display text-2xl font-bold text-navy md:text-3xl">
+              <h2 className="text-center font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 Frequently Asked Questions
               </h2>
             </AnimateIn>
@@ -605,10 +605,10 @@ export default function PaidSearchPage() {
 
         {/* Related Services */}
         {relatedServices.length > 0 && (
-          <section className="border-t border-slate-200 py-16 md:py-20" aria-label="Related services">
+          <section className="border-t border-border-default py-16 md:py-20" aria-label="Related services">
             <div className="mx-auto max-w-5xl px-5 md:px-8">
               <AnimateIn>
-                <h2 className="text-center font-display text-2xl font-bold text-navy md:text-3xl">
+                <h2 className="text-center font-mono text-2xl font-bold text-text-primary md:text-3xl">
                   Works Even Better With
                 </h2>
               </AnimateIn>
@@ -617,15 +617,15 @@ export default function PaidSearchPage() {
                   <StaggerItem key={rs.slug}>
                     <a
                       href={`/services/${rs.slug}`}
-                      className="group flex h-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
+                      className="group flex h-full flex-col border border-border-default bg-surface-card p-6 transition-all hover:-translate-y-1"
                     >
-                      <h3 className="font-display font-bold text-navy group-hover:text-electric transition-colors">
+                      <h3 className="font-mono font-bold text-text-primary group-hover:text-accent transition-colors">
                         {rs.name}
                       </h3>
-                      <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+                      <p className="mt-2 flex-1 text-sm leading-relaxed text-text-secondary">
                         {rs.description}
                       </p>
-                      <div className="mt-4 flex items-center gap-1 text-sm font-medium text-electric">
+                      <div className="mt-4 flex items-center gap-1 text-sm font-medium text-accent">
                         Learn more
                         <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                       </div>
@@ -638,14 +638,14 @@ export default function PaidSearchPage() {
         )}
 
         {/* CTA */}
-        <section className="relative overflow-hidden bg-navy py-16 md:py-20" aria-label="Call to action">
+        <section className="relative overflow-hidden bg-surface-page py-16 md:py-20" aria-label="Call to action">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-3xl px-5 text-center md:px-8">
             <AnimateIn>
-              <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
+              <h2 className="font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 Ready to stop guessing?
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-slate-300">
+              <p className="mx-auto mt-4 max-w-xl text-text-tertiary">
                 Free ad strategy session — we&apos;ll audit your market, show you what
                 your competitors are spending, and map out a campaign that puts you
                 in front of customers who are ready to buy.

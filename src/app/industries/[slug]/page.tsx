@@ -100,7 +100,7 @@ export default async function IndustryPage({
         />
 
         {/* Hero */}
-        <section className="relative overflow-hidden bg-navy pt-28 pb-20" aria-label="Industry overview">
+        <section className="relative overflow-hidden bg-surface-page pt-28 pb-20" aria-label="Industry overview">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-5xl px-5 md:px-8">
             <AnimateIn>
@@ -111,13 +111,13 @@ export default async function IndustryPage({
                   { label: industry.shortName },
                 ]}
               />
-              <p className="text-sm font-semibold uppercase tracking-wider text-electric">
+              <p className="text-sm font-semibold uppercase tracking-wider text-accent">
                 {industry.shortName} Web Design
               </p>
-              <h1 className="mt-4 font-display text-3xl font-bold leading-tight text-white md:text-5xl">
+              <h1 className="mt-4 font-mono text-3xl font-bold leading-tight text-text-primary md:text-5xl">
                 Web Design for {industry.name}
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-tertiary">
                 {industry.longDescription}
               </p>
               <div className="mt-8">
@@ -130,7 +130,7 @@ export default async function IndustryPage({
         </section>
 
         {/* Stats */}
-        <section className="border-b border-slate-200 bg-white py-12" aria-label="Key statistics">
+        <section className="border-b border-border-default bg-surface-card py-12" aria-label="Key statistics">
           <div className="mx-auto max-w-5xl px-5 md:px-8">
             <StaggerContainer className="grid grid-cols-2 gap-8 md:grid-cols-4" staggerDelay={0.15}>
               {industry.stats.map((stat, i) => {
@@ -138,14 +138,14 @@ export default async function IndustryPage({
                 return (
                   <StaggerItem key={i}>
                     <div className="text-center">
-                      <div className="font-display text-3xl font-bold text-navy md:text-4xl">
+                      <div className="font-mono text-3xl font-bold text-text-primary md:text-4xl">
                         <CountUp
                           value={parsed.num}
                           prefix={parsed.prefix}
                           suffix={parsed.suffix}
                         />
                       </div>
-                      <p className="mt-2 text-sm text-slate-600">{stat.label}</p>
+                      <p className="mt-2 text-sm text-text-secondary">{stat.label}</p>
                     </div>
                   </StaggerItem>
                 );
@@ -158,12 +158,12 @@ export default async function IndustryPage({
         <section className="py-16 md:py-20" aria-label="Industry challenges">
           <div className="mx-auto max-w-3xl px-5 md:px-8">
             <AnimateIn>
-              <h2 className="font-display text-2xl font-bold text-navy md:text-3xl">
+              <h2 className="font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 The Challenge for {industry.name}
               </h2>
-              <p className="mt-4 text-slate-600">
+              <p className="mt-4 text-text-secondary">
                 Your {industry.patientOrClientTerm} are worth{' '}
-                <span className="font-semibold text-navy">{industry.lifetimeValue}</span> over
+                <span className="font-semibold text-text-primary">{industry.lifetimeValue}</span> over
                 their lifetime. But {industry.competitorExample} and other competitors are investing
                 heavily in their digital presence. Here&apos;s what you&apos;re up against:
               </p>
@@ -171,9 +171,9 @@ export default async function IndustryPage({
             <div className="mt-8 space-y-4">
               {industry.challenges.map((challenge, i) => (
                 <AnimateIn key={i} delay={i * 0.1}>
-                  <div className="flex items-start gap-3 rounded-xl border border-slate-200/60 bg-white p-5">
+                  <div className="flex items-start gap-3 border border-border-default bg-surface-card p-5">
                     <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-500" />
-                    <p className="text-slate-600">{challenge}</p>
+                    <p className="text-text-secondary">{challenge}</p>
                   </div>
                 </AnimateIn>
               ))}
@@ -185,7 +185,7 @@ export default async function IndustryPage({
         <section className="bg-light-gray py-16 md:py-20" aria-label="How we help">
           <div className="mx-auto max-w-5xl px-5 md:px-8">
             <AnimateIn>
-              <h2 className="text-center font-display text-2xl font-bold text-navy md:text-3xl">
+              <h2 className="text-center font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 How We Help {industry.name}
               </h2>
             </AnimateIn>
@@ -194,15 +194,15 @@ export default async function IndustryPage({
                 <StaggerItem key={service.slug}>
                   <a
                     href={`/services/${service.slug}`}
-                    className="group flex h-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
+                    className="group flex h-full flex-col border border-border-default bg-surface-card p-6 transition-all hover:-translate-y-1"
                   >
-                    <h3 className="font-display font-bold text-navy group-hover:text-electric transition-colors">
+                    <h3 className="font-mono font-bold text-text-primary group-hover:text-accent transition-colors">
                       {service.name}
                     </h3>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-text-secondary">
                       {service.description}
                     </p>
-                    <div className="mt-4 flex items-center gap-1 text-sm font-medium text-electric">
+                    <div className="mt-4 flex items-center gap-1 text-sm font-medium text-accent">
                       Learn more
                       <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                     </div>
@@ -217,7 +217,7 @@ export default async function IndustryPage({
         <section className="py-16 md:py-20" aria-label="Frequently asked questions">
           <div className="mx-auto max-w-3xl px-5 md:px-8">
             <AnimateIn>
-              <h2 className="text-center font-display text-2xl font-bold text-navy md:text-3xl">
+              <h2 className="text-center font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 {industry.shortName} Web Design FAQ
               </h2>
             </AnimateIn>
@@ -232,10 +232,10 @@ export default async function IndustryPage({
 
         {/* Related Blog Posts */}
         {relatedPosts.length > 0 && (
-          <section className="border-t border-slate-200 bg-light-gray py-16 md:py-20" aria-label="Related resources">
+          <section className="border-t border-border-default bg-light-gray py-16 md:py-20" aria-label="Related resources">
             <div className="mx-auto max-w-5xl px-5 md:px-8">
               <AnimateIn>
-                <h2 className="text-center font-display text-2xl font-bold text-navy md:text-3xl">
+                <h2 className="text-center font-mono text-2xl font-bold text-text-primary md:text-3xl">
                   {industry.shortName} Resources
                 </h2>
               </AnimateIn>
@@ -244,15 +244,15 @@ export default async function IndustryPage({
                   <StaggerItem key={post.slug}>
                     <a
                       href={getResourcePath(post)}
-                      className="group flex h-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
+                      className="group flex h-full flex-col border border-border-default bg-surface-card p-6 transition-all hover:-translate-y-1"
                     >
-                      <h3 className="font-display text-sm font-bold text-navy group-hover:text-electric transition-colors">
+                      <h3 className="font-mono text-sm font-bold text-text-primary group-hover:text-accent transition-colors">
                         {post.title}
                       </h3>
-                      <p className="mt-2 flex-1 text-xs leading-relaxed text-slate-600 line-clamp-3">
+                      <p className="mt-2 flex-1 text-xs leading-relaxed text-text-secondary line-clamp-3">
                         {post.description}
                       </p>
-                      <div className="mt-3 flex items-center gap-1 text-xs font-medium text-electric">
+                      <div className="mt-3 flex items-center gap-1 text-xs font-medium text-accent">
                         Read more
                         <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
                       </div>
@@ -265,14 +265,14 @@ export default async function IndustryPage({
         )}
 
         {/* CTA */}
-        <section className="relative overflow-hidden bg-navy py-16 md:py-20" aria-label="Call to action">
+        <section className="relative overflow-hidden bg-surface-page py-16 md:py-20" aria-label="Call to action">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-3xl px-5 text-center md:px-8">
             <AnimateIn>
-              <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
+              <h2 className="font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 Ready to outperform {industry.competitorExample}?
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-slate-300">
+              <p className="mx-auto mt-4 max-w-xl text-text-tertiary">
                 Free site audit for {industry.name.toLowerCase()}. We&apos;ll show you exactly
                 where you stand vs. the competition — and how a custom site changes the game.
               </p>

@@ -37,32 +37,32 @@ export default function Error({ error, reset }: ErrorProps) {
         };
 
   return (
-    <div className="relative flex min-h-[100dvh] flex-col items-center justify-center overflow-hidden bg-navy px-5">
+    <div className="relative flex min-h-[100dvh] flex-col items-center justify-center overflow-hidden bg-surface-page px-5">
       <GrainOverlay />
 
       <div className="relative z-10 mx-auto flex max-w-lg flex-col items-center text-center">
         <motion.div {...fadeUp}>
           <Link href="/" aria-label="Go to homepage">
-            <StrayLogo color="#3B82F6" width={64} height={32} />
+            <StrayLogo color="#16a34a" width={64} height={32} />
           </Link>
         </motion.div>
 
         <motion.p
-          className="mt-8 font-display text-sm font-semibold uppercase tracking-wider text-electric"
+          className="mt-8 font-mono text-sm font-semibold uppercase tracking-wider text-accent"
           {...staggeredFadeUp(0.1)}
         >
           Something went wrong
         </motion.p>
 
         <motion.h1
-          className="mt-4 font-display text-3xl font-bold text-white md:text-4xl"
+          className="mt-4 font-mono text-3xl font-bold text-text-primary md:text-4xl"
           {...staggeredFadeUp(0.2)}
         >
           We hit an unexpected error
         </motion.h1>
 
         <motion.p
-          className="mt-4 max-w-md text-base leading-relaxed text-slate-400"
+          className="mt-4 max-w-md text-base leading-relaxed text-text-tertiary"
           {...staggeredFadeUp(0.3)}
         >
           Don&apos;t worry — it&apos;s not you. Try refreshing the page, or
@@ -76,13 +76,13 @@ export default function Error({ error, reset }: ErrorProps) {
           <button
             type="button"
             onClick={reset}
-            className="inline-flex items-center justify-center rounded-lg bg-electric px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-electric/25 transition-all hover:bg-electric/90 hover:shadow-xl hover:shadow-electric/30"
+            className="inline-flex items-center justify-center bg-accent px-7 py-3.5 text-base font-semibold text-white transition-all hover:bg-accent/90"
           >
             Try again
           </button>
           <Link
             href="/"
-            className="inline-flex items-center justify-center rounded-lg border-2 border-slate-600 px-7 py-3.5 text-base font-semibold text-slate-300 transition-all hover:border-white hover:text-white"
+            className="inline-flex items-center justify-center border-2 border-border-strong px-7 py-3.5 text-base font-semibold text-text-tertiary transition-all hover:border-white hover:text-white"
           >
             Go home
           </Link>

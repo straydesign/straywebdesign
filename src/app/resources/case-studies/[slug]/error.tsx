@@ -19,13 +19,13 @@ export default function CaseStudyError({ error, reset }: ErrorProps) {
       <Navbar />
       <main id="main" className="min-h-[100dvh] pt-28 pb-20">
         <div className="mx-auto max-w-3xl px-5 text-center md:px-8">
-          <p className="text-sm font-semibold uppercase tracking-wider text-electric">
+          <p className="text-sm font-semibold uppercase tracking-wider text-accent">
             Something went wrong
           </p>
-          <h1 className="mt-4 font-display text-3xl font-bold text-navy md:text-4xl">
+          <h1 className="mt-4 font-mono text-3xl font-bold text-text-primary md:text-4xl">
             Couldn&apos;t load this case study
           </h1>
-          <p className="mx-auto mt-4 max-w-xl text-slate-600">
+          <p className="mx-auto mt-4 max-w-xl text-text-secondary">
             We ran into an error loading this page. Try refreshing, or head
             back to browse all resources.
           </p>
@@ -33,13 +33,13 @@ export default function CaseStudyError({ error, reset }: ErrorProps) {
             <button
               type="button"
               onClick={reset}
-              className="inline-flex items-center justify-center rounded-lg bg-electric px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-electric/25 transition-all hover:bg-electric/90 hover:shadow-xl hover:shadow-electric/30"
+              className="inline-flex items-center justify-center bg-accent px-7 py-3.5 text-base font-semibold text-white transition-all hover:bg-accent/90"
             >
               Try again
             </button>
             <a
               href="/resources"
-              className="inline-flex items-center justify-center rounded-lg border-2 border-navy px-7 py-3.5 text-base font-semibold text-navy transition-all hover:bg-navy hover:text-white"
+              className="inline-flex items-center justify-center border-2 border-text-primary px-7 py-3.5 text-base font-semibold text-text-primary transition-all hover:bg-surface-page hover:text-white"
             >
               All resources
             </a>

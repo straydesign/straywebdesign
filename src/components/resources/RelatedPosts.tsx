@@ -20,7 +20,7 @@ const TAG_COLORS: Record<string, string> = {
   Advertising: 'bg-red-50 text-red-600',
   AI: 'bg-blue-50 text-blue-600',
   'AI & SEO': 'bg-blue-50 text-blue-600',
-  Analysis: 'bg-slate-100 text-slate-600',
+  Analysis: 'bg-surface-sunken text-text-secondary',
   Analytics: 'bg-blue-50 text-blue-600',
   Automotive: 'bg-zinc-100 text-zinc-700',
   Conversion: 'bg-amber-50 text-amber-600',
@@ -58,7 +58,7 @@ const TAG_COLORS: Record<string, string> = {
   'Speed & Performance': 'bg-blue-50 text-blue-600',
   'AI Integration': 'bg-indigo-50 text-indigo-600',
   ROI: 'bg-green-50 text-green-600',
-  Comparison: 'bg-slate-100 text-slate-600',
+  Comparison: 'bg-surface-sunken text-text-secondary',
   Education: 'bg-blue-50 text-blue-600',
   'Erie PA': 'bg-teal-50 text-teal-600',
   Strategy: 'bg-indigo-50 text-indigo-600',
@@ -71,8 +71,8 @@ export default function RelatedPosts({ posts }: { posts: RelatedResource[] }) {
 
   return (
     <AnimateIn delay={0.3}>
-      <div className="mt-12 border-t border-slate-200 pt-10">
-        <h3 className="font-display text-xl font-bold text-navy">
+      <div className="mt-12 border-t border-border-default pt-10">
+        <h3 className="font-mono text-xl font-bold text-text-primary">
           Related Articles
         </h3>
         <StaggerContainer className="mt-6 grid gap-4 md:grid-cols-3" staggerDelay={0.1}>
@@ -80,23 +80,23 @@ export default function RelatedPosts({ posts }: { posts: RelatedResource[] }) {
             <StaggerItem key={post.slug}>
               <Link
                 href={post.path}
-                className="group flex h-full flex-col rounded-xl border border-slate-200/60 bg-white p-5 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
+                className="group flex h-full flex-col border border-border-default bg-surface-card p-5 transition-all hover:-translate-y-1"
               >
                 <span
                   className={cn(
-                    'inline-block w-fit rounded-full px-2.5 py-0.5 text-xs font-medium',
-                    TAG_COLORS[post.tag] ?? 'bg-slate-100 text-slate-600'
+                    'inline-block w-fit px-2.5 py-0.5 text-xs font-medium',
+                    TAG_COLORS[post.tag] ?? 'bg-surface-sunken text-text-secondary'
                   )}
                 >
                   {post.tag}
                 </span>
-                <h4 className="mt-3 font-display text-sm font-bold leading-snug text-navy group-hover:text-electric transition-colors">
+                <h4 className="mt-3 font-mono text-sm font-bold leading-snug text-text-primary group-hover:text-accent transition-colors">
                   {post.title}
                 </h4>
-                <p className="mt-2 flex-1 text-xs leading-relaxed text-slate-500 line-clamp-2">
+                <p className="mt-2 flex-1 text-xs leading-relaxed text-text-secondary line-clamp-2">
                   {post.description}
                 </p>
-                <div className="mt-3 flex items-center gap-1 text-xs font-medium text-electric">
+                <div className="mt-3 flex items-center gap-1 text-xs font-medium text-accent">
                   Read more
                   <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
                 </div>

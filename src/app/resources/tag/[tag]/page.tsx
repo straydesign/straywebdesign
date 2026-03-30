@@ -55,7 +55,7 @@ export default async function TagPage({
     <>
       <Navbar />
       <main id="main" className="min-h-[100dvh]">
-        <section className="relative overflow-hidden bg-navy pt-28 pb-20">
+        <section className="relative overflow-hidden bg-surface-page pt-28 pb-20">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-5xl px-5 md:px-8">
             <AnimateIn>
@@ -66,13 +66,13 @@ export default async function TagPage({
                   { label: tag },
                 ]}
               />
-              <p className="text-sm font-semibold uppercase tracking-wider text-electric">
+              <p className="text-sm font-semibold uppercase tracking-wider text-accent">
                 {resources.length} {resources.length === 1 ? 'Resource' : 'Resources'}
               </p>
-              <h1 className="mt-4 font-display text-3xl font-bold leading-tight text-white md:text-5xl">
+              <h1 className="mt-4 font-mono text-3xl font-bold leading-tight text-text-primary md:text-5xl">
                 {tag}
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-tertiary">
                 Everything we&apos;ve written about {tag.toLowerCase()} — blog posts, white
                 papers, and case studies.
               </p>
@@ -89,21 +89,21 @@ export default async function TagPage({
                   <StaggerItem key={resource.slug}>
                     <a
                       href={getResourcePath(resource)}
-                      className="group flex h-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
+                      className="group flex h-full flex-col border border-border-default bg-surface-card p-6 transition-all hover:-translate-y-1"
                     >
-                      <div className="flex items-center gap-2 text-xs text-slate-500">
+                      <div className="flex items-center gap-2 text-xs text-text-secondary">
                         <Icon className="h-3.5 w-3.5" />
                         <span>{typeLabels[resource.type]}</span>
                         <span>·</span>
                         <span>{resource.readTime}</span>
                       </div>
-                      <h2 className="mt-3 font-display text-sm font-bold text-navy group-hover:text-electric transition-colors">
+                      <h2 className="mt-3 font-mono text-sm font-bold text-text-primary group-hover:text-accent transition-colors">
                         {resource.title}
                       </h2>
-                      <p className="mt-2 flex-1 text-xs leading-relaxed text-slate-600 line-clamp-3">
+                      <p className="mt-2 flex-1 text-xs leading-relaxed text-text-secondary line-clamp-3">
                         {resource.description}
                       </p>
-                      <div className="mt-4 flex items-center gap-1 text-xs font-medium text-electric">
+                      <div className="mt-4 flex items-center gap-1 text-xs font-medium text-accent">
                         Read more
                         <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
                       </div>

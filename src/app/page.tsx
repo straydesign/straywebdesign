@@ -15,8 +15,8 @@ function SectionSkeleton() {
           <div className="skeleton mx-auto h-10 w-3/4" />
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-2">
-          <div className="skeleton h-48 rounded-xl" />
-          <div className="skeleton h-48 rounded-xl" />
+          <div className="skeleton h-48" />
+          <div className="skeleton h-48" />
         </div>
       </div>
     </div>

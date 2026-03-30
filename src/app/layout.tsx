@@ -1,15 +1,14 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import { GeistSans } from 'geist/font/sans';
-import { Outfit } from 'next/font/google';
+import { JetBrains_Mono } from 'next/font/google';
 import ClientShell, { ClientExtras } from '@/components/layout/ClientShell';
 import './globals.css';
 
-const outfit = Outfit({
+const jetbrains = JetBrains_Mono({
   subsets: ['latin'],
   display: 'optional',
-  variable: '--font-family-outfit',
-  weight: ['600', '700', '800'],
+  variable: '--font-family-jetbrains',
+  weight: ['400', '500', '600', '700'],
   adjustFontFallback: true,
 });
 
@@ -195,7 +194,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${outfit.variable}`}>
+    <html lang="en" className={jetbrains.variable}>
       <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-9D1W0XLS34"
@@ -229,7 +228,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${GeistSans.className} antialiased`}>
+      <body className={`${jetbrains.className} antialiased`}>
         <a href="#main" className="skip-link">
           Skip to main content
         </a>

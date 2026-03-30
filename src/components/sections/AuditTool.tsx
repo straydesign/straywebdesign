@@ -78,10 +78,10 @@ export default function AuditTool() {
     <section className="py-20">
       <div className="mx-auto max-w-4xl px-5 md:px-8">
         <AnimateIn className="text-center">
-          <h2 className="font-display text-3xl font-bold text-navy md:text-4xl">
+          <h2 className="font-mono text-3xl font-bold text-text-primary md:text-4xl">
             Free Website Audit
           </h2>
-          <p className="mt-4 text-lg text-slate-600">
+          <p className="mt-4 text-lg text-text-secondary">
             See how your site stacks up. Enter your URL for an instant Lighthouse analysis.
           </p>
         </AnimateIn>
@@ -90,21 +90,21 @@ export default function AuditTool() {
         <AnimateIn delay={0.2} className="mt-10">
           <div className="flex gap-3">
             <div className="relative flex-1">
-              <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
+              <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-text-tertiary" />
               <input
                 type="url"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Enter your website URL..."
-                className="w-full rounded-xl border border-slate-200 py-4 pl-12 pr-4 text-base text-slate-700 outline-none transition-colors placeholder:text-slate-400 focus:border-electric"
+                className="w-full border border-border-default py-4 pl-12 pr-4 text-base text-text-primary outline-none transition-colors placeholder:text-text-tertiary focus:border-accent"
                 disabled={state === 'loading'}
               />
             </div>
             <button
               onClick={runAudit}
               disabled={!url.trim() || state === 'loading'}
-              className="flex items-center gap-2 rounded-xl bg-electric px-6 py-4 text-base font-semibold text-white transition-colors hover:bg-electric/90 disabled:opacity-50"
+              className="flex items-center gap-2 bg-accent px-6 py-4 text-base font-semibold text-white transition-colors hover:bg-accent/90 disabled:opacity-50"
             >
               {state === 'loading' ? (
                 <Loader2 className="h-5 w-5 animate-spin" />
@@ -124,18 +124,18 @@ export default function AuditTool() {
               exit={{ opacity: 0 }}
               className="mt-10"
             >
-              <div className="rounded-2xl border border-slate-200 bg-white p-8">
+              <div className="border border-border-default bg-surface-card p-8">
                 <div className="flex justify-center gap-8">
                   {[...Array(4)].map((_, i) => (
                     <div key={i} className="flex flex-col items-center gap-2">
-                      <div className="h-[90px] w-[90px] animate-pulse rounded-full bg-slate-100" />
-                      <div className="h-3 w-12 animate-pulse rounded bg-slate-100" />
+                      <div className="h-[90px] w-[90px] animate-pulse rounded-full bg-surface-sunken" />
+                      <div className="h-3 w-12 animate-pulse bg-surface-sunken" />
                     </div>
                   ))}
                 </div>
                 <div className="mt-6 space-y-3">
                   {[...Array(4)].map((_, i) => (
-                    <div key={i} className="h-4 animate-pulse rounded bg-slate-100" style={{ width: `${80 - i * 10}%` }} />
+                    <div key={i} className="h-4 animate-pulse bg-surface-sunken" style={{ width: `${80 - i * 10}%` }} />
                   ))}
                 </div>
               </div>
@@ -150,7 +150,7 @@ export default function AuditTool() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              className="mt-10 flex items-center gap-3 rounded-xl border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-600"
+              className="mt-10 flex items-center gap-3 border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-600"
             >
               <AlertCircle className="h-5 w-5 flex-shrink-0" />
               {error}
@@ -167,16 +167,16 @@ export default function AuditTool() {
               className="mt-10 space-y-6"
             >
               {/* Overall score */}
-              <div className="rounded-2xl border border-slate-200 bg-white p-8 text-center">
-                <p className="text-sm font-medium text-slate-500">Overall Score</p>
-                <p className="mt-2 font-display text-6xl font-bold text-navy">
+              <div className="border border-border-default bg-surface-card p-8 text-center">
+                <p className="text-sm font-medium text-text-secondary">Overall Score</p>
+                <p className="mt-2 font-mono text-6xl font-bold text-text-primary">
                   <CountUp value={overallScore} duration={1.5} />
-                  <span className="text-2xl text-slate-400">/100</span>
+                  <span className="text-2xl text-text-tertiary">/100</span>
                 </p>
               </div>
 
               {/* Category gauges */}
-              <div className="rounded-2xl border border-slate-200 bg-white p-8">
+              <div className="border border-border-default bg-surface-card p-8">
                 <div className="flex flex-wrap justify-center gap-8">
                   <LighthouseGauge score={result.performance} label="Performance" size={100} delay={0.1} />
                   <LighthouseGauge score={result.accessibility} label="Accessibility" size={100} delay={0.3} />
@@ -186,8 +186,8 @@ export default function AuditTool() {
               </div>
 
               {/* Core Web Vitals */}
-              <div className="rounded-2xl border border-slate-200 bg-white p-8">
-                <h3 className="font-display text-lg font-bold text-navy">Core Web Vitals</h3>
+              <div className="border border-border-default bg-surface-card p-8">
+                <h3 className="font-mono text-lg font-bold text-text-primary">Core Web Vitals</h3>
                 <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-4">
                   {[
                     { label: 'First Contentful Paint', value: result.fcp },
@@ -195,9 +195,9 @@ export default function AuditTool() {
                     { label: 'Cumulative Layout Shift', value: result.cls },
                     { label: 'Total Blocking Time', value: result.tbt },
                   ].map((metric) => (
-                    <div key={metric.label} className="rounded-xl bg-slate-50 p-4">
-                      <p className="text-xs font-medium text-slate-500">{metric.label}</p>
-                      <p className="mt-1 font-display text-lg font-bold text-navy">{metric.value}</p>
+                    <div key={metric.label} className="bg-surface-sunken p-4">
+                      <p className="text-xs font-medium text-text-secondary">{metric.label}</p>
+                      <p className="mt-1 font-mono text-lg font-bold text-text-primary">{metric.value}</p>
                     </div>
                   ))}
                 </div>
@@ -205,7 +205,7 @@ export default function AuditTool() {
 
               {/* CTA */}
               <div className="text-center">
-                <p className="text-base text-slate-600">
+                <p className="text-base text-text-secondary">
                   {overallScore < 70
                     ? "Your site has room for improvement. Let's fix that."
                     : overallScore < 90

@@ -5,22 +5,22 @@ import Link from 'next/link';
 /** MDX component overrides — replicates the existing ArticleLayout styles exactly */
 export const mdxComponents: MDXComponents = {
   h2: ({ children }: { children?: ReactNode }) => (
-    <h2 className="mt-10 mb-4 font-display text-2xl font-bold text-navy">{children}</h2>
+    <h2 className="mt-10 mb-4 font-mono text-2xl font-bold text-text-primary">{children}</h2>
   ),
 
   h3: ({ children }: { children?: ReactNode }) => (
-    <h3 className="mt-8 mb-3 font-display text-xl font-semibold text-navy">{children}</h3>
+    <h3 className="mt-8 mb-3 font-mono text-xl font-semibold text-text-primary">{children}</h3>
   ),
 
   p: ({ children }: { children?: ReactNode }) => (
-    <p className="my-4 leading-relaxed text-slate-600">{children}</p>
+    <p className="my-4 leading-relaxed text-text-secondary">{children}</p>
   ),
 
   a: ({ href, children }: { href?: string; children?: ReactNode }) => {
     const isInternal = href?.startsWith('/') || href?.startsWith('#');
     if (isInternal && href) {
       return (
-        <Link href={href} className="text-electric underline hover:text-electric/80">
+        <Link href={href} className="text-accent underline hover:text-accent/80">
           {children}
         </Link>
       );
@@ -28,7 +28,7 @@ export const mdxComponents: MDXComponents = {
     return (
       <a
         href={href}
-        className="text-electric underline hover:text-electric/80"
+        className="text-accent underline hover:text-accent/80"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -38,7 +38,7 @@ export const mdxComponents: MDXComponents = {
   },
 
   strong: ({ children }: { children?: ReactNode }) => (
-    <strong className="font-semibold text-navy">{children}</strong>
+    <strong className="font-semibold text-text-primary">{children}</strong>
   ),
 
   ul: ({ children }: { children?: ReactNode }) => (
@@ -50,11 +50,11 @@ export const mdxComponents: MDXComponents = {
   ),
 
   li: ({ children }: { children?: ReactNode }) => (
-    <li className="text-slate-600">{children}</li>
+    <li className="text-text-secondary">{children}</li>
   ),
 
   table: ({ children }: { children?: ReactNode }) => (
-    <div className="my-6 overflow-x-auto rounded-xl border border-slate-200/60">
+    <div className="my-6 overflow-x-auto border border-border-default">
       <table className="w-full">{children}</table>
     </div>
   ),
@@ -64,18 +64,18 @@ export const mdxComponents: MDXComponents = {
   tbody: ({ children }: { children?: ReactNode }) => <tbody>{children}</tbody>,
 
   tr: ({ children }: { children?: ReactNode }) => (
-    <tr className="border-b border-slate-100">{children}</tr>
+    <tr className="border-b border-border-default">{children}</tr>
   ),
 
   th: ({ children }: { children?: ReactNode }) => (
-    <th className="px-4 py-2.5 text-left text-sm font-semibold text-navy bg-slate-50">
+    <th className="px-4 py-2.5 text-left text-sm font-semibold text-text-primary bg-surface-sunken">
       {children}
     </th>
   ),
 
   td: ({ children }: { children?: ReactNode }) => (
-    <td className="px-4 py-2.5 text-sm text-slate-600">{children}</td>
+    <td className="px-4 py-2.5 text-sm text-text-secondary">{children}</td>
   ),
 
-  hr: () => <hr className="my-8 border-slate-200" />,
+  hr: () => <hr className="my-8 border-border-default" />,
 };

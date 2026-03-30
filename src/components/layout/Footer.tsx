@@ -37,15 +37,15 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-slate-200 bg-white">
+    <footer className="border-t border-border-default bg-surface-card">
       <div className="mx-auto max-w-7xl px-5 py-12 md:px-8">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="font-display text-xl font-bold text-navy">
-              stray<span className="text-electric">web</span>design
+            <Link href="/" className="font-mono text-xl font-bold text-text-primary">
+              stray<span className="text-accent">web</span>design
             </Link>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-500">
+            <p className="mt-3 max-w-sm font-mono text-sm leading-relaxed text-text-tertiary">
               Your business is serious. Your website should be too. We
               build sites you&apos;re proud to share — living, breathing
               extensions of your business that outperform your competitors.
@@ -55,7 +55,7 @@ export default function Footer() {
           {/* Services + Industries — side by side on mobile */}
           <div className="grid grid-cols-2 gap-6 sm:contents">
             <div>
-              <h3 className="mb-3 font-display text-sm font-semibold text-navy">
+              <h3 className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-wider text-text-tertiary">
                 Services
               </h3>
               <ul className="space-y-2">
@@ -63,7 +63,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-slate-500 transition-colors hover:text-navy"
+                      className="font-mono text-sm text-text-secondary transition-colors hover:text-text-primary"
                     >
                       {link.label}
                     </Link>
@@ -73,7 +73,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="mb-3 font-display text-sm font-semibold text-navy">
+              <h3 className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-wider text-text-tertiary">
                 Industries
               </h3>
               <ul className="space-y-2">
@@ -81,7 +81,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-slate-500 transition-colors hover:text-navy"
+                      className="font-mono text-sm text-text-secondary transition-colors hover:text-text-primary"
                     >
                       {link.label}
                     </Link>
@@ -93,14 +93,14 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="mb-3 font-display text-sm font-semibold text-navy">
+            <h3 className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-wider text-text-tertiary">
               Contact
             </h3>
-            <ul className="space-y-2 text-sm text-slate-500">
+            <ul className="space-y-2 text-sm text-text-secondary">
               <li>
                 <a
                   href={`mailto:${SITE.email}`}
-                  className="inline-flex items-center gap-2 rounded-lg bg-electric/10 px-4 py-2 font-medium text-electric transition-colors hover:bg-electric/20"
+                  className="inline-flex items-center gap-2 bg-accent px-4 py-2 font-mono text-sm font-medium text-white transition-colors hover:bg-accent/90"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                   {SITE.email}
@@ -109,19 +109,19 @@ export default function Footer() {
               <li>
                 <a
                   href={`tel:${SITE.phone}`}
-                  className="inline-flex items-center gap-2 transition-colors hover:text-navy"
+                  className="inline-flex items-center gap-2 font-mono transition-colors hover:text-text-primary"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                   {SITE.phone}
                 </a>
-                <span className="ml-6 text-xs text-slate-500">(text or voicemail)</span>
+                <span className="ml-6 font-mono text-xs text-text-tertiary">(text or voicemail)</span>
               </li>
               <li className="pt-2">
                 {QUICK_LINKS.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href.startsWith('#') && pathname !== '/' ? `/${link.href}` : link.href}
-                    className="mr-4 text-sm text-slate-500 transition-colors hover:text-navy"
+                    className="mr-4 font-mono text-sm text-text-secondary transition-colors hover:text-text-primary"
                   >
                     {link.label}
                   </Link>
@@ -131,10 +131,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-slate-200 pt-8 sm:flex-row">
+        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-border-default pt-8 sm:flex-row">
           <div className="flex items-center gap-3">
-            <StrayLogo color="#94A3B8" width={32} height={16} />
-            <p className="text-sm text-slate-400">
+            <StrayLogo color="#a1a1aa" width={32} height={16} />
+            <p className="font-mono text-sm text-text-tertiary">
               &copy; {currentYear} {SITE.name}
             </p>
           </div>

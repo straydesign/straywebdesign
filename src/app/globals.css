@@ -1,47 +1,83 @@
 @import "tailwindcss";
 
 :root {
-  --navy: #0F172A;
-  --electric: #2563EB;
-  --warm-white: #FAFAF9;
-  --accent: #60A5FA;
-  --dark-navy: #020617;
-  --light-gray: #F1F5F9;
-  --medium-gray: #94A3B8;
+  --surface-page: #f4f4f5;
+  --surface-card: #ffffff;
+  --surface-sunken: #e4e4e7;
+  --text-primary: #18181b;
+  --text-secondary: #52525b;
+  --text-tertiary: #71717a;
+  --text-placeholder: #a1a1aa;
+  --accent: #16a34a;
+  --border-default: #e4e4e7;
+  --border-strong: #d4d4d8;
+
+  /* Legacy aliases — keep for any remaining references */
+  --navy: #18181b;
+  --electric: #16a34a;
+  --warm-white: #f4f4f5;
+  --dark-navy: #18181b;
+  --light-gray: #f4f4f5;
+  --medium-gray: #a1a1aa;
 }
 
 @theme inline {
-  --font-display: var(--font-family-outfit);
-  --font-body: var(--font-family-geist-sans);
-  --color-navy: var(--navy);
-  --color-electric: var(--electric);
-  --color-warm-white: var(--warm-white);
+  --font-mono: var(--font-family-jetbrains);
+  --font-display: var(--font-family-jetbrains);
+  --font-body: var(--font-family-jetbrains);
+  --color-navy: var(--text-primary);
+  --color-electric: var(--accent);
+  --color-warm-white: var(--surface-page);
   --color-accent: var(--accent);
-  --color-dark-navy: var(--dark-navy);
-  --color-light-gray: var(--light-gray);
-  --color-medium-gray: var(--medium-gray);
+  --color-dark-navy: var(--text-primary);
+  --color-light-gray: var(--surface-page);
+  --color-medium-gray: var(--text-placeholder);
+  --color-surface-page: var(--surface-page);
+  --color-surface-card: var(--surface-card);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-border-default: var(--border-default);
+  --color-border-strong: var(--border-strong);
 }
 
 body {
   margin: 0;
   padding: 0;
-  background: var(--warm-white);
-  color: var(--navy);
-  font-family: var(--font-family-geist-sans), system-ui, sans-serif;
+  background: var(--surface-page);
+  color: var(--text-primary);
+  font-family: var(--font-family-jetbrains), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1, 'zero' 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Grid background pattern */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(var(--border-default) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-default) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.4;
+}
+
 /* Focus indicators for keyboard navigation (WCAG 2.4.7) */
 *:focus-visible {
-  outline: 2px solid var(--electric);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
 /* Section-level focus for keyboard navigation (subtle inner glow) */
 main section[aria-label]:focus-visible {
   outline: none;
-  box-shadow: inset 0 0 0 3px var(--electric);
+  box-shadow: inset 0 0 0 3px var(--accent);
 }
 
 /* Skip navigation link */
@@ -50,13 +86,16 @@ main section[aria-label]:focus-visible {
   top: -100%;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--navy);
+  background: var(--text-primary);
   color: #fff;
   padding: 0.5rem 1rem;
-  border-radius: 0 0 8px 8px;
   z-index: 9999;
   font-weight: 600;
   text-decoration: none;
+  font-family: var(--font-family-jetbrains), ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
 }
 .skip-link:focus {
   top: 0;
@@ -80,10 +119,9 @@ main section[aria-label]:focus-visible {
   100% { background-position: 200% 0; }
 }
 .skeleton {
-  background: linear-gradient(90deg, rgba(148,163,184,0.08) 25%, rgba(148,163,184,0.18) 50%, rgba(148,163,184,0.08) 75%);
+  background: linear-gradient(90deg, rgba(161,161,170,0.08) 25%, rgba(161,161,170,0.18) 50%, rgba(161,161,170,0.08) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
-  border-radius: 0.5rem;
 }
 
 /* Kinetic marquee */
@@ -139,14 +177,13 @@ main section[aria-label]:focus-visible {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--light-gray);
+  background: var(--surface-page);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--medium-gray);
-  border-radius: 3px;
+  background: var(--border-strong);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--navy);
+  background: var(--text-tertiary);
 }
 
 /* Grain overlay */
@@ -155,39 +192,24 @@ main section[aria-label]:focus-visible {
   inset: 0;
   pointer-events: none;
   z-index: 50;
-  opacity: 0.035;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
 }
 
-/* Text gradient animation */
-@keyframes drift {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(3%, -2%); }
-}
-
-@keyframes gradient-flow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+/* Text gradient — replaced with solid accent */
 .text-gradient-animated {
-  background: linear-gradient(135deg, var(--electric), var(--accent), var(--electric));
-  background-size: 200% 200%;
-  animation: gradient-flow 4s ease infinite;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--accent);
 }
 
-/* Custom cursor */
+/* Custom cursor — green terminal style */
 .custom-cursor {
   width: 40px;
   height: 40px;
-  border: 2px solid var(--electric);
+  border: 2px solid var(--accent);
   background: transparent;
-  border-radius: 50%;
+  border-radius: 0;
   position: fixed;
   pointer-events: none;
   z-index: 9999;
@@ -196,8 +218,8 @@ main section[aria-label]:focus-visible {
 .custom-cursor.hovering {
   width: 56px;
   height: 56px;
-  background: rgba(59, 130, 246, 0.1);
-  border-color: var(--electric);
+  background: rgba(22, 163, 74, 0.1);
+  border-color: var(--accent);
 }
 
 /* ─── Mobile CSS Animations (replace framer-motion on mobile) ─── */

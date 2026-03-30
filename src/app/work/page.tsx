@@ -95,7 +95,7 @@ export default function WorkPage() {
       <Navbar />
       <main id="main" className="min-h-[100dvh]">
         {/* Hero */}
-        <section className="relative overflow-hidden bg-navy pt-28 pb-20" aria-label="Work overview">
+        <section className="relative overflow-hidden bg-surface-page pt-28 pb-20" aria-label="Work overview">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-5xl px-5 md:px-8">
             <AnimateIn>
@@ -105,13 +105,13 @@ export default function WorkPage() {
                   { label: 'Work' },
                 ]}
               />
-              <p className="text-sm font-semibold uppercase tracking-wider text-electric">
+              <p className="text-sm font-semibold uppercase tracking-wider text-accent">
                 Recent Builds
               </p>
-              <h1 className="mt-4 font-display text-3xl font-bold leading-tight text-white md:text-5xl">
+              <h1 className="mt-4 font-mono text-3xl font-bold leading-tight text-text-primary md:text-5xl">
                 Built to prove a point
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-tertiary">
                 Every site here was built for a real business, to enterprise-grade standards,
                 from scratch. No templates. No page builders.
                 Just fast, accessible, AI-ready sites that show what&apos;s possible.
@@ -130,26 +130,26 @@ export default function WorkPage() {
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex h-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
+                    className="group flex h-full flex-col border border-border-default bg-surface-card p-6 transition-all hover:-translate-y-1"
                   >
                     <div className="flex items-start justify-between">
                       <div>
-                        <h2 className="font-display text-lg font-bold text-navy transition-colors group-hover:text-electric">
+                        <h2 className="font-mono text-lg font-bold text-text-primary transition-colors group-hover:text-accent">
                           {project.name}
                         </h2>
-                        <p className="mt-0.5 text-sm font-medium text-slate-500">
+                        <p className="mt-0.5 text-sm font-medium text-text-secondary">
                           {project.type}
                         </p>
                       </div>
                       <ArrowUpRight
-                        className="h-4 w-4 shrink-0 text-slate-400 transition-all group-hover:text-electric group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        className="h-4 w-4 shrink-0 text-text-tertiary transition-all group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                         aria-hidden="true"
                       />
                     </div>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-text-secondary">
                       {project.description}
                     </p>
-                    <span className="mt-4 inline-block self-start rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
+                    <span className="mt-4 inline-block self-start bg-surface-sunken px-3 py-1 text-xs font-medium text-text-secondary">
                       {project.tag}
                     </span>
                   </a>
@@ -160,14 +160,14 @@ export default function WorkPage() {
         </section>
 
         {/* CTA */}
-        <section className="relative overflow-hidden bg-navy py-16 md:py-20" aria-label="Call to action">
+        <section className="relative overflow-hidden bg-surface-page py-16 md:py-20" aria-label="Call to action">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-3xl px-5 text-center md:px-8">
             <AnimateIn>
-              <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
+              <h2 className="font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 Want to see what we&apos;d build for you?
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-slate-300">
+              <p className="mx-auto mt-4 max-w-xl text-text-tertiary">
                 Every project starts with a free site audit. We&apos;ll show you where
                 your current site falls short and what enterprise-grade looks like for your business.
               </p>

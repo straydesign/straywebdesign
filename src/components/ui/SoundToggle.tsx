@@ -15,7 +15,7 @@ export default function SoundToggle() {
   return (
     <button
       onClick={handleToggle}
-      className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs text-slate-400 transition-colors hover:text-slate-600"
+      className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-text-tertiary transition-colors hover:text-text-secondary"
       aria-label={enabled ? 'Mute sounds' : 'Enable sounds'}
       title={enabled ? 'Mute sounds' : 'Enable sounds'}
     >

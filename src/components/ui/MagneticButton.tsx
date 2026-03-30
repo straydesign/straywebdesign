@@ -70,11 +70,11 @@ export default function MagneticButton({
 
   const variants = {
     primary:
-      'bg-electric text-white hover:bg-electric/90 shadow-lg shadow-electric/25 hover:shadow-xl hover:shadow-electric/30',
+      'bg-accent text-white hover:bg-accent/90',
     secondary:
-      'bg-navy text-white hover:bg-navy/90 shadow-lg shadow-navy/25',
+      'bg-transparent border border-border-strong text-text-primary hover:bg-surface-sunken',
     ghost:
-      'bg-transparent text-navy border-2 border-navy hover:bg-navy hover:text-white',
+      'bg-transparent text-text-secondary hover:bg-surface-card hover:text-text-primary',
   };
 
   const sizes = {
@@ -84,7 +84,7 @@ export default function MagneticButton({
   };
 
   const buttonClasses = cn(
-    'inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-all duration-200 cursor-pointer active:scale-[0.98]',
+    'inline-flex items-center justify-center gap-2 font-mono font-medium uppercase tracking-wider transition-all duration-200 cursor-pointer active:scale-[0.99]',
     variants[variant],
     sizes[size],
     disabled && 'opacity-50 cursor-not-allowed',

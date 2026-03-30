@@ -20,7 +20,7 @@ export default function LocationsIndex() {
     <>
       <Navbar />
       <main id="main" className="min-h-[100dvh]">
-        <section className="relative overflow-hidden bg-navy pt-28 pb-20">
+        <section className="relative overflow-hidden bg-surface-page pt-28 pb-20">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-5xl px-5 md:px-8">
             <AnimateIn>
@@ -30,13 +30,13 @@ export default function LocationsIndex() {
                   { label: 'Locations' },
                 ]}
               />
-              <p className="text-sm font-semibold uppercase tracking-wider text-electric">
+              <p className="text-sm font-semibold uppercase tracking-wider text-accent">
                 Service Areas
               </p>
-              <h1 className="mt-4 font-display text-3xl font-bold leading-tight text-white md:text-5xl">
+              <h1 className="mt-4 font-mono text-3xl font-bold leading-tight text-text-primary md:text-5xl">
                 Web design for northwest Pennsylvania
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-tertiary">
                 We build websites for businesses across Erie County and the surrounding
                 region. Local knowledge, national-caliber design.
               </p>
@@ -51,22 +51,22 @@ export default function LocationsIndex() {
                 <StaggerItem key={location.slug}>
                   <a
                     href={`/locations/${location.slug}`}
-                    className="group flex h-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
+                    className="group flex h-full flex-col border border-border-default bg-surface-card p-6 transition-all hover:-translate-y-1"
                   >
                     <div className="flex items-center gap-2">
-                      <MapPin className="h-4 w-4 text-electric" />
-                      <h2 className="font-display text-lg font-bold text-navy group-hover:text-electric transition-colors">
+                      <MapPin className="h-4 w-4 text-accent" />
+                      <h2 className="font-mono text-lg font-bold text-text-primary group-hover:text-accent transition-colors">
                         {location.name}, {location.state}
                       </h2>
                     </div>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600 line-clamp-3">
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-text-secondary line-clamp-3">
                       {location.description}
                     </p>
-                    <div className="mt-3 text-xs text-slate-500">
-                      Population: <span className="font-semibold text-navy">{location.population}</span>
-                      {' · '}Metro: <span className="font-semibold text-navy">{location.metroPopulation}</span>
+                    <div className="mt-3 text-xs text-text-secondary">
+                      Population: <span className="font-semibold text-text-primary">{location.population}</span>
+                      {' · '}Metro: <span className="font-semibold text-text-primary">{location.metroPopulation}</span>
                     </div>
-                    <div className="mt-3 flex items-center gap-1 text-xs font-medium text-electric">
+                    <div className="mt-3 flex items-center gap-1 text-xs font-medium text-accent">
                       View services
                       <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
                     </div>
@@ -77,14 +77,14 @@ export default function LocationsIndex() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-navy py-16 md:py-20">
+        <section className="relative overflow-hidden bg-surface-page py-16 md:py-20">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-3xl px-5 text-center md:px-8">
             <AnimateIn>
-              <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
+              <h2 className="font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 Don&apos;t see your area?
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-slate-300">
+              <p className="mx-auto mt-4 max-w-xl text-text-tertiary">
                 We work with businesses across Pennsylvania and beyond. Book a free
                 audit and we&apos;ll show you how a custom website can grow your business.
               </p>

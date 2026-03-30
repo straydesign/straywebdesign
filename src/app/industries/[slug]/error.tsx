@@ -19,16 +19,16 @@ export default function IndustryError({ error, reset }: ErrorProps) {
     <>
       <Navbar />
       <main id="main" className="min-h-[100dvh]">
-        <section className="relative overflow-hidden bg-navy pt-28 pb-20">
+        <section className="relative overflow-hidden bg-surface-page pt-28 pb-20">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-3xl px-5 text-center md:px-8">
-            <p className="text-sm font-semibold uppercase tracking-wider text-electric">
+            <p className="text-sm font-semibold uppercase tracking-wider text-accent">
               Something went wrong
             </p>
-            <h1 className="mt-4 font-display text-3xl font-bold text-white md:text-4xl">
+            <h1 className="mt-4 font-mono text-3xl font-bold text-text-primary md:text-4xl">
               Couldn&apos;t load this industry page
             </h1>
-            <p className="mx-auto mt-4 max-w-xl text-slate-300">
+            <p className="mx-auto mt-4 max-w-xl text-text-tertiary">
               We ran into an error loading this page. Try refreshing, or head
               back to browse all industries.
             </p>
@@ -36,13 +36,13 @@ export default function IndustryError({ error, reset }: ErrorProps) {
               <button
                 type="button"
                 onClick={reset}
-                className="inline-flex items-center justify-center rounded-lg bg-electric px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-electric/25 transition-all hover:bg-electric/90 hover:shadow-xl hover:shadow-electric/30"
+                className="inline-flex items-center justify-center bg-accent px-7 py-3.5 text-base font-semibold text-white transition-all hover:bg-accent/90"
               >
                 Try again
               </button>
               <a
                 href="/industries"
-                className="inline-flex items-center justify-center rounded-lg border-2 border-slate-600 px-7 py-3.5 text-base font-semibold text-slate-300 transition-all hover:border-white hover:text-white"
+                className="inline-flex items-center justify-center border-2 border-border-strong px-7 py-3.5 text-base font-semibold text-text-tertiary transition-all hover:border-white hover:text-white"
               >
                 All industries
               </a>

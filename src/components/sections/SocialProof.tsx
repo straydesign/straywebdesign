@@ -16,18 +16,18 @@ function ProfileCard({
   outcome: string;
 }) {
   return (
-    <div className="w-[300px] rounded-xl border border-white/10 bg-white/5 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-sm sm:w-[340px]">
-      <p className="mb-3 text-sm font-semibold tracking-wide text-electric uppercase">
+    <div className="w-[300px] border border-border-default bg-surface-card p-6 sm:w-[340px]">
+      <p className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-wider text-accent">
         {industry}
       </p>
-      <p className="text-sm leading-relaxed text-slate-400">
-        <span className="font-semibold text-white">The problem: </span>
+      <p className="font-mono text-sm leading-relaxed text-text-secondary">
+        <span className="font-semibold text-text-primary">The problem: </span>
         {challenge}
       </p>
-      <div className="mt-4 border-t border-white/10 pt-4">
+      <div className="mt-4 border-t border-border-default pt-4">
         <div className="flex items-start gap-2">
-          <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
-          <p className="text-sm leading-relaxed text-slate-400">{outcome}</p>
+          <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+          <p className="font-mono text-sm leading-relaxed text-text-secondary">{outcome}</p>
         </div>
       </div>
     </div>
@@ -36,17 +36,17 @@ function ProfileCard({
 
 export default function SocialProof() {
   return (
-    <section className="bg-slate-950 py-20 text-white md:py-28" aria-label="Industries and credentials">
+    <section className="border-y border-border-default bg-surface-page py-20 md:py-28" aria-label="Industries and credentials">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <AnimateIn className="mx-auto max-w-3xl text-center">
-          <span className="mb-4 inline-block text-sm font-semibold tracking-wide text-electric uppercase">
+          <span className="mb-4 inline-block font-mono text-[11px] font-semibold uppercase tracking-wider text-accent">
             Who We Build For
           </span>
-          <h2 className="font-display text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+          <h2 className="font-mono text-3xl font-bold text-text-primary md:text-4xl lg:text-5xl">
             Industries Where{' '}
-            <GradientText scrollLinked>Every Client Counts</GradientText>
+            <GradientText>Every Client Counts</GradientText>
           </h2>
-          <p className="mt-4 text-lg text-slate-400">
+          <p className="mt-4 font-mono text-lg text-text-secondary">
             We work with businesses where a single new patient, client, or
             contract is worth thousands. The website ROI is immediate.
           </p>
@@ -55,14 +55,12 @@ export default function SocialProof() {
         <AnimateIn delay={0.2} className="mt-12">
           <Carousel
             speed={30}
-            fadeColor="#020617"
+            fadeColor="var(--surface-page)"
             items={CLIENT_PROFILES.map((p, i) => (
               <ProfileCard key={i} {...p} />
             ))}
           />
         </AnimateIn>
-
-        {/* Credential badges and tech stack removed — not important */}
       </div>
     </section>
   );

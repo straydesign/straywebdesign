@@ -30,7 +30,7 @@ const TAG_COLORS: Record<string, string> = {
   Advertising: 'bg-red-50 text-red-600',
   AI: 'bg-blue-50 text-blue-600',
   'AI & SEO': 'bg-blue-50 text-blue-600',
-  Analysis: 'bg-slate-100 text-slate-600',
+  Analysis: 'bg-surface-sunken text-text-secondary',
   Analytics: 'bg-blue-50 text-blue-600',
   Automotive: 'bg-zinc-100 text-zinc-700',
   Conversion: 'bg-amber-50 text-amber-600',
@@ -68,7 +68,7 @@ const TAG_COLORS: Record<string, string> = {
   'Speed & Performance': 'bg-blue-50 text-blue-600',
   'AI Integration': 'bg-indigo-50 text-indigo-600',
   ROI: 'bg-emerald-50 text-emerald-700',
-  Comparison: 'bg-slate-100 text-slate-700',
+  Comparison: 'bg-surface-sunken text-text-primary',
   'Erie PA': 'bg-sky-50 text-sky-700',
   Finance: 'bg-emerald-50 text-emerald-600',
   Manufacturing: 'bg-zinc-100 text-zinc-600',
@@ -89,10 +89,10 @@ export default function ResourcesList({ resources }: { resources: ResourceCard[]
               key={tab.type}
               onClick={() => setActiveTab(tab.type)}
               className={cn(
-                'flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-all',
+                'flex items-center gap-2 px-5 py-2.5 text-sm font-medium transition-all',
                 activeTab === tab.type
-                  ? 'bg-navy text-white shadow-sm'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  ? 'bg-accent text-white'
+                  : 'bg-surface-sunken text-text-secondary hover:bg-surface-sunken'
               )}
             >
               <tab.icon className="h-4 w-4" />
@@ -112,28 +112,28 @@ export default function ResourcesList({ resources }: { resources: ResourceCard[]
           <StaggerItem key={resource.slug}>
             <Link
               href={resource.path}
-              className="group flex h-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
+              className="group flex h-full flex-col border border-border-default bg-surface-card p-6 transition-all hover:-translate-y-1"
             >
               <div className="flex items-center gap-3">
                 <span
                   className={cn(
-                    'rounded-full px-3 py-1 text-xs font-medium',
-                    TAG_COLORS[resource.tag] ?? 'bg-slate-100 text-slate-600'
+                    'px-3 py-1 text-xs font-medium',
+                    TAG_COLORS[resource.tag] ?? 'bg-surface-sunken text-text-secondary'
                   )}
                 >
                   {resource.tag}
                 </span>
-                <span className="text-xs text-slate-500">
+                <span className="text-xs text-text-secondary">
                   {resource.readTime}
                 </span>
               </div>
-              <h2 className="mt-4 font-display text-lg font-bold text-navy group-hover:text-electric transition-colors">
+              <h2 className="mt-4 font-mono text-lg font-bold text-text-primary group-hover:text-accent transition-colors">
                 {resource.title}
               </h2>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-text-secondary">
                 {resource.description}
               </p>
-              <div className="mt-4 flex items-center gap-1 text-sm font-medium text-electric">
+              <div className="mt-4 flex items-center gap-1 text-sm font-medium text-accent">
                 Read more
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
               </div>

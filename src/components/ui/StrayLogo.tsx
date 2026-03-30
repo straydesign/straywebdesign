@@ -9,7 +9,7 @@ interface StrayLogoProps {
 
 export default function StrayLogo({
   className = '',
-  color = '#3B82F6',
+  color = '#16a34a',
   width = 48,
   height = 24,
 }: StrayLogoProps) {

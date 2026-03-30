@@ -103,7 +103,7 @@ export default async function LocationIndustryPage({
         ))}
 
         {/* Hero */}
-        <section className="relative overflow-hidden bg-navy pt-28 pb-20">
+        <section className="relative overflow-hidden bg-surface-page pt-28 pb-20">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-5xl px-5 md:px-8">
             <AnimateIn>
@@ -115,13 +115,13 @@ export default async function LocationIndustryPage({
                   { label: industry.shortName },
                 ]}
               />
-              <p className="text-sm font-semibold uppercase tracking-wider text-electric">
+              <p className="text-sm font-semibold uppercase tracking-wider text-accent">
                 {industry.shortName} · {location.name}, PA
               </p>
-              <h1 className="mt-4 font-display text-3xl font-bold leading-tight text-white md:text-5xl">
+              <h1 className="mt-4 font-mono text-3xl font-bold leading-tight text-text-primary md:text-5xl">
                 {industry.name} Web Design in {location.name}
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-tertiary">
                 {intersectionContent}
               </p>
               <div className="mt-8">
@@ -137,10 +137,10 @@ export default async function LocationIndustryPage({
         <section className="py-16 md:py-20">
           <div className="mx-auto max-w-5xl px-5 md:px-8">
             <AnimateIn>
-              <h2 className="text-center font-display text-2xl font-bold text-navy md:text-3xl">
+              <h2 className="text-center font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 Our Services for {industry.name} in {location.name}
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-center text-slate-600">
+              <p className="mx-auto mt-4 max-w-2xl text-center text-text-secondary">
                 Every service is built specifically for how {industry.name.toLowerCase()} attract and
                 retain {industry.patientOrClientTerm} in the {location.name} market.
               </p>
@@ -148,19 +148,19 @@ export default async function LocationIndustryPage({
             <div className="mt-12 space-y-6">
               {SERVICES.map((service, i) => (
                 <AnimateIn key={service.slug} delay={i * 0.08}>
-                  <div className="rounded-xl border border-slate-200/60 bg-white p-6 md:p-8">
+                  <div className="border border-border-default bg-surface-card p-6 md:p-8">
                     <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                       <div className="flex-1">
-                        <h3 className="font-display text-lg font-bold text-navy md:text-xl">
+                        <h3 className="font-mono text-lg font-bold text-text-primary md:text-xl">
                           {service.name}
                         </h3>
-                        <p className="mt-2 leading-relaxed text-slate-600">
+                        <p className="mt-2 leading-relaxed text-text-secondary">
                           {service.description}
                         </p>
                         <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                           {service.features.slice(0, 4).map((feature) => (
-                            <li key={feature.title} className="flex items-start gap-2 text-sm text-slate-600">
-                              <span className="mt-0.5 text-electric">✓</span>
+                            <li key={feature.title} className="flex items-start gap-2 text-sm text-text-secondary">
+                              <span className="mt-0.5 text-accent">✓</span>
                               <span>{feature.title}</span>
                             </li>
                           ))}
@@ -168,7 +168,7 @@ export default async function LocationIndustryPage({
                       </div>
                       <a
                         href={`/services/${service.slug}`}
-                        className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-electric/10 px-4 py-2.5 text-sm font-semibold text-electric transition-colors hover:bg-electric/20"
+                        className="inline-flex shrink-0 items-center gap-1.5 bg-accent/10 px-4 py-2.5 text-sm font-semibold text-accent transition-colors hover:bg-accent/10"
                       >
                         Learn more
                         <ArrowRight className="h-3.5 w-3.5" />
@@ -185,21 +185,21 @@ export default async function LocationIndustryPage({
         <section className="bg-light-gray py-16 md:py-20">
           <div className="mx-auto max-w-3xl px-5 md:px-8">
             <AnimateIn>
-              <h2 className="font-display text-2xl font-bold text-navy md:text-3xl">
+              <h2 className="font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 The Challenge for {location.name} {industry.name}
               </h2>
-              <p className="mt-4 text-slate-600">
+              <p className="mt-4 text-text-secondary">
                 Your {industry.patientOrClientTerm} are worth{' '}
-                <span className="font-semibold text-navy">{industry.lifetimeValue}</span> over
+                <span className="font-semibold text-text-primary">{industry.lifetimeValue}</span> over
                 their lifetime. Here&apos;s what {location.name} businesses are up against:
               </p>
             </AnimateIn>
             <div className="mt-8 space-y-3">
               {industry.challenges.map((challenge, i) => (
                 <AnimateIn key={i} delay={i * 0.08}>
-                  <div className="flex items-start gap-3 rounded-xl border border-slate-200/60 bg-white p-4">
+                  <div className="flex items-start gap-3 border border-border-default bg-surface-card p-4">
                     <span className="mt-0.5 text-amber-500">⚠</span>
-                    <p className="text-sm text-slate-600">{challenge}</p>
+                    <p className="text-sm text-text-secondary">{challenge}</p>
                   </div>
                 </AnimateIn>
               ))}
@@ -211,14 +211,14 @@ export default async function LocationIndustryPage({
         <section className="py-16 md:py-20">
           <div className="mx-auto max-w-3xl px-5 md:px-8">
             <AnimateIn>
-              <h2 className="font-display text-2xl font-bold text-navy md:text-3xl">
+              <h2 className="font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 Why {location.name} for Your {industry.shortName} Business
               </h2>
-              <p className="mt-4 leading-relaxed text-slate-600">
+              <p className="mt-4 leading-relaxed text-text-secondary">
                 {location.businessContext}
               </p>
               {location.nearbyAreas.length > 0 && (
-                <p className="mt-4 leading-relaxed text-slate-600">
+                <p className="mt-4 leading-relaxed text-text-secondary">
                   We also serve {industry.name.toLowerCase()} in{' '}
                   {location.nearbyAreas.join(', ')} and the surrounding {location.name} area.
                   Every site we build is optimized to rank across these communities.
@@ -233,7 +233,7 @@ export default async function LocationIndustryPage({
           <section className="py-16 md:py-20">
             <div className="mx-auto max-w-3xl px-5 md:px-8">
               <AnimateIn>
-                <h2 className="text-center font-display text-2xl font-bold text-navy md:text-3xl">
+                <h2 className="text-center font-mono text-2xl font-bold text-text-primary md:text-3xl">
                   {industry.shortName} Web Design in {location.name} — FAQ
                 </h2>
               </AnimateIn>
@@ -245,14 +245,14 @@ export default async function LocationIndustryPage({
         )}
 
         {/* CTA */}
-        <section className="relative overflow-hidden bg-navy py-16 md:py-20">
+        <section className="relative overflow-hidden bg-surface-page py-16 md:py-20">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-3xl px-5 text-center md:px-8">
             <AnimateIn>
-              <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
+              <h2 className="font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 Ready to outperform {industry.competitorExample} in {location.name}?
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-slate-300">
+              <p className="mx-auto mt-4 max-w-xl text-text-tertiary">
                 Free site audit for {industry.name.toLowerCase()} in {location.name}. We&apos;ll show
                 you exactly where you stand vs. the local competition.
               </p>

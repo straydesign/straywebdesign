@@ -19,48 +19,6 @@ function resolveHref(href: string, pathname: string): string {
   return href;
 }
 
-function useOverDark(pathname: string) {
-  const [overDark, setOverDark] = useState(true);
-  const activeDarkRef = useRef(new Set<Element>());
-
-  useEffect(() => {
-    const activeDark = activeDarkRef.current;
-    activeDark.clear();
-
-    const darkSections = document.querySelectorAll(
-      '[data-navbar-dark], .bg-navy, .bg-slate-900, .bg-slate-950, .bg-gray-900'
-    );
-
-    const targets = Array.from(darkSections).filter(
-      (el) => !el.closest('nav')
-    );
-
-    if (targets.length === 0) {
-      setOverDark(false);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            activeDark.add(entry.target);
-          } else {
-            activeDark.delete(entry.target);
-          }
-        }
-        setOverDark(activeDark.size > 0);
-      },
-      { rootMargin: '0px 0px -93% 0px' }
-    );
-
-    targets.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, [pathname]);
-
-  return overDark;
-}
-
 /* ─── Scroll Progress (desktop only) ─── */
 
 function DesktopScrollProgress() {
@@ -69,7 +27,7 @@ function DesktopScrollProgress() {
 
   return (
     <motion.div
-      className="fixed top-0 right-0 left-0 z-[60] h-[3px] origin-left bg-electric"
+      className="fixed top-0 right-0 left-0 z-[60] h-[3px] origin-left bg-accent"
       style={{ scaleX }}
       role="progressbar"
       aria-label="Page scroll progress"
@@ -93,7 +51,7 @@ function MobileScrollProgress() {
 
   return (
     <div
-      className="fixed top-0 right-0 left-0 z-[60] h-[3px] origin-left bg-electric"
+      className="fixed top-0 right-0 left-0 z-[60] h-[3px] origin-left bg-accent"
       style={{ transform: `scaleX(${progress})` }}
       role="progressbar"
       aria-label="Page scroll progress"
@@ -109,20 +67,16 @@ type NavLink = (typeof NAV_LINKS)[number];
 function DesktopDropdown({
   link,
   pathname,
-  ghost,
 }: {
   link: NavLink;
   pathname: string;
-  ghost: boolean;
+  ghost?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const linkClass = cn(
-    'text-sm font-medium transition-colors duration-300',
-    ghost ? 'text-white/80 hover:text-white' : 'text-slate-600 hover:text-navy'
-  );
+  const linkClass = 'font-mono text-sm font-medium text-text-secondary transition-colors duration-300 hover:text-text-primary';
 
   if (!('children' in link) || !link.children) {
     return (
@@ -182,14 +136,14 @@ function DesktopDropdown({
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.15 }}
             role="menu"
-            className="absolute top-full left-0 z-50 mt-2 w-56 rounded-xl border border-slate-200/60 bg-white py-2 shadow-xl"
+            className="absolute top-full left-0 z-50 mt-2 w-56 border border-border-default bg-surface-card py-2"
           >
             {link.children.map((child) => (
               <Link
                 key={child.href}
                 href={child.href}
                 role="menuitem"
-                className="block px-4 py-2 text-sm text-slate-600 transition-colors hover:bg-slate-50 hover:text-navy"
+                className="block px-4 py-2 font-mono text-sm text-text-secondary transition-colors hover:bg-surface-sunken hover:text-text-primary"
               >
                 {child.label}
               </Link>
@@ -209,8 +163,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [expandedMobile, setExpandedMobile] = useState<string | null>(null);
   const { mobile } = useClientEnv();
-
-  const overDark = useOverDark(pathname);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -237,7 +189,7 @@ export default function Navbar() {
       <nav
         className={cn(
           'fixed top-[3px] right-0 left-0 z-50 transition-all duration-300 bg-transparent',
-          scrolled && !overDark && 'backdrop-blur-sm'
+          scrolled && 'bg-surface-page/90 backdrop-blur-sm border-b border-border-default'
         )}
         aria-label="Main navigation"
       >
@@ -245,19 +197,16 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className={cn(
-              'flex items-center gap-2 font-display text-xl font-bold transition-colors duration-300',
-              overDark ? 'text-white' : 'text-navy'
-            )}
+            className="flex items-center gap-2 font-mono text-xl font-bold text-text-primary transition-colors duration-300"
             aria-label={SITE.name}
           >
             <StrayLogo
               width={36}
               height={18}
-              color={overDark ? '#ffffff' : '#3B82F6'}
+              color="#16a34a"
             />
             <span>
-              stray<span className="text-electric">web</span>design
+              stray<span className="text-accent">web</span>design
             </span>
           </Link>
 
@@ -268,12 +217,11 @@ export default function Navbar() {
                 key={link.href}
                 link={link}
                 pathname={pathname}
-                ghost={overDark}
               />
             ))}
             <Link
               href={resolveHref('#contact', pathname)}
-              className="rounded-lg bg-electric px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-electric/90"
+              className="bg-accent px-5 py-2.5 font-mono text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-accent/90"
             >
               Free Audit
             </Link>
@@ -287,19 +235,9 @@ export default function Navbar() {
             aria-expanded={isOpen}
           >
             {isOpen ? (
-              <X
-                className={cn(
-                  'h-6 w-6 transition-colors duration-300',
-                  overDark ? 'text-white' : 'text-navy'
-                )}
-              />
+              <X className="h-6 w-6 text-text-primary transition-colors duration-300" />
             ) : (
-              <Menu
-                className={cn(
-                  'h-6 w-6 transition-colors duration-300',
-                  overDark ? 'text-white' : 'text-navy'
-                )}
-              />
+              <Menu className="h-6 w-6 text-text-primary transition-colors duration-300" />
             )}
           </button>
         </div>
@@ -308,7 +246,7 @@ export default function Navbar() {
         {mobile ? (
           <div
             className={cn(
-              'absolute inset-x-0 top-full max-h-[80vh] overflow-y-auto bg-white/95 px-5 shadow-xl backdrop-blur-xl md:hidden transition-all duration-200',
+              'absolute inset-x-0 top-full max-h-[80vh] overflow-y-auto bg-surface-card border-b border-border-default px-5 md:hidden transition-all duration-200',
               isOpen ? 'py-6 opacity-100 translate-y-0' : 'py-0 opacity-0 -translate-y-4 pointer-events-none h-0 overflow-hidden'
             )}
           >
@@ -322,7 +260,7 @@ export default function Navbar() {
                     {hasChildren ? (
                       <>
                         <button
-                          className="flex w-full items-center justify-between text-base font-medium text-slate-600 transition-colors hover:text-navy"
+                          className="flex w-full items-center justify-between font-mono text-base font-medium text-text-secondary transition-colors hover:text-text-primary"
                           onClick={() =>
                             setExpandedMobile(isExpanded ? null : link.label)
                           }
@@ -344,7 +282,7 @@ export default function Navbar() {
                                 <Link
                                   key={child.href}
                                   href={child.href}
-                                  className="text-sm text-slate-500 transition-colors hover:text-navy"
+                                  className="font-mono text-sm text-text-tertiary transition-colors hover:text-text-primary"
                                   onClick={() => setIsOpen(false)}
                                 >
                                   {child.label}
@@ -357,7 +295,7 @@ export default function Navbar() {
                     ) : (
                       <Link
                         href={resolveHref(link.href, pathname)}
-                        className="text-base font-medium text-slate-600 transition-colors hover:text-navy"
+                        className="font-mono text-base font-medium text-text-secondary transition-colors hover:text-text-primary"
                         onClick={() => setIsOpen(false)}
                       >
                         {link.label}
@@ -368,7 +306,7 @@ export default function Navbar() {
               })}
               <Link
                 href={resolveHref('#contact', pathname)}
-                className="mt-2 rounded-lg bg-electric px-5 py-3 text-center text-sm font-semibold text-white"
+                className="mt-2 bg-accent px-5 py-3 text-center font-mono text-sm font-medium uppercase tracking-wider text-white"
                 onClick={() => setIsOpen(false)}
               >
                 Get Free Audit
@@ -383,7 +321,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.2 }}
-                className="absolute inset-x-0 top-full max-h-[80vh] overflow-y-auto bg-white/95 px-5 py-6 shadow-xl backdrop-blur-xl md:hidden"
+                className="absolute inset-x-0 top-full max-h-[80vh] overflow-y-auto bg-surface-card border-b border-border-default px-5 py-6 md:hidden"
               >
                 <div className="flex flex-col gap-3">
                   {NAV_LINKS.map((link) => {
@@ -395,7 +333,7 @@ export default function Navbar() {
                         {hasChildren ? (
                           <>
                             <button
-                              className="flex w-full items-center justify-between text-base font-medium text-slate-600 transition-colors hover:text-navy"
+                              className="flex w-full items-center justify-between font-mono text-base font-medium text-text-secondary transition-colors hover:text-text-primary"
                               onClick={() =>
                                 setExpandedMobile(isExpanded ? null : link.label)
                               }
@@ -424,7 +362,7 @@ export default function Navbar() {
                                       <Link
                                         key={child.href}
                                         href={child.href}
-                                        className="text-sm text-slate-500 transition-colors hover:text-navy"
+                                        className="font-mono text-sm text-text-tertiary transition-colors hover:text-text-primary"
                                         onClick={() => setIsOpen(false)}
                                       >
                                         {child.label}
@@ -438,7 +376,7 @@ export default function Navbar() {
                         ) : (
                           <Link
                             href={resolveHref(link.href, pathname)}
-                            className="text-base font-medium text-slate-600 transition-colors hover:text-navy"
+                            className="font-mono text-base font-medium text-text-secondary transition-colors hover:text-text-primary"
                             onClick={() => setIsOpen(false)}
                           >
                             {link.label}
@@ -449,7 +387,7 @@ export default function Navbar() {
                   })}
                   <Link
                     href={resolveHref('#contact', pathname)}
-                    className="mt-2 rounded-lg bg-electric px-5 py-3 text-center text-sm font-semibold text-white"
+                    className="mt-2 bg-accent px-5 py-3 text-center font-mono text-sm font-medium uppercase tracking-wider text-white"
                     onClick={() => setIsOpen(false)}
                   >
                     Get Free Audit

@@ -119,7 +119,7 @@ export default async function ServicePage({
         />
 
         {/* Hero */}
-        <section className="relative overflow-hidden bg-navy pt-28 pb-20" aria-label="Service overview">
+        <section className="relative overflow-hidden bg-surface-page pt-28 pb-20" aria-label="Service overview">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-5xl px-5 md:px-8">
             <AnimateIn>
@@ -130,13 +130,13 @@ export default async function ServicePage({
                   { label: service.shortName },
                 ]}
               />
-              <p className="text-sm font-semibold uppercase tracking-wider text-electric">
+              <p className="text-sm font-semibold uppercase tracking-wider text-accent">
                 {service.shortName}
               </p>
-              <h1 className="mt-4 font-display text-3xl font-bold leading-tight text-white md:text-5xl">
+              <h1 className="mt-4 font-mono text-3xl font-bold leading-tight text-text-primary md:text-5xl">
                 {service.name}
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-tertiary">
                 {service.longDescription}
               </p>
               <div className="mt-8">
@@ -149,7 +149,7 @@ export default async function ServicePage({
         </section>
 
         {/* Stats */}
-        <section className="border-b border-slate-200 bg-white py-12" aria-label="Key statistics">
+        <section className="border-b border-border-default bg-surface-card py-12" aria-label="Key statistics">
           <div className="mx-auto max-w-5xl px-5 md:px-8">
             <StaggerContainer className="grid grid-cols-2 gap-8 md:grid-cols-4" staggerDelay={0.15}>
               {service.benefits.map((benefit, i) => {
@@ -157,14 +157,14 @@ export default async function ServicePage({
                 return (
                   <StaggerItem key={i}>
                     <div className="text-center">
-                      <div className="font-display text-3xl font-bold text-navy md:text-4xl">
+                      <div className="font-mono text-3xl font-bold text-text-primary md:text-4xl">
                         <CountUp
                           value={parsed.value}
                           prefix={parsed.prefix}
                           suffix={parsed.suffix}
                         />
                       </div>
-                      <p className="mt-2 text-sm text-slate-600">{benefit.label}</p>
+                      <p className="mt-2 text-sm text-text-secondary">{benefit.label}</p>
                     </div>
                   </StaggerItem>
                 );
@@ -177,21 +177,21 @@ export default async function ServicePage({
         <section className="py-16 md:py-20" aria-label="Features included">
           <div className="mx-auto max-w-5xl px-5 md:px-8">
             <AnimateIn>
-              <h2 className="text-center font-display text-2xl font-bold text-navy md:text-3xl">
+              <h2 className="text-center font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 What&apos;s Included
               </h2>
             </AnimateIn>
             <StaggerContainer className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3" staggerDelay={0.1}>
               {service.features.map((feature, i) => (
                 <StaggerItem key={i}>
-                  <div className="rounded-xl border border-slate-200/60 bg-white p-6">
+                  <div className="border border-border-default bg-surface-card p-6">
                     <div className="flex items-start gap-3">
-                      <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-electric" />
+                      <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
                       <div>
-                        <h3 className="font-display font-bold text-navy">
+                        <h3 className="font-mono font-bold text-text-primary">
                           {feature.title}
                         </h3>
-                        <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                        <p className="mt-2 text-sm leading-relaxed text-text-secondary">
                           {feature.description}
                         </p>
                       </div>
@@ -205,17 +205,17 @@ export default async function ServicePage({
 
         {/* Architecture Deep Dive */}
         {service.architecture && service.architecture.length > 0 && (
-          <section className="relative overflow-hidden bg-navy py-16 md:py-24" aria-label="System architecture">
+          <section className="relative overflow-hidden bg-surface-page py-16 md:py-24" aria-label="System architecture">
             <GrainOverlay />
             <div className="relative z-10 mx-auto max-w-3xl px-5 md:px-8">
               <AnimateIn>
-                <p className="text-center text-sm font-semibold uppercase tracking-wider text-electric">
+                <p className="text-center text-sm font-semibold uppercase tracking-wider text-accent">
                   Under the Hood
                 </p>
-                <h2 className="mt-3 text-center font-display text-2xl font-bold text-white md:text-3xl">
+                <h2 className="mt-3 text-center font-mono text-2xl font-bold text-text-primary md:text-3xl">
                   How the System Actually Works
                 </h2>
-                <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
+                <p className="mx-auto mt-4 max-w-xl text-center text-text-tertiary">
                   This isn&apos;t a chatbot reading a script. It&apos;s a full customer intelligence
                   system connected to your business data, your calendar, and your CRM.
                 </p>
@@ -224,7 +224,7 @@ export default async function ServicePage({
               <div className="relative mt-14">
                 {/* Vertical connecting line */}
                 <div
-                  className="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-electric via-electric/40 to-transparent md:left-6"
+                  className="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-accent via-accent/40 to-transparent md:left-6"
                   aria-hidden="true"
                 />
 
@@ -235,15 +235,15 @@ export default async function ServicePage({
                       <AnimateIn key={i} delay={i * 0.08}>
                         <div className="relative flex gap-5 md:gap-6">
                           {/* Node dot */}
-                          <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-electric bg-navy md:h-12 md:w-12">
-                            <Icon className="h-4 w-4 text-electric md:h-5 md:w-5" />
+                          <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-accent bg-surface-page md:h-12 md:w-12">
+                            <Icon className="h-4 w-4 text-accent md:h-5 md:w-5" />
                           </div>
                           {/* Content */}
                           <div className="pt-1">
-                            <h3 className="font-display text-base font-bold text-white md:text-lg">
+                            <h3 className="font-mono text-base font-bold text-text-primary md:text-lg">
                               {layer.title}
                             </h3>
-                            <p className="mt-2 text-sm leading-relaxed text-slate-400 md:text-base">
+                            <p className="mt-2 text-sm leading-relaxed text-text-tertiary md:text-base">
                               {layer.description}
                             </p>
                           </div>
@@ -261,7 +261,7 @@ export default async function ServicePage({
         <section className="bg-light-gray py-16 md:py-20" aria-label="How it works">
           <div className="mx-auto max-w-3xl px-5 md:px-8">
             <AnimateIn>
-              <h2 className="text-center font-display text-2xl font-bold text-navy md:text-3xl">
+              <h2 className="text-center font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 How It Works
               </h2>
             </AnimateIn>
@@ -269,14 +269,14 @@ export default async function ServicePage({
               {service.process.map((step, i) => (
                 <AnimateIn key={i} delay={i * 0.1}>
                   <div className="flex gap-5">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-electric font-display text-lg font-bold text-white">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent font-mono text-lg font-bold text-text-primary">
                       {step.step}
                     </div>
                     <div>
-                      <h3 className="font-display text-lg font-bold text-navy">
+                      <h3 className="font-mono text-lg font-bold text-text-primary">
                         {step.title}
                       </h3>
-                      <p className="mt-2 leading-relaxed text-slate-600">
+                      <p className="mt-2 leading-relaxed text-text-secondary">
                         {step.description}
                       </p>
                     </div>
@@ -291,7 +291,7 @@ export default async function ServicePage({
         <section className="py-16 md:py-20" aria-label="Frequently asked questions">
           <div className="mx-auto max-w-3xl px-5 md:px-8">
             <AnimateIn>
-              <h2 className="text-center font-display text-2xl font-bold text-navy md:text-3xl">
+              <h2 className="text-center font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 Frequently Asked Questions
               </h2>
             </AnimateIn>
@@ -306,10 +306,10 @@ export default async function ServicePage({
 
         {/* Related Services */}
         {relatedServices.length > 0 && (
-          <section className="border-t border-slate-200 bg-light-gray py-16 md:py-20" aria-label="Related services">
+          <section className="border-t border-border-default bg-light-gray py-16 md:py-20" aria-label="Related services">
             <div className="mx-auto max-w-5xl px-5 md:px-8">
               <AnimateIn>
-                <h2 className="text-center font-display text-2xl font-bold text-navy md:text-3xl">
+                <h2 className="text-center font-mono text-2xl font-bold text-text-primary md:text-3xl">
                   Related Services
                 </h2>
               </AnimateIn>
@@ -318,15 +318,15 @@ export default async function ServicePage({
                   <StaggerItem key={rs.slug}>
                     <a
                       href={`/services/${rs.slug}`}
-                      className="group flex h-full flex-col rounded-xl border border-slate-200/60 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
+                      className="group flex h-full flex-col border border-border-default bg-surface-card p-6 transition-all hover:-translate-y-1"
                     >
-                      <h3 className="font-display font-bold text-navy group-hover:text-electric transition-colors">
+                      <h3 className="font-mono font-bold text-text-primary group-hover:text-accent transition-colors">
                         {rs.name}
                       </h3>
-                      <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+                      <p className="mt-2 flex-1 text-sm leading-relaxed text-text-secondary">
                         {rs.description}
                       </p>
-                      <div className="mt-4 flex items-center gap-1 text-sm font-medium text-electric">
+                      <div className="mt-4 flex items-center gap-1 text-sm font-medium text-accent">
                         Learn more
                         <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                       </div>
@@ -339,14 +339,14 @@ export default async function ServicePage({
         )}
 
         {/* CTA */}
-        <section className="relative overflow-hidden bg-navy py-16 md:py-20" aria-label="Call to action">
+        <section className="relative overflow-hidden bg-surface-page py-16 md:py-20" aria-label="Call to action">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-3xl px-5 text-center md:px-8">
             <AnimateIn>
-              <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
+              <h2 className="font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 Ready to get started?
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-slate-300">
+              <p className="mx-auto mt-4 max-w-xl text-text-tertiary">
                 Free site audit — we&apos;ll show you exactly where your current site
                 stands and how {service.shortName.toLowerCase()} can transform your business.
               </p>

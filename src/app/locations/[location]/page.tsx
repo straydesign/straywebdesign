@@ -69,7 +69,7 @@ export default async function LocationPage({
         />
 
         {/* Hero */}
-        <section className="relative overflow-hidden bg-navy pt-28 pb-20">
+        <section className="relative overflow-hidden bg-surface-page pt-28 pb-20">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-5xl px-5 md:px-8">
             <AnimateIn>
@@ -81,15 +81,15 @@ export default async function LocationPage({
                 ]}
               />
               <div className="flex items-center gap-2">
-                <MapPin className="h-5 w-5 text-electric" />
-                <p className="text-sm font-semibold uppercase tracking-wider text-electric">
+                <MapPin className="h-5 w-5 text-accent" />
+                <p className="text-sm font-semibold uppercase tracking-wider text-accent">
                   {location.fullName}
                 </p>
               </div>
-              <h1 className="mt-4 font-display text-3xl font-bold leading-tight text-white md:text-5xl">
+              <h1 className="mt-4 font-mono text-3xl font-bold leading-tight text-text-primary md:text-5xl">
                 Web Design in {location.name}, PA
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-tertiary">
                 {location.context}
               </p>
               <div className="mt-8">
@@ -102,25 +102,25 @@ export default async function LocationPage({
         </section>
 
         {/* Location Stats */}
-        <section className="border-b border-slate-200 bg-white py-12">
+        <section className="border-b border-border-default bg-surface-card py-12">
           <div className="mx-auto max-w-5xl px-5 md:px-8">
             <StaggerContainer className="grid grid-cols-2 gap-8 md:grid-cols-3" staggerDelay={0.15}>
               <StaggerItem>
                 <div className="text-center">
-                  <div className="font-display text-3xl font-bold text-navy">{location.population}</div>
-                  <p className="mt-2 text-sm text-slate-600">Population</p>
+                  <div className="font-mono text-3xl font-bold text-text-primary">{location.population}</div>
+                  <p className="mt-2 text-sm text-text-secondary">Population</p>
                 </div>
               </StaggerItem>
               <StaggerItem>
                 <div className="text-center">
-                  <div className="font-display text-3xl font-bold text-navy">{location.metroPopulation}</div>
-                  <p className="mt-2 text-sm text-slate-600">Metro Area</p>
+                  <div className="font-mono text-3xl font-bold text-text-primary">{location.metroPopulation}</div>
+                  <p className="mt-2 text-sm text-text-secondary">Metro Area</p>
                 </div>
               </StaggerItem>
               <StaggerItem>
                 <div className="text-center">
-                  <div className="font-display text-3xl font-bold text-navy">{INDUSTRIES.length}</div>
-                  <p className="mt-2 text-sm text-slate-600">Industries Served</p>
+                  <div className="font-mono text-3xl font-bold text-text-primary">{INDUSTRIES.length}</div>
+                  <p className="mt-2 text-sm text-text-secondary">Industries Served</p>
                 </div>
               </StaggerItem>
             </StaggerContainer>
@@ -131,10 +131,10 @@ export default async function LocationPage({
         <section className="py-16 md:py-20">
           <div className="mx-auto max-w-3xl px-5 md:px-8">
             <AnimateIn>
-              <h2 className="font-display text-2xl font-bold text-navy md:text-3xl">
+              <h2 className="font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 Why {location.name} Businesses Need a Professional Website
               </h2>
-              <p className="mt-4 leading-relaxed text-slate-600">
+              <p className="mt-4 leading-relaxed text-text-secondary">
                 {location.businessContext}
               </p>
             </AnimateIn>
@@ -145,7 +145,7 @@ export default async function LocationPage({
         <section className="bg-light-gray py-16 md:py-20">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <AnimateIn>
-              <h2 className="text-center font-display text-2xl font-bold text-navy md:text-3xl">
+              <h2 className="text-center font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 Industries We Serve in {location.name}
               </h2>
             </AnimateIn>
@@ -154,15 +154,15 @@ export default async function LocationPage({
                 <StaggerItem key={industry.slug}>
                   <a
                     href={`/locations/${slug}/${industry.slug}`}
-                    className="group flex h-full flex-col rounded-xl border border-slate-200/60 bg-white p-5 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
+                    className="group flex h-full flex-col border border-border-default bg-surface-card p-5 transition-all hover:-translate-y-1"
                   >
-                    <h3 className="font-display text-sm font-bold text-navy group-hover:text-electric transition-colors">
+                    <h3 className="font-mono text-sm font-bold text-text-primary group-hover:text-accent transition-colors">
                       {industry.name}
                     </h3>
-                    <p className="mt-2 flex-1 text-xs leading-relaxed text-slate-600 line-clamp-2">
+                    <p className="mt-2 flex-1 text-xs leading-relaxed text-text-secondary line-clamp-2">
                       {industry.description.slice(0, 120)}...
                     </p>
-                    <div className="mt-3 flex items-center gap-1 text-xs font-medium text-electric">
+                    <div className="mt-3 flex items-center gap-1 text-xs font-medium text-accent">
                       View services
                       <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
                     </div>
@@ -178,11 +178,11 @@ export default async function LocationPage({
           <section className="py-12">
             <div className="mx-auto max-w-3xl px-5 text-center md:px-8">
               <AnimateIn>
-                <p className="text-sm text-slate-500">
+                <p className="text-sm text-text-secondary">
                   Also serving nearby areas:{' '}
                   {location.nearbyAreas.map((area, i) => (
                     <span key={area}>
-                      <span className="font-medium text-slate-700">{area}</span>
+                      <span className="font-medium text-text-primary">{area}</span>
                       {i < location.nearbyAreas.length - 1 && ', '}
                     </span>
                   ))}
@@ -193,14 +193,14 @@ export default async function LocationPage({
         )}
 
         {/* CTA */}
-        <section className="relative overflow-hidden bg-navy py-16 md:py-20">
+        <section className="relative overflow-hidden bg-surface-page py-16 md:py-20">
           <GrainOverlay />
           <div className="relative z-10 mx-auto max-w-3xl px-5 text-center md:px-8">
             <AnimateIn>
-              <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
+              <h2 className="font-mono text-2xl font-bold text-text-primary md:text-3xl">
                 Ready to stand out in {location.name}?
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-slate-300">
+              <p className="mx-auto mt-4 max-w-xl text-text-tertiary">
                 Free site audit for {location.name} businesses. We&apos;ll show you exactly
                 exactly where your site stands right now.
               </p>

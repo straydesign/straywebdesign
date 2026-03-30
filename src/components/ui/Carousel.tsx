@@ -36,7 +36,7 @@ export default function Carousel({
         type="button"
         onClick={() => setIsPaused((prev) => !prev)}
         aria-label={isPaused ? 'Play carousel' : 'Pause carousel'}
-        className="absolute top-2 right-2 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-white/80 text-slate-600 shadow-sm backdrop-blur-sm transition-colors hover:bg-white hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-electric"
+        className="absolute top-2 right-2 z-20 flex h-8 w-8 items-center justify-center border border-border-default bg-surface-card text-text-secondary transition-colors hover:bg-surface-sunken hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       >
         {isPaused ? (
           <Play className="h-3.5 w-3.5" />

@@ -90,9 +90,9 @@ function LighthouseComparison() {
         {LIGHTHOUSE_COMPARISONS.map((comp, idx) => (
           <div
             key={comp.label}
-            className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md"
+            className="border border-border-default bg-surface-card p-6"
           >
-            <h2 className="mb-4 text-center font-display text-sm font-semibold text-slate-300">
+            <h2 className="mb-4 text-center font-mono text-[11px] font-semibold uppercase tracking-wider text-text-tertiary">
               {comp.label}
             </h2>
             <div className="flex justify-center gap-6">
@@ -108,7 +108,7 @@ function LighthouseComparison() {
       <div className="text-center">
         <button
           onClick={() => setExpanded((prev) => !prev)}
-          className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-slate-300 backdrop-blur-sm transition-colors hover:bg-white/10 hover:text-white"
+          className="inline-flex items-center gap-2 border border-border-strong bg-surface-card px-4 py-2 font-mono text-sm text-text-secondary transition-colors hover:bg-surface-sunken hover:text-text-primary"
         >
           What does this mean?
           <motion.svg
@@ -130,15 +130,15 @@ function LighthouseComparison() {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md">
-              <p className="mb-4 text-sm text-slate-400">
+            <div className="border border-border-default bg-surface-card p-5">
+              <p className="mb-4 font-mono text-sm text-text-tertiary">
                 These are Google Lighthouse scores — the same audit Google uses to rank your site. Higher scores mean more traffic, more trust, and more customers.
               </p>
               <div className="space-y-3">
                 {SCORE_EXPLANATIONS.map((item) => (
                   <div key={item.label}>
-                    <p className="text-sm font-semibold text-white">{item.label}</p>
-                    <p className="text-sm leading-relaxed text-slate-400">{item.description}</p>
+                    <p className="font-mono text-sm font-semibold text-text-primary">{item.label}</p>
+                    <p className="font-mono text-sm leading-relaxed text-text-tertiary">{item.description}</p>
                   </div>
                 ))}
               </div>
@@ -163,17 +163,17 @@ function SlideContent({ index }: { index: number }) {
       exit="exit"
       transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
     >
-      <span className="mb-4 inline-block rounded-xl border border-white/20 bg-white/5 px-4 py-1.5 text-sm font-medium text-electric backdrop-blur-sm sm:rounded-full">
+      <span className="mb-4 inline-block border border-border-strong bg-surface-card px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-wider text-accent">
         {slide.badge}
       </span>
 
-      <h1 className="text-balance font-display text-[clamp(2.25rem,7vw,5rem)] font-extrabold leading-[1.08] tracking-tight text-white">
+      <h1 className="text-balance font-mono text-[clamp(2.25rem,7vw,5rem)] font-bold leading-[1.08] tracking-tight text-text-primary">
         {slide.headline}
       </h1>
 
       <div className="mt-8 grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
-          <p className="max-w-lg text-lg leading-relaxed text-slate-300 md:text-xl">
+          <p className="max-w-lg font-mono text-lg leading-relaxed text-text-secondary md:text-xl">
             {slide.body}
           </p>
 
@@ -212,18 +212,18 @@ function SlideIndicators({
           key={i}
           onClick={() => onSelect(i)}
           aria-label={`Go to slide ${i + 1}`}
-          className="group relative h-1 w-8 overflow-hidden rounded-full bg-white/20"
+          className="group relative h-1 w-8 overflow-hidden bg-border-default"
         >
           {i === active && (
             <motion.div
-              className="absolute inset-0 rounded-full bg-electric"
+              className="absolute inset-0 bg-accent"
               layoutId="hero-indicator"
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             />
           )}
           {i === active && (
             <motion.div
-              className="absolute inset-y-0 left-0 rounded-full bg-white/40"
+              className="absolute inset-y-0 left-0 bg-accent/40"
               initial={{ width: '0%' }}
               animate={{ width: '100%' }}
               transition={{ duration: INTERVAL / 1000, ease: 'linear' }}
@@ -316,18 +316,11 @@ export default function Hero() {
 
   return (
     <section
-      className="relative flex min-h-[100dvh] items-center overflow-hidden bg-navy"
+      className="relative flex min-h-[100dvh] items-center overflow-hidden bg-surface-page"
       aria-label="Hero"
-      data-navbar-dark
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_20%_40%,rgba(37,99,235,0.15),transparent),radial-gradient(ellipse_60%_50%_at_80%_60%,rgba(37,99,235,0.08),transparent)]" />
-        <div className="absolute inset-0 animate-[drift_20s_ease-in-out_infinite] bg-[radial-gradient(ellipse_50%_40%_at_60%_30%,rgba(37,99,235,0.06),transparent)]" />
-      </div>
-
       {/* Glass shatter effect — deferred */}
       {showShatter && (
         <Suspense fallback={null}>
