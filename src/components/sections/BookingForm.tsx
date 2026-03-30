@@ -259,7 +259,7 @@ export default function BookingForm() {
                       </label>
                       <input
                         id="book-website"
-                        type="url"
+                        type="text"
                         value={website}
                         onChange={(e) => setWebsite(e.target.value)}
                         className={inputClasses}

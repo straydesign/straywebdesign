@@ -185,7 +185,7 @@ export default function FooterCTA() {
                     </label>
                     <input
                       id="website"
-                      type="url"
+                      type="text"
                       value={website}
                       onChange={(e) => setWebsite(e.target.value)}
                       className={inputClasses}
