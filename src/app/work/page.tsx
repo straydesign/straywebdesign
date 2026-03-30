@@ -32,60 +32,12 @@ const PROJECTS: readonly Project[] = [
     tag: 'Demo Site',
   },
   {
-    name: "Andy's",
-    type: 'Bar & Grill',
-    description:
-      'Pitch site for a bar and grill in Erie, PA. Next.js with Sanity CMS for menu and event management.',
-    url: 'https://andys-mu.vercel.app',
-    tag: 'Pitch Site',
-  },
-  {
-    name: 'Bullfrog',
-    type: 'Bar',
-    description:
-      'Pitch site for a neighborhood bar in Erie, PA. Dark, atmospheric design that matches the venue.',
-    url: 'https://bullfrog.vercel.app',
-    tag: 'Pitch Site',
-  },
-  {
-    name: 'Iron Ink',
-    type: 'Tattoo Shop',
-    description:
-      'Pitch site for a tattoo shop in Cuyahoga Falls, OH. Gallery-focused design with artist profiles and booking.',
-    url: 'https://ironink.vercel.app',
-    tag: 'Pitch Site',
-  },
-  {
-    name: 'War Horse Ink',
-    type: 'Tattoo Shop',
-    description:
-      'Pitch site for a 4-location tattoo shop across NE Ohio. Multi-location architecture with unified branding.',
-    url: 'https://warhorse.vercel.app',
-    tag: 'Pitch Site',
-  },
-  {
     name: 'Greenline',
     type: 'Lawn Care',
     description:
       'Portfolio demo for a lawn care company. Clean, professional design with service areas and seasonal content.',
     url: 'https://greenline-rust.vercel.app',
     tag: 'Demo Site',
-  },
-  {
-    name: 'Gold Crown',
-    type: 'Billiards Bar',
-    description:
-      'Pitch site for a billiards bar in Erie, PA. League schedules, events, and a vibe that matches the room.',
-    url: 'https://goldcrown.vercel.app',
-    tag: 'Pitch Site',
-  },
-  {
-    name: 'Peach Street Pitch',
-    type: '3-Venue Pitch',
-    description:
-      'Combined pitch page for three Peach Street venues in Erie, PA. One page, three businesses, one cohesive story.',
-    url: 'https://peach-street-pitch.vercel.app',
-    tag: 'Pitch Site',
   },
 ] as const;
 

@@ -31,10 +31,10 @@ export const INDUSTRIES: Industry[] = [
       'Mobile experience so bad that 60% of visitors leave before seeing your services',
     ],
     stats: [
-      { value: '72', label: '% of patients search online before choosing a dentist' },
-      { value: '3', label: 'seconds to earn trust or lose a visitor' },
-      { value: '5x', label: 'more bookings with online scheduling vs phone only' },
-      { value: '$15K', label: 'average lifetime value per patient' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered appointment capture' },
     ],
     faqs: [
       {
@@ -77,7 +77,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'Stethoscope',
     patientOrClientTerm: 'patients',
-    lifetimeValue: '$3,000-$15,000',
+    lifetimeValue: '',
     competitorExample: 'Aspen Dental',
   },
   {
@@ -96,10 +96,10 @@ export const INDUSTRIES: Industry[] = [
       'Poor mobile experience when prospects research you from their phone',
     ],
     stats: [
-      { value: '82', label: '% of investors research advisors online before making contact' },
-      { value: '$180K', label: 'average lifetime value per client' },
-      { value: '47', label: '% of advisor websites fail basic trust signals' },
-      { value: '3.5x', label: 'more consultations with clear CTAs vs generic sites' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered lead capture' },
     ],
     faqs: [
       {
@@ -142,7 +142,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'TrendingUp',
     patientOrClientTerm: 'clients',
-    lifetimeValue: '$50,000-$180,000',
+    lifetimeValue: '',
     competitorExample: 'Schwab / Fidelity',
   },
   {
@@ -161,10 +161,10 @@ export const INDUSTRIES: Industry[] = [
       'Poor mobile experience when 70% of car research happens on phones',
     ],
     stats: [
-      { value: '92', label: '% of car buyers research online before visiting a dealership' },
-      { value: '14', label: 'hours of online research before a purchase decision' },
-      { value: '$80K', label: 'potential lifetime value per customer' },
-      { value: '2.3x', label: 'more leads with integrated trade-in tools' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered lead capture' },
     ],
     faqs: [
       {
@@ -207,7 +207,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'Car',
     patientOrClientTerm: 'customers',
-    lifetimeValue: '$30,000-$80,000',
+    lifetimeValue: '',
     competitorExample: 'Carvana / AutoTrader',
   },
   {
@@ -226,10 +226,10 @@ export const INDUSTRIES: Industry[] = [
       'Technical jargon that confuses decision-makers instead of building confidence',
     ],
     stats: [
-      { value: '67', label: '% of B2B buyers rely on websites to evaluate service providers' },
-      { value: '$500K', label: 'potential annual contract value per client' },
-      { value: '4.2x', label: 'more RFP responses from sites with detailed case studies' },
-      { value: '58', label: '% of MSP websites fail basic performance benchmarks' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered lead capture' },
     ],
     faqs: [
       {
@@ -272,7 +272,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'Server',
     patientOrClientTerm: 'clients',
-    lifetimeValue: '$50,000-$500,000',
+    lifetimeValue: '',
     competitorExample: 'Large regional MSPs',
   },
   {
@@ -291,10 +291,10 @@ export const INDUSTRIES: Industry[] = [
       'Contact forms that ask too many questions and kill conversion rates',
     ],
     stats: [
-      { value: '96', label: '% of people seeking legal advice use a search engine' },
-      { value: '$100K', label: '+ potential value per case (personal injury, business litigation)' },
-      { value: '74', label: '% of law firm visitors take action on a mobile-friendly site' },
-      { value: '10x', label: 'ROI on legal website investment vs traditional advertising' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered client intake' },
     ],
     faqs: [
       {
@@ -337,7 +337,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'Scale',
     patientOrClientTerm: 'clients',
-    lifetimeValue: '$5,000-$100,000+',
+    lifetimeValue: '',
     competitorExample: 'LegalZoom',
   },
   {
@@ -356,10 +356,10 @@ export const INDUSTRIES: Industry[] = [
       'Frame gallery and promotions buried in PDF flyers instead of integrated into the site',
     ],
     stats: [
-      { value: '68', label: '% of patients check online reviews before choosing an eye doctor' },
-      { value: '$8K', label: 'average lifetime value per patient (exams + eyewear)' },
-      { value: '3.8x', label: 'more bookings with integrated online scheduling' },
-      { value: '45', label: '% of optical purchases influenced by the practice website' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered appointment capture' },
     ],
     faqs: [
       {
@@ -402,7 +402,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'Eye',
     patientOrClientTerm: 'patients',
-    lifetimeValue: '$2,000-$8,000',
+    lifetimeValue: '',
     competitorExample: 'LensCrafters / Warby Parker',
   },
   {
@@ -421,10 +421,10 @@ export const INDUSTRIES: Industry[] = [
       'Generic stock photos that don\'t build trust or show your actual facility',
     ],
     stats: [
-      { value: '77', label: '% of patients choose providers based on online convenience' },
-      { value: '$10K', label: 'average lifetime value per chiropractic patient' },
-      { value: '62', label: '% of chiro searches happen on mobile devices' },
-      { value: '4x', label: 'more bookings when insurance info is clearly displayed' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered appointment capture' },
     ],
     faqs: [
       {
@@ -467,7 +467,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'Activity',
     patientOrClientTerm: 'patients',
-    lifetimeValue: '$3,000-$10,000',
+    lifetimeValue: '',
     competitorExample: 'Corporate wellness chains',
   },
   {
@@ -486,10 +486,10 @@ export const INDUSTRIES: Industry[] = [
       'Outdated site that doesn\'t reflect the cutting-edge procedures you actually perform',
     ],
     stats: [
-      { value: '85', label: '% of orthopedic patients research providers online pre-visit' },
-      { value: '$50K', label: 'average value per surgical patient' },
-      { value: '3.2x', label: 'more consultations from sites with provider-specific pages' },
-      { value: '71', label: '% of patients value online reviews as much as referrals' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered patient intake' },
     ],
     faqs: [
       {
@@ -532,7 +532,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'Bone',
     patientOrClientTerm: 'patients',
-    lifetimeValue: '$5,000-$50,000',
+    lifetimeValue: '',
     competitorExample: 'Hospital systems',
   },
   {
@@ -551,10 +551,10 @@ export const INDUSTRIES: Industry[] = [
       'No way for customers to request estimates online — phone tag kills conversions',
     ],
     stats: [
-      { value: '86', label: '% of homeowners research landscapers online before hiring' },
-      { value: '$50K', label: 'potential annual contract value (commercial accounts)' },
-      { value: '5.4x', label: 'more inquiries from sites with before/after project galleries' },
-      { value: '73', label: '% of landscaping leads come from mobile searches' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered estimate requests' },
     ],
     faqs: [
       {
@@ -597,7 +597,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'TreePine',
     patientOrClientTerm: 'customers',
-    lifetimeValue: '$5,000-$50,000',
+    lifetimeValue: '',
     competitorExample: 'TruGreen / BrightView',
   },
   {
@@ -616,10 +616,10 @@ export const INDUSTRIES: Industry[] = [
       'Poor search visibility for industry-specific terms that procurement teams use',
     ],
     stats: [
-      { value: '73', label: '% of B2B buyers research suppliers online before making contact' },
-      { value: '$100K', label: '+ average contract value for industrial clients' },
-      { value: '67', label: '% of manufacturing websites lack mobile optimization' },
-      { value: '4.7x', label: 'more RFQs from sites with detailed capability pages' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered RFQ capture' },
     ],
     faqs: [
       {
@@ -662,7 +662,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'Factory',
     patientOrClientTerm: 'clients',
-    lifetimeValue: '$100,000+',
+    lifetimeValue: '',
     competitorExample: 'Global suppliers',
   },
   {
@@ -681,10 +681,10 @@ export const INDUSTRIES: Industry[] = [
       'No reservation or event booking system — relying on phone calls during the dinner rush',
     ],
     stats: [
-      { value: '90', label: '% of diners research a restaurant online before visiting' },
-      { value: '30', label: '% commission taken by third-party delivery platforms' },
-      { value: '$5K', label: 'annual value per loyal regular customer' },
-      { value: '2.8x', label: 'more direct orders from restaurants with their own ordering system' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered reservation capture' },
     ],
     faqs: [
       {
@@ -727,7 +727,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'UtensilsCrossed',
     patientOrClientTerm: 'customers',
-    lifetimeValue: '$500-$5,000 annual',
+    lifetimeValue: '',
     competitorExample: 'DoorDash / Yelp',
   },
   {
@@ -746,10 +746,10 @@ export const INDUSTRIES: Industry[] = [
       'No lead nurturing — visitors come, browse, and leave without ever providing contact info',
     ],
     stats: [
-      { value: '97', label: '% of homebuyers use the internet during their home search' },
-      { value: '$30K', label: 'average commission per transaction' },
-      { value: '44', label: '% of buyers find their agent online (not through referral)' },
-      { value: '3.6x', label: 'more leads from sites with IDX integration vs static listings' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered lead capture' },
     ],
     faqs: [
       {
@@ -792,7 +792,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'Home',
     patientOrClientTerm: 'clients',
-    lifetimeValue: '$5,000-$30,000',
+    lifetimeValue: '',
     competitorExample: 'Zillow / Redfin',
   },
   {
@@ -811,10 +811,10 @@ export const INDUSTRIES: Industry[] = [
       'Website that doesn\'t communicate 24/7 emergency availability clearly',
     ],
     stats: [
-      { value: '88', label: '% of HVAC customers search online during an emergency' },
-      { value: '$15K', label: 'average value per full system replacement' },
-      { value: '5.2x', label: 'more calls from sites with click-to-call on mobile' },
-      { value: '61', label: '% of HVAC searches result in a same-day service call' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered service requests' },
     ],
     faqs: [
       {
@@ -857,7 +857,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'Thermometer',
     patientOrClientTerm: 'customers',
-    lifetimeValue: '$3,000-$15,000',
+    lifetimeValue: '',
     competitorExample: 'National HVAC chains',
   },
   {
@@ -876,10 +876,10 @@ export const INDUSTRIES: Industry[] = [
       'No way for customers to see pricing ranges — they call, get a quote, and shop around',
     ],
     stats: [
-      { value: '91', label: '% of plumbing searches are on mobile devices' },
-      { value: '$10K', label: 'average value for major plumbing projects (repiping, sewer)' },
-      { value: '6.1x', label: 'more emergency calls from mobile-optimized sites' },
-      { value: '78', label: '% of customers choose the first plumber that answers' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered emergency requests' },
     ],
     faqs: [
       {
@@ -922,7 +922,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'Wrench',
     patientOrClientTerm: 'customers',
-    lifetimeValue: '$500-$10,000',
+    lifetimeValue: '',
     competitorExample: 'Roto-Rooter',
   },
   {
@@ -941,10 +941,10 @@ export const INDUSTRIES: Industry[] = [
       'No project portfolio showing the scale and quality of work you\'ve completed',
     ],
     stats: [
-      { value: '79', label: '% of customers check licensing and reviews before hiring an electrician' },
-      { value: '$20K', label: 'average value for commercial electrical projects' },
-      { value: '4.3x', label: 'more leads from sites that display licensing and certifications' },
-      { value: '65', label: '% of electrical searches are on mobile devices' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered service requests' },
     ],
     faqs: [
       {
@@ -987,7 +987,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'Zap',
     patientOrClientTerm: 'customers',
-    lifetimeValue: '$1,000-$20,000',
+    lifetimeValue: '',
     competitorExample: 'Mr. Electric',
   },
   {
@@ -1006,10 +1006,10 @@ export const INDUSTRIES: Industry[] = [
       'No content strategy to educate prospects on the value of an independent agent',
     ],
     stats: [
-      { value: '75', label: '% of insurance shoppers start their search online' },
-      { value: '$10K', label: 'average annual premium value per multi-policy client' },
-      { value: '4.1x', label: 'more quote requests from sites with online quoting tools' },
-      { value: '68', label: '% of policyholders would switch for a better digital experience' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered quote requests' },
     ],
     faqs: [
       {
@@ -1052,7 +1052,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'Shield',
     patientOrClientTerm: 'clients',
-    lifetimeValue: '$2,000-$10,000 annual',
+    lifetimeValue: '',
     competitorExample: 'Geico / Progressive',
   },
   {
@@ -1071,10 +1071,10 @@ export const INDUSTRIES: Industry[] = [
       'Younger business owners expecting digital-first interactions and self-service options',
     ],
     stats: [
-      { value: '64', label: '% of small businesses search online when choosing an accountant' },
-      { value: '$50K', label: 'annual value of a full-service business advisory client' },
-      { value: '3.9x', label: 'more inquiries from sites highlighting advisory (not just tax) services' },
-      { value: '52', label: '% of accounting websites fail to communicate value beyond compliance' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered client intake' },
     ],
     faqs: [
       {
@@ -1117,7 +1117,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'Calculator',
     patientOrClientTerm: 'clients',
-    lifetimeValue: '$3,000-$50,000 annual',
+    lifetimeValue: '',
     competitorExample: 'TurboTax / H&R Block',
   },
   {
@@ -1136,10 +1136,10 @@ export const INDUSTRIES: Industry[] = [
       'No distinction between routine care, specialty services, and emergency capabilities',
     ],
     stats: [
-      { value: '83', label: '% of pet owners research veterinary practices online' },
-      { value: '$5K', label: 'average annual spend per pet at a full-service practice' },
-      { value: '4.5x', label: 'more appointments from sites with team photos and bios' },
-      { value: '76', label: '% of pet owners choose a vet based on online reviews and website quality' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered appointment capture' },
     ],
     faqs: [
       {
@@ -1182,7 +1182,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'Heart',
     patientOrClientTerm: 'patients',
-    lifetimeValue: '$1,000-$5,000 annual',
+    lifetimeValue: '',
     competitorExample: 'VCA / Banfield',
   },
   {
@@ -1201,10 +1201,10 @@ export const INDUSTRIES: Industry[] = [
       'High January traffic that drops off because the website doesn\'t nurture leads',
     ],
     stats: [
-      { value: '81', label: '% of fitness consumers research gyms online before visiting' },
-      { value: '$3K', label: 'average annual revenue per retained member' },
-      { value: '3.4x', label: 'more sign-ups from sites with online membership registration' },
-      { value: '67', label: '% of gym members chose their gym based on the website experience' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered membership signups' },
     ],
     faqs: [
       {
@@ -1247,7 +1247,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'Dumbbell',
     patientOrClientTerm: 'members',
-    lifetimeValue: '$600-$3,000 annual',
+    lifetimeValue: '',
     competitorExample: 'Planet Fitness / Peloton',
   },
   {
@@ -1266,10 +1266,10 @@ export const INDUSTRIES: Industry[] = [
       'No way to showcase individual stylist portfolios and specialties',
     ],
     stats: [
-      { value: '87', label: '% of salon clients book online when the option is available' },
-      { value: '$5K', label: 'average annual spend per loyal salon client' },
-      { value: '4.6x', label: 'more bookings from sites with integrated scheduling' },
-      { value: '72', label: '% of new clients discover salons through online search' },
+      { value: '90+', label: 'Lighthouse score across all metrics' },
+      { value: '<1s', label: 'page load time on every device' },
+      { value: 'AA', label: 'WCAG accessibility compliance' },
+      { value: '24/7', label: 'AI-powered booking capture' },
     ],
     faqs: [
       {
@@ -1312,7 +1312,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     icon: 'Scissors',
     patientOrClientTerm: 'clients',
-    lifetimeValue: '$1,000-$5,000 annual',
+    lifetimeValue: '',
     competitorExample: 'National salon chains',
   },
 ];
