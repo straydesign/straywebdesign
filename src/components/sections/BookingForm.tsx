@@ -6,6 +6,7 @@ import AnimateIn from '@/components/ui/AnimateIn';
 import MagneticButton from '@/components/ui/MagneticButton';
 import GradientText from '@/components/ui/GradientText';
 import { SITE, BOOKING_TIMING_OPTIONS } from '@/lib/constants';
+import { getUtmParams } from '@/hooks/useUtmParams';
 
 const inputClasses =
   'w-full border border-border-strong bg-surface-sunken px-4 py-3 font-mono text-text-primary placeholder-text-placeholder transition-colors focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none';
@@ -23,24 +24,51 @@ export default function BookingForm() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus('sending');
+
+    const utms = getUtmParams();
+
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          access_key: SITE.web3formsKey,
-          name,
-          email,
-          phone,
-          business_name: business,
-          website,
-          preferred_timing: timing,
-          message,
-          from_name: 'straywebdesign.co',
-          subject: `New Booking Request from ${name}`,
+      const crmPayload = {
+        name,
+        email,
+        phone,
+        company: business,
+        website,
+        message,
+        timing,
+        form_type: 'booking',
+        ...utms,
+      };
+
+      const [crmRes, web3Res] = await Promise.allSettled([
+        fetch(process.env.NEXT_PUBLIC_CRM_INBOUND_URL || 'https://stray-crm.vercel.app/api/leads/inbound', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(crmPayload),
         }),
-      });
-      if (res.ok) {
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            access_key: SITE.web3formsKey,
+            name,
+            email,
+            phone,
+            business_name: business,
+            website,
+            preferred_timing: timing,
+            message,
+            from_name: 'straywebdesign.co',
+            subject: `New Booking Request from ${name}`,
+          }),
+        }),
+      ]);
+
+      const anySuccess =
+        (crmRes.status === 'fulfilled' && crmRes.value.ok) ||
+        (web3Res.status === 'fulfilled' && web3Res.value.ok);
+
+      if (anySuccess) {
         setStatus('success');
         setName('');
         setEmail('');

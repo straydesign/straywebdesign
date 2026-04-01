@@ -3,6 +3,7 @@
 import { type ReactNode, useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { SmoothScroll } from '@/components/layout/SmoothScroll';
+import { useUtmCapture } from '@/hooks/useUtmParams';
 
 const CustomCursor = dynamic(
   () => import('@/components/ui/CustomCursor').then((mod) => ({ default: mod.CustomCursor })),
@@ -14,6 +15,7 @@ const ChatWidget = dynamic(() => import('@/components/ui/ChatWidget'), {
 });
 
 export default function ClientShell({ children }: { children: ReactNode }) {
+  useUtmCapture();
   return (
     <SmoothScroll>
       {children}
