@@ -62,8 +62,9 @@ async function sendTranscript(
   const subjectPrefix = hasContactInfo ? 'LEAD' : 'Chat';
   const subject = `${subjectPrefix}: ${email || phone || `Anonymous (${userMsgCount} msgs)`}`;
 
-  try {
-    await fetch('https://api.web3forms.com/submit', {
+  const sends: Promise<unknown>[] = [
+    // web3forms backup
+    fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -78,7 +79,27 @@ async function sendTranscript(
         visitor_messages: String(userMsgCount),
         message: `${hasContactInfo ? `CONTACT INFO DETECTED\nEmail: ${email || 'N/A'}\nPhone: ${phone || 'N/A'}\n\n` : ''}--- Full Transcript (${messages.length} messages) ---\n\n${transcript}`,
       }),
-    });
+    }),
+  ];
+
+  // Send to Stray CRM if contact info detected
+  if (hasContactInfo) {
+    sends.push(
+      fetch(process.env.NEXT_PUBLIC_CRM_INBOUND_URL || 'https://stray-crm.vercel.app/api/leads/inbound', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email || undefined,
+          phone: phone || undefined,
+          form_type: 'chat',
+          message: `Chat transcript (${userMsgCount} messages):\n${transcript.slice(0, 500)}`,
+        }),
+      }),
+    );
+  }
+
+  try {
+    await Promise.allSettled(sends);
   } catch {
     // Fire and forget
   }

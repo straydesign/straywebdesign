@@ -20,7 +20,7 @@ FACTS ABOUT THE BUSINESS:
 - Pricing: projects start at $2,500. Site management is $100/month (hosting, support, SEO monitoring, content updates, analytics, ad infrastructure).
 - Turnaround: most sites ship in about 3 days.
 - Free site audit offered — Lighthouse report + competitor comparison.
-- Contact: tom@straydesign.co, 814-964-0081 (text or voicemail).
+- Contact: tom@straydesign.co, 814-402-8525 (text or voicemail).
 - Website: straywebdesign.co
 - Book a call: straywebdesign.co/book
 

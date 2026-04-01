@@ -63,7 +63,7 @@ const professionalServiceSchema = {
     name: 'Stray Web Design',
     url: 'https://straywebdesign.co',
     email: 'tom@straydesign.co',
-    telephone: '814-964-0081',
+    telephone: '814-402-8525',
     description:
       'Premium web design agency in Erie, PA building fast, accessible, AI-ready websites for local businesses.',
     priceRange: '$$',
@@ -90,7 +90,7 @@ const professionalServiceSchema = {
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '814-964-0081',
+      telephone: '814-402-8525',
       email: 'tom@straydesign.co',
       contactType: 'sales',
       availableLanguage: 'English',
@@ -181,7 +181,7 @@ const organizationSchema = {
   foundingDate: '2024',
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '814-964-0081',
+    telephone: '814-402-8525',
     email: 'tom@straydesign.co',
     contactType: 'sales',
     availableLanguage: 'English',
@@ -201,8 +201,13 @@ export default function RootLayout({
           strategy="lazyOnload"
         />
         <Script id="gtag-init" strategy="lazyOnload">
-          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-9D1W0XLS34');`}
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-9D1W0XLS34');${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID ? `gtag('config','${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID}');` : ''}`}
         </Script>
+        {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
+          <Script id="meta-pixel" strategy="lazyOnload">
+            {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${process.env.NEXT_PUBLIC_META_PIXEL_ID}');fbq('track','PageView');`}
+          </Script>
+        )}
         <link
           rel="alternate"
           type="application/rss+xml"

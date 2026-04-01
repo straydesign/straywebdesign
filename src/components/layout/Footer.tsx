@@ -139,6 +139,9 @@ export default function Footer() {
             </p>
           </div>
           <div className="flex items-center gap-4">
+            <Link href="/privacy" className="font-mono text-xs text-text-tertiary transition-colors hover:text-text-secondary">
+              Privacy Policy
+            </Link>
             <SoundToggle />
           </div>
         </div>
