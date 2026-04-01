@@ -1,90 +1,12 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
-import { Send, CheckCircle, AlertTriangle, ArrowRight, ArrowLeft, Calendar, Clock, MessageSquare } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, Clock, MessageSquare } from 'lucide-react';
 import AnimateIn from '@/components/ui/AnimateIn';
-import MagneticButton from '@/components/ui/MagneticButton';
 import GradientText from '@/components/ui/GradientText';
-import { SITE, BOOKING_TIMING_OPTIONS } from '@/lib/constants';
-import { getUtmParams } from '@/hooks/useUtmParams';
-
-const inputClasses =
-  'w-full border border-border-strong bg-surface-sunken px-4 py-3 font-mono text-text-primary placeholder-text-placeholder transition-colors focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none';
+import BookingWizard from '@/components/booking/BookingWizard';
+import { SITE } from '@/lib/constants';
 
 export default function BookingForm() {
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [business, setBusiness] = useState('');
-  const [website, setWebsite] = useState('');
-  const [timing, setTiming] = useState('');
-  const [message, setMessage] = useState('');
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setStatus('sending');
-
-    const utms = getUtmParams();
-
-    try {
-      const crmPayload = {
-        name,
-        email,
-        phone,
-        company: business,
-        website,
-        message,
-        timing,
-        form_type: 'booking',
-        ...utms,
-      };
-
-      const [crmRes, web3Res] = await Promise.allSettled([
-        fetch(process.env.NEXT_PUBLIC_CRM_INBOUND_URL || 'https://stray-crm.vercel.app/api/leads/inbound', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(crmPayload),
-        }),
-        fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            access_key: SITE.web3formsKey,
-            name,
-            email,
-            phone,
-            business_name: business,
-            website,
-            preferred_timing: timing,
-            message,
-            from_name: 'straywebdesign.co',
-            subject: `New Booking Request from ${name}`,
-          }),
-        }),
-      ]);
-
-      const anySuccess =
-        (crmRes.status === 'fulfilled' && crmRes.value.ok) ||
-        (web3Res.status === 'fulfilled' && web3Res.value.ok);
-
-      if (anySuccess) {
-        setStatus('success');
-        setName('');
-        setEmail('');
-        setPhone('');
-        setBusiness('');
-        setWebsite('');
-        setTiming('');
-        setMessage('');
-      } else {
-        setStatus('error');
-      }
-    } catch {
-      setStatus('error');
-    }
-  };
-
   return (
     <div className="relative min-h-[100dvh] bg-surface-page text-text-primary">
       {/* Back link */}
@@ -112,8 +34,8 @@ export default function BookingForm() {
                 Let&apos;s <GradientText>Talk</GradientText>
               </h1>
               <p className="mt-4 font-mono text-lg text-text-secondary">
-                Tell us about your business and we&apos;ll set up a quick call to
-                discuss how we can help you compete with the big guys.
+                Pick a time that works for you. We&apos;ll run a free Lighthouse
+                audit before the call so we can hit the ground running.
               </p>
 
               <div className="mt-8 space-y-5">
@@ -122,7 +44,7 @@ export default function BookingForm() {
                     <Calendar className="h-4 w-4 text-accent" />
                   </div>
                   <div>
-                    <p className="font-mono font-semibold text-text-primary">15-Minute Discovery Call</p>
+                    <p className="font-mono font-semibold text-text-primary">30-Minute Discovery Call</p>
                     <p className="font-mono text-sm text-text-secondary">
                       Quick, focused conversation about your goals and current site
                     </p>
@@ -181,190 +103,9 @@ export default function BookingForm() {
               </div>
             </AnimateIn>
 
-            {/* Right: Form */}
+            {/* Right: Booking Wizard */}
             <AnimateIn direction="right" delay={0.2}>
-              {status === 'success' ? (
-                <div className="flex flex-col items-center justify-center border border-border-default bg-surface-card p-10 text-center">
-                  <CheckCircle className="mb-4 h-12 w-12 text-accent" />
-                  <h2 className="font-mono text-xl font-bold text-text-primary">
-                    Request Received!
-                  </h2>
-                  <p className="mt-2 font-mono text-text-secondary">
-                    We&apos;ll reach out within 24 hours to schedule your call.
-                  </p>
-                  <a
-                    href="/"
-                    className="mt-6 inline-flex items-center gap-2 font-mono text-sm text-accent transition-colors hover:text-accent/80"
-                  >
-                    <ArrowLeft className="h-4 w-4" />
-                    Back to home
-                  </a>
-                </div>
-              ) : (
-                <form
-                  onSubmit={handleSubmit}
-                  className="border border-border-default bg-surface-card p-7 md:p-8"
-                >
-                  <div className="space-y-4">
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <div>
-                        <label
-                          htmlFor="book-name"
-                          className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
-                        >
-                          Name *
-                        </label>
-                        <input
-                          id="book-name"
-                          type="text"
-                          required
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                          className={inputClasses}
-                          placeholder="Your name"
-                        />
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="book-email"
-                          className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
-                        >
-                          Email *
-                        </label>
-                        <input
-                          id="book-email"
-                          type="email"
-                          required
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          className={inputClasses}
-                          placeholder="you@business.com"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <div>
-                        <label
-                          htmlFor="book-phone"
-                          className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
-                        >
-                          Phone
-                        </label>
-                        <input
-                          id="book-phone"
-                          type="tel"
-                          value={phone}
-                          onChange={(e) => setPhone(e.target.value)}
-                          className={inputClasses}
-                          placeholder="(555) 123-4567"
-                        />
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="book-business"
-                          className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
-                        >
-                          Business Name
-                        </label>
-                        <input
-                          id="book-business"
-                          type="text"
-                          value={business}
-                          onChange={(e) => setBusiness(e.target.value)}
-                          className={inputClasses}
-                          placeholder="Your business"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="book-website"
-                        className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
-                      >
-                        Current Website URL
-                      </label>
-                      <input
-                        id="book-website"
-                        type="text"
-                        value={website}
-                        onChange={(e) => setWebsite(e.target.value)}
-                        className={inputClasses}
-                        placeholder="https://yourbusiness.com"
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="book-timing"
-                        className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
-                      >
-                        Preferred Timing
-                      </label>
-                      <select
-                        id="book-timing"
-                        value={timing}
-                        onChange={(e) => setTiming(e.target.value)}
-                        className={`${inputClasses} appearance-none`}
-                      >
-                        <option value="" className="bg-surface-card">Select a timeframe</option>
-                        {BOOKING_TIMING_OPTIONS.map((option) => (
-                          <option key={option} value={option} className="bg-surface-card">
-                            {option}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="book-message"
-                        className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
-                      >
-                        Anything else we should know?
-                      </label>
-                      <textarea
-                        id="book-message"
-                        rows={3}
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        className={`${inputClasses} resize-none`}
-                        placeholder="Tell us about your business, goals, or challenges..."
-                      />
-                    </div>
-                  </div>
-
-                  {status === 'error' && (
-                    <div role="alert" className="mt-4 flex items-center gap-2 font-mono text-sm text-red-600">
-                      <AlertTriangle className="h-4 w-4" aria-hidden="true" />
-                      Something went wrong. Please try again.
-                    </div>
-                  )}
-
-                  <div className="mt-6">
-                    <MagneticButton
-                      type="submit"
-                      variant="primary"
-                      size="lg"
-                      className="w-full"
-                      disabled={status === 'sending'}
-                    >
-                      {status === 'sending' ? (
-                        <>
-                          <span className="skeleton inline-block h-4 w-4" />
-                          Sending...
-                        </>
-                      ) : (
-                        <>
-                          <Send className="h-4 w-4" />
-                          Book a Call
-                        </>
-                      )}
-                    </MagneticButton>
-                  </div>
-                </form>
-              )}
+              <BookingWizard />
             </AnimateIn>
           </div>
         </div>
