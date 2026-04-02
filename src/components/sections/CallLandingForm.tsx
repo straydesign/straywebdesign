@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
-import { Send, CheckCircle, AlertTriangle, Monitor, Wrench, ShieldCheck } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { Send, AlertTriangle, Monitor, Wrench, ShieldCheck } from 'lucide-react';
 import AnimateIn from '@/components/ui/AnimateIn';
 import MagneticButton from '@/components/ui/MagneticButton';
 import GradientText from '@/components/ui/GradientText';
@@ -12,7 +13,8 @@ const inputClasses =
   'w-full border border-border-strong bg-surface-sunken px-4 py-3 font-mono text-text-primary placeholder-text-placeholder transition-colors focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none';
 
 export default function CallLandingForm() {
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const router = useRouter();
+  const [status, setStatus] = useState<'idle' | 'sending' | 'error'>('idle');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -63,12 +65,7 @@ export default function CallLandingForm() {
         (web3Res.status === 'fulfilled' && web3Res.value.ok);
 
       if (anySuccess) {
-        setStatus('success');
-        setName('');
-        setEmail('');
-        setPhone('');
-        setBusiness('');
-        setWebsite('');
+        router.push('/thank-you');
       } else {
         setStatus('error');
       }
@@ -149,17 +146,6 @@ export default function CallLandingForm() {
 
           {/* Right: form */}
           <AnimateIn direction="right" delay={0.2}>
-            {status === 'success' ? (
-              <div className="flex flex-col items-center justify-center border border-border-default bg-surface-card p-10 text-center">
-                <CheckCircle className="mb-4 h-12 w-12 text-accent" />
-                <h2 className="font-mono text-xl font-bold text-text-primary">
-                  Request Received
-                </h2>
-                <p className="mt-2 font-mono text-text-secondary">
-                  Check your phone — you&apos;ll get a text from us shortly.
-                </p>
-              </div>
-            ) : (
               <form
                 onSubmit={handleSubmit}
                 className="border border-border-default bg-surface-card p-7 md:p-8"
@@ -291,7 +277,6 @@ export default function CallLandingForm() {
                   </a>
                 </p>
               </form>
-            )}
           </AnimateIn>
         </div>
       </section>
