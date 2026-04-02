@@ -8,6 +8,7 @@ import MagneticButton from '@/components/ui/MagneticButton';
 import GradientText from '@/components/ui/GradientText';
 import { SITE } from '@/lib/constants';
 import { getUtmParams } from '@/hooks/useUtmParams';
+import { trackLeadConversion } from '@/lib/tracking';
 
 const inputClasses =
   'w-full border border-border-strong bg-surface-sunken px-4 py-3 font-mono text-text-primary placeholder-text-placeholder transition-colors focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none';
@@ -65,6 +66,7 @@ export default function CallLandingForm() {
         (web3Res.status === 'fulfilled' && web3Res.value.ok);
 
       if (anySuccess) {
+        trackLeadConversion({ form_type: 'booking' });
         router.push('/thank-you');
       } else {
         setStatus('error');

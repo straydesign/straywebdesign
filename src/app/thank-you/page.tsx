@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CheckCircle, ArrowLeft } from 'lucide-react';
+import ConversionPixel from '@/components/ui/ConversionPixel';
 
 export const metadata: Metadata = {
   title: 'Thank You — Stray Web Design',
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 export default function ThankYou() {
   return (
     <div className="flex min-h-[100dvh] items-center justify-center bg-surface-page px-5 text-text-primary">
+      <ConversionPixel />
       <div className="max-w-md text-center">
         <CheckCircle className="mx-auto h-16 w-16 text-accent" />
         <h1 className="mt-6 font-mono text-2xl font-bold md:text-3xl">
