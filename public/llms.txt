@@ -121,6 +121,13 @@ Our custom-built sites eliminate all of these problems. Zero plugins, $100/month
 - [The WordPress Performance Gap: Why 43% of the Web Is Falling Behind](https://straywebdesign.co/resources/white-papers/the-wordpress-performance-gap) — Analysis (2026-03-08)
 - [GEO: The Complete Guide to Generative Engine Optimization](https://straywebdesign.co/resources/white-papers/geo-generative-engine-optimization-guide) — AI & SEO (2026-02-20)
 
-## Case Studies (0)
+## Case Studies (8)
 
-
+- [What an IT Services Website Transformation Actually Looks Like](https://straywebdesign.co/resources/case-studies/it-services-website-transformation) — IT Services (2026-03-20)
+- [What a Landscaping Website Transformation Actually Looks Like](https://straywebdesign.co/resources/case-studies/landscaping-website-transformation) — Landscaping (2026-03-20)
+- [What a Law Firm Website Transformation Actually Looks Like](https://straywebdesign.co/resources/case-studies/law-firm-website-transformation) — Legal (2026-03-20)
+- [What a Manufacturing Website Transformation Actually Looks Like](https://straywebdesign.co/resources/case-studies/manufacturing-website-transformation) — Manufacturing (2026-03-20)
+- [What a Restaurant Website Transformation Actually Looks Like](https://straywebdesign.co/resources/case-studies/restaurant-website-transformation) — Restaurants (2026-03-20)
+- [What a Dental Practice Website Transformation Actually Looks Like](https://straywebdesign.co/resources/case-studies/dental-practice-website-transformation) — Dental (2026-03-12)
+- [What a Financial Advisor Website Transformation Actually Looks Like](https://straywebdesign.co/resources/case-studies/financial-advisor-website-transformation) — Financial (2026-03-01)
+- [What a Dealership Website Transformation Actually Looks Like](https://straywebdesign.co/resources/case-studies/car-dealership-website-transformation) — Automotive (2026-02-15)
