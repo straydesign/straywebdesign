@@ -77,11 +77,12 @@ export default function AuditLandingForm() {
         <AnimateIn>
           <h1 className="font-mono text-3xl font-bold leading-tight text-text-primary md:text-4xl lg:text-5xl">
             Your website is{' '}
-            <GradientText>costing you leads</GradientText>
+            <GradientText>losing you customers</GradientText>
           </h1>
           <p className="mx-auto mt-4 max-w-xl font-mono text-lg text-text-secondary">
-            Get a free, no-obligation audit that shows exactly where your site
-            falls short — and what to fix first.
+            We&apos;ll run your site through the same checks Google uses to rank
+            you — and send you a plain-English report with the 3 things to fix
+            first. Free, no strings.
           </p>
         </AnimateIn>
       </section>
@@ -91,10 +92,10 @@ export default function AuditLandingForm() {
         <AnimateIn delay={0.1}>
           <div className="border border-border-default bg-surface-card px-6 py-4 text-center">
             <p className="font-mono text-sm text-text-secondary">
-              Sites we audit average{' '}
-              <span className="font-semibold text-text-primary">35 on Lighthouse</span>.
-              We build to{' '}
-              <span className="font-semibold text-accent">95+</span>.
+              Most business websites in Erie load slower than Google recommends
+              — every extra second costs you{' '}
+              <span className="font-semibold text-accent">7% of your visitors</span>.
+              We&apos;re based in Erie and we only work with local businesses.
             </p>
           </div>
         </AnimateIn>
@@ -115,11 +116,11 @@ export default function AuditLandingForm() {
                 </div>
                 <div>
                   <p className="font-mono font-semibold text-text-primary">
-                    Full Lighthouse Report
+                    Your Google Performance Score
                   </p>
                   <p className="font-mono text-sm text-text-secondary">
-                    Performance, Accessibility, SEO, and Best Practices — scored
-                    and benchmarked against your industry.
+                    How Google actually sees your site — scored and benchmarked
+                    against your industry.
                   </p>
                 </div>
               </div>
@@ -129,10 +130,10 @@ export default function AuditLandingForm() {
                 </div>
                 <div>
                   <p className="font-mono font-semibold text-text-primary">
-                    Competitor Comparison
+                    Side-by-Side vs. Your Top Competitor
                   </p>
                   <p className="font-mono text-sm text-text-secondary">
-                    See how your site stacks up against the competition on the
+                    See exactly where you&apos;re ahead and behind on the
                     metrics that actually drive revenue.
                   </p>
                 </div>
@@ -143,11 +144,11 @@ export default function AuditLandingForm() {
                 </div>
                 <div>
                   <p className="font-mono font-semibold text-text-primary">
-                    Prioritized Action Plan
+                    Your Top 3 Fixes, Ranked by Impact
                   </p>
                   <p className="font-mono text-sm text-text-secondary">
-                    Specific, ordered recommendations you can act on immediately
-                    — whether you hire us or not.
+                    What to fix first to get more customers — whether you
+                    hire us or not.
                   </p>
                 </div>
               </div>
@@ -237,17 +238,21 @@ export default function AuditLandingForm() {
                     ) : (
                       <>
                         <Send className="h-4 w-4" />
-                        Get My Free Audit
+                        Show Me What&apos;s Wrong
                       </>
                     )}
                   </MagneticButton>
                 </div>
 
                 <p className="mt-4 text-center font-mono text-[11px] text-text-tertiary">
-                  No spam, no sales calls.{' '}
+                  We won&apos;t call you, we won&apos;t add you to a list. Just
+                  a free audit from a local web team.{' '}
                   <a href="/privacy" className="underline transition-colors hover:text-text-secondary">
                     Privacy Policy
                   </a>
+                </p>
+                <p className="mt-3 text-center font-mono text-[11px] text-text-tertiary">
+                  We audit 10 sites per week to keep quality high.
                 </p>
               </form>
           </AnimateIn>

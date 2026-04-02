@@ -18,8 +18,6 @@ export default function CallLandingForm() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'error'>('idle');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [business, setBusiness] = useState('');
   const [website, setWebsite] = useState('');
 
   const handleSubmit = async (e: FormEvent) => {
@@ -32,8 +30,6 @@ export default function CallLandingForm() {
       const crmPayload = {
         name,
         email,
-        phone,
-        company: business,
         website,
         form_type: 'booking',
         ...utms,
@@ -52,8 +48,6 @@ export default function CallLandingForm() {
             access_key: SITE.web3formsKey,
             name,
             email,
-            phone,
-            business_name: business,
             website,
             from_name: 'straywebdesign.co',
             subject: `[LP] Strategy Call from ${name}`,
@@ -82,12 +76,13 @@ export default function CallLandingForm() {
       <section className="mx-auto max-w-3xl px-5 pt-12 text-center md:px-8 md:pt-20">
         <AnimateIn>
           <h1 className="font-mono text-3xl font-bold leading-tight text-text-primary md:text-4xl lg:text-5xl">
-            15 minutes. Zero pressure.{' '}
-            <GradientText>Real answers</GradientText> about your website.
+            Find out why your competitors are{' '}
+            <GradientText>getting the calls</GradientText> you&apos;re not.
           </h1>
           <p className="mx-auto mt-4 max-w-xl font-mono text-lg text-text-secondary">
-            A quick, focused conversation about your site — what&apos;s working,
-            what&apos;s not, and what to do next.
+            We&apos;ll pull up your site and your top competitor&apos;s site
+            side-by-side and show you exactly where you&apos;re falling behind
+            — and what to do about it. 15 minutes, zero pressure.
           </p>
         </AnimateIn>
       </section>
@@ -107,11 +102,11 @@ export default function CallLandingForm() {
                 </div>
                 <div>
                   <p className="font-mono font-semibold text-text-primary">
-                    We Review Your Site Live
+                    We Pull Up Your Site Live
                   </p>
                   <p className="font-mono text-sm text-text-secondary">
-                    Screen-share walkthrough of your current performance,
-                    accessibility, and SEO scores.
+                    Screen-share walkthrough of how your site looks to Google
+                    and how it compares to your top competitor.
                   </p>
                 </div>
               </div>
@@ -121,11 +116,11 @@ export default function CallLandingForm() {
                 </div>
                 <div>
                   <p className="font-mono font-semibold text-text-primary">
-                    Specific Fixes You Can Use
+                    You Leave with 2-3 Fixes You Can Use This Week
                   </p>
                   <p className="font-mono text-sm text-text-secondary">
-                    Walk away with actionable recommendations — whether you
-                    hire us or not.
+                    Actionable recommendations you can act on immediately
+                    — whether you hire us or not.
                   </p>
                 </div>
               </div>
@@ -135,11 +130,11 @@ export default function CallLandingForm() {
                 </div>
                 <div>
                   <p className="font-mono font-semibold text-text-primary">
-                    No Pitch, No Pressure
+                    If We&apos;re Not a Fit, We&apos;ll Tell You
                   </p>
                   <p className="font-mono text-sm text-text-secondary">
-                    Honest assessment of where you stand. If we&apos;re not a
-                    fit, we&apos;ll tell you.
+                    Honest assessment of where you stand. No pitch, no pressure.
+                    We&apos;re based in Erie and we only work with local businesses.
                   </p>
                 </div>
               </div>
@@ -153,88 +148,51 @@ export default function CallLandingForm() {
                 className="border border-border-default bg-surface-card p-7 md:p-8"
               >
                 <div className="space-y-4">
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <div>
-                      <label
-                        htmlFor="lp-call-name"
-                        className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
-                      >
-                        Name *
-                      </label>
-                      <input
-                        id="lp-call-name"
-                        type="text"
-                        required
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className={inputClasses}
-                        placeholder="Your name"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="lp-call-email"
-                        className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
-                      >
-                        Email *
-                      </label>
-                      <input
-                        id="lp-call-email"
-                        type="email"
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className={inputClasses}
-                        placeholder="you@business.com"
-                      />
-                    </div>
+                  <div>
+                    <label
+                      htmlFor="lp-call-name"
+                      className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
+                    >
+                      Name *
+                    </label>
+                    <input
+                      id="lp-call-name"
+                      type="text"
+                      required
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className={inputClasses}
+                      placeholder="Your name"
+                    />
                   </div>
-
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <div>
-                      <label
-                        htmlFor="lp-call-phone"
-                        className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
-                      >
-                        Phone
-                      </label>
-                      <input
-                        id="lp-call-phone"
-                        type="tel"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        className={inputClasses}
-                        placeholder="(555) 123-4567"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="lp-call-business"
-                        className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
-                      >
-                        Business Name
-                      </label>
-                      <input
-                        id="lp-call-business"
-                        type="text"
-                        value={business}
-                        onChange={(e) => setBusiness(e.target.value)}
-                        className={inputClasses}
-                        placeholder="Your business"
-                      />
-                    </div>
+                  <div>
+                    <label
+                      htmlFor="lp-call-email"
+                      className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
+                    >
+                      Email *
+                    </label>
+                    <input
+                      id="lp-call-email"
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className={inputClasses}
+                      placeholder="you@business.com"
+                    />
                   </div>
-
                   <div>
                     <label
                       htmlFor="lp-call-website"
                       className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
                     >
-                      Website URL
+                      Website URL *
                     </label>
                     <input
                       id="lp-call-website"
                       type="url"
+                      required
                       value={website}
                       onChange={(e) => setWebsite(e.target.value)}
                       className={inputClasses}
@@ -266,14 +224,15 @@ export default function CallLandingForm() {
                     ) : (
                       <>
                         <Send className="h-4 w-4" />
-                        Book My Call
+                        See How I Stack Up
                       </>
                     )}
                   </MagneticButton>
                 </div>
 
                 <p className="mt-4 text-center font-mono text-[11px] text-text-tertiary">
-                  No spam, no sales calls.{' '}
+                  We won&apos;t call you, we won&apos;t add you to a list.
+                  Just a 15-minute call from a local web team.{' '}
                   <a href="/privacy" className="underline transition-colors hover:text-text-secondary">
                     Privacy Policy
                   </a>
