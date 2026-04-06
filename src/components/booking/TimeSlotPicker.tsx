@@ -9,12 +9,14 @@ interface TimeSlotPickerProps {
   selectedDate: string;
   selectedTime: string | null;
   onSelectTime: (time: string) => void;
+  onSkipTime: () => void;
 }
 
 export default function TimeSlotPicker({
   selectedDate,
   selectedTime,
   onSelectTime,
+  onSkipTime,
 }: TimeSlotPickerProps) {
   const [slots, setSlots] = useState<TimeSlot[]>([]);
   const [loading, setLoading] = useState(true);
@@ -143,6 +145,14 @@ export default function TimeSlotPicker({
       <p className="mt-4 font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
         30-minute discovery call &bull; Eastern Time
       </p>
+
+      <button
+        type="button"
+        onClick={onSkipTime}
+        className="mt-4 w-full border border-border-default py-2.5 font-mono text-sm text-text-secondary transition-colors hover:border-accent hover:text-text-primary"
+      >
+        None of these work — just contact me
+      </button>
     </div>
   );
 }

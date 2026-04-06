@@ -77,6 +77,12 @@ export default function BookingWizard() {
     setStep('contact');
   }, []);
 
+  const handleSkipTime = useCallback(() => {
+    setSelectedTime(null);
+    setDirection(1);
+    setStep('contact');
+  }, []);
+
   const handleBack = useCallback(() => {
     if (step === 'time') {
       goToStep('date');
@@ -88,7 +94,7 @@ export default function BookingWizard() {
   const handleSubmit = useCallback(async (e: FormEvent) => {
     e.preventDefault();
 
-    if (!selectedDate || !selectedTime) return;
+    if (!selectedDate) return;
 
     setSubmitting(true);
     setSubmitError(null);
@@ -97,7 +103,7 @@ export default function BookingWizard() {
 
     const payload: BookingPayload = {
       date: selectedDate,
-      time: selectedTime,
+      time: selectedTime || undefined,
       name,
       email,
       phone,
@@ -189,10 +195,11 @@ export default function BookingWizard() {
               selectedDate={selectedDate}
               selectedTime={selectedTime}
               onSelectTime={handleTimeSelect}
+              onSkipTime={handleSkipTime}
             />
           )}
 
-          {step === 'contact' && selectedDate && selectedTime && (
+          {step === 'contact' && selectedDate && (
             <BookingContactForm
               name={name}
               email={email}
@@ -212,7 +219,7 @@ export default function BookingWizard() {
             />
           )}
 
-          {step === 'confirmed' && selectedDate && selectedTime && (
+          {step === 'confirmed' && selectedDate && (
             <BookingConfirmation
               date={selectedDate}
               time={selectedTime}

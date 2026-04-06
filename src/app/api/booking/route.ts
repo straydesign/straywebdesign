@@ -16,9 +16,17 @@ export async function POST(request: NextRequest) {
   // Validate required fields
   const { date, time, name, email } = body;
 
-  if (!date || !time || !name || !email) {
+  if (!date || !name || !email) {
     return NextResponse.json(
-      { error: 'Missing required fields: date, time, name, email' },
+      { error: 'Missing required fields: date, name, email' },
+      { status: 400 }
+    );
+  }
+
+  // If no time selected, phone is required so we can text them
+  if (!time && !body.phone) {
+    return NextResponse.json(
+      { error: 'Phone number is required when no time is selected' },
       { status: 400 }
     );
   }
@@ -27,7 +35,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid date format' }, { status: 400 });
   }
 
-  if (!isBookableDate(date)) {
+  // Only validate bookable date if a time was selected (specific booking)
+  if (time && !isBookableDate(date)) {
     return NextResponse.json({ error: 'Selected date is not available' }, { status: 400 });
   }
 
@@ -42,10 +51,12 @@ export async function POST(request: NextRequest) {
     phone: body.phone || '',
     company: body.company || '',
     website: body.website || '',
-    form_type: 'booking',
+    form_type: time ? 'booking' : 'contact_request',
     booking_date: date,
-    booking_time: time,
-    message: `Booked a call for ${time} on ${date}`,
+    booking_time: time || null,
+    message: time
+      ? `Booked a call for ${time} on ${date}`
+      : 'Requested contact — no time selected. Text them to schedule.',
     utm_source: body.utm_source,
     utm_medium: body.utm_medium,
     utm_campaign: body.utm_campaign,
@@ -66,9 +77,11 @@ export async function POST(request: NextRequest) {
     business_name: body.company || '',
     website: body.website || '',
     booking_date: date,
-    booking_time: time,
+    booking_time: time || 'Not selected — needs follow-up',
     from_name: 'straywebdesign.co',
-    subject: `New Booking: ${body.name} — ${time} on ${date}`,
+    subject: time
+      ? `New Booking: ${body.name} — ${time} on ${date}`
+      : `Contact Request: ${body.name} — needs scheduling`,
   };
 
   const crmUrl =

@@ -5,7 +5,7 @@ import { formatDateDisplay } from '@/lib/booking';
 
 interface BookingConfirmationProps {
   date: string;
-  time: string;
+  time: string | null;
   name: string;
 }
 
@@ -23,28 +23,40 @@ export default function BookingConfirmation({
       </div>
 
       <h2 className="font-mono text-xl font-bold text-text-primary">
-        You&apos;re booked, {firstName}.
+        {time ? `You're booked, ${firstName}.` : `Got it, ${firstName}.`}
       </h2>
 
-      <div className="mt-5 w-full border border-border-default bg-surface-page px-5 py-4">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
-          Discovery Call
-        </p>
-        <p className="mt-1 font-mono text-base font-semibold text-text-primary">
-          {formatDateDisplay(date)}
-        </p>
-        <p className="font-mono text-sm text-accent">
-          {time} EST &bull; 30 minutes
-        </p>
-      </div>
+      {time ? (
+        <div className="mt-5 w-full border border-border-default bg-surface-page px-5 py-4">
+          <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
+            Discovery Call
+          </p>
+          <p className="mt-1 font-mono text-base font-semibold text-text-primary">
+            {formatDateDisplay(date)}
+          </p>
+          <p className="font-mono text-sm text-accent">
+            {time} EST &bull; 30 minutes
+          </p>
+        </div>
+      ) : (
+        <div className="mt-5 w-full border border-border-default bg-surface-page px-5 py-4">
+          <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
+            Contact Request
+          </p>
+          <p className="mt-1 font-mono text-sm text-text-primary">
+            We&apos;ll text you shortly to find a time that works.
+          </p>
+        </div>
+      )}
 
       <div className="mt-5 flex items-start gap-3 text-left">
         <div className="flex h-8 w-8 shrink-0 items-center justify-center bg-accent/10">
           <Phone className="h-4 w-4 text-accent" />
         </div>
         <p className="font-mono text-sm text-text-secondary">
-          You&apos;ll receive a confirmation text shortly with call details.
-          We&apos;ll reach out at your scheduled time.
+          {time
+            ? "You'll receive a confirmation text shortly with call details. We'll reach out at your scheduled time."
+            : "You'll hear from us shortly. We'll find a time that works for both of us."}
         </p>
       </div>
 
@@ -53,11 +65,18 @@ export default function BookingConfirmation({
           What happens next
         </p>
         <ul className="space-y-1.5">
-          {[
-            'Confirmation text with call details',
-            'Free Lighthouse audit of your current site',
-            '30-minute discovery call at your scheduled time',
-          ].map((item) => (
+          {(time
+            ? [
+                'Confirmation text with call details',
+                'Free Lighthouse audit of your current site',
+                '30-minute discovery call at your scheduled time',
+              ]
+            : [
+                "We'll text you to find a good time",
+                'Free Lighthouse audit of your current site',
+                '30-minute discovery call when it works for you',
+              ]
+          ).map((item) => (
             <li
               key={item}
               className="flex items-center gap-2 font-mono text-sm text-text-secondary"

@@ -26,12 +26,12 @@ export interface TimeSlot {
 
 export interface BookingPayload {
   date: string;
-  time: string;
+  time?: string;
   name: string;
   email: string;
-  phone: string;
-  company: string;
-  website: string;
+  phone?: string;
+  company?: string;
+  website?: string;
   utm_source?: string;
   utm_medium?: string;
   utm_campaign?: string;
