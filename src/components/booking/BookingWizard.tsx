@@ -11,16 +11,17 @@ import { getBookableDates, type BookingPayload } from '@/lib/booking';
 import { getUtmParams } from '@/hooks/useUtmParams';
 import { SITE } from '@/lib/constants';
 
-type Step = 'contact' | 'date' | 'time' | 'confirmed';
+type Step = 'contact' | 'date' | 'time' | 'confirm' | 'confirmed';
 
 const STEP_LABELS: Record<Step, string> = {
   contact: 'Your Info',
   date: 'Pick a Date',
   time: 'Pick a Time',
+  confirm: 'Confirm',
   confirmed: 'Confirmed',
 };
 
-const STEP_ORDER: Step[] = ['contact', 'date', 'time', 'confirmed'];
+const STEP_ORDER: Step[] = ['contact', 'date', 'time', 'confirm', 'confirmed'];
 
 const stepVariants = {
   enter: (direction: number) => ({
@@ -135,14 +136,19 @@ export default function BookingWizard() {
     setStep('time');
   }, []);
 
-  const handleTimeSelect = useCallback(async (time: string) => {
+  const handleTimeSelect = useCallback((time: string) => {
     setSelectedTime(time);
+    setDirection(1);
+    setStep('confirm');
+  }, []);
 
-    // Update CRM with the booking details
+  const handleConfirmBooking = useCallback(async () => {
+    setSubmitting(true);
+
     const utms = getUtmParams();
     const payload: BookingPayload = {
       date: selectedDate!,
-      time,
+      time: selectedTime!,
       name,
       email,
       phone,
@@ -161,9 +167,10 @@ export default function BookingWizard() {
       // Non-blocking — lead is already saved
     }
 
+    setSubmitting(false);
     setDirection(1);
     setStep('confirmed');
-  }, [selectedDate, name, email, phone, company, website]);
+  }, [selectedDate, selectedTime, name, email, phone, company, website]);
 
   // Skip date — go straight to confirmed (lead already saved)
   const handleSkipDate = useCallback(() => {
@@ -210,13 +217,15 @@ export default function BookingWizard() {
       goToStep('contact');
     } else if (step === 'time') {
       goToStep('date');
+    } else if (step === 'confirm') {
+      goToStep('time');
     }
   }, [step, goToStep]);
 
   return (
     <div className="border border-border-default bg-surface-card p-6 md:p-8">
       {/* Step indicator */}
-      {step !== 'confirmed' && (
+      {step !== 'confirmed' && step !== 'confirm' && (
         <div className="mb-6">
           <div className="flex items-center gap-3">
             {step !== 'contact' && (
@@ -309,6 +318,61 @@ export default function BookingWizard() {
               onSelectTime={handleTimeSelect}
               onSkipTime={handleSkipTime}
             />
+          )}
+
+          {step === 'confirm' && selectedDate && selectedTime && (
+            <div>
+              <button
+                type="button"
+                onClick={handleBack}
+                className="mb-4 flex items-center gap-2 font-mono text-sm text-text-tertiary transition-colors hover:text-text-primary"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Change time
+              </button>
+              <div className="mb-5 border border-accent/20 bg-accent/5 px-4 py-3">
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-accent">
+                  Your Appointment
+                </p>
+                <p className="mt-1 font-mono text-sm text-text-primary">
+                  {new Date(selectedDate + 'T12:00:00').toLocaleDateString('en-US', {
+                    weekday: 'short',
+                    month: 'long',
+                    day: 'numeric',
+                  })}{' '}
+                  at {selectedTime} EST
+                </p>
+                <p className="mt-1 font-mono text-xs text-text-tertiary">
+                  30-minute discovery call
+                </p>
+              </div>
+
+              <div className="space-y-2 border border-border-default bg-surface-page px-4 py-3">
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
+                  Your Info
+                </p>
+                <p className="font-mono text-sm text-text-primary">{name}</p>
+                <p className="font-mono text-sm text-text-secondary">{email}</p>
+                {phone && <p className="font-mono text-sm text-text-secondary">{phone}</p>}
+                {company && <p className="font-mono text-sm text-text-secondary">{company}</p>}
+              </div>
+
+              <button
+                type="button"
+                onClick={handleConfirmBooking}
+                disabled={submitting}
+                className="mt-6 flex w-full items-center justify-center gap-2 bg-accent px-6 py-3.5 font-mono text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {submitting ? (
+                  <>
+                    <span className="inline-block h-4 w-4 animate-spin border-2 border-white/30 border-t-white" />
+                    Confirming...
+                  </>
+                ) : (
+                  'Confirm Booking'
+                )}
+              </button>
+            </div>
           )}
 
           {step === 'confirmed' && (
