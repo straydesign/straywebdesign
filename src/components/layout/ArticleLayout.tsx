@@ -108,8 +108,8 @@ export default function ArticleLayout({ meta, children, jsonLd, relatedPosts = [
                 exactly where you stand vs. the competition.
               </p>
               <div className="mt-6">
-                <MagneticButton href="/#contact" variant="primary">
-                  Get Your Free Audit
+                <MagneticButton href="/book" variant="primary">
+                  Let&apos;s Talk
                 </MagneticButton>
               </div>
             </div>

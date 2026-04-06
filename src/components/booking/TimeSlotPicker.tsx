@@ -151,7 +151,7 @@ export default function TimeSlotPicker({
         onClick={onSkipTime}
         className="mt-4 w-full border border-border-default py-2.5 font-mono text-sm text-text-secondary transition-colors hover:border-accent hover:text-text-primary"
       >
-        None of these work — just contact me
+        Just send me a message — I'd like to learn more before we hop on a call
       </button>
     </div>
   );

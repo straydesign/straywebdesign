@@ -4,7 +4,6 @@ import { ArrowLeft, ArrowRight, Calendar, Clock, MessageSquare } from 'lucide-re
 import AnimateIn from '@/components/ui/AnimateIn';
 import GradientText from '@/components/ui/GradientText';
 import BookingWizard from '@/components/booking/BookingWizard';
-import { SITE } from '@/lib/constants';
 
 export default function BookingForm() {
   return (
@@ -28,14 +27,14 @@ export default function BookingForm() {
             {/* Left: Info */}
             <AnimateIn>
               <span className="mb-4 inline-block font-mono text-[11px] font-semibold uppercase tracking-wider text-accent">
-                Book a Call
+                Get Started
               </span>
               <h1 className="font-mono text-3xl font-bold text-text-primary md:text-4xl lg:text-5xl">
                 Let&apos;s <GradientText>Talk</GradientText>
               </h1>
               <p className="mt-4 font-mono text-lg text-text-secondary">
-                Pick a time that works for you. We&apos;ll run a free Lighthouse
-                audit before the call so we can hit the ground running.
+                Tell us a little about your business. We&apos;ll reach out to
+                get the conversation started.
               </p>
 
               <div className="mt-8 space-y-5">
@@ -85,15 +84,6 @@ export default function BookingForm() {
                 </div>
               </div>
 
-              <div className="mt-8">
-                <a
-                  href={`mailto:${SITE.email}`}
-                  className="inline-flex items-center gap-2 bg-accent px-5 py-2.5 font-mono text-sm font-medium text-white transition-colors hover:bg-accent/90"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                  {SITE.email}
-                </a>
-              </div>
             </AnimateIn>
 
             {/* Right: Booking Wizard */}

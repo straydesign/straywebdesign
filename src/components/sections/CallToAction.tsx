@@ -30,8 +30,8 @@ export default function CallToAction() {
         </AnimateIn>
 
         <AnimateIn delay={0.2} className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <MagneticButton href="#contact" variant="primary" size="lg">
-            Get Your Free Site Audit
+          <MagneticButton href="/book" variant="primary" size="lg">
+            Let&apos;s Talk
             <ArrowRight className="h-4 w-4" />
           </MagneticButton>
           <MagneticButton href="#faq" variant="ghost" size="lg">

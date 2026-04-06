@@ -90,7 +90,7 @@ export default function LocationsIndex() {
               </p>
               <div className="mt-8">
                 <MagneticButton href="/book" variant="primary">
-                  Get Your Free Audit
+                  Let's Talk
                 </MagneticButton>
               </div>
             </AnimateIn>

@@ -58,7 +58,7 @@ export const NAV_LINKS = [
   },
   { label: 'Work', href: '/work' },
   { label: 'Resources', href: '/resources' },
-  { label: 'Book a Call', href: '/book' },
+  { label: "Let's Talk", href: '/book' },
 ] as const;
 
 export const BOOKING_TIMING_OPTIONS = [

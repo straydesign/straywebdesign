@@ -4,7 +4,7 @@ import { CheckCircle, ArrowLeft, Phone } from 'lucide-react';
 import { formatDateDisplay } from '@/lib/booking';
 
 interface BookingConfirmationProps {
-  date: string;
+  date: string | null;
   time: string | null;
   name: string;
 }
@@ -15,6 +15,7 @@ export default function BookingConfirmation({
   name,
 }: BookingConfirmationProps) {
   const firstName = name.split(' ')[0];
+  const hasBooking = date && time;
 
   return (
     <div className="flex flex-col items-center px-2 py-6 text-center">
@@ -23,10 +24,10 @@ export default function BookingConfirmation({
       </div>
 
       <h2 className="font-mono text-xl font-bold text-text-primary">
-        {time ? `You're booked, ${firstName}.` : `Got it, ${firstName}.`}
+        {hasBooking ? `You're booked, ${firstName}.` : `Got it, ${firstName}.`}
       </h2>
 
-      {time ? (
+      {hasBooking ? (
         <div className="mt-5 w-full border border-border-default bg-surface-page px-5 py-4">
           <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
             Discovery Call
@@ -41,10 +42,10 @@ export default function BookingConfirmation({
       ) : (
         <div className="mt-5 w-full border border-border-default bg-surface-page px-5 py-4">
           <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
-            Contact Request
+            What&apos;s Next
           </p>
           <p className="mt-1 font-mono text-sm text-text-primary">
-            We&apos;ll text you shortly to find a time that works.
+            We&apos;ll be in touch shortly to get the conversation started.
           </p>
         </div>
       )}
@@ -54,7 +55,7 @@ export default function BookingConfirmation({
           <Phone className="h-4 w-4 text-accent" />
         </div>
         <p className="font-mono text-sm text-text-secondary">
-          {time
+          {hasBooking
             ? "You'll receive a confirmation text shortly with call details. We'll reach out at your scheduled time."
             : "You'll hear from us shortly. We'll find a time that works for both of us."}
         </p>
@@ -65,14 +66,14 @@ export default function BookingConfirmation({
           What happens next
         </p>
         <ul className="space-y-1.5">
-          {(time
+          {(hasBooking
             ? [
                 'Confirmation text with call details',
                 'Free Lighthouse audit of your current site',
                 '30-minute discovery call at your scheduled time',
               ]
             : [
-                "We'll text you to find a good time",
+                "We'll reach out to introduce ourselves",
                 'Free Lighthouse audit of your current site',
                 '30-minute discovery call when it works for you',
               ]

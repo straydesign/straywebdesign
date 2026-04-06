@@ -652,7 +652,7 @@ export default function PaidSearchPage() {
               </p>
               <div className="mt-8">
                 <MagneticButton href="/book" variant="primary">
-                  Book Your Free Strategy Session
+                  Let's Talk
                 </MagneticButton>
               </div>
             </AnimateIn>

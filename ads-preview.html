@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stray Web Design — Your Services, Advertised</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #0F172A;
+    --dark-navy: #020617;
+    --electric: #3B82F6;
+    --warm-white: #FAFAF9;
+    --light-gray: #F1F5F9;
+    --medium-gray: #94A3B8;
+    --slate-300: #CBD5E1;
+    --slate-400: #94A3B8;
+    --slate-600: #475569;
+    --google-blue: #1a0dab;
+    --google-tab: #1a73e8;
+  }
+
+  body {
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    color: var(--navy);
+    background: var(--warm-white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Hero */
+  .hero {
+    background: var(--navy);
+    padding: 80px 24px 64px;
+    text-align: center;
+  }
+  .hero-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--electric);
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 800;
+    color: white;
+    max-width: 720px;
+    margin: 0 auto 24px;
+    line-height: 1.15;
+  }
+  .hero h1 span { color: var(--electric); }
+  .hero p {
+    color: var(--slate-300);
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto 16px;
+    line-height: 1.7;
+  }
+
+  /* Tabs Section */
+  .tabs-section {
+    background: var(--dark-navy);
+    padding: 64px 24px 80px;
+  }
+  .tabs-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .tabs-header .label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--electric);
+    margin-bottom: 12px;
+  }
+  .tabs-header h2 {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 800;
+    color: white;
+    margin-bottom: 12px;
+  }
+  .tabs-header p {
+    color: var(--slate-400);
+    font-size: 16px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* Tab buttons */
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 40px;
+  }
+  .tab {
+    padding: 8px 20px;
+    border-radius: 999px;
+    border: none;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: rgba(255,255,255,0.1);
+    color: var(--slate-300);
+  }
+  .tab:hover {
+    background: rgba(255,255,255,0.15);
+    color: white;
+  }
+  .tab.active {
+    background: var(--electric);
+    color: white;
+    box-shadow: 0 4px 20px rgba(59,130,246,0.3);
+  }
+
+  /* Mockup container */
+  .mockup-container {
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .mockup {
+    display: none;
+  }
+  .mockup.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Google search mockup */
+  .search-bar-wrap {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+    padding: 16px;
+  }
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 999px;
+    padding: 10px 16px;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .search-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: #94a3b8;
+  }
+  .search-bar span {
+    font-size: 15px;
+    color: #1e293b;
+  }
+  .search-tabs {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 12px;
+    color: #94a3b8;
+  }
+  .search-tabs .active-tab {
+    color: var(--google-tab);
+    font-weight: 600;
+    border-bottom: 2px solid var(--google-tab);
+    padding-bottom: 8px;
+    margin-bottom: -9px;
+  }
+
+  /* Results area */
+  .results {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    padding: 0 16px 24px;
+  }
+
+  /* Your ad - highlighted */
+  .your-ad-wrap {
+    position: relative;
+    padding: 16px 0;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .your-ad-highlight {
+    position: absolute;
+    inset: -4px -8px;
+    background: rgba(59,130,246,0.04);
+    border: 1px solid rgba(59,130,246,0.15);
+    border-radius: 8px;
+    pointer-events: none;
+  }
+  .ad-card {
+    position: relative;
+    background: white;
+    border: 1px solid rgba(226,232,240,0.6);
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .ad-label-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+  .sponsored-badge {
+    background: #fef3c7;
+    color: #92400e;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+  }
+  .ad-url { color: #94a3b8; }
+  .ad-headline {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--google-blue);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .ad-desc {
+    font-size: 14px;
+    color: var(--slate-600);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .sitelinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .sitelinks span {
+    font-size: 13px;
+    color: var(--google-blue);
+  }
+  .your-ad-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--electric);
+  }
+
+  /* Competitor ad */
+  .competitor-ad {
+    padding: 16px 0;
+    opacity: 0.35;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  /* Organic results */
+  .organic {
+    opacity: 0.2;
+    padding: 12px 0;
+  }
+  .organic-url { font-size: 12px; color: #94a3b8; }
+  .organic-title { font-size: 16px; color: var(--google-blue); font-weight: 500; margin: 2px 0; }
+  .organic-desc { font-size: 13px; color: var(--slate-600); line-height: 1.5; }
+
+  /* Pitch section */
+  .pitch {
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .pitch h2 {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 800;
+    margin-bottom: 32px;
+  }
+  .pitch-text {
+    max-width: 520px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .pitch-text p {
+    font-size: 18px;
+    color: var(--slate-600);
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+  .pitch-text p.bold {
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  /* Before/After */
+  .comparison {
+    background: var(--light-gray);
+    padding: 80px 24px;
+  }
+  .comparison-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .comparison-header .label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--electric);
+    margin-bottom: 12px;
+  }
+  .comparison-header h2 {
+    font-size: clamp(22px, 3.5vw, 32px);
+    font-weight: 800;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  @media (max-width: 640px) {
+    .comparison-grid { grid-template-columns: 1fr; }
+  }
+  .compare-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .dot-red { background: #ef4444; }
+  .dot-green { background: #10b981; }
+  .label-red { color: #dc2626; }
+  .label-green { color: #059669; }
+  .wireframe {
+    border-radius: 12px;
+    padding: 24px;
+    border-width: 2px;
+    border-style: solid;
+  }
+  .wireframe-red {
+    border-color: #fecaca;
+    background: rgba(254,202,202,0.15);
+  }
+  .wireframe-green {
+    border-color: #a7f3d0;
+    background: rgba(167,243,208,0.15);
+  }
+  .wire-bar { border-radius: 4px; margin-bottom: 10px; }
+  .wr { background: #fecaca; }
+  .wg { background: #a7f3d0; }
+  .wire-row { display: flex; gap: 10px; margin-bottom: 10px; }
+  .wire-grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+  .wire-note {
+    font-size: 13px;
+    margin-top: 16px;
+  }
+  .note-red { color: #dc2626; }
+  .note-green { color: #059669; }
+  .rate {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 800;
+    margin-top: 12px;
+  }
+  .rate-red { color: #dc2626; }
+  .rate-green { color: #059669; }
+
+  /* CTA */
+  .cta {
+    background: var(--navy);
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .cta h2 {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 800;
+    color: white;
+    margin-bottom: 16px;
+  }
+  .cta p {
+    color: var(--slate-300);
+    font-size: 16px;
+    max-width: 520px;
+    margin: 0 auto 32px;
+    line-height: 1.7;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--electric);
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .cta-btn:hover {
+    background: #2563EB;
+    transform: translateY(-1px);
+  }
+
+  /* Sparkle icon */
+  .sparkle { display: inline-block; width: 12px; height: 12px; }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <p class="hero-label">What Running Ads Looks Like</p>
+  <h1>Imagine being excited to share your website <span>and know it converts.</span></h1>
+  <p>Picture this: you share your website with a friend, a potential client, or run an ad — and you already know it will work. Not because you are hoping. Because everything — the site, the ad, the landing page — was built to convert together.</p>
+  <p>Let's stop leaving that up to chance. Proven methods to be seen, and proven systems to convert the customers who find you.</p>
+</section>
+
+<!-- Tabs + Mockups -->
+<section class="tabs-section">
+  <div class="tabs-header">
+    <p class="label">Your Services, Advertised</p>
+    <h2>This is what people see when they search</h2>
+    <p>Click a service to see the Google Ad mockup — your ad at the top, competitors faded below.</p>
+  </div>
+
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-index="0">Web Design</button>
+    <button class="tab" data-index="1">AI Receptionist</button>
+    <button class="tab" data-index="2">SEO &amp; GEO</button>
+    <button class="tab" data-index="3">Management</button>
+    <button class="tab" data-index="4">Landing Pages</button>
+    <button class="tab" data-index="5">Analytics</button>
+  </div>
+
+  <div class="mockup-container" id="mockups">
+
+    <!-- Web Design -->
+    <div class="mockup active" data-index="0">
+      <div class="search-bar-wrap">
+        <div class="search-bar">
+          <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span>best web designer near me</span>
+        </div>
+        <div class="search-tabs"><span class="active-tab">All</span><span>Images</span><span>Maps</span><span>Shopping</span></div>
+      </div>
+      <div class="results">
+        <div class="your-ad-wrap">
+          <div class="your-ad-highlight"></div>
+          <div class="ad-card">
+            <div class="ad-label-row"><span class="sponsored-badge">Sponsored</span><span class="ad-url">straywebdesign.co/website-design</span></div>
+            <div class="ad-headline">Custom Websites That Convert — Erie's Top-Rated Web Design</div>
+            <div class="ad-desc">Hand-coded, blazing fast websites that turn visitors into customers. 95+ Lighthouse scores. Sub-1s load times. Free site audit — see where you stand.</div>
+            <div class="sitelinks"><span>Free Audit</span><span>Our Work</span><span>Pricing</span><span>Book a Call</span></div>
+          </div>
+          <div class="your-ad-tag"><svg class="sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg> This is your ad. Above everyone else.</div>
+        </div>
+        <div class="competitor-ad">
+          <div class="ad-card">
+            <div class="ad-label-row"><span class="sponsored-badge">Sponsored</span><span class="ad-url">competitor-agency.com</span></div>
+            <div class="ad-headline">Web Design Services — Affordable Websites</div>
+            <div class="ad-desc">We build websites for businesses. Call us today for a free quote on your next project...</div>
+          </div>
+        </div>
+        <div class="organic"><span class="organic-url">clutch.co/web-designers/erie</span><div class="organic-title">10 Best Web Designers in Erie, PA (2026) - Clutch</div><div class="organic-desc">Find the top web design companies in Erie, Pennsylvania. Compare reviews, portfolios, and pricing...</div></div>
+        <div class="organic"><span class="organic-url">expertise.com/web-designers/erie-pa</span><div class="organic-title">Web Design Erie PA | Local Website Companies</div><div class="organic-desc">We researched the best web designers in Erie. Here are our top picks based on reviews and ratings...</div></div>
+      </div>
+    </div>
+
+    <!-- AI Receptionist -->
+    <div class="mockup" data-index="1">
+      <div class="search-bar-wrap">
+        <div class="search-bar">
+          <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span>AI phone answering service for business</span>
+        </div>
+        <div class="search-tabs"><span class="active-tab">All</span><span>Images</span><span>Maps</span><span>Shopping</span></div>
+      </div>
+      <div class="results">
+        <div class="your-ad-wrap">
+          <div class="your-ad-highlight"></div>
+          <div class="ad-card">
+            <div class="ad-label-row"><span class="sponsored-badge">Sponsored</span><span class="ad-url">straywebdesign.co/ai-receptionist</span></div>
+            <div class="ad-headline">Never Miss a Call Again — 24/7 AI Receptionist</div>
+            <div class="ad-desc">62% of small business calls go unanswered. Our AI answers every call instantly — books appointments, qualifies leads, texts back missed callers. No voicemail. No lost customers.</div>
+            <div class="sitelinks"><span>How It Works</span><span>Listen to a Demo</span><span>Pricing</span><span>Get Started</span></div>
+          </div>
+          <div class="your-ad-tag"><svg class="sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg> This is your ad. Above everyone else.</div>
+        </div>
+        <div class="competitor-ad">
+          <div class="ad-card">
+            <div class="ad-label-row"><span class="sponsored-badge">Sponsored</span><span class="ad-url">generic-answering.com</span></div>
+            <div class="ad-headline">Virtual Receptionist Service — From $99/mo</div>
+            <div class="ad-desc">Live answering service for small businesses. Friendly receptionists answer your calls...</div>
+          </div>
+        </div>
+        <div class="organic"><span class="organic-url">forbes.com/ai-phone-services</span><div class="organic-title">Best AI Phone Answering Services in 2026 - Forbes</div><div class="organic-desc">We reviewed the top AI-powered phone systems for small businesses. Here are our picks...</div></div>
+        <div class="organic"><span class="organic-url">businessnewsdaily.com/ai-receptionist</span><div class="organic-title">AI Receptionist vs Live Answering: Which Is Better?</div><div class="organic-desc">A comparison of AI and human answering services for small business owners...</div></div>
+      </div>
+    </div>
+
+    <!-- SEO & GEO -->
+    <div class="mockup" data-index="2">
+      <div class="search-bar-wrap">
+        <div class="search-bar">
+          <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span>SEO company Erie PA</span>
+        </div>
+        <div class="search-tabs"><span class="active-tab">All</span><span>Images</span><span>Maps</span><span>Shopping</span></div>
+      </div>
+      <div class="results">
+        <div class="your-ad-wrap">
+          <div class="your-ad-highlight"></div>
+          <div class="ad-card">
+            <div class="ad-label-row"><span class="sponsored-badge">Sponsored</span><span class="ad-url">straywebdesign.co/seo-optimization</span></div>
+            <div class="ad-headline">Rank on Google &amp; AI Search — SEO + GEO Optimization</div>
+            <div class="ad-desc">Traditional SEO is not enough. We optimize for Google AND AI assistants — ChatGPT, Gemini, Perplexity. Get found however your customers search. Free audit included.</div>
+            <div class="sitelinks"><span>Free SEO Audit</span><span>Local SEO</span><span>GEO Optimization</span><span>Results</span></div>
+          </div>
+          <div class="your-ad-tag"><svg class="sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg> This is your ad. Above everyone else.</div>
+        </div>
+        <div class="competitor-ad">
+          <div class="ad-card">
+            <div class="ad-label-row"><span class="sponsored-badge">Sponsored</span><span class="ad-url">seo-agency-pa.com</span></div>
+            <div class="ad-headline">SEO Services — Affordable Monthly Plans</div>
+            <div class="ad-desc">Get more traffic to your website with our affordable SEO packages. Monthly reporting included...</div>
+          </div>
+        </div>
+        <div class="organic"><span class="organic-url">upcity.com/seo/erie-pa</span><div class="organic-title">Top SEO Companies in Erie, PA - UpCity</div><div class="organic-desc">Browse the best SEO agencies in Erie, Pennsylvania. Read client reviews and compare services...</div></div>
+        <div class="organic"><span class="organic-url">searchenginejournal.com/how-to-choose-seo</span><div class="organic-title">How to Choose an SEO Company in 2026 - Search Engine Journal</div><div class="organic-desc">What to look for when hiring an SEO agency. Red flags, pricing, and what results to expect...</div></div>
+      </div>
+    </div>
+
+    <!-- Management -->
+    <div class="mockup" data-index="3">
+      <div class="search-bar-wrap">
+        <div class="search-bar">
+          <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span>website management service small business</span>
+        </div>
+        <div class="search-tabs"><span class="active-tab">All</span><span>Images</span><span>Maps</span><span>Shopping</span></div>
+      </div>
+      <div class="results">
+        <div class="your-ad-wrap">
+          <div class="your-ad-highlight"></div>
+          <div class="ad-card">
+            <div class="ad-label-row"><span class="sponsored-badge">Sponsored</span><span class="ad-url">straywebdesign.co/website-management</span></div>
+            <div class="ad-headline">$100/mo — Everything Handled — Website Management Plan</div>
+            <div class="ad-desc">Hosting, security, content updates, SEO monitoring, analytics, and priority support. Your site stays fast and secure without you lifting a finger. Cancel anytime.</div>
+            <div class="sitelinks"><span>What's Included</span><span>Pricing</span><span>Get Started</span><span>FAQ</span></div>
+          </div>
+          <div class="your-ad-tag"><svg class="sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg> This is your ad. Above everyone else.</div>
+        </div>
+        <div class="competitor-ad">
+          <div class="ad-card">
+            <div class="ad-label-row"><span class="sponsored-badge">Sponsored</span><span class="ad-url">wp-maintenance-co.com</span></div>
+            <div class="ad-headline">Website Maintenance Plans — Starting at $49/mo</div>
+            <div class="ad-desc">Keep your website updated and secure with our monthly maintenance packages...</div>
+          </div>
+        </div>
+        <div class="organic"><span class="organic-url">g2.com/website-maintenance</span><div class="organic-title">Best Website Maintenance Services (2026) - G2</div><div class="organic-desc">Compare the top website maintenance and management services. Read real user reviews...</div></div>
+        <div class="organic"><span class="organic-url">hubspot.com/website-maintenance</span><div class="organic-title">Do I Need a Website Maintenance Plan? - HubSpot</div><div class="organic-desc">A guide to website maintenance: what it includes, what it costs, and whether you need it...</div></div>
+      </div>
+    </div>
+
+    <!-- Landing Pages -->
+    <div class="mockup" data-index="4">
+      <div class="search-bar-wrap">
+        <div class="search-bar">
+          <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span>high converting landing page design</span>
+        </div>
+        <div class="search-tabs"><span class="active-tab">All</span><span>Images</span><span>Maps</span><span>Shopping</span></div>
+      </div>
+      <div class="results">
+        <div class="your-ad-wrap">
+          <div class="your-ad-highlight"></div>
+          <div class="ad-card">
+            <div class="ad-label-row"><span class="sponsored-badge">Sponsored</span><span class="ad-url">straywebdesign.co/landing-pages</span></div>
+            <div class="ad-headline">11%+ Conversion Rates — Landing Pages Built to Convert</div>
+            <div class="ad-desc">Stop sending ad traffic to your homepage. Hand-coded landing pages optimized for your keywords, loading in under 1 second. A/B tested. Tracking included.</div>
+            <div class="sitelinks"><span>See Examples</span><span>How It Works</span><span>Pricing</span><span>Get Started</span></div>
+          </div>
+          <div class="your-ad-tag"><svg class="sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg> This is your ad. Above everyone else.</div>
+        </div>
+        <div class="competitor-ad">
+          <div class="ad-card">
+            <div class="ad-label-row"><span class="sponsored-badge">Sponsored</span><span class="ad-url">landing-builder.com</span></div>
+            <div class="ad-headline">Landing Page Templates — Build in Minutes</div>
+            <div class="ad-desc">Create beautiful landing pages with our drag-and-drop builder. No coding required...</div>
+          </div>
+        </div>
+        <div class="organic"><span class="organic-url">unbounce.com/landing-page-examples</span><div class="organic-title">15 High-Converting Landing Page Examples (2026) - Unbounce</div><div class="organic-desc">Get inspired by these high-converting landing page examples across different industries...</div></div>
+        <div class="organic"><span class="organic-url">wordstream.com/landing-page-best-practices</span><div class="organic-title">Landing Page Best Practices for Google Ads - WordStream</div><div class="organic-desc">How to design landing pages that improve Quality Score and lower your cost per click...</div></div>
+      </div>
+    </div>
+
+    <!-- Analytics -->
+    <div class="mockup" data-index="5">
+      <div class="search-bar-wrap">
+        <div class="search-bar">
+          <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span>Google Analytics setup for small business</span>
+        </div>
+        <div class="search-tabs"><span class="active-tab">All</span><span>Images</span><span>Maps</span><span>Shopping</span></div>
+      </div>
+      <div class="results">
+        <div class="your-ad-wrap">
+          <div class="your-ad-highlight"></div>
+          <div class="ad-card">
+            <div class="ad-label-row"><span class="sponsored-badge">Sponsored</span><span class="ad-url">straywebdesign.co/analytics-setup</span></div>
+            <div class="ad-headline">Stop Guessing, Start Knowing — Analytics &amp; Tracking Setup</div>
+            <div class="ad-desc">GA4, conversion tracking, heatmaps, and session replay — configured correctly. See exactly what visitors do on your site and which marketing dollars drive revenue.</div>
+            <div class="sitelinks"><span>GA4 Setup</span><span>Conversion Tracking</span><span>Heatmaps</span><span>Book a Call</span></div>
+          </div>
+          <div class="your-ad-tag"><svg class="sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg> This is your ad. Above everyone else.</div>
+        </div>
+        <div class="competitor-ad">
+          <div class="ad-card">
+            <div class="ad-label-row"><span class="sponsored-badge">Sponsored</span><span class="ad-url">analytics-consultants.com</span></div>
+            <div class="ad-headline">Google Analytics Help — Consulting Services</div>
+            <div class="ad-desc">Need help setting up Google Analytics? Our certified consultants can help...</div>
+          </div>
+        </div>
+        <div class="organic"><span class="organic-url">moz.com/ga4-setup-guide</span><div class="organic-title">How to Set Up Google Analytics 4 (2026 Guide) - Moz</div><div class="organic-desc">A step-by-step guide to setting up GA4 for your website. Includes event tracking and goals...</div></div>
+        <div class="organic"><span class="organic-url">techradar.com/analytics-tools</span><div class="organic-title">Best Analytics Tools for Small Business - TechRadar</div><div class="organic-desc">We reviewed the top analytics platforms for small businesses. Here is what you need...</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Pitch -->
+<section class="pitch">
+  <h2>This is the difference</h2>
+  <div class="pitch-text">
+    <p>Right now, someone in your city is searching for exactly what you sell.</p>
+    <p>They type it into Google. They see three ads. They click one.</p>
+    <p>If that ad is yours — and the page it lands on speaks directly to what they searched for — they call. They book. They buy.</p>
+    <p>If it is not? That customer goes to whoever showed up instead.</p>
+    <p class="bold">We build the website that makes you proud to share the link. Then we put it in front of the right people at the right time — so every click counts.</p>
+  </div>
+</section>
+
+<!-- Before/After -->
+<section class="comparison">
+  <div class="comparison-header">
+    <p class="label">The Problem With Most Ads</p>
+    <h2>Where your ad traffic lands matters more than the ad itself</h2>
+  </div>
+  <div class="comparison-grid">
+    <div>
+      <div class="compare-label"><div class="dot dot-red"></div><span class="label-red">Generic site — traffic bounces</span></div>
+      <div class="wireframe wireframe-red">
+        <div class="wire-bar wr" style="height:12px;width:75%"></div>
+        <div class="wire-row">
+          <div class="wire-bar wr" style="height:8px;width:60px;margin:0"></div>
+          <div class="wire-bar wr" style="height:8px;width:60px;margin:0"></div>
+          <div class="wire-bar wr" style="height:8px;width:60px;margin:0"></div>
+          <div class="wire-bar wr" style="height:8px;width:60px;margin:0"></div>
+        </div>
+        <div class="wire-bar wr" style="height:80px;width:100%"></div>
+        <div class="wire-grid3">
+          <div class="wire-bar wr" style="height:56px;margin:0"></div>
+          <div class="wire-bar wr" style="height:56px;margin:0"></div>
+          <div class="wire-bar wr" style="height:56px;margin:0"></div>
+        </div>
+        <div class="wire-bar wr" style="height:8px;width:100%;opacity:0.5"></div>
+        <div class="wire-bar wr" style="height:8px;width:85%;opacity:0.5"></div>
+        <p class="wire-note note-red">Slow load. Confusing layout. No clear action. Visitor leaves.</p>
+      </div>
+      <p class="rate rate-red">2.3% conversion rate</p>
+    </div>
+    <div>
+      <div class="compare-label"><div class="dot dot-green"></div><span class="label-green">Stray-built site — traffic converts</span></div>
+      <div class="wireframe wireframe-green">
+        <div class="wire-bar wg" style="height:16px;width:66%"></div>
+        <div class="wire-bar wg" style="height:8px;width:50%;opacity:0.7"></div>
+        <div style="margin-top:16px">
+          <div class="wire-bar wg" style="height:8px;width:100%;opacity:0.7"></div>
+          <div class="wire-bar wg" style="height:8px;width:85%;opacity:0.7"></div>
+          <div class="wire-bar wg" style="height:8px;width:66%;opacity:0.7"></div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px">
+          <div class="wire-bar wg" style="height:24px;width:24px;border-radius:50%;margin:0;flex-shrink:0"></div>
+          <div style="flex:1"><div class="wire-bar wg" style="height:8px;width:75%;opacity:0.6;margin:0 0 4px"></div><div class="wire-bar wg" style="height:8px;width:50%;opacity:0.4;margin:0"></div></div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px">
+          <div class="wire-bar wg" style="height:24px;width:24px;border-radius:50%;margin:0;flex-shrink:0"></div>
+          <div style="flex:1"><div class="wire-bar wg" style="height:8px;width:75%;opacity:0.6;margin:0 0 4px"></div><div class="wire-bar wg" style="height:8px;width:50%;opacity:0.4;margin:0"></div></div>
+        </div>
+        <div class="wire-bar wg" style="height:40px;width:66%;margin:8px auto 0;border-radius:8px"></div>
+        <p class="wire-note note-green">Sub-1s load. Clear message. One CTA. Visitor converts.</p>
+      </div>
+      <p class="rate rate-green">11.4% conversion rate</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Ready to be the ad people click?</h2>
+  <p>We build websites worth sharing and worth advertising. Start with a free audit — we'll show you exactly where you stand and what it takes to show up first.</p>
+  <a href="https://straywebdesign.co/book" class="cta-btn">Book Your Free Audit</a>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const mockups = document.querySelectorAll('.mockup');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const index = tab.dataset.index;
+      tabs.forEach(t => t.classList.remove('active'));
+      mockups.forEach(m => m.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector(`.mockup[data-index="${index}"]`).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

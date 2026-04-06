@@ -220,10 +220,10 @@ export default function Navbar() {
               />
             ))}
             <Link
-              href={resolveHref('#contact', pathname)}
+              href="/book"
               className="bg-accent px-5 py-2.5 font-mono text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-accent/90"
             >
-              Free Audit
+              Let&apos;s Talk
             </Link>
           </div>
 
@@ -305,11 +305,11 @@ export default function Navbar() {
                 );
               })}
               <Link
-                href={resolveHref('#contact', pathname)}
+                href="/book"
                 className="mt-2 bg-accent px-5 py-3 text-center font-mono text-sm font-medium uppercase tracking-wider text-white"
                 onClick={() => setIsOpen(false)}
               >
-                Get Free Audit
+                Let&apos;s Talk
               </Link>
             </div>
           </div>
@@ -386,11 +386,11 @@ export default function Navbar() {
                     );
                   })}
                   <Link
-                    href={resolveHref('#contact', pathname)}
+                    href="/book"
                     className="mt-2 bg-accent px-5 py-3 text-center font-mono text-sm font-medium uppercase tracking-wider text-white"
                     onClick={() => setIsOpen(false)}
                   >
-                    Get Free Audit
+                    Let&apos;s Talk
                   </Link>
                 </div>
               </motion.div>

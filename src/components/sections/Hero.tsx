@@ -16,7 +16,7 @@ const SLIDES = [
     badge: 'For Practices, Dealerships & Professional Services in Erie',
     headline: 'Are You Ready to Develop an Exceptional Digital Presence?',
     body: 'The world is changing rapidly. Your competitors are investing in their online presence — are you ready to compete?',
-    cta: { label: 'Get Free Audit', href: '#contact' },
+    cta: { label: "Let's Talk", href: '/book' },
   },
   {
     badge: 'Enterprise-Grade Web Design',
@@ -32,7 +32,7 @@ const SLIDES = [
     badge: 'Beyond Just a Website',
     headline: 'Loyalty programs. Booking systems. Customer portals.',
     body: 'Points and rewards systems, appointment scheduling, client dashboards, membership tiers — if your business needs it, we build it into your site.',
-    cta: { label: 'Talk to Us', href: '#contact' },
+    cta: { label: "Let's Talk", href: '/book' },
   },
 ] as const;
 

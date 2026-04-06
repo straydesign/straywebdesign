@@ -19,7 +19,7 @@ interface BookingContactFormProps {
   onSubmit: (e: FormEvent) => void;
   submitting: boolean;
   error: string | null;
-  selectedDate: string;
+  selectedDate: string | null;
   selectedTime: string | null;
 }
 
@@ -40,28 +40,32 @@ export default function BookingContactForm({
   selectedDate,
   selectedTime,
 }: BookingContactFormProps) {
+  const isInitialStep = !selectedDate && !selectedTime;
+
   return (
     <form onSubmit={onSubmit}>
-      {/* Booking summary */}
-      <div className="mb-5 border border-accent/20 bg-accent/5 px-4 py-3">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-accent">
-          {selectedTime ? 'Your Appointment' : 'Contact Request'}
-        </p>
-        <p className="mt-1 font-mono text-sm text-text-primary">
-          {selectedTime ? (
-            <>
-              {new Date(selectedDate + 'T12:00:00').toLocaleDateString('en-US', {
-                weekday: 'short',
-                month: 'long',
-                day: 'numeric',
-              })}{' '}
-              at {selectedTime} EST
-            </>
-          ) : (
-            "We'll text you to find a time that works"
-          )}
-        </p>
-      </div>
+      {/* Only show booking summary if coming back from date/time selection */}
+      {!isInitialStep && (
+        <div className="mb-5 border border-accent/20 bg-accent/5 px-4 py-3">
+          <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-accent">
+            {selectedTime ? 'Your Appointment' : 'Contact Request'}
+          </p>
+          <p className="mt-1 font-mono text-sm text-text-primary">
+            {selectedTime && selectedDate ? (
+              <>
+                {new Date(selectedDate + 'T12:00:00').toLocaleDateString('en-US', {
+                  weekday: 'short',
+                  month: 'long',
+                  day: 'numeric',
+                })}{' '}
+                at {selectedTime} EST
+              </>
+            ) : (
+              "We'll reach out to find a time that works"
+            )}
+          </p>
+        </div>
+      )}
 
       <div className="space-y-4">
         <div className="grid gap-4 sm:grid-cols-2">
@@ -109,12 +113,11 @@ export default function BookingContactForm({
               htmlFor="booking-phone"
               className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
             >
-              Phone {!selectedTime && '*'}
+              Phone
             </label>
             <input
               id="booking-phone"
               type="tel"
-              required={!selectedTime}
               value={phone}
               onChange={(e) => onChangePhone(e.target.value)}
               className={inputClasses}
@@ -174,10 +177,10 @@ export default function BookingContactForm({
         {submitting ? (
           <>
             <span className="inline-block h-4 w-4 animate-spin border-2 border-white/30 border-t-white" />
-            {selectedTime ? 'Confirming...' : 'Submitting...'}
+            Sending...
           </>
         ) : (
-          selectedTime ? 'Confirm Booking' : 'Submit — We\'ll Be in Touch'
+          isInitialStep ? 'Get Started' : 'Confirm Booking'
         )}
       </button>
     </form>
