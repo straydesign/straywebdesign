@@ -65,6 +65,51 @@ const PERFORMANCE_TAGS: TagInfo[] = [
   },
 ];
 
+const DESIGN_TAGS: TagInfo[] = [
+  {
+    label: 'Zero Templates',
+    what: 'Every site is designed and coded from scratch. No themes, no page builders, no drag-and-drop.',
+    standard: 'Most agencies start from a $59 ThemeForest template and customize the colors. You get the same layout as thousands of other businesses.',
+    ours: 'Your site is one of one. Every layout, every component, every interaction is built specifically for your business and your customers.',
+  },
+  {
+    label: 'Custom Design',
+    what: 'Original visual design tailored to your brand — not a generic template with your logo dropped in.',
+    standard: 'WordPress themes ship with preset layouts. Agencies swap the logo, change the hero image, and call it "custom." You can spot the template from a mile away.',
+    ours: 'We design around your brand, your audience, and your market position. The result looks like nothing else in your industry — because it isn\'t.',
+  },
+  {
+    label: 'Motion & Interaction',
+    what: 'Purposeful animations and micro-interactions that guide attention and make the experience feel alive.',
+    standard: 'Template sites are static pages. Maybe a fade-in. The experience feels flat and forgettable.',
+    ours: 'Scroll-driven animations, hover states, page transitions, and interactive elements that make visitors want to keep exploring.',
+  },
+  {
+    label: 'Beyond Referrals',
+    what: 'A website that actively generates leads — not just a digital business card collecting dust.',
+    standard: 'Most local business sites get built and forgotten. They exist, but they don\'t work. New customers still come from word of mouth alone.',
+    ours: 'Your site becomes a growth channel. SEO, structured data, and conversion-optimized layouts bring in customers who\'ve never heard of you.',
+  },
+  {
+    label: 'First Impression',
+    what: 'Visitors judge your business in 0.05 seconds based on your website. That snap judgment determines whether they stay or bounce.',
+    standard: 'A slow, dated WordPress site tells visitors your business is behind the times — even if it isn\'t. 75% of users judge credibility by design alone.',
+    ours: 'Sub-second loads, polished design, and fluid interactions signal that your business is modern, professional, and worth their time.',
+  },
+  {
+    label: 'Conversion-First',
+    what: 'Every design decision serves a business goal — driving calls, bookings, form submissions, or foot traffic.',
+    standard: 'Template sites put design choices in the hands of the theme developer, not your business strategy. CTAs are generic and buried.',
+    ours: 'Strategic placement of calls-to-action, contact flows, and social proof. Every section is engineered to move visitors toward becoming customers.',
+  },
+  {
+    label: 'Brand Authority',
+    what: 'A website that positions you as the clear leader in your market — not one of many.',
+    standard: 'When every competitor has the same WordPress theme with a stock photo hero, nobody stands out. You\'re competing on price, not presence.',
+    ours: 'A site that makes competitors look outdated by comparison. The kind of web presence that makes people ask "who built that?"',
+  },
+];
+
 const AI_TAGS: TagInfo[] = [
   {
     label: 'JSON-LD Schema',
@@ -166,6 +211,7 @@ function TagDetail({ tag, onClose }: { tag: TagInfo; onClose: () => void }) {
 export default function Services() {
   const [activePerfTag, setActivePerfTag] = useState<number | null>(null);
   const [activeAiTag, setActiveAiTag] = useState<number | null>(null);
+  const [activeDesignTag, setActiveDesignTag] = useState<number | null>(null);
 
   return (
     <section id="services" className="bg-surface-card" aria-label="Services">
@@ -274,6 +320,65 @@ export default function Services() {
                 key={activeAiTag}
                 tag={AI_TAGS[activeAiTag]}
                 onClose={() => setActiveAiTag(null)}
+              />
+            )}
+          </AnimatePresence>
+        </div>
+      </AnimateIn>
+
+      {/* Divider */}
+      <div className="mx-auto mt-20 max-w-7xl px-5 md:mt-28 md:px-8">
+        <div className="border-t border-border-default" />
+      </div>
+
+      {/* Editorial feature 3 — Design & First Impression */}
+      <div className="mx-auto max-w-7xl px-5 pt-20 md:px-8 md:pt-28">
+        <div className="grid items-end gap-8 md:grid-cols-12">
+          <AnimateIn className="md:col-span-7">
+            <p className="font-mono text-[11px] font-semibold uppercase tracking-widest text-accent">
+              03
+            </p>
+            <h2 className="mt-4 font-mono text-[clamp(2rem,5vw,4rem)] font-bold leading-[1.05] tracking-tight text-text-primary">
+              Not another flat, slow, boring WordPress.{' '}
+              <span className="text-text-tertiary">A site people remember.</span>
+            </h2>
+          </AnimateIn>
+          <AnimateIn delay={0.15} className="md:col-span-5 md:pb-2">
+            <p className="max-w-md font-mono text-lg leading-relaxed text-text-secondary">
+              Custom-built from scratch. State-of-the-art design, fluid motion, and
+              conversion-first architecture for businesses ready to grow beyond
+              word of mouth.
+            </p>
+            <Link
+              href="/work"
+              className="group mt-5 inline-flex items-center gap-2 font-mono text-sm font-semibold text-text-primary transition-colors hover:text-accent"
+            >
+              See real examples
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </AnimateIn>
+        </div>
+      </div>
+
+      {/* Capability tags — clickable */}
+      <AnimateIn delay={0.2}>
+        <div className="mx-auto mt-10 max-w-7xl px-5 md:px-8">
+          <div className="flex flex-wrap gap-2">
+            {DESIGN_TAGS.map((tag, i) => (
+              <TagPill
+                key={tag.label}
+                tag={tag}
+                isActive={activeDesignTag === i}
+                onClick={() => setActiveDesignTag(activeDesignTag === i ? null : i)}
+              />
+            ))}
+          </div>
+          <AnimatePresence mode="wait">
+            {activeDesignTag !== null && (
+              <TagDetail
+                key={activeDesignTag}
+                tag={DESIGN_TAGS[activeDesignTag]}
+                onClose={() => setActiveDesignTag(null)}
               />
             )}
           </AnimatePresence>

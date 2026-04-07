@@ -24,6 +24,22 @@ interface Project {
 
 const PROJECTS: readonly Project[] = [
   {
+    name: "Andy's Ale House & Grill",
+    type: 'Bar & Restaurant',
+    description:
+      'Full website with CMS-powered menus, daily specials, events calendar, and contact form. Replaced a legacy WordPress site.',
+    url: 'https://andys-mu.vercel.app',
+    tag: 'Client Site',
+  },
+  {
+    name: 'Bullfrog Bar',
+    type: 'Bar & Live Music Venue',
+    description:
+      'Live music venue site with event listings, Sanity CMS for content management, and custom contact flow.',
+    url: 'https://bullfrog-gilt.vercel.app',
+    tag: 'Client Site',
+  },
+  {
     name: 'TechxRev',
     type: 'IT Services',
     description:

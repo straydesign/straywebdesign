@@ -5,8 +5,8 @@
   --surface-card: #ffffff;
   --surface-sunken: #e4e4e7;
   --text-primary: #18181b;
-  --text-secondary: #52525b;
-  --text-tertiary: #71717a;
+  --text-secondary: #3f3f46;
+  --text-tertiary: #52525b;
   --text-placeholder: #a1a1aa;
   --accent: #2563EB;
   --border-default: #e4e4e7;
@@ -65,7 +65,7 @@ body::before {
     linear-gradient(var(--border-default) 1px, transparent 1px),
     linear-gradient(90deg, var(--border-default) 1px, transparent 1px);
   background-size: 24px 24px;
-  opacity: 0.4;
+  opacity: 0.18;
 }
 
 /* Focus indicators for keyboard navigation (WCAG 2.4.7) */
