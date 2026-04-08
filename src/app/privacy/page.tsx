@@ -5,12 +5,23 @@ export const metadata: Metadata = {
   description: 'Privacy policy for Stray Web Design. How we collect, use, and protect your information.',
 };
 
+import Link from 'next/link';
+
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-[100dvh] bg-surface-page text-text-primary">
       <div className="mx-auto max-w-3xl px-5 pt-32 pb-20 md:px-8">
+        <Link
+          href="/"
+          className="mb-8 inline-flex items-center gap-2 font-mono text-sm text-text-tertiary transition-colors hover:text-accent"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M10 3L5 8l5 5" />
+          </svg>
+          Back to site
+        </Link>
         <h1 className="font-mono text-3xl font-bold md:text-4xl">Privacy Policy</h1>
-        <p className="mt-2 font-mono text-sm text-text-tertiary">Last updated: March 31, 2026</p>
+        <p className="mt-2 font-mono text-sm text-text-tertiary">Last updated: April 8, 2026</p>
 
         <div className="mt-10 space-y-8 font-mono text-sm leading-relaxed text-text-secondary">
           <section>
@@ -48,6 +59,17 @@ export default function PrivacyPolicy() {
               personalized advertising through your browser settings or by visiting{' '}
               <a href="https://optout.aboutads.info" className="text-accent hover:underline" target="_blank" rel="noopener noreferrer">
                 optout.aboutads.info
+              </a>.
+            </p>
+            <p className="mt-3">
+              When you visit or log in to our website, cookies and similar technologies may be used
+              by our online data partners or vendors to associate these activities with other personal
+              information they or others have about you, including by association with your email or
+              company information. We (or service providers on our behalf) may then send communications
+              and marketing to these email addresses. You may opt out of receiving this advertising by
+              visiting{' '}
+              <a href="https://app.retention.com/optout" className="text-accent hover:underline" target="_blank" rel="noopener noreferrer">
+                app.retention.com/optout
               </a>.
             </p>
           </section>
