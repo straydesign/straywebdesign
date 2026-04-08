@@ -41,7 +41,11 @@ export default function ClientLogos() {
                   alt={client.name}
                   width={client.width}
                   height={client.height}
-                  className="h-16 w-auto object-contain opacity-40 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0 md:h-20"
+                  className={`h-16 w-auto object-contain transition-all duration-300 md:h-20 ${
+                    client.name === "Andy's Pub"
+                      ? 'opacity-60 brightness-0 transition-all duration-300 group-hover:brightness-100 group-hover:opacity-100 group-hover:drop-shadow-[0_0_12px_rgba(213,0,22,0.4)]'
+                      : 'opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0'
+                  }`}
                 />
               </a>
             ))}
