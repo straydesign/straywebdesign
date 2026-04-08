@@ -13,8 +13,8 @@ const GlassShatter = lazy(() => import('@/components/ui/GlassShatter'));
 /* ── Slide data ────────────────────────────────────────────────── */
 const SLIDES = [
   {
-    badge: 'For Practices, Dealerships & Professional Services in Erie',
-    headline: 'Are You Ready to Develop an Exceptional Digital Presence?',
+    badge: 'For Practices, Dealerships & Professional Services in Erie, PA',
+    headline: 'Erie, PA Web Design That Outperforms Your Competition',
     body: 'The world is changing rapidly. Your competitors are investing in their online presence — are you ready to compete?',
     cta: { label: "Let's Talk", href: '/book' },
   },
@@ -163,9 +163,18 @@ function SlideContent({ index }: { index: number }) {
       exit="exit"
       transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
     >
-      <span className="mb-4 inline-block border border-border-strong bg-surface-card px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-wider text-accent">
-        {slide.badge}
-      </span>
+      {index === 0 ? (
+        <a
+          href="/locations/erie"
+          className="mb-4 inline-block border border-border-strong bg-surface-card px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-wider text-accent transition-colors hover:bg-accent hover:text-white"
+        >
+          {slide.badge}
+        </a>
+      ) : (
+        <span className="mb-4 inline-block border border-border-strong bg-surface-card px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-wider text-accent">
+          {slide.badge}
+        </span>
+      )}
 
       <h1 className="text-balance font-mono text-[clamp(2.25rem,7vw,5rem)] font-bold leading-[1.08] tracking-tight text-text-primary">
         {slide.headline}

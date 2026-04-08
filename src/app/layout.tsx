@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import { JetBrains_Mono } from 'next/font/google';
 import ClientShell, { ClientExtras } from '@/components/layout/ClientShell';
+import { FAQ_ITEMS } from '@/lib/constants';
 import './globals.css';
 
 const jetbrains = JetBrains_Mono({
@@ -13,10 +14,14 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Stray Web Design — Enterprise-Grade Websites for Erie, PA Businesses',
+  title: 'Website Designer in Erie, PA | Stray Web Design',
   description:
-    'Erie businesses deserve enterprise-grade websites. Blazing-fast, accessible, AI-ready sites built to perform. Free site audit.',
+    'Erie, PA web developer building websites that load in under a second. No templates, no WordPress. Custom website design — done in 3 days. Free audit.',
   keywords: [
+    'website designer',
+    'website design',
+    'web developer Erie PA',
+    'erie pennsylvania web developer',
     'web design Erie PA',
     'Erie web designer',
     'dental practice website Erie',
@@ -24,19 +29,17 @@ export const metadata: Metadata = {
     'car dealership website Erie',
     'IT services website Erie',
     'chiropractor website Erie',
-    'premium web design',
     'fast website',
     'accessible website',
     'AI ready website',
-    'Lighthouse score',
     'Core Web Vitals',
     'Erie Pennsylvania',
   ],
   metadataBase: new URL('https://straywebdesign.co'),
   openGraph: {
-    title: 'Stray Web Design — Enterprise-Grade Websites for Erie, PA Businesses',
+    title: 'Website Designer in Erie, PA | Stray Web Design',
     description:
-      'Erie businesses deserve enterprise-grade websites. Built to perform. Free site audit.',
+      'Erie, PA web developer building websites that load in under a second. No templates, no WordPress. Custom website design — done in 3 days. Free audit.',
     url: 'https://straywebdesign.co',
     siteName: 'Stray Web Design',
     locale: 'en_US',
@@ -44,9 +47,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Stray Web Design — Enterprise-Grade Websites for Erie, PA Businesses',
+    title: 'Website Designer in Erie, PA | Stray Web Design',
     description:
-      'Erie businesses deserve enterprise-grade websites. Built to perform. Free site audit.',
+      'Erie, PA web developer building websites that load in under a second. No templates, no WordPress. Custom website design — done in 3 days. Free audit.',
   },
   alternates: {
     canonical: '/',
@@ -155,7 +158,11 @@ const professionalServiceSchema = {
         },
       ],
     },
-    sameAs: [],
+    sameAs: [
+      'https://www.linkedin.com/in/tom-sesler/',
+      'https://straydesign.co',
+      'https://tomsesler.com',
+    ],
 };
 
 const webSiteSchema = {
@@ -188,6 +195,19 @@ const organizationSchema = {
   },
 };
 
+const faqPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ_ITEMS.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -208,6 +228,9 @@ export default function RootLayout({
             {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${process.env.NEXT_PUBLIC_META_PIXEL_ID}');fbq('track','PageView');`}
           </Script>
         )}
+        <Script id="rb2b-pixel" strategy="lazyOnload">
+          {`!function(k){if(window.reb2b)return;window.reb2b={loaded:true};var s=document.createElement("script");s.async=true;s.src="https://ddwl4m2hdecbv.cloudfront.net/b/"+k+"/"+k+".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s,document.getElementsByTagName("script")[0]);}("VN080H3L7K6J");`}
+        </Script>
         <link
           rel="alternate"
           type="application/rss+xml"
@@ -230,6 +253,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqPageSchema),
           }}
         />
       </head>

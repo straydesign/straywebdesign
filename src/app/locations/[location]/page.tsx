@@ -6,9 +6,14 @@ import AnimateIn, { StaggerContainer, StaggerItem } from '@/components/ui/Animat
 import GrainOverlay from '@/components/ui/GrainOverlay';
 import MagneticButton from '@/components/ui/MagneticButton';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
-import { LOCATIONS, getLocationBySlug, getAllLocationSlugs } from '@/data/locations';
+import { LOCATIONS, getLocationBySlug, getAllLocationSlugs, type Location } from '@/data/locations';
 import { INDUSTRIES } from '@/data/industries';
 import { ArrowRight, MapPin } from 'lucide-react';
+
+/** Map area display names to location slugs (only areas that have their own page) */
+const AREA_SLUG_MAP = new Map(
+  LOCATIONS.map((loc) => [loc.name, loc.slug]),
+);
 
 export function generateStaticParams() {
   return getAllLocationSlugs().map((location) => ({ location }));
@@ -180,12 +185,24 @@ export default async function LocationPage({
               <AnimateIn>
                 <p className="text-sm text-text-secondary">
                   Also serving nearby areas:{' '}
-                  {location.nearbyAreas.map((area, i) => (
-                    <span key={area}>
-                      <span className="font-medium text-text-primary">{area}</span>
-                      {i < location.nearbyAreas.length - 1 && ', '}
-                    </span>
-                  ))}
+                  {location.nearbyAreas.map((area, i) => {
+                    const areaSlug = AREA_SLUG_MAP.get(area);
+                    return (
+                      <span key={area}>
+                        {areaSlug ? (
+                          <a
+                            href={`/locations/${areaSlug}`}
+                            className="font-medium text-accent underline decoration-accent/30 underline-offset-2 transition-colors hover:text-accent/80"
+                          >
+                            {area}
+                          </a>
+                        ) : (
+                          <span className="font-medium text-text-primary">{area}</span>
+                        )}
+                        {i < location.nearbyAreas.length - 1 && ', '}
+                      </span>
+                    );
+                  })}
                 </p>
               </AnimateIn>
             </div>
@@ -201,7 +218,7 @@ export default async function LocationPage({
                 Ready to stand out in {location.name}?
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-text-tertiary">
-                Free site audit for {location.name} businesses. We&apos;ll show you exactly
+                Free site audit for {location.name} businesses. We&apos;ll show you
                 exactly where your site stands right now.
               </p>
               <div className="mt-8">

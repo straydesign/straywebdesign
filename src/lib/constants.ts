@@ -56,6 +56,7 @@ export const NAV_LINKS = [
       { label: 'View All Industries', href: '/industries' },
     ],
   },
+  { label: 'Areas We Serve', href: '/locations' },
   { label: 'Work', href: '/work' },
   { label: 'Resources', href: '/resources' },
   { label: "Let's Talk", href: '/book' },

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { RESOURCES, getResourcePath } from '@/lib/content';
 import { SERVICES } from '@/data/services';
+import { LOCATIONS } from '@/data/locations';
 
 const BASE_URL = 'https://straywebdesign.co';
 
@@ -54,13 +55,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  // ─── Location hub pages ────────────────────────────────────
+  // Parent location pages only (e.g. /locations/erie) — NOT intersection pages
+  const locationPages = LOCATIONS.map((location) => ({
+    url: `${BASE_URL}/locations/${location.slug}`,
+    lastModified: CONTENT_BLITZ,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
   // Excluded from sitemap (pages still live, just not pushed to Google):
   // - /industries, /industries/[slug] — 22 template-driven pages
-  // - /locations, /locations/[slug] — 12 template-driven hubs
-  // - /locations/[location]/[industry] — 264 programmatic pages
+  // - /locations/[location]/[industry] — 264 programmatic intersection pages
   // - /resources/case-studies/[slug] — 8 hypothetical transformation stories
   // - /resources/tag/[tag] — ~42 thin aggregation pages (also noindexed)
   // Let Google discover these organically once the domain builds trust.
 
-  return [...core, ...servicePages, ...resourcePages];
+  return [...core, ...servicePages, ...resourcePages, ...locationPages];
 }
