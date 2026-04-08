@@ -80,9 +80,21 @@ async function sendTranscript(
         message: `${hasContactInfo ? `CONTACT INFO DETECTED\nEmail: ${email || 'N/A'}\nPhone: ${phone || 'N/A'}\n\n` : ''}--- Full Transcript (${messages.length} messages) ---\n\n${transcript}`,
       }),
     }),
+    // Send transcript to Stray CRM chat logs
+    fetch('https://stray-crm.vercel.app/api/chat/transcript', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        visitor_ip: ip,
+        messages,
+        has_contact_info: hasContactInfo,
+        extracted_email: email || undefined,
+        extracted_phone: phone || undefined,
+      }),
+    }),
   ];
 
-  // Send to Stray CRM if contact info detected
+  // Send lead to Stray CRM if contact info detected
   if (hasContactInfo) {
     sends.push(
       fetch(process.env.NEXT_PUBLIC_CRM_INBOUND_URL || 'https://stray-crm.vercel.app/api/leads/inbound', {
