@@ -3,18 +3,18 @@ import AnimateIn from '@/components/ui/AnimateIn';
 
 const CLIENTS = [
   {
-    name: "Andy's Ale House & Grill",
+    name: "Andy's Pub",
     logo: '/images/clients/andys-logo.png',
     url: 'https://andys-mu.vercel.app',
-    width: 160,
-    height: 80,
+    width: 125,
+    height: 96,
   },
   {
     name: 'Bullfrog Bar',
-    logo: '/images/clients/bullfrog-logo.png',
-    url: 'https://bullfrog-gilt.vercel.app',
-    width: 200,
-    height: 80,
+    logo: '/images/clients/bullfrog-logo.svg',
+    url: 'https://bullfrogbarerie.com',
+    width: 320,
+    height: 104,
   },
 ] as const;
 
