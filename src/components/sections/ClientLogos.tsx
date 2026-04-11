@@ -4,17 +4,17 @@ import AnimateIn from '@/components/ui/AnimateIn';
 const CLIENTS = [
   {
     name: "Andy's Pub",
-    logo: '/images/clients/andys-logo.png',
-    url: 'https://andys-mu.vercel.app',
-    width: 125,
-    height: 96,
+    logo: '/images/clients/andys-logo.svg',
+    url: 'https://andyspub.com',
+    width: 220,
+    height: 130,
   },
   {
     name: 'Bullfrog Bar',
     logo: '/images/clients/bullfrog-logo.svg',
     url: 'https://bullfrogbarerie.com',
-    width: 320,
-    height: 104,
+    width: 792,
+    height: 612,
   },
 ] as const;
 
