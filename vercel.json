@@ -1,0 +1,3 @@
+{
+  "ignoreCommand": "bash scripts/should-deploy.sh"
+}

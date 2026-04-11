@@ -146,32 +146,6 @@ main section[aria-label]:focus-visible {
   50% { background-position: 100% 50%; }
 }
 
-/* Blink — top lid slides down, bottom lid slides up, then both retreat */
-@keyframes lid-top {
-  0%, 100% { transform: translateY(-100%); }
-  12%, 82% { transform: translateY(0); }
-}
-
-@keyframes lid-bottom {
-  0%, 100% { transform: translateY(100%); }
-  12%, 82% { transform: translateY(0); }
-}
-
-.blink-lid-top {
-  transform: translateY(-100%);
-  animation: lid-top 5s ease-in-out 1.5s infinite;
-}
-
-.blink-lid-bottom {
-  transform: translateY(100%);
-  animation: lid-bottom 5s ease-in-out 1.5s infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .blink-lid-top { animation: none; transform: translateY(-100%); }
-  .blink-lid-bottom { animation: none; transform: translateY(100%); }
-}
-
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

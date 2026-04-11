@@ -1,14 +1,11 @@
 'use client';
 
-import { lazy, Suspense, useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import MagneticButton from '@/components/ui/MagneticButton';
 import AnimateIn from '@/components/ui/AnimateIn';
 import LighthouseGauge from '@/components/ui/LighthouseGauge';
 import { useClientEnv } from '@/lib/use-client-env';
-import TextScramble from '@/components/ui/TextScramble';
-
-const GlassShatter = lazy(() => import('@/components/ui/GlassShatter'));
 
 /* ── Slide data ────────────────────────────────────────────────── */
 const SLIDES = [
@@ -311,18 +308,6 @@ export default function Hero() {
   const handleMouseEnter = useCallback(() => { pausedRef.current = true; }, []);
   const handleMouseLeave = useCallback(() => { pausedRef.current = false; }, []);
 
-  // Defer GlassShatter
-  const [showShatter, setShowShatter] = useState(false);
-  useEffect(() => {
-    const hasIdleCallback = typeof window.requestIdleCallback === 'function';
-    if (hasIdleCallback) {
-      const id = window.requestIdleCallback(() => setShowShatter(true), { timeout: 3000 });
-      return () => window.cancelIdleCallback(id);
-    }
-    const timer = setTimeout(() => setShowShatter(true), 2000);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <section
       className="relative flex min-h-[100dvh] items-center overflow-hidden bg-surface-page"
@@ -330,13 +315,6 @@ export default function Hero() {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Glass shatter effect — deferred */}
-      {showShatter && (
-        <Suspense fallback={null}>
-          <GlassShatter delay={1.8} />
-        </Suspense>
-      )}
-
       {mobile
         ? <HeroContentMobile activeSlide={activeSlide} onSelect={handleSelect} />
         : <HeroContentDesktop activeSlide={activeSlide} onSelect={handleSelect} />
