@@ -8,6 +8,7 @@ const CLIENTS = [
     url: 'https://andyspub.com',
     width: 220,
     height: 130,
+    sizeClass: 'h-14 md:h-[72px]',
   },
   {
     name: 'Bullfrog Bar',
@@ -15,6 +16,7 @@ const CLIENTS = [
     url: 'https://bullfrogbarerie.com',
     width: 792,
     height: 612,
+    sizeClass: 'h-[72px] md:h-[88px]',
   },
   {
     name: 'TechxRev',
@@ -22,6 +24,7 @@ const CLIENTS = [
     url: 'https://techxrev.com',
     width: 360,
     height: 80,
+    sizeClass: 'h-9 md:h-11',
   },
 ] as const;
 
@@ -48,7 +51,7 @@ export default function ClientLogos() {
                   alt={client.name}
                   width={client.width}
                   height={client.height}
-                  className={`h-16 w-auto object-contain transition-all duration-300 md:h-20 ${
+                  className={`${client.sizeClass} w-auto object-contain transition-all duration-300 ${
                     client.name === "Andy's Pub"
                       ? 'opacity-60 brightness-0 transition-all duration-300 group-hover:brightness-100 group-hover:opacity-100 group-hover:drop-shadow-[0_0_12px_rgba(213,0,22,0.4)]'
                       : 'opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0'
