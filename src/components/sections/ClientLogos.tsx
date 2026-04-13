@@ -16,6 +16,13 @@ const CLIENTS = [
     width: 792,
     height: 612,
   },
+  {
+    name: 'TechxRev',
+    logo: '/images/clients/techxrev-logo.png',
+    url: 'https://techxrev.com',
+    width: 128,
+    height: 128,
+  },
 ] as const;
 
 export default function ClientLogos() {
