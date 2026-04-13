@@ -18,10 +18,10 @@ const CLIENTS = [
   },
   {
     name: 'TechxRev',
-    logo: '/images/clients/techxrev-logo.png',
+    logo: '/images/clients/techxrev-logo.svg',
     url: 'https://techxrev.com',
-    width: 128,
-    height: 128,
+    width: 360,
+    height: 80,
   },
 ] as const;
 
