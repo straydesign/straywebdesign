@@ -1,10 +1,10 @@
 # Stray Web Design
 
-> Premium web design agency building websites that outperform your competitors.
+> Premium web design agency building websites that outperform your market.
 
 ## About
 
-Stray Web Design builds custom, high-performance websites for businesses that demand speed, accessibility, and results. We build sites that outperform your competitors — faster than Aspen Dental, Schwab, Carvana, and the national brands your clients compete against. Every site scores 95-100 on Google Lighthouse across all categories.
+Stray Web Design builds custom, high-performance websites for businesses that demand speed, accessibility, and results. We build sites that outperform your market — faster than Aspen Dental, Schwab, Carvana, and the national brands your clients compete against. Every site scores 95-100 on Google Lighthouse across all categories.
 
 ## Services
 

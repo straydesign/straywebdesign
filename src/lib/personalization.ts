@@ -66,9 +66,9 @@ export function getPersonalizedHeroCopy(ctx: PersonalizationContext): HeroCopy {
   if (ctx.isReturning) {
     return {
       badge: 'Welcome back',
-      headline: 'Ready to Outperform Your Competitors?',
+      headline: 'Ready to Outperform Your Market?',
       subheadline:
-        "You've seen what we do. Let's build something that makes your competitors nervous.",
+        "You've seen what we do. Let's build something that dominates your market.",
       cta: 'Start Your Project',
     };
   }
@@ -76,7 +76,7 @@ export function getPersonalizedHeroCopy(ctx: PersonalizationContext): HeroCopy {
   if (ctx.referrerSource === 'google') {
     return {
       badge: 'Found us on Google? Good taste.',
-      headline: 'Websites That Outperform Your Competitors',
+      headline: 'Websites That Outperform Your Market',
       subheadline:
         "Here's why businesses trust us: enterprise-grade sites at a fraction of the cost.",
       cta: 'Get Free Audit',
@@ -88,7 +88,7 @@ export function getPersonalizedHeroCopy(ctx: PersonalizationContext): HeroCopy {
       badge: ctx.geo.city
         ? `For Practices, Dealerships & Professional Services in ${ctx.geo.city}`
         : 'For Practices, Dealerships & Professional Services',
-      headline: 'Websites That Outperform Your Competitors',
+      headline: 'Websites That Outperform Your Market',
       subheadline:
         'Enterprise-grade sites for practices, firms, and dealerships — at a fraction of the cost.',
       cta: 'Get Free Audit',
@@ -98,7 +98,7 @@ export function getPersonalizedHeroCopy(ctx: PersonalizationContext): HeroCopy {
   // Default / out-of-area
   return {
     badge: 'Enterprise-grade web design, anywhere',
-    headline: 'Websites That Outperform Your Competitors',
+    headline: 'Websites That Outperform Your Market',
     subheadline:
       'Enterprise-grade sites for practices, firms, and dealerships — at a fraction of the cost.',
     cta: 'Get Free Audit',

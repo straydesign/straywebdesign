@@ -48,7 +48,7 @@ export default function Footer() {
             <p className="mt-3 max-w-sm font-mono text-sm leading-relaxed text-text-tertiary">
               Your business is serious. Your website should be too. We
               build sites you&apos;re proud to share — living, breathing
-              extensions of your business that outperform your competitors.
+              extensions of your business that outperform your market.
             </p>
           </div>
 

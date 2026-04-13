@@ -23,7 +23,7 @@ export const SITE = {
   url: 'https://straywebdesign.co',
   email: 'tom@straydesign.co',
   phone: '814-402-8525',
-  tagline: 'Websites That Outperform Your Competitors',
+  tagline: 'Websites That Outperform Your Market',
   web3formsKey: 'c2441e47-8ca0-4f87-a2dc-928015553d51',
 } as const;
 

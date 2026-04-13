@@ -119,7 +119,7 @@ export default function AuditLandingForm() {
               Most business websites load slower than Google recommends
               — every extra second costs you{' '}
               <span className="font-semibold text-accent">7% of your visitors</span>.
-              We only work with local businesses ready to outperform their competition.
+              We only work with local businesses ready to outperform their market.
             </p>
           </div>
         </AnimateIn>

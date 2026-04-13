@@ -11,7 +11,7 @@ import { useClientEnv } from '@/lib/use-client-env';
 const SLIDES = [
   {
     badge: 'For Practices, Dealerships & Professional Services',
-    headline: 'Web Design That Outperforms Your Competition',
+    headline: 'Web Design That Outperforms Your Market',
     body: 'The world is changing rapidly. Your competitors are investing in their online presence — are you ready to compete?',
     cta: { label: "Let's Talk", href: '/book' },
   },
