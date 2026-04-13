@@ -45,6 +45,15 @@ export default function ChatWidget() {
     setIsStreaming(true);
 
     try {
+      // Include any partial form data so the assistant has context
+      let partialFormData: Record<string, string> | undefined;
+      try {
+        const stored = sessionStorage.getItem('stray_partial_form');
+        if (stored) partialFormData = JSON.parse(stored);
+      } catch {
+        // sessionStorage unavailable
+      }
+
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -53,6 +62,7 @@ export default function ChatWidget() {
             role: m.role,
             content: m.content,
           })),
+          partial_form: partialFormData,
         }),
       });
 

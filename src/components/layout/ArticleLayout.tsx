@@ -104,7 +104,7 @@ export default function ArticleLayout({ meta, children, jsonLd, relatedPosts = [
                 Ready to see how your site stacks up?
               </h3>
               <p className="mx-auto mt-2 max-w-md text-sm text-text-secondary">
-                Free Lighthouse audit for Erie businesses. We&apos;ll show you
+                Free Lighthouse audit for your business. We&apos;ll show you
                 exactly where you stand vs. the competition.
               </p>
               <div className="mt-6">

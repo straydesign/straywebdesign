@@ -7,7 +7,6 @@ const ITEMS = [
   'WCAG AA Accessible',
   'Zero WordPress',
   'Custom Built',
-  'Erie PA',
   'Core Web Vitals',
 ];
 

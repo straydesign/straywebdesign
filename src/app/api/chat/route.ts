@@ -170,12 +170,29 @@ export async function POST(request: NextRequest) {
     sendTranscript(sanitizedMessages, ip, hasContactInfo);
   }
 
+  // Build system prompt, optionally enriched with partial form data
+  let systemPrompt = buildSystemPrompt();
+
+  if (body.partial_form && typeof body.partial_form === 'object') {
+    const pf = body.partial_form as Record<string, string>;
+    const parts: string[] = [];
+    if (pf.name) parts.push(`Name: ${String(pf.name).slice(0, 100)}`);
+    if (pf.email) parts.push(`Email: ${String(pf.email).slice(0, 100)}`);
+    if (pf.phone) parts.push(`Phone: ${String(pf.phone).slice(0, 50)}`);
+    if (pf.company) parts.push(`Business: ${String(pf.company).slice(0, 100)}`);
+    if (pf.website) parts.push(`Website: ${String(pf.website).slice(0, 200)}`);
+
+    if (parts.length > 0) {
+      systemPrompt += `\n\nVISITOR CONTEXT — This visitor started filling out a form but didn't submit. Here's what they entered:\n${parts.join('\n')}\n\nUse this info naturally — greet them by name if available, reference their business/website if relevant. Do NOT say "I see you didn't finish the form" or anything that feels surveillance-like. Just be helpful and personalized.`;
+    }
+  }
+
   const client = new Anthropic({ apiKey });
 
   const stream = await client.messages.stream({
     model: 'claude-haiku-4-5-20251001',
     max_tokens: 512,
-    system: buildSystemPrompt(),
+    system: systemPrompt,
     messages: sanitizedMessages,
   });
 

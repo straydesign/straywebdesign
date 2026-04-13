@@ -25,7 +25,7 @@ const PERFORMANCE_TAGS: TagInfo[] = [
     label: 'Global CDN',
     what: 'Content Delivery Network — your site is served from hundreds of locations worldwide, not a single server.',
     standard: 'Most small business sites run on a single shared hosting server, often in one city. Distance = delay.',
-    ours: 'Your site is cached at 300+ edge locations globally. A visitor in Erie gets the same sub-second speed as someone in Tokyo.',
+    ours: 'Your site is cached at 300+ edge locations globally. Your visitors get sub-second speed whether they\'re across town or across the world.',
   },
   {
     label: 'WCAG AA',

@@ -13,7 +13,7 @@ import { CheckCircle, ArrowRight, Search, MousePointerClick, TrendingUp, DollarS
 export const metadata: Metadata = {
   title: 'Paid Search & Google Ads — Stray Web Design',
   description:
-    'Google Ads campaigns built on conversion data, not guesswork. Landing pages, ad copy, tracking, and weekly optimization for Erie PA businesses.',
+    'Google Ads campaigns built on conversion data, not guesswork. Landing pages, ad copy, tracking, and weekly optimization for local businesses.',
   alternates: { canonical: '/services/paid-search' },
 };
 
@@ -125,7 +125,7 @@ export default function PaidSearchPage() {
       name: 'Stray Web Design',
       url: 'https://straywebdesign.co',
     },
-    areaServed: { '@type': 'City', name: 'Erie', addressRegion: 'PA' },
+    areaServed: { '@type': 'Country', name: 'United States' },
     url: 'https://straywebdesign.co/services/paid-search',
   };
 
@@ -363,7 +363,7 @@ export default function PaidSearchPage() {
                         <GoogleAdMockup
                           business="Your Business"
                           headline1="Custom Websites That Convert"
-                          headline2="Erie's Top-Rated Web Design"
+                          headline2="Top-Rated Web Design"
                           description="Hand-coded, blazing fast websites that turn visitors into customers. 95+ Lighthouse scores. Sub-1s load times. Free site audit — see where you stand."
                           url="yourbusiness.com"
                           sitelinks={['Free Audit', 'Our Work', 'Pricing', 'Contact']}
@@ -390,14 +390,14 @@ export default function PaidSearchPage() {
                     {/* Organic results — faded more */}
                     <div className="opacity-25">
                       <SearchResultMockup
-                        title="10 Best Web Designers in Erie, PA (2026) - Clutch"
-                        url="clutch.co/web-designers/erie"
-                        description="Find the top web design companies in Erie, Pennsylvania. Compare reviews, portfolios, and pricing..."
+                        title="10 Best Web Designers (2026) - Clutch"
+                        url="clutch.co/web-designers"
+                        description="Find the top web design companies. Compare reviews, portfolios, and pricing..."
                       />
                       <SearchResultMockup
-                        title="Web Design Erie PA | Local Website Companies"
-                        url="expertise.com/web-designers/erie-pa"
-                        description="We researched the best web designers in Erie. Here are our top picks based on reviews and ratings..."
+                        title="Best Web Design Companies | Local Website Experts"
+                        url="expertise.com/web-designers"
+                        description="We researched the best web designers near you. Here are our top picks based on reviews and ratings..."
                       />
                     </div>
                   </div>

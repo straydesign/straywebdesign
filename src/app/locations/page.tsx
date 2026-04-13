@@ -11,7 +11,7 @@ import { ArrowRight, MapPin } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Service Areas — Stray Web Design',
   description:
-    'Professional web design for businesses in Erie, Meadville, Warren, Millcreek, and communities across northwest Pennsylvania.',
+    'Professional web design for businesses in Meadville, Warren, Millcreek, and communities across northwest Pennsylvania and beyond.',
   alternates: { canonical: '/locations' },
 };
 
@@ -37,8 +37,8 @@ export default function LocationsIndex() {
                 Web design for northwest Pennsylvania
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-tertiary">
-                We build websites for businesses across Erie County and the surrounding
-                region. Local knowledge, national-caliber design.
+                We build websites for businesses across northwest Pennsylvania and
+                beyond. Local knowledge, national-caliber design.
               </p>
             </AnimateIn>
           </div>

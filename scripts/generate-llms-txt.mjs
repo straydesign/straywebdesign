@@ -48,11 +48,11 @@ function generateLlmsTxt() {
 
   const content = `# Stray Web Design
 
-> Premium web design agency in Erie, PA building websites that outperform your competitors.
+> Premium web design agency building websites that outperform your competitors.
 
 ## About
 
-Stray Web Design builds custom, high-performance websites for Erie, Pennsylvania businesses. We build sites that outperform your competitors — faster than Aspen Dental, Schwab, Carvana, and the national brands your clients compete against. Every site scores 95-100 on Google Lighthouse across all categories.
+Stray Web Design builds custom, high-performance websites for businesses that demand speed, accessibility, and results. We build sites that outperform your competitors — faster than Aspen Dental, Schwab, Carvana, and the national brands your clients compete against. Every site scores 95-100 on Google Lighthouse across all categories.
 
 ## Services
 
@@ -130,11 +130,11 @@ Our custom-built sites eliminate all of these problems. Zero plugins, $100/month
 - Website: https://straywebdesign.co
 - Email: tom@straywebdesign.co
 - Phone: 814-964-0081 (text or voicemail)
-- Location: Erie, PA
+- Based in Pennsylvania, serving clients nationwide
 
 ## Key Differentiators
 
-1. **Erie-Focused**: We understand what Erie businesses are up against
+1. **Client-Focused**: We understand what local businesses are up against
 2. **Lighthouse 100s**: We target perfect scores across all categories
 3. **GEO Optimized**: Generative Engine Optimization for AI assistant visibility
 4. **Full Management**: $100/mo covers hosting, support, SEO, content updates, analytics

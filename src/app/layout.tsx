@@ -14,32 +14,29 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Website Designer in Erie, PA | Stray Web Design',
+  title: 'Stray Web Design | Custom Websites That Convert',
   description:
-    'Erie, PA web developer building websites that load in under a second. No templates, no WordPress. Custom website design — done in 3 days. Free audit.',
+    'Web developer building websites that load in under a second. No templates, no WordPress. Custom website design — done in 3 days. Free audit.',
   keywords: [
     'website designer',
     'website design',
-    'web developer Erie PA',
-    'erie pennsylvania web developer',
-    'web design Erie PA',
-    'Erie web designer',
-    'dental practice website Erie',
-    'financial advisor website Erie',
-    'car dealership website Erie',
-    'IT services website Erie',
-    'chiropractor website Erie',
+    'custom web design',
+    'web developer',
     'fast website',
     'accessible website',
     'AI ready website',
     'Core Web Vitals',
-    'Erie Pennsylvania',
+    'dental practice website',
+    'financial advisor website',
+    'car dealership website',
+    'IT services website',
+    'chiropractor website',
   ],
   metadataBase: new URL('https://straywebdesign.co'),
   openGraph: {
-    title: 'Website Designer in Erie, PA | Stray Web Design',
+    title: 'Stray Web Design | Custom Websites That Convert',
     description:
-      'Erie, PA web developer building websites that load in under a second. No templates, no WordPress. Custom website design — done in 3 days. Free audit.',
+      'Web developer building websites that load in under a second. No templates, no WordPress. Custom website design — done in 3 days. Free audit.',
     url: 'https://straywebdesign.co',
     siteName: 'Stray Web Design',
     locale: 'en_US',
@@ -47,9 +44,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Website Designer in Erie, PA | Stray Web Design',
+    title: 'Stray Web Design | Custom Websites That Convert',
     description:
-      'Erie, PA web developer building websites that load in under a second. No templates, no WordPress. Custom website design — done in 3 days. Free audit.',
+      'Web developer building websites that load in under a second. No templates, no WordPress. Custom website design — done in 3 days. Free audit.',
   },
   alternates: {
     canonical: '/',
@@ -68,7 +65,7 @@ const professionalServiceSchema = {
     email: 'tom@straydesign.co',
     telephone: '814-402-8525',
     description:
-      'Premium web design agency in Erie, PA building fast, accessible, AI-ready websites for local businesses.',
+      'Premium web design agency building fast, accessible, AI-ready websites for businesses that want to grow.',
     priceRange: '$$',
     serviceType: 'Web Design',
     logo: 'https://straywebdesign.co/images/logo-blue-white-square.png',
@@ -80,14 +77,11 @@ const professionalServiceSchema = {
       url: 'https://tomsesler.com',
     },
     areaServed: {
-      '@type': 'City',
-      name: 'Erie',
-      addressRegion: 'PA',
-      addressCountry: 'US',
+      '@type': 'Country',
+      name: 'United States',
     },
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Erie',
       addressRegion: 'PA',
       addressCountry: 'US',
     },
@@ -171,7 +165,7 @@ const webSiteSchema = {
   name: 'Stray Web Design',
   url: 'https://straywebdesign.co',
   description:
-    'Enterprise-grade websites for Erie, PA businesses. Fast, accessible, AI-ready.',
+    'Enterprise-grade websites for businesses that demand speed, accessibility, and AI readiness.',
 };
 
 const organizationSchema = {

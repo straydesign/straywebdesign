@@ -11,7 +11,7 @@ import { ArrowRight } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Industries We Serve — Stray Web Design',
   description:
-    'Custom websites for dental practices, financial advisors, car dealerships, law firms, restaurants, HVAC, and 14 more industries in Erie PA.',
+    'Custom websites for dental practices, financial advisors, car dealerships, law firms, restaurants, HVAC, and 14 more industries.',
   alternates: { canonical: '/industries' },
 };
 

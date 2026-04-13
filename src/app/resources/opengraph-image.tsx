@@ -72,7 +72,7 @@ export default function OGImage() {
             lineHeight: 1.4,
           }}
         >
-          Blogs, white papers, and case studies for Erie businesses
+          Blogs, white papers, and case studies for growing businesses
         </div>
 
         {/* Bottom accent */}

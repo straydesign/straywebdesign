@@ -22,7 +22,7 @@ export default function ResourcesPage() {
             </span>
             <h1 className="font-mono text-3xl font-bold text-text-primary md:text-4xl lg:text-5xl">
               Insights for{' '}
-              <GradientText>Erie Businesses</GradientText>
+              <GradientText>Growing Businesses</GradientText>
             </h1>
             <p className="mt-4 text-lg text-text-secondary">
               Blogs, white papers, and case studies on web performance,

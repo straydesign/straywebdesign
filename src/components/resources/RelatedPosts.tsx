@@ -60,7 +60,6 @@ const TAG_COLORS: Record<string, string> = {
   ROI: 'bg-green-50 text-green-600',
   Comparison: 'bg-surface-sunken text-text-secondary',
   Education: 'bg-blue-50 text-blue-600',
-  'Erie PA': 'bg-teal-50 text-teal-600',
   Strategy: 'bg-indigo-50 text-indigo-600',
 };
 

@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'Stray Web Design — Enterprise-Grade Websites for Erie, PA';
+export const alt = 'Stray Web Design — Custom Websites That Convert';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -66,7 +66,7 @@ export default function OGImage() {
           Websites That Actually Perform
         </div>
 
-        {/* Location */}
+        {/* Tagline accent */}
         <div
           style={{
             fontSize: '16px',
@@ -77,7 +77,7 @@ export default function OGImage() {
             marginBottom: '36px',
           }}
         >
-          Erie, PA
+          straywebdesign.co
         </div>
 
         {/* Services row */}

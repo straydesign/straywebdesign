@@ -132,16 +132,16 @@ export const SERVICES = [
       },
     ],
     keywords: [
-      "custom website design Erie PA",
+      "custom website design",
       "Next.js web development",
       "fast website design",
       "mobile-first web design",
-      "small business website Erie",
-      "professional web design Pennsylvania",
+      "small business website design",
+      "professional web design",
       "hand-coded website",
       "conversion-focused web design",
       "WCAG accessible website",
-      "enterprise web design Erie",
+      "enterprise web design",
     ],
     relatedServices: ["seo-optimization", "landing-pages", "website-management"],
   },
@@ -255,7 +255,7 @@ export const SERVICES = [
       },
     ],
     keywords: [
-      "AI receptionist Erie PA",
+      "AI receptionist for business",
       "AI phone answering service",
       "automated appointment booking",
       "missed call text back",
@@ -319,7 +319,7 @@ export const SERVICES = [
     description:
       "Rank on Google and get recommended by AI assistants. We combine traditional SEO with Generative Engine Optimization — JSON-LD, llms.txt, FAQ schema, and local SEO that puts you in front of customers however they search.",
     longDescription:
-      "SEO is no longer just about Google. 40% of Gen Z uses TikTok and AI chatbots as their primary search tool. When someone asks ChatGPT or Gemini 'best restaurant in Erie' or 'web designer near me,' your business needs to show up. We do traditional SEO — technical audits, keyword strategy, backlink building, local pack optimization — and layer on Generative Engine Optimization (GEO). That means structured data, llms.txt files, FAQ schema, and content architecture that AI systems can parse and recommend. Most businesses optimize for one search engine. We optimize for all of them.",
+      "SEO is no longer just about Google. 40% of Gen Z uses TikTok and AI chatbots as their primary search tool. When someone asks ChatGPT or Gemini 'best restaurant near me' or 'web designer near me,' your business needs to show up. We do traditional SEO — technical audits, keyword strategy, backlink building, local pack optimization — and layer on Generative Engine Optimization (GEO). That means structured data, llms.txt files, FAQ schema, and content architecture that AI systems can parse and recommend. Most businesses optimize for one search engine. We optimize for all of them.",
     features: [
       {
         title: "Technical SEO Audit",
@@ -334,7 +334,7 @@ export const SERVICES = [
       {
         title: "Local SEO & Google Business",
         description:
-          "Google Business Profile optimization, local citation building, review management, and geo-targeted content. Dominate the local map pack in Erie and surrounding areas.",
+          "Google Business Profile optimization, local citation building, review management, and geo-targeted content. Dominate your local map pack and surrounding areas.",
       },
       {
         title: "Keyword Strategy",
@@ -422,9 +422,9 @@ export const SERVICES = [
       },
     ],
     keywords: [
-      "SEO optimization Erie PA",
+      "SEO optimization",
       "generative engine optimization",
-      "local SEO Erie Pennsylvania",
+      "local SEO services",
       "GEO optimization",
       "AI search optimization",
       "Google Business Profile optimization",
@@ -545,7 +545,7 @@ export const SERVICES = [
       },
     ],
     keywords: [
-      "website management Erie PA",
+      "website management service",
       "website maintenance plan",
       "managed website hosting",
       "website support service",
@@ -674,7 +674,7 @@ export const SERVICES = [
       },
     ],
     keywords: [
-      "landing page design Erie PA",
+      "landing page design",
       "high converting landing page",
       "Google Ads landing page",
       "Meta ads landing page",
@@ -803,13 +803,13 @@ export const SERVICES = [
       },
     ],
     keywords: [
-      "Google Analytics setup Erie PA",
+      "Google Analytics setup",
       "GA4 configuration",
       "conversion tracking setup",
       "heatmap analytics",
       "session replay setup",
       "Google Tag Manager setup",
-      "website analytics Erie",
+      "website analytics setup",
       "ad tracking setup",
       "data analytics for small business",
       "website tracking configuration",
@@ -821,7 +821,7 @@ export const SERVICES = [
     name: "Paid Search & Google Ads",
     shortName: "Paid Search",
     description:
-      "Google Ads campaigns built on conversion data, not guesswork. Landing pages, ad copy, tracking, and weekly optimization for Erie PA businesses.",
+      "Google Ads campaigns built on conversion data, not guesswork. Landing pages, ad copy, tracking, and weekly optimization for local businesses.",
     longDescription:
       "Most businesses waste half their ad budget sending traffic to pages that were never designed to convert. We build the full stack — targeted ad copy, dedicated landing pages, conversion tracking, and weekly optimization — so every dollar you spend on Google Ads brings back measurable results. No mystery spend. No vanity metrics. Just qualified leads showing up in your inbox.",
     features: [
@@ -916,11 +916,11 @@ export const SERVICES = [
       },
     ],
     keywords: [
-      "Google Ads management Erie PA",
-      "paid search Erie",
+      "Google Ads management",
+      "paid search management",
       "PPC management",
       "Google Ads agency",
-      "search engine marketing Erie",
+      "search engine marketing",
       "pay per click advertising",
       "landing page optimization",
       "conversion rate optimization",

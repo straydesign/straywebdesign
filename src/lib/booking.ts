@@ -25,13 +25,16 @@ export interface TimeSlot {
 }
 
 export interface BookingPayload {
-  date: string;
+  date?: string;
   time?: string;
-  name: string;
-  email: string;
+  name?: string;
+  email?: string;
   phone?: string;
   company?: string;
   website?: string;
+  /** false when captured from an abandoned form (user didn't submit) */
+  submitted?: boolean;
+  form_type?: string;
   utm_source?: string;
   utm_medium?: string;
   utm_campaign?: string;

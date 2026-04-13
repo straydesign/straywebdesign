@@ -17,6 +17,7 @@ interface BookingContactFormProps {
   onChangeCompany: (v: string) => void;
   onChangeWebsite: (v: string) => void;
   onSubmit: (e: FormEvent) => void;
+  onFieldTouched: () => void;
   submitting: boolean;
   error: string | null;
   selectedDate: string | null;
@@ -35,6 +36,7 @@ export default function BookingContactForm({
   onChangeCompany,
   onChangeWebsite,
   onSubmit,
+  onFieldTouched,
   submitting,
   error,
   selectedDate,
@@ -43,7 +45,7 @@ export default function BookingContactForm({
   const isInitialStep = !selectedDate && !selectedTime;
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} noValidate>
       {/* Only show booking summary if coming back from date/time selection */}
       {!isInitialStep && (
         <div className="mb-5 border border-accent/20 bg-accent/5 px-4 py-3">
@@ -74,14 +76,13 @@ export default function BookingContactForm({
               htmlFor="booking-name"
               className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
             >
-              Name *
+              Name
             </label>
             <input
               id="booking-name"
               type="text"
-              required
               value={name}
-              onChange={(e) => onChangeName(e.target.value)}
+              onChange={(e) => { onChangeName(e.target.value); onFieldTouched(); }}
               className={inputClasses}
               placeholder="Your name"
               autoComplete="name"
@@ -92,14 +93,13 @@ export default function BookingContactForm({
               htmlFor="booking-email"
               className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
             >
-              Email *
+              Email
             </label>
             <input
               id="booking-email"
               type="email"
-              required
               value={email}
-              onChange={(e) => onChangeEmail(e.target.value)}
+              onChange={(e) => { onChangeEmail(e.target.value); onFieldTouched(); }}
               className={inputClasses}
               placeholder="you@business.com"
               autoComplete="email"
@@ -119,7 +119,7 @@ export default function BookingContactForm({
               id="booking-phone"
               type="tel"
               value={phone}
-              onChange={(e) => onChangePhone(e.target.value)}
+              onChange={(e) => { onChangePhone(e.target.value); onFieldTouched(); }}
               className={inputClasses}
               placeholder="(555) 123-4567"
               autoComplete="tel"
@@ -136,7 +136,7 @@ export default function BookingContactForm({
               id="booking-company"
               type="text"
               value={company}
-              onChange={(e) => onChangeCompany(e.target.value)}
+              onChange={(e) => { onChangeCompany(e.target.value); onFieldTouched(); }}
               className={inputClasses}
               placeholder="Your business"
               autoComplete="organization"
@@ -155,13 +155,17 @@ export default function BookingContactForm({
             id="booking-website"
             type="text"
             value={website}
-            onChange={(e) => onChangeWebsite(e.target.value)}
+            onChange={(e) => { onChangeWebsite(e.target.value); onFieldTouched(); }}
             className={inputClasses}
             placeholder="https://yourbusiness.com"
             autoComplete="url"
           />
         </div>
       </div>
+
+      <p className="mt-3 font-mono text-[11px] text-text-tertiary">
+        Just an email or phone number is all we need to get started.
+      </p>
 
       {error && (
         <div role="alert" className="mt-4 font-mono text-sm text-red-500">

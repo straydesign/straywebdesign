@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import { useState, useCallback, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { Send, AlertTriangle, Monitor, Wrench, ShieldCheck } from 'lucide-react';
 import AnimateIn from '@/components/ui/AnimateIn';
@@ -8,6 +8,7 @@ import MagneticButton from '@/components/ui/MagneticButton';
 import GradientText from '@/components/ui/GradientText';
 import { SITE } from '@/lib/constants';
 import { getUtmParams } from '@/hooks/useUtmParams';
+import { usePartialCapture } from '@/hooks/usePartialCapture';
 import { trackLeadConversion } from '@/lib/tracking';
 
 const inputClasses =
@@ -16,22 +17,44 @@ const inputClasses =
 export default function CallLandingForm() {
   const router = useRouter();
   const [status, setStatus] = useState<'idle' | 'sending' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [website, setWebsite] = useState('');
+
+  const getFields = useCallback(
+    () => ({ name, email, phone, website }),
+    [name, email, phone, website]
+  );
+  const { markSubmitted, markTouched } = usePartialCapture({
+    formType: 'partial_abandon',
+    getFields,
+  });
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    const hasEmail = email.trim().length > 0;
+    const hasPhone = phone.trim().length > 0;
+    if (!hasEmail && !hasPhone) {
+      setErrorMsg('Please provide an email address or phone number so we can reach you.');
+      return;
+    }
+    setErrorMsg(null);
     setStatus('sending');
+    markSubmitted();
 
     const utms = getUtmParams();
 
     try {
       const crmPayload = {
-        name,
-        email,
-        website,
+        name: name || undefined,
+        email: email || undefined,
+        phone: phone || undefined,
+        website: website || undefined,
         form_type: 'booking',
+        submitted: true,
         ...utms,
       };
 
@@ -46,11 +69,12 @@ export default function CallLandingForm() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             access_key: SITE.web3formsKey,
-            name,
-            email,
-            website,
+            name: name || '',
+            email: email || '',
+            phone: phone || '',
+            website: website || '',
             from_name: 'straywebdesign.co',
-            subject: `[LP] Strategy Call from ${name}`,
+            subject: `[LP] Strategy Call from ${name || phone || 'Unknown'}`,
           }),
         }),
       ]);
@@ -134,7 +158,7 @@ export default function CallLandingForm() {
                   </p>
                   <p className="font-mono text-sm text-text-secondary">
                     Honest assessment of where you stand. No pitch, no pressure.
-                    We&apos;re based in Erie and we only work with local businesses.
+                    We only work with local businesses ready to grow.
                   </p>
                 </div>
               </div>
@@ -145,6 +169,7 @@ export default function CallLandingForm() {
           <AnimateIn direction="right" delay={0.2}>
               <form
                 onSubmit={handleSubmit}
+                noValidate
                 className="border border-border-default bg-surface-card p-7 md:p-8"
               >
                 <div className="space-y-4">
@@ -153,53 +178,80 @@ export default function CallLandingForm() {
                       htmlFor="lp-call-name"
                       className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
                     >
-                      Name *
+                      Name
                     </label>
                     <input
                       id="lp-call-name"
                       type="text"
-                      required
                       value={name}
-                      onChange={(e) => setName(e.target.value)}
+                      onChange={(e) => { setName(e.target.value); markTouched(); }}
                       className={inputClasses}
                       placeholder="Your name"
                     />
                   </div>
-                  <div>
-                    <label
-                      htmlFor="lp-call-email"
-                      className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
-                    >
-                      Email *
-                    </label>
-                    <input
-                      id="lp-call-email"
-                      type="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className={inputClasses}
-                      placeholder="you@business.com"
-                    />
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label
+                        htmlFor="lp-call-email"
+                        className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
+                      >
+                        Email
+                      </label>
+                      <input
+                        id="lp-call-email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => { setEmail(e.target.value); markTouched(); }}
+                        className={inputClasses}
+                        placeholder="you@business.com"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="lp-call-phone"
+                        className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
+                      >
+                        Phone
+                      </label>
+                      <input
+                        id="lp-call-phone"
+                        type="tel"
+                        value={phone}
+                        onChange={(e) => { setPhone(e.target.value); markTouched(); }}
+                        className={inputClasses}
+                        placeholder="(555) 123-4567"
+                        autoComplete="tel"
+                      />
+                    </div>
                   </div>
                   <div>
                     <label
                       htmlFor="lp-call-website"
                       className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
                     >
-                      Website URL *
+                      Website URL
                     </label>
                     <input
                       id="lp-call-website"
-                      type="url"
-                      required
+                      type="text"
                       value={website}
-                      onChange={(e) => setWebsite(e.target.value)}
+                      onChange={(e) => { setWebsite(e.target.value); markTouched(); }}
                       className={inputClasses}
                       placeholder="https://yourbusiness.com"
                     />
                   </div>
                 </div>
+
+                <p className="mt-3 font-mono text-[11px] text-text-tertiary">
+                  Just an email or phone number is all we need.
+                </p>
+
+                {errorMsg && (
+                  <div role="alert" className="mt-4 flex items-center gap-2 font-mono text-sm text-red-600">
+                    <AlertTriangle className="h-4 w-4" aria-hidden="true" />
+                    {errorMsg}
+                  </div>
+                )}
 
                 {status === 'error' && (
                   <div role="alert" className="mt-4 flex items-center gap-2 font-mono text-sm text-red-600">

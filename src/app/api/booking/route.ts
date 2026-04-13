@@ -13,35 +13,31 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid request body' }, { status: 400 });
   }
 
-  // Validate required fields
+  // Validate: need at least email or phone to reach them
   const { date, time, name, email } = body;
 
-  if (!date || !name || !email) {
+  const hasEmail = email && email.trim().length > 0;
+  const hasPhone = body.phone && body.phone.trim().length > 0;
+
+  if (!hasEmail && !hasPhone) {
     return NextResponse.json(
-      { error: 'Missing required fields: date, name, email' },
+      { error: 'Please provide an email address or phone number' },
       { status: 400 }
     );
   }
 
-  // If no time selected, phone is required so we can text them
-  if (!time && !body.phone) {
-    return NextResponse.json(
-      { error: 'Phone number is required when no time is selected' },
-      { status: 400 }
-    );
+  // Validate email format only if one was provided
+  if (hasEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return NextResponse.json({ error: 'Invalid email address' }, { status: 400 });
   }
 
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+  if (date && !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
     return NextResponse.json({ error: 'Invalid date format' }, { status: 400 });
   }
 
   // Only validate bookable date if a time was selected (specific booking)
-  if (time && !isBookableDate(date)) {
+  if (time && date && !isBookableDate(date)) {
     return NextResponse.json({ error: 'Selected date is not available' }, { status: 400 });
-  }
-
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return NextResponse.json({ error: 'Invalid email address' }, { status: 400 });
   }
 
   // Build CRM payload

@@ -69,7 +69,6 @@ const TAG_COLORS: Record<string, string> = {
   'AI Integration': 'bg-indigo-50 text-indigo-600',
   ROI: 'bg-emerald-50 text-emerald-700',
   Comparison: 'bg-surface-sunken text-text-primary',
-  'Erie PA': 'bg-sky-50 text-sky-700',
   Finance: 'bg-emerald-50 text-emerald-600',
   Manufacturing: 'bg-zinc-100 text-zinc-600',
 };

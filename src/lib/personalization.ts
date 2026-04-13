@@ -3,7 +3,7 @@ export interface PersonalizationContext {
   isReturning: boolean;
   referrerSource: 'google' | 'social' | 'direct' | 'other';
   referrerUrl: string;
-  isLocal: boolean; // Erie/PA area
+  isLocal: boolean;
   geo: { city: string; region: string; country: string };
 }
 
@@ -20,9 +20,7 @@ export function getPersonalizationFromCookies(
   const region = geo[1] ?? '';
   const country = geo[2] ?? '';
 
-  const erieArea = ['Erie', 'Millcreek', 'Harborcreek', 'Fairview', 'Edinboro'];
-  const isLocal =
-    region === 'PA' || erieArea.some((e) => city.toLowerCase().includes(e.toLowerCase()));
+  const isLocal = Boolean(city && region && country === 'US');
 
   return {
     visitCount,
@@ -80,14 +78,16 @@ export function getPersonalizedHeroCopy(ctx: PersonalizationContext): HeroCopy {
       badge: 'Found us on Google? Good taste.',
       headline: 'Websites That Outperform Your Competitors',
       subheadline:
-        "Here's why Erie businesses trust us: enterprise-grade sites at a fraction of the cost.",
+        "Here's why businesses trust us: enterprise-grade sites at a fraction of the cost.",
       cta: 'Get Free Audit',
     };
   }
 
   if (ctx.isLocal) {
     return {
-      badge: `For Practices, Dealerships & Professional Services in ${ctx.geo.city || 'Erie'}`,
+      badge: ctx.geo.city
+        ? `For Practices, Dealerships & Professional Services in ${ctx.geo.city}`
+        : 'For Practices, Dealerships & Professional Services',
       headline: 'Websites That Outperform Your Competitors',
       subheadline:
         'Enterprise-grade sites for practices, firms, and dealerships — at a fraction of the cost.',

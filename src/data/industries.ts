@@ -22,7 +22,7 @@ export const INDUSTRIES: Industry[] = [
     description:
       'Your dental practice competes against corporate chains with million-dollar marketing budgets. A high-converting website turns local searchers into booked appointments before they ever consider Aspen Dental.',
     longDescription:
-      'Every day, potential patients in Erie search "dentist near me" and choose whoever shows up first with a site that looks trustworthy. If that\'s not you, it\'s your competitor. Your website needs to do more than list services — it needs to build trust in under 3 seconds, make booking effortless, and rank above the corporate chains spending 100x your budget on SEO. We build dental websites that convert browsers into patients, with online scheduling, insurance verification prompts, and patient testimonials that do the selling for you.',
+      'Every day, potential patients search "dentist near me" and choose whoever shows up first with a site that looks trustworthy. If that\'s not you, it\'s your competitor. Your website needs to do more than list services — it needs to build trust in under 3 seconds, make booking effortless, and rank above the corporate chains spending 100x your budget on SEO. We build dental websites that convert browsers into patients, with online scheduling, insurance verification prompts, and patient testimonials that do the selling for you.',
     challenges: [
       'Template website that looks identical to three other practices in town',
       'Page load times over 5 seconds killing your Google ranking and bounce rate',
@@ -50,7 +50,7 @@ export const INDUSTRIES: Industry[] = [
       {
         question: 'Will my new website rank above corporate dental chains?',
         answer:
-          'For local searches, absolutely. Corporate chains rank nationally but struggle locally. We optimize for "dentist in Erie PA" and surrounding areas with local SEO, Google Business Profile optimization, and location-specific content.',
+          'For local searches, absolutely. Corporate chains rank nationally but struggle locally. We optimize for "dentist near me" and your surrounding areas with local SEO, Google Business Profile optimization, and location-specific content.',
       },
       {
         question: 'Do I need to write content for the site myself?',
@@ -65,7 +65,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     keywords: [
       'dental website design',
-      'dentist web design Erie PA',
+      'dentist web design',
       'dental practice marketing',
       'dental SEO',
       'dentist online scheduling',
@@ -202,7 +202,7 @@ export const INDUSTRIES: Industry[] = [
       'dealership lead generation',
       'auto dealer website redesign',
       'DMS inventory integration',
-      'car dealership marketing Erie PA',
+      'car dealership marketing',
       'automotive website development',
     ],
     icon: 'Car',
@@ -333,7 +333,7 @@ export const INDUSTRIES: Industry[] = [
       'personal injury lawyer website',
       'law firm digital marketing',
       'attorney client acquisition',
-      'law firm web design Erie PA',
+      'law firm web design',
     ],
     icon: 'Scale',
     patientOrClientTerm: 'clients',
@@ -397,7 +397,7 @@ export const INDUSTRIES: Industry[] = [
       'eye care digital marketing',
       'optometry patient acquisition',
       'optical website redesign',
-      'eye doctor marketing Erie PA',
+      'eye doctor marketing',
       'vision care lead generation',
     ],
     icon: 'Eye',
@@ -463,7 +463,7 @@ export const INDUSTRIES: Industry[] = [
       'chiropractic digital marketing',
       'PT website redesign',
       'chiropractor near me optimization',
-      'physical therapy marketing Erie PA',
+      'physical therapy marketing',
     ],
     icon: 'Activity',
     patientOrClientTerm: 'patients',
@@ -495,7 +495,7 @@ export const INDUSTRIES: Industry[] = [
       {
         question: 'How do you help us compete with hospital systems online?',
         answer:
-          'Hospital websites are massive and impersonal. We build focused, specialty-specific pages that outrank them for targeted searches like "ACL surgeon Erie PA." Smaller sites with better content and faster load times consistently outperform bloated hospital websites in local search.',
+          'Hospital websites are massive and impersonal. We build focused, specialty-specific pages that outrank them for targeted searches like "ACL surgeon near me." Smaller sites with better content and faster load times consistently outperform bloated hospital websites in local search.',
       },
       {
         question: 'Should each surgeon have their own page?',
@@ -528,7 +528,7 @@ export const INDUSTRIES: Industry[] = [
       'spine surgeon website',
       'orthopedic patient acquisition',
       'orthopedic practice website redesign',
-      'orthopedic marketing Erie PA',
+      'orthopedic marketing',
     ],
     icon: 'Bone',
     patientOrClientTerm: 'patients',
@@ -592,7 +592,7 @@ export const INDUSTRIES: Industry[] = [
       'landscaping company website',
       'lawn care digital marketing',
       'landscaping website redesign',
-      'landscaping marketing Erie PA',
+      'landscaping marketing',
       'commercial landscaping website',
     ],
     icon: 'TreePine',
@@ -658,7 +658,7 @@ export const INDUSTRIES: Industry[] = [
       'manufacturing company website',
       'B2B manufacturing marketing',
       'manufacturing website redesign',
-      'industrial marketing Erie PA',
+      'industrial marketing',
     ],
     icon: 'Factory',
     patientOrClientTerm: 'clients',
@@ -722,7 +722,7 @@ export const INDUSTRIES: Industry[] = [
       'restaurant website redesign',
       'bar marketing',
       'restaurant reservation system',
-      'restaurant web design Erie PA',
+      'restaurant web design',
       'restaurant direct ordering website',
     ],
     icon: 'UtensilsCrossed',
@@ -760,7 +760,7 @@ export const INDUSTRIES: Industry[] = [
       {
         question: 'How do you help me rank above Zillow for local searches?',
         answer:
-          'Zillow ranks nationally but can\'t match hyperlocal content. We build neighborhood guides, school district pages, market trend reports, and community content that outranks portals for searches like "homes in Harbor Creek" or "best neighborhoods in Erie PA."',
+          'Zillow ranks nationally but can\'t match hyperlocal content. We build neighborhood guides, school district pages, market trend reports, and community content that outranks portals for searches like "homes in [your neighborhood]" or "best neighborhoods in [your city]."',
       },
       {
         question: 'Can the website integrate with my real estate CRM?',
@@ -787,7 +787,7 @@ export const INDUSTRIES: Industry[] = [
       'realtor lead generation',
       'real estate digital marketing',
       'real estate website redesign',
-      'realtor website Erie PA',
+      'realtor website design',
       'real estate agent personal website',
     ],
     icon: 'Home',
@@ -840,7 +840,7 @@ export const INDUSTRIES: Industry[] = [
       {
         question: 'How important are service area pages?',
         answer:
-          'Extremely important for HVAC. We build pages for every city and neighborhood you serve — "HVAC repair in Millcreek," "furnace installation in Fairview" — each optimized to rank for local emergency searches in that area.',
+          'Extremely important for HVAC. We build pages for every city and neighborhood you serve — "HVAC repair in [your suburb]," "furnace installation in [nearby town]" — each optimized to rank for local emergency searches in that area.',
       },
     ],
     keywords: [
@@ -853,7 +853,7 @@ export const INDUSTRIES: Industry[] = [
       'heating contractor marketing',
       'HVAC digital marketing',
       'HVAC website redesign',
-      'HVAC marketing Erie PA',
+      'HVAC marketing',
     ],
     icon: 'Thermometer',
     patientOrClientTerm: 'customers',
@@ -900,7 +900,7 @@ export const INDUSTRIES: Industry[] = [
       {
         question: 'Can we showcase specific services like drain cleaning, repiping, or water heaters?',
         answer:
-          'Each service gets its own dedicated landing page optimized for search. "Drain cleaning Erie PA," "water heater installation near me" — these are high-intent searches, and each page is designed to rank and convert.',
+          'Each service gets its own dedicated landing page optimized for search. "Drain cleaning [your city]," "water heater installation near me" — these are high-intent searches, and each page is designed to rank and convert.',
       },
       {
         question: 'How important are customer reviews for a plumbing website?',
@@ -918,7 +918,7 @@ export const INDUSTRIES: Industry[] = [
       'emergency plumber marketing',
       'plumbing digital marketing',
       'plumber website redesign',
-      'plumbing marketing Erie PA',
+      'plumbing marketing',
     ],
     icon: 'Wrench',
     patientOrClientTerm: 'customers',
@@ -983,7 +983,7 @@ export const INDUSTRIES: Industry[] = [
       'commercial electrician marketing',
       'electrical digital marketing',
       'electrician website redesign',
-      'electrician marketing Erie PA',
+      'electrician marketing',
     ],
     icon: 'Zap',
     patientOrClientTerm: 'customers',
@@ -1047,7 +1047,7 @@ export const INDUSTRIES: Industry[] = [
       'independent agent website',
       'insurance digital marketing',
       'insurance agency website redesign',
-      'insurance agent marketing Erie PA',
+      'insurance agent marketing',
       'insurance agency growth',
     ],
     icon: 'Shield',
@@ -1113,7 +1113,7 @@ export const INDUSTRIES: Industry[] = [
       'tax accountant marketing',
       'CPA digital marketing',
       'accounting website redesign',
-      'accounting firm marketing Erie PA',
+      'accounting firm marketing',
     ],
     icon: 'Calculator',
     patientOrClientTerm: 'clients',
@@ -1177,7 +1177,7 @@ export const INDUSTRIES: Industry[] = [
       'veterinary digital marketing',
       'animal hospital website',
       'vet clinic website redesign',
-      'veterinary marketing Erie PA',
+      'veterinary marketing',
       'pet care website design',
     ],
     icon: 'Heart',
@@ -1243,7 +1243,7 @@ export const INDUSTRIES: Industry[] = [
       'gym digital marketing',
       'CrossFit website design',
       'gym website redesign',
-      'fitness marketing Erie PA',
+      'fitness marketing',
     ],
     icon: 'Dumbbell',
     patientOrClientTerm: 'members',
@@ -1307,7 +1307,7 @@ export const INDUSTRIES: Industry[] = [
       'spa digital marketing',
       'hair salon website redesign',
       'medspa website design',
-      'salon marketing Erie PA',
+      'salon marketing',
       'beauty industry web design',
     ],
     icon: 'Scissors',

@@ -85,9 +85,8 @@ export default async function ServicePage({
       url: 'https://straywebdesign.co',
     },
     areaServed: {
-      '@type': 'City',
-      name: 'Erie',
-      addressRegion: 'PA',
+      '@type': 'Country',
+      name: 'United States',
     },
     url: `https://straywebdesign.co/services/${slug}`,
   };

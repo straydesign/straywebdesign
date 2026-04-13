@@ -14,6 +14,10 @@ const ChatWidget = dynamic(() => import('@/components/ui/ChatWidget'), {
   ssr: false,
 });
 
+const CookieBanner = dynamic(() => import('@/components/ui/CookieBanner'), {
+  ssr: false,
+});
+
 export default function ClientShell({ children }: { children: ReactNode }) {
   useUtmCapture();
   return (
@@ -45,6 +49,7 @@ export function ClientExtras() {
     <>
       <CustomCursor />
       {showChat && <ChatWidget />}
+      <CookieBanner />
     </>
   );
 }

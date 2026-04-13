@@ -30,7 +30,7 @@ export default function PrivacyPolicy() {
               When you use our website or contact us, we may collect the following information:
             </p>
             <ul className="mt-3 list-inside list-disc space-y-1">
-              <li>Name, email address, and phone number (when you submit a form or book a call)</li>
+              <li>Name, email address, and phone number (when you interact with a form, including partial entries that are not submitted)</li>
               <li>Your website URL (when you request an audit)</li>
               <li>Business name and industry</li>
               <li>Messages you send through our contact forms or chat widget</li>

@@ -33,7 +33,7 @@ export default function Guide() {
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-text-secondary">
                 I&apos;ve audited hundreds of dental offices, financial firms,
-                dealerships, and professional services across Erie. The gap
+                dealerships, and professional services nationwide. The gap
                 between them and enterprise competitors is real — but it&apos;s
                 fixable. You don&apos;t need a corporate budget. You need a
                 builder who understands what high-CLV businesses are up against.

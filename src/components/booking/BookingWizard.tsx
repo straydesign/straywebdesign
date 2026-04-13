@@ -9,6 +9,8 @@ import BookingContactForm from './BookingContactForm';
 import BookingConfirmation from './BookingConfirmation';
 import { getBookableDates, type BookingPayload } from '@/lib/booking';
 import { getUtmParams } from '@/hooks/useUtmParams';
+import { usePartialCapture } from '@/hooks/usePartialCapture';
+import { trackLeadConversion } from '@/lib/tracking';
 import { SITE } from '@/lib/constants';
 
 type Step = 'contact' | 'date' | 'time' | 'confirm' | 'confirmed';
@@ -59,6 +61,16 @@ export default function BookingWizard() {
   // Bookable dates as a Set for fast lookup
   const bookableDates = useMemo(() => new Set(getBookableDates()), []);
 
+  // Partial capture — sends data to CRM if user leaves without submitting
+  const getFields = useCallback(
+    () => ({ name, email, phone, company, website }),
+    [name, email, phone, company, website]
+  );
+  const { markSubmitted, markTouched } = usePartialCapture({
+    formType: 'partial_abandon',
+    getFields,
+  });
+
   const currentStepIndex = STEP_ORDER.indexOf(step);
 
   const goToStep = useCallback((target: Step) => {
@@ -77,12 +89,13 @@ export default function BookingWizard() {
       'https://stray-crm.vercel.app/api/leads/inbound';
 
     const payload = {
-      name,
-      email,
+      name: name || undefined,
+      email: email || undefined,
       phone: phone || undefined,
       company: company || undefined,
       website: website || undefined,
       form_type: 'contact_request',
+      submitted: true,
       ...utms,
     };
 
@@ -109,16 +122,27 @@ export default function BookingWizard() {
       }),
     ]);
 
+    trackLeadConversion({ form_type: 'contact_request' });
     setLeadSaved(true);
   }, [name, email, phone, company, website]);
 
   // Step 1: Contact form submit — save lead, then move to date selection
   const handleContactSubmit = useCallback(async (e: FormEvent) => {
     e.preventDefault();
+
+    // Only require email or phone — not both
+    const hasEmail = email.trim().length > 0;
+    const hasPhone = phone.trim().length > 0;
+    if (!hasEmail && !hasPhone) {
+      setSubmitError('Please provide an email address or phone number so we can reach you.');
+      return;
+    }
+
     setSubmitting(true);
     setSubmitError(null);
 
     try {
+      markSubmitted();
       await saveLead();
       setDirection(1);
       setStep('date');
@@ -127,7 +151,7 @@ export default function BookingWizard() {
     } finally {
       setSubmitting(false);
     }
-  }, [saveLead]);
+  }, [saveLead, email, phone, markSubmitted]);
 
   const handleDateSelect = useCallback((date: string) => {
     setSelectedDate(date);
@@ -284,6 +308,7 @@ export default function BookingWizard() {
               onChangeCompany={setCompany}
               onChangeWebsite={setWebsite}
               onSubmit={handleContactSubmit}
+              onFieldTouched={markTouched}
               submitting={submitting}
               error={submitError}
               selectedDate={null}
