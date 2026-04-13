@@ -21,7 +21,7 @@ const CLIENTS = [
   {
     name: 'TechxRev',
     logo: '/images/clients/techxrev-logo.svg',
-    url: 'https://techxrev.com',
+    url: 'https://techxrev-rebuild.vercel.app',
     width: 360,
     height: 80,
     sizeClass: 'h-9 md:h-11',
