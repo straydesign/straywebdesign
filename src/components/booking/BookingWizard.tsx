@@ -248,36 +248,24 @@ export default function BookingWizard() {
 
   return (
     <div className="border border-border-default bg-surface-card p-6 md:p-8">
-      {/* Step indicator */}
-      {step !== 'confirmed' && step !== 'confirm' && (
+      {/* Step indicator — hidden on initial contact step to reduce perceived commitment */}
+      {step !== 'confirmed' && step !== 'confirm' && step !== 'contact' && (
         <div className="mb-6">
           <div className="flex items-center gap-3">
-            {step !== 'contact' && (
-              <button
-                type="button"
-                onClick={handleBack}
-                className="flex h-7 w-7 items-center justify-center text-text-tertiary transition-colors hover:text-text-primary"
-                aria-label="Go back"
-              >
-                <ArrowLeft className="h-4 w-4" />
-              </button>
-            )}
+            <button
+              type="button"
+              onClick={handleBack}
+              className="flex h-7 w-7 items-center justify-center text-text-tertiary transition-colors hover:text-text-primary"
+              aria-label="Go back"
+            >
+              <ArrowLeft className="h-4 w-4" />
+            </button>
             <div className="flex-1">
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-accent">
-                  Step {currentStepIndex + 1} of 3
-                </span>
-                <span className="font-mono text-[10px] text-text-placeholder">&bull;</span>
-                <span className="font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
-                  {STEP_LABELS[step]}
-                </span>
-              </div>
-              {/* Progress bar */}
+              <span className="font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
+                Optional: {STEP_LABELS[step]}
+              </span>
               <div className="mt-2 h-0.5 w-full bg-border-default">
-                <div
-                  className="h-full bg-accent transition-all duration-300"
-                  style={{ width: `${((currentStepIndex + 1) / 3) * 100}%` }}
-                />
+                <div className="h-full bg-accent transition-all duration-300" style={{ width: '50%' }} />
               </div>
             </div>
           </div>
@@ -318,21 +306,29 @@ export default function BookingWizard() {
 
           {step === 'date' && (
             <div>
-              <p className="mb-2 font-mono text-sm text-text-secondary">
-                Want to schedule a call? Pick a date, or skip and we&apos;ll reach out.
+              <div className="mb-5 border border-accent/20 bg-accent/5 px-4 py-3">
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-accent">
+                  You&apos;re in
+                </p>
+                <p className="mt-1 font-mono text-sm text-text-primary">
+                  We&apos;ll email your audit within 24 hours. Want to book a call too? (Totally optional.)
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={handleSkipDate}
+                className="mb-5 w-full bg-surface-sunken py-2.5 font-mono text-sm font-semibold text-text-primary transition-colors hover:bg-border-default"
+              >
+                No thanks, just email me the audit →
+              </button>
+              <p className="mb-2 font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
+                Or pick a time for a 30-min call
               </p>
               <CalendarPicker
                 selectedDate={selectedDate}
                 onSelectDate={handleDateSelect}
                 bookableDates={bookableDates}
               />
-              <button
-                type="button"
-                onClick={handleSkipDate}
-                className="mt-4 w-full border border-border-default py-2.5 font-mono text-sm text-text-secondary transition-colors hover:border-accent hover:text-text-primary"
-              >
-                Just send me a message first — I'd like to learn more before hopping on a call
-              </button>
             </div>
           )}
 

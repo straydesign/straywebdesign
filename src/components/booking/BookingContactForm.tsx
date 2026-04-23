@@ -1,6 +1,6 @@
 'use client';
 
-import { type FormEvent } from 'react';
+import { useState, type FormEvent } from 'react';
 
 const inputClasses =
   'w-full border border-border-strong bg-surface-sunken px-4 py-3 font-mono text-text-primary placeholder-text-placeholder transition-colors focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none';
@@ -43,10 +43,10 @@ export default function BookingContactForm({
   selectedTime,
 }: BookingContactFormProps) {
   const isInitialStep = !selectedDate && !selectedTime;
+  const [showDetails, setShowDetails] = useState(false);
 
   return (
     <form onSubmit={onSubmit} noValidate>
-      {/* Only show booking summary if coming back from date/time selection */}
       {!isInitialStep && (
         <div className="mb-5 border border-accent/20 bg-accent/5 px-4 py-3">
           <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-accent">
@@ -70,102 +70,112 @@ export default function BookingContactForm({
       )}
 
       <div className="space-y-4">
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div>
-            <label
-              htmlFor="booking-name"
-              className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
-            >
-              Name
-            </label>
-            <input
-              id="booking-name"
-              type="text"
-              value={name}
-              onChange={(e) => { onChangeName(e.target.value); onFieldTouched(); }}
-              className={inputClasses}
-              placeholder="Your name"
-              autoComplete="name"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="booking-email"
-              className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
-            >
-              Email
-            </label>
-            <input
-              id="booking-email"
-              type="email"
-              value={email}
-              onChange={(e) => { onChangeEmail(e.target.value); onFieldTouched(); }}
-              className={inputClasses}
-              placeholder="you@business.com"
-              autoComplete="email"
-            />
-          </div>
-        </div>
-
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div>
-            <label
-              htmlFor="booking-phone"
-              className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
-            >
-              Phone
-            </label>
-            <input
-              id="booking-phone"
-              type="tel"
-              value={phone}
-              onChange={(e) => { onChangePhone(e.target.value); onFieldTouched(); }}
-              className={inputClasses}
-              placeholder="(555) 123-4567"
-              autoComplete="tel"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="booking-company"
-              className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
-            >
-              Business Name
-            </label>
-            <input
-              id="booking-company"
-              type="text"
-              value={company}
-              onChange={(e) => { onChangeCompany(e.target.value); onFieldTouched(); }}
-              className={inputClasses}
-              placeholder="Your business"
-              autoComplete="organization"
-            />
-          </div>
+        <div>
+          <label
+            htmlFor="booking-email"
+            className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
+          >
+            Email
+          </label>
+          <input
+            id="booking-email"
+            type="email"
+            value={email}
+            onChange={(e) => { onChangeEmail(e.target.value); onFieldTouched(); }}
+            className={inputClasses}
+            placeholder="you@business.com"
+            autoComplete="email"
+            autoFocus
+          />
         </div>
 
         <div>
           <label
-            htmlFor="booking-website"
+            htmlFor="booking-name"
             className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
           >
-            Current Website
+            Name <span className="font-normal text-text-tertiary">(optional)</span>
           </label>
           <input
-            id="booking-website"
+            id="booking-name"
             type="text"
-            value={website}
-            onChange={(e) => { onChangeWebsite(e.target.value); onFieldTouched(); }}
+            value={name}
+            onChange={(e) => { onChangeName(e.target.value); onFieldTouched(); }}
             className={inputClasses}
-            placeholder="https://yourbusiness.com"
-            autoComplete="url"
+            placeholder="Your name"
+            autoComplete="name"
           />
         </div>
-      </div>
 
-      <p className="mt-3 font-mono text-[11px] text-text-tertiary">
-        Just an email or phone number is all we need to get started.
-      </p>
+        {!showDetails && (
+          <button
+            type="button"
+            onClick={() => setShowDetails(true)}
+            className="font-mono text-xs text-text-tertiary underline-offset-2 transition-colors hover:text-accent hover:underline"
+          >
+            + Add phone, business, or website (optional)
+          </button>
+        )}
+
+        {showDetails && (
+          <div className="space-y-4 border-l-2 border-border-default pl-4">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label
+                  htmlFor="booking-phone"
+                  className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
+                >
+                  Phone
+                </label>
+                <input
+                  id="booking-phone"
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => { onChangePhone(e.target.value); onFieldTouched(); }}
+                  className={inputClasses}
+                  placeholder="(555) 123-4567"
+                  autoComplete="tel"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="booking-company"
+                  className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
+                >
+                  Business Name
+                </label>
+                <input
+                  id="booking-company"
+                  type="text"
+                  value={company}
+                  onChange={(e) => { onChangeCompany(e.target.value); onFieldTouched(); }}
+                  className={inputClasses}
+                  placeholder="Your business"
+                  autoComplete="organization"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="booking-website"
+                className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
+              >
+                Current Website
+              </label>
+              <input
+                id="booking-website"
+                type="text"
+                value={website}
+                onChange={(e) => { onChangeWebsite(e.target.value); onFieldTouched(); }}
+                className={inputClasses}
+                placeholder="https://yourbusiness.com"
+                autoComplete="url"
+              />
+            </div>
+          </div>
+        )}
+      </div>
 
       {error && (
         <div role="alert" className="mt-4 font-mono text-sm text-red-500">
@@ -184,9 +194,15 @@ export default function BookingContactForm({
             Sending...
           </>
         ) : (
-          isInitialStep ? 'Get Started' : 'Confirm Booking'
+          isInitialStep ? 'Send me the plan →' : 'Confirm Booking'
         )}
       </button>
+
+      {isInitialStep && (
+        <p className="mt-3 text-center font-mono text-[11px] text-text-tertiary">
+          No call required. We&apos;ll come back with a plan for your site within 24 hours.
+        </p>
+      )}
     </form>
   );
 }

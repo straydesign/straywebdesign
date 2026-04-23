@@ -45,7 +45,7 @@ export default function BookingForm() {
                   <div>
                     <p className="font-mono font-semibold text-text-primary">30-Minute Discovery Call</p>
                     <p className="font-mono text-sm text-text-secondary">
-                      Quick, focused conversation about your goals and current site
+                      Quick, focused conversation about the business and what the site needs to do
                     </p>
                   </div>
                 </div>
@@ -54,9 +54,9 @@ export default function BookingForm() {
                     <ArrowRight className="h-4 w-4 text-accent" />
                   </div>
                   <div>
-                    <p className="font-mono font-semibold text-text-primary">Free Lighthouse Audit</p>
+                    <p className="font-mono font-semibold text-text-primary">Written Plan</p>
                     <p className="font-mono text-sm text-text-secondary">
-                      We&apos;ll run a full performance report before the call
+                      Customer, offer, and the one action the site needs to drive
                     </p>
                   </div>
                 </div>

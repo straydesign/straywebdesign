@@ -224,7 +224,11 @@ export const FAQ_ITEMS = [
   },
   {
     question: 'How much does it cost?',
-    answer: 'Projects start at $2,500 for a custom business site with enterprise-grade performance, full accessibility compliance, and AI optimization built in. For context, most traditional agencies charge $5,000-$15,000+ for a comparable site — often without ongoing support. After launch, site management is $100/month — covering hosting on a global CDN, technical support, SEO monitoring, content updates whenever your business evolves, analytics reporting, and ad-ready infrastructure for Google and Meta campaigns. No surprise invoices. No hourly billing for quick changes. Every project starts with a free site audit so you can see exactly where your current site stands before making any commitment.',
+    answer: 'Projects start at $2,500 one-time plus $100/month site management. Essential ($2,500) is a beautiful, fast 3-5 page site for single-location businesses. Complete (starts at $5,000) is a full multi-page site for businesses with multiple locations, booking systems, or more complex needs. No hidden fees. No hourly billing for quick updates. The monthly fee covers hosting, technical support, Google/SEO monitoring, analytics reporting, and up to 2 content updates per month. Want to see what the site should actually do before spending a dollar? Tell me about your business — I\'ll come back in 24 hours with a written plan covering the customer, the offer, and the one action the site needs to drive.',
+  },
+  {
+    question: 'Do I have to pay anything up front?',
+    answer: 'No. You pay $0 to get started. We build your site on our servers, show you the live preview, and make changes until it\'s exactly what you want. You only pay once the site is live and you love it — and the $100/month site management begins the same month. If for any reason it doesn\'t work out, you walk away owing nothing. We host everything ourselves, so the risk is ours, not yours. This is how we prove our work before asking for a dollar.',
   },
 ] as const;
 

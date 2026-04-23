@@ -273,8 +273,9 @@ export default async function IndustryPage({
                 Ready to outperform {industry.competitorExample}?
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-text-tertiary">
-                Free site audit for {industry.name.toLowerCase()}. We&apos;ll show you exactly
-                where you stand vs. the competition — and how a custom site changes the game.
+                Launching a new {industry.name.toLowerCase().replace(/s$/, '')}?
+                Tell us the vision and we&apos;ll come back with a plan for
+                exactly what the site needs to do. Back in 24 hours.
               </p>
               <div className="mt-8">
                 <MagneticButton href="/book" variant="primary">

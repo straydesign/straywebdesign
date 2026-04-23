@@ -223,14 +223,15 @@ export default function Services() {
               01
             </p>
             <h2 className="mt-4 font-mono text-[clamp(2rem,5vw,4rem)] font-bold leading-[1.05] tracking-tight text-text-primary">
-              Performance is not a feature.{' '}
-              <span className="text-text-tertiary">It&apos;s the foundation.</span>
+              Visitors leave in 3 seconds if the site feels slow.{' '}
+              <span className="text-text-tertiary">I build for that.</span>
             </h2>
           </AnimateIn>
           <AnimateIn delay={0.15} className="md:col-span-5 md:pb-2">
             <p className="max-w-md font-mono text-lg leading-relaxed text-text-secondary">
-              Sub-1-second loads. Lighthouse 100s. WCAG AA accessible. Your site
-              will outperform Fortune 500 companies on every metric Google measures.
+              Every second of delay costs you 7% in conversions. Sub-1-second loads,
+              Lighthouse 100s, WCAG AA accessible — so the traffic you already have
+              actually converts.
             </p>
             <Link
               href="/services/website-design"
@@ -278,8 +279,9 @@ export default function Services() {
         <div className="grid items-end gap-8 md:grid-cols-12">
           <AnimateIn className="md:col-span-5 md:pb-2">
             <p className="max-w-md font-mono text-lg leading-relaxed text-text-secondary">
-              Structured data, llms.txt, and GEO mean ChatGPT and Perplexity
-              cite your business — not someone else.
+              When someone asks ChatGPT or Perplexity for a recommendation in your
+              city, your business should be the one they name. Structured data,
+              llms.txt, and GEO make that happen.
             </p>
             <Link
               href="/services/seo-optimization"
@@ -339,15 +341,15 @@ export default function Services() {
               03
             </p>
             <h2 className="mt-4 font-mono text-[clamp(2rem,5vw,4rem)] font-bold leading-[1.05] tracking-tight text-text-primary">
-              Not another flat, slow, boring WordPress.{' '}
-              <span className="text-text-tertiary">A site people remember.</span>
+              You have about 10 seconds to prove you&apos;re worth their time.{' '}
+              <span className="text-text-tertiary">I design for that.</span>
             </h2>
           </AnimateIn>
           <AnimateIn delay={0.15} className="md:col-span-5 md:pb-2">
             <p className="max-w-md font-mono text-lg leading-relaxed text-text-secondary">
-              Custom-built from scratch. State-of-the-art design, fluid motion, and
-              conversion-first architecture for businesses ready to grow beyond
-              word of mouth.
+              Most sites explain what the business does — not why someone should
+              care or take action. Modern design, clear hierarchy, and conversion-first
+              copy so visitors actually pick up the phone.
             </p>
             <Link
               href="/work"

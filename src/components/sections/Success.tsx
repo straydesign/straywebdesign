@@ -16,10 +16,10 @@ export default function Results() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <AnimateIn className="mb-16 max-w-xl">
           <p className="font-mono text-[11px] font-semibold uppercase tracking-widest text-accent">
-            Proven Results
+            What Good Looks Like
           </p>
           <h2 className="mt-3 font-mono text-2xl font-bold text-text-primary md:text-3xl">
-            Real numbers from sites we&apos;ve shipped.
+            The numbers every site I ship is built to hit.
           </h2>
         </AnimateIn>
 

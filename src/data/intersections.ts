@@ -552,8 +552,8 @@ const faqTemplates: FaqTemplate[] = [
     answer: `We build with Next.js — the same technology used by Nike, Hulu, and TikTok — not WordPress or Squarespace. Every site loads in under one second, scores 95+ on Google Lighthouse, and is hand-coded for conversion. We specialize in ${industry} and understand how your customers search, compare, and decide. Most agencies in ${location} sell templates with a logo swap. We build competitive advantages.`,
   }),
   ({ industrySingular, location }) => ({
-    question: `Do I really need a new website, or can you fix my current one?`,
-    answer: `It depends on your current platform. If your site is built on modern technology, we can optimize what you have. If it is on WordPress, Wix, or an outdated builder, the ROI on a rebuild usually outweighs the cost of patching an aging platform. We offer a free audit for ${industrySingular} in ${location} — we will tell you honestly whether a fix or a rebuild makes more sense.`,
+    question: `How does the process start?`,
+    answer: `You tell us about the business — customer, offer, what success looks like. We come back within 24 hours with a written plan for exactly what the site should do before you spend a dollar on design. If it makes sense, we build and launch. Works for ${industrySingular} in ${location} whether you're opening your doors or already operating and want a site that actually converts.`,
   }),
 ];
 

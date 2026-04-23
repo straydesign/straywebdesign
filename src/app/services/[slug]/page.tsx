@@ -346,8 +346,9 @@ export default async function ServicePage({
                 Ready to get started?
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-text-tertiary">
-                Free site audit — we&apos;ll show you exactly where your current site
-                stands and how {service.shortName.toLowerCase()} can transform your business.
+                Tell us about your business and we&apos;ll come back with a plan
+                — with{' '}{service.shortName.toLowerCase()} baked in from day
+                one. Back in 24 hours.
               </p>
               <div className="mt-8">
                 <MagneticButton href="/book" variant="primary">

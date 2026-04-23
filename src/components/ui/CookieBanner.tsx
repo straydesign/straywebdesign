@@ -3,12 +3,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-declare global {
-  interface Window {
-    reb2b?: unknown;
-  }
-}
-
 const STORAGE_KEY = 'stray_cookie_consent';
 
 export default function CookieBanner() {
@@ -33,7 +27,6 @@ export default function CookieBanner() {
     if (typeof window !== 'undefined') {
       window.gtag = undefined;
       window.fbq = undefined;
-      window.reb2b = undefined;
     }
   }
 
@@ -52,34 +45,34 @@ export default function CookieBanner() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 z-[9999] mx-auto max-w-lg border border-border-default bg-surface-card p-4 shadow-lg sm:left-auto sm:right-6 sm:bottom-6">
-      <div className="flex items-start justify-between gap-3">
-        <p className="font-mono text-xs leading-relaxed text-text-secondary">
-          We use cookies for analytics and to personalize your experience.{' '}
+    <div className="fixed bottom-4 left-4 z-[9999] max-w-xs border border-border-default bg-surface-card p-3 shadow-lg sm:bottom-6 sm:left-6">
+      <div className="flex items-start gap-2">
+        <p className="font-mono text-[11px] leading-relaxed text-text-secondary">
+          We use cookies for analytics.{' '}
           <Link href="/privacy" className="text-accent underline hover:text-accent/80">
-            Privacy policy
+            Privacy
           </Link>
         </p>
         <button
           onClick={dismiss}
-          className="shrink-0 p-1 text-text-secondary transition-colors hover:text-text-primary"
+          className="shrink-0 p-0.5 text-text-secondary transition-colors hover:text-text-primary"
           aria-label="Close cookie notice"
         >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5">
             <path d="M1 1l12 12M13 1L1 13" />
           </svg>
         </button>
       </div>
-      <div className="mt-3 flex gap-2">
+      <div className="mt-2 flex gap-1.5">
         <button
           onClick={dismiss}
-          className="flex-1 bg-accent px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wider text-white transition-colors hover:bg-accent/90"
+          className="flex-1 bg-accent px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-white transition-colors hover:bg-accent/90"
         >
-          Got it
+          OK
         </button>
         <button
           onClick={decline}
-          className="flex-1 border border-border-default px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wider text-text-secondary transition-colors hover:border-accent hover:text-text-primary"
+          className="flex-1 border border-border-default px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-text-secondary transition-colors hover:border-accent hover:text-text-primary"
         >
           Opt out
         </button>

@@ -99,11 +99,11 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-text-secondary">
               <li>
                 <a
-                  href="/book"
+                  href={pathname === '/' ? '#contact' : '/#contact'}
                   className="inline-flex items-center gap-2 bg-accent px-4 py-2 font-mono text-sm font-medium text-white transition-colors hover:bg-accent/90"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                  Let&apos;s Talk
+                  Get a Plan
                 </a>
               </li>
               <li className="pt-2">

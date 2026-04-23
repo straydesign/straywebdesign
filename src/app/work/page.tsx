@@ -136,8 +136,8 @@ export default function WorkPage() {
                 Want to see what we&apos;d build for you?
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-text-tertiary">
-                Every project starts with a free site audit. We&apos;ll show you where
-                your current site falls short and what enterprise-grade looks like for your business.
+                Tell us about your business and we&apos;ll come back with a plan
+                for exactly what the site needs to do. Back in 24 hours.
               </p>
               <div className="mt-8">
                 <MagneticButton href="/book" variant="primary">

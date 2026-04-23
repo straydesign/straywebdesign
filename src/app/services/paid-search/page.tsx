@@ -364,9 +364,9 @@ export default function PaidSearchPage() {
                           business="Your Business"
                           headline1="Custom Websites That Convert"
                           headline2="Top-Rated Web Design"
-                          description="Hand-coded, blazing fast websites that turn visitors into customers. 95+ Lighthouse scores. Sub-1s load times. Free site audit — see where you stand."
+                          description="Hand-coded, blazing fast websites that turn visitors into customers. 95+ Lighthouse scores. Sub-1s load times. Let's talk."
                           url="yourbusiness.com"
-                          sitelinks={['Free Audit', 'Our Work', 'Pricing', 'Contact']}
+                          sitelinks={['Get a Plan', 'Our Work', 'Pricing', 'Contact']}
                         />
                         <div className="mt-2 flex items-center gap-1.5 text-xs font-medium text-accent">
                           <Sparkles className="h-3 w-3" />

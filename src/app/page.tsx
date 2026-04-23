@@ -4,7 +4,6 @@ import Footer from '@/components/layout/Footer';
 import SectionKeyboardNav from '@/components/layout/SectionKeyboardNav';
 import Hero from '@/components/sections/Hero';
 import Marquee from '@/components/ui/Marquee';
-import ClientLogos from '@/components/sections/ClientLogos';
 import { FAQ_ITEMS } from '@/lib/constants';
 
 function SectionSkeleton() {
@@ -27,6 +26,9 @@ function SectionSkeleton() {
 const Services = dynamic(() => import('@/components/sections/Services'), {
   loading: SectionSkeleton,
 });
+const Pricing = dynamic(() => import('@/components/sections/Pricing'), {
+  loading: SectionSkeleton,
+});
 const Success = dynamic(() => import('@/components/sections/Success'), {
   loading: SectionSkeleton,
 });
@@ -34,6 +36,9 @@ const SocialProof = dynamic(() => import('@/components/sections/SocialProof'), {
   loading: SectionSkeleton,
 });
 const TechnologyGap = dynamic(() => import('@/components/sections/TechnologyGap'), {
+  loading: SectionSkeleton,
+});
+const CalEmbed = dynamic(() => import('@/components/sections/CalEmbed'), {
   loading: SectionSkeleton,
 });
 const FooterCTA = dynamic(() => import('@/components/sections/FooterCTA'), {
@@ -67,11 +72,12 @@ export default function Home() {
       <main id="main">
         <Hero />
         <Marquee />
-        <ClientLogos />
         <Services />
+        <Pricing />
         <Success />
         <SocialProof />
         <TechnologyGap />
+        <CalEmbed />
         <FooterCTA />
       </main>
       <Footer />

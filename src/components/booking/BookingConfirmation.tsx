@@ -69,12 +69,12 @@ export default function BookingConfirmation({
           {(hasBooking
             ? [
                 'Confirmation text with call details',
-                'Free Lighthouse audit of your current site',
+                "A plan for what the site should actually do",
                 '30-minute discovery call at your scheduled time',
               ]
             : [
                 "We'll reach out to introduce ourselves",
-                'Free Lighthouse audit of your current site',
+                "A plan for what the site should actually do",
                 '30-minute discovery call when it works for you',
               ]
           ).map((item) => (

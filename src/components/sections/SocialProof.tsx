@@ -40,15 +40,15 @@ export default function SocialProof() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <AnimateIn className="mx-auto max-w-3xl text-center">
           <span className="mb-4 inline-block font-mono text-[11px] font-semibold uppercase tracking-wider text-accent">
-            Who We Build For
+            Who This Is For
           </span>
           <h2 className="font-mono text-3xl font-bold text-text-primary md:text-4xl lg:text-5xl">
-            Industries Where{' '}
-            <GradientText>Every Client Counts</GradientText>
+            Businesses where{' '}
+            <GradientText>one customer pays for the site.</GradientText>
           </h2>
           <p className="mt-4 font-mono text-lg text-text-secondary">
-            We work with businesses where a single new patient, client, or
-            contract is worth thousands. The website ROI is immediate.
+            If a single new patient, client, or contract is worth thousands to
+            you, a site that actually converts pays for itself the first month.
           </p>
         </AnimateIn>
 
@@ -60,6 +60,19 @@ export default function SocialProof() {
               <ProfileCard key={i} {...p} />
             ))}
           />
+        </AnimateIn>
+
+        <AnimateIn delay={0.3} className="mt-12 text-center">
+          <p className="font-mono text-sm text-text-secondary">
+            Run one of these? Let&apos;s map out the site.
+          </p>
+          <a
+            href="#contact"
+            className="mt-4 inline-flex items-center gap-2 bg-accent px-6 py-3 font-mono text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-accent/90"
+          >
+            Tell me about your business
+            <ArrowRight className="h-4 w-4" />
+          </a>
         </AnimateIn>
       </div>
     </section>

@@ -66,41 +66,40 @@ export function getPersonalizedHeroCopy(ctx: PersonalizationContext): HeroCopy {
   if (ctx.isReturning) {
     return {
       badge: 'Welcome back',
-      headline: 'Ready to Outperform Your Market?',
+      headline: 'Ready to lock in the plan?',
       subheadline:
-        "You've seen what we do. Let's build something that dominates your market.",
-      cta: 'Start Your Project',
+        "You've seen what we do. Tell me about the business and I'll come back with a plan for the site.",
+      cta: 'Tell me about your business',
     };
   }
 
   if (ctx.referrerSource === 'google') {
     return {
       badge: 'Found us on Google? Good taste.',
-      headline: 'Websites That Outperform Your Market',
+      headline: "Before you spend a dollar on a site — let's talk about what it needs to do.",
       subheadline:
-        "Here's why businesses trust us: enterprise-grade sites at a fraction of the cost.",
-      cta: 'Get Free Audit',
+        "Tell me about your business. I'll come back with a plan for the customer, the offer, and the one action the site needs to drive.",
+      cta: 'Tell me about your business',
     };
   }
 
   if (ctx.isLocal) {
     return {
       badge: ctx.geo.city
-        ? `For Practices, Dealerships & Professional Services in ${ctx.geo.city}`
-        : 'For Practices, Dealerships & Professional Services',
-      headline: 'Websites That Outperform Your Market',
+        ? `Built for ${ctx.geo.city} businesses`
+        : 'Built for local businesses',
+      headline: "Before you spend a dollar on a site — let's talk about what it needs to do.",
       subheadline:
-        'Enterprise-grade sites for practices, firms, and dealerships — at a fraction of the cost.',
-      cta: 'Get Free Audit',
+        "Tell me about your business. I'll come back with a plan for the customer, the offer, and the one action the site needs to drive.",
+      cta: 'Tell me about your business',
     };
   }
 
-  // Default / out-of-area
   return {
-    badge: 'Enterprise-grade web design, anywhere',
-    headline: 'Websites That Outperform Your Market',
+    badge: 'Custom websites, built to convert',
+    headline: "Before you spend a dollar on a site — let's talk about what it needs to do.",
     subheadline:
-      'Enterprise-grade sites for practices, firms, and dealerships — at a fraction of the cost.',
-    cta: 'Get Free Audit',
+      "Tell me about your business. I'll come back with a plan for the customer, the offer, and the one action the site needs to drive.",
+    cta: 'Tell me about your business',
   };
 }

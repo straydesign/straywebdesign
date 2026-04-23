@@ -259,8 +259,9 @@ export default function ServicesIndex() {
                 Ready to stop piecing it together?
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-text-tertiary">
-                Free site audit. We&apos;ll show you where your current site falls short
-                and exactly what a complete web presence looks like for your business.
+                Tell us about your business and we&apos;ll sketch a plan for
+                exactly what the site needs to do. Back in 24 hours. No pitch,
+                no pressure.
               </p>
               <div className="mt-8">
                 <MagneticButton href="/book" variant="primary">

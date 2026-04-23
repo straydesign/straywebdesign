@@ -15,7 +15,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Stray Web Design | Custom Websites That Convert',
   description:
-    'Web developer building websites that load in under a second. No templates, no WordPress. Custom website design — done in 3 days. Free audit.',
+    "Custom websites built to convert. Tell me about your business — I'll come back with a plan for what the site should actually do. Back in 24 hours.",
   keywords: [
     'website designer',
     'website design',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Stray Web Design | Custom Websites That Convert',
     description:
-      'Web developer building websites that load in under a second. No templates, no WordPress. Custom website design — done in 3 days. Free audit.',
+      "Custom websites built to convert. Tell me about your business — I'll come back with a plan for what the site should actually do. Back in 24 hours.",
     url: 'https://straywebdesign.co',
     siteName: 'Stray Web Design',
     locale: 'en_US',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Stray Web Design | Custom Websites That Convert',
     description:
-      'Web developer building websites that load in under a second. No templates, no WordPress. Custom website design — done in 3 days. Free audit.',
+      "Custom websites built to convert. Tell me about your business — I'll come back with a plan for what the site should actually do. Back in 24 hours.",
   },
   alternates: {
     canonical: '/',
@@ -208,9 +208,6 @@ export default function RootLayout({
             {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${process.env.NEXT_PUBLIC_META_PIXEL_ID}');fbq('track','PageView');`}
           </Script>
         )}
-        <Script id="rb2b-pixel" strategy="lazyOnload">
-          {`!function(k){if(window.reb2b)return;window.reb2b={loaded:true};var s=document.createElement("script");s.async=true;s.src="https://ddwl4m2hdecbv.cloudfront.net/b/"+k+"/"+k+".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s,document.getElementsByTagName("script")[0]);}("VN080H3L7K6J");`}
-        </Script>
         <link
           rel="alternate"
           type="application/rss+xml"

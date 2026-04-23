@@ -101,11 +101,11 @@ export default function ArticleLayout({ meta, children, jsonLd, relatedPosts = [
             <hr className="my-10 border-border-default" />
             <div className="border border-border-default/60 bg-light-gray p-8 text-center">
               <h3 className="font-mono text-xl font-bold text-text-primary">
-                Ready to see how your site stacks up?
+                Launching something new?
               </h3>
               <p className="mx-auto mt-2 max-w-md text-sm text-text-secondary">
-                Free Lighthouse audit for your business. We&apos;ll show you
-                exactly where you stand vs. the competition.
+                Tell us what you&apos;re building. We&apos;ll come back with
+                a plan for what the site should actually do.
               </p>
               <div className="mt-6">
                 <MagneticButton href="/book" variant="primary">

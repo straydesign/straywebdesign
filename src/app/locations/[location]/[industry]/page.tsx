@@ -253,8 +253,9 @@ export default async function LocationIndustryPage({
                 Ready to outperform {industry.competitorExample} in {location.name}?
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-text-tertiary">
-                Free site audit for {industry.name.toLowerCase()} in {location.name}. We&apos;ll show
-                you exactly where you stand vs. the local competition.
+                Opening a new {industry.name.toLowerCase().replace(/s$/, '')} in {location.name}?
+                Tell us the vision and we&apos;ll come back with a plan for exactly
+                what the site needs to do. Back in 24 hours.
               </p>
               <div className="mt-8">
                 <MagneticButton href="/book" variant="primary">

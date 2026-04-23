@@ -6,12 +6,12 @@ import BookingForm from '@/components/sections/BookingForm';
 export const metadata: Metadata = {
   title: "Let's Talk — Stray Web Design",
   description:
-    'Tell us about your business. We\'ll reach out with a free site audit and honest assessment of where you stand.',
+    "Tell us about your business. We'll come back with a plan for exactly what the site should do — back in 24 hours. No pitch, no pressure.",
   alternates: { canonical: '/book' },
   openGraph: {
     title: "Let's Talk — Stray Web Design",
     description:
-      'Tell us about your business. Free site audit and honest assessment — no pressure.',
+      "Tell us about your business. We'll come back with a plan for exactly what the site should do — back in 24 hours.",
     url: 'https://straywebdesign.co/book',
     type: 'website',
   },

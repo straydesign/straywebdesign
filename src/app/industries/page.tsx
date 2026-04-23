@@ -83,7 +83,8 @@ export default function IndustriesIndex() {
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-text-tertiary">
                 We build custom websites for any business where customer lifetime
-                value matters. Book a free audit and we&apos;ll show you the opportunity.
+                value matters. Tell us about the business and we&apos;ll come back
+                with a plan. Back in 24 hours.
               </p>
               <div className="mt-8">
                 <MagneticButton href="/book" variant="primary">

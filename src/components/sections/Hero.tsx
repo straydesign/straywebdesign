@@ -10,26 +10,48 @@ import { useClientEnv } from '@/lib/use-client-env';
 /* ── Slide data ────────────────────────────────────────────────── */
 const SLIDES = [
   {
-    badge: 'For Practices, Dealerships & Professional Services',
-    headline: 'Web Design That Outperforms Your Market',
-    body: 'The world is changing rapidly. Your competitors are investing in their online presence — are you ready to compete?',
-    cta: { label: "Let's Talk", href: '/book' },
-  },
-  {
-    badge: 'Enterprise-Grade Web Design',
+    badge: 'Before the site, the plan',
     headline: (
       <>
-        If you can dream it,<br />we can build it.
+        Before you spend a dollar on a site,<br />
+        <span className="text-text-tertiary">figure out what it should actually do.</span>
       </>
     ),
-    body: 'Hand-coded. Zero templates. Every pixel intentional. We build sites that make your competitors wonder who made yours.',
-    cta: { label: 'See Our Work', href: '#services' },
+    body: "Most businesses pay for a site that looks nice and does nothing. The first move isn't design — it's figuring out who it's for and what they need to do once they land on it. I start there.",
+    cta: { label: 'Tell me about your business', href: '#contact' },
   },
   {
-    badge: 'Beyond Just a Website',
-    headline: 'Loyalty programs. Booking systems. Customer portals.',
-    body: 'Points and rewards systems, appointment scheduling, client dashboards, membership tiers — if your business needs it, we build it into your site.',
-    cta: { label: "Let's Talk", href: '/book' },
+    badge: 'What I Actually Do',
+    headline: (
+      <>
+        I build sites<br />
+        <span className="text-text-tertiary">that bring in customers from day one.</span>
+      </>
+    ),
+    body: 'Modern design, conversion-focused copy, direct communication — no agency layers, no templates, no filler. Just websites that actually work.',
+    cta: { label: 'Tell me about your business', href: '#contact' },
+  },
+  {
+    badge: 'Low-Risk Next Step',
+    headline: (
+      <>
+        Walk me through the business.<br />
+        <span className="text-text-tertiary">I&apos;ll sketch the site.</span>
+      </>
+    ),
+    body: "Tell me the customer, the offer, what success looks like in month one. I'll come back with a plan for exactly what the site should do. No pressure, no pitch — if it makes sense afterward, we can go from there.",
+    cta: { label: 'Tell me about your business', href: '#contact' },
+  },
+  {
+    badge: 'Who This Is For',
+    headline: (
+      <>
+        Running a local business?<br />
+        <span className="text-text-tertiary">Let&apos;s make the site actually work.</span>
+      </>
+    ),
+    body: 'Service businesses, shops, studios, restaurants — anything that lives on local word-of-mouth. I build the site that turns that word-of-mouth into bookings, calls, and walk-ins.',
+    cta: { label: 'Tell me about your business', href: '#contact' },
   },
 ] as const;
 
@@ -174,10 +196,14 @@ function SlideContent({ index }: { index: number }) {
             {slide.body}
           </p>
 
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col items-start gap-3">
             <MagneticButton href={slide.cta.href} variant="primary" size="lg">
               {slide.cta.label}
             </MagneticButton>
+            <p className="font-mono text-xs text-text-tertiary">
+              <span className="font-semibold text-accent">Fast turnaround.</span>{' '}
+              Direct communication. $0 up front — pay only when your site is live and you love it.
+            </p>
           </div>
         </div>
 
@@ -188,6 +214,30 @@ function SlideContent({ index }: { index: number }) {
           </AnimateIn>
         )}
       </div>
+
+      {/* Mobile proof strip — first slide only */}
+      {index === 0 && (
+        <div className="mt-10 grid grid-cols-3 gap-4 border-t border-border-default pt-6 lg:hidden">
+          <div>
+            <p className="font-mono text-2xl font-bold text-text-primary">96+</p>
+            <p className="mt-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
+              Lighthouse
+            </p>
+          </div>
+          <div>
+            <p className="font-mono text-2xl font-bold text-text-primary">0.8s</p>
+            <p className="mt-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
+              Load time
+            </p>
+          </div>
+          <div>
+            <p className="font-mono text-2xl font-bold text-text-primary">100</p>
+            <p className="mt-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
+              Accessibility
+            </p>
+          </div>
+        </div>
+      )}
     </motion.div>
   );
 }

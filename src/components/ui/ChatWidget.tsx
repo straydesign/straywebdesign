@@ -16,7 +16,7 @@ export default function ChatWidget() {
     {
       role: 'assistant',
       content:
-        "Hey, thanks for checking out the site. I'm Tom — if you have any questions about what we do or want to talk through your project, fire away.",
+        "Hey — I'm an AI assistant trained on Stray Web Design's services. I can answer questions about what we do, pricing, and timelines, or connect you with Tom directly. What's on your mind?",
     },
   ]);
   const [input, setInput] = useState('');
@@ -165,10 +165,18 @@ export default function ChatWidget() {
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-border-default bg-surface-page px-4 py-3">
-              <div className="flex items-center gap-2">
-                <div className="h-2 w-2 rounded-full bg-emerald-400" />
-                <span className="text-sm font-semibold text-text-primary">
-                  Tom — Stray Web Design
+              <div className="flex flex-col gap-0.5">
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-2 rounded-full bg-emerald-400" />
+                  <span className="text-sm font-semibold text-text-primary">
+                    Stray Assistant
+                  </span>
+                  <span className="rounded-sm bg-surface-sunken px-1.5 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider text-text-tertiary">
+                    AI
+                  </span>
+                </div>
+                <span className="font-mono text-[10px] text-text-tertiary">
+                  Automated. Asks Tom when needed.
                 </span>
               </div>
               <button
