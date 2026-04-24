@@ -118,7 +118,7 @@ export const SERVICES = [
       {
         question: "What does a custom website cost?",
         answer:
-          "Projects start at $2,500 for a clean, fast, conversion-focused site. Larger projects with e-commerce, custom apps, or complex integrations scale from there. Every dollar goes into code that works — not template markup.",
+          "Projects start at $1,500 for a simple site and typically land around $2,500 for a conversion-focused build. Larger projects with e-commerce, custom apps, or complex integrations scale from there. Every dollar goes into code that works — not template markup.",
       },
       {
         question: "Can I edit the site myself after launch?",

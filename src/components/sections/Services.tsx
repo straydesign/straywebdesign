@@ -453,7 +453,7 @@ export default function Services() {
         <AnimateIn delay={0.2} className="mt-16 md:mt-20">
           <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:gap-8">
             <p className="font-mono text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-none tracking-tighter text-text-primary">
-              $2,500
+              $1,500+
             </p>
             <div>
               <p className="font-mono text-lg text-text-secondary">

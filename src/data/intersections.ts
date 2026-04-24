@@ -525,7 +525,7 @@ type FaqTemplate = (params: {
 const faqTemplates: FaqTemplate[] = [
   ({ industry, location }) => ({
     question: `How much does web design for ${industry} cost in ${location}, PA?`,
-    answer: `Our projects for ${industry} in ${location} start at $2,500 for a conversion-focused site with online scheduling, mobile optimization, and local SEO. Larger projects with custom integrations, patient portals, or e-commerce typically range from $5,000 to $15,000. Every dollar goes into hand-coded performance — not template markup.`,
+    answer: `Projects for ${industry} in ${location} start at $1,500 for a simple, straightforward site and typically land around $2,500 for a conversion-focused site with online scheduling, mobile optimization, and local SEO. Larger projects with custom integrations, patient portals, or e-commerce typically range from $5,000 to $15,000. Every dollar goes into hand-coded performance — not template markup.`,
   }),
   ({ industrySingular, location }) => ({
     question: `How long does it take to build a website for ${industrySingular} in ${location}?`,

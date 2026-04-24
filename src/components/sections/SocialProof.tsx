@@ -43,12 +43,12 @@ export default function SocialProof() {
             Who This Is For
           </span>
           <h2 className="font-mono text-3xl font-bold text-text-primary md:text-4xl lg:text-5xl">
-            Businesses where{' '}
-            <GradientText>one customer pays for the site.</GradientText>
+            Built for businesses where{' '}
+            <GradientText>the site needs to pull its weight.</GradientText>
           </h2>
           <p className="mt-4 font-mono text-lg text-text-secondary">
-            If a single new patient, client, or contract is worth thousands to
-            you, a site that actually converts pays for itself the first month.
+            Bookings, calls, form fills, foot traffic, orders — whatever the
+            site needs to drive, we build it to drive that.
           </p>
         </AnimateIn>
 

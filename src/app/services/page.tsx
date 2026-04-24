@@ -12,7 +12,7 @@ import GradientText from '@/components/ui/GradientText';
 export const metadata: Metadata = {
   title: 'Services — Stray Web Design',
   description:
-    'One partner for your entire web presence. Custom website, SEO, AI readiness, hosting, and ongoing management — all handled. $2,500 to launch, $100/mo after.',
+    'One partner for your entire web presence. Custom website, SEO, AI readiness, hosting, and ongoing management — all handled. Starts at $1,500 to launch, $100/mo after.',
   alternates: { canonical: '/services' },
 };
 
@@ -230,7 +230,7 @@ export default function ServicesIndex() {
               </p>
               <div className="mt-6 flex flex-col gap-2 md:flex-row md:items-baseline md:gap-8">
                 <p className="font-mono text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-none tracking-tight text-text-primary">
-                  $2,500
+                  $1,500+
                 </p>
                 <div>
                   <p className="text-lg text-text-secondary">

@@ -22,19 +22,19 @@ const TIERS: readonly Tier[] = [
   {
     name: 'Essential',
     tagline: 'For single-location businesses',
-    price: '$2,500',
-    priceNote: 'one-time',
+    price: '$1,500',
+    priceNote: 'starts at',
     monthly: '$100',
     monthlyNote: '/mo once live',
     blurb:
-      'A beautiful, fast marketing site with everything your customers need to find you, trust you, and call you.',
+      'A beautiful, fast marketing site with everything your customers need to find you, trust you, and call you. Simple sites start at $1,500; most land around $2,500.',
     features: [
-      'Custom-designed 3-5 page site',
+      'Custom-designed site (1–5 pages, scoped to you)',
+      'Custom CMS — edit any content yourself, anytime',
       'Mobile-friendly, accessible, 95+ Google Lighthouse',
-      'Contact info, hours, services, photos',
       'Google Maps + click-to-call built in',
-      'Local SEO + AI search optimization included',
-      'Built and live in about a week',
+      'Local SEO + AI search optimization',
+      'Unlimited structural changes + ongoing improvements',
     ],
     cta: 'Get started',
     highlight: true,
@@ -65,17 +65,18 @@ const TIERS: readonly Tier[] = [
     tagline: 'For multi-location or complex businesses',
     price: '$5,000',
     priceNote: 'starts at',
-    monthly: '$100',
+    monthly: '$200',
     monthlyNote: '/mo once live',
     blurb:
-      'A full multi-page site for businesses with multiple locations, services, or booking needs.',
+      'Everything in Essential, sized for larger businesses with more traffic, more data, and faster turnaround needs.',
     features: [
+      'Everything in Essential — CMS, structural changes, improvements',
       'Unlimited pages, organized by location or service',
       'Online booking / appointment system',
       'Customer CRM + email follow-up',
       'Landing pages for ads & promotions',
       'Optional AI phone answering (24/7)',
-      'Ready to scale with your business',
+      'Priority turnaround on time-sensitive changes',
     ],
     cta: 'Talk to us',
     highlight: false,
@@ -206,19 +207,30 @@ export default function Pricing() {
         <AnimateIn delay={0.4} className="mt-10">
           <div className="mx-auto max-w-3xl border border-border-default bg-surface-card p-6 md:p-8">
             <p className="font-mono text-sm font-semibold uppercase tracking-wider text-accent">
-              What the monthly fee covers
+              What the monthly fee covers (both tiers)
             </p>
             <p className="mt-2 font-mono text-sm leading-relaxed text-text-secondary">
-              The $100/month site management fee starts the month your site goes
-              live. It covers hosting, domain renewals, security
-              patches, Google/SEO monitoring, analytics reports, and{' '}
+              Hosting, deploy pipeline, database (where needed), your custom
+              CMS, SEO/analytics monitoring, and{' '}
               <span className="font-semibold text-text-primary">
-                up to 2 content updates a month
+                unlimited structural changes + ongoing improvement suggestions
               </span>
-              . When your site breaks at 9pm on a Tuesday, you call a guy in Erie —
-              not a ticket queue.
+              . Flat rate — reach out as often as you need.
+            </p>
+            <p className="mt-4 font-mono text-sm leading-relaxed text-text-secondary">
+              <span className="font-semibold text-text-primary">
+                Why Complete is $200:
+              </span>{' '}
+              larger businesses push more traffic, more data, and more database
+              load through the stack — and they need priority turnaround on
+              time-sensitive changes. The higher rate reflects the actual cost
+              of running it and the urgency that comes with it.
             </p>
           </div>
+          <p className="mx-auto mt-6 max-w-3xl text-center font-mono text-sm text-text-tertiary">
+            Your site breaks at 9pm on a Tuesday? You call a guy in Erie — not a
+            ticket queue.
+          </p>
           <p className="mt-6 text-center font-mono text-sm text-text-tertiary">
             Tell me about your business and I&apos;ll come back with a plan for
             exactly what the site should do. Back in 24 hours. No pressure.
