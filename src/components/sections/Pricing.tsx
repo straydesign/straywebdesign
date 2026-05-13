@@ -27,7 +27,7 @@ const TIERS: readonly Tier[] = [
     monthly: '$100',
     monthlyNote: '/mo once live',
     blurb:
-      'A beautiful, fast marketing site with everything your customers need to find you, trust you, and call you. Simple sites start at $1,500; most land around $2,500.',
+      'A fast, custom site with everything customers need to find you and call you. Most land around $2,500.',
     features: [
       'Custom-designed site (1–5 pages, scoped to you)',
       'Custom CMS — edit any content yourself, anytime',
@@ -48,7 +48,7 @@ const TIERS: readonly Tier[] = [
     monthly: 'TBD',
     monthlyNote: 'scoped with you',
     blurb:
-      "Tell me what you need and I'll build a package that fits. Direct communication, fast turnaround, and real prices — no layers, no upsells.",
+      "Tell me what you need. I'll build a package that fits — no layers, no upsells.",
     features: [
       'I listen first, quote second',
       'Pick and choose from any feature',
@@ -68,7 +68,7 @@ const TIERS: readonly Tier[] = [
     monthly: '$200',
     monthlyNote: '/mo once live',
     blurb:
-      'Everything in Essential, sized for larger businesses with more traffic, more data, and faster turnaround needs.',
+      'Everything in Essential, sized for larger businesses and priority turnaround.',
     features: [
       'Everything in Essential — CMS, structural changes, improvements',
       'Unlimited pages, organized by location or service',
@@ -101,9 +101,7 @@ export default function Pricing() {
             <GradientText>No surprises.</GradientText>
           </h2>
           <p className="mt-4 font-mono text-lg text-text-secondary">
-            You don&apos;t need a full agency to fix your website — you need someone
-            who understands what actually makes people take action. That&apos;s what
-            I focus on, at a price that makes sense.
+            You don&apos;t need an agency — you need someone who builds sites that convert.
           </p>
         </AnimateIn>
 
@@ -115,9 +113,7 @@ export default function Pricing() {
                 $0 up front. Pay when you love it.
               </p>
               <p className="mt-2 font-mono text-sm leading-relaxed text-text-secondary">
-                We build your site on our servers, show it to you, and make changes
-                until you&apos;re happy. You only pay once it&apos;s live and you&apos;re
-                thrilled with the result. If it&apos;s not right, you owe us nothing.
+                We build on our servers. You only pay when it&apos;s live and you love it. Not right? Owe nothing.
               </p>
             </div>
           </div>
@@ -207,33 +203,15 @@ export default function Pricing() {
         <AnimateIn delay={0.4} className="mt-10">
           <div className="mx-auto max-w-3xl border border-border-default bg-surface-card p-6 md:p-8">
             <p className="font-mono text-sm font-semibold uppercase tracking-wider text-accent">
-              What the monthly fee covers (both tiers)
+              What the monthly covers
             </p>
             <p className="mt-2 font-mono text-sm leading-relaxed text-text-secondary">
-              Hosting, deploy pipeline, database (where needed), your custom
-              CMS, SEO/analytics monitoring, and{' '}
-              <span className="font-semibold text-text-primary">
-                unlimited structural changes + ongoing improvement suggestions
-              </span>
-              . Flat rate — reach out as often as you need.
-            </p>
-            <p className="mt-4 font-mono text-sm leading-relaxed text-text-secondary">
-              <span className="font-semibold text-text-primary">
-                Why Complete is $200:
-              </span>{' '}
-              larger businesses push more traffic, more data, and more database
-              load through the stack — and they need priority turnaround on
-              time-sensitive changes. The higher rate reflects the actual cost
-              of running it and the urgency that comes with it.
+              Hosting, custom CMS, SEO/analytics, and{' '}
+              <span className="font-semibold text-text-primary">unlimited structural changes</span>. Flat rate.
             </p>
           </div>
           <p className="mx-auto mt-6 max-w-3xl text-center font-mono text-sm text-text-tertiary">
-            Your site breaks at 9pm on a Tuesday? You call a guy in Erie — not a
-            ticket queue.
-          </p>
-          <p className="mt-6 text-center font-mono text-sm text-text-tertiary">
-            Tell me about your business and I&apos;ll come back with a plan for
-            exactly what the site should do. Back in 24 hours. No pressure.
+            Site breaks at 9pm? You call a guy in Erie — not a ticket queue.
           </p>
         </AnimateIn>
       </div>

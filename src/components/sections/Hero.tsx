@@ -17,7 +17,7 @@ const SLIDES = [
         <span className="text-text-tertiary">figure out what it should actually do.</span>
       </>
     ),
-    body: "Most businesses pay for a site that looks nice and does nothing. The first move isn't design — it's figuring out who it's for and what they need to do once they land on it. I start there.",
+    body: "Most sites look nice and do nothing. The first move isn't design — it's figuring out what the site needs to do. I start there.",
     cta: { label: 'Tell me about your business', href: '#contact' },
   },
   {
@@ -39,7 +39,7 @@ const SLIDES = [
         <span className="text-text-tertiary">I&apos;ll sketch the site.</span>
       </>
     ),
-    body: "Tell me the customer, the offer, what success looks like in month one. I'll come back with a plan for exactly what the site should do. No pressure, no pitch — if it makes sense afterward, we can go from there.",
+    body: "Tell me the customer and the offer. I'll come back with a plan for what the site should do. No pitch.",
     cta: { label: 'Tell me about your business', href: '#contact' },
   },
   {
@@ -50,7 +50,7 @@ const SLIDES = [
         <span className="text-text-tertiary">Let&apos;s make the site actually work.</span>
       </>
     ),
-    body: 'Service businesses, shops, studios, restaurants — anything that lives on local word-of-mouth. I build the site that turns that word-of-mouth into bookings, calls, and walk-ins.',
+    body: 'Service businesses, shops, studios, restaurants. I build the site that turns word-of-mouth into bookings.',
     cta: { label: 'Tell me about your business', href: '#contact' },
   },
 ] as const;
@@ -72,23 +72,19 @@ const LIGHTHOUSE_COMPARISONS = [
 const SCORE_EXPLANATIONS = [
   {
     label: 'Performance',
-    description:
-      'How fast your site loads. Every second of delay costs you 7% in conversions. Sites scoring below 50 lose the majority of mobile visitors before they see a single word.',
+    description: 'How fast your site loads. Every second of delay costs 7% in conversions.',
   },
   {
     label: 'Accessibility',
-    description:
-      'Whether everyone can use your site — including the 1 in 4 adults with a disability. Low scores mean broken forms, unreadable text, and potential ADA lawsuits. Over 4,100 were filed in 2024.',
+    description: 'Whether everyone can use your site. Low scores risk ADA lawsuits.',
   },
   {
     label: 'Best Practices',
-    description:
-      'Security, modern code standards, and browser compatibility. Low scores signal outdated technology, missing HTTPS, and vulnerabilities that put your business at risk.',
+    description: 'Security, modern code, browser compatibility. Low scores signal outdated tech.',
   },
   {
     label: 'SEO',
-    description:
-      'How visible you are to Google and AI search. Missing meta tags, broken heading structure, and no structured data mean you rank below competitors who have them.',
+    description: 'Visibility to Google and AI search. Missing tags = rank below competitors.',
   },
 ];
 
@@ -151,7 +147,7 @@ function LighthouseComparison() {
           >
             <div className="border border-border-default bg-surface-card p-5">
               <p className="mb-4 font-mono text-sm text-text-tertiary">
-                These are Google Lighthouse scores — the same audit Google uses to rank your site. Higher scores mean more traffic, more trust, and more customers.
+                Google Lighthouse scores. Higher = more traffic, more trust.
               </p>
               <div className="space-y-3">
                 {SCORE_EXPLANATIONS.map((item) => (
@@ -201,8 +197,8 @@ function SlideContent({ index }: { index: number }) {
               {slide.cta.label}
             </MagneticButton>
             <p className="font-mono text-xs text-text-tertiary">
-              <span className="font-semibold text-accent">Fast turnaround.</span>{' '}
-              Direct communication. $0 up front — pay only when your site is live and you love it.
+              <span className="font-semibold text-accent">$0 up front.</span>{' '}
+              Pay only when your site is live.
             </p>
           </div>
         </div>

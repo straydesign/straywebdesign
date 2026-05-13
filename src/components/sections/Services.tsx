@@ -5,7 +5,6 @@ import { ArrowRight, X } from 'lucide-react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import AnimateIn from '@/components/ui/AnimateIn';
-import GradientText from '@/components/ui/GradientText';
 
 interface TagInfo {
   label: string;
@@ -17,147 +16,147 @@ interface TagInfo {
 const PERFORMANCE_TAGS: TagInfo[] = [
   {
     label: 'Sub-1s LCP',
-    what: 'Largest Contentful Paint — the time it takes for the main content on your page to become visible.',
-    standard: 'Most local business sites load in 4-8 seconds. Google considers anything over 2.5s a poor experience.',
-    ours: 'Our sites render the main content in under 1 second. That means visitors see your page before they even think about hitting the back button.',
+    what: 'Time until main content is visible.',
+    standard: 'Most local sites: 4–8 seconds.',
+    ours: 'Under 1 second.',
   },
   {
     label: 'Global CDN',
-    what: 'Content Delivery Network — your site is served from hundreds of locations worldwide, not a single server.',
-    standard: 'Most small business sites run on a single shared hosting server, often in one city. Distance = delay.',
-    ours: 'Your site is cached at 300+ edge locations globally. Your visitors get sub-second speed whether they\'re across town or across the world.',
+    what: 'Served from 300+ edge locations worldwide.',
+    standard: 'Single shared server in one city.',
+    ours: 'Sub-second loads everywhere.',
   },
   {
     label: 'WCAG AA',
-    what: 'Web Content Accessibility Guidelines — the international standard for making websites usable by people with disabilities.',
-    standard: '96% of the top million websites have accessibility failures. Most local business sites have never been audited.',
-    ours: 'Every page meets WCAG AA compliance — proper contrast ratios, keyboard navigation, screen reader support, and semantic markup.',
+    what: 'International accessibility standard.',
+    standard: '96% of top sites fail this.',
+    ours: 'Contrast, keyboard nav, screen readers, semantic markup.',
   },
   {
     label: 'Core Web Vitals',
-    what: 'Google\'s three key metrics for page experience: loading speed (LCP), interactivity (INP), and visual stability (CLS).',
-    standard: 'Only 42% of websites pass all three Core Web Vitals thresholds. It\'s a direct Google ranking signal.',
-    ours: 'We pass all three with room to spare. Green scores across the board — not borderline, not "good enough."',
+    what: 'Google\'s ranking metrics for page experience.',
+    standard: 'Only 42% of sites pass all three.',
+    ours: 'All green, with room to spare.',
   },
   {
     label: 'Mobile-First',
-    what: 'Designing for phones first, then scaling up to desktop — because that\'s how most people browse.',
-    standard: 'Many agencies still design on desktop and "make it responsive" as an afterthought. Mobile layouts get squeezed and broken.',
-    ours: 'Every component starts as a mobile design. Touch targets, scroll behavior, and readability are optimized for the device 60%+ of your visitors actually use.',
+    what: 'Designed for phones, scaled up to desktop.',
+    standard: 'Most sites: designed on desktop, squeezed onto mobile.',
+    ours: 'Mobile-first. Optimized for 60%+ of your traffic.',
   },
   {
     label: 'Semantic HTML',
-    what: 'Using the correct HTML elements for their intended purpose — headings, navigation, articles, buttons — so browsers, screen readers, and search engines understand your content.',
-    standard: 'Template builders wrap everything in generic divs. Google and AI assistants can\'t tell your nav from your footer.',
-    ours: 'Proper heading hierarchy, landmark regions, and structured elements. Search engines and AI assistants can parse every section of your site.',
+    what: 'Correct elements so machines understand your content.',
+    standard: 'Template builders wrap everything in generic divs.',
+    ours: 'Proper hierarchy. Search and AI parse every section.',
   },
   {
     label: 'Zero Plugins',
-    what: 'No third-party plugins or extensions that slow your site down and create security vulnerabilities.',
-    standard: 'The average WordPress site runs 13 active plugins. Each one adds load time, security risk, and maintenance overhead.',
-    ours: 'Everything is custom-built. No plugin chain, no dependency bloat, no attack surface. Just clean code that does exactly what it needs to.',
+    what: 'No third-party plugins slowing the site or opening security holes.',
+    standard: 'Average WordPress site: 13 active plugins.',
+    ours: 'Custom-built. No plugin chain, no attack surface.',
   },
   {
     label: 'Hand-Coded',
-    what: 'Every line of code is written specifically for your business — no page builders, no drag-and-drop templates.',
-    standard: 'Most agencies use WordPress themes or page builders that generate bloated, generic code. You get the same site as everyone else.',
-    ours: 'Custom React components, optimized for your content. No unused CSS, no render-blocking scripts, no code you don\'t need.',
+    what: 'Every line written for your business.',
+    standard: 'WordPress themes generate bloated, generic code.',
+    ours: 'Custom React, no unused CSS, no render-blocking scripts.',
   },
 ];
 
 const DESIGN_TAGS: TagInfo[] = [
   {
     label: 'Zero Templates',
-    what: 'Every site is designed and coded from scratch. No themes, no page builders, no drag-and-drop.',
-    standard: 'Most agencies start from a $59 ThemeForest template and customize the colors. You get the same layout as thousands of other businesses.',
-    ours: 'Your site is one of one. Every layout, every component, every interaction is built specifically for your business and your customers.',
+    what: 'Designed and coded from scratch.',
+    standard: 'Most agencies start from a $59 ThemeForest template.',
+    ours: 'One of one. Built for your business.',
   },
   {
     label: 'Custom Design',
-    what: 'Original visual design tailored to your brand — not a generic template with your logo dropped in.',
-    standard: 'WordPress themes ship with preset layouts. Agencies swap the logo, change the hero image, and call it "custom." You can spot the template from a mile away.',
-    ours: 'We design around your brand, your audience, and your market position. The result looks like nothing else in your industry — because it isn\'t.',
+    what: 'Original visual design tailored to your brand.',
+    standard: 'WordPress themes with a logo swap.',
+    ours: 'Designed around your brand, audience, and market position.',
   },
   {
     label: 'Motion & Interaction',
-    what: 'Purposeful animations and micro-interactions that guide attention and make the experience feel alive.',
-    standard: 'Template sites are static pages. Maybe a fade-in. The experience feels flat and forgettable.',
-    ours: 'Scroll-driven animations, hover states, page transitions, and interactive elements that make visitors want to keep exploring.',
+    what: 'Purposeful animation that guides attention.',
+    standard: 'Static pages, maybe a fade-in.',
+    ours: 'Scroll-driven reveals, hover states, page transitions.',
   },
   {
     label: 'Beyond Referrals',
-    what: 'A website that actively generates leads — not just a digital business card collecting dust.',
-    standard: 'Most local business sites get built and forgotten. They exist, but they don\'t work. New customers still come from word of mouth alone.',
-    ours: 'Your site becomes a growth channel. SEO, structured data, and conversion-optimized layouts bring in customers who\'ve never heard of you.',
+    what: 'A site that actively generates leads.',
+    standard: 'Most local sites get built and forgotten.',
+    ours: 'SEO + structured data + conversion-first layouts.',
   },
   {
     label: 'First Impression',
-    what: 'Visitors judge your business in 0.05 seconds based on your website. That snap judgment determines whether they stay or bounce.',
-    standard: 'A slow, dated WordPress site tells visitors your business is behind the times — even if it isn\'t. 75% of users judge credibility by design alone.',
-    ours: 'Sub-second loads, polished design, and fluid interactions signal that your business is modern, professional, and worth their time.',
+    what: 'Visitors judge your business in 0.05 seconds.',
+    standard: 'Slow, dated sites signal you\'re behind.',
+    ours: 'Sub-second loads and polished design signal modern.',
   },
   {
     label: 'Conversion-First',
-    what: 'Every design decision serves a business goal — driving calls, bookings, form submissions, or foot traffic.',
-    standard: 'Template sites put design choices in the hands of the theme developer, not your business strategy. CTAs are generic and buried.',
-    ours: 'Strategic placement of calls-to-action, contact flows, and social proof. Every section is engineered to move visitors toward becoming customers.',
+    what: 'Every design decision serves a business goal.',
+    standard: 'Generic, buried CTAs.',
+    ours: 'Strategic CTAs and contact flows engineered to convert.',
   },
   {
     label: 'Brand Authority',
-    what: 'A website that positions you as the clear leader in your market — not one of many.',
-    standard: 'When every competitor has the same WordPress theme with a stock photo hero, nobody stands out. You\'re competing on price, not presence.',
-    ours: 'A site that makes competitors look outdated by comparison. The kind of web presence that makes people ask "who built that?"',
+    what: 'Positions you as the clear leader.',
+    standard: 'Same theme as every competitor.',
+    ours: 'A site that makes competitors look outdated.',
   },
 ];
 
 const AI_TAGS: TagInfo[] = [
   {
     label: 'JSON-LD Schema',
-    what: 'Structured data markup that tells search engines and AI exactly what your business is, what you offer, where you\'re located, and how to contact you.',
-    standard: 'Most local business sites have zero structured data. Google has to guess what your business does from unstructured text.',
-    ours: 'Full LocalBusiness, Service, FAQ, and Organization schemas. Google and AI assistants get a complete, machine-readable profile of your business.',
+    what: 'Structured data so machines understand your business.',
+    standard: 'Most local sites have zero structured data.',
+    ours: 'Full LocalBusiness, Service, FAQ, Organization schemas.',
   },
   {
     label: 'llms.txt',
-    what: 'A standardized file (like robots.txt) that gives AI language models a clean, structured summary of your business.',
-    standard: 'Almost no local business sites have this. AI assistants have to scrape and guess from whatever HTML they find.',
-    ours: 'A purpose-built file that tells ChatGPT, Perplexity, and other AI tools exactly who you are, what you do, and why someone should choose you.',
+    what: 'Machine-readable summary for AI language models.',
+    standard: 'Almost no local sites have this.',
+    ours: 'A clean file ChatGPT and Perplexity can read instantly.',
   },
   {
     label: 'GEO Optimized',
-    what: 'Generative Engine Optimization — structuring your content so AI-powered search tools cite and recommend your business.',
-    standard: 'Traditional SEO optimizes for link-based algorithms. It does nothing for the AI-generated answers that are replacing search results.',
-    ours: 'Content structured with citations, statistics, and conversational formatting that AI models prefer when selecting sources to cite.',
+    what: 'Content structured so AI search tools cite you.',
+    standard: 'Traditional SEO does nothing for AI answers.',
+    ours: 'Citations, stats, and conversational formatting AI prefers.',
   },
   {
     label: 'FAQ Schema',
-    what: 'Structured markup that lets your frequently asked questions appear directly in Google search results and AI responses.',
-    standard: 'Most FAQ pages are just text on a page. Google can\'t pull individual Q&As into search features or AI overviews.',
-    ours: 'Every FAQ entry is marked up so Google can surface your answers directly in search results — and AI assistants can quote them verbatim.',
+    what: 'Markup so your FAQs surface in search + AI.',
+    standard: 'Plain text. Google can\'t pull individual Q&As.',
+    ours: 'Every FAQ marked up so AI can quote you verbatim.',
   },
   {
     label: 'Open Graph',
-    what: 'Meta tags that control how your site looks when shared on social media, messaging apps, and link previews.',
-    standard: 'Without Open Graph tags, shared links show a random image (or none) with a truncated title. Looks unprofessional.',
-    ours: 'Custom OG images, titles, and descriptions for every page. Your links look polished everywhere they\'re shared.',
+    what: 'Tags controlling how links look when shared.',
+    standard: 'Random image, truncated title — unprofessional.',
+    ours: 'Custom OG image, title, description on every page.',
   },
   {
     label: 'AI Citations',
-    what: 'When AI tools like ChatGPT or Perplexity recommend a business, they cite their source. Your site can be that source.',
-    standard: 'Businesses without structured data and authoritative content are invisible to AI recommendation engines.',
-    ours: 'Structured data, citations, and statistics embedded throughout your content make your site the authoritative source AI models cite.',
+    what: 'AI recommendations cite their sources. You can be it.',
+    standard: 'No structured data = invisible to AI.',
+    ours: 'Structured data and stats throughout — AI cites you.',
   },
   {
     label: 'Rich Results',
-    what: 'Enhanced Google search listings that show star ratings, FAQs, pricing, images, or business details right in the results page.',
-    standard: 'A plain blue link with two lines of text. That\'s what most local businesses get. It blends in with everything else.',
-    ours: 'Your search listing stands out with structured snippets — FAQ dropdowns, business info, and visual enhancements that increase click-through rates.',
+    what: 'Enhanced Google listings with FAQs, ratings, business info.',
+    standard: 'Plain blue link, two lines of text.',
+    ours: 'Structured snippets that increase click-through.',
   },
   {
     label: 'Canonical URLs',
-    what: 'Tags that tell search engines which version of a page is the "official" one, preventing duplicate content issues.',
-    standard: 'Duplicate content confuses search engines and splits your ranking power across multiple URLs. Common with template sites.',
-    ours: 'Every page has a proper canonical tag. No duplicate content diluting your search rankings.',
+    what: 'Tells search which page is the "official" version.',
+    standard: 'Duplicate content splits ranking power.',
+    ours: 'Proper canonical on every page.',
   },
 ];
 
@@ -387,85 +386,7 @@ export default function Services() {
         </div>
       </AnimateIn>
 
-      {/* Divider */}
-      <div className="mx-auto mt-20 max-w-7xl px-5 md:mt-28 md:px-8">
-        <div className="border-t border-border-default" />
-      </div>
-
-      {/* Add-ons — tight editorial strip */}
-      <div className="mx-auto max-w-7xl px-5 pt-16 pb-24 md:px-8 md:pt-20 md:pb-32">
-        <AnimateIn>
-          <p className="font-mono text-[11px] font-semibold uppercase tracking-widest text-accent">
-            Also Available
-          </p>
-          <h3 className="mt-4 font-mono text-2xl font-bold text-text-primary md:text-3xl">
-            AI-Powered <GradientText>Add-Ons</GradientText>
-          </h3>
-        </AnimateIn>
-
-        <AnimateIn delay={0.15} className="mt-10">
-          <div className="grid gap-px overflow-hidden border border-border-default bg-border-default sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                name: 'AI Receptionist',
-                line: '24/7 call answering, lead qualification, appointment booking.',
-                href: '/services/ai-receptionist',
-              },
-              {
-                name: 'Multi-Channel AI',
-                line: 'One brain across phone, SMS, and web chat.',
-                href: '/services/ai-receptionist',
-              },
-              {
-                name: 'Smart Scheduling',
-                line: 'Calendar sync, CRM updates, zero double-bookings.',
-                href: '/services/website-management',
-              },
-              {
-                name: 'Analytics',
-                line: 'Visitor tracking, heatmaps, conversion prediction.',
-                href: '/services/analytics-setup',
-              },
-            ].map((addon) => (
-              <Link
-                key={addon.name}
-                href={addon.href}
-                className="group flex flex-col justify-between bg-surface-card p-6 transition-colors hover:bg-surface-page"
-              >
-                <div>
-                  <p className="font-mono text-base font-bold text-text-primary">
-                    {addon.name}
-                  </p>
-                  <p className="mt-2 font-mono text-sm leading-relaxed text-text-secondary">
-                    {addon.line}
-                  </p>
-                </div>
-                <div className="mt-4 flex items-center gap-1 font-mono text-xs font-semibold text-accent opacity-0 transition-opacity group-hover:opacity-100">
-                  Learn more
-                  <ArrowRight className="h-3 w-3" />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </AnimateIn>
-
-        {/* Pricing — bold, not hidden */}
-        <AnimateIn delay={0.2} className="mt-16 md:mt-20">
-          <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:gap-8">
-            <p className="font-mono text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-none tracking-tighter text-text-primary">
-              $1,500+
-            </p>
-            <div>
-              <p className="font-mono text-lg text-text-secondary">
-                to launch. <span className="font-semibold text-text-primary">$100/mo</span> after.
-              </p>
-              <p className="mt-1 font-mono text-sm text-text-tertiary">
-                Hosting, support, SEO monitoring, content updates, analytics, ad infrastructure.
-              </p>
-            </div>
-          </div>
-        </AnimateIn>
-      </div>
+      <div className="pb-24 md:pb-32" />
     </section>
   );
 }

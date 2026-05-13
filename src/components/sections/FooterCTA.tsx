@@ -84,7 +84,7 @@ export default function FooterCTA() {
             <GradientText>I&apos;ll sketch what the site should do.</GradientText>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl font-mono text-lg text-text-secondary">
-            Walk me through the business — the customer, the offer, what success looks like. I&apos;ll come back with a plan for what the site actually needs to do before you spend a dollar. No pitch, no pressure.
+            The customer, the offer, what success looks like. Plan back in 24 hours.
           </p>
         </AnimateIn>
 
@@ -159,7 +159,7 @@ export default function FooterCTA() {
 
         <AnimateIn delay={0.3} className="mt-8">
           <p className="font-mono text-sm text-text-tertiary">
-            Back in 24 hours. No pitch, no pressure — if it makes sense, we can go from there.
+            Back in 24 hours. No pitch.
           </p>
         </AnimateIn>
       </div>
