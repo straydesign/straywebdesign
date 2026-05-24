@@ -77,10 +77,10 @@ export default function FooterCTA() {
       <div className="relative z-10 mx-auto max-w-3xl px-5 text-center md:px-8">
         <AnimateIn>
           <span className="mb-4 inline-block font-mono text-[11px] font-semibold uppercase tracking-wider text-accent">
-            Before the Site, the Plan
+            See what it&apos;s worth
           </span>
           <h2 className="font-mono text-3xl font-bold text-text-primary md:text-4xl lg:text-5xl">
-            Tell me about it —{' '}
+            Find out what a custom-built site could earn you —{' '}
             <GradientText>plan back in 24 hours.</GradientText>
           </h2>
         </AnimateIn>
@@ -90,10 +90,10 @@ export default function FooterCTA() {
             <div className="mx-auto flex max-w-md flex-col items-center gap-3 border border-accent/20 bg-accent/5 px-6 py-6">
               <CheckCircle className="h-8 w-8 text-accent" />
               <p className="font-mono text-base font-semibold text-text-primary">
-                Got it. Your plan is on the way.
+                You&apos;ll have it in 24 hours.
               </p>
               <p className="font-mono text-sm text-text-secondary">
-                Back in 24 hours. No pitch, no spam.
+                A real plan with real numbers. No pitch, no spam.
               </p>
             </div>
           ) : (
@@ -118,7 +118,7 @@ export default function FooterCTA() {
                     <span className="inline-block h-4 w-4 animate-spin border-2 border-white/30 border-t-white" />
                   ) : (
                     <>
-                      Send me the plan
+                      Get my plan
                       <ArrowRight className="h-4 w-4" />
                     </>
                   )}

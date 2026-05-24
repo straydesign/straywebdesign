@@ -35,11 +35,11 @@ export default function SocialProof() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <AnimateIn className="mx-auto max-w-3xl text-center">
           <span className="mb-4 inline-block font-mono text-[11px] font-semibold uppercase tracking-wider text-accent">
-            Who This Is For
+            Built to earn its keep
           </span>
           <h2 className="font-mono text-3xl font-bold text-text-primary md:text-4xl lg:text-5xl">
-            Businesses where{' '}
-            <GradientText>the site has to pull its weight.</GradientText>
+            For businesses where the site{' '}
+            <GradientText>has to bring in customers, not just look nice.</GradientText>
           </h2>
         </AnimateIn>
 
@@ -58,7 +58,7 @@ export default function SocialProof() {
             href="#contact"
             className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-mono text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-accent/90"
           >
-            Tell me about your business
+            See what mine&apos;d be worth
             <ArrowRight className="h-4 w-4" />
           </a>
         </AnimateIn>

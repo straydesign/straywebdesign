@@ -86,14 +86,15 @@ export default function CalEmbed() {
       <div className="mx-auto max-w-4xl px-5 md:px-8">
         <AnimateIn className="text-center">
           <span className="mb-4 inline-block font-mono text-[11px] font-semibold uppercase tracking-wider text-accent">
-            Prefer to Talk?
+            Skip the back-and-forth
           </span>
           <h2 className="font-mono text-3xl font-bold text-text-primary md:text-4xl">
-            Grab 15 minutes.{' '}
-            <GradientText>Pick any open slot.</GradientText>
+            Walk away with a concrete next step.{' '}
+            <GradientText>15 minutes, no pitch.</GradientText>
           </h2>
           <p className="mt-4 font-mono text-base text-text-secondary">
-            Live availability — you book, we confirm. No back-and-forth.
+            Pick a slot. We&apos;ll dig into what a custom-built site could
+            earn you. You leave with a plan whether you hire me or not.
           </p>
         </AnimateIn>
 

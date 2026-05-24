@@ -69,9 +69,9 @@ export const BOOKING_TIMING_OPTIONS = [
 
 export const FOUNDATION_SERVICES = [
   {
-    title: 'Enterprise-Grade Performance',
+    title: 'Don’t Lose Another Lead to a Slow Site',
     description:
-      'Sub-1-second loads, WCAG AA, mobile-first — Fortune 500 specs at small-business pricing.',
+      'I build sites that load before buyers can leave — and host them on infrastructure that keeps them that way. Sub-1-second loads, WCAG AA, mobile-first — Fortune 500 specs at small-business pricing.',
     features: [
       'Sub-1s LCP & global CDN delivery',
       'WCAG AA compliant & keyboard navigable',
@@ -87,9 +87,9 @@ export const FOUNDATION_SERVICES = [
     ],
   },
   {
-    title: 'AI & Search Optimized',
+    title: 'Get Cited Where Buyers Are Actually Looking',
     description:
-      'Structured data that gets you cited by ChatGPT, Perplexity, and Google AI Overview.',
+      'Show up in ChatGPT, Perplexity, and Google AI Overview answers — using the structured data they reward.',
     features: [
       'JSON-LD structured data for rich results',
       'llms.txt for AI crawler discoverability',
@@ -108,8 +108,8 @@ export const FOUNDATION_SERVICES = [
 
 export const ADDON_SERVICES = [
   {
-    title: 'AI Receptionist',
-    description: '24/7 call answering. Qualifies leads and books appointments while you sleep.',
+    title: 'Never Miss Another Lead at Night',
+    description: 'Calls get answered, qualified, and booked while you sleep — 24/7 AI receptionist, on-brand voice, no missed revenue.',
     features: [
       '24/7 call answering & voicemail',
       'Missed call text-back',
@@ -124,8 +124,8 @@ export const ADDON_SERVICES = [
     ],
   },
   {
-    title: 'Multi-Channel AI Agents',
-    description: 'One AI brain across phone, SMS, and web chat. Same answers everywhere.',
+    title: 'Same Answer Everywhere They Reach You',
+    description: 'Customers get the same response on phone, SMS, and web chat — one AI brain across every channel, after-hours covered.',
     features: [
       'Phone + SMS + web chat coverage',
       'Consistent responses across channels',
@@ -140,8 +140,8 @@ export const ADDON_SERVICES = [
     ],
   },
   {
-    title: 'Smart Scheduling & CRM',
-    description: 'Auto-booking that syncs with your calendar and pushes leads into your CRM.',
+    title: 'Zero Double-Bookings, Zero Lost Leads',
+    description: 'Appointments land on your calendar and leads land in your CRM — automatic syncing, confirmations, and no-show follow-ups.',
     features: [
       'Google Calendar & Outlook sync',
       'Auto-update Salesforce / HubSpot / GHL',
@@ -156,8 +156,8 @@ export const ADDON_SERVICES = [
     ],
   },
   {
-    title: 'Analytics & Personalization',
-    description: 'Know who visits and what converts them. Data turns traffic into revenue.',
+    title: 'Turn Site Traffic Into Revenue',
+    description: 'See who’s visiting your new site, what they read, and what closes them — then show each visitor what makes them buy.',
     features: [
       'Visitor tracking & session replay',
       'Smart content personalization',
@@ -176,19 +176,19 @@ export const ADDON_SERVICES = [
 export const FAQ_ITEMS = [
   {
     question: 'Why not just use WordPress?',
-    answer: 'Plugins, slow loads, security holes. My sites ship as static files — sub-1-second loads, no attack surface.',
+    answer: 'Because WordPress loses you leads. Plugins break, loads drag past five seconds, security holes invite breaches. My sites ship as static files — sub-1-second loads, zero attack surface, nothing to update.',
   },
   {
-    question: 'How long does it take?',
-    answer: 'Most ship in three days. Day one: discovery + design. Day two: build. Day three: polish + launch.',
+    question: 'How long until I see leads?',
+    answer: 'Most sites go live in three days. Day one: discovery + design. Day two: build. Day three: polish + launch. Leads start landing the week it ships.',
   },
   {
     question: 'Do I have to pay up front?',
-    answer: '$0 up front. I build it, you preview it live, we iterate until you love it. You only pay once it’s live.',
+    answer: 'You pay $0 up front. I build it, you preview it live, we iterate until you love it. You only pay once it’s earning.',
   },
   {
     question: 'How much does it cost?',
-    answer: 'Essential: $1,500+ one-time, $100/mo. Complete: $5,000+, $200/mo. Flat-rate. Tell me about the business and I’ll quote in 24 hours.',
+    answer: 'Essential: $1,500+ one-time, $100/mo. Complete: $5,000+, $200/mo. Flat-rate, no surprises. Tell me about the business and you’ll have a quote in 24 hours.',
   },
 ] as const;
 
@@ -196,32 +196,32 @@ export const CLIENT_PROFILES = [
   {
     industry: 'Dental Practices',
     challenge: 'Patients judge you before walking in.',
-    outcome: 'Beats corporate dental on speed and mobile booking.',
+    outcome: 'New patients book on their phone before they ever call a competitor.',
   },
   {
     industry: 'Financial Advisors',
     challenge: 'Referrals Google you before they call.',
-    outcome: 'A presence that matches the precision of the work.',
+    outcome: 'Referrals trust the work before the first conversation.',
   },
   {
     industry: 'Car Dealerships',
     challenge: 'Buyers research online before they hit the lot.',
-    outcome: 'Fastest, cleanest site in the market captures the lead.',
+    outcome: 'The buyer fills out your form, not the dealer’s down the street.',
   },
   {
     industry: 'IT Services & MSPs',
     challenge: 'You sell technical competence. Your site scores 35.',
-    outcome: 'Sub-1-second loads prove the work before you say a word.',
+    outcome: 'Prospects believe the technical pitch before you make it.',
   },
   {
     industry: 'Law Firms',
     challenge: 'Midnight phone searches. Five-second loads lose the lead.',
-    outcome: 'Instant load when someone needs help right now.',
+    outcome: 'When someone needs a lawyer at midnight, yours loads first.',
   },
   {
     industry: 'Vision Care',
     challenge: 'Patients expect the polish of the brands they shop.',
-    outcome: 'A fast, modern site that matches.',
+    outcome: 'Patients pre-judge your care by your site. Yours wins the comparison.',
   },
 ] as const;
 

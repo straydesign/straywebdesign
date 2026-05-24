@@ -1,13 +1,13 @@
 'use client';
 
 const ITEMS = [
-  'Sub-1s Load Times',
-  'Lighthouse 100s',
-  'AI-Ready Architecture',
-  'WCAG AA Accessible',
-  'Zero WordPress',
-  'Custom Built',
-  'Core Web Vitals',
+  'Loads before they bounce',
+  'First on Google',
+  'Cited by ChatGPT',
+  'Works on every thumb',
+  'No WordPress baggage',
+  'Hand-coded, not templated',
+  'Pays for itself',
 ];
 
 interface MarqueeProps {

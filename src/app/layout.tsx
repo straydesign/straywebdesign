@@ -13,9 +13,9 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Custom Web Design That Converts — Plan First, Then Build | Stray Web Design',
+  title: 'A Website That Brings You Customers — Built, Hosted, Managed | Stray Web Design',
   description:
-    "Plan-first web design for local businesses, HVAC and IT services contractors, and professional practices. Custom sites built to convert — sub-1s load, accessible, AI-ready. Tell me about the business, I'll come back with a written plan in 24 hours.",
+    "A new website built to bring you customers — hand-coded from scratch, hosted, and managed by me. Sub-1-second loads, page-one rankings, cited by ChatGPT and Perplexity. $0 up front. Tell me about the business — plan back in 24 hours.",
   keywords: [
     'web design agency',
     'custom web design',
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
   ],
   metadataBase: new URL('https://straywebdesign.co'),
   openGraph: {
-    title: 'Custom Web Design That Converts — Plan First, Then Build | Stray Web Design',
+    title: 'A Website That Brings You Customers — Built, Hosted, Managed | Stray Web Design',
     description:
-      "Plan-first web design for local businesses, HVAC and IT services contractors, and professional practices. Custom sites built to convert. Tell me about the business — I'll come back with a written plan in 24 hours.",
+      "A new website built to bring you customers — hand-coded from scratch, hosted, and managed by me. $0 up front. Tell me about the business — plan back in 24 hours.",
     url: 'https://straywebdesign.co',
     siteName: 'Stray Web Design',
     locale: 'en_US',
@@ -46,9 +46,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Custom Web Design That Converts — Plan First, Then Build | Stray Web Design',
+    title: 'A Website That Brings You Customers — Built, Hosted, Managed | Stray Web Design',
     description:
-      "Plan-first web design for local businesses, HVAC and IT services contractors, and professional practices. Tell me about the business — I'll come back with a written plan in 24 hours.",
+      "A new website built to bring you customers. Hand-coded, hosted, and managed by me. Plan back in 24 hours.",
   },
   alternates: {
     canonical: '/',
@@ -67,7 +67,7 @@ const professionalServiceSchema = {
     email: 'tom@straydesign.co',
     telephone: '814-402-8525',
     description:
-      'Premium web design agency building fast, accessible, AI-ready websites for businesses that want to grow.',
+      'A new website built to bring you customers — hand-coded from scratch, hosted, and managed end-to-end. Sub-1-second loads, page-one rankings, no plugin baggage.',
     priceRange: '$$',
     serviceType: 'Web Design',
     logo: 'https://straywebdesign.co/images/logo-blue-white-square.png',

@@ -8,23 +8,24 @@ function HeroBody() {
   return (
     <>
       <span className="mb-4 inline-block border border-border-strong bg-surface-card px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-wider text-accent">
-        Before the site, the plan
+        Pay only when it&apos;s working
       </span>
 
       <h1 className="text-balance font-mono text-[clamp(2.25rem,7vw,5rem)] font-bold leading-[1.08] tracking-tight text-text-primary">
-        Before you spend a dollar on a site,{' '}
-        <span className="text-text-tertiary">figure out what it should do.</span>
+        A website that brings you customers.{' '}
+        <span className="text-text-tertiary">Built, hosted, and managed.</span>
       </h1>
 
       <div className="mt-8 max-w-xl">
         <p className="font-mono text-lg leading-relaxed text-text-secondary md:text-xl">
-          Most sites look nice and do nothing. I start with what the site needs
-          to drive — then build it.
+          Sub-1-second loads, page-one rankings, leads landing in your inbox.
+          Hand-coded from scratch — no plugins, no platform fees, no surprises.
+          I build it, host it, and keep it running.
         </p>
 
         <div className="mt-8 flex flex-col items-start gap-3">
           <MagneticButton href="#contact" variant="primary" size="lg">
-            Tell me about your business
+            See what mine&apos;d be worth
           </MagneticButton>
           <p className="font-mono text-xs text-text-tertiary">
             <span className="font-semibold text-accent">$0 up front.</span>{' '}

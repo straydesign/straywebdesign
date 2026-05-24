@@ -17,11 +17,11 @@ const FEATURES: readonly Feature[] = [
     number: '01',
     headline: (
       <>
-        Visitors leave in 3 seconds if the site feels slow.{' '}
-        <span className="text-text-tertiary">I build for that.</span>
+        Don&apos;t lose another lead to a slow site.{' '}
+        <span className="text-text-tertiary">Every second past three, another buyer bounces.</span>
       </>
     ),
-    body: 'Sub-1-second loads, Lighthouse 100s, WCAG AA accessible.',
+    body: 'I build sites that load before buyers can bounce and work on every phone. Sub-1-second loads, Lighthouse 100s, WCAG AA — hand-coded, no plugins, hosted by me.',
     link: { label: 'How I build', href: '/services/website-design' },
     tags: ['Sub-1s LCP', 'WCAG AA', 'Core Web Vitals', 'Mobile-first', 'Hand-coded'],
   },
@@ -29,11 +29,11 @@ const FEATURES: readonly Feature[] = [
     number: '02',
     headline: (
       <>
-        Indexable, fast, semantic{' '}
-        <span className="text-text-tertiary">— so Google and AI assistants can read it.</span>
+        Get cited by Google, ChatGPT, and Perplexity{' '}
+        <span className="text-text-tertiary">— where buyers are actually looking in 2026.</span>
       </>
     ),
-    body: 'Server-rendered HTML, real structured data, clean canonicals. The fundamentals Google’s 2026 GenAI search guide actually asks for.',
+    body: 'I build sites that show up in AI answers and traditional search the same week they ship. Server-rendered HTML, real structured data, clean canonicals — the fundamentals Google’s GenAI search guide actually rewards.',
     link: { label: 'See the strategy', href: '/services/seo-optimization' },
     tags: ['Server-rendered', 'JSON-LD schema', 'Canonical URLs', 'Open Graph', 'FAQ schema'],
   },
@@ -41,11 +41,11 @@ const FEATURES: readonly Feature[] = [
     number: '03',
     headline: (
       <>
-        You have about 10 seconds to prove you’re worth their time.{' '}
-        <span className="text-text-tertiary">I design for that.</span>
+        Earn trust in ten seconds.{' '}
+        <span className="text-text-tertiary">Buyers decide before they read a word.</span>
       </>
     ),
-    body: 'Custom design, clear hierarchy, conversion-first copy. No templates, no plugin soup.',
+    body: 'I design sites that look like the brands buyers already trust — so they stay long enough to read the offer. Clear hierarchy, conversion-first copy, no templates, no plugin soup, no two sites alike.',
     link: { label: 'See real examples', href: '/work' },
     tags: ['Zero templates', 'Custom design', 'Conversion-first', 'Motion & interaction'],
   },
