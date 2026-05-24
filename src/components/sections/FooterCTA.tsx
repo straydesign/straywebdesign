@@ -80,12 +80,9 @@ export default function FooterCTA() {
             Before the Site, the Plan
           </span>
           <h2 className="font-mono text-3xl font-bold text-text-primary md:text-4xl lg:text-5xl">
-            Tell me about your business —{' '}
-            <GradientText>I&apos;ll sketch what the site should do.</GradientText>
+            Tell me about it —{' '}
+            <GradientText>plan back in 24 hours.</GradientText>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl font-mono text-lg text-text-secondary">
-            The customer, the offer, what success looks like. Plan back in 24 hours.
-          </p>
         </AnimateIn>
 
         <AnimateIn delay={0.2} className="mt-8">
@@ -132,7 +129,7 @@ export default function FooterCTA() {
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                placeholder="Phone (optional — I'll text you when the plan is ready)"
+                placeholder="Phone (optional)"
                 autoComplete="tel"
                 aria-label="Phone number (optional)"
                 className="w-full border border-border-default bg-surface-card px-4 py-3 font-mono text-sm text-text-primary placeholder-text-placeholder transition-colors focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none"
@@ -143,7 +140,7 @@ export default function FooterCTA() {
                 onChange={(e) => setVision(e.target.value)}
                 required
                 rows={4}
-                placeholder="Tell me about the business — who it serves, what you sell, what success looks like."
+                placeholder="Who it serves, what you sell, what success looks like."
                 aria-label="Tell me about your business"
                 className="w-full resize-none border border-border-default bg-surface-card px-4 py-3 font-mono text-sm text-text-primary placeholder-text-placeholder transition-colors focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none"
               />
@@ -157,11 +154,6 @@ export default function FooterCTA() {
           )}
         </AnimateIn>
 
-        <AnimateIn delay={0.3} className="mt-8">
-          <p className="font-mono text-sm text-text-tertiary">
-            Back in 24 hours. No pitch.
-          </p>
-        </AnimateIn>
       </div>
     </section>
   );

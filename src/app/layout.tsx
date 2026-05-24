@@ -13,29 +13,32 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Stray Web Design | Custom Websites That Convert',
+  title: 'Custom Web Design That Converts — Plan First, Then Build | Stray Web Design',
   description:
-    "Custom websites built to convert. Tell me about your business — I'll come back with a plan for what the site should actually do. Back in 24 hours.",
+    "Plan-first web design for local businesses, HVAC and IT services contractors, and professional practices. Custom sites built to convert — sub-1s load, accessible, AI-ready. Tell me about the business, I'll come back with a written plan in 24 hours.",
   keywords: [
+    'web design agency',
+    'custom web design',
     'website designer',
     'website design',
-    'custom web design',
     'web developer',
     'fast website',
     'accessible website',
     'AI ready website',
     'Core Web Vitals',
+    'HVAC web design agency',
+    'IT services web design',
+    'MSP web design',
     'dental practice website',
     'financial advisor website',
     'car dealership website',
-    'IT services website',
     'chiropractor website',
   ],
   metadataBase: new URL('https://straywebdesign.co'),
   openGraph: {
-    title: 'Stray Web Design | Custom Websites That Convert',
+    title: 'Custom Web Design That Converts — Plan First, Then Build | Stray Web Design',
     description:
-      "Custom websites built to convert. Tell me about your business — I'll come back with a plan for what the site should actually do. Back in 24 hours.",
+      "Plan-first web design for local businesses, HVAC and IT services contractors, and professional practices. Custom sites built to convert. Tell me about the business — I'll come back with a written plan in 24 hours.",
     url: 'https://straywebdesign.co',
     siteName: 'Stray Web Design',
     locale: 'en_US',
@@ -43,9 +46,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Stray Web Design | Custom Websites That Convert',
+    title: 'Custom Web Design That Converts — Plan First, Then Build | Stray Web Design',
     description:
-      "Custom websites built to convert. Tell me about your business — I'll come back with a plan for what the site should actually do. Back in 24 hours.",
+      "Plan-first web design for local businesses, HVAC and IT services contractors, and professional practices. Tell me about the business — I'll come back with a written plan in 24 hours.",
   },
   alternates: {
     canonical: '/',

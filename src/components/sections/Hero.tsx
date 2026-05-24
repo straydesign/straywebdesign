@@ -1,286 +1,42 @@
 'use client';
 
-import { useEffect, useState, useCallback, useRef } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import MagneticButton from '@/components/ui/MagneticButton';
-import AnimateIn from '@/components/ui/AnimateIn';
-import LighthouseGauge from '@/components/ui/LighthouseGauge';
 import { useClientEnv } from '@/lib/use-client-env';
 
-/* ── Slide data ────────────────────────────────────────────────── */
-const SLIDES = [
-  {
-    badge: 'Before the site, the plan',
-    headline: (
-      <>
-        Before you spend a dollar on a site,<br />
-        <span className="text-text-tertiary">figure out what it should actually do.</span>
-      </>
-    ),
-    body: "Most sites look nice and do nothing. The first move isn't design — it's figuring out what the site needs to do. I start there.",
-    cta: { label: 'Tell me about your business', href: '#contact' },
-  },
-  {
-    badge: 'What I Actually Do',
-    headline: (
-      <>
-        I build sites<br />
-        <span className="text-text-tertiary">that bring in customers from day one.</span>
-      </>
-    ),
-    body: 'Modern design, conversion-focused copy, direct communication — no agency layers, no templates, no filler. Just websites that actually work.',
-    cta: { label: 'Tell me about your business', href: '#contact' },
-  },
-  {
-    badge: 'Low-Risk Next Step',
-    headline: (
-      <>
-        Walk me through the business.<br />
-        <span className="text-text-tertiary">I&apos;ll sketch the site.</span>
-      </>
-    ),
-    body: "Tell me the customer and the offer. I'll come back with a plan for what the site should do. No pitch.",
-    cta: { label: 'Tell me about your business', href: '#contact' },
-  },
-  {
-    badge: 'Who This Is For',
-    headline: (
-      <>
-        Running a local business?<br />
-        <span className="text-text-tertiary">Let&apos;s make the site actually work.</span>
-      </>
-    ),
-    body: 'Service businesses, shops, studios, restaurants. I build the site that turns word-of-mouth into bookings.',
-    cta: { label: 'Tell me about your business', href: '#contact' },
-  },
-] as const;
-
-const INTERVAL = 6000;
-
-/* ── Lighthouse comparison ─────────────────────────────────────── */
-const LIGHTHOUSE_COMPARISONS = [
-  {
-    label: 'Your Competitors',
-    scores: { performance: 32, accessibility: 45, bestPractices: 56, seo: 62 },
-  },
-  {
-    label: 'Your Site',
-    scores: { performance: 90, accessibility: 100, bestPractices: 100, seo: 100 },
-  },
-];
-
-const SCORE_EXPLANATIONS = [
-  {
-    label: 'Performance',
-    description: 'How fast your site loads. Every second of delay costs 7% in conversions.',
-  },
-  {
-    label: 'Accessibility',
-    description: 'Whether everyone can use your site. Low scores risk ADA lawsuits.',
-  },
-  {
-    label: 'Best Practices',
-    description: 'Security, modern code, browser compatibility. Low scores signal outdated tech.',
-  },
-  {
-    label: 'SEO',
-    description: 'Visibility to Google and AI search. Missing tags = rank below competitors.',
-  },
-];
-
-/* ── Slide content variants ────────────────────────────────────── */
-const slideVariants = {
-  enter: { opacity: 0, y: 20, filter: 'blur(6px)' },
-  center: { opacity: 1, y: 0, filter: 'blur(0px)' },
-  exit: { opacity: 0, y: -20, filter: 'blur(6px)' },
-};
-
-/* ── Lighthouse panel ──────────────────────────────────────────── */
-function LighthouseComparison() {
-  const [expanded, setExpanded] = useState(false);
-
+function HeroBody() {
   return (
-    <div className="space-y-6">
-      <div className="space-y-8">
-        {LIGHTHOUSE_COMPARISONS.map((comp, idx) => (
-          <div
-            key={comp.label}
-            className="border border-border-default bg-surface-card p-6"
-          >
-            <h2 className="mb-4 text-center font-mono text-[11px] font-semibold uppercase tracking-wider text-text-tertiary">
-              {comp.label}
-            </h2>
-            <div className="flex justify-center gap-6">
-              <LighthouseGauge score={comp.scores.performance} label="Perf" size={90} delay={idx * 0.8 + 0.5} />
-              <LighthouseGauge score={comp.scores.accessibility} label="A11y" size={90} delay={idx * 0.8 + 0.7} />
-              <LighthouseGauge score={comp.scores.bestPractices} label="BP" size={90} delay={idx * 0.8 + 0.9} />
-              <LighthouseGauge score={comp.scores.seo} label="SEO" size={90} delay={idx * 0.8 + 1.1} />
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="text-center">
-        <button
-          onClick={() => setExpanded((prev) => !prev)}
-          className="inline-flex items-center gap-2 border border-border-strong bg-surface-card px-4 py-2 font-mono text-sm text-text-secondary transition-colors hover:bg-surface-sunken hover:text-text-primary"
-        >
-          What does this mean?
-          <motion.svg
-            width="12" height="12" viewBox="0 0 12 12" fill="none"
-            animate={{ rotate: expanded ? 180 : 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </motion.svg>
-        </button>
-      </div>
-
-      <AnimatePresence>
-        {expanded && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="overflow-hidden"
-          >
-            <div className="border border-border-default bg-surface-card p-5">
-              <p className="mb-4 font-mono text-sm text-text-tertiary">
-                Google Lighthouse scores. Higher = more traffic, more trust.
-              </p>
-              <div className="space-y-3">
-                {SCORE_EXPLANATIONS.map((item) => (
-                  <div key={item.label}>
-                    <p className="font-mono text-sm font-semibold text-text-primary">{item.label}</p>
-                    <p className="font-mono text-sm leading-relaxed text-text-tertiary">{item.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
-
-/* ── Slide renderer ────────────────────────────────────────────── */
-function SlideContent({ index }: { index: number }) {
-  const slide = SLIDES[index];
-
-  return (
-    <motion.div
-      key={index}
-      variants={slideVariants}
-      initial="enter"
-      animate="center"
-      exit="exit"
-      transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-    >
+    <>
       <span className="mb-4 inline-block border border-border-strong bg-surface-card px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-wider text-accent">
-        {slide.badge}
+        Before the site, the plan
       </span>
 
       <h1 className="text-balance font-mono text-[clamp(2.25rem,7vw,5rem)] font-bold leading-[1.08] tracking-tight text-text-primary">
-        {slide.headline}
+        Before you spend a dollar on a site,{' '}
+        <span className="text-text-tertiary">figure out what it should do.</span>
       </h1>
 
-      <div className="mt-8 grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
-        <div>
-          <p className="max-w-lg font-mono text-lg leading-relaxed text-text-secondary md:text-xl">
-            {slide.body}
+      <div className="mt-8 max-w-xl">
+        <p className="font-mono text-lg leading-relaxed text-text-secondary md:text-xl">
+          Most sites look nice and do nothing. I start with what the site needs
+          to drive — then build it.
+        </p>
+
+        <div className="mt-8 flex flex-col items-start gap-3">
+          <MagneticButton href="#contact" variant="primary" size="lg">
+            Tell me about your business
+          </MagneticButton>
+          <p className="font-mono text-xs text-text-tertiary">
+            <span className="font-semibold text-accent">$0 up front.</span>{' '}
+            Pay only when it&apos;s live.
           </p>
-
-          <div className="mt-8 flex flex-col items-start gap-3">
-            <MagneticButton href={slide.cta.href} variant="primary" size="lg">
-              {slide.cta.label}
-            </MagneticButton>
-            <p className="font-mono text-xs text-text-tertiary">
-              <span className="font-semibold text-accent">$0 up front.</span>{' '}
-              Pay only when your site is live.
-            </p>
-          </div>
         </div>
-
-        {/* Lighthouse only on first slide, desktop only */}
-        {index === 0 && (
-          <AnimateIn direction="right" delay={0.3} className="hidden lg:block">
-            <LighthouseComparison />
-          </AnimateIn>
-        )}
       </div>
-
-      {/* Mobile proof strip — first slide only */}
-      {index === 0 && (
-        <div className="mt-10 grid grid-cols-3 gap-4 border-t border-border-default pt-6 lg:hidden">
-          <div>
-            <p className="font-mono text-2xl font-bold text-text-primary">96+</p>
-            <p className="mt-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
-              Lighthouse
-            </p>
-          </div>
-          <div>
-            <p className="font-mono text-2xl font-bold text-text-primary">0.8s</p>
-            <p className="mt-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
-              Load time
-            </p>
-          </div>
-          <div>
-            <p className="font-mono text-2xl font-bold text-text-primary">100</p>
-            <p className="mt-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
-              Accessibility
-            </p>
-          </div>
-        </div>
-      )}
-    </motion.div>
+    </>
   );
 }
 
-/* ── Progress indicators ───────────────────────────────────────── */
-function SlideIndicators({
-  count,
-  active,
-  onSelect,
-}: {
-  count: number;
-  active: number;
-  onSelect: (i: number) => void;
-}) {
-  return (
-    <div className="flex gap-2">
-      {Array.from({ length: count }).map((_, i) => (
-        <button
-          key={i}
-          onClick={() => onSelect(i)}
-          aria-label={`Go to slide ${i + 1}`}
-          className="group relative h-1 w-8 overflow-hidden bg-border-default"
-        >
-          {i === active && (
-            <motion.div
-              className="absolute inset-0 bg-accent"
-              layoutId="hero-indicator"
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            />
-          )}
-          {i === active && (
-            <motion.div
-              className="absolute inset-y-0 left-0 bg-accent/40"
-              initial={{ width: '0%' }}
-              animate={{ width: '100%' }}
-              transition={{ duration: INTERVAL / 1000, ease: 'linear' }}
-              key={`progress-${active}`}
-            />
-          )}
-        </button>
-      ))}
-    </div>
-  );
-}
-
-/* ── Desktop wrapper ───────────────────────────────────────────── */
-function HeroContentDesktop({ activeSlide, onSelect }: { activeSlide: number; onSelect: (i: number) => void }) {
+function HeroDesktop() {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 0.3], [0, -60]);
   const opacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
@@ -290,72 +46,28 @@ function HeroContentDesktop({ activeSlide, onSelect }: { activeSlide: number; on
       className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-28 pb-16 md:px-8 md:pt-36 md:pb-24"
       style={{ y, opacity }}
     >
-      <AnimatePresence mode="wait">
-        <SlideContent index={activeSlide} />
-      </AnimatePresence>
-      <div className="mt-10">
-        <SlideIndicators count={SLIDES.length} active={activeSlide} onSelect={onSelect} />
-      </div>
+      <HeroBody />
     </motion.div>
   );
 }
 
-/* ── Mobile wrapper ────────────────────────────────────────────── */
-function HeroContentMobile({ activeSlide, onSelect }: { activeSlide: number; onSelect: (i: number) => void }) {
+function HeroMobile() {
   return (
     <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-28 pb-16">
-      <AnimatePresence mode="wait">
-        <SlideContent index={activeSlide} />
-      </AnimatePresence>
-      <div className="mt-10">
-        <SlideIndicators count={SLIDES.length} active={activeSlide} onSelect={onSelect} />
-      </div>
+      <HeroBody />
     </div>
   );
 }
 
-/* ── Main hero ─────────────────────────────────────────────────── */
 export default function Hero() {
-  const { mobile, reducedMotion: reduced } = useClientEnv();
-  const [activeSlide, setActiveSlide] = useState(0);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const pausedRef = useRef(false);
-
-  const resetTimer = useCallback(() => {
-    if (timerRef.current) clearInterval(timerRef.current);
-    if (reduced) return;
-    timerRef.current = setInterval(() => {
-      if (!pausedRef.current) {
-        setActiveSlide((prev) => (prev + 1) % SLIDES.length);
-      }
-    }, INTERVAL);
-  }, [reduced]);
-
-  useEffect(() => {
-    resetTimer();
-    return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, [resetTimer]);
-
-  const handleSelect = useCallback((i: number) => {
-    setActiveSlide(i);
-    resetTimer();
-  }, [resetTimer]);
-
-  // Pause on hover (desktop)
-  const handleMouseEnter = useCallback(() => { pausedRef.current = true; }, []);
-  const handleMouseLeave = useCallback(() => { pausedRef.current = false; }, []);
+  const { mobile } = useClientEnv();
 
   return (
     <section
       className="relative flex min-h-[100dvh] items-center overflow-hidden bg-surface-page"
       aria-label="Hero"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
     >
-      {mobile
-        ? <HeroContentMobile activeSlide={activeSlide} onSelect={handleSelect} />
-        : <HeroContentDesktop activeSlide={activeSlide} onSelect={handleSelect} />
-      }
+      {mobile ? <HeroMobile /> : <HeroDesktop />}
     </section>
   );
 }

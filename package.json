@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 4790",
-    "prebuild": "node scripts/generate-llms-txt.mjs",
     "build": "next build",
     "start": "next start",
     "test": "npx playwright test",

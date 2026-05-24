@@ -26,10 +26,16 @@ export async function generateMetadata({
   const industry = getIndustryBySlug(slug);
   if (!industry) return {};
   return {
-    title: `${industry.name} Web Design — Stray Web Design`,
-    description: industry.description,
+    title: industry.metaTitle ?? `${industry.name} Web Design — Stray Web Design`,
+    description: industry.metaDescription ?? industry.description,
     alternates: { canonical: `/industries/${slug}` },
     keywords: industry.keywords,
+    openGraph: {
+      title: industry.metaTitle ?? `${industry.name} Web Design — Stray Web Design`,
+      description: industry.metaDescription ?? industry.description,
+      url: `https://straywebdesign.co/industries/${slug}`,
+      type: 'website',
+    },
   };
 }
 
@@ -180,6 +186,26 @@ export default async function IndustryPage({
             </div>
           </div>
         </section>
+
+        {/* Extended Content — long-form sections for SEO depth */}
+        {industry.extendedContent && industry.extendedContent.length > 0 && (
+          <section className="border-y border-border-default bg-surface-card py-16 md:py-20" aria-label="In-depth perspective">
+            <div className="mx-auto max-w-3xl px-5 md:px-8">
+              <div className="space-y-12">
+                {industry.extendedContent.map((block, i) => (
+                  <AnimateIn key={i} delay={i * 0.05}>
+                    <article>
+                      <h2 className="font-mono text-xl font-bold text-text-primary md:text-2xl">
+                        {block.heading}
+                      </h2>
+                      <p className="mt-4 leading-relaxed text-text-secondary">{block.body}</p>
+                    </article>
+                  </AnimateIn>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Services */}
         <section className="bg-light-gray py-16 md:py-20" aria-label="How we help">

@@ -26,9 +26,6 @@ function SectionSkeleton() {
 const Services = dynamic(() => import('@/components/sections/Services'), {
   loading: SectionSkeleton,
 });
-const Success = dynamic(() => import('@/components/sections/Success'), {
-  loading: SectionSkeleton,
-});
 const SocialProof = dynamic(() => import('@/components/sections/SocialProof'), {
   loading: SectionSkeleton,
 });
@@ -70,7 +67,6 @@ export default function Home() {
         <Hero />
         <Marquee />
         <Services />
-        <Success />
         <SocialProof />
         <TechnologyGap />
         <CalEmbed />

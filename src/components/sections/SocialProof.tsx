@@ -20,15 +20,10 @@ function ProfileCard({
       <p className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-wider text-accent">
         {industry}
       </p>
-      <p className="font-mono text-sm leading-relaxed text-text-secondary">
-        <span className="font-semibold text-text-primary">The problem: </span>
-        {challenge}
-      </p>
-      <div className="mt-4 border-t border-border-default pt-4">
-        <div className="flex items-start gap-2">
-          <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-          <p className="font-mono text-sm leading-relaxed text-text-secondary">{outcome}</p>
-        </div>
+      <p className="font-mono text-sm leading-relaxed text-text-secondary">{challenge}</p>
+      <div className="mt-4 flex items-start gap-2 border-t border-border-default pt-4">
+        <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+        <p className="font-mono text-sm leading-relaxed text-text-primary">{outcome}</p>
       </div>
     </div>
   );
@@ -43,13 +38,9 @@ export default function SocialProof() {
             Who This Is For
           </span>
           <h2 className="font-mono text-3xl font-bold text-text-primary md:text-4xl lg:text-5xl">
-            Built for businesses where{' '}
-            <GradientText>the site needs to pull its weight.</GradientText>
+            Businesses where{' '}
+            <GradientText>the site has to pull its weight.</GradientText>
           </h2>
-          <p className="mt-4 font-mono text-lg text-text-secondary">
-            Bookings, calls, form fills, foot traffic, orders — whatever the
-            site needs to drive, we build it to drive that.
-          </p>
         </AnimateIn>
 
         <AnimateIn delay={0.2} className="mt-12">
@@ -63,12 +54,9 @@ export default function SocialProof() {
         </AnimateIn>
 
         <AnimateIn delay={0.3} className="mt-12 text-center">
-          <p className="font-mono text-sm text-text-secondary">
-            Run one of these? Let&apos;s map out the site.
-          </p>
           <a
             href="#contact"
-            className="mt-4 inline-flex items-center gap-2 bg-accent px-6 py-3 font-mono text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-accent/90"
+            className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-mono text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-accent/90"
           >
             Tell me about your business
             <ArrowRight className="h-4 w-4" />

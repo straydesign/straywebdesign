@@ -27,7 +27,7 @@ FACTS ABOUT THE BUSINESS:
 - Sites score 90+ on Google Lighthouse across Performance, Accessibility, Best Practices, and SEO.
 - Sub-1-second load times on all sites.
 - WCAG AA accessibility compliance on all sites.
-- Services: custom website design, AI receptionist (24/7 call answering), SEO & GEO optimization, website management, landing pages, analytics setup.
+- Services: custom website design, AI receptionist (24/7 call answering), SEO optimization, website management, landing pages, analytics setup.
 - Pricing: Essential starts at $1,500 one-time + $100/month (simple/straightforward sites can come in at the $1,500 floor; most land around $2,500 once scope is finalized). Complete starts at $5,000 one-time + $200/month. BOTH tiers include the same monthly coverage: hosting, deploy pipeline, database (where needed), a custom CMS so the client can self-serve any content change anytime with no limits, SEO/analytics monitoring, unlimited structural changes, and ongoing improvement suggestions. Complete costs more because larger businesses push more traffic/data/database load through the stack and need priority turnaround on time-sensitive changes — the $200 reflects actual infrastructure cost + urgency, not different features. Flat rate on both — no nickel-and-diming, no per-change billing.
 - Turnaround: most sites ship in about 3 days once the plan is locked.
 - Payment model: $0 up front — you pay only when your site is live and you're happy with it.

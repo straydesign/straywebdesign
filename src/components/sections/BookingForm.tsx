@@ -1,11 +1,14 @@
 'use client';
 
+import { useEffect } from 'react';
 import { ArrowLeft, ArrowRight, Calendar, Clock, MessageSquare } from 'lucide-react';
 import AnimateIn from '@/components/ui/AnimateIn';
 import GradientText from '@/components/ui/GradientText';
 import BookingWizard from '@/components/booking/BookingWizard';
+import { trackPageEngaged } from '@/lib/tracking';
 
 export default function BookingForm() {
+  useEffect(() => trackPageEngaged('/book'), []);
   return (
     <div className="relative min-h-[100dvh] bg-surface-page text-text-primary">
       {/* Back link */}

@@ -176,68 +176,52 @@ export const ADDON_SERVICES = [
 export const FAQ_ITEMS = [
   {
     question: 'Why not just use WordPress?',
-    answer: 'Plugins, slow loads, security holes. Our sites are hand-coded, ship as static files, sub-1-second loads, no attack surface. $100/mo covers everything.',
+    answer: 'Plugins, slow loads, security holes. My sites ship as static files — sub-1-second loads, no attack surface.',
   },
   {
-    question: 'How long does a project take?',
-    answer: 'Most sites ship in three days. No plugins to fight, no themes to debug. Day one: discovery + design. Day two: build. Day three: polish + launch.',
+    question: 'How long does it take?',
+    answer: 'Most ship in three days. Day one: discovery + design. Day two: build. Day three: polish + launch.',
   },
   {
-    question: 'Do I need to maintain the site myself?',
-    answer: 'No. No servers, no databases, no plugins. $100/mo covers hosting on a global CDN, support, SEO monitoring, content updates, and analytics.',
-  },
-  {
-    question: 'What about my existing content?',
-    answer: 'We migrate everything — text, images, posts, SEO metadata — and restructure it for proper hierarchy, schema markup, and image optimization along the way.',
-  },
-  {
-    question: 'Word-of-mouth works for us. Why do we need this?',
-    answer: 'Referrals Google you before they call. A slow, dated site undermines the referral before you pitch. Word-of-mouth gets you known. The site scales it.',
-  },
-  {
-    question: 'What if my business changes after launch?',
-    answer: "That's what the $100/mo covers. Text or email the change. We push it live in 24–48 hours. No meetings, no scope discussions, no surprise invoices.",
+    question: 'Do I have to pay up front?',
+    answer: '$0 up front. I build it, you preview it live, we iterate until you love it. You only pay once it’s live.',
   },
   {
     question: 'How much does it cost?',
-    answer: 'Essential: $1,500+ one-time, $100/mo. Complete: $5,000+, $200/mo. Both flat-rate, no hidden fees. Tell me about the business and I\'ll quote in 24 hours.',
-  },
-  {
-    question: 'Do I have to pay anything up front?',
-    answer: '$0 up front. We build on our servers, show you the live preview, make changes until you love it. You only pay once it\'s live. If it doesn\'t work out, you owe nothing.',
+    answer: 'Essential: $1,500+ one-time, $100/mo. Complete: $5,000+, $200/mo. Flat-rate. Tell me about the business and I’ll quote in 24 hours.',
   },
 ] as const;
 
 export const CLIENT_PROFILES = [
   {
     industry: 'Dental Practices',
-    challenge: 'Patients judge your practice by your site before walking in.',
-    outcome: 'A site that outperforms corporate dental on speed and mobile booking.',
+    challenge: 'Patients judge you before walking in.',
+    outcome: 'Beats corporate dental on speed and mobile booking.',
   },
   {
     industry: 'Financial Advisors',
     challenge: 'Referrals Google you before they call.',
-    outcome: 'A presence that matches the precision of your work.',
+    outcome: 'A presence that matches the precision of the work.',
   },
   {
     industry: 'Car Dealerships',
     challenge: 'Buyers research online before they hit the lot.',
-    outcome: 'The fastest, cleanest site in the market captures the lead.',
+    outcome: 'Fastest, cleanest site in the market captures the lead.',
   },
   {
     industry: 'IT Services & MSPs',
-    challenge: 'You sell technical competence — your site scores 35 on Lighthouse.',
-    outcome: 'Sub-1-second loads that prove the work before you say a word.',
+    challenge: 'You sell technical competence. Your site scores 35.',
+    outcome: 'Sub-1-second loads prove the work before you say a word.',
   },
   {
     industry: 'Law Firms',
     challenge: 'Midnight phone searches. Five-second loads lose the lead.',
-    outcome: 'Instant load + AI visibility when people search for help.',
+    outcome: 'Instant load when someone needs help right now.',
   },
   {
     industry: 'Vision Care',
-    challenge: 'Patients expect the same polish from your site as the brands they shop.',
-    outcome: 'A fast, modern site with AI optimization baked in.',
+    challenge: 'Patients expect the polish of the brands they shop.',
+    outcome: 'A fast, modern site that matches.',
   },
 ] as const;
 

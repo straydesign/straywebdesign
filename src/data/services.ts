@@ -314,12 +314,12 @@ export const SERVICES = [
   },
   {
     slug: "seo-optimization",
-    name: "SEO & GEO Optimization",
-    shortName: "SEO & GEO",
+    name: "SEO Optimization",
+    shortName: "SEO",
     description:
-      "Rank on Google and get recommended by AI assistants. We combine traditional SEO with Generative Engine Optimization — JSON-LD, llms.txt, FAQ schema, and local SEO that puts you in front of customers however they search.",
+      "The technical foundation Google’s 2026 GenAI search guide actually asks for: server-rendered HTML, JSON-LD schema, FAQ markup, clean canonicals, and local SEO. Indexable, crawlable, eligible to be cited.",
     longDescription:
-      "SEO is no longer just about Google. 40% of Gen Z uses TikTok and AI chatbots as their primary search tool. When someone asks ChatGPT or Gemini 'best restaurant near me' or 'web designer near me,' your business needs to show up. We do traditional SEO — technical audits, keyword strategy, backlink building, local pack optimization — and layer on Generative Engine Optimization (GEO). That means structured data, llms.txt files, FAQ schema, and content architecture that AI systems can parse and recommend. Most businesses optimize for one search engine. We optimize for all of them.",
+      "Google’s AI Overviews and AI Mode retrieve real indexed pages and cite them. A page only appears in those answers if it’s indexable, crawlable, and eligible to appear in regular Search with a snippet. That means the work is technical SEO done well — not novelty tactics. I ship server-rendered content, accurate structured data, FAQ schema, sitemaps, canonicals, and a Google Business Profile in shape. No llms.txt theater, no parallel AI version of the site, no keyword-farm fan-out pages.",
     features: [
       {
         title: "Technical SEO Audit",
@@ -327,9 +327,9 @@ export const SERVICES = [
           "Crawl-level analysis of site speed, indexation, broken links, redirect chains, canonical tags, and Core Web Vitals. We find every issue holding your rankings back.",
       },
       {
-        title: "Generative Engine Optimization",
+        title: "Structured Data & FAQ Schema",
         description:
-          "Structured data, llms.txt, FAQ schema, and content formatting that AI assistants like ChatGPT, Gemini, and Perplexity can parse and cite. Get recommended, not just ranked.",
+          "Real JSON-LD that matches what’s actually on the page — Organization, LocalBusiness, FAQ, Article — so rich results show up in regular Search and grounded AI answers can cite them.",
       },
       {
         title: "Local SEO & Google Business",
@@ -385,7 +385,7 @@ export const SERVICES = [
         step: 3,
         title: "Implementation",
         description:
-          "Technical fixes, schema markup, content optimization, GEO implementation, and local SEO setup. We handle everything — you do not need a developer on staff.",
+          "Technical fixes, schema markup, content optimization, and local SEO setup. We handle everything — you do not need a developer on staff.",
       },
       {
         step: 4,
@@ -396,9 +396,9 @@ export const SERVICES = [
     ],
     faqs: [
       {
-        question: "What is Generative Engine Optimization (GEO)?",
+        question: "Don’t I need llms.txt or a GEO strategy for AI search?",
         answer:
-          "GEO is SEO for AI. When someone asks ChatGPT, Gemini, or Perplexity a question, those systems pull from structured web data to generate answers. GEO ensures your business data is structured so AI systems can find, understand, and recommend you.",
+          "No. Google publicly says llms.txt gets no special treatment and that optimizing for AI Overviews is just SEO done well. Skip the novelty — invest in indexable HTML, real structured data, and content people actually want to read.",
       },
       {
         question: "How long until I see results?",
@@ -423,15 +423,13 @@ export const SERVICES = [
     ],
     keywords: [
       "SEO optimization",
-      "generative engine optimization",
+      "technical SEO audit",
       "local SEO services",
-      "GEO optimization",
-      "AI search optimization",
       "Google Business Profile optimization",
       "JSON-LD schema markup",
       "small business SEO",
-      "llms.txt implementation",
-      "SEO and GEO agency",
+      "Core Web Vitals SEO",
+      "FAQ schema",
     ],
     relatedServices: ["website-design", "landing-pages", "analytics-setup"],
   },

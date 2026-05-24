@@ -33,9 +33,9 @@ const INCLUDED = [
       'Proper contrast, keyboard navigation, screen reader support, semantic HTML. Every visitor can use your site.',
   },
   {
-    title: 'Full SEO + AI Readiness',
+    title: 'SEO Fundamentals',
     description:
-      'JSON-LD schema, llms.txt, GEO optimization, local SEO, sitemap generation. Rank on Google and get recommended by AI assistants.',
+      'Server-rendered HTML, JSON-LD schema, clean canonicals, sitemap and local SEO — the indexable, crawlable foundation Google’s 2026 GenAI search guide asks for.',
   },
   {
     title: '$100/mo Management',

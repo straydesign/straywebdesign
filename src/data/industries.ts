@@ -12,6 +12,10 @@ export interface Industry {
   patientOrClientTerm: string;
   lifetimeValue: string;
   competitorExample: string;
+  // Optional SEO/content overrides (used for high-priority pages)
+  metaTitle?: string;
+  metaDescription?: string;
+  extendedContent?: { heading: string; body: string }[];
 }
 
 export const INDUSTRIES: Industry[] = [
@@ -215,9 +219,9 @@ export const INDUSTRIES: Industry[] = [
     name: 'IT Services & MSPs',
     shortName: 'IT / MSP',
     description:
-      'Your managed services contracts are worth $50K-$500K annually, but your website looks like it was built by your least busy technician. Decision-makers judge your competence by your digital presence.',
+      'IT services and MSP web design agency. Your managed services contracts are worth $50K-$500K annually — your website should pass the technical audit a CFO is going to give it before they ever reach out.',
     longDescription:
-      'When a CFO or operations director is shopping for an IT partner, your website is the first technical audit you\'ll ever face. If it\'s slow, outdated, or generic, they\'re already questioning your capabilities. The irony of an IT company with a bad website isn\'t lost on anyone. We build MSP and IT services websites that demonstrate technical competence through performance, showcase real results through case studies, and convert high-value prospects through strategic CTAs. Your site should be the best proof of what you do.',
+      'When a CFO or operations director is shopping for an IT partner, your website is the first technical audit you\'ll ever face. If it\'s slow, outdated, or generic, they\'re already questioning your capabilities — and they\'re going to keep scrolling LinkedIn for the next MSP. The irony of an IT services company with a bad website isn\'t lost on anyone evaluating it. We build MSP and IT services websites that demonstrate technical competence through performance benchmarks (sub-1s load, 95+ Lighthouse), showcase real outcomes through case studies, and convert high-value prospects through strategic CTAs and pricing transparency. Your site should be the best proof of what you do, not the weakest link in your sales process.',
     challenges: [
       'Website that undermines credibility — an IT company with a slow, dated site is a red flag',
       'Generic messaging that sounds like every other MSP: "We manage your IT so you can focus on business"',
@@ -259,9 +263,12 @@ export const INDUSTRIES: Industry[] = [
       },
     ],
     keywords: [
-      'IT services website design',
-      'MSP website design',
-      'managed services marketing',
+      'IT services web design',
+      'IT services web design agency',
+      'IT services web design company',
+      'MSP web design agency',
+      'MSP web design services',
+      'managed services provider website',
       'IT company web design',
       'MSP lead generation',
       'IT services SEO',
@@ -269,11 +276,30 @@ export const INDUSTRIES: Industry[] = [
       'MSP digital marketing',
       'IT company website redesign',
       'B2B tech website design',
+      'cybersecurity company website',
+      'IT services marketing',
     ],
     icon: 'Server',
     patientOrClientTerm: 'clients',
     lifetimeValue: '',
     competitorExample: 'Large regional MSPs',
+    metaTitle: 'IT Services & MSP Web Design Agency — Sites That Pass the Technical Audit | Stray',
+    metaDescription:
+      'MSP and IT services web design agency. Custom sites that pass the technical audit your prospects will give before they ever reach out. Case-study driven, PSA-integrated, sub-1s load time. Built to convert enterprise buyers.',
+    extendedContent: [
+      {
+        heading: 'What MSP Web Design Should Look Like in 2026',
+        body: 'The MSP buying cycle is long, technical, and ruthless. A CFO evaluating IT partners is comparing 4-7 vendors and the website is the cheapest filter they have. Slow site? Cut. Generic copy about "comprehensive managed services"? Cut. No case studies with real numbers? Cut. A modern MSP web design agency builds for the buyer who is already mid-evaluation: case studies that show downtime reduced, response times, compliance certifications, and one clear next step. The site should not try to convert someone in their first 5 seconds — it should give a sophisticated buyer enough proof to start a serious conversation.',
+      },
+      {
+        heading: 'Why IT Services Companies Need PSA Integration on Their Site',
+        body: 'Your prospects already know what a client portal looks like — they\'re using one with their current provider. When your site can\'t even show a ticket-submission flow, you\'re telling buyers you operate at a lower technical bar than the MSP they\'re considering leaving. We integrate ConnectWise, Autotask/Datto, HaloPSA, and SuperOps directly into the site so client portals can show ticket status, monthly reports, asset inventories, and self-service knowledge bases. This isn\'t a nice-to-have — it\'s table stakes when you\'re selling against MSPs that already have it.',
+      },
+      {
+        heading: 'The Case for Pricing Transparency on MSP Websites',
+        body: 'Hiding pricing on an MSP site is conventional wisdom that\'s aged badly. Buyers in 2026 expect at minimum a "starting at" anchor and a tiered package breakdown. Concealing pricing entirely creates friction in the most active part of the funnel — the prospect comparing 5 MSPs at 11pm on a Tuesday. We recommend tiered packages (e.g., Essential / Standard / Enterprise) with starting-at pricing visible, then a custom-quote path for complex environments. This single change typically increases qualified discovery calls by 30-50% and filters out prospects who can\'t afford your services before they consume an hour of your time.',
+      },
+    ],
   },
   {
     slug: 'law-firms',
@@ -800,15 +826,17 @@ export const INDUSTRIES: Industry[] = [
     name: 'HVAC Companies',
     shortName: 'HVAC',
     description:
-      'When someone\'s AC dies in July or their furnace quits in January, they\'re making a decision in minutes — not days. Your website needs to be the first result and the fastest path to a booked service call.',
+      'HVAC web design agency for heating and cooling contractors. We build fast, lead-generating websites that show up first when an AC dies in July or a furnace quits in January — and turn that search into a booked service call.',
     longDescription:
-      'HVAC is an urgency business. When systems fail, homeowners aren\'t comparison shopping for weeks — they\'re Googling from a house that\'s 90 degrees or 40 degrees. The company with the best local search visibility, the fastest-loading site, and the easiest booking process wins the job. National chains spend millions to show up first. But local HVAC companies that invest in their digital presence consistently outperform them because homeowners prefer local, trusted technicians. We build HVAC websites designed for urgency: prominent phone numbers, one-click scheduling, financing options upfront, and local SEO that puts you above the chains.',
+      'HVAC is an urgency business. When systems fail, homeowners aren\'t comparison shopping for weeks — they\'re Googling from a house that\'s 90 degrees or 40 degrees, and they\'re calling whoever ranks first with a site that loads in under a second. National chains spend millions to occupy those top spots. But local HVAC companies that invest in a serious web design partner consistently outperform them, because homeowners prefer local, licensed technicians once they can find them. As an HVAC web design company, we build sites engineered for that specific moment: prominent click-to-call on every screen, one-screen scheduling, financing copy above the fold, and local SEO that puts you above HomeAdvisor and the chains. Every site ships with Core Web Vitals in the green, accessibility compliance, and the lead-tracking instrumentation your marketing budget needs to actually attribute jobs.',
     challenges: [
       'National chains like Carrier and Trane dealers with massive advertising budgets',
       'HomeAdvisor and Angi capturing and reselling your leads at premium prices',
       'No online scheduling for emergency or same-day service requests',
       'Seasonal demand swings with no digital strategy to generate leads year-round',
       'Website that doesn\'t communicate 24/7 emergency availability clearly',
+      'Template HVAC sites from agencies like Scorpion and Blue Corona that look identical to every competitor',
+      'No integration with ServiceTitan, Housecall Pro, or Jobber — leads die in someone\'s inbox',
     ],
     stats: [
       { value: '90+', label: 'Lighthouse score across all metrics' },
@@ -818,47 +846,93 @@ export const INDUSTRIES: Industry[] = [
     ],
     faqs: [
       {
+        question: 'What does an HVAC web design agency actually do that I can\'t get from a template?',
+        answer:
+          'A template gives you a brochure. An HVAC web design agency builds a lead-generation system: emergency-first hero, service-area pages targeting every city you cover, financing copy that reduces sticker shock on $8K-$15K installs, schema markup that helps Google show your service radius in local results, and analytics wired to actually attribute booked jobs back to channels. Template sites can\'t do that. They look the same as every other contractor in your zip code and they don\'t track anything past a form submit.',
+      },
+      {
         question: 'How do you make our HVAC website convert emergency searches?',
         answer:
-          'Prominent phone number on every page, click-to-call buttons on mobile, emergency service badges, and "Schedule Now" CTAs that don\'t require scrolling. When someone\'s HVAC fails, every second of friction loses a customer.',
+          'Prominent phone number on every page, click-to-call buttons on mobile, emergency service badges, and "Schedule Now" CTAs that don\'t require scrolling. When someone\'s HVAC fails, every second of friction loses a customer. We design the emergency path as the default path — financing, testimonials, and brand polish all live below the fold.',
       },
       {
         question: 'Can customers schedule service appointments online?',
         answer:
-          'Yes — for both emergency and routine maintenance. We build scheduling tools that capture the issue type, system details, and preferred timing, then route to your dispatch. Less phone tag, more booked jobs.',
+          'Yes — for both emergency and routine maintenance. We build scheduling tools that capture the issue type, system details, and preferred timing, then route to your dispatch. Less phone tag, more booked jobs. We integrate with ServiceTitan, Housecall Pro, FieldEdge, and Jobber so leads land in the same queue your dispatchers already work from.',
       },
       {
         question: 'How do you help us generate leads in the off-season?',
         answer:
-          'We build content around seasonal maintenance, energy efficiency tips, and system upgrade guides. Maintenance agreements and tune-up promotions keep your pipeline active year-round instead of boom-and-bust cycles.',
+          'We build content around seasonal maintenance, energy efficiency tips, and system upgrade guides. Maintenance agreement landing pages, tune-up promotion templates, and indoor-air-quality content keep your pipeline active in shoulder months instead of boom-and-bust cycles. Every blog post is structured for SEO — answering the questions homeowners actually search.',
       },
       {
         question: 'Should we show financing options on the website?',
         answer:
-          'Absolutely. A $10K system replacement is a major purchase. Showing monthly payment options upfront (e.g., "$89/month with approved credit") removes sticker shock and increases conversion for replacement jobs.',
+          'Absolutely. A $10K system replacement is a major purchase. Showing monthly payment options upfront (e.g., "$89/month with approved credit") removes sticker shock and increases conversion for replacement jobs. We integrate with GreenSky, Synchrony, Wells Fargo, and Service Finance so the financing application can start right on the quote page.',
       },
       {
-        question: 'How important are service area pages?',
+        question: 'How important are service area pages for HVAC SEO?',
         answer:
-          'Extremely important for HVAC. We build pages for every city and neighborhood you serve — "HVAC repair in [your suburb]," "furnace installation in [nearby town]" — each optimized to rank for local emergency searches in that area.',
+          'Extremely important. We build pages for every city and neighborhood you serve — "HVAC repair in [your suburb]," "furnace installation in [nearby town]" — each optimized to rank for local emergency searches in that area. Service area pages routinely double the surface area of your search visibility. The HVAC web design services that skip this step are the reason most contractor sites plateau.',
+      },
+      {
+        question: 'How is this different from Scorpion, Blue Corona, or Surefire Local?',
+        answer:
+          'The big HVAC marketing agencies sell a managed-service subscription — you\'re renting a templated site for $1,500-$3,500/month, and the site usually looks like every other contractor on their roster. We build a custom site you own, ship it in weeks not months, and the speed and Lighthouse scores compete with anything they put out. After launch, you can host with us, hand it to a marketing agency, or self-manage. Your site, your call.',
+      },
+      {
+        question: 'Will my HVAC website work on mobile for technicians and customers?',
+        answer:
+          'Yes — mobile is the default, not an afterthought. 70%+ of HVAC traffic is mobile because emergencies happen at home. Every site we build is responsive down to 320px, click-to-call is one tap, the scheduling flow works on a 4-inch screen, and Lighthouse mobile scores stay above 90 after launch.',
+      },
+      {
+        question: 'How long until the site ranks for HVAC searches in our area?',
+        answer:
+          'Local map-pack visibility moves in weeks when the technical foundation is correct (schema, page speed, GMB optimization, service area pages). Organic ranking for competitive terms like "AC repair [city]" takes months and depends on content cadence, reviews, and backlinks. We give you a realistic 6-month projection at the start — no agency promises about "page one in 30 days."',
       },
     ],
     keywords: [
+      'HVAC web design agency',
+      'HVAC web design company',
+      'HVAC web design services',
       'HVAC website design',
       'heating and cooling web design',
-      'HVAC marketing',
-      'HVAC SEO',
+      'HVAC marketing agency',
+      'HVAC SEO services',
       'HVAC lead generation',
-      'HVAC company website',
-      'heating contractor marketing',
-      'HVAC digital marketing',
+      'HVAC company website design',
+      'heating contractor web design',
+      'HVAC contractor website',
+      'air conditioning company website',
       'HVAC website redesign',
-      'HVAC marketing',
+      'HVAC digital marketing',
+      'best HVAC websites',
     ],
     icon: 'Thermometer',
     patientOrClientTerm: 'customers',
     lifetimeValue: '',
     competitorExample: 'National HVAC chains',
+    metaTitle: 'HVAC Web Design Agency — Lead-Gen Sites for Heating & Cooling Contractors | Stray',
+    metaDescription:
+      'HVAC web design agency building fast, lead-generating sites for heating and cooling contractors. Emergency-first design, ServiceTitan integration, financing copy, local SEO. Custom builds you own — not templates you rent.',
+    extendedContent: [
+      {
+        heading: 'What an HVAC Web Design Company Should Actually Deliver',
+        body: 'Most HVAC contractors get sold the same package: a templated site, a vague SEO promise, and a monthly retainer. Six months in, the site looks like every other contractor in the state and the leads coming through it are indistinguishable from the leads coming through HomeAdvisor — which is to say, they\'re expensive and hard to attribute. A real HVAC web design company delivers four specific things: (1) a site engineered around the emergency moment, where the homeowner is hot or cold and ready to call; (2) service-area pages that earn local search visibility for every city you serve, not just one; (3) integration with the dispatch software your office already uses so leads don\'t die in an inbox; and (4) page speed and Core Web Vitals that beat the chains on Google\'s own ranking signals. Anything less is brochureware with a contractor-themed photo on it.',
+      },
+      {
+        heading: 'Why Speed Matters More for HVAC Than Almost Any Other Industry',
+        body: 'A homeowner whose furnace just quit at 6pm in January is not patient. Google\'s mobile data says 53% of mobile users abandon a page that takes longer than 3 seconds to load. For HVAC searches, that number is probably worse — the urgency cuts both ways. The sites we build for HVAC contractors hit sub-1-second load on mobile, with Lighthouse performance scores in the 95-100 range. That speed is also a direct ranking factor: Google\'s Core Web Vitals (LCP, INP, CLS) are scored, and HVAC sites built on bloated WordPress templates routinely fail all three. Fixing that is one of the highest-leverage moves a heating and cooling company can make.',
+      },
+      {
+        heading: 'HVAC Service Area Pages Are the Hidden Lever',
+        body: 'Most HVAC sites have one "service area" page that lists 12 cities in bullet form. That\'s a mistake. Each city you serve deserves a dedicated page targeting the searches specific to that area — "AC repair in [city]," "furnace installation [city]," "[city] HVAC contractor." Each page should include: a paragraph of unique content about that city (climate, common system types, neighborhoods), embedded Google Map of your service radius, 2-3 local customer reviews, and a phone number plus scheduling CTA. We typically build 8-25 service area pages per HVAC site at launch. The combined organic traffic from those pages usually exceeds the homepage within 6-9 months.',
+      },
+      {
+        heading: 'What HVAC Lead Generation Looks Like When the Site Is Doing Its Job',
+        body: 'A working HVAC website should produce three categories of lead, every month, in measurable volume: emergency service requests (the "my AC just died" calls), scheduled maintenance bookings (tune-up promos, maintenance agreements), and replacement quote requests (the high-ticket installs). Each one needs its own flow on the site. Emergency calls need to be one-tap from any page. Maintenance agreements need a landing page that explains the value and lets the homeowner sign up online. Replacement quotes need a configurator-style form that captures system age, square footage, and current pain points. When those flows are wired correctly, the analytics tell you exactly which category is converting and where the gap is — instead of one undifferentiated stream of "contact form submissions" that you can\'t prioritize.',
+      },
+    ],
   },
   {
     slug: 'plumbing',

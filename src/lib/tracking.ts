@@ -52,3 +52,45 @@ export function trackLeadConversion(data: ConversionData = {}) {
     });
   }
 }
+
+/**
+ * Fire a `page_engaged` GA4 event after the user has dwelled on the page for
+ * `thresholdMs` and is still active (tab visible). This gives us a positive
+ * engagement signal that filters out bot crawls and instant bounces on pages
+ * (like /book) where page_view alone leaves session metrics at 0s / 0 engaged.
+ *
+ * Returns a cleanup function to call on unmount.
+ */
+export function trackPageEngaged(page: string, thresholdMs = 15000): () => void {
+  if (typeof window === 'undefined') return () => {};
+
+  let elapsed = 0;
+  let lastTick = Date.now();
+  let fired = false;
+
+  const tick = () => {
+    if (document.visibilityState !== 'visible' || fired) {
+      lastTick = Date.now();
+      return;
+    }
+    const now = Date.now();
+    elapsed += now - lastTick;
+    lastTick = now;
+    if (elapsed >= thresholdMs && window.gtag) {
+      window.gtag('event', 'page_engaged', { page, dwell_ms: elapsed });
+      fired = true;
+      clearInterval(interval);
+    }
+  };
+
+  const interval = window.setInterval(tick, 2000);
+  const onVisibility = () => {
+    lastTick = Date.now();
+  };
+  document.addEventListener('visibilitychange', onVisibility);
+
+  return () => {
+    clearInterval(interval);
+    document.removeEventListener('visibilitychange', onVisibility);
+  };
+}
