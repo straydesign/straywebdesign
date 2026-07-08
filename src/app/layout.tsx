@@ -34,14 +34,14 @@ const hanken = Hanken_Grotesk({
 export const metadata: Metadata = {
   title: "Stray Web Design — Web Designer in Erie, PA | Tom Sesler",
   description:
-    "Hi, I'm Tom, a web designer in Erie, PA. I design and build custom websites for small businesses, then host them or hand them off. $300 flat: I build your site and you own everything. Call or text 814-402-8525.",
+    "Hi, I'm Tom, a web designer in Erie, PA. I design and build custom websites for consumer-facing businesses, then host them or hand them off. Call or text 814-402-8525.",
   keywords: [
     'freelance web designer',
     'web designer',
     'custom website',
     'website design',
     'brand and web design',
-    'small business website',
+    'business website',
     'hand-coded website',
     'fast website',
     'accessible website',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Stray Web Design — Web Designer in Erie, PA | Tom Sesler",
     description:
-      "Custom websites for small businesses, designed and built by one person you can actually call. $300 flat: I build your site and you own everything.",
+      "Custom websites for consumer-facing businesses, designed and built by one person you can actually call.",
     url: 'https://straywebdesign.co',
     siteName: 'Stray Web Design',
     locale: 'en_US',
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "Stray Web Design — Web Designer in Erie, PA | Tom Sesler",
     description:
-      "Custom websites for small businesses. $300 flat: I build your site and you own everything.",
+      "Custom websites for consumer-facing businesses, designed and built by one person you can actually call.",
   },
   alternates: {
     canonical: '/',

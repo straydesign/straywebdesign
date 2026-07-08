@@ -3,12 +3,12 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import MagneticButton from '@/components/ui/MagneticButton';
-import BrowserFrame from '@/components/ui/BrowserFrame';
+import MacBookFrame from '@/components/ui/MacBookFrame';
 import { SITE } from '@/lib/constants';
 import { useClientEnv } from '@/lib/use-client-env';
 
-/* Hero — honest and forward: who I am, the $300 build-and-handoff deal, and
-   the phone number + email right on the surface. */
+/* Hero — honest and forward: who I am, what I do, and the phone number +
+   email right on the surface. */
 
 function HeroBody() {
   return (
@@ -22,7 +22,7 @@ function HeroBody() {
         Hi, I&apos;m Tom.
         <br />
         I design and build websites for{' '}
-        <span className="text-accent">small businesses</span>.
+        <span className="text-accent">consumer-facing businesses</span>.
       </h1>
 
       <div className="mt-6 max-w-xl">
@@ -32,18 +32,7 @@ function HeroBody() {
           actual business&apos;s website that I built and still run.
         </p>
 
-        <div className="mt-7 rounded-lg border border-accent/25 bg-accent/5 px-5 py-4">
-          <p className="font-body text-[15px] leading-relaxed text-text-secondary">
-            <span className="mr-2 inline-block rounded-full bg-accent px-2.5 py-0.5 font-mono text-[12px] font-semibold text-white">
-              $300 flat
-            </span>
-            I build your site and put the hosting and domain in your name.
-            Then I teach you to run it with AI. You own everything and pay no
-            monthly fees.
-          </p>
-        </div>
-
-        <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-2">
+        <div className="mt-7 flex flex-wrap items-center gap-x-7 gap-y-2">
           <a
             href="tel:+18144028525"
             className="font-display text-lg font-bold text-text-primary transition-colors hover:text-accent md:text-xl"
@@ -94,13 +83,12 @@ function HeroDesktop() {
         <HeroBody />
       </div>
       <div className="hidden lg:block">
-        <BrowserFrame
+        <MacBookFrame
           src="/images/work/andys.png"
           alt="Andy's Ale House — a site I designed, built, host, and manage"
-          url="andyspub.com"
           priority
         />
-        <p className="mt-3 text-right font-mono text-[11px] uppercase tracking-[0.1em] text-text-tertiary">
+        <p className="mt-7 text-right font-mono text-[11px] uppercase tracking-[0.1em] text-text-tertiary">
           <span aria-hidden className="text-accent/60">// </span>
           live · andyspub.com
         </p>

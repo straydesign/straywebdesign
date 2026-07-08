@@ -68,7 +68,6 @@ function DesignDiveIn({ project }: { project: Project }) {
 function ProjectRow({ project, index }: { project: Project; index: number }) {
   const [open, setOpen] = useState(false);
   const flipped = index % 2 === 1;
-  const live = project.category === 'live';
 
   return (
     <AnimateIn>
@@ -78,14 +77,17 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
             shot={project.shot}
             phoneShot={project.phoneShot}
             name={project.name}
-            displayUrl={project.displayUrl}
             priority={index === 0}
           />
+          <p className="mt-2 pr-[10%] text-right font-mono text-[11px] uppercase tracking-[0.1em] text-text-tertiary">
+            <span aria-hidden className="text-accent/60">{'// '}</span>
+            live · {project.displayUrl}
+          </p>
         </div>
         <div className={flipped ? 'lg:order-1' : undefined}>
           <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-accent">
             <span aria-hidden className="text-accent/60">{'// '}</span>
-            {live ? 'live — built, hosted & managed by me' : 'concept redesign — spec work'}
+            live — built, hosted &amp; managed by me
           </p>
           <h3 className="mt-3 font-display text-2xl font-bold tracking-tight text-text-primary md:text-3xl">
             {project.name}
@@ -158,9 +160,8 @@ export default function ProjectShowcase() {
             Real sites, on real screens.
           </h2>
           <p className="mt-4 max-w-xl font-body text-base leading-relaxed text-text-secondary md:text-lg">
-            The first two are live client sites I built and still run. The
-            rest are concept rebuilds I made for real local businesses, to
-            show what their sites could be. Open any of them.
+            Every one of these is a live client site I built and still run
+            for a real business. Open any of them.
           </p>
         </AnimateIn>
 

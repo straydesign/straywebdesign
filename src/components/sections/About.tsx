@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import AnimateIn from '@/components/ui/AnimateIn';
 
 /* About — the positioning, first person. Tom, a freelance web designer:
@@ -36,7 +37,17 @@ export default function About() {
               <span aria-hidden className="text-accent/60">{'// '}</span>
               about
             </p>
-            <h2 className="mt-4 font-display text-[clamp(1.9rem,4vw,2.9rem)] font-bold leading-[1.06] tracking-tight text-text-primary">
+            <div className="mt-6 flex w-48 items-end overflow-hidden rounded-lg bg-accent/5 ring-1 ring-accent/15 md:w-56">
+              <Image
+                src="/images/tom.png"
+                alt="Tom Sesler"
+                width={800}
+                height={913}
+                sizes="(min-width: 768px) 224px, 192px"
+                className="w-full"
+              />
+            </div>
+            <h2 className="mt-6 font-display text-[clamp(1.9rem,4vw,2.9rem)] font-bold leading-[1.06] tracking-tight text-text-primary">
               Hi, I&apos;m Tom.
             </h2>
             <p className="mt-5 max-w-md font-body text-lg leading-relaxed text-text-secondary">
