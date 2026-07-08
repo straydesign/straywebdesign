@@ -128,7 +128,8 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const ip = request.headers.get('x-client-ip') ?? request.headers.get('x-forwarded-for')?.split(',')[0] ?? 'unknown';
+  // x-forwarded-for is set by Vercel's edge, not the client — safe for rate-limit keys.
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0] ?? 'unknown';
   if (!checkRateLimit(ip)) {
     return NextResponse.json(
       { error: 'Too many requests. Please wait a moment.' },

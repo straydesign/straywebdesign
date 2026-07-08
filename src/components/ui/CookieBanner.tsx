@@ -15,10 +15,23 @@ export default function CookieBanner() {
       disableTracking();
       return;
     }
-    // If they haven't dismissed the banner yet, show it
+    // If they haven't dismissed the banner yet, show it — but not on top of
+    // the hero CTA: wait for first scroll, with a timed fallback.
     if (!consent) {
-      const timer = setTimeout(() => setVisible(true), 2000);
-      return () => clearTimeout(timer);
+      const show = () => {
+        setVisible(true);
+        cleanup();
+      };
+      const onScroll = () => {
+        if (window.scrollY > 80) show();
+      };
+      const timer = setTimeout(show, 8000);
+      const cleanup = () => {
+        clearTimeout(timer);
+        window.removeEventListener('scroll', onScroll);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      return cleanup;
     }
     // 'accepted' or 'dismissed' — tracking stays on, banner stays hidden
   }, []);
