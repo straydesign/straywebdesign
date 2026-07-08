@@ -21,6 +21,16 @@ const nextConfig: NextConfig = {
       { source: '/lab', destination: '/', permanent: true },
       { source: '/lab/:path*', destination: '/', permanent: true },
       { source: '/lp/:path*', destination: '/', permanent: true },
+      // June-2026 purge left these indexed and 404ing — GSC still shows
+      // impressions on them (Erie-intent queries especially).
+      { source: '/locations/:path*', destination: '/', permanent: true },
+      { source: '/industries/:path*', destination: '/', permanent: true },
+      {
+        source:
+          '/resources/blog/:slug(ai-integration-small-business-website-2026|ai-ready-website-development-guide|ai-receptionist-for-small-business|ai-seo-optimization-how-to-show-up|content-migration-website-redesign|erie-digital-transformation-guide-2026|geo-optimization-generative-engine-service|local-seo-small-business-erie|seo-vs-geo-which-matters-more|structured-data-schema-markup-business|website-management-service-erie|wordpress-vs-nextjs-which-is-right)',
+        destination: '/resources',
+        permanent: true,
+      },
     ];
   },
 };
