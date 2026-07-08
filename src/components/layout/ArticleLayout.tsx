@@ -16,24 +16,9 @@ interface ArticleLayoutProps {
 }
 
 export default function ArticleLayout({ meta, children, jsonLd, relatedPosts = [] }: ArticleLayoutProps) {
-  const typeLabel =
-    meta.type === 'blog'
-      ? 'Blog'
-      : meta.type === 'white-paper'
-        ? 'White Paper'
-        : 'Case Study';
-
-  const typeDir =
-    meta.type === 'blog'
-      ? 'blog'
-      : meta.type === 'white-paper'
-        ? 'white-papers'
-        : 'case-studies';
-
   const breadcrumbs = [
     { label: 'Home', href: '/' },
-    { label: 'Resources', href: '/resources' },
-    { label: typeLabel, href: `/resources#${meta.type}` },
+    { label: 'Writing', href: '/resources' },
     { label: meta.title },
   ];
 
@@ -53,12 +38,12 @@ export default function ArticleLayout({ meta, children, jsonLd, relatedPosts = [
               className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-text-secondary transition-colors hover:text-text-primary"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back to Resources
+              Back to Writing
             </a>
 
             <div className="flex items-center gap-3">
               <span className="bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-                {typeLabel}
+                Blog
               </span>
               <span className="bg-surface-sunken px-3 py-1 text-xs font-medium text-text-secondary">
                 {meta.tag}
@@ -104,7 +89,7 @@ export default function ArticleLayout({ meta, children, jsonLd, relatedPosts = [
                 Launching something new?
               </h3>
               <p className="mx-auto mt-2 max-w-md text-sm text-text-secondary">
-                Tell us what you&apos;re building. We&apos;ll come back with
+                Tell me what you&apos;re building. I&apos;ll come back with
                 a plan for what the site should actually do.
               </p>
               <div className="mt-6">

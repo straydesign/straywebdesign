@@ -1,21 +1,21 @@
 export const COLORS = {
   navy: '#18181b',
   electric: '#2563EB',
-  warmWhite: '#f4f4f5',
+  warmWhite: '#fafafa',
   accent: '#2563EB',
   darkNavy: '#18181b',
-  lightGray: '#f4f4f5',
+  lightGray: '#fafafa',
   mediumGray: '#a1a1aa',
   electricLight: '#60A5FA',
-  electricDark: '#2563EB',
-  surfacePage: '#f4f4f5',
+  electricDark: '#1d4ed8',
+  surfacePage: '#fafafa',
   surfaceCard: '#ffffff',
-  surfaceSunken: '#e4e4e7',
+  surfaceSunken: '#f1f1f4',
   textPrimary: '#18181b',
-  textSecondary: '#52525b',
-  textTertiary: '#71717a',
-  borderDefault: '#e4e4e7',
-  borderStrong: '#d4d4d8',
+  textSecondary: '#3f3f46',
+  textTertiary: '#5b5b63',
+  borderDefault: '#e6e6ea',
+  borderStrong: '#d4d4d9',
 } as const;
 
 export const SITE = {
@@ -23,41 +23,15 @@ export const SITE = {
   url: 'https://straywebdesign.co',
   email: 'tom@straydesign.co',
   phone: '814-402-8525',
-  tagline: 'Websites That Outperform Your Market',
-  web3formsKey: 'c2441e47-8ca0-4f87-a2dc-928015553d51',
+  tagline: 'Websites that carry your energy to your customers',
+  web3formsKey: process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? '',
 } as const;
 
 export const NAV_LINKS = [
-  { label: 'Home', href: '/' },
-  {
-    label: 'Services',
-    href: '/services',
-    children: [
-      { label: 'Website Design', href: '/services/website-design' },
-      { label: 'AI Receptionist', href: '/services/ai-receptionist' },
-      { label: 'SEO Optimization', href: '/services/seo-optimization' },
-      { label: 'Website Management', href: '/services/website-management' },
-      { label: 'Landing Pages', href: '/services/landing-pages' },
-      { label: 'Analytics Setup', href: '/services/analytics-setup' },
-    ],
-  },
-  {
-    label: 'Industries',
-    href: '/industries',
-    children: [
-      { label: 'Dental Practices', href: '/industries/dental' },
-      { label: 'Financial Advisors', href: '/industries/financial-advisors' },
-      { label: 'Car Dealerships', href: '/industries/car-dealerships' },
-      { label: 'IT Services', href: '/industries/it-services' },
-      { label: 'Law Firms', href: '/industries/law-firms' },
-      { label: 'Restaurants', href: '/industries/restaurants' },
-      { label: 'Real Estate', href: '/industries/real-estate' },
-      { label: 'HVAC', href: '/industries/hvac' },
-      { label: 'View All Industries', href: '/industries' },
-    ],
-  },
-  { label: 'Work', href: '/work' },
-  { label: 'Resources', href: '/resources' },
+  { label: 'Work', href: '#work' },
+  { label: 'Services', href: '#services' },
+  { label: 'Writing', href: '/resources' },
+  { label: 'About', href: '#about' },
 ] as const;
 
 export const BOOKING_TIMING_OPTIONS = [
@@ -65,164 +39,6 @@ export const BOOKING_TIMING_OPTIONS = [
   'Next week',
   'Within 2 weeks',
   'Flexible',
-] as const;
-
-export const FOUNDATION_SERVICES = [
-  {
-    title: 'Don’t Lose Another Lead to a Slow Site',
-    description:
-      'I build sites that load before buyers can leave — and host them on infrastructure that keeps them that way. Sub-1-second loads, WCAG AA, mobile-first — Fortune 500 specs at small-business pricing.',
-    features: [
-      'Sub-1s LCP & global CDN delivery',
-      'WCAG AA compliant & keyboard navigable',
-      'Mobile-first, touch-optimized layouts',
-      'Core Web Vitals passing all metrics',
-      'Semantic HTML for SEO & screen readers',
-    ],
-    process: [
-      { step: 1, title: 'Site Audit', description: 'Lighthouse your site + top competitors.' },
-      { step: 2, title: 'Custom Build', description: 'Hand-coded, zero plugins.' },
-      { step: 3, title: 'Edge Deploy', description: 'Ships to 300+ CDN locations.' },
-      { step: 4, title: 'Ongoing Monitoring', description: 'Monthly performance reports.' },
-    ],
-  },
-  {
-    title: 'Get Cited Where Buyers Are Actually Looking',
-    description:
-      'Show up in ChatGPT, Perplexity, and Google AI Overview answers — using the structured data they reward.',
-    features: [
-      'JSON-LD structured data for rich results',
-      'llms.txt for AI crawler discoverability',
-      'FAQ schema for AI-generated answers',
-      'GEO (Generative Engine Optimization)',
-      'Full meta, Open Graph & canonical setup',
-    ],
-    process: [
-      { step: 1, title: 'Content Audit', description: 'Map gaps AI and search penalize.' },
-      { step: 2, title: 'Schema Markup', description: 'JSON-LD, FAQ, LocalBusiness data.' },
-      { step: 3, title: 'AI Optimization', description: 'llms.txt + citation-ready content.' },
-      { step: 4, title: 'Track & Iterate', description: 'Monthly citation + ranking reports.' },
-    ],
-  },
-] as const;
-
-export const ADDON_SERVICES = [
-  {
-    title: 'Never Miss Another Lead at Night',
-    description: 'Calls get answered, qualified, and booked while you sleep — 24/7 AI receptionist, on-brand voice, no missed revenue.',
-    features: [
-      '24/7 call answering & voicemail',
-      'Missed call text-back',
-      'Lead qualification & routing',
-      'Natural, on-brand conversations',
-    ],
-    process: [
-      { step: 1, title: 'Discovery', description: 'Services, tone, FAQs, booking rules.' },
-      { step: 2, title: 'AI Training', description: 'Trained on your business.' },
-      { step: 3, title: 'Integration', description: 'Phone, calendar, CRM.' },
-      { step: 4, title: 'Go Live', description: '24/7 with continuous learning.' },
-    ],
-  },
-  {
-    title: 'Same Answer Everywhere They Reach You',
-    description: 'Customers get the same response on phone, SMS, and web chat — one AI brain across every channel, after-hours covered.',
-    features: [
-      'Phone + SMS + web chat coverage',
-      'Consistent responses across channels',
-      'After-hours & weekend coverage',
-      'Seamless handoff to your team',
-    ],
-    process: [
-      { step: 1, title: 'Knowledge Base', description: 'Unified brain from your FAQs.' },
-      { step: 2, title: 'Channel Setup', description: 'Phone, SMS, web chat.' },
-      { step: 3, title: 'Testing', description: 'Simulate real conversations.' },
-      { step: 4, title: 'Launch', description: 'Consistent AI with team handoff.' },
-    ],
-  },
-  {
-    title: 'Zero Double-Bookings, Zero Lost Leads',
-    description: 'Appointments land on your calendar and leads land in your CRM — automatic syncing, confirmations, and no-show follow-ups.',
-    features: [
-      'Google Calendar & Outlook sync',
-      'Auto-update Salesforce / HubSpot / GHL',
-      'Confirmation & reminder sequences',
-      'No-show follow-up automation',
-    ],
-    process: [
-      { step: 1, title: 'Calendar Sync', description: 'Google, Outlook, or existing system.' },
-      { step: 2, title: 'CRM Integration', description: 'Salesforce, HubSpot, GoHighLevel.' },
-      { step: 3, title: 'Workflow Design', description: 'Confirmations, reminders, follow-ups.' },
-      { step: 4, title: 'Activate', description: 'Zero double-bookings from day one.' },
-    ],
-  },
-  {
-    title: 'Turn Site Traffic Into Revenue',
-    description: 'See who’s visiting your new site, what they read, and what closes them — then show each visitor what makes them buy.',
-    features: [
-      'Visitor tracking & session replay',
-      'Smart content personalization',
-      'Conversion prediction & heatmaps',
-      'Monthly performance reports',
-    ],
-    process: [
-      { step: 1, title: 'Tracking Setup', description: 'Heatmaps, session replay.' },
-      { step: 2, title: 'Funnel Mapping', description: 'Identify drop-off points.' },
-      { step: 3, title: 'Personalization', description: 'Dynamic content by behavior.' },
-      { step: 4, title: 'Monthly Reports', description: 'Insights delivered monthly.' },
-    ],
-  },
-] as const;
-
-export const FAQ_ITEMS = [
-  {
-    question: 'Why not just use WordPress?',
-    answer: 'Because WordPress loses you leads. Plugins break, loads drag past five seconds, security holes invite breaches. My sites ship as static files — sub-1-second loads, zero attack surface, nothing to update.',
-  },
-  {
-    question: 'How long until I see leads?',
-    answer: 'Most sites go live in three days. Day one: discovery + design. Day two: build. Day three: polish + launch. Leads start landing the week it ships.',
-  },
-  {
-    question: 'Do I have to pay up front?',
-    answer: 'You pay $0 up front. I build it, you preview it live, we iterate until you love it. You only pay once it’s earning.',
-  },
-  {
-    question: 'How much does it cost?',
-    answer: 'Essential: $1,500+ one-time, $100/mo. Complete: $5,000+, $200/mo. Flat-rate, no surprises. Tell me about the business and you’ll have a quote in 24 hours.',
-  },
-] as const;
-
-export const CLIENT_PROFILES = [
-  {
-    industry: 'Dental Practices',
-    challenge: 'Patients judge you before walking in.',
-    outcome: 'New patients book on their phone before they ever call a competitor.',
-  },
-  {
-    industry: 'Financial Advisors',
-    challenge: 'Referrals Google you before they call.',
-    outcome: 'Referrals trust the work before the first conversation.',
-  },
-  {
-    industry: 'Car Dealerships',
-    challenge: 'Buyers research online before they hit the lot.',
-    outcome: 'The buyer fills out your form, not the dealer’s down the street.',
-  },
-  {
-    industry: 'IT Services & MSPs',
-    challenge: 'You sell technical competence. Your site scores 35.',
-    outcome: 'Prospects believe the technical pitch before you make it.',
-  },
-  {
-    industry: 'Law Firms',
-    challenge: 'Midnight phone searches. Five-second loads lose the lead.',
-    outcome: 'When someone needs a lawyer at midnight, yours loads first.',
-  },
-  {
-    industry: 'Vision Care',
-    challenge: 'Patients expect the polish of the brands they shop.',
-    outcome: 'Patients pre-judge your care by your site. Yours wins the comparison.',
-  },
 ] as const;
 
 export const SPRING_CONFIG = {

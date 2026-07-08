@@ -18,15 +18,15 @@ export default function ResourcesPage() {
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <AnimateIn className="mx-auto max-w-3xl text-center">
             <span className="mb-4 inline-block text-sm font-semibold tracking-wide text-accent uppercase">
-              Resources
+              Writing
             </span>
             <h1 className="font-mono text-3xl font-bold text-text-primary md:text-4xl lg:text-5xl">
-              Insights for{' '}
-              <GradientText>Growing Businesses</GradientText>
+              Thinking Out Loud on{' '}
+              <GradientText>Web Design</GradientText>
             </h1>
             <p className="mt-4 text-lg text-text-secondary">
-              Blogs, white papers, and case studies on web performance,
-              AI readiness, and competing with enterprise brands.
+              Blog posts on web performance, what good design actually costs,
+              and building sites that convert.
             </p>
           </AnimateIn>
 

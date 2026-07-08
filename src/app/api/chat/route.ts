@@ -54,7 +54,7 @@ async function sendTranscript(
   ip: string,
   hasContactInfo: boolean,
 ): Promise<void> {
-  const WEB3FORMS_KEY = 'c2441e47-8ca0-4f87-a2dc-928015553d51';
+  const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? '';
   const { email, phone } = extractContactInfo(messages);
   const transcript = formatTranscript(messages);
   const userMsgCount = messages.filter((m) => m.role === 'user').length;

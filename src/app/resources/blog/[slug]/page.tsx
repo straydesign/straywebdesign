@@ -20,7 +20,7 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const article = await getCompiledArticle('blog', slug);
+  const article = await getCompiledArticle(slug);
   if (!article) notFound();
   const relatedPosts = getRelatedResources(slug, article.meta.tag, 3);
   return (

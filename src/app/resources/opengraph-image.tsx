@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'Resources — Stray Web Design';
+export const alt = 'Writing — Stray Web Design';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -72,7 +72,7 @@ export default function OGImage() {
             lineHeight: 1.4,
           }}
         >
-          Blogs, white papers, and case studies for growing businesses
+          Blog posts on web design, performance, and what it actually costs to build right.
         </div>
 
         {/* Bottom accent */}

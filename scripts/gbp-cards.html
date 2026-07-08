@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root{ --blue:#2563EB; --ink:#15151a; --paper:#fafafa; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1080px;height:1080px;overflow:hidden}
+  .card{
+    width:1080px;height:1080px;padding:74px 70px;
+    display:flex;align-items:center;
+    background:var(--paper);color:var(--ink);
+  }
+  .card.blue{background:var(--blue);color:#fff}
+  h1{
+    font-family:'Schibsted Grotesk',sans-serif;font-weight:800;
+    width:100%;
+    font-size:128px;line-height:1.0;letter-spacing:-.025em;
+    text-align:left;
+    text-transform:lowercase;
+  }
+  h1.sm{font-size:112px}
+  h1.lg{font-size:140px}
+  .accent{color:var(--blue)}
+  .blue .accent{color:#bcd2ff}
+</style>
+</head>
+<body>
+  <div class="card" id="card">
+    <h1 id="head"></h1>
+  </div>
+<script>
+  const CARDS = [
+    { blue:false,
+      head:'websites that carry your <span class="accent">energy</span> to your customers' },
+    { blue:true, sm:true,
+      head:'excited about what you do? your site should show it' },
+    { blue:false, lg:true,
+      head:'<span class="accent">one designer.</span> start to finish' },
+    { blue:true,
+      head:'built, hosted, and <span class="accent">kept running</span> for you' },
+    { blue:false,
+      head:'let’s build something that brings <span class="accent">people</span> in' },
+  ];
+  const i = Math.max(0, Math.min(CARDS.length-1, parseInt(new URLSearchParams(location.search).get('i')||'0',10)));
+  const c = CARDS[i];
+  const card = document.getElementById('card');
+  if(c.blue) card.classList.add('blue');
+  const h = document.getElementById('head'); h.innerHTML = c.head;
+  if(c.sm) h.classList.add('sm'); if(c.lg) h.classList.add('lg');
+  document.title = 'gbp-card-'+i;
+</script>
+</body>
+</html>

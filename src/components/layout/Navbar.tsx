@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { NAV_LINKS, SITE } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 import { useClientEnv } from '@/lib/use-client-env';
@@ -19,7 +19,7 @@ function resolveHref(href: string, pathname: string): string {
   return href;
 }
 
-/* ─── Scroll Progress (desktop only) ─── */
+/* ─── Scroll Progress ─── */
 
 function DesktopScrollProgress() {
   const { scrollYProgress } = useScroll();
@@ -60,108 +60,15 @@ function MobileScrollProgress() {
   );
 }
 
-/* ─── Desktop Dropdown ────────────────────────────────────── */
-
-type NavLink = (typeof NAV_LINKS)[number];
-
-function DesktopDropdown({
-  link,
-  pathname,
-}: {
-  link: NavLink;
-  pathname: string;
-  ghost?: boolean;
-}) {
-  const [open, setOpen] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  const linkClass = 'font-mono text-sm font-medium text-text-secondary transition-colors duration-300 hover:text-text-primary';
-
-  if (!('children' in link) || !link.children) {
-    return (
-      <Link href={resolveHref(link.href, pathname)} className={linkClass}>
-        {link.label}
-      </Link>
-    );
-  }
-
-  const handleEnter = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    setOpen(true);
-  };
-
-  const handleLeave = () => {
-    timeoutRef.current = setTimeout(() => setOpen(false), 150);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      setOpen(false);
-      dropdownRef.current?.querySelector('button')?.focus();
-    }
-  };
-
-  return (
-    <div
-      ref={dropdownRef}
-      className="relative"
-      onMouseEnter={handleEnter}
-      onMouseLeave={handleLeave}
-      onKeyDown={handleKeyDown}
-    >
-      <button
-        className={cn('flex items-center gap-1', linkClass)}
-        aria-expanded={open}
-        aria-haspopup="true"
-        onClick={() => setOpen((prev) => !prev)}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            setOpen((prev) => !prev);
-          }
-        }}
-      >
-        {link.label}
-        <ChevronDown
-          className={cn('h-3.5 w-3.5 transition-transform', open && 'rotate-180')}
-          aria-hidden="true"
-        />
-      </button>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.15 }}
-            role="menu"
-            className="absolute top-full left-0 z-50 mt-2 w-56 border border-border-default bg-surface-card py-2"
-          >
-            {link.children.map((child) => (
-              <Link
-                key={child.href}
-                href={child.href}
-                role="menuitem"
-                className="block px-4 py-2 font-mono text-sm text-text-secondary transition-colors hover:bg-surface-sunken hover:text-text-primary"
-              >
-                {child.label}
-              </Link>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
-
 /* ─── Navbar ──────────────────────────────────────────────── */
+
+const navLinkClass =
+  'font-mono text-sm font-medium text-text-secondary transition-colors duration-300 hover:text-text-primary';
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [expandedMobile, setExpandedMobile] = useState<string | null>(null);
   const { mobile } = useClientEnv();
 
   useEffect(() => {
@@ -171,19 +78,36 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = isOpen ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
     };
   }, [isOpen]);
 
+  const mobileLinks = (
+    <div className="flex flex-col gap-3">
+      {NAV_LINKS.map((link) => (
+        <Link
+          key={link.href}
+          href={resolveHref(link.href, pathname)}
+          className="font-mono text-base font-medium text-text-secondary transition-colors hover:text-text-primary"
+          onClick={() => setIsOpen(false)}
+        >
+          {link.label}
+        </Link>
+      ))}
+      <Link
+        href={resolveHref('#contact', pathname)}
+        className="mt-2 rounded-md bg-accent px-5 py-3 text-center font-body text-sm font-semibold text-white"
+        onClick={() => setIsOpen(false)}
+      >
+        Start a project
+      </Link>
+    </div>
+  );
+
   return (
     <>
-      {/* Scroll Progress Bar */}
       {mobile ? <MobileScrollProgress /> : <DesktopScrollProgress />}
 
       <nav
@@ -200,11 +124,7 @@ export default function Navbar() {
             className="flex items-center gap-2 font-mono text-xl font-bold text-text-primary transition-colors duration-300"
             aria-label={SITE.name}
           >
-            <StrayLogo
-              width={36}
-              height={18}
-              color="#2563EB"
-            />
+            <StrayLogo width={36} height={18} color="#2563EB" />
             <span>
               stray<span className="text-accent">web</span>design
             </span>
@@ -213,17 +133,19 @@ export default function Navbar() {
           {/* Desktop Links */}
           <div className="hidden items-center gap-7 md:flex">
             {NAV_LINKS.map((link) => (
-              <DesktopDropdown
+              <Link
                 key={link.href}
-                link={link}
-                pathname={pathname}
-              />
+                href={resolveHref(link.href, pathname)}
+                className={navLinkClass}
+              >
+                {link.label}
+              </Link>
             ))}
             <Link
               href={resolveHref('#contact', pathname)}
-              className="bg-accent px-5 py-2.5 font-mono text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-accent/90"
+              className="rounded-md bg-accent px-5 py-2.5 font-body text-sm font-semibold text-white transition-colors hover:bg-accent/90"
             >
-              Get a Plan
+              Start a project
             </Link>
           </div>
 
@@ -242,76 +164,17 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Menu — CSS transitions on mobile, framer-motion on desktop */}
+        {/* Mobile Menu */}
         {mobile ? (
           <div
             className={cn(
               'absolute inset-x-0 top-full max-h-[80vh] overflow-y-auto bg-surface-card border-b border-border-default px-5 md:hidden transition-all duration-200',
-              isOpen ? 'py-6 opacity-100 translate-y-0' : 'py-0 opacity-0 -translate-y-4 pointer-events-none h-0 overflow-hidden'
+              isOpen
+                ? 'py-6 opacity-100 translate-y-0'
+                : 'py-0 opacity-0 -translate-y-4 pointer-events-none h-0 overflow-hidden'
             )}
           >
-            <div className="flex flex-col gap-3">
-              {NAV_LINKS.map((link) => {
-                const hasChildren = 'children' in link && link.children;
-                const isExpanded = expandedMobile === link.label;
-
-                return (
-                  <div key={link.href}>
-                    {hasChildren ? (
-                      <>
-                        <button
-                          className="flex w-full items-center justify-between font-mono text-base font-medium text-text-secondary transition-colors hover:text-text-primary"
-                          onClick={() =>
-                            setExpandedMobile(isExpanded ? null : link.label)
-                          }
-                          aria-expanded={isExpanded}
-                        >
-                          {link.label}
-                          <ChevronDown
-                            className={cn(
-                              'h-4 w-4 css-chevron-rotate',
-                              isExpanded && 'open'
-                            )}
-                            aria-hidden="true"
-                          />
-                        </button>
-                        <div className={cn('css-accordion-panel', isExpanded && 'open')}>
-                          <div>
-                            <div className="mt-2 flex flex-col gap-2 pl-4">
-                              {link.children.map((child) => (
-                                <Link
-                                  key={child.href}
-                                  href={child.href}
-                                  className="font-mono text-sm text-text-tertiary transition-colors hover:text-text-primary"
-                                  onClick={() => setIsOpen(false)}
-                                >
-                                  {child.label}
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      </>
-                    ) : (
-                      <Link
-                        href={resolveHref(link.href, pathname)}
-                        className="font-mono text-base font-medium text-text-secondary transition-colors hover:text-text-primary"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {link.label}
-                      </Link>
-                    )}
-                  </div>
-                );
-              })}
-              <Link
-                href={resolveHref('#contact', pathname)}
-                className="mt-2 bg-accent px-5 py-3 text-center font-mono text-sm font-medium uppercase tracking-wider text-white"
-                onClick={() => setIsOpen(false)}
-              >
-                Get a Plan
-              </Link>
-            </div>
+            {mobileLinks}
           </div>
         ) : (
           <AnimatePresence>
@@ -323,76 +186,7 @@ export default function Navbar() {
                 transition={{ duration: 0.2 }}
                 className="absolute inset-x-0 top-full max-h-[80vh] overflow-y-auto bg-surface-card border-b border-border-default px-5 py-6 md:hidden"
               >
-                <div className="flex flex-col gap-3">
-                  {NAV_LINKS.map((link) => {
-                    const hasChildren = 'children' in link && link.children;
-                    const isExpanded = expandedMobile === link.label;
-
-                    return (
-                      <div key={link.href}>
-                        {hasChildren ? (
-                          <>
-                            <button
-                              className="flex w-full items-center justify-between font-mono text-base font-medium text-text-secondary transition-colors hover:text-text-primary"
-                              onClick={() =>
-                                setExpandedMobile(isExpanded ? null : link.label)
-                              }
-                              aria-expanded={isExpanded}
-                            >
-                              {link.label}
-                              <ChevronDown
-                                className={cn(
-                                  'h-4 w-4 transition-transform',
-                                  isExpanded && 'rotate-180'
-                                )}
-                                aria-hidden="true"
-                              />
-                            </button>
-                            <AnimatePresence>
-                              {isExpanded && (
-                                <motion.div
-                                  initial={{ height: 0, opacity: 0 }}
-                                  animate={{ height: 'auto', opacity: 1 }}
-                                  exit={{ height: 0, opacity: 0 }}
-                                  transition={{ duration: 0.2 }}
-                                  className="overflow-hidden"
-                                >
-                                  <div className="mt-2 flex flex-col gap-2 pl-4">
-                                    {link.children.map((child) => (
-                                      <Link
-                                        key={child.href}
-                                        href={child.href}
-                                        className="font-mono text-sm text-text-tertiary transition-colors hover:text-text-primary"
-                                        onClick={() => setIsOpen(false)}
-                                      >
-                                        {child.label}
-                                      </Link>
-                                    ))}
-                                  </div>
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-                          </>
-                        ) : (
-                          <Link
-                            href={resolveHref(link.href, pathname)}
-                            className="font-mono text-base font-medium text-text-secondary transition-colors hover:text-text-primary"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            {link.label}
-                          </Link>
-                        )}
-                      </div>
-                    );
-                  })}
-                  <Link
-                    href={resolveHref('#contact', pathname)}
-                    className="mt-2 bg-accent px-5 py-3 text-center font-mono text-sm font-medium uppercase tracking-wider text-white"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Get a Plan
-                  </Link>
-                </div>
+                {mobileLinks}
               </motion.div>
             )}
           </AnimatePresence>

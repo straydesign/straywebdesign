@@ -1,36 +1,79 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
+import Link from 'next/link';
 import MagneticButton from '@/components/ui/MagneticButton';
+import BrowserFrame from '@/components/ui/BrowserFrame';
+import { SITE } from '@/lib/constants';
 import { useClientEnv } from '@/lib/use-client-env';
+
+/* Hero — honest and forward: who I am, the $300 build-and-handoff deal, and
+   the phone number + email right on the surface. */
 
 function HeroBody() {
   return (
     <>
-      <span className="mb-4 inline-block border border-border-strong bg-surface-card px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-wider text-accent">
-        Pay only when it&apos;s working
+      <span className="mb-5 inline-flex items-center font-mono text-[12px] font-medium uppercase tracking-[0.18em] text-accent">
+        <span aria-hidden className="mr-1.5 text-accent/60">//</span>
+        freelance web designer
       </span>
 
-      <h1 className="text-balance font-mono text-[clamp(2.25rem,7vw,5rem)] font-bold leading-[1.08] tracking-tight text-text-primary">
-        A website that brings you customers.{' '}
-        <span className="text-text-tertiary">Built, hosted, and managed.</span>
+      <h1 className="text-balance font-display text-[clamp(2.2rem,5.4vw,4.1rem)] font-bold leading-[1.06] tracking-[-0.02em] text-text-primary">
+        Hi, I&apos;m Tom.
+        <br />
+        I design and build websites for{' '}
+        <span className="text-accent">small businesses</span>.
       </h1>
 
-      <div className="mt-8 max-w-xl">
-        <p className="font-mono text-lg leading-relaxed text-text-secondary md:text-xl">
-          Sub-1-second loads, page-one rankings, leads landing in your inbox.
-          Hand-coded from scratch — no plugins, no platform fees, no surprises.
-          I build it, host it, and keep it running.
+      <div className="mt-6 max-w-xl">
+        <p className="font-body text-lg leading-relaxed text-text-secondary md:text-xl">
+          No agency and no account managers. You talk to me and I do the work.
+          Every site below is real: open one and you&apos;re looking at an
+          actual business&apos;s website that I built and still run.
         </p>
 
-        <div className="mt-8 flex flex-col items-start gap-3">
-          <MagneticButton href="#contact" variant="primary" size="lg">
-            See what mine&apos;d be worth
-          </MagneticButton>
-          <p className="font-mono text-xs text-text-tertiary">
-            <span className="font-semibold text-accent">$0 up front.</span>{' '}
-            Pay only when it&apos;s live.
+        <div className="mt-7 rounded-lg border border-accent/25 bg-accent/5 px-5 py-4">
+          <p className="font-body text-[15px] leading-relaxed text-text-secondary">
+            <span className="mr-2 inline-block rounded-full bg-accent px-2.5 py-0.5 font-mono text-[12px] font-semibold text-white">
+              $300 flat
+            </span>
+            I build your site and put the hosting and domain in your name.
+            Then I teach you to run it with AI. You own everything and pay no
+            monthly fees.
           </p>
+        </div>
+
+        <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-2">
+          <a
+            href="tel:+18144028525"
+            className="font-display text-lg font-bold text-text-primary transition-colors hover:text-accent md:text-xl"
+          >
+            {SITE.phone}
+          </a>
+          <a
+            href={`mailto:${SITE.email}`}
+            className="font-display text-lg font-bold text-text-primary transition-colors hover:text-accent md:text-xl"
+          >
+            {SITE.email}
+          </a>
+        </div>
+
+        <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
+          <MagneticButton href="#work" variant="primary" size="lg">
+            See the work
+          </MagneticButton>
+          <Link
+            href="#contact"
+            className="group inline-flex items-center gap-1.5 font-body text-base font-medium text-text-primary underline-offset-4 hover:underline"
+          >
+            Start a project
+            <span
+              aria-hidden
+              className="text-accent transition-transform duration-300 group-hover:translate-x-0.5"
+            >
+              →
+            </span>
+          </Link>
         </div>
       </div>
     </>
@@ -44,10 +87,24 @@ function HeroDesktop() {
 
   return (
     <motion.div
-      className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-28 pb-16 md:px-8 md:pt-36 md:pb-24"
+      className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-5 pt-28 pb-16 md:px-8 md:pt-36 md:pb-24 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16"
       style={{ y, opacity }}
     >
-      <HeroBody />
+      <div>
+        <HeroBody />
+      </div>
+      <div className="hidden lg:block">
+        <BrowserFrame
+          src="/images/work/andys.png"
+          alt="Andy's Ale House — a site I designed, built, host, and manage"
+          url="andyspub.com"
+          priority
+        />
+        <p className="mt-3 text-right font-mono text-[11px] uppercase tracking-[0.1em] text-text-tertiary">
+          <span aria-hidden className="text-accent/60">// </span>
+          live · andyspub.com
+        </p>
+      </div>
     </motion.div>
   );
 }

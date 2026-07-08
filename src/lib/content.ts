@@ -7,7 +7,7 @@ import remarkGfm from 'remark-gfm';
 import { mdxComponents } from '@/components/mdx';
 import { generateArticleJsonLd } from '@/lib/json-ld';
 
-export type ResourceType = 'blog' | 'white-paper' | 'case-study';
+export type ResourceType = 'blog';
 
 export interface ResourceMeta {
   slug: string;
@@ -32,16 +32,10 @@ export interface Resource {
   tag: string;
 }
 
-const TYPE_TO_DIR: Record<ResourceType, string> = {
-  blog: 'blog',
-  'white-paper': 'white-papers',
-  'case-study': 'case-studies',
-};
-
 const CONTENT_ROOT = path.join(process.cwd(), 'content');
 
-function getContentDir(type: ResourceType): string {
-  return path.join(CONTENT_ROOT, TYPE_TO_DIR[type]);
+function getContentDir(): string {
+  return path.join(CONTENT_ROOT, 'blog');
 }
 
 function parseMdxFile(filePath: string): ResourceMeta {
@@ -52,7 +46,7 @@ function parseMdxFile(filePath: string): ResourceMeta {
 
   return {
     slug,
-    type: data.type as ResourceType,
+    type: 'blog',
     title: data.title,
     description: data.description,
     readTime: `${Math.ceil(stats.minutes)} min read`,
@@ -64,19 +58,10 @@ function parseMdxFile(filePath: string): ResourceMeta {
 }
 
 function getAllMeta(): ResourceMeta[] {
-  const types: ResourceType[] = ['blog', 'white-paper', 'case-study'];
-  const metas: ResourceMeta[] = [];
-
-  for (const type of types) {
-    const dir = getContentDir(type);
-    if (!fs.existsSync(dir)) continue;
-    const files = fs.readdirSync(dir).filter((f) => f.endsWith('.mdx'));
-    for (const file of files) {
-      metas.push(parseMdxFile(path.join(dir, file)));
-    }
-  }
-
-  // Sort by date descending (newest first)
+  const dir = getContentDir();
+  if (!fs.existsSync(dir)) return [];
+  const files = fs.readdirSync(dir).filter((f) => f.endsWith('.mdx'));
+  const metas = files.map((file) => parseMdxFile(path.join(dir, file)));
   return metas.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
@@ -112,7 +97,7 @@ export function getResourcesByTag(tag: string, limit?: number): Resource[] {
   return limit ? filtered.slice(0, limit) : filtered;
 }
 
-/** Get related resources — same tag first, then most recent, excluding the given slug */
+/** Get related blog posts — same tag first, then most recent, excluding the given slug */
 export function getRelatedResources(slug: string, tag: string, limit = 3): (Resource & { path: string })[] {
   const sameTag = RESOURCES.filter((r) => r.slug !== slug && r.tag === tag);
   const others = RESOURCES.filter((r) => r.slug !== slug && r.tag !== tag);
@@ -120,19 +105,19 @@ export function getRelatedResources(slug: string, tag: string, limit = 3): (Reso
   return combined.map((r) => ({ ...r, path: getResourcePath(r) }));
 }
 
-/** Get all unique tags across resources */
+/** Get all unique tags across blog posts */
 export function getAllTags(): string[] {
   const tags = new Set(RESOURCES.map((r) => r.tag));
   return [...tags].sort();
 }
 
-export function getResourcePath(resource: Pick<Resource, 'type' | 'slug'>): string {
-  return `/resources/${TYPE_TO_DIR[resource.type]}/${resource.slug}`;
+export function getResourcePath(resource: Pick<Resource, 'slug'>): string {
+  return `/resources/blog/${resource.slug}`;
 }
 
 /** Full MDX compilation for article pages — returns meta, compiled content, and JSON-LD */
-export async function getCompiledArticle(type: ResourceType, slug: string) {
-  const dir = getContentDir(type);
+export async function getCompiledArticle(slug: string) {
+  const dir = getContentDir();
   const filePath = path.join(dir, `${slug}.mdx`);
 
   if (!fs.existsSync(filePath)) return null;
@@ -143,7 +128,7 @@ export async function getCompiledArticle(type: ResourceType, slug: string) {
 
   const meta: ResourceMeta = {
     slug,
-    type: data.type as ResourceType,
+    type: 'blog',
     title: data.title,
     description: data.description,
     readTime: `${Math.ceil(stats.minutes)} min read`,

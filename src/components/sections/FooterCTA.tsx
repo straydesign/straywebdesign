@@ -1,9 +1,9 @@
 'use client';
 
 import { useCallback, useState, type FormEvent } from 'react';
+import Link from 'next/link';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import AnimateIn from '@/components/ui/AnimateIn';
-import GradientText from '@/components/ui/GradientText';
 import { SITE } from '@/lib/constants';
 import { getUtmParams } from '@/hooks/useUtmParams';
 import { trackLeadConversion } from '@/lib/tracking';
@@ -76,24 +76,52 @@ export default function FooterCTA() {
     >
       <div className="relative z-10 mx-auto max-w-3xl px-5 text-center md:px-8">
         <AnimateIn>
-          <span className="mb-4 inline-block font-mono text-[11px] font-semibold uppercase tracking-wider text-accent">
-            See what it&apos;s worth
+          <span className="mb-4 inline-flex items-center font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-accent">
+            <span aria-hidden className="mr-1.5 text-accent/60">//</span>
+            start a project
           </span>
-          <h2 className="font-mono text-3xl font-bold text-text-primary md:text-4xl lg:text-5xl">
-            Find out what a custom-built site could earn you —{' '}
-            <GradientText>plan back in 24 hours.</GradientText>
+          <h2 className="font-display text-3xl font-bold leading-[1.06] tracking-tight text-text-primary md:text-4xl lg:text-5xl">
+            Tell me about the business.
           </h2>
+          <p className="mx-auto mt-4 max-w-md font-body text-base leading-relaxed text-text-secondary">
+            Drop your email and a few lines about what you do. I&apos;ll come
+            back with a plan for exactly what the site needs to do — no pitch, no
+            pressure.
+          </p>
+          <div className="mt-7 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-8">
+            <a
+              href="tel:+18144028525"
+              className="font-display text-2xl font-bold text-text-primary transition-colors hover:text-accent md:text-3xl"
+            >
+              {SITE.phone}
+            </a>
+            <a
+              href={`mailto:${SITE.email}`}
+              className="font-display text-2xl font-bold text-text-primary transition-colors hover:text-accent md:text-3xl"
+            >
+              {SITE.email}
+            </a>
+          </div>
+          <p className="mt-3 font-body text-sm text-text-tertiary">
+            Call, text, or email. I answer these myself. Prefer a set time?{' '}
+            <Link
+              href="/book"
+              className="text-text-secondary underline underline-offset-4 transition-colors hover:text-text-primary"
+            >
+              Book a call →
+            </Link>
+          </p>
         </AnimateIn>
 
         <AnimateIn delay={0.2} className="mt-8">
           {submitted ? (
-            <div className="mx-auto flex max-w-md flex-col items-center gap-3 border border-accent/20 bg-accent/5 px-6 py-6">
+            <div className="mx-auto flex max-w-md flex-col items-center gap-3 rounded-lg border border-accent/20 bg-accent/5 px-6 py-6">
               <CheckCircle className="h-8 w-8 text-accent" />
-              <p className="font-mono text-base font-semibold text-text-primary">
-                You&apos;ll have it in 24 hours.
+              <p className="font-display text-base font-semibold text-text-primary">
+                Got it — I&apos;ll be in touch soon.
               </p>
-              <p className="font-mono text-sm text-text-secondary">
-                A real plan with real numbers. No pitch, no spam.
+              <p className="font-body text-sm text-text-secondary">
+                A real reply from me, not an autoresponder. No spam.
               </p>
             </div>
           ) : (
@@ -112,13 +140,13 @@ export default function FooterCTA() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="flex items-center justify-center gap-2 bg-accent px-6 py-3.5 font-mono text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3.5 font-body text-sm font-semibold text-white transition-colors hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {submitting ? (
-                    <span className="inline-block h-4 w-4 animate-spin border-2 border-white/30 border-t-white" />
+                    <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
                   ) : (
                     <>
-                      Get my plan
+                      Send it
                       <ArrowRight className="h-4 w-4" />
                     </>
                   )}

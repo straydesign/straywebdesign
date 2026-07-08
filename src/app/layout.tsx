@@ -1,44 +1,57 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import { JetBrains_Mono } from 'next/font/google';
+import { JetBrains_Mono, Schibsted_Grotesk, Hanken_Grotesk } from 'next/font/google';
 import ClientShell, { ClientExtras } from '@/components/layout/ClientShell';
 import './globals.css';
 
+// Mono — kept only as a structural accent: wordmark, // labels, captions.
 const jetbrains = JetBrains_Mono({
   subsets: ['latin'],
-  display: 'optional',
+  display: 'swap',
   variable: '--font-family-jetbrains',
+  weight: ['400', '500', '600'],
+  adjustFontFallback: true,
+});
+
+// Display — confident humanist grotesque for hero + headings.
+const schibsted = Schibsted_Grotesk({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-family-schibsted',
+  weight: ['400', '500', '600', '700', '800'],
+  adjustFontFallback: true,
+});
+
+// Body — warm, readable sans.
+const hanken = Hanken_Grotesk({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-family-hanken',
   weight: ['400', '500', '600', '700'],
   adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
-  title: 'A Website That Brings You Customers — Built, Hosted, Managed | Stray Web Design',
+  title: "Tom Sesler — Freelance Web Designer | Stray Web Design",
   description:
-    "A new website built to bring you customers — hand-coded from scratch, hosted, and managed by me. Sub-1-second loads, page-one rankings, cited by ChatGPT and Perplexity. $0 up front. Tell me about the business — plan back in 24 hours.",
+    "I'm Tom, a freelance web designer. I build sites for businesses that are excited about what they do and want their customers to feel it — clearer messaging, smoother day-to-day, one coherent brand. Built, hosted, and managed by me.",
   keywords: [
-    'web design agency',
-    'custom web design',
-    'website designer',
+    'freelance web designer',
+    'web designer',
+    'custom website',
     'website design',
-    'web developer',
+    'brand and web design',
+    'small business website',
+    'hand-coded website',
     'fast website',
     'accessible website',
-    'AI ready website',
-    'Core Web Vitals',
-    'HVAC web design agency',
-    'IT services web design',
-    'MSP web design',
-    'dental practice website',
-    'financial advisor website',
-    'car dealership website',
-    'chiropractor website',
+    'Erie web designer',
   ],
   metadataBase: new URL('https://straywebdesign.co'),
   openGraph: {
-    title: 'A Website That Brings You Customers — Built, Hosted, Managed | Stray Web Design',
+    title: "Tom Sesler — Freelance Web Designer | Stray Web Design",
     description:
-      "A new website built to bring you customers — hand-coded from scratch, hosted, and managed by me. $0 up front. Tell me about the business — plan back in 24 hours.",
+      "I build websites that carry a business's energy to its customers — clearer messaging, smoother day-to-day, one coherent brand. Built, hosted, and managed by me.",
     url: 'https://straywebdesign.co',
     siteName: 'Stray Web Design',
     locale: 'en_US',
@@ -46,9 +59,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'A Website That Brings You Customers — Built, Hosted, Managed | Stray Web Design',
+    title: "Tom Sesler — Freelance Web Designer | Stray Web Design",
     description:
-      "A new website built to bring you customers. Hand-coded, hosted, and managed by me. Plan back in 24 hours.",
+      "I build websites that carry a business's energy to its customers. Built, hosted, and managed by me.",
   },
   alternates: {
     canonical: '/',
@@ -67,7 +80,7 @@ const professionalServiceSchema = {
     email: 'tom@straydesign.co',
     telephone: '814-402-8525',
     description:
-      'A new website built to bring you customers — hand-coded from scratch, hosted, and managed end-to-end. Sub-1-second loads, page-one rankings, no plugin baggage.',
+      "Tom Sesler, a freelance web designer. Custom websites — designed, built, hosted, and managed end-to-end — for businesses that want their site to carry the energy they put into the work.",
     priceRange: '$$',
     serviceType: 'Web Design',
     logo: 'https://straywebdesign.co/images/logo-blue-white-square.png',
@@ -96,60 +109,42 @@ const professionalServiceSchema = {
     },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Web Design & AI Services',
+      name: 'Web Design Services',
       itemListElement: [
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Enterprise-Grade Website',
+            name: 'Website Design & Build',
             description:
-              'Custom-built website with sub-1s load times, WCAG AA accessibility, and AI optimization.',
+              'Custom, hand-coded websites — fast, accessible, mobile-first — designed around what makes the business worth choosing.',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Site Management',
+            name: 'Hosting & Management',
             description:
-              'Monthly hosting, SEO monitoring, content updates, analytics, and ad-ready infrastructure.',
+              'Ongoing hosting, updates, and small changes so the site stays fast and current without you and your team thinking about it.',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'AI Receptionist',
+            name: 'Brand & Content',
             description:
-              '24/7 AI-powered call answering, lead qualification, and appointment scheduling.',
+              'Pulling messaging, imagery, and customer-facing copy into one coherent voice across the whole site.',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Multi-Channel AI Agents',
+            name: 'SEO Foundations',
             description:
-              'Unified AI brain across phone, SMS, and web chat with consistent responses and after-hours coverage.',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Smart Scheduling & CRM Integration',
-            description:
-              'Automated booking with calendar sync and CRM auto-updates for Salesforce, HubSpot, and GoHighLevel.',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Analytics & Personalization',
-            description:
-              'Visitor tracking, smart content personalization, conversion prediction, and heatmaps.',
+              'The structured-data, metadata, and performance groundwork that helps the right people find the site.',
           },
         },
       ],
@@ -167,28 +162,28 @@ const webSiteSchema = {
   name: 'Stray Web Design',
   url: 'https://straywebdesign.co',
   description:
-    'Enterprise-grade websites for businesses that demand speed, accessibility, and AI readiness.',
+    "Freelance web designer Tom Sesler. Custom websites that carry a business's energy to its customers — built, hosted, and managed.",
 };
 
-const organizationSchema = {
+const personSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Stray Web Design',
+  '@type': 'Person',
+  name: 'Tom Sesler',
   url: 'https://straywebdesign.co',
-  logo: 'https://straywebdesign.co/images/logo-blue-white-square.png',
-  founder: {
-    '@type': 'Person',
-    name: 'Tom Sesler',
-    url: 'https://tomsesler.com',
+  jobTitle: 'Freelance Web Designer',
+  description:
+    "Freelance web designer. I build websites for businesses that are excited about their offering and want customers to feel it.",
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Stray Web Design',
+    url: 'https://straywebdesign.co',
   },
-  foundingDate: '2024',
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '814-402-8525',
-    email: 'tom@straydesign.co',
-    contactType: 'sales',
-    availableLanguage: 'English',
-  },
+  email: 'tom@straydesign.co',
+  sameAs: [
+    'https://www.linkedin.com/in/tom-sesler/',
+    'https://straydesign.co',
+    'https://tomsesler.com',
+  ],
 };
 
 export default function RootLayout({
@@ -197,7 +192,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={jetbrains.variable}>
+    <html
+      lang="en"
+      className={`${jetbrains.variable} ${schibsted.variable} ${hanken.variable}`}
+    >
       <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-9D1W0XLS34"
@@ -232,11 +230,11 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
+            __html: JSON.stringify(personSchema),
           }}
         />
       </head>
-      <body className={`${jetbrains.className} antialiased`}>
+      <body className="antialiased">
         <a href="#main" className="skip-link">
           Skip to main content
         </a>

@@ -1,34 +1,38 @@
 @import "tailwindcss";
 
 :root {
-  --surface-page: #f4f4f5;
+  /* Clean neutral palette, blue accent — "evolve the technical DNA" */
+  --surface-page: #fafafa;
   --surface-card: #ffffff;
-  --surface-sunken: #e4e4e7;
+  --surface-sunken: #f1f1f4;
   --text-primary: #18181b;
   --text-secondary: #3f3f46;
-  --text-tertiary: #52525b;
+  --text-tertiary: #5b5b63;
   --text-placeholder: #a1a1aa;
+  /* Signature blue */
   --accent: #2563EB;
-  --border-default: #e4e4e7;
-  --border-strong: #d4d4d8;
+  --accent-soft: #e7effd;
+  --border-default: #e6e6ea;
+  --border-strong: #d4d4d9;
 
   /* Legacy aliases — keep for any remaining references */
   --navy: #18181b;
   --electric: #2563EB;
-  --warm-white: #f4f4f5;
+  --warm-white: #fafafa;
   --dark-navy: #18181b;
-  --light-gray: #f4f4f5;
+  --light-gray: #fafafa;
   --medium-gray: #a1a1aa;
 }
 
 @theme inline {
   --font-mono: var(--font-family-jetbrains);
-  --font-display: var(--font-family-jetbrains);
-  --font-body: var(--font-family-jetbrains);
+  --font-display: var(--font-family-schibsted);
+  --font-body: var(--font-family-hanken);
   --color-navy: var(--text-primary);
   --color-electric: var(--accent);
   --color-warm-white: var(--surface-page);
   --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
   --color-dark-navy: var(--text-primary);
   --color-light-gray: var(--surface-page);
   --color-medium-gray: var(--text-placeholder);
@@ -47,25 +51,9 @@ body {
   padding: 0;
   background: var(--surface-page);
   color: var(--text-primary);
-  font-family: var(--font-family-jetbrains), ui-monospace, monospace;
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: 'tnum' 1, 'zero' 1;
+  font-family: var(--font-family-hanken), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* Grid background pattern */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image:
-    linear-gradient(var(--border-default) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border-default) 1px, transparent 1px);
-  background-size: 24px 24px;
-  opacity: 0.18;
 }
 
 /* Focus indicators for keyboard navigation (WCAG 2.4.7) */
@@ -177,7 +165,7 @@ main section[aria-label]:focus-visible {
   color: var(--accent);
 }
 
-/* Custom cursor — green terminal style */
+/* Custom cursor — accent ring */
 .custom-cursor {
   width: 40px;
   height: 40px;
@@ -192,7 +180,7 @@ main section[aria-label]:focus-visible {
 .custom-cursor.hovering {
   width: 56px;
   height: 56px;
-  background: rgba(22, 163, 74, 0.1);
+  background: rgba(37, 99, 235, 0.1);
   border-color: var(--accent);
 }
 

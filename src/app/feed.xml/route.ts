@@ -26,9 +26,9 @@ export function GET() {
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Stray Web Design — Resources</title>
+    <title>Stray Web Design — Writing</title>
     <link>${BASE_URL}/resources</link>
-    <description>Blogs, white papers, and case studies on web performance, AI readiness, and competing with enterprise brands.</description>
+    <description>Blog posts on web design, performance, and building sites that convert.</description>
     <language>en-US</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${BASE_URL}/feed.xml" rel="self" type="application/rss+xml" />
