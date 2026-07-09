@@ -97,6 +97,7 @@ const professionalServiceSchema = {
     },
     address: {
       '@type': 'PostalAddress',
+      addressLocality: 'Erie',
       addressRegion: 'PA',
       addressCountry: 'US',
     },
