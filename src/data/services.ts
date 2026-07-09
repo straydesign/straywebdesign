@@ -22,7 +22,7 @@ export const SERVICE_CARDS: readonly ServiceCard[] = [
     priceNote: 'flat, one time',
     featured: true,
     description:
-      "I design and build your site, then set everything up in your name: your own Vercel hosting account and your own domain at Porkbun, with the billing going to you. Before I hand it over, I teach you to make changes yourself with AI. After that you own the whole thing outright, with no monthly fees and no waiting on a designer. It works the same whether you're in Erie or three time zones away.",
+      "I design and build your site, then set everything up in your name: your own hosting account and your own domain, with the billing going to you. Before I hand it over, I teach you to make changes yourself with AI. After that you own the whole thing outright — no fees to me, ever, and no waiting on a designer. It works the same whether you're in Erie or three time zones away.",
     cta: { label: 'Start yours', href: '#contact' },
   },
   {
@@ -39,12 +39,6 @@ export const SERVICE_CARDS: readonly ServiceCard[] = [
     priceNote: 'per month',
     description:
       'I move your site onto fast hosting and keep it running well, so the site is never something you have to think about.',
-  },
-  {
-    title: 'SEO',
-    priceNote: 'add-on · priced per site',
-    description:
-      "Add it to any of the above. You get the technical structure Google actually reads, plus Search Console tracking so you can watch your rankings move. I don't promise rankings; I do the real work and show you the numbers.",
   },
   {
     title: 'APIs & integrations',
