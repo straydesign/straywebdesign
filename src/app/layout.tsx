@@ -34,7 +34,7 @@ const hanken = Hanken_Grotesk({
 export const metadata: Metadata = {
   title: "Stray Web Design — Web Designer in Erie, PA | Tom Sesler",
   description:
-    "Hi, I'm Tom, a web designer in Erie, PA. I design and build custom websites for consumer-facing businesses, then host them or hand them off. Call or text 814-402-8525.",
+    "Hi, I'm Tom, a web designer in Erie, PA. I design and build custom websites for consumer-facing businesses, then host them or hand them off. Call or text 814-964-0081.",
   keywords: [
     'freelance web designer',
     'web designer',
@@ -78,7 +78,7 @@ const professionalServiceSchema = {
     name: 'Stray Web Design',
     url: 'https://straywebdesign.co',
     email: 'tom@straydesign.co',
-    telephone: '814-402-8525',
+    telephone: '814-964-0081',
     description:
       "Tom Sesler, a freelance web designer. Custom websites — designed, built, hosted, and managed end-to-end — for businesses that want their site to carry the energy they put into the work.",
     priceRange: '$$',
@@ -103,7 +103,7 @@ const professionalServiceSchema = {
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '814-402-8525',
+      telephone: '814-964-0081',
       email: 'tom@straydesign.co',
       contactType: 'sales',
       availableLanguage: 'English',

@@ -34,7 +34,7 @@ function HeroBody() {
 
         <div className="mt-7 flex flex-wrap items-center gap-x-7 gap-y-2">
           <a
-            href="tel:+18144028525"
+            href="tel:+18149640081"
             className="font-display text-lg font-bold text-text-primary transition-colors hover:text-accent md:text-xl"
           >
             {SITE.phone}

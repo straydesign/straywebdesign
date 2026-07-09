@@ -90,7 +90,7 @@ export default function FooterCTA() {
           </p>
           <div className="mt-7 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-8">
             <a
-              href="tel:+18144028525"
+              href="tel:+18149640081"
               className="font-display text-2xl font-bold text-text-primary transition-colors hover:text-accent md:text-3xl"
             >
               {SITE.phone}

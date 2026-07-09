@@ -16,7 +16,7 @@ const EXPLORE_LINKS = [
 const CONNECT_LINKS = [
   { label: 'Start a project', href: '#contact' },
   { label: "Let's talk", href: '/book' },
-  { label: SITE.phone, href: 'tel:+18144028525' },
+  { label: SITE.phone, href: 'tel:+18149640081' },
   { label: SITE.email, href: `mailto:${SITE.email}` },
 ];
 
