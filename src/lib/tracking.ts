@@ -54,6 +54,42 @@ export function trackLeadConversion(data: ConversionData = {}) {
 }
 
 /**
+ * Delegated contact-intent click tracking. One document-level listener
+ * classifies every anchor click: tel: → phone_click, mailto: → email_click,
+ * a live client site → client_site_click. These are the site's real
+ * conversion signals (calls, emails, proof engagement) — GA4 otherwise only
+ * sees pageviews.
+ *
+ * Returns a cleanup function to call on unmount.
+ */
+export function trackContactClicks(): () => void {
+  if (typeof window === 'undefined') return () => {};
+
+  const CLIENT_HOSTS = ['andyspub.com', 'bullfrogbarerie.com', 'seacaveinc.com'];
+
+  const onClick = (e: MouseEvent) => {
+    const anchor = (e.target as Element | null)?.closest?.('a[href]');
+    if (!anchor || !window.gtag) return;
+    const href = anchor.getAttribute('href') ?? '';
+    const section = anchor.closest('section')?.getAttribute('aria-label') ?? 'unknown';
+
+    if (href.startsWith('tel:')) {
+      window.gtag('event', 'phone_click', { section });
+    } else if (href.startsWith('mailto:')) {
+      window.gtag('event', 'email_click', { section });
+    } else if (CLIENT_HOSTS.some((h) => href.includes(h))) {
+      window.gtag('event', 'client_site_click', {
+        section,
+        site: CLIENT_HOSTS.find((h) => href.includes(h)),
+      });
+    }
+  };
+
+  document.addEventListener('click', onClick, { capture: true, passive: true });
+  return () => document.removeEventListener('click', onClick, { capture: true });
+}
+
+/**
  * Fire a `page_engaged` GA4 event after the user has dwelled on the page for
  * `thresholdMs` and is still active (tab visible). This gives us a positive
  * engagement signal that filters out bot crawls and instant bounces on pages

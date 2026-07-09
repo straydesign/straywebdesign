@@ -4,6 +4,7 @@ import { type ReactNode, useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { SmoothScroll } from '@/components/layout/SmoothScroll';
 import { useUtmCapture } from '@/hooks/useUtmParams';
+import { trackContactClicks } from '@/lib/tracking';
 
 const CustomCursor = dynamic(
   () => import('@/components/ui/CustomCursor').then((mod) => ({ default: mod.CustomCursor })),
@@ -20,6 +21,7 @@ const CookieBanner = dynamic(() => import('@/components/ui/CookieBanner'), {
 
 export default function ClientShell({ children }: { children: ReactNode }) {
   useUtmCapture();
+  useEffect(() => trackContactClicks(), []);
   return (
     <SmoothScroll>
       {children}
