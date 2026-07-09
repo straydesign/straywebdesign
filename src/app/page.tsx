@@ -29,9 +29,12 @@ const Services = dynamic(() => import('@/components/sections/Services'), {
 const FooterCTA = dynamic(() => import('@/components/sections/FooterCTA'), {
   loading: SectionSkeleton,
 });
+const Faq = dynamic(() => import('@/components/sections/Faq'), {
+  loading: SectionSkeleton,
+});
 
 /* Single page, in Tom's order: honest intro up top → the work → contact on
-   the surface → the service squares at the bottom. */
+   the surface → the service squares at the bottom, FAQ under those. */
 
 export default function Home() {
   return (
@@ -44,6 +47,7 @@ export default function Home() {
         <ProjectShowcase />
         <FooterCTA />
         <Services />
+        <Faq />
       </main>
       <Footer />
     </>
