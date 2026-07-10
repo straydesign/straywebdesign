@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { RESOURCES, getResourcePath } from '@/lib/content';
+import { PROJECTS } from '@/data/clients';
 
 const BASE_URL = 'https://straywebdesign.co';
 
@@ -36,6 +37,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  // ─── Case studies ──────────────────────────────────────────
+  const caseStudies = PROJECTS.map((project) => ({
+    url: `${BASE_URL}/work/${project.slug}`,
+    lastModified: '2026-07-10',
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
   // ─── Blog posts ────────────────────────────────────────────
   const blogPages = RESOURCES.map((resource) => ({
     url: `${BASE_URL}${getResourcePath(resource)}`,
@@ -44,5 +53,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...core, ...blogPages];
+  return [...core, ...caseStudies, ...blogPages];
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import AnimateIn from '@/components/ui/AnimateIn';
 import DeviceDuo from '@/components/ui/DeviceDuo';
@@ -119,6 +120,18 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
               Visit website
               <span aria-hidden>→</span>
             </a>
+            <Link
+              href={`/work/${project.slug}`}
+              className="group inline-flex items-center gap-1.5 font-body text-sm font-medium text-text-primary underline-offset-4 hover:underline"
+            >
+              Full case study
+              <span
+                aria-hidden
+                className="text-accent transition-transform duration-300 group-hover:translate-x-0.5"
+              >
+                →
+              </span>
+            </Link>
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}

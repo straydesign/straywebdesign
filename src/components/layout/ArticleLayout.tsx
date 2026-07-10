@@ -63,7 +63,9 @@ export default function ArticleLayout({ meta, children, jsonLd, relatedPosts = [
 
             <div className="mt-3 text-sm text-text-secondary">
               Published{' '}
-              {new Date(meta.date).toLocaleDateString('en-US', {
+              {/* parse at local noon — bare YYYY-MM-DD parses as UTC midnight
+                  and renders a day early in US timezones */}
+              {new Date(meta.date + 'T12:00:00').toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',
