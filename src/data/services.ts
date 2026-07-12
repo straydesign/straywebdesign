@@ -1,11 +1,11 @@
 /* services.ts — the service squares on the homepage (#services).
    Honest offers with real prices where they're set. The featured card is
-   the $300 build-and-handoff deal; everything else supports it.
+   the basic build + hosting package; everything else supports it.
    Prices come from Tom directly — never invent or "round" one. */
 
 export type ServiceCard = {
   readonly title: string;
-  /** Price badge, e.g. "$300 flat", "$30/hr". Omit when priced per site. */
+  /** Price badge, e.g. "$500", "$30/hr". Omit when priced per site. */
   readonly price?: string;
   readonly priceNote?: string;
   readonly description: string;
@@ -17,12 +17,12 @@ export type ServiceCard = {
 
 export const SERVICE_CARDS: readonly ServiceCard[] = [
   {
-    title: 'I build it. You own it.',
-    price: '$300',
-    priceNote: 'flat, one time',
+    title: 'The basic build',
+    price: '$500',
+    priceNote: 'build · then $25/mo hosting',
     featured: true,
     description:
-      "I design and build your site, then set everything up in your name: your own hosting account and your own domain, with the billing going to you. Before I hand it over, I teach you to make changes yourself with AI. After that you own the whole thing outright — no fees to me, ever, and no waiting on a designer. It works the same whether you're in Erie or three time zones away.",
+      "The most basic way to get a real website for your small business: I design and build the site for a flat $500, then host and look after it for $25 a month. Small edits are included in that monthly, things like new hours, a swapped photo, or an updated price. You send me what changed and it gets done, whether you're in Erie or three time zones away.",
     cta: { label: 'Start yours', href: '#contact' },
   },
   {
@@ -30,15 +30,8 @@ export const SERVICE_CARDS: readonly ServiceCard[] = [
     price: '$30',
     priceNote: 'per hour',
     description:
-      "Stuck on your own site? We get on a call and share screens, and I work through it with you: layout, design, copy, whatever's in the way. You pay by the hour.",
+      "Stuck on your own site, or want bigger changes than the monthly covers? We get on a call and share screens, and I work through it with you: layout, design, copy, whatever's in the way. You pay by the hour.",
     cta: { label: 'Book a call', href: '/book' },
-  },
-  {
-    title: 'Hosting',
-    price: '$20',
-    priceNote: 'per month',
-    description:
-      'I move your site onto fast hosting and keep it running well, so the site is never something you have to think about.',
   },
   {
     title: 'APIs & integrations',

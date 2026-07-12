@@ -11,31 +11,27 @@ import AnimateIn from '@/components/ui/AnimateIn';
 const FAQ_ITEMS = [
   {
     q: 'How much does a website cost?',
-    a: "Pricing guides put a professionally designed site anywhere from $500 to $10,000. Mine is $300 flat: I design it, build it, and hand it over finished. The hosting and domain get set up in your name at cost, so there's nothing hidden inside my price.",
+    a: 'Pricing guides put a professionally designed site anywhere from $500 to $10,000. My basic build is $500 flat, then $25 a month for hosting with small edits included. Those are the real numbers; there is no quote dance.',
   },
   {
-    q: 'Do I own the website, or do you?',
-    a: 'You own it. The hosting account, the domain, and the billing are all set up in your name from day one. Most designers keep those in their name, which is how people end up stuck. If we ever part ways, everything is already yours.',
+    q: 'What does the $25 a month cover?',
+    a: 'Hosting and small edits. I keep the site fast and online, and when your hours change or a photo needs swapping, you send it over and I handle it. If your site ever looks the same next quarter, that should only mean nothing about your business changed.',
   },
   {
     q: 'How long does it take?',
     a: 'About a week once you send me your content and photos.',
   },
   {
-    q: 'Can I make changes myself after it launches?',
-    a: 'Yes. Before I hand the site over, I teach you to make changes with AI tools: editing text, swapping photos, adding a page. You keep full control without paying a designer for every small change, and if you get stuck you can always book an hour with me.',
+    q: 'Can my team update things without waiting on you?',
+    a: "When the site needs it, yes. Andy's Pub and Bullfrog both keep their own menus and daily specials current through a system I set up for them, events too, with no designer in the loop. For most sites the included small edits cover it, and bigger changes are $30 an hour.",
   },
   {
     q: "What if I'm not in Erie?",
-    a: 'Everything works remotely: calls, screen shares, and a handoff into accounts you own.',
+    a: 'Everything works remotely: calls, screen shares, and the same hosting and edit service no matter where you are.',
   },
   {
     q: 'Can it handle online ordering or bookings?',
     a: "Yes. I've wired client sites into Square and PayPal for payments and ordering, and into content systems the team edits themselves. If your business runs on it, the site can talk to it.",
-  },
-  {
-    q: 'What does the $20-a-month hosting cover?',
-    a: "If you'd rather not run your own hosting, I keep the site fast, online, and current, so it's never something you have to think about.",
   },
   {
     q: 'What happens to my current website?',

@@ -2,8 +2,9 @@ import Link from 'next/link';
 import AnimateIn from '@/components/ui/AnimateIn';
 import { SERVICE_CARDS } from '@/data/services';
 
-/* Services — squares with plain prices. The $300 build-and-handoff deal leads
-   as the featured card; a price badge only appears where Tom has set one. */
+/* Services — squares with plain prices. The $500 build + $25/mo hosting
+   package leads as the featured card; a price badge only appears where Tom
+   has set one. */
 
 export default function Services() {
   return (
@@ -28,7 +29,7 @@ export default function Services() {
           </p>
         </AnimateIn>
 
-        <div className="mt-12 grid gap-4 md:mt-16 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-4 md:mt-16 md:grid-cols-2">
           {SERVICE_CARDS.map((s, i) => (
             <AnimateIn
               key={s.title}
