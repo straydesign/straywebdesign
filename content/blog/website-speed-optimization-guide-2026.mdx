@@ -1,34 +1,24 @@
 ---
-title: "Website Speed Optimization: The 2026 Technical Guide That Actually Moves the Needle"
-description: "Every 100ms of latency costs you conversions. Here's the specific technical playbook — image formats, code splitting, CDNs, Core Web Vitals — that gets your site under 1 second."
-date: "2026-03-20"
+title: "Website Speed in 2026: The Optimization Guide I Actually Use"
+description: "The specific technical playbook I run on every build — image formats, code splitting, edge caching, Core Web Vitals — explained plainly enough to hand to whoever maintains your site."
+date: "2026-07-13"
 tag: "Speed & Performance"
 type: "blog"
 author: "Tom Sesler"
 schema: "BlogPosting"
 ---
 
-## Speed Is Not a Nice-to-Have. It's a Revenue Lever.
+## Why speed is worth your attention
 
-Amazon's internal testing found that every 100 milliseconds of added latency cost them 1% in sales. Google discovered that a 0.5-second increase in search page load time dropped traffic by 20%. Walmart found that for every 1-second improvement in page load, conversions increased by 2%.
+Nobody times your website with a stopwatch. Visitors just feel the difference between your site and every fast site they used that day, and they quietly leave when something feels stuck. Google also folds its Core Web Vitals metrics into ranking, so a slow site loses twice: once with the visitor, once with the search results that decide whether the visitor arrives at all.
 
-These aren't outliers. The Yottaa 2025 Performance Index — analyzing 500 million visits across 1,300+ retail and e-commerce sites — found nearly a 14% conversion boost from cutting Interaction to Next Paint (INP) to 50ms, and 63% bounce rates on pages loading over 4 seconds. Third-party apps alone account for 60% of total load time on the average retail page. The relationship between speed and money is not theoretical. It's measured, documented, and consistent across industries.
+The good news is that slow sites are rarely slow for exotic reasons. Speed problems accumulate from a handful of ordinary causes, and the fixes below are the ones I actually run on every build. If someone else maintains your site, this post is written plainly enough to hand to them as a checklist.
 
-And yet the HTTP Archive's 2025 Web Almanac found that the median page weight is 2.2MB on desktop and 2.0MB on mobile. The median time to interactive on mobile is over 7 seconds on a 4G connection. Most business websites are leaving money on the floor because they've never been properly optimized.
+## Images: the biggest win
 
-Here's how to fix that.
+Images are usually the heaviest thing on a business website, which makes them the best place to start.
 
-## Image Optimization: The Biggest Win
-
-Images account for roughly 50% of total page weight on the average website. This is where you get the most speed improvement for the least effort.
-
-### Switch to Modern Formats
-
-**WebP** reduces file size by 25-35% compared to JPEG at equivalent quality (Google's own comparison study). It's supported by 97% of browsers globally as of 2026. There's no reason to serve JPEG anymore.
-
-**AVIF** goes further — 50% smaller than JPEG at equivalent quality, with better color depth and HDR support. Browser support hit 93% in early 2026. For hero images and large photography, AVIF is the move.
-
-The implementation is straightforward. Use the `<picture>` element to serve AVIF with WebP fallback:
+Modern formats do a lot of the work by themselves. WebP files come out roughly a quarter to a third smaller than the same-quality JPEG, and AVIF pushes further still on large photography. Browser support for both is broad enough in 2026 that there's little reason to serve plain JPEG. The `<picture>` element handles the fallback chain:
 
 ```html
 <picture>
@@ -38,168 +28,54 @@ The implementation is straightforward. Use the `<picture>` element to serve AVIF
 </picture>
 ```
 
-If you're on Next.js (which is what we build on), the `next/image` component handles format negotiation automatically — it serves AVIF or WebP based on browser support, and it resizes images on-the-fly.
+Just as important: don't send a desktop-sized image to a phone. The `srcset` and `sizes` attributes let the browser pick an appropriately sized file, which can cut the mobile image payload by more than half on photo-heavy pages.
 
-### Responsive Images
-
-Don't serve a 2400px-wide hero image to a phone with a 390px screen. Use `srcset` and `sizes` attributes to let the browser pick the right size:
-
-```html
-<img
-  srcset="hero-400.webp 400w, hero-800.webp 800w, hero-1200.webp 1200w"
-  sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 1200px"
-  src="hero-1200.webp"
-  alt="Description"
-/>
-```
-
-This alone can cut image payload by 60-80% on mobile devices.
-
-### Lazy Loading
-
-Every image below the fold should have `loading="lazy"`. This tells the browser to defer loading off-screen images until the user scrolls near them. It's a single attribute that can shave seconds off initial page load.
-
-**Critical exception:** Never lazy-load your LCP element (usually the hero image). That image needs to load immediately. In fact, preload it:
+Everything below the fold gets `loading="lazy"` so the browser defers it until the visitor scrolls near. The one exception is your largest above-the-fold element, usually the hero image. Never lazy-load that one; preload it instead:
 
 ```html
 <link rel="preload" as="image" href="hero.avif" type="image/avif" />
 ```
 
-## Code Splitting and Bundle Optimization
+If the site runs on Next.js, which is what I build on, the built-in image component does the format negotiation and resizing automatically. The discipline is mostly in not overriding it.
 
-The second-biggest performance killer is JavaScript. The median website ships 500KB+ of JavaScript, most of which isn't needed for the initial page render.
+## JavaScript: ship less of it
 
-### Ship Less JavaScript
+A kilobyte of JavaScript costs more than a kilobyte of image, because a script has to be downloaded and then run before the page feels responsive. The fixes are unglamorous. Remove libraries the site no longer uses. Let the framework split code by route so the homepage doesn't download the booking page's logic. Defer anything heavy until it's actually needed on screen.
 
-Every kilobyte of JavaScript costs more than a kilobyte of an image. Images only need to be decoded. JavaScript needs to be downloaded, parsed, compiled, and executed — and it blocks the main thread during execution, which directly hurts your [INP score](/resources/blog/website-speed-optimization-guide-2026).
+Watch for the quiet offenders here: the jQuery include left over from an old animation, the chat widget nobody staffs, the analytics script nobody reads. Each one taxes every single page view.
 
-Audit your JavaScript bundles. Remove jQuery if you're not using it (you're probably not — it's 2026). Remove analytics scripts you never check. Remove that chat widget that nobody uses.
+## Hosting and caching: serve from nearby
 
-### Route-Based Code Splitting
+Most pages on a business site don't change between visits, so they shouldn't be rebuilt for every visitor. I pre-render pages at build time and serve them from an edge network, meaning static files delivered from a server physically near the visitor rather than a single origin far away. Platforms like Vercel and Cloudflare make this the default rather than an engineering project, and it's a large part of why a well-built site feels instant even to a first-time visitor with a cold cache.
 
-Load only the code needed for the current page. Modern frameworks do this automatically — Next.js splits by route, so visiting `/about` doesn't download the code for `/services`. But you can go further with dynamic imports for heavy components:
+If your site sits on cheap shared hosting and feels sluggish before any page even starts rendering, the hosting layer is usually the culprit rather than anything in your content.
 
-```jsx
-const HeavyChart = dynamic(() => import('./HeavyChart'), {
-  loading: () => <ChartSkeleton />,
-  ssr: false,
-})
-```
+## Core Web Vitals: the numbers Google actually checks
 
-This defers the loading of heavy components until they're actually needed, keeping initial page load fast.
+Google publishes its three thresholds, and they're the scoreboard I build against.
 
-### Tree Shaking
+Largest Contentful Paint measures how fast the main content appears, and the passing mark is under 2.5 seconds. It's won or lost on image handling and render-blocking resources. Interaction to Next Paint measures how fast the page responds when someone taps, with a threshold of 200 milliseconds, and it's almost entirely a question of JavaScript weight. Cumulative Layout Shift measures how much the page jumps around while loading, with a passing score under 0.1, and the cure is giving every image explicit dimensions plus reserved space for anything that loads late.
 
-If you import one function from a library, your bundler should only include that function — not the entire library. Modern bundlers (webpack 5, Turbopack, Vite) do this automatically, but only if the library supports ES modules. Watch for libraries that bundle as CommonJS — they can't be tree-shaken and will bloat your bundle.
+On my own builds I target comfortable margins under all three thresholds rather than scraping past them. You can check any site's numbers, including mine or your current designer's, with Google's free PageSpeed Insights at pagespeed.web.dev. That's also the honest way to evaluate a designer's portfolio: run their live work through it.
 
-## CDN Configuration
+## Fonts: small files, loaded early
 
-A Content Delivery Network caches your site on servers around the world, so users load from the nearest server instead of waiting for a round trip to your origin.
-
-### Edge Caching
-
-Platforms like Vercel and Cloudflare deploy your site to 300+ edge locations globally. For a business in Erie, PA serving primarily regional customers, this means your site loads from the Pittsburgh or Cleveland edge node — not from a server in Virginia.
-
-The impact is measurable. Cloudflare reports median TTFB (Time to First Byte) reductions of 60-80% for sites deployed on their edge network. For a site that previously had 600ms TTFB, that drops to 120-240ms — which cascades into every other performance metric.
-
-### Static Generation
-
-For business websites, most pages don't change between user visits. Your "About" page, your services pages, your blog posts — these can be statically generated at build time and served directly from the CDN with zero server computation.
-
-This is why we build on Next.js with static generation. Your pages are pre-built HTML files served from the edge. No database query, no server rendering, no waiting. Just instant HTML delivery.
-
-## Core Web Vitals: The Targets
-
-Google's [Core Web Vitals](/resources/blog/website-speed-optimization-guide-2026) are the specific metrics that matter for both user experience and search ranking:
-
-### LCP (Largest Contentful Paint) — Target: Under 2.5s
-
-The time it takes for your main content to appear. For most business sites, LCP is the hero image or the main heading. Optimize by:
-
-- Preloading the LCP image
-- Using modern image formats (AVIF/WebP)
-- Inlining critical CSS
-- Eliminating render-blocking resources
-
-What we achieve on custom builds: **under 1 second.**
-
-### INP (Interaction to Next Paint) — Target: Under 200ms
-
-How fast your site responds to clicks and taps. The biggest INP killers are heavy JavaScript and long main-thread tasks. Optimize by:
-
-- Reducing JavaScript bundle size
-- Breaking up long tasks with `requestIdleCallback` or `scheduler.yield()`
-- Deferring non-critical scripts
-- Avoiding layout thrashing
-
-What we achieve: **under 100ms.**
-
-### CLS (Cumulative Layout Shift) — Target: Under 0.1
-
-How much your page content jumps around during loading. Fix by:
-
-- Setting explicit `width` and `height` on all images and videos
-- Reserving space for dynamic content (ads, embeds, fonts)
-- Using `font-display: swap` with proper fallback fonts matched to your web font metrics
-- Never injecting content above existing content
-
-What we achieve: **under 0.05.**
-
-## Font Optimization
-
-Web fonts are a silent performance killer. A typical site loads 4-6 font files totaling 200-400KB, and they block text rendering until they download.
-
-### Subset Your Fonts
-
-If you only use Latin characters, don't load the Cyrillic, Greek, and Vietnamese character sets. Google Fonts does this automatically with the `&display=swap&subset=latin` parameter. Self-hosted fonts need manual subsetting with tools like `glyphhanger`.
-
-### Preload Critical Fonts
+Web fonts silently block text from rendering while they download. Three habits keep them cheap: load only the character sets you use (Google Fonts subsets automatically; self-hosted fonts need a tool like glyphhanger), preload the one or two files the first screen needs, and prefer a single variable font file over separate uploads for every weight.
 
 ```html
 <link rel="preload" as="font" href="/fonts/heading.woff2" type="font/woff2" crossorigin />
 ```
 
-This tells the browser to start downloading the font immediately, before it discovers the need through CSS parsing.
+## Third-party scripts: audit ruthlessly
 
-### Use Variable Fonts
+Tag managers, pixels, heat maps, chat bubbles. Each adds weight and main-thread work, and they stack. The audit question for every one of them: does anyone at your business actually look at this data or answer this widget? If not, removing it is the cheapest speed upgrade available. The ones that survive should wait until the page is interactive before they load.
 
-Instead of loading separate files for Regular, Medium, Bold, and Italic, a single variable font file covers all weights. This can reduce total font payload by 70% while giving you more typographic flexibility.
+## The pre-launch checklist
 
-## Third-Party Scripts: The Performance Tax
+- Images in modern formats, correctly sized, lazy-loaded below the fold, with the hero preloaded
+- No render-blocking scripts, unused libraries, or unaudited third-party tags
+- Fonts subsetted and preloaded
+- Pages pre-rendered and served from an edge network
+- All three Core Web Vitals passing on mobile in PageSpeed Insights
 
-Google Tag Manager. Facebook Pixel. Hotjar. Intercom. Drift. Each one adds 50-200KB of JavaScript and blocks the main thread during execution.
-
-Trent Walton's analysis of third-party script impact found that the median third-party script adds 1.3 seconds to page load on mobile. Stack three or four of them and you've added 4-5 seconds before any user sees anything meaningful.
-
-### Audit Ruthlessly
-
-For every third-party script on your site, ask: "Do we actually look at this data? Does it generate revenue?" If you installed Hotjar a year ago and never watched a session recording, remove it. If your Facebook Pixel is tracking events you don't run ads against, remove it.
-
-### Delay Non-Critical Scripts
-
-Scripts that don't affect the initial user experience — analytics, chat widgets, social proof popups — can be loaded after the page is interactive. Use the Partytown library to run third-party scripts in a web worker, completely off the main thread.
-
-## The Speed Optimization Checklist
-
-Before launching any site, verify:
-
-- [ ] All images in AVIF/WebP format with proper srcset
-- [ ] LCP image preloaded
-- [ ] Below-fold images lazy loaded
-- [ ] JavaScript bundle under 200KB (compressed)
-- [ ] No render-blocking CSS or JS
-- [ ] Fonts preloaded and subsetted
-- [ ] CDN configured with proper cache headers
-- [ ] Third-party scripts audited and deferred
-- [ ] Core Web Vitals passing on both mobile and desktop
-- [ ] [Google Analytics set up](/services/analytics-setup) and tracking real user metrics
-
-## What This Looks Like in Practice
-
-We recently audited a local business site that was loading in 7.2 seconds on mobile. The issues: unoptimized PNG images (3.8MB total), jQuery loaded for a single animation, four tracking scripts nobody checked, and shared hosting with 800ms TTFB.
-
-After optimization — modern image formats, removing jQuery, deferring scripts, deploying to edge — the same site loaded in 1.1 seconds. Their Google ranking improved by 12 positions for their primary keyword within 6 weeks. Monthly leads increased by 34%.
-
-Speed isn't abstract. It's the difference between page one and page three. Between a customer who stays and one who bounces. Between revenue growing and revenue leaking.
-
-If your site takes more than 3 seconds to load, you're losing customers right now. [Let's fix that](/services/website-design).
+None of this requires a big retainer, it requires someone caring at build time. If your current site fails the PageSpeed test badly, [the redesign-signs post](/resources/blog/five-signs-you-need-a-website-redesign) walks through whether a fix or a rebuild makes more sense, and [the cost breakdown](/resources/blog/custom-website-cost-vs-template-real-numbers) covers what either one should run you.
