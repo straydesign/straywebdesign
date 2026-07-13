@@ -71,7 +71,7 @@ export default function RelatedPosts({ posts }: { posts: RelatedResource[] }) {
   return (
     <AnimateIn delay={0.3}>
       <div className="mt-12 border-t border-border-default pt-10">
-        <h3 className="font-mono text-xl font-bold text-text-primary">
+        <h3 className="font-display tracking-tight text-xl font-bold text-text-primary">
           Related Articles
         </h3>
         <StaggerContainer className="mt-6 grid gap-4 md:grid-cols-3" staggerDelay={0.1}>
@@ -89,7 +89,7 @@ export default function RelatedPosts({ posts }: { posts: RelatedResource[] }) {
                 >
                   {post.tag}
                 </span>
-                <h4 className="mt-3 font-mono text-sm font-bold leading-snug text-text-primary group-hover:text-accent transition-colors">
+                <h4 className="mt-3 font-display tracking-tight text-sm font-bold leading-snug text-text-primary group-hover:text-accent transition-colors">
                   {post.title}
                 </h4>
                 <p className="mt-2 flex-1 text-xs leading-relaxed text-text-secondary line-clamp-2">

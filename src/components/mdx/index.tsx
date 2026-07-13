@@ -5,11 +5,11 @@ import Link from 'next/link';
 /** MDX component overrides — replicates the existing ArticleLayout styles exactly */
 export const mdxComponents: MDXComponents = {
   h2: ({ children }: { children?: ReactNode }) => (
-    <h2 className="mt-10 mb-4 font-mono text-2xl font-bold text-text-primary">{children}</h2>
+    <h2 className="mt-10 mb-4 font-display tracking-tight text-2xl font-bold text-text-primary">{children}</h2>
   ),
 
   h3: ({ children }: { children?: ReactNode }) => (
-    <h3 className="mt-8 mb-3 font-mono text-xl font-semibold text-text-primary">{children}</h3>
+    <h3 className="mt-8 mb-3 font-display tracking-tight text-xl font-semibold text-text-primary">{children}</h3>
   ),
 
   p: ({ children }: { children?: ReactNode }) => (

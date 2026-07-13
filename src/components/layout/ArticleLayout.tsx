@@ -53,7 +53,7 @@ export default function ArticleLayout({ meta, children, jsonLd, relatedPosts = [
               </span>
             </div>
 
-            <h1 className="mt-6 font-mono text-3xl font-bold leading-tight text-text-primary md:text-4xl">
+            <h1 className="mt-6 font-display tracking-tight text-3xl font-bold leading-tight text-text-primary md:text-4xl">
               {meta.title}
             </h1>
 
@@ -87,7 +87,7 @@ export default function ArticleLayout({ meta, children, jsonLd, relatedPosts = [
           <AnimateIn delay={0.3}>
             <hr className="my-10 border-border-default" />
             <div className="border border-border-default/60 bg-light-gray p-8 text-center">
-              <h3 className="font-mono text-xl font-bold text-text-primary">
+              <h3 className="font-display tracking-tight text-xl font-bold text-text-primary">
                 Launching something new?
               </h3>
               <p className="mx-auto mt-2 max-w-md text-sm text-text-secondary">

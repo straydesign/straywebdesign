@@ -20,7 +20,7 @@ export default function PrivacyPolicy() {
           </svg>
           Back to site
         </Link>
-        <h1 className="font-mono text-3xl font-bold md:text-4xl">Privacy Policy</h1>
+        <h1 className="font-display tracking-tight text-3xl font-bold md:text-4xl">Privacy Policy</h1>
         <p className="mt-2 font-mono text-sm text-text-tertiary">Last updated: April 8, 2026</p>
 
         <div className="mt-10 space-y-8 font-mono text-sm leading-relaxed text-text-secondary">

@@ -20,7 +20,7 @@ export default function ResourcesPage() {
             <span className="mb-4 inline-block text-sm font-semibold tracking-wide text-accent uppercase">
               Writing
             </span>
-            <h1 className="font-mono text-3xl font-bold text-text-primary md:text-4xl lg:text-5xl">
+            <h1 className="font-display tracking-tight text-3xl font-bold text-text-primary md:text-4xl lg:text-5xl">
               Thinking Out Loud on{' '}
               <GradientText>Web Design</GradientText>
             </h1>

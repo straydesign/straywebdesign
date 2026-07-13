@@ -57,7 +57,7 @@ export default async function TagPage({
               <p className="text-sm font-semibold uppercase tracking-wider text-accent">
                 {resources.length} {resources.length === 1 ? 'Post' : 'Posts'}
               </p>
-              <h1 className="mt-4 font-mono text-3xl font-bold leading-tight text-text-primary md:text-5xl">
+              <h1 className="mt-4 font-display tracking-tight text-3xl font-bold leading-tight text-text-primary md:text-5xl">
                 {tag}
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-tertiary">

@@ -57,7 +57,7 @@ export default function ResourcesList({ resources }: { resources: ResourceCard[]
                 {resource.readTime}
               </span>
             </div>
-            <h2 className="mt-4 font-mono text-lg font-bold text-text-primary group-hover:text-accent transition-colors">
+            <h2 className="mt-4 font-display tracking-tight text-lg font-bold text-text-primary group-hover:text-accent transition-colors">
               {resource.title}
             </h2>
             <p className="mt-2 flex-1 text-sm leading-relaxed text-text-secondary">

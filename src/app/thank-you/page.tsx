@@ -15,7 +15,7 @@ export default function ThankYou() {
       <ConversionPixel />
       <div className="max-w-md text-center">
         <CheckCircle className="mx-auto h-16 w-16 text-accent" />
-        <h1 className="mt-6 font-mono text-2xl font-bold md:text-3xl">
+        <h1 className="mt-6 font-display tracking-tight text-2xl font-bold md:text-3xl">
           You&apos;re all set
         </h1>
         <p className="mt-4 font-mono text-text-secondary">

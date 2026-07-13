@@ -55,7 +55,7 @@ export default function Error({ error, reset }: ErrorProps) {
         </motion.p>
 
         <motion.h1
-          className="mt-4 font-mono text-3xl font-bold text-text-primary md:text-4xl"
+          className="mt-4 font-display tracking-tight text-3xl font-bold text-text-primary md:text-4xl"
           {...staggeredFadeUp(0.2)}
         >
           We hit an unexpected error

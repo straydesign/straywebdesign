@@ -22,7 +22,7 @@ export default function BlogPostError({ error, reset }: ErrorProps) {
           <p className="text-sm font-semibold uppercase tracking-wider text-accent">
             Something went wrong
           </p>
-          <h1 className="mt-4 font-mono text-3xl font-bold text-text-primary md:text-4xl">
+          <h1 className="mt-4 font-display tracking-tight text-3xl font-bold text-text-primary md:text-4xl">
             Couldn&apos;t load this article
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-text-secondary">
