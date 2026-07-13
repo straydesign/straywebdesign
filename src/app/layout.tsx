@@ -143,7 +143,7 @@ const professionalServiceSchema = {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'SEO Foundations',
+            name: 'Showing Up on Google',
             description:
               'The structured-data, metadata, and performance groundwork that helps the right people find the site.',
           },
