@@ -1,71 +1,49 @@
 ---
-title: "Website Accessibility Isn't Optional — It's a Lawsuit Waiting to Happen"
-description: "Over 4,100 ADA lawsuits were filed against websites in 2024. If your site isn't WCAG-compliant, you're not just excluding customers — you're a legal target."
-date: "2026-03-13"
+title: "Website Accessibility, Explained for Business Owners"
+description: "Most websites fail basic accessibility checks, overlay widgets don't fix them, and the fixes are cheaper than the folklore suggests. Here's the honest guide."
+date: "2026-07-13"
 tag: "Accessibility"
 type: "blog"
 author: "Tom Sesler"
 schema: "BlogPosting"
 ---
 
-## 94.8% of Websites Fail Basic Accessibility Tests
+## Most websites fail, which is your opening
 
-The WebAIM Million — an annual audit of the top one million home pages — found that 94.8% had detectable WCAG 2 failures in their 2025 report. That's an average of 51 distinct accessibility errors per page. Low-contrast text alone appeared on 79% of home pages. Missing alt text on images? 55.5% of sites.
+WebAIM runs an annual automated audit of the top one million home pages, and the 2025 edition found detectable accessibility failures on 94.8% of them, averaging about fifty errors per page. The two most common problems are mundane: text without enough contrast to read comfortably, and images with no alternative text for screen readers.
 
-These aren't obscure technical requirements. Low-contrast text means someone with moderate vision loss can't read your phone number. Missing alt text means a screen reader user has no idea what your hero image is about. A broken form label means a blind person literally cannot fill out your contact form.
+Those failures aren't obscure technicalities. Low-contrast text means someone with aging eyes can't read your phone number. Missing alt text means a screen reader user has no idea what your hero image shows. A form input without a label means a blind visitor cannot fill out your contact form at all, so the lead you paid to attract physically cannot reach you.
 
-And here's the thing most business owners don't realize: this isn't a nice-to-have checkbox. It's a growing legal liability.
+I'd rather frame that as an opportunity than a threat. The bar is embarrassingly low, so a site that simply works for everyone stands out, and it picks up the customers the broken sites turn away.
 
-## The Lawsuit Numbers Are Accelerating
+## The legal side, without the scare tactics
 
-UsableNet's 2024 year-end report documented 4,187 digital accessibility lawsuits filed in state and federal courts. That's over 11 lawsuits per day. Federal filings in H1 2025 surged 37% compared to the same period in 2024 — on pace for the highest annual total ever recorded.
+Accessibility lawsuits against business websites are real and numerous; UsableNet, which tracks these filings, counted over four thousand in 2024, and most defendants are ordinary small and mid-sized companies rather than household names. Courts have generally treated WCAG 2.1 Level AA, the W3C's published guideline set, as the working standard. The EU added its own requirements in 2025 for businesses selling to European consumers.
 
-The profile of who gets sued has shifted too. In 2023, 77% of lawsuits targeted companies earning under $25 million annually. This isn't just a Fortune 500 problem. Small and mid-sized businesses — [restaurants](/industries/restaurants), [law firms](/industries/law-firms), medical practices, local retailers — are getting hit because their template WordPress sites have dozens of WCAG violations baked in.
+That's the honest extent of what I'll say about legal risk, because I design websites and I'm not a lawyer. The practical takeaway is simply that an accessible build removes a category of exposure while making the site better at its actual job.
 
-A single ADA violation can trigger civil penalties up to $75,000 for the first offense and $150,000 for subsequent violations. Even settling a demand letter before it reaches court typically costs $25,000 in legal fees. For a small business in Erie, that's devastating — and entirely preventable.
+## The overlay widgets don't work
 
-One in four lawsuits in 2024 targeted companies that had already been sued before. The repeat rate is 40%. If you get sued once and just slap an overlay widget on top — which we'll get to — you'll get sued again.
+You will get sales emails offering "instant compliance" from a JavaScript widget for a monthly fee. Be skeptical. In January 2025 the FTC fined accessiBe, the biggest vendor in that market, one million dollars over deceptive compliance claims. UsableNet's tracking has repeatedly found lawsuits filed against sites that were running overlays when they were sued, with the widgets themselves sometimes cited as barriers because they interfere with the assistive technology people actually use.
 
-## The Overlay Trap
+The deeper problem is that an overlay doesn't change your site's code, and the code is where the failures live. Accessibility is a property of how a site is built, which is why it can't be rented for $50 a month.
 
-In January 2025, the Federal Trade Commission fined accessiBe — the largest accessibility overlay provider — $1 million for deceptive advertising. The FTC found that accessiBe's claims about making websites "fully WCAG compliant within 48 hours" were false. Their AI widget failed to make basic components accessible: navigation menus, form fields, image descriptions.
+## What an accessible site actually means
 
-UsableNet's data backs this up: 25% of all 2024 lawsuits — over 1,000 cases — explicitly cited accessibility overlay widgets as barriers rather than solutions. The overlays actively interfered with screen readers and assistive technology.
+WCAG organizes everything under four plain-English principles. Perceivable means people can take in your content: images carry descriptive alt text, videos carry captions, and body text keeps at least a 4.5-to-1 contrast ratio against its background. Operable means everything works without a mouse, so a visitor using only a keyboard can reach every menu, link, and form field without getting trapped. Understandable means forms have visible labels and error messages that say what went wrong in human words. Robust means the underlying code is clean semantic HTML that assistive technology can parse, with a real heading hierarchy instead of styled paragraphs.
 
-Deque Systems, which builds the axe accessibility testing engine used by most auditors, has consistently warned that automated overlays catch only a fraction of accessibility issues. The WebAIM Million found that pages using ARIA attributes (often injected by overlays) averaged 57 errors per page — more than double the error count of pages without ARIA. Overlays don't fix your code. They add another broken layer on top of it.
+None of that constrains how a site looks. It constrains how carelessly a site can be built, which is a different thing.
 
-If a vendor is selling you an accessibility widget for $50/month and promising compliance — run. You're paying for a false sense of security that makes you more likely to get sued, not less.
+## Why it pays even if nobody ever sues anyone
 
-## The Market You're Ignoring
+The CDC's long-standing estimate is that about one in four US adults lives with some disability. The UK's Click-Away Pound survey found that roughly two-thirds of disabled users who hit a barrier simply leave without complaining, which means you'll never see the loss in a feedback form, only in the absence of calls.
 
-The business case for accessibility goes beyond lawsuit avoidance. The CDC reports that 26% of US adults — roughly 61 million people — have a disability. That's not a niche market. The UK's Click-Away Pound Survey found that 69% of disabled consumers click away from websites with accessibility barriers, representing £17.1 billion in lost annual revenue.
+And the same work helps everyone else. Real heading structure is what search engines parse to understand your pages. Higher contrast helps anyone reading a phone in sunlight. Labeled forms get abandoned less by everybody. Keyboard support helps power users. In my experience the accessibility pass and the general quality pass are mostly the same pass.
 
-The Click-Away Pound Survey found that 69% of disabled users will simply leave a website they find difficult to use. They don't complain. They don't fill out a feedback form. Only 8% will ever contact the site owner about the problem. They just leave — and take their money to a competitor whose site actually works.
+## How to check your own site today
 
-WebAIM's Million analysis confirms the pattern across the broader web: 94.8% of top sites fail basic accessibility checks, with low-contrast text on 79% and missing alt text on 55.5%. The bar is low. But that means the businesses that clear it have a genuine competitive advantage — they get the customers everyone else turns away.
+Run your homepage through a free automated scanner like WAVE (wave.webaim.org) or the axe browser extension, the same engine most professional auditors use. Then do two manual checks the scanners can't: put your mouse away and try to reach your contact form using only the Tab and Enter keys, and squint at your site from arm's length to see whether the text survives. Most local business sites I check fail within the first minute of this, usually on contrast and form labels.
 
-WebAIM's Screen Reader User Survey found JAWS and NVDA account for roughly 79% of screen reader usage, with built-in screen reader adoption growing 25% between 2022 and 2024. The assistive technology user base is expanding, not shrinking. The National Federation of the Blind projects that Americans with significant vision loss will double to 7.2 million by 2050.
+If your site fails badly, the question becomes whether to patch or rebuild, and [the redesign-signs post](/resources/blog/five-signs-you-need-a-website-redesign) covers how I'd decide. If you're hiring someone, add accessibility to the questions in [the web designer buying guide](/resources/blog/what-to-look-for-in-a-web-designer), and expect a plain-words answer rather than a widget pitch.
 
-## What WCAG Compliance Actually Means
-
-WCAG — the Web Content Accessibility Guidelines published by the W3C — organizes accessibility into four principles: perceivable, operable, understandable, and robust. WCAG 2.2, the current version, includes 13 guidelines with specific success criteria at three conformance levels: A, AA, and AAA.
-
-Courts generally expect WCAG 2.1 Level AA as the standard for ADA compliance. Here's what that means in practice for a business website:
-
-**Perceivable.** Every image has descriptive alt text. Every video has captions. Text has sufficient contrast against its background — a minimum 4.5:1 ratio for body text. Information isn't conveyed by color alone.
-
-**Operable.** Every function works with a keyboard — no mouse required. Users can navigate without getting trapped in modal dialogs or dropdown menus. There's enough time to read and interact with content.
-
-**Understandable.** Forms have clear labels. Error messages explain what went wrong and how to fix it. The site behaves predictably — buttons look like buttons, links look like links.
-
-**Robust.** The code is clean enough for assistive technology to parse it correctly. Semantic HTML. Proper heading hierarchy. ARIA labels used correctly — not sprayed everywhere by an overlay.
-
-The European Accessibility Act, which took effect June 28, 2025, extends these requirements internationally. Any business selling products or services to EU consumers must comply — including US-based companies with international customers. Penalties reach up to €3 million per violation.
-
-## What This Means for Erie Businesses
-
-I've audited dozens of local business websites. Template WordPress sites, Wix sites, Squarespace sites — almost none pass even a basic automated accessibility scan. The contrast ratios on most dark-themed restaurant sites are abysmal. Contact forms on medical practice sites are missing labels entirely. Image-heavy portfolios have zero alt text.
-
-An accessibility-first build doesn't mean an ugly, boring site. It means clean code, proper semantic structure, thoughtful color choices, and forms that work for everyone — including the 26% of adults who rely on assistive technology. It means your site works better for all users, not just disabled ones. Proper heading structure helps [SEO](/services/seo-optimization). Keyboard navigation helps power users. Clear form labels reduce abandonment for everyone.
-
-We build every site at Stray Web Design to WCAG 2.1 AA from the ground up. Not as an afterthought. Not with an overlay. Baked into the code, the design system, and the component architecture. It's part of our [custom website design](/services/website-design) process. Because accessibility isn't a feature you bolt on — it's a foundation you build on.
+For my own builds, accessibility checks run before launch as part of the standard process rather than as a paid add-on, because retrofitting it later is the expensive version. It's the same reason my builds are fast: the cheapest time to care is while the site is being made.
