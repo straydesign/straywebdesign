@@ -11,10 +11,10 @@ import AnimateIn from '@/components/ui/AnimateIn';
 const FAQ_ITEMS = [
   {
     q: 'How much does a website cost?',
-    a: 'Pricing guides put a professionally designed site anywhere from $500 to $10,000. My basic build is $500 flat, then $25 a month for hosting with small edits included. Those are the real numbers; there is no quote dance.',
+    a: 'Pricing guides put a professionally designed site anywhere from $500 to $10,000. My basic build is $500 flat, then $20 a month for hosting with small edits included. Those are the real numbers; there is no quote dance.',
   },
   {
-    q: 'What does the $25 a month cover?',
+    q: 'What does the $20 a month cover?',
     a: 'Hosting and small edits. I keep the site fast and online, and when your hours change or a photo needs swapping, you send it over and I handle it. If your site ever looks the same next quarter, that should only mean nothing about your business changed.',
   },
   {

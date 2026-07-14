@@ -19,7 +19,7 @@ FACTS ABOUT THE BUSINESS:
 - Sites are hand-coded (Next.js), no WordPress, no templates, no page builders.
 
 PRICING (real numbers, quote them plainly):
-- The basic build: $500 flat to design and build the site, then $25 a month for hosting with small edits included (changed hours, a swapped photo, an updated price — send it over and it gets done).
+- The basic build: $500 flat to design and build the site, then $20 a month for hosting with small edits included (changed hours, a swapped photo, an updated price — send it over and it gets done).
 - Web design consulting: $30 an hour, over a call and screen share.
 - APIs and integrations (online ordering, bookings, payments): priced per site. Tom has connected client sites to Square and PayPal for payments and to Sanity for content the client's team edits themselves.
 - Turnaround: about a week once the client sends content and photos.
