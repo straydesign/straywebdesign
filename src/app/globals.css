@@ -56,6 +56,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Tailwind 4 dropped the default pointer on buttons (design standard §6) */
+button:not(:disabled) {
+  cursor: pointer;
+}
+input,
+textarea {
+  caret-color: var(--accent);
+}
+
 /* Focus indicators for keyboard navigation (WCAG 2.4.7) */
 *:focus-visible {
   outline: 2px solid var(--accent);

@@ -141,7 +141,7 @@ export const PROJECTS: Project[] = [
         'Sea Cave has been selling saltwater and freshwater fish in Erie since 1975. The store had five decades of standing and almost none of it online, so the job was to put the whole catalog on the internet without faking a single thing about it.',
       built: [
         'The catalog runs to six hundred plus products, everything from livestock and coral to dry goods, each on its own page a search engine can find.',
-        'Live fish get one hard rule: a listing only publishes with a real photo of the species, never a stock render. Prices show with a call-to-confirm note, because livestock pricing genuinely varies batch to batch, and pretending otherwise would just generate phone arguments.',
+        'Live fish get one hard rule: a listing only publishes with a real photo of the species, never a stock render. Prices show with a call-to-confirm note, because livestock pricing really does vary batch to batch, and pretending otherwise would just generate phone arguments.',
         'Build guides walk through real tank setups and link straight to the products they use, so the catalog and the advice feed each other.',
       ],
       design:
