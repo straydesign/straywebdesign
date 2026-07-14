@@ -25,8 +25,8 @@ export default function ResourcesPage() {
               <GradientText>Web Design</GradientText>
             </h1>
             <p className="mt-4 text-lg text-text-secondary">
-              Blog posts on web performance, what good design actually costs,
-              and building sites that convert.
+              Essays on how customers actually find and choose local
+              businesses, and what a website can honestly do about it.
             </p>
           </AnimateIn>
 

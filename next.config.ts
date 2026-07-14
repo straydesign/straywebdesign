@@ -31,6 +31,14 @@ const nextConfig: NextConfig = {
         destination: '/resources',
         permanent: true,
       },
+      // July-2026 blog reset (Tom: replace the SEO-genre posts with idea
+      // essays) — retired slugs redirect to the writing index.
+      {
+        source:
+          '/resources/blog/:slug(best-bar-websites|custom-website-cost-vs-template-real-numbers|five-signs-you-need-a-website-redesign|one-time-payment-website-own-it-outright|popmenu-pricing-2026-bentobox-alternative|restaurant-website-cost|website-accessibility-wcag-compliance-guide|website-speed-optimization-guide-2026|what-to-look-for-in-a-web-designer)',
+        destination: '/resources',
+        permanent: true,
+      },
     ];
   },
 };
