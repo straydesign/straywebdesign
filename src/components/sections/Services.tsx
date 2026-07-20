@@ -15,10 +15,7 @@ export default function Services() {
     >
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <AnimateIn>
-          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-accent">
-            <span aria-hidden className="text-accent/60">{'// '}</span>
-            services
-          </p>
+          <span className="eyebrow mb-4">Services</span>
           <h2 className="mt-4 max-w-2xl font-display text-[clamp(1.9rem,4vw,2.9rem)] font-bold leading-[1.05] tracking-tight text-text-primary">
             What I do, and what it costs.
           </h2>
@@ -51,7 +48,7 @@ export default function Services() {
                       </span>
                     )}
                     {s.priceNote && (
-                      <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-text-tertiary">
+                      <span className="font-mono text-[11px] text-text-tertiary">
                         {s.priceNote}
                       </span>
                     )}

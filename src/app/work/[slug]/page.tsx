@@ -6,7 +6,6 @@ import Footer from '@/components/layout/Footer';
 import AnimateIn from '@/components/ui/AnimateIn';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import DeviceDuo from '@/components/ui/DeviceDuo';
-import MagneticButton from '@/components/ui/MagneticButton';
 import { PROJECTS } from '@/data/clients';
 import { SITE } from '@/lib/constants';
 
@@ -49,12 +48,7 @@ export async function generateMetadata({
 }
 
 function SectionEyebrow({ children }: { children: string }) {
-  return (
-    <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-accent">
-      <span aria-hidden className="text-accent/60">{'// '}</span>
-      {children}
-    </p>
-  );
+  return <span className="eyebrow mb-3">{children}</span>;
 }
 
 export default async function CaseStudyPage({
@@ -96,7 +90,7 @@ export default async function CaseStudyPage({
               ]}
             />
 
-            <SectionEyebrow>case study — live client site</SectionEyebrow>
+            <SectionEyebrow>Case study — live client site</SectionEyebrow>
             <h1 className="mt-4 max-w-3xl font-display text-[clamp(2rem,4.6vw,3.4rem)] font-bold leading-[1.06] tracking-[-0.02em] text-text-primary">
               {project.name}
             </h1>
@@ -130,7 +124,7 @@ export default async function CaseStudyPage({
                 name={project.name}
                 priority
               />
-              <p className="mt-2 pr-[10%] text-right font-mono text-[11px] uppercase tracking-[0.1em] text-text-tertiary">
+              <p className="mt-2 pr-[10%] text-right font-mono text-[11px] text-text-tertiary">
                 <span aria-hidden className="text-accent/60">{'// '}</span>
                 live · {project.displayUrl}
               </p>
@@ -139,7 +133,7 @@ export default async function CaseStudyPage({
 
           <div className="mx-auto mt-16 max-w-3xl md:mt-20">
             <AnimateIn>
-              <SectionEyebrow>what the site does</SectionEyebrow>
+              <SectionEyebrow>What the site does</SectionEyebrow>
               <div className="mt-5 space-y-5">
                 {project.caseStudy.built.map((para) => (
                   <p
@@ -164,13 +158,13 @@ export default async function CaseStudyPage({
 
             <AnimateIn>
               <div className="mt-14 md:mt-16">
-                <SectionEyebrow>the design</SectionEyebrow>
+                <SectionEyebrow>The design</SectionEyebrow>
                 <p className="mt-5 font-body text-[15px] leading-relaxed text-text-secondary md:text-base">
                   {project.caseStudy.design}
                 </p>
                 <div className="mt-7 grid gap-6 rounded-lg border border-border-default bg-surface-card p-5 sm:grid-cols-2 md:p-6">
                   <div>
-                    <p className="font-mono text-[10.5px] font-medium uppercase tracking-[0.16em] text-text-tertiary">
+                    <p className="font-mono text-[10.5px] font-medium text-text-tertiary">
                       <span aria-hidden className="text-accent/60">{'// '}</span>palette
                     </p>
                     <ul className="mt-3 space-y-2">
@@ -192,7 +186,7 @@ export default async function CaseStudyPage({
                     </ul>
                   </div>
                   <div>
-                    <p className="font-mono text-[10.5px] font-medium uppercase tracking-[0.16em] text-text-tertiary">
+                    <p className="font-mono text-[10.5px] font-medium text-text-tertiary">
                       <span aria-hidden className="text-accent/60">{'// '}</span>type
                     </p>
                     <ul className="mt-3 space-y-2">
@@ -209,7 +203,7 @@ export default async function CaseStudyPage({
 
             <AnimateIn>
               <div className="mt-14 md:mt-16">
-                <SectionEyebrow>how it runs</SectionEyebrow>
+                <SectionEyebrow>How it runs</SectionEyebrow>
                 <p className="mt-5 font-body text-[15px] leading-relaxed text-text-secondary md:text-base">
                   {project.caseStudy.runs}
                 </p>
@@ -227,16 +221,19 @@ export default async function CaseStudyPage({
                   call: {SITE.phone}.
                 </p>
                 <div className="mt-6">
-                  <MagneticButton href="/#contact" variant="primary">
+                  <Link
+                    href="/#contact"
+                    className="inline-flex items-center justify-center font-display font-semibold transition-colors bg-accent text-white hover:bg-accent/90 px-7 py-3.5 text-base"
+                  >
                     Start a project
-                  </MagneticButton>
+                  </Link>
                 </div>
               </div>
             </AnimateIn>
 
             <AnimateIn>
               <div className="mt-14">
-                <SectionEyebrow>more live work</SectionEyebrow>
+                <SectionEyebrow>More live work</SectionEyebrow>
                 <ul className="mt-4 space-y-3">
                   {others.map((p) => (
                     <li key={p.slug}>

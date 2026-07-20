@@ -171,7 +171,7 @@ export default function ChatWidget() {
                   <span className="text-sm font-semibold text-text-primary">
                     Stray Assistant
                   </span>
-                  <span className="rounded-sm bg-surface-sunken px-1.5 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider text-text-tertiary">
+                  <span className="rounded-sm bg-surface-sunken px-1.5 py-0.5 font-body text-xs font-medium text-text-tertiary">
                     AI
                   </span>
                 </div>

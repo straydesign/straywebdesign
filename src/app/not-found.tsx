@@ -12,7 +12,7 @@ export default function NotFound() {
           <StrayLogo color="#2563EB" width={64} height={32} />
         </Link>
 
-        <p className="mt-8 font-mono text-8xl font-bold text-accent/20 md:text-9xl">
+        <p className="mt-8 font-display text-8xl font-bold text-accent/20 md:text-9xl">
           404
         </p>
 

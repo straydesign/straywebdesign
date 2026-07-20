@@ -23,28 +23,28 @@ export default function BookingConfirmation({
         <CheckCircle className="h-7 w-7 text-accent" />
       </div>
 
-      <h2 className="font-mono text-xl font-bold text-text-primary">
+      <h2 className="font-display text-xl font-bold text-text-primary">
         {hasBooking ? `You're booked, ${firstName}.` : `Got it, ${firstName}.`}
       </h2>
 
       {hasBooking ? (
         <div className="mt-5 w-full border border-border-default bg-surface-page px-5 py-4">
-          <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
+          <p className="font-mono text-[10px] font-semibold text-text-tertiary">
             Discovery Call
           </p>
-          <p className="mt-1 font-mono text-base font-semibold text-text-primary">
+          <p className="mt-1 font-body text-base font-semibold text-text-primary">
             {formatDateDisplay(date)}
           </p>
-          <p className="font-mono text-sm text-accent">
+          <p className="font-body text-sm text-accent">
             {time} EST &bull; 30 minutes
           </p>
         </div>
       ) : (
         <div className="mt-5 w-full border border-border-default bg-surface-page px-5 py-4">
-          <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
+          <p className="font-mono text-[10px] font-semibold text-text-tertiary">
             What&apos;s Next
           </p>
-          <p className="mt-1 font-mono text-sm text-text-primary">
+          <p className="mt-1 font-body text-sm text-text-primary">
             We&apos;ll be in touch shortly to get the conversation started.
           </p>
         </div>
@@ -54,7 +54,7 @@ export default function BookingConfirmation({
         <div className="flex h-8 w-8 shrink-0 items-center justify-center bg-accent/10">
           <Phone className="h-4 w-4 text-accent" />
         </div>
-        <p className="font-mono text-sm text-text-secondary">
+        <p className="font-body text-sm text-text-secondary">
           {hasBooking
             ? "You'll receive a confirmation text shortly with call details. We'll reach out at your scheduled time."
             : "You'll hear from us shortly. We'll find a time that works for both of us."}
@@ -62,7 +62,7 @@ export default function BookingConfirmation({
       </div>
 
       <div className="mt-6 space-y-2 text-left w-full">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
+        <p className="font-mono text-[10px] font-semibold text-text-tertiary">
           What happens next
         </p>
         <ul className="space-y-1.5">
@@ -80,7 +80,7 @@ export default function BookingConfirmation({
           ).map((item) => (
             <li
               key={item}
-              className="flex items-center gap-2 font-mono text-sm text-text-secondary"
+              className="flex items-center gap-2 font-body text-sm text-text-secondary"
             >
               <span className="h-1 w-1 shrink-0 bg-accent" />
               {item}
@@ -91,7 +91,7 @@ export default function BookingConfirmation({
 
       <a
         href="/"
-        className="mt-8 inline-flex items-center gap-2 font-mono text-sm text-accent transition-colors hover:text-accent/80"
+        className="mt-8 inline-flex items-center gap-2 font-body text-sm text-accent transition-colors hover:text-accent/80"
       >
         <ArrowLeft className="h-4 w-4" />
         Back to home

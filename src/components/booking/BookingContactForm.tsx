@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from 'react';
 
 const inputClasses =
-  'w-full border border-border-strong bg-surface-sunken px-4 py-3 font-mono text-text-primary placeholder-text-placeholder transition-colors focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none';
+  'w-full border border-border-strong bg-surface-sunken px-4 py-3 font-body text-text-primary placeholder-text-placeholder transition-colors focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none';
 
 interface BookingContactFormProps {
   name: string;
@@ -49,7 +49,7 @@ export default function BookingContactForm({
     <form onSubmit={onSubmit} noValidate>
       {!isInitialStep && (
         <div className="mb-5 border border-accent/20 bg-accent/5 px-4 py-3">
-          <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-accent">
+          <p className="font-mono text-[10px] font-semibold text-accent">
             {selectedTime ? 'Your Appointment' : 'Contact Request'}
           </p>
           <p className="mt-1 font-mono text-sm text-text-primary">
@@ -73,7 +73,7 @@ export default function BookingContactForm({
         <div>
           <label
             htmlFor="booking-email"
-            className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
+            className="mb-1.5 block font-body text-sm font-medium text-text-secondary"
           >
             Email
           </label>
@@ -92,7 +92,7 @@ export default function BookingContactForm({
         <div>
           <label
             htmlFor="booking-name"
-            className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
+            className="mb-1.5 block font-body text-sm font-medium text-text-secondary"
           >
             Name <span className="font-normal text-text-tertiary">(optional)</span>
           </label>
@@ -111,7 +111,7 @@ export default function BookingContactForm({
           <button
             type="button"
             onClick={() => setShowDetails(true)}
-            className="font-mono text-xs text-text-tertiary underline-offset-2 transition-colors hover:text-accent hover:underline"
+            className="font-body text-xs text-text-tertiary underline-offset-2 transition-colors hover:text-accent hover:underline"
           >
             + Add phone, business, or website (optional)
           </button>
@@ -123,7 +123,7 @@ export default function BookingContactForm({
               <div>
                 <label
                   htmlFor="booking-phone"
-                  className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
+                  className="mb-1.5 block font-body text-sm font-medium text-text-secondary"
                 >
                   Phone
                 </label>
@@ -140,7 +140,7 @@ export default function BookingContactForm({
               <div>
                 <label
                   htmlFor="booking-company"
-                  className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
+                  className="mb-1.5 block font-body text-sm font-medium text-text-secondary"
                 >
                   Business Name
                 </label>
@@ -159,7 +159,7 @@ export default function BookingContactForm({
             <div>
               <label
                 htmlFor="booking-website"
-                className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
+                className="mb-1.5 block font-body text-sm font-medium text-text-secondary"
               >
                 Current Website
               </label>
@@ -178,7 +178,7 @@ export default function BookingContactForm({
       </div>
 
       {error && (
-        <div role="alert" className="mt-4 font-mono text-sm text-red-500">
+        <div role="alert" className="mt-4 font-body text-sm text-red-500">
           {error}
         </div>
       )}
@@ -186,7 +186,7 @@ export default function BookingContactForm({
       <button
         type="submit"
         disabled={submitting}
-        className="mt-6 flex w-full items-center justify-center gap-2 bg-accent px-6 py-3.5 font-mono text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-50"
+        className="mt-6 flex w-full items-center justify-center gap-2 bg-accent px-6 py-3.5 font-display font-semibold text-sm text-white transition-colors hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {submitting ? (
           <>
@@ -199,7 +199,7 @@ export default function BookingContactForm({
       </button>
 
       {isInitialStep && (
-        <p className="mt-3 text-center font-mono text-[11px] text-text-tertiary">
+        <p className="mt-3 text-center font-body text-xs text-text-tertiary">
           No call required. We&apos;ll come back with a plan for your site within 24 hours.
         </p>
       )}

@@ -120,7 +120,7 @@ export default function CalendarPicker({
         >
           <ChevronLeft className="h-4 w-4" />
         </button>
-        <span className="font-mono text-sm font-semibold uppercase tracking-wider text-text-primary">
+        <span className="font-mono text-sm font-semibold text-text-primary">
           {monthLabel}
         </span>
         <button
@@ -144,7 +144,7 @@ export default function CalendarPicker({
         {DAY_LABELS.map((label) => (
           <div
             key={label}
-            className="py-1 text-center font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary"
+            className="py-1 text-center font-mono text-[10px] font-semibold text-text-tertiary"
           >
             {label}
           </div>
@@ -190,7 +190,7 @@ export default function CalendarPicker({
         })}
       </div>
 
-      <p className="mt-3 font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
+      <p className="mt-3 font-mono text-[10px] text-text-tertiary">
         Available Mon-Fri &bull; Eastern Time
       </p>
     </div>

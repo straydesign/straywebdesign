@@ -48,7 +48,7 @@ export default function Error({ error, reset }: ErrorProps) {
         </motion.div>
 
         <motion.p
-          className="mt-8 font-mono text-sm font-semibold uppercase tracking-wider text-accent"
+          className="mt-8 eyebrow"
           {...staggeredFadeUp(0.1)}
         >
           Something went wrong

@@ -81,7 +81,7 @@ export default async function TagPage({
                       <span>·</span>
                       <span>{resource.readTime}</span>
                     </div>
-                    <h2 className="mt-3 font-mono text-sm font-bold text-text-primary group-hover:text-accent transition-colors">
+                    <h2 className="mt-3 font-display tracking-tight text-sm font-bold text-text-primary group-hover:text-accent transition-colors">
                       {resource.title}
                     </h2>
                     <p className="mt-2 flex-1 text-xs leading-relaxed text-text-secondary line-clamp-3">

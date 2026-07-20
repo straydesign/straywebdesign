@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
-import MagneticButton from '@/components/ui/MagneticButton';
 import MacBookFrame from '@/components/ui/MacBookFrame';
 import { SITE } from '@/lib/constants';
 import { useClientEnv } from '@/lib/use-client-env';
@@ -13,10 +12,7 @@ import { useClientEnv } from '@/lib/use-client-env';
 function HeroBody() {
   return (
     <>
-      <span className="mb-5 inline-flex items-center font-mono text-[12px] font-medium uppercase tracking-[0.18em] text-accent">
-        <span aria-hidden className="mr-1.5 text-accent/60">//</span>
-        freelance web designer
-      </span>
+      <span className="eyebrow mb-5">Freelance web designer</span>
 
       <h1 className="text-balance font-display text-[clamp(2.2rem,5.4vw,4.1rem)] font-bold leading-[1.06] tracking-[-0.02em] text-text-primary">
         Hi, I&apos;m Tom.
@@ -48,9 +44,12 @@ function HeroBody() {
         </div>
 
         <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
-          <MagneticButton href="#work" variant="primary" size="lg">
+          <Link
+            href="#work"
+            className="inline-flex items-center justify-center bg-accent px-6 py-3.5 font-display text-base font-semibold text-white transition-colors hover:bg-accent/90 sm:px-9 sm:py-4.5 sm:text-lg"
+          >
             See the work
-          </MagneticButton>
+          </Link>
           <Link
             href="#contact"
             className="group inline-flex items-center gap-1.5 font-body text-base font-medium text-text-primary underline-offset-4 hover:underline"
@@ -88,7 +87,7 @@ function HeroDesktop() {
           alt="Andy's Ale House — a site I designed, built, host, and manage"
           priority
         />
-        <p className="mt-7 text-right font-mono text-[11px] uppercase tracking-[0.1em] text-text-tertiary">
+        <p className="mt-7 text-right font-mono text-[11px] text-text-tertiary">
           <span aria-hidden className="text-accent/60">// </span>
           live · andyspub.com
         </p>

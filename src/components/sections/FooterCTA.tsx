@@ -76,10 +76,7 @@ export default function FooterCTA() {
     >
       <div className="relative z-10 mx-auto max-w-3xl px-5 text-center md:px-8">
         <AnimateIn>
-          <span className="mb-4 inline-flex items-center font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-accent">
-            <span aria-hidden className="mr-1.5 text-accent/60">//</span>
-            start a project
-          </span>
+          <span className="eyebrow mb-4">Start a project</span>
           <h2 className="font-display text-3xl font-bold leading-[1.06] tracking-tight text-text-primary md:text-4xl lg:text-5xl">
             Tell me about the business.
           </h2>
@@ -135,7 +132,7 @@ export default function FooterCTA() {
                   placeholder="you@business.com"
                   autoComplete="email"
                   aria-label="Email"
-                  className="flex-1 border border-border-strong bg-surface-card px-4 py-3.5 font-mono text-text-primary placeholder-text-placeholder transition-colors focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none"
+                  className="flex-1 border border-border-strong bg-surface-card px-4 py-3.5 font-body text-text-primary placeholder-text-placeholder transition-colors focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none"
                 />
                 <button
                   type="submit"
@@ -160,7 +157,7 @@ export default function FooterCTA() {
                 placeholder="Phone (optional)"
                 autoComplete="tel"
                 aria-label="Phone number (optional)"
-                className="w-full border border-border-default bg-surface-card px-4 py-3 font-mono text-sm text-text-primary placeholder-text-placeholder transition-colors focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none"
+                className="w-full border border-border-default bg-surface-card px-4 py-3 font-body text-sm text-text-primary placeholder-text-placeholder transition-colors focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none"
               />
 
               <textarea
@@ -170,11 +167,11 @@ export default function FooterCTA() {
                 rows={4}
                 placeholder="Who it serves, what you sell, what success looks like."
                 aria-label="Tell me about your business"
-                className="w-full resize-none border border-border-default bg-surface-card px-4 py-3 font-mono text-sm text-text-primary placeholder-text-placeholder transition-colors focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none"
+                className="w-full resize-none border border-border-default bg-surface-card px-4 py-3 font-body text-sm text-text-primary placeholder-text-placeholder transition-colors focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none"
               />
 
               {error && (
-                <p role="alert" className="text-left font-mono text-sm text-red-500">
+                <p role="alert" className="text-left font-body text-sm text-red-500">
                   {error}
                 </p>
               )}

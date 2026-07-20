@@ -63,7 +63,7 @@ function MobileScrollProgress() {
 /* ─── Navbar ──────────────────────────────────────────────── */
 
 const navLinkClass =
-  'font-mono text-sm font-medium text-text-secondary transition-colors duration-300 hover:text-text-primary';
+  'font-body text-sm font-medium text-text-secondary transition-colors duration-300 hover:text-text-primary';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -90,7 +90,7 @@ export default function Navbar() {
         <Link
           key={link.href}
           href={resolveHref(link.href, pathname)}
-          className="font-mono text-base font-medium text-text-secondary transition-colors hover:text-text-primary"
+          className="font-body text-base font-medium text-text-secondary transition-colors hover:text-text-primary"
           onClick={() => setIsOpen(false)}
         >
           {link.label}

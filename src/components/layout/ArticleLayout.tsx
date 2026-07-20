@@ -2,7 +2,7 @@ import { ArrowLeft } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import AnimateIn from '@/components/ui/AnimateIn';
-import MagneticButton from '@/components/ui/MagneticButton';
+import Link from 'next/link';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import RelatedPosts from '@/components/resources/RelatedPosts';
 import type { ResourceMeta, Resource } from '@/lib/content';
@@ -95,9 +95,12 @@ export default function ArticleLayout({ meta, children, jsonLd, relatedPosts = [
                 a plan for what the site should actually do.
               </p>
               <div className="mt-6">
-                <MagneticButton href="/book" variant="primary">
-                  Let&apos;s Talk
-                </MagneticButton>
+                <Link
+                  href="/book"
+                  className="inline-flex items-center justify-center font-display font-semibold transition-colors bg-accent text-white hover:bg-accent/90 px-7 py-3.5 text-base"
+                >
+                  Let&apos;s talk
+                </Link>
               </div>
             </div>
           </AnimateIn>

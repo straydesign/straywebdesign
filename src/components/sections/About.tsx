@@ -33,10 +33,7 @@ export default function About() {
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
           <AnimateIn>
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-accent">
-              <span aria-hidden className="text-accent/60">{'// '}</span>
-              about
-            </p>
+            <span className="eyebrow mb-5">About</span>
             <div className="mt-6 flex w-48 items-end overflow-hidden rounded-lg bg-accent/5 ring-1 ring-accent/15 md:w-56">
               <Image
                 src="/images/tom.png"
@@ -66,10 +63,7 @@ export default function About() {
             {PRINCIPLES.map((p, i) => (
               <AnimateIn key={p.title} delay={i * 0.08}>
                 <div className="bg-surface-card p-6 md:p-7">
-                  <p className="font-mono text-[10.5px] font-medium uppercase tracking-[0.16em] text-accent">
-                    <span aria-hidden className="text-accent/60">{'// '}</span>
-                    {p.label}
-                  </p>
+                  <span className="eyebrow mb-2.5">{p.label}</span>
                   <h3 className="mt-2.5 font-display text-xl font-semibold tracking-tight text-text-primary">
                     {p.title}
                   </h3>

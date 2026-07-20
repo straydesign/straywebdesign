@@ -37,7 +37,7 @@ function CalInlineIframe({ calLink }: { calLink: string }) {
     >
       {!loaded && (
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="flex flex-col items-center gap-3 font-mono text-sm text-text-tertiary">
+          <div className="flex flex-col items-center gap-3 font-body text-sm text-text-tertiary">
             <Calendar className="h-6 w-6 animate-pulse text-accent" />
             Loading calendar…
           </div>
@@ -63,12 +63,12 @@ function CalFallback() {
   return (
     <div className="border border-dashed border-border-strong bg-surface-card p-8 text-center">
       <Calendar className="mx-auto h-8 w-8 text-accent" />
-      <p className="mt-4 font-mono text-sm text-text-secondary">
+      <p className="mt-4 font-body text-sm text-text-secondary">
         Live calendar coming soon.
       </p>
       <a
         href="#contact"
-        className="mt-4 inline-flex items-center gap-2 bg-accent px-5 py-3 font-mono text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-accent/90"
+        className="mt-4 inline-flex items-center justify-center font-display font-semibold transition-colors bg-accent text-white hover:bg-accent/90 px-5 py-3 text-sm"
       >
         Request a time
       </a>
@@ -85,14 +85,12 @@ export default function CalEmbed() {
     >
       <div className="mx-auto max-w-4xl px-5 md:px-8">
         <AnimateIn className="text-center">
-          <span className="mb-4 inline-block font-mono text-[11px] font-semibold uppercase tracking-wider text-accent">
-            Skip the back-and-forth
-          </span>
-          <h2 className="font-mono text-3xl font-bold text-text-primary md:text-4xl">
+          <span className="eyebrow mb-4">Skip the back-and-forth</span>
+          <h2 className="font-display text-3xl font-bold text-text-primary md:text-4xl">
             Walk away with a concrete next step.{' '}
             <GradientText>15 minutes, no pitch.</GradientText>
           </h2>
-          <p className="mt-4 font-mono text-base text-text-secondary">
+          <p className="mt-4 font-body text-base text-text-secondary">
             Pick a slot. We&apos;ll dig into what a custom-built site could
             earn you. You leave with a plan whether you hire me or not.
           </p>

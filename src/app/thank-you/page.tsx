@@ -18,14 +18,14 @@ export default function ThankYou() {
         <h1 className="mt-6 font-display tracking-tight text-2xl font-bold md:text-3xl">
           You&apos;re all set
         </h1>
-        <p className="mt-4 font-mono text-text-secondary">
+        <p className="mt-4 font-body text-text-secondary">
           Check your phone — you&apos;ll get a text from us shortly. We&apos;re
           already pulling up your site and putting together your report.
         </p>
         <div className="mt-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 font-mono text-sm text-accent transition-colors hover:text-accent/80"
+            className="inline-flex items-center gap-2 font-body text-sm text-accent transition-colors hover:text-accent/80"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to straywebdesign.co

@@ -27,7 +27,7 @@ function DesignDiveIn({ project }: { project: Project }) {
         </p>
         <div className="mt-5 grid gap-6 sm:grid-cols-2">
           <div>
-            <p className="font-mono text-[10.5px] font-medium uppercase tracking-[0.16em] text-text-tertiary">
+            <p className="font-mono text-[10.5px] font-medium text-text-tertiary">
               <span aria-hidden className="text-accent/60">{'// '}</span>palette
             </p>
             <ul className="mt-3 space-y-2">
@@ -49,7 +49,7 @@ function DesignDiveIn({ project }: { project: Project }) {
             </ul>
           </div>
           <div>
-            <p className="font-mono text-[10.5px] font-medium uppercase tracking-[0.16em] text-text-tertiary">
+            <p className="font-mono text-[10.5px] font-medium text-text-tertiary">
               <span aria-hidden className="text-accent/60">{'// '}</span>type
             </p>
             <ul className="mt-3 space-y-2">
@@ -80,16 +80,13 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
             name={project.name}
             priority={index === 0}
           />
-          <p className="mt-2 pr-[10%] text-right font-mono text-[11px] uppercase tracking-[0.1em] text-text-tertiary">
+          <p className="mt-2 pr-[10%] text-right font-mono text-[11px] text-text-tertiary">
             <span aria-hidden className="text-accent/60">{'// '}</span>
             live · {project.displayUrl}
           </p>
         </div>
         <div className={flipped ? 'lg:order-1' : undefined}>
-          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-accent">
-            <span aria-hidden className="text-accent/60">{'// '}</span>
-            live — built, hosted &amp; managed by me
-          </p>
+          <span className="eyebrow mb-3">Live — built, hosted &amp; managed by me</span>
           <h3 className="mt-3 font-display text-2xl font-bold tracking-tight text-text-primary md:text-3xl">
             {project.name}
           </h3>
@@ -165,10 +162,7 @@ export default function ProjectShowcase() {
     >
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <AnimateIn>
-          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-accent">
-            <span aria-hidden className="text-accent/60">{'// '}</span>
-            the work
-          </p>
+          <span className="eyebrow mb-4">The work</span>
           <h2 className="mt-4 max-w-2xl font-display text-[clamp(1.9rem,4vw,2.9rem)] font-bold leading-[1.05] tracking-tight text-text-primary">
             Real sites, on real screens.
           </h2>

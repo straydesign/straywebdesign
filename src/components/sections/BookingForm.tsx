@@ -16,7 +16,7 @@ export default function BookingForm() {
         <AnimateIn>
           <a
             href="/"
-            className="inline-flex items-center gap-2 font-mono text-sm text-text-tertiary transition-colors hover:text-text-primary"
+            className="inline-flex items-center gap-2 font-body text-sm text-text-tertiary transition-colors hover:text-text-primary"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to home
@@ -29,13 +29,11 @@ export default function BookingForm() {
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Left: Info */}
             <AnimateIn>
-              <span className="mb-4 inline-block font-mono text-[11px] font-semibold uppercase tracking-wider text-accent">
-                Get Started
-              </span>
-              <h1 className="font-mono text-3xl font-bold text-text-primary md:text-4xl lg:text-5xl">
+              <span className="eyebrow mb-4">Get started</span>
+              <h1 className="font-display text-3xl font-bold text-text-primary md:text-4xl lg:text-5xl">
                 Let&apos;s <GradientText>Talk</GradientText>
               </h1>
-              <p className="mt-4 font-mono text-lg text-text-secondary">
+              <p className="mt-4 font-body text-lg text-text-secondary">
                 Tell us a little about your business. We&apos;ll reach out to
                 get the conversation started.
               </p>
@@ -46,8 +44,8 @@ export default function BookingForm() {
                     <Calendar className="h-4 w-4 text-accent" />
                   </div>
                   <div>
-                    <p className="font-mono font-semibold text-text-primary">30-Minute Discovery Call</p>
-                    <p className="font-mono text-sm text-text-secondary">
+                    <p className="font-body font-semibold text-text-primary">30-Minute Discovery Call</p>
+                    <p className="font-body text-sm text-text-secondary">
                       Quick, focused conversation about the business and what the site needs to do
                     </p>
                   </div>
@@ -57,8 +55,8 @@ export default function BookingForm() {
                     <ArrowRight className="h-4 w-4 text-accent" />
                   </div>
                   <div>
-                    <p className="font-mono font-semibold text-text-primary">Written Plan</p>
-                    <p className="font-mono text-sm text-text-secondary">
+                    <p className="font-body font-semibold text-text-primary">Written Plan</p>
+                    <p className="font-body text-sm text-text-secondary">
                       Customer, offer, and the one action the site needs to drive
                     </p>
                   </div>
@@ -68,8 +66,8 @@ export default function BookingForm() {
                     <Clock className="h-4 w-4 text-accent" />
                   </div>
                   <div>
-                    <p className="font-mono font-semibold text-text-primary">No Pressure, No Pitch</p>
-                    <p className="font-mono text-sm text-text-secondary">
+                    <p className="font-body font-semibold text-text-primary">No Pressure, No Pitch</p>
+                    <p className="font-body text-sm text-text-secondary">
                       Honest assessment of where you stand — whether you hire us or not
                     </p>
                   </div>
@@ -79,8 +77,8 @@ export default function BookingForm() {
                     <MessageSquare className="h-4 w-4 text-accent" />
                   </div>
                   <div>
-                    <p className="font-mono font-semibold text-text-primary">Actionable Takeaways</p>
-                    <p className="font-mono text-sm text-text-secondary">
+                    <p className="font-body font-semibold text-text-primary">Actionable Takeaways</p>
+                    <p className="font-body text-sm text-text-secondary">
                       Walk away with specific recommendations you can use immediately
                     </p>
                   </div>

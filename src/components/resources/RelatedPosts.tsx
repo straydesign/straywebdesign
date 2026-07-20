@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import AnimateIn, { StaggerContainer, StaggerItem } from '@/components/ui/AnimateIn';
 import { cn } from '@/lib/utils';
+import { TAG_COLORS, TAG_FALLBACK } from '@/lib/tag-colors';
 
 interface RelatedResource {
   slug: string;
@@ -14,56 +15,6 @@ interface RelatedResource {
   tag: string;
   path: string;
 }
-
-const TAG_COLORS: Record<string, string> = {
-  Accessibility: 'bg-sky-50 text-sky-600',
-  Advertising: 'bg-red-50 text-red-600',
-  AI: 'bg-blue-50 text-blue-600',
-  'AI & SEO': 'bg-blue-50 text-blue-600',
-  Analysis: 'bg-surface-sunken text-text-secondary',
-  Analytics: 'bg-blue-50 text-blue-600',
-  Automotive: 'bg-zinc-100 text-zinc-700',
-  Conversion: 'bg-amber-50 text-amber-600',
-  Dental: 'bg-teal-50 text-teal-600',
-  Development: 'bg-teal-50 text-teal-600',
-  Financial: 'bg-emerald-50 text-emerald-600',
-  Healthcare: 'bg-rose-50 text-rose-600',
-  'Home Services': 'bg-orange-50 text-orange-600',
-  'IT Services': 'bg-indigo-50 text-indigo-600',
-  Landscaping: 'bg-lime-50 text-lime-600',
-  Legal: 'bg-amber-50 text-amber-700',
-  'Local SEO': 'bg-emerald-50 text-emerald-600',
-  Migration: 'bg-orange-50 text-orange-600',
-  Mobile: 'bg-blue-50 text-blue-600',
-  Performance: 'bg-blue-50 text-blue-600',
-  'Professional Services': 'bg-indigo-50 text-indigo-600',
-  Reliability: 'bg-emerald-50 text-emerald-600',
-  Restaurant: 'bg-emerald-50 text-emerald-600',
-  Services: 'bg-blue-50 text-blue-600',
-  'Technical SEO': 'bg-cyan-50 text-cyan-600',
-  'Vision Care': 'bg-sky-50 text-sky-600',
-  'Web Design': 'bg-blue-50 text-blue-600',
-  Insurance: 'bg-violet-50 text-violet-600',
-  Accounting: 'bg-emerald-50 text-emerald-600',
-  Veterinary: 'bg-rose-50 text-rose-600',
-  Fitness: 'bg-orange-50 text-orange-600',
-  'Salons & Spas': 'bg-pink-50 text-pink-600',
-  'Real Estate': 'bg-amber-50 text-amber-600',
-  HVAC: 'bg-sky-50 text-sky-600',
-  Plumbing: 'bg-blue-50 text-blue-600',
-  Electrical: 'bg-yellow-50 text-yellow-700',
-  Roofing: 'bg-stone-100 text-stone-600',
-  Manufacturing: 'bg-zinc-100 text-zinc-700',
-  'Cost Analysis': 'bg-emerald-50 text-emerald-600',
-  'Speed & Performance': 'bg-blue-50 text-blue-600',
-  'AI Integration': 'bg-indigo-50 text-indigo-600',
-  ROI: 'bg-green-50 text-green-600',
-  Comparison: 'bg-surface-sunken text-text-secondary',
-  Education: 'bg-blue-50 text-blue-600',
-  Strategy: 'bg-indigo-50 text-indigo-600',
-};
-
-export { TAG_COLORS };
 
 export default function RelatedPosts({ posts }: { posts: RelatedResource[] }) {
   if (posts.length === 0) return null;
@@ -84,7 +35,7 @@ export default function RelatedPosts({ posts }: { posts: RelatedResource[] }) {
                 <span
                   className={cn(
                     'inline-block w-fit px-2.5 py-0.5 text-xs font-medium',
-                    TAG_COLORS[post.tag] ?? 'bg-surface-sunken text-text-secondary'
+                    TAG_COLORS[post.tag] ?? TAG_FALLBACK
                   )}
                 >
                   {post.tag}

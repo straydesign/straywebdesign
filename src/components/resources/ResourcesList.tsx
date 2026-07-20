@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { StaggerContainer, StaggerItem } from '@/components/ui/AnimateIn';
 import { cn } from '@/lib/utils';
+import { TAG_COLORS, TAG_FALLBACK } from '@/lib/tag-colors';
 
 interface ResourceCard {
   slug: string;
@@ -14,23 +15,6 @@ interface ResourceCard {
   tag: string;
   path: string;
 }
-
-const TAG_COLORS: Record<string, string> = {
-  Accessibility: 'bg-sky-50 text-sky-600',
-  AI: 'bg-blue-50 text-blue-600',
-  'AI & SEO': 'bg-blue-50 text-blue-600',
-  Analysis: 'bg-surface-sunken text-text-secondary',
-  Analytics: 'bg-blue-50 text-blue-600',
-  Conversion: 'bg-amber-50 text-amber-600',
-  Development: 'bg-teal-50 text-teal-600',
-  'Cost Analysis': 'bg-amber-50 text-amber-700',
-  Performance: 'bg-blue-50 text-blue-600',
-  'Speed & Performance': 'bg-blue-50 text-blue-600',
-  'Web Design': 'bg-blue-50 text-blue-600',
-  'AI Integration': 'bg-indigo-50 text-indigo-600',
-  ROI: 'bg-emerald-50 text-emerald-700',
-  Comparison: 'bg-surface-sunken text-text-primary',
-};
 
 export default function ResourcesList({ resources }: { resources: ResourceCard[] }) {
   return (
@@ -48,7 +32,7 @@ export default function ResourcesList({ resources }: { resources: ResourceCard[]
               <span
                 className={cn(
                   'px-3 py-1 text-xs font-medium',
-                  TAG_COLORS[resource.tag] ?? 'bg-surface-sunken text-text-secondary'
+                  TAG_COLORS[resource.tag] ?? TAG_FALLBACK
                 )}
               >
                 {resource.tag}

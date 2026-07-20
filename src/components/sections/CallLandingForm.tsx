@@ -4,7 +4,6 @@ import { useState, useCallback, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { Send, AlertTriangle, Monitor, Wrench, ShieldCheck } from 'lucide-react';
 import AnimateIn from '@/components/ui/AnimateIn';
-import MagneticButton from '@/components/ui/MagneticButton';
 import GradientText from '@/components/ui/GradientText';
 import { SITE } from '@/lib/constants';
 import { getUtmParams } from '@/hooks/useUtmParams';
@@ -12,7 +11,7 @@ import { usePartialCapture } from '@/hooks/usePartialCapture';
 import { trackLeadConversion } from '@/lib/tracking';
 
 const inputClasses =
-  'w-full border border-border-strong bg-surface-sunken px-4 py-3 font-mono text-text-primary placeholder-text-placeholder transition-colors focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none';
+  'w-full border border-border-strong bg-surface-sunken px-4 py-3 font-body text-text-primary placeholder-text-placeholder transition-colors focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none';
 
 export default function CallLandingForm() {
   const router = useRouter();
@@ -99,11 +98,11 @@ export default function CallLandingForm() {
       {/* Hero */}
       <section className="mx-auto max-w-3xl px-5 pt-12 text-center md:px-8 md:pt-20">
         <AnimateIn>
-          <h1 className="font-mono text-3xl font-bold leading-tight text-text-primary md:text-4xl lg:text-5xl">
+          <h1 className="font-display text-3xl font-bold leading-tight text-text-primary md:text-4xl lg:text-5xl">
             Find out why your competitors are{' '}
             <GradientText>getting the calls</GradientText> you&apos;re not.
           </h1>
-          <p className="mx-auto mt-4 max-w-xl font-mono text-lg text-text-secondary">
+          <p className="mx-auto mt-4 max-w-xl font-body text-lg text-text-secondary">
             We&apos;ll pull up your site and your top competitor&apos;s site
             side-by-side and show you exactly where you&apos;re falling behind
             — and what to do about it. 15 minutes, zero pressure.
@@ -116,19 +115,17 @@ export default function CallLandingForm() {
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
           {/* Left: what to expect */}
           <AnimateIn delay={0.1}>
-            <span className="mb-4 inline-block font-mono text-[11px] font-semibold uppercase tracking-wider text-accent">
-              What to Expect
-            </span>
+            <span className="eyebrow mb-4">What to expect</span>
             <div className="space-y-5">
               <div className="flex items-start gap-3">
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center bg-accent/10">
                   <Monitor className="h-4 w-4 text-accent" />
                 </div>
                 <div>
-                  <p className="font-mono font-semibold text-text-primary">
+                  <p className="font-body font-semibold text-text-primary">
                     We Pull Up Your Site Live
                   </p>
-                  <p className="font-mono text-sm text-text-secondary">
+                  <p className="font-body text-sm text-text-secondary">
                     Screen-share walkthrough of how your site looks to Google
                     and how it compares to your top competitor.
                   </p>
@@ -139,10 +136,10 @@ export default function CallLandingForm() {
                   <Wrench className="h-4 w-4 text-accent" />
                 </div>
                 <div>
-                  <p className="font-mono font-semibold text-text-primary">
+                  <p className="font-body font-semibold text-text-primary">
                     You Leave with 2-3 Fixes You Can Use This Week
                   </p>
-                  <p className="font-mono text-sm text-text-secondary">
+                  <p className="font-body text-sm text-text-secondary">
                     Actionable recommendations you can act on immediately
                     — whether you hire us or not.
                   </p>
@@ -153,10 +150,10 @@ export default function CallLandingForm() {
                   <ShieldCheck className="h-4 w-4 text-accent" />
                 </div>
                 <div>
-                  <p className="font-mono font-semibold text-text-primary">
+                  <p className="font-body font-semibold text-text-primary">
                     If We&apos;re Not a Fit, We&apos;ll Tell You
                   </p>
-                  <p className="font-mono text-sm text-text-secondary">
+                  <p className="font-body text-sm text-text-secondary">
                     Honest assessment of where you stand. No pitch, no pressure.
                     We only work with local businesses ready to grow.
                   </p>
@@ -176,7 +173,7 @@ export default function CallLandingForm() {
                   <div>
                     <label
                       htmlFor="lp-call-name"
-                      className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
+                      className="mb-1.5 block font-body text-sm font-medium text-text-secondary"
                     >
                       Name
                     </label>
@@ -193,7 +190,7 @@ export default function CallLandingForm() {
                     <div>
                       <label
                         htmlFor="lp-call-email"
-                        className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
+                        className="mb-1.5 block font-body text-sm font-medium text-text-secondary"
                       >
                         Email
                       </label>
@@ -209,7 +206,7 @@ export default function CallLandingForm() {
                     <div>
                       <label
                         htmlFor="lp-call-phone"
-                        className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
+                        className="mb-1.5 block font-body text-sm font-medium text-text-secondary"
                       >
                         Phone
                       </label>
@@ -227,7 +224,7 @@ export default function CallLandingForm() {
                   <div>
                     <label
                       htmlFor="lp-call-website"
-                      className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-text-secondary"
+                      className="mb-1.5 block font-body text-sm font-medium text-text-secondary"
                     >
                       Website URL
                     </label>
@@ -242,31 +239,29 @@ export default function CallLandingForm() {
                   </div>
                 </div>
 
-                <p className="mt-3 font-mono text-[11px] text-text-tertiary">
+                <p className="mt-3 font-body text-xs text-text-tertiary">
                   Just an email or phone number is all we need.
                 </p>
 
                 {errorMsg && (
-                  <div role="alert" className="mt-4 flex items-center gap-2 font-mono text-sm text-red-600">
+                  <div role="alert" className="mt-4 flex items-center gap-2 font-body text-sm text-red-600">
                     <AlertTriangle className="h-4 w-4" aria-hidden="true" />
                     {errorMsg}
                   </div>
                 )}
 
                 {status === 'error' && (
-                  <div role="alert" className="mt-4 flex items-center gap-2 font-mono text-sm text-red-600">
+                  <div role="alert" className="mt-4 flex items-center gap-2 font-body text-sm text-red-600">
                     <AlertTriangle className="h-4 w-4" aria-hidden="true" />
                     Something went wrong. Please try again.
                   </div>
                 )}
 
                 <div className="mt-6">
-                  <MagneticButton
+                  <button
                     type="submit"
-                    variant="primary"
-                    size="lg"
-                    className="w-full"
                     disabled={status === 'sending'}
+                    className="w-full inline-flex items-center justify-center font-display font-semibold transition-colors bg-accent text-white hover:bg-accent/90 px-6 py-3.5 text-base sm:px-9 sm:py-4.5 sm:text-lg disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {status === 'sending' ? (
                       <>
@@ -276,13 +271,13 @@ export default function CallLandingForm() {
                     ) : (
                       <>
                         <Send className="h-4 w-4" />
-                        See How I Stack Up
+                        See how I stack up
                       </>
                     )}
-                  </MagneticButton>
+                  </button>
                 </div>
 
-                <p className="mt-4 text-center font-mono text-[11px] text-text-tertiary">
+                <p className="mt-4 text-center font-body text-xs text-text-tertiary">
                   We won&apos;t call you, we won&apos;t add you to a list.
                   Just a 15-minute call from a local web team.{' '}
                   <a href="/privacy" className="underline transition-colors hover:text-text-secondary">

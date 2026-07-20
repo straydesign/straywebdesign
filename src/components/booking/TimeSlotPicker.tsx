@@ -74,7 +74,7 @@ export default function TimeSlotPicker({
     return (
       <div className="flex flex-col items-center justify-center py-12">
         <Loader2 className="h-6 w-6 animate-spin text-accent" />
-        <p className="mt-3 font-mono text-sm text-text-tertiary">Loading available times...</p>
+        <p className="mt-3 font-body text-sm text-text-tertiary">Loading available times...</p>
       </div>
     );
   }
@@ -82,7 +82,7 @@ export default function TimeSlotPicker({
   if (error) {
     return (
       <div className="py-8 text-center">
-        <p className="font-mono text-sm text-red-500">{error}</p>
+        <p className="font-body text-sm text-red-500">{error}</p>
       </div>
     );
   }
@@ -90,10 +90,10 @@ export default function TimeSlotPicker({
   if (availableSlots.length === 0) {
     return (
       <div className="py-8 text-center">
-        <p className="font-mono text-sm text-text-secondary">
+        <p className="font-body text-sm text-text-secondary">
           No available times for this date.
         </p>
-        <p className="mt-1 font-mono text-xs text-text-tertiary">
+        <p className="mt-1 font-body text-xs text-text-tertiary">
           Try selecting a different day.
         </p>
       </div>
@@ -102,13 +102,13 @@ export default function TimeSlotPicker({
 
   return (
     <div>
-      <p className="mb-4 font-mono text-sm text-text-secondary">
+      <p className="mb-4 font-body text-sm text-text-secondary">
         {formatDateDisplay(selectedDate)}
       </p>
 
       {morningSlots.length > 0 && (
         <div className="mb-4">
-          <p className="mb-2 font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
+          <p className="mb-2 font-mono text-[10px] font-semibold text-text-tertiary">
             Morning
           </p>
           <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
@@ -126,7 +126,7 @@ export default function TimeSlotPicker({
 
       {afternoonSlots.length > 0 && (
         <div>
-          <p className="mb-2 font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
+          <p className="mb-2 font-mono text-[10px] font-semibold text-text-tertiary">
             Afternoon
           </p>
           <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
@@ -142,14 +142,14 @@ export default function TimeSlotPicker({
         </div>
       )}
 
-      <p className="mt-4 font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
+      <p className="mt-4 font-mono text-[10px] text-text-tertiary">
         30-minute discovery call &bull; Eastern Time
       </p>
 
       <button
         type="button"
         onClick={onSkipTime}
-        className="mt-4 w-full border border-border-default py-2.5 font-mono text-sm text-text-secondary transition-colors hover:border-accent hover:text-text-primary"
+        className="mt-4 w-full border border-border-default py-2.5 font-body text-sm text-text-secondary transition-colors hover:border-accent hover:text-text-primary"
       >
         Just send me a message — I'd like to learn more before we hop on a call
       </button>
@@ -171,7 +171,7 @@ function SlotButton({
       type="button"
       onClick={() => onSelect(slot.label)}
       className={cn(
-        'border px-3 py-2.5 font-mono text-sm transition-all duration-150',
+        'border px-3 py-2.5 font-body text-sm transition-all duration-150',
         isSelected
           ? 'border-accent bg-accent text-white'
           : 'border-border-strong bg-surface-page text-text-primary hover:border-accent hover:bg-accent/5'

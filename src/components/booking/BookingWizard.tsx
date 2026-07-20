@@ -261,7 +261,7 @@ export default function BookingWizard() {
               <ArrowLeft className="h-4 w-4" />
             </button>
             <div className="flex-1">
-              <span className="font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
+              <span className="font-mono text-[10px] text-text-tertiary">
                 Optional: {STEP_LABELS[step]}
               </span>
               <div className="mt-2 h-0.5 w-full bg-border-default">
@@ -307,21 +307,21 @@ export default function BookingWizard() {
           {step === 'date' && (
             <div>
               <div className="mb-5 border border-accent/20 bg-accent/5 px-4 py-3">
-                <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-accent">
+                <p className="font-mono text-[10px] font-semibold text-accent">
                   You&apos;re in
                 </p>
-                <p className="mt-1 font-mono text-sm text-text-primary">
+                <p className="mt-1 font-body text-sm text-text-primary">
                   We&apos;ll email your audit within 24 hours. Want to book a call too? (Totally optional.)
                 </p>
               </div>
               <button
                 type="button"
                 onClick={handleSkipDate}
-                className="mb-5 w-full bg-surface-sunken py-2.5 font-mono text-sm font-semibold text-text-primary transition-colors hover:bg-border-default"
+                className="mb-5 w-full bg-surface-sunken py-2.5 font-body text-sm font-semibold text-text-primary transition-colors hover:bg-border-default"
               >
                 No thanks, just email me the audit →
               </button>
-              <p className="mb-2 font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
+              <p className="mb-2 font-mono text-[10px] font-semibold text-text-tertiary">
                 Or pick a time for a 30-min call
               </p>
               <CalendarPicker
@@ -346,16 +346,16 @@ export default function BookingWizard() {
               <button
                 type="button"
                 onClick={handleBack}
-                className="mb-4 flex items-center gap-2 font-mono text-sm text-text-tertiary transition-colors hover:text-text-primary"
+                className="mb-4 flex items-center gap-2 font-body text-sm text-text-tertiary transition-colors hover:text-text-primary"
               >
                 <ArrowLeft className="h-4 w-4" />
                 Change time
               </button>
               <div className="mb-5 border border-accent/20 bg-accent/5 px-4 py-3">
-                <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-accent">
+                <p className="font-mono text-[10px] font-semibold text-accent">
                   Your Appointment
                 </p>
-                <p className="mt-1 font-mono text-sm text-text-primary">
+                <p className="mt-1 font-body text-sm text-text-primary">
                   {new Date(selectedDate + 'T12:00:00').toLocaleDateString('en-US', {
                     weekday: 'short',
                     month: 'long',
@@ -363,26 +363,26 @@ export default function BookingWizard() {
                   })}{' '}
                   at {selectedTime} EST
                 </p>
-                <p className="mt-1 font-mono text-xs text-text-tertiary">
+                <p className="mt-1 font-body text-xs text-text-tertiary">
                   30-minute discovery call
                 </p>
               </div>
 
               <div className="space-y-2 border border-border-default bg-surface-page px-4 py-3">
-                <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-text-tertiary">
+                <p className="font-mono text-[10px] font-semibold text-text-tertiary">
                   Your Info
                 </p>
-                <p className="font-mono text-sm text-text-primary">{name}</p>
-                <p className="font-mono text-sm text-text-secondary">{email}</p>
-                {phone && <p className="font-mono text-sm text-text-secondary">{phone}</p>}
-                {company && <p className="font-mono text-sm text-text-secondary">{company}</p>}
+                <p className="font-body text-sm text-text-primary">{name}</p>
+                <p className="font-body text-sm text-text-secondary">{email}</p>
+                {phone && <p className="font-body text-sm text-text-secondary">{phone}</p>}
+                {company && <p className="font-body text-sm text-text-secondary">{company}</p>}
               </div>
 
               <button
                 type="button"
                 onClick={handleConfirmBooking}
                 disabled={submitting}
-                className="mt-6 flex w-full items-center justify-center gap-2 bg-accent px-6 py-3.5 font-mono text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-50"
+                className="mt-6 flex w-full items-center justify-center gap-2 bg-accent px-6 py-3.5 font-display font-semibold text-sm text-white transition-colors hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {submitting ? (
                   <>

@@ -121,26 +121,25 @@ main section[aria-label]:focus-visible {
   animation: shimmer 1.5s infinite;
 }
 
-/* Kinetic marquee */
-@keyframes marquee-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* Section eyebrow — the one label treatment: display face, sentence case,
+   accent ink, short leading rule. Replaces the retired mono-uppercase kicker. */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-family-schibsted), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--accent);
 }
-
-/* Carousel infinite scroll */
-@keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-@keyframes scroll-right {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
-}
-
-/* Gradient mesh background for hero */
-@keyframes mesh-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+.eyebrow::before {
+  content: "";
+  width: 1.25rem;
+  height: 2px;
+  flex-shrink: 0;
+  background: currentColor;
+  opacity: 0.7;
 }
 
 /* Custom scrollbar */
@@ -172,25 +171,6 @@ main section[aria-label]:focus-visible {
 /* Text gradient — replaced with solid accent */
 .text-gradient-animated {
   color: var(--accent);
-}
-
-/* Custom cursor — accent ring */
-.custom-cursor {
-  width: 40px;
-  height: 40px;
-  border: 2px solid var(--accent);
-  background: transparent;
-  border-radius: 0;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease, border-color 0.2s ease, opacity 0.15s ease;
-}
-.custom-cursor.hovering {
-  width: 56px;
-  height: 56px;
-  background: rgba(37, 99, 235, 0.1);
-  border-color: var(--accent);
 }
 
 /* ─── Mobile CSS Animations (replace framer-motion on mobile) ─── */

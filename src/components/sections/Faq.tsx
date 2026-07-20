@@ -102,10 +102,7 @@ export default function Faq() {
       />
       <div className="mx-auto max-w-4xl px-5 md:px-8">
         <AnimateIn>
-          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-accent">
-            <span aria-hidden className="text-accent/60">{'// '}</span>
-            questions
-          </p>
+          <span className="eyebrow mb-4">Questions</span>
           <h2 className="mt-4 font-display text-[clamp(1.9rem,4vw,2.9rem)] font-bold leading-[1.05] tracking-tight text-text-primary">
             Questions I actually get.
           </h2>

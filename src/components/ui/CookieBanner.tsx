@@ -60,7 +60,7 @@ export default function CookieBanner() {
   return (
     <div className="fixed bottom-4 left-4 z-[9999] max-w-xs border border-border-default bg-surface-card p-3 shadow-lg sm:bottom-6 sm:left-6">
       <div className="flex items-start gap-2">
-        <p className="font-mono text-[11px] leading-relaxed text-text-secondary">
+        <p className="font-body text-xs leading-relaxed text-text-secondary">
           We use cookies for analytics.{' '}
           <Link href="/privacy" className="text-accent underline hover:text-accent/80">
             Privacy
@@ -79,13 +79,13 @@ export default function CookieBanner() {
       <div className="mt-2 flex gap-1.5">
         <button
           onClick={dismiss}
-          className="flex-1 bg-accent px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-white transition-colors hover:bg-accent/90"
+          className="flex-1 bg-accent px-3 py-1.5 font-display font-semibold text-[10px] text-white transition-colors hover:bg-accent/90"
         >
           OK
         </button>
         <button
           onClick={decline}
-          className="flex-1 border border-border-default px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-text-secondary transition-colors hover:border-accent hover:text-text-primary"
+          className="flex-1 border border-border-default px-3 py-1.5 font-display font-semibold text-[10px] text-text-secondary transition-colors hover:border-accent hover:text-text-primary"
         >
           Opt out
         </button>

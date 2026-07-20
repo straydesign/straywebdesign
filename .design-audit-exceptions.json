@@ -1,0 +1,7 @@
+{
+  "BAN-PLAYFAIR-INTER": {
+    "reason": "False positive from client case-study DATA, not this site's fonts: src/data/clients.ts records the typefaces each client site actually uses (Andy's = Playfair Display, Sea Cave = Inter) for the /work type panels. This site's own stack is JetBrains Mono + Schibsted Grotesk + Hanken Grotesk (src/app/layout.tsx).",
+    "approvedBy": "design retrofit session (charter-authorized workstream, Tom-approved 2026-07-13)",
+    "date": "2026-07-19"
+  }
+}

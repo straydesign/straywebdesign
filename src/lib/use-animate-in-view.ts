@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 
 /**
  * Lightweight IntersectionObserver hook for CSS-based entrance animations.
- * Used on mobile to replace framer-motion's whileInView, saving ~130KB JS.
+ * Used on mobile in place of framer-motion's viewport-triggered variants,
+ * saving ~130KB JS.
  *
  * Returns a ref and a boolean `inView` that flips to true once (fire-once by default).
  */

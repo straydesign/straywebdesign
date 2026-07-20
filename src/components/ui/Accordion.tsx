@@ -37,7 +37,7 @@ export default function Accordion({ items, className = '' }: AccordionProps) {
                 aria-controls={`accordion-panel-${index}`}
                 id={`accordion-trigger-${index}`}
               >
-                <span className="font-mono text-base md:text-lg">
+                <span className="font-display text-base md:text-lg">
                   {item.question}
                 </span>
                 {mobile ? (

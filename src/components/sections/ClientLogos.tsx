@@ -33,9 +33,7 @@ export default function ClientLogos() {
     <section className="border-y border-border-default bg-surface-page py-12 md:py-16" aria-label="Our clients">
       <div className="mx-auto max-w-5xl px-5 md:px-8">
         <AnimateIn className="text-center">
-          <p className="mb-8 font-mono text-[11px] font-semibold uppercase tracking-wider text-text-tertiary">
-            Trusted By
-          </p>
+          <p className="eyebrow mb-8">Trusted by</p>
           <div className="flex flex-wrap items-center justify-center gap-12 md:gap-20">
             {CLIENTS.map((client) => (
               <a

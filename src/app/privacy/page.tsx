@@ -13,7 +13,7 @@ export default function PrivacyPolicy() {
       <div className="mx-auto max-w-3xl px-5 pt-32 pb-20 md:px-8">
         <Link
           href="/"
-          className="mb-8 inline-flex items-center gap-2 font-mono text-sm text-text-tertiary transition-colors hover:text-accent"
+          className="mb-8 inline-flex items-center gap-2 font-body text-sm text-text-tertiary transition-colors hover:text-accent"
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
             <path d="M10 3L5 8l5 5" />
@@ -23,7 +23,7 @@ export default function PrivacyPolicy() {
         <h1 className="font-display tracking-tight text-3xl font-bold md:text-4xl">Privacy Policy</h1>
         <p className="mt-2 font-mono text-sm text-text-tertiary">Last updated: April 8, 2026</p>
 
-        <div className="mt-10 space-y-8 font-mono text-sm leading-relaxed text-text-secondary">
+        <div className="mt-10 space-y-8 font-body text-sm leading-relaxed text-text-secondary">
           <section>
             <h2 className="mb-3 text-lg font-semibold text-text-primary">Information We Collect</h2>
             <p>

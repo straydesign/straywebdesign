@@ -3,7 +3,6 @@
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { SITE } from '@/lib/constants';
-import SoundToggle from '@/components/ui/SoundToggle';
 import StrayLogo from '@/components/ui/StrayLogo';
 
 const EXPLORE_LINKS = [
@@ -46,8 +45,8 @@ export default function Footer() {
 
           {/* Explore */}
           <div>
-            <h3 className="mb-3 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-text-tertiary">
-              <span aria-hidden className="text-accent/60">{'// '}</span>explore
+            <h3 className="mb-3 font-display text-sm font-semibold text-text-primary">
+              Explore
             </h3>
             <ul className="space-y-2">
               {EXPLORE_LINKS.map((link) => (
@@ -65,8 +64,8 @@ export default function Footer() {
 
           {/* Connect */}
           <div>
-            <h3 className="mb-3 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-text-tertiary">
-              <span aria-hidden className="text-accent/60">{'// '}</span>connect
+            <h3 className="mb-3 font-display text-sm font-semibold text-text-primary">
+              Connect
             </h3>
             <a
               href={resolve('#contact')}
@@ -101,7 +100,6 @@ export default function Footer() {
             <Link href="/privacy" className="font-mono text-xs text-text-tertiary transition-colors hover:text-text-secondary">
               Privacy Policy
             </Link>
-            <SoundToggle />
           </div>
         </div>
       </div>
