@@ -5,7 +5,7 @@
 
 export type ServiceCard = {
   readonly title: string;
-  /** Price badge, e.g. "$500", "$30/hr". Omit when priced per site. */
+  /** Price badge, e.g. "$750", "$30/hr". Omit when priced per site. */
   readonly price?: string;
   readonly priceNote?: string;
   readonly description: string;
@@ -18,11 +18,11 @@ export type ServiceCard = {
 export const SERVICE_CARDS: readonly ServiceCard[] = [
   {
     title: 'The basic build',
-    price: '$500',
-    priceNote: 'build · then $20/mo hosting',
+    price: '$750',
+    priceNote: 'build · then $25/mo hosting',
     featured: true,
     description:
-      "The most basic way to get a real website for your small business: I design and build the site for a flat $500, then host and look after it for $20 a month. Small edits are included in that monthly, things like new hours, a swapped photo, or an updated price. You send me what changed and it gets done, whether you're in Erie or three time zones away.",
+      "The most basic way to get a real website for your small business: I design and build the site for a flat $750, then host and look after it for $25 a month. Small edits are included in that monthly, things like new hours, a swapped photo, or an updated price. You send me what changed and it gets done, whether you're in Erie or three time zones away.",
     cta: { label: 'Start yours', href: '#contact' },
   },
   {

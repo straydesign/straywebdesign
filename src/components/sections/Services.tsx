@@ -2,7 +2,7 @@ import Link from 'next/link';
 import AnimateIn from '@/components/ui/AnimateIn';
 import { SERVICE_CARDS } from '@/data/services';
 
-/* Services — squares with plain prices. The $500 build + $20/mo hosting
+/* Services — squares with plain prices. The $750 build + $25/mo hosting
    package leads as the featured card; a price badge only appears where Tom
    has set one. */
 
