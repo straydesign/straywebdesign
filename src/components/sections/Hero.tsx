@@ -17,15 +17,14 @@ function HeroBody() {
       <h1 className="text-balance font-display text-[clamp(2.2rem,5.4vw,4.1rem)] font-bold leading-[1.06] tracking-[-0.02em] text-text-primary">
         Hi, I&apos;m Tom.
         <br />
-        I design and build websites for{' '}
-        <span className="text-accent">consumer-facing businesses</span>.
+        Before you pay anyone for a website,{' '}
+        <span className="text-accent">get the honest answers</span>.
       </h1>
 
       <div className="mt-6 max-w-xl">
         <p className="font-body text-lg leading-relaxed text-text-secondary md:text-xl">
-          No agency and no account managers. You talk to me and I do the work.
-          Every site below is real: open one and you&apos;re looking at an
-          actual business&apos;s website that I built and still run.
+          What it costs, whether you need one, why Google can&apos;t find you
+          &mdash; no sales pitch.
         </p>
 
         <div className="mt-7 flex flex-wrap items-center gap-x-7 gap-y-2">
@@ -45,10 +44,10 @@ function HeroBody() {
 
         <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
           <Link
-            href="#work"
+            href="#questions"
             className="inline-flex items-center justify-center bg-accent px-6 py-3.5 font-display text-base font-semibold text-white transition-colors hover:bg-accent/90 sm:px-9 sm:py-4.5 sm:text-lg"
           >
-            See the work
+            See the questions
           </Link>
           <Link
             href="#contact"

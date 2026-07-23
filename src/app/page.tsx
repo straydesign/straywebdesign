@@ -3,6 +3,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import SectionKeyboardNav from '@/components/layout/SectionKeyboardNav';
 import Hero from '@/components/sections/Hero';
+import QuestionsSection from '@/components/sections/QuestionsSection';
 import About from '@/components/sections/About';
 import ProjectShowcase from '@/components/sections/ProjectShowcase';
 
@@ -43,6 +44,7 @@ export default function Home() {
       <SectionKeyboardNav />
       <main id="main">
         <Hero />
+        <QuestionsSection />
         <About />
         <ProjectShowcase />
         <FooterCTA />

@@ -1,12 +1,14 @@
 import type { MetadataRoute } from 'next';
 import { RESOURCES, getResourcePath } from '@/lib/content';
 import { PROJECTS } from '@/data/clients';
+import { PILLARS } from '@/data/pillars';
 
 const BASE_URL = 'https://straywebdesign.co';
 
 // Stable dates — only update these when content actually changes
 const SITE_LAUNCH = '2026-03-15';
 const CONTENT_BLITZ = '2026-03-18';
+const PILLAR_LAUNCH = '2026-07-23';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // ─── Core pages ────────────────────────────────────────────
@@ -37,6 +39,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  // ─── Pillar pages (the six buyer-question clusters) ────────
+  const pillarPages = PILLARS.map((pillar) => ({
+    url: `${BASE_URL}/${pillar.slug}`,
+    lastModified: PILLAR_LAUNCH,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
   // ─── Case studies ──────────────────────────────────────────
   const caseStudies = PROJECTS.map((project) => ({
     url: `${BASE_URL}/work/${project.slug}`,
@@ -53,5 +63,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...core, ...caseStudies, ...blogPages];
+  return [...core, ...pillarPages, ...caseStudies, ...blogPages];
 }
