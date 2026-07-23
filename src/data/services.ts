@@ -5,7 +5,7 @@
 
 export type ServiceCard = {
   readonly title: string;
-  /** Price badge, e.g. "$750", "$30/hr". Omit when priced per site. */
+  /** Optional price badge. Pricing lives on /cost; omit unless a card needs one. */
   readonly price?: string;
   readonly priceNote?: string;
   readonly description: string;

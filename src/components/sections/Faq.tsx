@@ -11,10 +11,10 @@ import AnimateIn from '@/components/ui/AnimateIn';
 const FAQ_ITEMS = [
   {
     q: 'How much does a website cost?',
-    a: 'Pricing guides put a professionally designed site anywhere from $500 to $10,000. My basic build is $750 flat, then $25 a month for hosting with small edits included. Those are the real numbers; there is no quote dance.',
+    a: 'It depends on the size of your business. A simple site starts around $250 to build plus about $10 a month for hosting with small edits included, and it scales up from there for busier sites. I lay out the honest ranges by business size on the pricing page, so there is no quote dance.',
   },
   {
-    q: 'What does the $25 a month cover?',
+    q: 'What does the monthly cover?',
     a: 'Hosting and small edits. I keep the site fast and online, and when your hours change or a photo needs swapping, you send it over and I handle it. If your site ever looks the same next quarter, that should only mean nothing about your business changed.',
   },
   {
@@ -23,7 +23,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'Can my team update things without waiting on you?',
-    a: "When the site needs it, yes. Andy's Pub and Bullfrog both keep their own menus and daily specials current through a system I set up for them, events too, with no designer in the loop. For most sites the included small edits cover it, and bigger changes are $30 an hour.",
+    a: "When the site needs it, yes. Andy's Pub and Bullfrog both keep their own menus and daily specials current through a system I set up for them, events too, with no designer in the loop. For most sites the included small edits cover it, and bigger changes are billed by the hour.",
   },
   {
     q: "What if I'm not in Erie?",
