@@ -31,7 +31,7 @@ export default function Services() {
             <AnimateIn
               key={s.title}
               delay={i * 0.06}
-              className={s.featured ? 'md:col-span-2' : undefined}
+              className={s.featured || s.wide ? 'md:col-span-2' : undefined}
             >
               <div
                 className={`h-full rounded-lg border p-7 md:p-8 ${
