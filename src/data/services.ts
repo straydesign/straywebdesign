@@ -1,7 +1,7 @@
 /* services.ts — the service squares on the homepage (#services).
-   Honest offers with real prices where they're set. The featured card is
-   the basic build + hosting package; everything else supports it.
-   Prices come from Tom directly — never invent or "round" one. */
+   What Tom does, described honestly. Pricing lives on its own page (/cost),
+   where the ranges are laid out by business size; the featured card links
+   there. Never invent or hardcode a price here. */
 
 export type ServiceCard = {
   readonly title: string;
@@ -20,17 +20,13 @@ export type ServiceCard = {
 export const SERVICE_CARDS: readonly ServiceCard[] = [
   {
     title: 'The basic build',
-    price: '$750',
-    priceNote: 'build · then $25/mo hosting',
     featured: true,
     description:
-      "The most basic way to get a real website for your small business: I design and build the site for a flat $750, then host and look after it for $25 a month. Small edits are included in that monthly, things like new hours, a swapped photo, or an updated price. You send me what changed and it gets done, whether you're in Erie or three time zones away.",
-    cta: { label: 'Start yours', href: '#contact' },
+      "The most basic way to get a real website for your small business: I design and build it, then host and look after it for a small monthly. Small edits are included, things like new hours, a swapped photo, or an updated price. You send me what changed and it gets done, whether you're in Erie or three time zones away.",
+    cta: { label: 'See what it costs', href: '/cost' },
   },
   {
     title: 'Web design consulting',
-    price: '$30',
-    priceNote: 'per hour',
     description:
       "Stuck on your own site, or want bigger changes than the monthly covers? We get on a call and share screens, and I work through it with you: layout, design, copy, whatever's in the way. You pay by the hour.",
     cta: { label: 'Book a call', href: '/book' },

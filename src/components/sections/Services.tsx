@@ -2,9 +2,8 @@ import Link from 'next/link';
 import AnimateIn from '@/components/ui/AnimateIn';
 import { SERVICE_CARDS } from '@/data/services';
 
-/* Services — squares with plain prices. The $750 build + $25/mo hosting
-   package leads as the featured card; a price badge only appears where Tom
-   has set one. */
+/* Services — what Tom does, as squares. Pricing lives on /cost (linked from
+   the featured card and the button below); no numbers are hardcoded here. */
 
 export default function Services() {
   return (
@@ -17,13 +16,25 @@ export default function Services() {
         <AnimateIn>
           <span className="eyebrow mb-4">Services</span>
           <h2 className="mt-4 max-w-2xl font-display text-[clamp(1.9rem,4vw,2.9rem)] font-bold leading-[1.05] tracking-tight text-text-primary">
-            What I do, and what it costs.
+            What I do.
           </h2>
           <p className="mt-4 max-w-xl font-body text-base leading-relaxed text-text-secondary md:text-lg">
-            Plain numbers where I have them. Where the price depends on the
-            site, we talk first. Every card is something I&apos;ve already done
-            for the work above.
+            Every card is something I&apos;ve already done for the work above.
+            What it costs depends on your business, so I put the honest ranges
+            on their own page.
           </p>
+          <Link
+            href="/cost"
+            className="group mt-6 inline-flex items-center gap-1.5 font-body text-base font-medium text-accent underline-offset-4 hover:underline"
+          >
+            See what it costs
+            <span
+              aria-hidden
+              className="transition-transform duration-300 group-hover:translate-x-0.5"
+            >
+              →
+            </span>
+          </Link>
         </AnimateIn>
 
         <div className="mt-12 grid gap-4 md:mt-16 md:grid-cols-2">
