@@ -28,6 +28,7 @@ export const SITE = {
 } as const;
 
 export const NAV_LINKS = [
+  { label: 'Answers', href: '#questions' },
   { label: 'Work', href: '#work' },
   { label: 'Services', href: '#services' },
   { label: 'Photography', href: '/photography' },

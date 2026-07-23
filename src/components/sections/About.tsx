@@ -45,7 +45,7 @@ export default function About() {
               />
             </div>
             <h2 className="mt-6 font-display text-[clamp(1.9rem,4vw,2.9rem)] font-bold leading-[1.06] tracking-tight text-text-primary">
-              Hi, I&apos;m Tom.
+              Who you&apos;d be working with.
             </h2>
             <p className="mt-5 max-w-md font-body text-lg leading-relaxed text-text-secondary">
               I&apos;m a freelance web designer. I like working with people who
