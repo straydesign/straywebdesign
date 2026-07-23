@@ -12,6 +12,8 @@ import { SITE } from '@/lib/constants';
    through my own pipeline and live on their menu today. The 41-dish count
    is re-verified against the client's CMS whenever it's touched (Papa
    John's supplies the pizza photos — those are excluded from the count).
+   Last verified 2026-07-23: 57 imaged items − 7 pizza − 9 specialty-pizzas
+   = 41. The 6 Wings shot is strip-listed (Tom) — never in this gallery.
    NO standalone shoot price on this page: pricing for non-build shoots is
    Tom's pending decision, so the copy points those calls at the phone. */
 
@@ -31,14 +33,14 @@ export const metadata: Metadata = {
 
 /* Shots from the Andy's menu shoots — dish names match the client's CMS. */
 const GALLERY = [
-  { src: '/images/photography/andy-burger.jpg', alt: 'The Andy Burger with steak fries' },
-  { src: '/images/photography/wings-buffalo-12.jpg', alt: 'A dozen buffalo wings with celery and bleu cheese' },
+  { src: '/images/photography/andy-burger.jpg', alt: 'The Andy Burger with a side of fries' },
+  { src: '/images/photography/wings-buffalo-12.jpg', alt: 'A dozen buffalo wings in a basket' },
   { src: '/images/photography/antipasto-salad.jpg', alt: 'Antipasto salad' },
   { src: '/images/photography/club-melt.jpg', alt: 'Club melt with fries' },
   { src: '/images/photography/ham-swiss-pretzel.jpg', alt: 'Ham and swiss on a pretzel roll' },
-  { src: '/images/photography/chili.jpg', alt: 'A bowl of chili with shredded cheese' },
-  { src: '/images/photography/wings-buffalo-6.jpg', alt: 'Half a dozen buffalo wings' },
-  { src: '/images/photography/soup-salad-pretzel.jpg', alt: 'Soup, tossed salad, and a hot pretzel' },
+  { src: '/images/photography/chili.jpg', alt: 'A bowl of chili' },
+  { src: '/images/photography/blt.jpg', alt: 'BLT on sourdough with crispy fries and a pickle spear' },
+  { src: '/images/photography/hot-pretzel.jpg', alt: 'Hot pretzel with a tangy mustard sauce' },
 ] as const;
 
 function SectionEyebrow({ children }: { children: string }) {
