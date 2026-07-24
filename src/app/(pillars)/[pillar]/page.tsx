@@ -277,7 +277,7 @@ export default async function PillarPage({
                       <p className="mt-4 font-body text-[14px] leading-relaxed text-text-secondary">
                         {path.what}
                       </p>
-                      <div className="mt-auto flex flex-col gap-4 pt-6">
+                      <div className="mt-6 flex flex-col gap-4">
                         <div>
                           <p
                             className="font-body text-[12.5px] font-semibold"
@@ -449,7 +449,15 @@ export default async function PillarPage({
             </AnimateIn>
 
             {related.length > 0 ? (
-              <div className="mt-10 grid gap-4 md:grid-cols-3">
+              <div
+                className={`mt-10 grid gap-4 ${
+                  related.length === 1
+                    ? 'max-w-sm md:grid-cols-1'
+                    : related.length === 2
+                      ? 'md:grid-cols-2'
+                      : 'md:grid-cols-3'
+                }`}
+              >
                 {related.map((r, i) => (
                   <AnimateIn key={r.slug} delay={i * 0.06}>
                     <Link

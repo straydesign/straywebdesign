@@ -49,3 +49,10 @@ next-env.d.ts
 # local working files (not for the repo)
 .claude/
 PILLAR-REBUILD-PLAN.md
+
+# hardening / audit scratch (local only)
+/harden/
+harden-shot.mjs
+audit-shot.mjs
+audit-clip.mjs
+audit-mob2.mjs

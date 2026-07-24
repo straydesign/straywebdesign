@@ -58,7 +58,7 @@ export default function CookieBanner() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 z-[9999] max-w-xs border border-border-default bg-surface-card p-3 shadow-lg sm:bottom-6 sm:left-6">
+    <div className="fixed bottom-4 left-4 z-[9999] max-w-[14rem] border border-border-default bg-surface-card p-3 shadow-lg sm:bottom-6 sm:left-6 sm:max-w-xs">
       <div className="flex items-start gap-2">
         <p className="font-body text-xs leading-relaxed text-text-secondary">
           We use cookies for analytics.{' '}
