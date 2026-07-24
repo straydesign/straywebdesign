@@ -132,7 +132,7 @@ export default function FooterCTA() {
                   placeholder="you@business.com"
                   autoComplete="email"
                   aria-label="Email"
-                  className="flex-1 border border-border-strong bg-surface-card px-4 py-3.5 font-body text-text-primary placeholder-text-placeholder transition-colors focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none"
+                  className="flex-1 border border-border-default bg-surface-card px-4 py-3.5 font-body text-text-primary placeholder-text-placeholder transition-colors focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none"
                 />
                 <button
                   type="submit"

@@ -61,8 +61,10 @@ export interface Pillar {
   readonly nav: string;
   /** The head search query, human-cased — the page's H1. */
   readonly question: string;
-  /** Cluster color, hex. */
+  /** Cluster color, hex. Bright — for dots, glyphs, and text on the dark bands. */
   readonly color: string;
+  /** Darkened variant of `color` (same hue) that passes WCAG AA as small text on the light surfaces. */
+  readonly colorInk: string;
   /** Real related searches — the SEO signal, shown as pills. */
   readonly queries: readonly string[];
   /** One honest sentence under the H1. */
@@ -95,6 +97,7 @@ export const PILLARS: readonly Pillar[] = [
     nav: 'What it costs',
     question: 'What a small business website really costs',
     color: '#FFB224',
+    colorInk: '#9c6500',
     queries: [
       'how much does a small business website cost',
       'website cost per month vs one-time',
@@ -167,6 +170,7 @@ export const PILLARS: readonly Pillar[] = [
     nav: 'DIY or hire',
     question: 'Should you build it yourself, or hire someone',
     color: '#3DD68C',
+    colorInk: '#1c8251',
     queries: [
       'should i build my own website or pay someone',
       'is wix good for seo',
@@ -270,6 +274,7 @@ export const PILLARS: readonly Pillar[] = [
     nav: 'Get found',
     question: "Why Google can't find your business",
     color: '#4CC2FF',
+    colorInk: '#0077b5',
     queries: [
       'why is my business not showing up on google',
       "why isn't my website ranking on google",
@@ -334,6 +339,7 @@ export const PILLARS: readonly Pillar[] = [
     nav: 'Need one?',
     question: 'Do you even need a website',
     color: '#FF6B57',
+    colorInk: '#e11b00',
     queries: [
       'do i really need a website for my business',
       'do i need a website if i have facebook',
@@ -390,6 +396,7 @@ export const PILLARS: readonly Pillar[] = [
     nav: 'Your industry',
     question: 'Websites built for your trade',
     color: '#F778BA',
+    colorInk: '#db0d78',
     queries: [
       'restaurant website design',
       'website for a contractor',
@@ -497,6 +504,7 @@ export const PILLARS: readonly Pillar[] = [
     nav: 'More customers',
     question: 'Turning your site into more customers',
     color: '#B197FC',
+    colorInk: '#7b4ffa',
     queries: [
       'how to get more customers for my business',
       'small business website that converts',

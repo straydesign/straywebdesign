@@ -89,7 +89,7 @@ export default async function PillarPage({
               />
               <span
                 className="mt-2 inline-flex items-center gap-2 font-mono text-[13px] font-medium"
-                style={{ color: pillar.color }}
+                style={{ color: pillar.colorInk }}
               >
                 <span
                   className="h-2.5 w-2.5 rounded-full"
@@ -120,7 +120,7 @@ export default async function PillarPage({
                     <div className="flex h-full flex-col rounded-2xl border border-border-default bg-surface-card p-6 md:p-7">
                       <span
                         className="inline-flex items-center gap-2 font-mono text-[12px] font-medium"
-                        style={{ color: pillar.color }}
+                        style={{ color: pillar.colorInk }}
                       >
                         <span
                           className="h-2 w-2 rounded-full"
@@ -152,7 +152,7 @@ export default async function PillarPage({
                               className="mt-[3px] h-3.5 w-3.5 flex-shrink-0"
                               viewBox="0 0 20 20"
                               fill="none"
-                              style={{ color: pillar.color }}
+                              style={{ color: pillar.colorInk }}
                               aria-hidden="true"
                             >
                               <path
@@ -281,7 +281,7 @@ export default async function PillarPage({
                         <div>
                           <p
                             className="font-body text-[12.5px] font-semibold"
-                            style={{ color: pillar.color }}
+                            style={{ color: pillar.colorInk }}
                           >
                             Good for
                           </p>
@@ -317,7 +317,7 @@ export default async function PillarPage({
               <AnimateIn>
                 <span
                   className="font-mono text-[12px]"
-                  style={{ color: pillar.color }}
+                  style={{ color: pillar.colorInk }}
                 >
                   {dive.kicker}
                 </span>
@@ -335,7 +335,7 @@ export default async function PillarPage({
                     <div className="flex gap-4">
                       <span
                         className="mt-0.5 font-mono text-[13px] font-medium tabular-nums"
-                        style={{ color: pillar.color }}
+                        style={{ color: pillar.colorInk }}
                       >
                         {String(i + 1).padStart(2, '0')}
                       </span>
@@ -356,7 +356,7 @@ export default async function PillarPage({
                 <div className="mt-12 rounded-2xl border border-border-default bg-surface-page p-6 md:p-8">
                   <p
                     className="font-mono text-[12px]"
-                    style={{ color: pillar.color }}
+                    style={{ color: pillar.colorInk }}
                   >
                     The honest part
                   </p>
@@ -409,7 +409,7 @@ export default async function PillarPage({
                               className="mt-[3px] h-3.5 w-3.5 flex-shrink-0"
                               viewBox="0 0 20 20"
                               fill="none"
-                              style={{ color: pillar.color }}
+                              style={{ color: pillar.colorInk }}
                               aria-hidden="true"
                             >
                               <path
@@ -442,7 +442,7 @@ export default async function PillarPage({
         >
           <div className="mx-auto max-w-4xl px-5 md:px-8">
             <AnimateIn>
-              <span className="eyebrow mb-4">Related reading</span>
+              <span className="eyebrow">Related reading</span>
               <h2 className="mt-4 font-display text-2xl font-bold tracking-tight text-text-primary md:text-3xl">
                 More on this, from the writing.
               </h2>

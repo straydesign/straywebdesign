@@ -98,7 +98,7 @@ export default function Navbar() {
       ))}
       <Link
         href={resolveHref('#contact', pathname)}
-        className="mt-2 rounded-md bg-accent px-5 py-3 text-center font-body text-sm font-semibold text-white"
+        className="mt-2 rounded-md bg-accent px-5 py-3 text-center font-body text-sm font-semibold text-white transition-colors hover:bg-accent/90"
         onClick={() => setIsOpen(false)}
       >
         Start a project
