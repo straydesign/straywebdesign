@@ -56,3 +56,5 @@ harden-shot.mjs
 audit-shot.mjs
 audit-clip.mjs
 audit-mob2.mjs
+
+audit2-*.mjs
