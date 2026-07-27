@@ -67,9 +67,7 @@ export async function GET() {
               fontSize: '64px',
               fontWeight: 700,
               letterSpacing: '-2px',
-              background: 'linear-gradient(to right, #60A5FA, #3B82F6)',
-              backgroundClip: 'text',
-              color: 'transparent',
+              color: '#60A5FA',
             }}
           >
             what the site should do.
@@ -98,7 +96,7 @@ export async function GET() {
           }}
         >
           <div style={{ display: 'flex', gap: '12px' }}>
-            {['3-Day Turnaround', '$0 Up Front'].map((chip) => (
+            {['Built From Scratch', 'Hosted & Managed'].map((chip) => (
               <div
                 key={chip}
                 style={{

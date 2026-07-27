@@ -60,13 +60,7 @@ export async function GET() {
           <span>your business.</span>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginTop: '24px', fontSize: '72px', fontWeight: 700, letterSpacing: '-2px' }}>
             <span>I&apos;ll sketch</span>
-            <span
-              style={{
-                background: 'linear-gradient(to right, #60A5FA, #3B82F6)',
-                backgroundClip: 'text',
-                color: 'transparent',
-              }}
-            >
+            <span style={{ color: '#60A5FA' }}>
               what the site should do.
             </span>
           </div>

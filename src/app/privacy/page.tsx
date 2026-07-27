@@ -1,117 +1,169 @@
 import type { Metadata } from 'next';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy — Stray Web Design',
-  description: 'Privacy policy for Stray Web Design. How we collect, use, and protect your information.',
+  description:
+    'How Stray Web Design handles your information: what the site collects, what it is used for, and who to contact about it.',
+  alternates: { canonical: '/privacy' },
+  openGraph: {
+    title: 'Privacy Policy — Stray Web Design',
+    description:
+      'How Stray Web Design handles your information: what the site collects, what it is used for, and who to contact about it.',
+    url: 'https://straywebdesign.co/privacy',
+    type: 'website',
+  },
 };
 
-import Link from 'next/link';
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section>
+      <h2 className="mb-3 font-display text-lg font-semibold text-text-primary">
+        {title}
+      </h2>
+      {children}
+    </section>
+  );
+}
 
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-[100dvh] bg-surface-page text-text-primary">
-      <div className="mx-auto max-w-3xl px-5 pt-32 pb-20 md:px-8">
-        <Link
-          href="/"
-          className="mb-8 inline-flex items-center gap-2 font-body text-sm text-text-tertiary transition-colors hover:text-accent"
-        >
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <path d="M10 3L5 8l5 5" />
-          </svg>
-          Back to site
-        </Link>
-        <h1 className="font-display tracking-tight text-3xl font-bold md:text-4xl">Privacy Policy</h1>
-        <p className="mt-2 font-mono text-sm text-text-tertiary">Last updated: April 8, 2026</p>
+    <>
+      <Navbar />
+      <main id="main" className="min-h-[100dvh] bg-surface-page pt-28 pb-20">
+        <article className="mx-auto max-w-3xl px-5 md:px-8">
+          <span className="eyebrow mb-3">Legal</span>
+          <h1 className="mt-4 font-display text-[clamp(2rem,4.6vw,3rem)] font-bold leading-[1.06] tracking-[-0.02em] text-text-primary">
+            Privacy Policy
+          </h1>
+          <p className="mt-3 font-mono text-sm text-text-tertiary">
+            Effective July 27, 2026
+          </p>
 
-        <div className="mt-10 space-y-8 font-body text-sm leading-relaxed text-text-secondary">
-          <section>
-            <h2 className="mb-3 text-lg font-semibold text-text-primary">Information We Collect</h2>
+          <div className="mt-10 space-y-9 font-body text-[15px] leading-relaxed text-text-secondary">
             <p>
-              When you use our website or contact us, we may collect the following information:
+              This site, straywebdesign.co, is run by Stray Web Design (Tom
+              Sesler), a web designer in Erie, PA. This page explains what
+              information the site collects and what happens to it. The short
+              version: I collect what you send me so I can respond, plus basic
+              analytics, and I don&apos;t sell any of it.
             </p>
-            <ul className="mt-3 list-inside list-disc space-y-1">
-              <li>Name, email address, and phone number (when you interact with a form, including partial entries that are not submitted)</li>
-              <li>Your website URL (when you request an audit)</li>
-              <li>Business name and industry</li>
-              <li>Messages you send through our contact forms or chat widget</li>
-              <li>Device and browser information, IP address, and pages visited (via analytics)</li>
-              <li>Advertising campaign data such as UTM parameters and click identifiers</li>
-            </ul>
-          </section>
 
-          <section>
-            <h2 className="mb-3 text-lg font-semibold text-text-primary">How We Use Your Information</h2>
-            <ul className="list-inside list-disc space-y-1">
-              <li>To respond to your inquiries and provide the services you request</li>
-              <li>To send you relevant follow-up communications about your project or audit</li>
-              <li>To improve our website, services, and advertising effectiveness</li>
-              <li>To measure and optimize our advertising campaigns</li>
-              <li>To comply with legal obligations</li>
-            </ul>
-          </section>
+            <Section title="What I collect">
+              <ul className="list-inside list-disc space-y-2">
+                <li>
+                  <strong className="font-semibold text-text-primary">Forms and bookings.</strong>{' '}
+                  Name, email, phone number, business name, website address, and
+                  whatever you write in the message or scheduling fields. If you
+                  start a form and leave before submitting, the fields you
+                  already typed may still reach me so I can follow up.
+                </li>
+                <li>
+                  <strong className="font-semibold text-text-primary">Chat.</strong>{' '}
+                  Messages you type in the site chat, including any contact
+                  details you share there. Transcripts are sent to me.
+                </li>
+                <li>
+                  <strong className="font-semibold text-text-primary">Analytics.</strong>{' '}
+                  Pages visited, device and browser type, general location, and
+                  how you found the site. If you arrive from an ad, the
+                  campaign tags and click identifiers on that link.
+                </li>
+              </ul>
+            </Section>
 
-          <section>
-            <h2 className="mb-3 text-lg font-semibold text-text-primary">Advertising & Analytics</h2>
-            <p>
-              We use Google Analytics, Meta (Facebook) Pixel, and Google Ads conversion tracking
-              to understand how visitors find and use our site. These services may use cookies and
-              similar technologies to collect data about your browsing activity. You can opt out of
-              personalized advertising through your browser settings or by visiting{' '}
-              <a href="https://optout.aboutads.info" className="text-accent hover:underline" target="_blank" rel="noopener noreferrer">
-                optout.aboutads.info
-              </a>.
-            </p>
-            <p className="mt-3">
-              When you visit or log in to our website, cookies and similar technologies may be used
-              by our online data partners or vendors to associate these activities with other personal
-              information they or others have about you, including by association with your email or
-              company information. We (or service providers on our behalf) may then send communications
-              and marketing to these email addresses. You may opt out of receiving this advertising by
-              visiting{' '}
-              <a href="https://app.retention.com/optout" className="text-accent hover:underline" target="_blank" rel="noopener noreferrer">
-                app.retention.com/optout
-              </a>.
-            </p>
-          </section>
+            <Section title="How I use it">
+              <ul className="list-inside list-disc space-y-1">
+                <li>Answering your inquiry and scheduling calls</li>
+                <li>Seeing which pages and ads work, so I can improve them</li>
+              </ul>
+              <p className="mt-3">
+                I don&apos;t sell your information, and I don&apos;t add you to
+                a mailing list.
+              </p>
+            </Section>
 
-          <section>
-            <h2 className="mb-3 text-lg font-semibold text-text-primary">SMS Communications</h2>
-            <p>
-              If you provide your phone number, we may send you text messages related to your
-              inquiry or project. Message and data rates may apply. You can opt out at any time
-              by replying STOP to any message. Message frequency varies.
-            </p>
-          </section>
+            <Section title="Cookies">
+              <p>
+                Google Analytics sets cookies to measure traffic. When ad
+                campaigns are running, Google Ads and Meta (Facebook) may also
+                set cookies to measure whether those ads led to an inquiry. You
+                can opt out with the &ldquo;Opt out&rdquo; button on the cookie
+                notice, or block cookies in your browser. The site works fine
+                either way.
+              </p>
+            </Section>
 
-          <section>
-            <h2 className="mb-3 text-lg font-semibold text-text-primary">Data Sharing</h2>
-            <p>
-              We do not sell your personal information. We may share data with service providers
-              that help us operate our business (hosting, analytics, SMS delivery, CRM), but only
-              as needed to provide our services.
-            </p>
-          </section>
+            <Section title="Services that handle the data">
+              <p>
+                A few services help run this site, and only see what they need
+                to do their job:
+              </p>
+              <ul className="mt-3 list-inside list-disc space-y-1">
+                <li>Vercel, which hosts the site</li>
+                <li>Google Analytics and Google Ads, for traffic and ad measurement</li>
+                <li>Meta, for ad measurement when campaigns are running</li>
+                <li>Web3Forms, which delivers form submissions to my inbox</li>
+                <li>Anthropic, which processes chat messages so the chat widget can reply</li>
+              </ul>
+              <p className="mt-3">
+                Inquiries are stored in my own lead-tracking system so I
+                don&apos;t lose track of a conversation.
+              </p>
+            </Section>
 
-          <section>
-            <h2 className="mb-3 text-lg font-semibold text-text-primary">Data Retention</h2>
-            <p>
-              We retain your information for as long as necessary to provide our services and
-              fulfill the purposes described in this policy. You can request deletion of your
-              data at any time by contacting us.
-            </p>
-          </section>
+            <Section title="Texts and email">
+              <p>
+                If you leave a phone number, I may text you back about your
+                inquiry, usually to schedule a call. Reply STOP to any text
+                and I&apos;ll stop. Message and data rates may apply.
+              </p>
+            </Section>
 
-          <section>
-            <h2 className="mb-3 text-lg font-semibold text-text-primary">Contact</h2>
-            <p>
-              Questions about this policy? Email us at{' '}
-              <a href="mailto:tom@straydesign.co" className="text-accent hover:underline">
-                tom@straydesign.co
-              </a>.
-            </p>
-          </section>
-        </div>
-      </div>
-    </div>
+            <Section title="Social media publishing">
+              <p>
+                Stray Web Design also runs a private, self-hosted tool for
+                scheduling and publishing its own social media posts (TikTok,
+                Pinterest, Facebook, Instagram, Threads, X, YouTube, LinkedIn,
+                Reddit). Through each platform&apos;s official login (OAuth),
+                the tool stores only the access tokens and basic profile
+                information for accounts Stray Web Design owns, and uses them
+                only to publish content Stray Web Design creates. It does not
+                collect, scrape, or store any other user&apos;s data, and it is
+                not offered to anyone else. Tokens are kept only while an
+                account stays connected; access can be revoked at any time from
+                the tool or from each platform&apos;s connected-apps settings,
+                which invalidates the stored tokens. None of this data is
+                shared or sold.
+              </p>
+            </Section>
+
+            <Section title="How long I keep it">
+              <p>
+                Inquiries and analytics are kept as long as they&apos;re useful
+                for responding to you or running the business. Want your
+                information deleted? Email me and I&apos;ll remove it.
+              </p>
+            </Section>
+
+            <Section title="Contact">
+              <p>
+                Questions about this policy? Email{' '}
+                <a
+                  href="mailto:tom@straydesign.co"
+                  className="text-accent underline transition-colors hover:text-accent/80"
+                >
+                  tom@straydesign.co
+                </a>
+                .
+              </p>
+              <p className="mt-3">Stray Web Design · Erie, PA</p>
+            </Section>
+          </div>
+        </article>
+      </main>
+      <Footer />
+    </>
   );
 }

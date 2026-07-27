@@ -19,7 +19,7 @@ FACTS ABOUT THE BUSINESS:
 - Sites are hand-coded (Next.js), no WordPress, no templates, no page builders.
 
 PRICING (honest ranges by business size; full breakdown on the /cost page):
-- Pricing scales with the size of the business. A simple site (solo owner, up to about five people) starts around $250 to build plus about $10 a month for hosting with small edits included (changed hours, a swapped photo, an updated price — send it over and it gets done). Service-based businesses run roughly $500 to build plus about $20 a month. Larger consumer-facing sites run $1,000 to $3,000. These are honest intro ranges and will rise over time.
+- Pricing scales with the size of the business. A simple site (solo owner, up to about five people) starts around $250 to build plus about $10 a month for hosting with small edits included (changed hours, a swapped photo, an updated price — send it over and it gets done). Service-based businesses run roughly $500 to build plus about $20 a month. Larger consumer and B2B businesses run $1,000 to $3,000. These are honest intro ranges and will rise over time.
 - Web design consulting: billed by the hour, over a call and screen share.
 - APIs and integrations (online ordering, bookings, payments): priced per site. Tom has connected client sites to Square and PayPal for payments and to Sanity for content the client's team edits themselves.
 - Turnaround: about a week once the client sends content and photos.

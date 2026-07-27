@@ -59,13 +59,7 @@ export async function GET() {
           <span>Tell me about your business.</span>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '32px' }}>
             <span>I&apos;ll sketch</span>
-            <span
-              style={{
-                background: 'linear-gradient(to right, #60A5FA, #3B82F6)',
-                backgroundClip: 'text',
-                color: 'transparent',
-              }}
-            >
+            <span style={{ color: '#60A5FA' }}>
               what the site should do.
             </span>
           </div>
@@ -105,7 +99,7 @@ export async function GET() {
           </div>
 
           <div style={{ display: 'flex', gap: '16px' }}>
-            {['3-Day Turnaround', '$0 Up Front', 'Direct Line to Tom'].map((chip) => (
+            {['Built From Scratch', 'Hosted & Managed', 'Direct Line to Tom'].map((chip) => (
               <div
                 key={chip}
                 style={{

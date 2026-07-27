@@ -4,7 +4,7 @@
    for the pillar pages and the homepage QuestionsSection.
 
    Prices are Tom's real, honest ranges by business size (given 2026-07-23):
-   simple ≈ $250 + $10/mo · service-based ≈ $500 + $20/mo · consumer-facing ≈ $1k–$3k.
+   simple ≈ $250 + $10/mo · service-based ≈ $500 + $20/mo · larger consumer & B2B ≈ $1k–$3k.
    Current/intro pricing, roughly accurate, will rise. Invent nothing beyond these. */
 
 export interface PillarBand {
@@ -132,7 +132,7 @@ export const PILLARS: readonly Pillar[] = [
         note: 'Room to grow and adjust as the work changes.',
       },
       {
-        label: 'Consumer-facing',
+        label: 'Larger consumer & B2B',
         who: 'Larger, heavy traffic, plenty of moving parts.',
         build: '$1k–$3k',
         monthly: 'scales with it',
