@@ -11,7 +11,7 @@ import AnimateIn from '@/components/ui/AnimateIn';
 const FAQ_ITEMS = [
   {
     q: 'How much does a website cost?',
-    a: 'It depends on the size of your business. A simple site starts around $250 to build plus about $10 a month for hosting with small edits included, and it scales up from there for busier sites. I lay out the honest ranges by business size on the pricing page, so there is no quote dance.',
+    a: 'It depends on the size of your business. A simple site starts around $500 to build plus about $10 a month for hosting with small edits included, and it scales up from there for busier sites. I lay out the honest ranges by business size on the pricing page, so there is no quote dance.',
   },
   {
     q: 'What does the monthly cover?',

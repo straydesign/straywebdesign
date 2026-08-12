@@ -1,7 +1,6 @@
 import dynamic from 'next/dynamic';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import SectionKeyboardNav from '@/components/layout/SectionKeyboardNav';
 import Hero from '@/components/sections/Hero';
 import QuestionsSection from '@/components/sections/QuestionsSection';
 import About from '@/components/sections/About';
@@ -41,7 +40,6 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <SectionKeyboardNav />
       <main id="main">
         <Hero />
         <QuestionsSection />

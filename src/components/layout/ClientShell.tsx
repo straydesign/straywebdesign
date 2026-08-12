@@ -9,9 +9,13 @@ const ChatWidget = dynamic(() => import('@/components/ui/ChatWidget'), {
   ssr: false,
 });
 
-const CookieBanner = dynamic(() => import('@/components/ui/CookieBanner'), {
-  ssr: false,
-});
+/* No cookie banner. The site sets one first-party analytics cookie and nothing
+   else — no ad pixels, no session recording, no data sold. No US law requires a
+   consent gate for that, and the banner we had was worse than nothing: it
+   appeared 8s in, long after GA had already sent the pageview, and "Opt out"
+   only cleared window.gtag, which does not stop the already-loaded library. A
+   control that promises a choice it does not deliver is the actual exposure.
+   The honest disclosure lives on /privacy. Removed 2026-08-10. */
 
 export default function ClientShell({ children }: { children: ReactNode }) {
   useUtmCapture();
@@ -39,7 +43,6 @@ export function ClientExtras() {
   return (
     <>
       {showChat && <ChatWidget />}
-      <CookieBanner />
     </>
   );
 }

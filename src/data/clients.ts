@@ -16,6 +16,8 @@ export type Project = {
   slug: string;
   /** What kind of business it is. */
   type: string;
+  /** Industry group the site is filed under on the /work gallery. */
+  vertical: string;
   /** City / region, for context. */
   place?: string;
   description: string;
@@ -53,6 +55,7 @@ export const PROJECTS: Project[] = [
     name: "Andy's Ale House & Grill",
     slug: 'andys',
     type: 'Bar & restaurant',
+    vertical: 'Bars & restaurants',
     place: 'Erie, PA',
     description:
       'A full site with menus, daily specials, and an events calendar the team updates themselves. Designed, built, hosted, and managed end to end.',
@@ -86,6 +89,7 @@ export const PROJECTS: Project[] = [
     name: 'Bullfrog',
     slug: 'bullfrog',
     type: 'Bar & live-music venue',
+    vertical: 'Bars & restaurants',
     place: 'Erie, PA',
     description:
       'A live-music venue site built around the calendar — shows up front, easy for the team to keep current, and quick to load on a phone at the door.',
@@ -120,6 +124,7 @@ export const PROJECTS: Project[] = [
     name: 'Sea Cave',
     slug: 'sea-cave',
     type: 'Aquarium & fish store',
+    vertical: 'Shops & specialty retail',
     place: 'Erie, PA',
     description:
       'A store that has been on Erie tanks since 1975, now with its whole catalog online: saltwater and freshwater livestock, coral, dry goods, and build guides. I designed and built the site, and I keep the hosting and product data running.',

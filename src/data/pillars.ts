@@ -3,8 +3,8 @@
    Google autocomplete harvested for that cluster. Single source of truth
    for the pillar pages and the homepage QuestionsSection.
 
-   Prices are Tom's real, honest ranges by business size (given 2026-07-23):
-   simple ≈ $250 + $10/mo · service-based ≈ $500 + $20/mo · larger consumer & B2B ≈ $1k–$3k.
+   Prices are Tom's real, honest ranges by business size (raised 2026-08-03):
+   simple ≈ $500 + $10/mo · service-based ≈ $1,000 + $20/mo · larger consumer & B2B ≈ $2k–$3k.
    Current/intro pricing, roughly accurate, will rise. Invent nothing beyond these. */
 
 export interface PillarBand {
@@ -108,7 +108,7 @@ export const PILLARS: readonly Pillar[] = [
       {
         label: 'Simple and steady',
         who: 'Solo owner up to about five people. One clear offer that rarely changes.',
-        build: '$250',
+        build: '$500',
         monthly: '$10/mo',
         includes: [
           'A few professional photos',
@@ -121,7 +121,7 @@ export const PILLARS: readonly Pillar[] = [
       {
         label: 'Service-based',
         who: 'More to connect, and content that changes here and there. Around ten people.',
-        build: '~$500',
+        build: '~$1,000',
         monthly: '~$20/mo',
         includes: [
           'Everything above',
@@ -134,7 +134,7 @@ export const PILLARS: readonly Pillar[] = [
       {
         label: 'Larger consumer & B2B',
         who: 'Larger, heavy traffic, plenty of moving parts.',
-        build: '$1k–$3k',
+        build: '$2k–$3k',
         monthly: 'scales with it',
         includes: [
           'Everything above',
@@ -229,12 +229,12 @@ export const PILLARS: readonly Pillar[] = [
         lead: 'Say you go for it. Here is the gap between a site that is merely live and one that works, and it is the same list whether you use a template or the tools I use. The tool was never the hard part.',
         items: [
           {
-            title: 'Shoot in real light',
-            body: 'A phone photo taken by a window beats a dark one with the flash on, every time. Watch your framing, keep the background clean, and never blow a small photo up big. One blurry hero image undoes everything around it.',
+            title: 'Get high-fidelity photos',
+            body: 'Sharp focus, real resolution, good lighting, and framing that shows what you do at a glance. Stock works in some cases, but show your face if you can, especially if you are service based and people need to trust you. Your working environment, a real moment of your day, anything that lets the customer picture how this will work for them.',
           },
           {
             title: 'Leave a lot of space',
-            body: 'Empty space does real work: it gives the one thing that matters room to be seen. The urge to fill every corner is what makes a site feel cramped and homemade. When in doubt, take something out.',
+            body: 'It is so hard to do, because we are passionate and want to say everything we can about our business. Slim it down to as few words as possible anyway. These sites are proven the most successful. What do you do, and why are you the best at it for this customer?',
           },
           {
             title: 'Hold one style',
@@ -246,15 +246,15 @@ export const PILLARS: readonly Pillar[] = [
           },
           {
             title: 'Build for a weak connection',
-            body: 'Design for someone in a parking lot on one bar, because your fast home wifi hides how heavy the page really is. Every oversized image costs you a visitor, and Google factors load speed into where you rank.',
+            body: 'Run your site through Google Lighthouse for a rough idea of how long it takes to load on mobile and desktop. It also grades accessibility, like whether your contrast holds up and the page is easy to get around and interact with. Bad scores hurt where you show up on Google, and they are particularly tough to fix on a template.',
           },
           {
-            title: 'Say it, then stop',
-            body: 'People skim; they rarely read. Give them the information and get out of the way. Extra words do not add weight, they bury the one line that would have made someone call.',
+            title: 'Pick one action',
+            body: 'Decide the one thing this site is for, whether that is calls, bookings, orders, or directions. Make that button impossible to miss on every screen and repeat it at the bottom of the page. When everything asks for attention equally, nothing gets pressed.',
           },
           {
             title: 'Everything on one scroll',
-            body: 'Most people just scroll to see what you have got. Put the whole story on a single page with clear sections, and let a button open the depth for anyone who wants more. A wall of tabs makes people hunt, and they will not.',
+            body: 'Most people just scroll to see what you have. Your homepage is your introduction, so include a little about everything that might excite the customer or be relevant to them, in as few words as you can, and let them click into any of it for the depth. A platform or a larger business can be different, so match the structure to your size.',
           },
           {
             title: 'Never let it go stale',

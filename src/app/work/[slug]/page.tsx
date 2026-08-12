@@ -67,7 +67,7 @@ export default async function CaseStudyPage({
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
-      { '@type': 'ListItem', position: 2, name: 'Work', item: `${SITE.url}/#work` },
+      { '@type': 'ListItem', position: 2, name: 'Work', item: `${SITE.url}/work` },
       { '@type': 'ListItem', position: 3, name: project.name },
     ],
   };
@@ -85,7 +85,7 @@ export default async function CaseStudyPage({
             <Breadcrumbs
               items={[
                 { label: 'Home', href: '/' },
-                { label: 'Work', href: '/#work' },
+                { label: 'Work', href: '/work' },
                 { label: project.name },
               ]}
             />

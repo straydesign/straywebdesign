@@ -38,7 +38,7 @@ export default function PrivacyPolicy() {
             Privacy Policy
           </h1>
           <p className="mt-3 font-mono text-sm text-text-tertiary">
-            Effective July 27, 2026
+            Effective August 10, 2026
           </p>
 
           <div className="mt-10 space-y-9 font-body text-[15px] leading-relaxed text-text-secondary">
@@ -84,14 +84,38 @@ export default function PrivacyPolicy() {
               </p>
             </Section>
 
-            <Section title="Cookies">
+            <Section title="Cookies, and why there&rsquo;s no banner">
               <p>
-                Google Analytics sets cookies to measure traffic. When ad
-                campaigns are running, Google Ads and Meta (Facebook) may also
-                set cookies to measure whether those ads led to an inquiry. You
-                can opt out with the &ldquo;Opt out&rdquo; button on the cookie
-                notice, or block cookies in your browser. The site works fine
-                either way.
+                Google Analytics sets a cookie to count traffic and tell repeat
+                visits apart. That&apos;s the only cookie this site sets on its
+                own. When an ad campaign is running, Google Ads and Meta
+                (Facebook) also set cookies to measure whether an ad led to an
+                inquiry; those scripts don&apos;t load when no campaign is
+                running.
+              </p>
+              <p className="mt-3">
+                You won&apos;t see a cookie banner, and that is deliberate. A
+                banner asks permission after the measurement has already
+                happened, and most of them do nothing once you click through. So
+                instead this site reads the privacy signal your browser already
+                sends, either Global Privacy Control or Do Not Track. If yours
+                sends one, analytics never loads. No cookie. No pageview.
+                Nothing to opt out of. Brave and the DuckDuckGo browser send that
+                signal on their own, and Firefox sends it once you turn on
+                &ldquo;tell websites not to sell my data&rdquo;.
+              </p>
+              <p className="mt-3">
+                If your browser doesn&apos;t send one, you can still block
+                cookies in its settings or install Google&apos;s{' '}
+                <a
+                  href="https://tools.google.com/dlpage/gaoptout"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent underline transition-colors hover:text-accent/80"
+                >
+                  Analytics Opt-out Browser Add-on
+                </a>
+                . The site works the same either way.
               </p>
             </Section>
 
@@ -136,6 +160,14 @@ export default function PrivacyPolicy() {
                 the tool or from each platform&apos;s connected-apps settings,
                 which invalidates the stored tokens. None of this data is
                 shared or sold.
+              </p>
+            </Section>
+
+            <Section title="Do Not Track">
+              <p>
+                Some browsers send a Do Not Track or Global Privacy Control
+                signal. I honour both. When the site sees one, analytics is not
+                loaded for that visit at all.
               </p>
             </Section>
 

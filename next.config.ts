@@ -14,7 +14,6 @@ const nextConfig: NextConfig = {
   // to /services/* sub-paths, so the wildcard keeps those from 404ing.
   async redirects() {
     return [
-      { source: '/work', destination: '/#work', permanent: true },
       { source: '/services', destination: '/#services', permanent: true },
       { source: '/services/:path*', destination: '/#services', permanent: true },
       { source: '/audit', destination: '/', permanent: true },

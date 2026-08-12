@@ -1,0 +1,246 @@
+<title>Cataloging a 900-product store — Sea Cave case study</title>
+<style>
+  :root{
+    --page:#fafafa; --card:#ffffff; --sunken:#f1f1f4;
+    --ink:#18181b; --ink-2:#3f3f46; --ink-3:#5b5b63;
+    --accent:#2563EB; --accent-soft:#e7effd;
+    --line:#e6e6ea; --line-strong:#d4d4d9;
+    --series-total:#b3bcca; --series-total-fill:rgba(179,188,202,.20);
+    --display:"Schibsted Grotesk",ui-sans-serif,system-ui,"Helvetica Neue",Arial,sans-serif;
+    --body:"Hanken Grotesk",ui-sans-serif,system-ui,"Helvetica Neue",Arial,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --page:#0f0f12; --card:#17171c; --sunken:#1c1c22;
+      --ink:#f4f4f5; --ink-2:#c9c9d1; --ink-3:#9a9aa5;
+      --accent:#6b9bff; --accent-soft:#1b2740;
+      --line:#26262e; --line-strong:#33333d;
+      --series-total:#4d5563; --series-total-fill:rgba(77,85,99,.28);
+    }
+  }
+  :root[data-theme="dark"]{
+    --page:#0f0f12; --card:#17171c; --sunken:#1c1c22;
+    --ink:#f4f4f5; --ink-2:#c9c9d1; --ink-3:#9a9aa5;
+    --accent:#6b9bff; --accent-soft:#1b2740;
+    --line:#26262e; --line-strong:#33333d;
+    --series-total:#4d5563; --series-total-fill:rgba(77,85,99,.28);
+  }
+  :root[data-theme="light"]{
+    --page:#fafafa; --card:#ffffff; --sunken:#f1f1f4;
+    --ink:#18181b; --ink-2:#3f3f46; --ink-3:#5b5b63;
+    --accent:#2563EB; --accent-soft:#e7effd;
+    --line:#e6e6ea; --line-strong:#d4d4d9;
+    --series-total:#b3bcca; --series-total-fill:rgba(179,188,202,.20);
+  }
+
+  body{background:var(--page);color:var(--ink);font-family:var(--body);
+       font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1060px;margin:0 auto;padding:clamp(28px,5vw,72px) clamp(18px,4vw,40px) 96px;
+        display:flex;flex-direction:column;gap:clamp(40px,5vw,64px);}
+  .measure{max-width:68ch;}
+  h1,h2,h3{font-family:var(--display);text-wrap:balance;letter-spacing:-.022em;margin:0;}
+  h1{font-size:clamp(31px,4.6vw,50px);line-height:1.08;font-weight:600;}
+  h2{font-size:clamp(21px,2.5vw,27px);line-height:1.2;font-weight:600;}
+  h3{font-size:16px;font-weight:600;letter-spacing:-.01em;}
+  p{margin:0;}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+           color:var(--accent);margin:0 0 18px;}
+  .dek{font-size:clamp(17px,1.9vw,20px);line-height:1.55;color:var(--ink-2);margin-top:20px;}
+  .stack{display:flex;flex-direction:column;gap:16px;}
+  .rule{height:1px;background:var(--line);border:0;margin:0;}
+  a{color:var(--accent);text-underline-offset:3px;}
+  a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px;}
+
+  /* chart panel */
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:8px;
+         padding:clamp(18px,2.6vw,28px);display:flex;flex-direction:column;gap:20px;}
+  .panel-head{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:baseline;justify-content:space-between;}
+  .panel-title{font-family:var(--display);font-size:17px;font-weight:600;}
+  .legend{display:flex;flex-wrap:wrap;gap:18px;font-family:var(--mono);font-size:12px;color:var(--ink-3);}
+  .swatch{display:inline-block;width:22px;height:3px;border-radius:2px;vertical-align:middle;margin-right:8px;}
+  .sw-prod{background:var(--accent);} .sw-total{background:var(--series-total);}
+  .chart-scroll{overflow-x:auto;}
+  .chart{display:block;width:100%;min-width:640px;height:auto;}
+  .grid{stroke:var(--line);stroke-width:1;}
+  .ytick,.xtick{font-family:var(--mono);font-size:10.5px;fill:var(--ink-3);}
+  .evt{stroke:var(--line-strong);stroke-width:1;stroke-dasharray:3 4;}
+  .evtdot{fill:var(--accent);}
+  .evtnum{font-family:var(--mono);font-size:9.5px;font-weight:700;fill:#fff;}
+  .areaTotal{fill:var(--series-total-fill);}
+  .lineTotal{fill:none;stroke:var(--series-total);stroke-width:1.5;}
+  .lineProd{fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linejoin:round;}
+  .endcap{fill:var(--accent);}
+
+  /* keyed timeline */
+  .keys{display:grid;gap:14px;grid-template-columns:1fr;border-top:1px solid var(--line);padding-top:20px;}
+  @media(min-width:720px){.keys{grid-template-columns:repeat(2,1fr);gap:18px 32px;}}
+  .key{display:flex;gap:12px;align-items:flex-start;}
+  .keynum{flex:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;
+          font-family:var(--mono);font-size:11px;font-weight:700;display:flex;align-items:center;
+          justify-content:center;margin-top:2px;}
+  .keydate{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);letter-spacing:.04em;}
+  .keytext{font-size:14.5px;line-height:1.5;color:var(--ink-2);}
+
+  /* stat cards */
+  .stats{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);}
+  @media(min-width:760px){.stats{grid-template-columns:repeat(4,1fr);}}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px 18px;
+        display:flex;flex-direction:column;gap:6px;}
+  .statnum{font-family:var(--display);font-size:clamp(26px,3.4vw,34px);font-weight:600;
+           letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;}
+  .statlab{font-size:13.5px;line-height:1.4;color:var(--ink-3);}
+
+  /* query evidence */
+  .queries{display:flex;flex-wrap:wrap;gap:8px;}
+  .q{font-family:var(--mono);font-size:12.5px;background:var(--accent-soft);color:var(--accent);
+     border-radius:5px;padding:6px 11px;}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);}
+  th{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);font-weight:500;}
+  td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;}
+  .table-scroll{overflow-x:auto;}
+
+  .limits{background:var(--sunken);border-radius:8px;padding:clamp(20px,3vw,30px);
+          display:flex;flex-direction:column;gap:14px;}
+  .limits li{margin-bottom:10px;color:var(--ink-2);font-size:15px;line-height:1.55;}
+  .limits ul{margin:0;padding-left:20px;}
+  footer{color:var(--ink-3);font-size:13.5px;line-height:1.6;font-family:var(--mono);}
+</style>
+
+<div class="wrap">
+
+  <header class="measure">
+    <p class="eyebrow">Case study · Product cataloging</p>
+    <h1>836 products. 836 pages. Google found 819 of them.</h1>
+    <p class="dek">A 50-year-old aquarium store in Erie, PA had no website and no way for anyone
+    to search what was on its shelves. Cataloging the inventory — one page per item, with real
+    photos, real names, and the details a buyer actually asks about — is what produced the line
+    below. This is Google's own record of it.</p>
+  </header>
+
+  <section class="panel">
+    <div class="panel-head">
+      <p class="panel-title">Daily Google impressions — first seven weeks</p>
+      <div class="legend">
+        <span><span class="swatch sw-prod"></span>Product pages</span>
+        <span><span class="swatch sw-total"></span>Whole site</span>
+      </div>
+    </div>
+    <div class="chart-scroll"><svg class="chart" viewBox="0 0 1000 340" role="img" aria-label="Daily Google impressions, June 17 to August 4 2026. Product pages rise from near zero to roughly half of all impressions.">
+<line class="grid" x1="46" y1="298.0" x2="984" y2="298.0"/>
+<text class="ytick" x="38" y="301.5" text-anchor="end">0</text>
+<line class="grid" x1="46" y1="242.0" x2="984" y2="242.0"/>
+<text class="ytick" x="38" y="245.5" text-anchor="end">300</text>
+<line class="grid" x1="46" y1="186.0" x2="984" y2="186.0"/>
+<text class="ytick" x="38" y="189.5" text-anchor="end">600</text>
+<line class="grid" x1="46" y1="130.0" x2="984" y2="130.0"/>
+<text class="ytick" x="38" y="133.5" text-anchor="end">900</text>
+<line class="grid" x1="46" y1="74.0" x2="984" y2="74.0"/>
+<text class="ytick" x="38" y="77.5" text-anchor="end">1,200</text>
+<line class="grid" x1="46" y1="18.0" x2="984" y2="18.0"/>
+<text class="ytick" x="38" y="21.5" text-anchor="end">1,500</text>
+<line class="evt" x1="143.7" y1="18" x2="143.7" y2="298"/>
+<circle class="evtdot" cx="143.7" cy="16" r="8"/>
+<text class="evtnum" x="143.7" y="19.5" text-anchor="middle">1</text>
+<line class="evt" x1="456.4" y1="18" x2="456.4" y2="298"/>
+<circle class="evtdot" cx="456.4" cy="16" r="8"/>
+<text class="evtnum" x="456.4" y="19.5" text-anchor="middle">2</text>
+<line class="evt" x1="534.5" y1="18" x2="534.5" y2="298"/>
+<circle class="evtdot" cx="534.5" cy="16" r="8"/>
+<text class="evtnum" x="534.5" y="19.5" text-anchor="middle">3</text>
+<line class="evt" x1="651.8" y1="18" x2="651.8" y2="298"/>
+<circle class="evtdot" cx="651.8" cy="16" r="8"/>
+<text class="evtnum" x="651.8" y="19.5" text-anchor="middle">4</text>
+<path class="areaTotal" d="M 46.0,298.0 L 46.0,276.0 L 65.5,272.8 L 85.1,268.9 L 104.6,261.0 L 124.2,262.9 L 143.7,269.3 L 163.2,268.1 L 182.8,254.3 L 202.3,255.4 L 221.9,258.6 L 241.4,248.5 L 261.0,255.6 L 280.5,244.4 L 300.0,241.8 L 319.6,241.1 L 339.1,208.4 L 358.7,208.4 L 378.2,217.4 L 397.8,186.0 L 417.3,194.2 L 436.8,196.5 L 456.4,197.0 L 475.9,134.9 L 495.5,93.2 L 515.0,58.7 L 534.5,36.7 L 554.1,82.2 L 573.6,85.8 L 593.2,99.8 L 612.7,120.1 L 632.2,101.6 L 651.8,70.1 L 671.3,59.1 L 690.9,93.0 L 710.4,111.7 L 730.0,140.3 L 749.5,149.6 L 769.0,147.9 L 788.6,149.2 L 808.1,147.2 L 827.7,155.9 L 847.2,181.9 L 866.8,173.1 L 886.3,170.5 L 905.8,154.3 L 925.4,119.7 L 944.9,90.4 L 964.5,149.4 L 984.0,176.7 L 984.0,298.0 Z"/>
+<path class="lineTotal" d="M 46.0,276.0 L 65.5,272.8 L 85.1,268.9 L 104.6,261.0 L 124.2,262.9 L 143.7,269.3 L 163.2,268.1 L 182.8,254.3 L 202.3,255.4 L 221.9,258.6 L 241.4,248.5 L 261.0,255.6 L 280.5,244.4 L 300.0,241.8 L 319.6,241.1 L 339.1,208.4 L 358.7,208.4 L 378.2,217.4 L 397.8,186.0 L 417.3,194.2 L 436.8,196.5 L 456.4,197.0 L 475.9,134.9 L 495.5,93.2 L 515.0,58.7 L 534.5,36.7 L 554.1,82.2 L 573.6,85.8 L 593.2,99.8 L 612.7,120.1 L 632.2,101.6 L 651.8,70.1 L 671.3,59.1 L 690.9,93.0 L 710.4,111.7 L 730.0,140.3 L 749.5,149.6 L 769.0,147.9 L 788.6,149.2 L 808.1,147.2 L 827.7,155.9 L 847.2,181.9 L 866.8,173.1 L 886.3,170.5 L 905.8,154.3 L 925.4,119.7 L 944.9,90.4 L 964.5,149.4 L 984.0,176.7"/>
+<path class="lineProd" d="M 46.0,298.0 L 65.5,297.8 L 85.1,296.3 L 104.6,291.5 L 124.2,293.5 L 143.7,294.1 L 163.2,291.5 L 182.8,281.9 L 202.3,284.4 L 221.9,291.7 L 241.4,288.5 L 261.0,288.9 L 280.5,274.5 L 300.0,267.0 L 319.6,270.4 L 339.1,245.7 L 358.7,246.1 L 378.2,243.9 L 397.8,220.5 L 417.3,227.1 L 436.8,233.4 L 456.4,231.9 L 475.9,164.3 L 495.5,137.5 L 515.0,107.4 L 534.5,76.1 L 554.1,123.7 L 573.6,127.8 L 593.2,136.2 L 612.7,156.7 L 632.2,145.1 L 651.8,113.9 L 671.3,95.5 L 690.9,123.7 L 710.4,148.9 L 730.0,172.7 L 749.5,180.8 L 769.0,171.8 L 788.6,185.3 L 808.1,172.6 L 827.7,186.7 L 847.2,209.7 L 866.8,214.9 L 886.3,204.3 L 905.8,189.4 L 925.4,159.9 L 944.9,134.1 L 964.5,203.4 L 984.0,209.0"/>
+<circle class="endcap" cx="984.0" cy="209.0" r="4"/>
+<text class="xtick" x="46.0" y="320" text-anchor="middle">Jun 17</text>
+<text class="xtick" x="319.6" y="320" text-anchor="middle">Jul 1</text>
+<text class="xtick" x="593.2" y="320" text-anchor="middle">Jul 15</text>
+<text class="xtick" x="925.4" y="320" text-anchor="middle">Aug 1</text>
+</svg></div>
+    <div class="keys">
+      <div class="key"><div class="keynum">1</div><div>
+        <p class="keydate">JUN 22</p>
+        <p class="keytext">Care details — tank size, temperament, what it can live with — added to 759 product pages.</p></div></div>
+      <div class="key"><div class="keynum">2</div><div>
+        <p class="keydate">JUL 7–8</p>
+        <p class="keytext">Scientific names filled in on 189 of 199 fish. Every listing switched from "ships to you" to "in this store" — 637 items, zero errors.</p></div></div>
+      <div class="key"><div class="keynum">3</div><div>
+        <p class="keydate">JUL 9–12</p>
+        <p class="keytext">Photo audits at full resolution: wrong pictures corrected across coral, saltwater, freshwater and inverts.</p></div></div>
+      <div class="key"><div class="keynum">4</div><div>
+        <p class="keydate">JUL 18</p>
+        <p class="keytext">Product data repaired so Google would accept the listings instead of rejecting them.</p></div></div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><p class="statnum">819</p><p class="statlab">individual product pages have earned Google impressions</p></div>
+    <div class="stat"><p class="statnum">12.8&times;</p><p class="statlab">more daily impressions from product pages, June to July</p></div>
+    <div class="stat"><p class="statnum">77%</p><p class="statlab">of July's impressions came from product pages, not the homepage</p></div>
+    <div class="stat"><p class="statnum">2.2&times;</p><p class="statlab">more people per day arriving from search</p></div>
+  </section>
+
+  <section class="measure stack">
+    <h2>What "cataloging" actually means here</h2>
+    <p>A store's inventory list is not a website. Turning one into the other is the work: every
+    item needs a page that can stand on its own in a search result — the name a customer would
+    type, the name a specialist would type, a photograph of the actual item rather than the
+    manufacturer's stock shot, and the handful of facts that decide a purchase.</p>
+    <p>Do that once for 836 items and the store stops competing for a few crowded searches and
+    starts appearing in hundreds of specific ones. The jump on the chart isn't a marketing
+    campaign. It's the week the catalog started telling the truth about what was on the shelf.</p>
+  </section>
+
+  <section class="measure stack">
+    <h2>The searches this creates</h2>
+    <p>These are real queries that brought people to the store's pages. None of them are searches
+    a homepage could ever win — they exist only because a specific item has a specific page.</p>
+    <div class="queries">
+      <span class="q">tadpole madtom for sale</span>
+      <span class="q">texas holey rock for aquarium</span>
+      <span class="q">72 gallon bow front aquarium lid</span>
+      <span class="q">tetra cleaning bacteria</span>
+      <span class="q">100 gallon fish tank</span>
+      <span class="q">aquarium store near me</span>
+    </div>
+  </section>
+
+  <section class="stack">
+    <h2 class="measure">Before and after, by the numbers</h2>
+    <div class="table-scroll"><table>
+      <thead><tr><th>Measured daily</th><th class="num">Jun 17–30</th><th class="num">July</th><th class="num">Change</th></tr></thead>
+      <tbody>
+        <tr><td>Impressions, whole site</td><td class="num">204</td><td class="num">842</td><td class="num">4.1&times;</td></tr>
+        <tr><td>Impressions, product pages</td><td class="num">51</td><td class="num">652</td><td class="num">12.8&times;</td></tr>
+        <tr><td>Visitors from search</td><td class="num">8.4</td><td class="num">18.4</td><td class="num">2.2&times;</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="limits">
+    <h2>What this does not prove</h2>
+    <ul>
+      <li><strong>There is no "before."</strong> The store had no site, so there is no earlier
+      period to compare against — Google's records for this domain begin June 17, 2026. Every
+      figure here is growth from zero, not a lift over a previous website.</li>
+      <li><strong>Visitor counts here are search traffic only.</strong> A two-day spike of direct
+      traffic on July 30–31 (roughly 600 visits) did not come with any matching rise in search
+      visits, which held steady near 23 a day. It's excluded as non-human rather than counted.</li>
+      <li><strong>Timing is evidence, not proof.</strong> Google doesn't publish why a site's
+      visibility moves. The dated markers show what changed and when; the correlation is strong
+      and the mechanism is plausible, but no one can claim causation from this data alone.</li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+  <footer class="measure">
+    Sources: Google Search Console (sc-domain:seacaveinc.com) and Google Analytics 4, both pulled
+    2026-08-05 for the window 2026-06-17 to 2026-08-04. Milestone dates come from the project's
+    own dated work log. Site: <a href="https://seacaveinc.com">seacaveinc.com</a>.
+  </footer>
+
+</div>

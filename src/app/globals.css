@@ -71,12 +71,6 @@ textarea {
   outline-offset: 2px;
 }
 
-/* Section-level focus for keyboard navigation (subtle inner glow) */
-main section[aria-label]:focus-visible {
-  outline: none;
-  box-shadow: inset 0 0 0 3px var(--accent);
-}
-
 /* Skip navigation link */
 .skip-link {
   position: absolute;
@@ -265,5 +259,61 @@ main section[aria-label]:focus-visible {
   .section-padding {
     padding-top: 8rem;
     padding-bottom: 8rem;
+  }
+}
+/* ── Keyboard item highlight ───────────────────────────────────────────────
+   Paired with SectionKeyboardNav.tsx. Each site sets --kbdnav-ring to its own
+   brand colour.
+
+   Two routes, one look:
+     :focus-visible    native Tab, so a mouse user never sees it
+     [data-kbdnav-on]  our own arrow/WASD moves, because programmatic focus does
+                       not reliably match :focus-visible
+
+   NO hardcoded inner contrast line. An earlier version had a white one behind
+   a prefers-color-scheme query, which never matched on a site that is dark by
+   design and painted a white haze over every focused element. The component now
+   measures the real backdrop at focus time and sets --kbdnav-halo only when
+   the brand colour cannot clear 3:1 on its own (WCAG 2.2 SC 2.4.13).
+*/
+
+:root {
+  --kbdnav-ring: var(--accent);
+}
+
+[data-kbdnav-item] {
+  scroll-margin-top: 6rem;
+  scroll-margin-bottom: 6rem;
+}
+
+[data-kbdnav-item]:focus {
+  outline: none;
+}
+
+[data-kbdnav-item]:focus-visible,
+[data-kbdnav-item][data-kbdnav-on] {
+  /* Drawn outside, where it reads as a lift rather than a shrink. */
+  outline: 3px solid var(--kbdnav-ring);
+  outline-offset: 3px;
+  box-shadow:
+    0 0 0 var(--kbdnav-halo-w, 0) var(--kbdnav-halo, transparent),
+    0 0 30px 2px color-mix(in srgb, var(--kbdnav-ring) 55%, transparent);
+}
+
+/* A full-bleed item cannot have its ring drawn outside the viewport. */
+[data-kbdnav-item]:is(header, nav, footer, section):focus-visible,
+[data-kbdnav-item][data-kbdnav-on]:is(header, nav, footer, section) {
+  outline-offset: -3px;
+}
+
+/* A highlighted item must not be clipped by a parent that hides overflow. */
+:has(> [data-kbdnav-item][data-kbdnav-on]),
+:has(> [data-kbdnav-item]:focus-visible) {
+  overflow: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-kbdnav-item] {
+    scroll-behavior: auto;
   }
 }

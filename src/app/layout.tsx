@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
+import Analytics from '@/components/layout/Analytics';
 import { JetBrains_Mono, Schibsted_Grotesk, Hanken_Grotesk } from 'next/font/google';
 import ClientShell, { ClientExtras } from '@/components/layout/ClientShell';
 import './globals.css';
+import SectionKeyboardNav from '@/components/layout/SectionKeyboardNav';
 
 // Mono — kept only as a structural accent: wordmark, // labels, captions.
 const jetbrains = JetBrains_Mono({
@@ -198,18 +199,6 @@ export default function RootLayout({
       className={`${jetbrains.variable} ${schibsted.variable} ${hanken.variable}`}
     >
       <head>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-9D1W0XLS34"
-          strategy="lazyOnload"
-        />
-        <Script id="gtag-init" strategy="lazyOnload">
-          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-9D1W0XLS34');${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID ? `gtag('config','${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID}');` : ''}`}
-        </Script>
-        {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
-          <Script id="meta-pixel" strategy="lazyOnload">
-            {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${process.env.NEXT_PUBLIC_META_PIXEL_ID}');fbq('track','PageView');`}
-          </Script>
-        )}
         <link
           rel="alternate"
           type="application/rss+xml"
@@ -239,6 +228,15 @@ export default function RootLayout({
         <a href="#main" className="skip-link">
           Skip to main content
         </a>
+        <SectionKeyboardNav />
+        {/* Loads only when the visitor's browser has not sent a Do Not Track /
+            Global Privacy Control signal. That replaced the cookie banner —
+            see /privacy. Ads and Meta stay off unless a campaign is running. */}
+        <Analytics
+          gaId="G-9D1W0XLS34"
+          adsId={process.env.NEXT_PUBLIC_GOOGLE_ADS_ID}
+          metaPixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID}
+        />
         <ClientShell>
           {children}
         </ClientShell>
