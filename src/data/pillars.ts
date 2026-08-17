@@ -3,24 +3,13 @@
    Google autocomplete harvested for that cluster. Single source of truth
    for the pillar pages and the homepage QuestionsSection.
 
-   Prices are Tom's real, honest ranges by business size (raised 2026-08-03):
-   simple ≈ $500 + $10/mo · service-based ≈ $1,000 + $20/mo · larger consumer & B2B ≈ $2k–$3k.
-   Current/intro pricing, roughly accurate, will rise. Invent nothing beyond these. */
+   Pricing on the site (Tom, 2026-08-17): NO tier tables — tiers are retired.
+   The only published numbers are the umbrella ranges: $500–$3,000 to build and
+   $20–$100/mo to run, depending on scale. Invent nothing beyond these. */
 
 export interface PillarBand {
   readonly title: string;
   readonly body: string;
-}
-
-/** Optional pricing tiers (used by the cost pillar). Rough, honest ranges. */
-export interface PillarTier {
-  readonly label: string;
-  readonly who: string;
-  readonly build: string;
-  readonly monthly: string;
-  /** What you actually get at this price — the concrete inclusions. */
-  readonly includes: readonly string[];
-  readonly note: string;
 }
 
 /** One honest way to build a site yourself (used by the diy-or-hire pillar). */
@@ -73,10 +62,6 @@ export interface Pillar {
   readonly bands: readonly PillarBand[];
   /** Matches a blog tag — drives the Related reading list. */
   readonly tag: string;
-  /** Optional honest price tiers, shown as scannable cards (cost pillar only). */
-  readonly tiers?: readonly PillarTier[];
-  /** Optional honest note under the tiers. */
-  readonly tiersNote?: string;
   /** Optional intro line above the build-it-yourself paths. */
   readonly buildPathsLead?: string;
   /** Optional honest ways to build it yourself (diy-or-hire pillar). */
@@ -103,53 +88,11 @@ export const PILLARS: readonly Pillar[] = [
       'website cost per month vs one-time',
       'what does website maintenance cost',
     ],
-    lead: 'The scope of your site sets the price, so here are real ranges by the kind of business you run.',
-    tiers: [
-      {
-        label: 'Simple and steady',
-        who: 'Solo owner up to about five people. One clear offer that rarely changes.',
-        build: '$500',
-        monthly: '$10/mo',
-        includes: [
-          'A few professional photos',
-          'Edit your own words and prices anytime',
-          'Hosted, fast, and reliable',
-          'Wired to your Google Business Profile',
-        ],
-        note: 'A professional front without a bill that haunts you.',
-      },
-      {
-        label: 'Service-based',
-        who: 'More to connect, and content that changes here and there. Around ten people.',
-        build: '~$1,000',
-        monthly: '~$20/mo',
-        includes: [
-          'Everything above',
-          'More pages for the services you run',
-          'Connections like booking, forms, or a calendar',
-          'Change it as often as the work does',
-        ],
-        note: 'Room to grow and adjust as the work changes.',
-      },
-      {
-        label: 'Larger consumer & B2B',
-        who: 'Larger, heavy traffic, plenty of moving parts.',
-        build: '$2k–$3k',
-        monthly: 'scales with it',
-        includes: [
-          'Everything above',
-          'Built to handle heavy traffic',
-          'The custom features it needs to run',
-        ],
-        note: 'Built to carry real volume.',
-      },
-    ],
-    tiersNote:
-      "These are today's numbers. I'm early and priced that way, and they will rise. Roughly accurate right now, and I will tell you where you land before you spend an hour on a call.",
+    lead: 'The scope of your site sets the price: a build runs between $500 and $3,000, with a monthly between $20 and $100 to run it, depending on the scale of your business and what it needs.',
     bands: [
       {
         title: 'One-time versus monthly',
-        body: 'Two different bills, and mixing them up is where sticker shock comes from. You pay once to design and build. You pay a little every month to keep it online and looked after, small edits like new hours or a swapped photo included. The ranges above scale to how big and how busy your site has to be.',
+        body: 'Two different bills, and mixing them up is where sticker shock comes from. You pay once to design and build. You pay a little every month to keep it online and looked after, small edits like new hours or a swapped photo included. Where you land in those ranges comes down to how big and how busy your site has to be.',
       },
       {
         title: 'Why a free builder costs more later',
@@ -163,7 +106,7 @@ export const PILLARS: readonly Pillar[] = [
     tag: 'Before You Buy',
     metaTitle: 'What a Small Business Website Really Costs',
     metaDescription:
-      'Honest price ranges by business size, one-time build versus monthly upkeep, and why a good designer tells you the number up front. From a designer who quotes real figures.',
+      'A small business website runs $500 to $3,000 to build, plus $20 to $100 a month to run, depending on scale. What moves the number, and how a fair quote works.',
   },
   {
     slug: 'diy-or-hire',
