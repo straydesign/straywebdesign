@@ -102,6 +102,10 @@ export const PILLARS: readonly Pillar[] = [
         title: 'How pricing should work',
         body: 'Any web designer should work with you on price, and say the number early. If someone hides it until you have sat through a pitch, that is the answer. Tell me the size of your business and what you expect, and you will have the range that same day, before you have given me an hour of your time.',
       },
+      {
+        title: 'The Stray Success Guarantee',
+        body: 'Ninety days after your site goes live, you decide whether it worked. Say no and every dollar comes back, same day or the next one. There is no form to fill in and no call where I try to talk you out of it. I would rather hand the money back than keep a client who is unhappy with what I made. Either more people are calling you, or the money is back in your pocket.',
+      },
     ],
     tag: 'Before You Buy',
     metaTitle: 'What a Small Business Website Really Costs',
