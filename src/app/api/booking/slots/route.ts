@@ -69,9 +69,13 @@ async function fetchBookedSlots(dateStr: string): Promise<Set<string> | null> {
   const baseUrl = crmUrl.replace('/api/leads/inbound', '');
 
   try {
+    // Not cached. A 30s revalidate window used to sit here, which meant a slot
+    // taken seconds ago still rendered as free and the booker only found out
+    // when the submit came back 409. At a handful of bookings a month the cache
+    // saved nothing worth that.
     const response = await fetch(`${baseUrl}/api/bookings?date=${dateStr}`, {
       headers: { 'Content-Type': 'application/json' },
-      next: { revalidate: 30 },
+      cache: 'no-store',
     });
 
     if (!response.ok) return null;
