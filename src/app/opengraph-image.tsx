@@ -17,7 +17,7 @@ export default async function OGImage() {
           display: 'flex',
           flexDirection: 'column',
           backgroundColor: '#0A0A0A',
-          padding: '80px 72px',
+          padding: '80px 60px',
           position: 'relative',
         }}
       >
@@ -106,19 +106,22 @@ export default async function OGImage() {
             stray<span style={{ color: '#3B82F6' }}>web</span>design
           </div>
 
-          <div style={{ display: 'flex', gap: '12px' }}>
+          <div style={{ display: 'flex', gap: '8px', flexShrink: 1, minWidth: 0 }}>
             {['Built From Scratch', 'Hosted & Managed', 'Direct Line to Tom'].map((chip) => (
               <div
                 key={chip}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  padding: '10px 18px',
-                  fontSize: '15px',
+                  padding: '8px 14px',
+                  fontSize: '14px',
                   fontWeight: 600,
                   color: '#E4E4E7',
                   border: '1px solid #27272A',
                   backgroundColor: '#111113',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
                 }}
               >
                 {chip}
