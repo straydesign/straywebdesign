@@ -84,6 +84,48 @@ export function generateSlotsForDate(dateStr: string): TimeSlot[] {
 }
 
 /**
+ * Reduce any time we might find in the CRM to a single 24-hour `HH:MM` key.
+ *
+ * The booking wizard sends the display label ("2:30 PM") as the time, so that
+ * is what the column usually holds — but the column is a plain string and
+ * anything that POSTs to /api/booking can put a 24-hour value in it instead.
+ * When that happened, the slot list compared "2:30 PM" against "14:30", found
+ * no match, and showed a taken slot as free. The booker only discovered it at
+ * submit, when the CRM refused with a 409.
+ *
+ * Comparing on a canonical key rather than on the stored string means the slot
+ * list is right whichever format wrote the row.
+ *
+ * Returns null for anything unparseable, which the caller treats as "does not
+ * block a slot" — a garbage row should not silently take a slot off the board.
+ */
+export function toTime24(value: string): string | null {
+  const trimmed = value.trim();
+
+  const twelve = /^(\d{1,2}):(\d{2})\s*([AaPp])\.?[Mm]\.?$/.exec(trimmed);
+  if (twelve) {
+    const [, h, m, meridiem] = twelve;
+    let hour = parseInt(h, 10);
+    if (hour < 1 || hour > 12) return null;
+    const isPm = meridiem.toLowerCase() === 'p';
+    if (hour === 12) hour = 0;
+    if (isPm) hour += 12;
+    return `${hour.toString().padStart(2, '0')}:${m}`;
+  }
+
+  const twentyFour = /^(\d{1,2}):(\d{2})$/.exec(trimmed);
+  if (twentyFour) {
+    const [, h, m] = twentyFour;
+    const hour = parseInt(h, 10);
+    const minute = parseInt(m, 10);
+    if (hour > 23 || minute > 59) return null;
+    return `${hour.toString().padStart(2, '0')}:${m}`;
+  }
+
+  return null;
+}
+
+/**
  * Check if a date string (YYYY-MM-DD) is a weekday within the booking window.
  */
 export function isBookableDate(dateStr: string): boolean {

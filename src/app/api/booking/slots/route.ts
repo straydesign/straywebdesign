@@ -1,5 +1,10 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { generateSlotsForDate, isBookableDate, type TimeSlot } from '@/lib/booking';
+import {
+  generateSlotsForDate,
+  isBookableDate,
+  toTime24,
+  type TimeSlot,
+} from '@/lib/booking';
 
 /**
  * GET /api/booking/slots?date=2026-04-01
@@ -44,7 +49,7 @@ export async function GET(request: NextRequest) {
   const slots: TimeSlot[] = allSlots.map((slot) => {
     const slotTime = new Date(slot.iso);
     const isPast = dateStr === todayStr && slotTime <= now;
-    const isBooked = bookedTimes.has(slot.label);
+    const isBooked = bookedTimes.has(toTime24(slot.label) ?? slot.label);
 
     return {
       ...slot,
@@ -83,11 +88,13 @@ async function fetchBookedSlots(dateStr: string): Promise<Set<string> | null> {
     const data = await response.json();
     if (!Array.isArray(data.bookings)) return null;
 
+    // Keyed on the canonical 24-hour form, not on whatever string happens to
+    // be in the column. See toTime24 in lib/booking for why.
     const bookedTimes = new Set<string>();
     for (const booking of data.bookings) {
-      if (typeof booking.time === 'string') {
-        bookedTimes.add(booking.time);
-      }
+      if (typeof booking.time !== 'string') continue;
+      const key = toTime24(booking.time);
+      if (key) bookedTimes.add(key);
     }
 
     return bookedTimes;
