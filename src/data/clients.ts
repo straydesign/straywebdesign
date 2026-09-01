@@ -155,4 +155,39 @@ export const PROJECTS: Project[] = [
         'The shop edits stock and pricing through an on-site editor, and photo updates go through a review queue. I run the hosting and the product data pipeline.',
     },
   },
+  {
+    name: 'Presque Isle Fish & Farm',
+    slug: 'presque-isle-fish-and-farm',
+    type: 'Fish market, kitchen & farm counter',
+    vertical: 'Shops & specialty retail',
+    place: 'Erie, PA',
+    description:
+      'A family-owned fish market on W 8th St, where the owner catches the Lake Erie half of the counter himself. The site puts every counter online — lake fish, ocean and Gulf, shellfish, the kitchen and the farm — and hands him the controls to keep it current.',
+    url: 'https://presqueislefishandfarm.com',
+    displayUrl: 'presqueislefishandfarm.com',
+    shot: '/images/work/presque-isle.png',
+    phoneShot: '/images/work/phone/presque-isle.png',
+    stack: ['Next.js', 'Owner dashboard', 'Documented brand system', 'Wholesale enquiries'],
+    palette: [
+      { label: 'compass red', hex: '#9f2b34' },
+      { label: 'counter ink', hex: '#1d2126' },
+      { label: 'crushed ice', hex: '#f2f6fa' },
+      { label: 'paper', hex: '#ffffff' },
+    ],
+    typefaces: ['Schibsted Grotesk', 'Albert Sans'],
+    dive: 'The red is sampled straight off their own compass-rose logo, and it is the only accent on the page. Everything else is white and an ice-cool grey, because the case really does run on crushed ice.',
+    caseStudy: {
+      intro:
+        'Presque Isle Fish & Farm sells fresh fish on W 8th St in Erie, and the thing that makes the shop worth driving to is hard to put on a sign: the Captain fishes Lake Erie himself, so while the lake is fishing, the local half of the counter is his own catch. The site had to carry that without turning it into a slogan.',
+      built: [
+        'Every counter has its own place on the page — the Lake Erie case with perch, walleye and whitefish, then ocean and Gulf, then shellfish, then the kitchen and the farm. Somebody deciding what to cook can see the whole shop in one scroll.',
+        'A wholesale page handles the restaurant side, which is a different buyer asking different questions than the person picking up dinner.',
+        'The shop has its own dashboard, so stock and prices change when the catch does rather than when I get to it.',
+      ],
+      design:
+        'One red, sampled from their compass-rose logo, doing every job an accent does; white and an ice-cool grey for everything else, because the material the shop actually runs on is crushed ice. The whole system is written down on its own page, so the next person to touch it inherits the reasoning and not just the hex codes.',
+      runs:
+        'The shop updates its own counters through the dashboard. I run the hosting, and I am the phone call when something needs changing.',
+    },
+  },
 ];
