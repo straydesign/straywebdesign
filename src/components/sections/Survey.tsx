@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import AnimateIn from '@/components/ui/AnimateIn';
-import { SITE } from '@/lib/constants';
+import { PHONE_SMS, PHONE_TEL, SITE } from '@/lib/constants';
 import { getUtmParams } from '@/hooks/useUtmParams';
 
 /**
@@ -370,10 +370,17 @@ export default function Survey() {
           <p className="mt-6 text-center font-body text-sm text-ink-dark-secondary">
             Would rather just talk?{' '}
             <a
-              href={`tel:${SITE.phone.replace(/\D/g, '')}`}
+              href={PHONE_TEL}
               className="font-semibold text-ink-dark-primary underline underline-offset-4 hover:text-accent"
             >
               {SITE.phone}
+            </a>
+            {' · '}
+            <a
+              href={PHONE_SMS}
+              className="underline underline-offset-4 hover:text-ink-dark-primary"
+            >
+              text it
             </a>
             {' · '}
             <Link

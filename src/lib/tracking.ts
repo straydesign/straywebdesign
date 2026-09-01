@@ -55,8 +55,8 @@ export function trackLeadConversion(data: ConversionData = {}) {
 
 /**
  * Delegated contact-intent click tracking. One document-level listener
- * classifies every anchor click: tel: → phone_click, mailto: → email_click,
- * a live client site → client_site_click. These are the site's real
+ * classifies every anchor click: tel: → phone_click, sms: → text_click,
+ * mailto: → email_click, a live client site → client_site_click. These are the site's real
  * conversion signals (calls, emails, proof engagement) — GA4 otherwise only
  * sees pageviews.
  *
@@ -75,6 +75,8 @@ export function trackContactClicks(): () => void {
 
     if (href.startsWith('tel:')) {
       window.gtag('event', 'phone_click', { section });
+    } else if (href.startsWith('sms:')) {
+      window.gtag('event', 'text_click', { section });
     } else if (href.startsWith('mailto:')) {
       window.gtag('event', 'email_click', { section });
     } else if (CLIENT_HOSTS.some((h) => href.includes(h))) {

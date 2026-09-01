@@ -3,7 +3,7 @@ import Link from 'next/link';
 import LandingPageHeader from '@/components/layout/LandingPageHeader';
 import Footer from '@/components/layout/Footer';
 import ConversionPixel from '@/components/ui/ConversionPixel';
-import { SITE } from '@/lib/constants';
+import { PHONE_SMS, PHONE_TEL, SITE } from '@/lib/constants';
 
 /**
  * The page after the survey. Most sites waste this one on a checkmark.
@@ -110,10 +110,16 @@ export default function ThankYou() {
                 Pick a time
               </Link>
               <a
-                href={`tel:${SITE.phone.replace(/\D/g, '')}`}
+                href={PHONE_TEL}
                 className="font-display text-lg font-bold text-text-primary transition-colors hover:text-accent"
               >
                 {SITE.phone}
+              </a>
+              <a
+                href={PHONE_SMS}
+                className="font-mono text-[13px] text-text-tertiary underline underline-offset-4 transition-colors hover:text-accent"
+              >
+                or text me
               </a>
             </div>
           </div>

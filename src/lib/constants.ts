@@ -28,6 +28,22 @@ export const SITE = {
 } as const;
 
 /**
+ * The two ways to reach the phone, derived once so no caller re-assembles the
+ * country code by hand.
+ *
+ * `sms:` opens the visitor's own messaging app on a new thread to this number.
+ * It goes straight to Tom's phone — nothing sits in between, so a text arrives
+ * the same way a friend's does and he answers from his own number.
+ *
+ * No prefilled body. iOS and Android disagree about the separator (`&body=`
+ * versus `?body=`) and getting it wrong on one of them opens an empty compose
+ * window with the number missing, which is worse than no prefill at all.
+ */
+const PHONE_DIGITS = SITE.phone.replace(/\D/g, '');
+export const PHONE_TEL = `tel:+1${PHONE_DIGITS}`;
+export const PHONE_SMS = `sms:+1${PHONE_DIGITS}`;
+
+/**
  * The intro video. `src` empty means the Vsl section renders nothing at all —
  * see the note in components/sections/Vsl.tsx. Put the file in public/video/,
  * a poster frame beside it, and fill both fields in.

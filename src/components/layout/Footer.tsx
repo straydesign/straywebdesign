@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { SITE } from '@/lib/constants';
+import { PHONE_SMS, PHONE_TEL, SITE } from '@/lib/constants';
 import StrayLogo from '@/components/ui/StrayLogo';
 
 /**
@@ -33,10 +33,16 @@ export default function Footer() {
 
           <div className="flex flex-col gap-2">
             <a
-              href={`tel:${SITE.phone.replace(/\D/g, '')}`}
+              href={PHONE_TEL}
               className="font-display text-lg font-bold text-text-primary transition-colors hover:text-accent"
             >
               {SITE.phone}
+            </a>
+            <a
+              href={PHONE_SMS}
+              className="font-body text-sm text-text-secondary underline underline-offset-4 transition-colors hover:text-text-primary"
+            >
+              Text me
             </a>
             <a
               href={`mailto:${SITE.email}`}

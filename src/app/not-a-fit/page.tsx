@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import LandingPageHeader from '@/components/layout/LandingPageHeader';
 import Footer from '@/components/layout/Footer';
-import { SITE } from '@/lib/constants';
+import { PHONE_SMS, PHONE_TEL, SITE } from '@/lib/constants';
 
 /**
  * The disqualification page. Reached only from the first survey question, and
@@ -65,13 +65,19 @@ export default function NotAFit() {
           </ul>
 
           <p className="mt-12 font-body text-[15px] leading-relaxed text-text-tertiary">
-            If I have read that wrong and this is a business, call me and tell
-            me so —{' '}
+            If I have read that wrong and this is a business, tell me so —{' '}
             <a
-              href={`tel:${SITE.phone.replace(/\D/g, '')}`}
+              href={PHONE_TEL}
               className="font-semibold text-text-primary underline underline-offset-4 hover:text-accent"
             >
               {SITE.phone}
+            </a>
+            {', or '}
+            <a
+              href={PHONE_SMS}
+              className="font-semibold text-text-primary underline underline-offset-4 hover:text-accent"
+            >
+              text it
             </a>
             .
           </p>

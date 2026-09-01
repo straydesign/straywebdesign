@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import AnimateIn from '@/components/ui/AnimateIn';
 import Vsl from '@/components/sections/Vsl';
-import { SITE } from '@/lib/constants';
+import { PHONE_SMS, PHONE_TEL, SITE } from '@/lib/constants';
 
 /**
  * Hero — the headline states the result, not the thing being sold. "A website
@@ -45,12 +45,26 @@ export default function Hero() {
             >
               Start with a few questions
             </Link>
-            <a
-              href={`tel:${SITE.phone.replace(/\D/g, '')}`}
-              className="font-display text-lg font-bold text-text-primary transition-colors hover:text-accent"
-            >
-              {SITE.phone}
-            </a>
+            {/* Call and text sit side by side because plenty of people will
+                not ring a stranger but will send four words. The number is the
+                weight; texting is the low-effort door next to it. */}
+            <div className="flex flex-col gap-1">
+              <a
+                href={PHONE_TEL}
+                className="font-display text-lg font-bold text-text-primary transition-colors hover:text-accent"
+              >
+                {SITE.phone}
+              </a>
+              {/* min-h-11 is the 44px touch target; the negative margin takes
+                  the extra height back out of the layout so the line still sits
+                  tight under the number. */}
+              <a
+                href={PHONE_SMS}
+                className="-my-2.5 inline-flex min-h-11 w-fit items-center font-mono text-[13px] text-text-tertiary underline underline-offset-4 transition-colors hover:text-accent"
+              >
+                or text me
+              </a>
+            </div>
           </div>
         </AnimateIn>
       </div>
