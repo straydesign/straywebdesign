@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import Link from 'next/link';
 import { ArrowLeft, ArrowRight, Calendar, Clock, MessageSquare } from 'lucide-react';
 import AnimateIn from '@/components/ui/AnimateIn';
 import GradientText from '@/components/ui/GradientText';
@@ -14,13 +15,13 @@ export default function BookingForm() {
       {/* Back link */}
       <div className="relative z-10 mx-auto max-w-7xl px-5 pt-28 md:px-8">
         <AnimateIn>
-          <a
+          <Link
             href="/"
             className="inline-flex items-center gap-2 font-body text-sm text-text-tertiary transition-colors hover:text-text-primary"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to home
-          </a>
+          </Link>
         </AnimateIn>
       </div>
 

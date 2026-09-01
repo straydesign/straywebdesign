@@ -109,7 +109,7 @@ export default async function PillarPage({
 
         {/* ── Honest-answer bands: dark, mirrors the question map ── */}
         <section
-          className="bg-[#101216] py-16 md:py-24"
+          className="bg-surface-dark py-16 md:py-24"
           aria-label="The honest answer"
         >
           <div className="mx-auto max-w-4xl px-5 md:px-8">
@@ -136,10 +136,10 @@ export default async function PillarPage({
                       />
                       {`0${i + 1}`}
                     </span>
-                    <h2 className="mt-4 font-display text-xl font-semibold tracking-tight text-[#F4F5F7] md:text-2xl">
+                    <h2 className="mt-4 font-display text-xl font-semibold tracking-tight text-ink-dark-primary md:text-2xl">
                       {band.title}
                     </h2>
-                    <p className="mt-3 max-w-2xl font-body text-[15px] leading-relaxed text-[#c4c8d0] md:text-base">
+                    <p className="mt-3 max-w-2xl font-body text-[15px] leading-relaxed text-ink-dark-secondary md:text-base">
                       {band.body}
                     </p>
                   </div>
@@ -150,14 +150,14 @@ export default async function PillarPage({
             {/* the real searches this page answers */}
             <AnimateIn delay={0.1}>
               <div className="mt-12 border-t border-white/10 pt-8">
-                <p className="font-mono text-[12px] text-[#8A8F98]">
+                <p className="font-mono text-[12px] text-ink-dark-tertiary">
                   These are the searches this page is here to answer.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2.5">
                   {pillar.queries.map((q) => (
                     <span
                       key={q}
-                      className="rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-2 font-body text-[13px] text-[#cfd3da]"
+                      className="rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-2 font-body text-[13px] text-ink-dark-secondary"
                     >
                       {q}
                     </span>

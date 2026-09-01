@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { CheckCircle, ArrowLeft, Phone } from 'lucide-react';
 import { formatDateDisplay } from '@/lib/booking';
 
@@ -89,13 +90,13 @@ export default function BookingConfirmation({
         </ul>
       </div>
 
-      <a
+      <Link
         href="/"
         className="mt-8 inline-flex items-center gap-2 font-body text-sm text-accent transition-colors hover:text-accent/80"
       >
         <ArrowLeft className="h-4 w-4" />
         Back to home
-      </a>
+      </Link>
     </div>
   );
 }

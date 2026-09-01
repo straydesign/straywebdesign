@@ -33,13 +33,13 @@ export default function ArticleLayout({ meta, children, jsonLd, relatedPosts = [
         <article className="mx-auto max-w-3xl px-5 md:px-8">
           <AnimateIn>
             <Breadcrumbs items={breadcrumbs} />
-            <a
+            <Link
               href="/resources"
               className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-text-secondary transition-colors hover:text-text-primary"
             >
               <ArrowLeft className="h-4 w-4" />
               Back to Writing
-            </a>
+            </Link>
 
             <div className="flex items-center gap-3">
               <span className="bg-accent/10 px-3 py-1 text-xs font-medium text-accent">

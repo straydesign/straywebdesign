@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback, type FormEvent } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Send, AlertTriangle, Monitor, Wrench, ShieldCheck } from 'lucide-react';
 import AnimateIn from '@/components/ui/AnimateIn';
@@ -280,9 +281,9 @@ export default function CallLandingForm() {
                 <p className="mt-4 text-center font-body text-xs text-text-tertiary">
                   We won&apos;t call you, we won&apos;t add you to a list.
                   Just a 15-minute call from a local web team.{' '}
-                  <a href="/privacy" className="underline transition-colors hover:text-text-secondary">
+                  <Link href="/privacy" className="underline transition-colors hover:text-text-secondary">
                     Privacy Policy
-                  </a>
+                  </Link>
                 </p>
               </form>
           </AnimateIn>

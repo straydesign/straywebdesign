@@ -18,13 +18,13 @@ export default function QuestionsSection() {
     >
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <AnimateIn>
-          <p className="font-mono text-[12px] tracking-wide text-[#6b7280]">
+          <p className="font-mono text-[12px] tracking-wide text-text-tertiary">
             The six questions this whole site answers
           </p>
-          <h2 className="mt-3 max-w-2xl font-display text-[clamp(1.7rem,3.6vw,2.6rem)] font-bold leading-[1.08] tracking-tight text-[#0e1013]">
+          <h2 className="mt-3 max-w-2xl font-display text-[clamp(1.7rem,3.6vw,2.6rem)] font-bold leading-[1.08] tracking-tight text-text-primary">
             What are you actually trying to figure out?
           </h2>
-          <p className="mt-4 max-w-xl font-body text-[15px] leading-relaxed text-[#5b6069] md:text-base">
+          <p className="mt-4 max-w-xl font-body text-[15px] leading-relaxed text-text-tertiary md:text-base">
             Six questions people ask me before they ever hire anyone. Each one
             has a straight answer, and none of them is a pitch.
           </p>
@@ -53,10 +53,10 @@ export default function QuestionsSection() {
                     {pillar.nav}
                   </span>
                 </span>
-                <p className="mt-3 flex-1 font-body text-[13px] leading-snug text-[#2b3037] md:mt-3.5 md:text-[15px]">
+                <p className="mt-3 flex-1 font-body text-[13px] leading-snug text-text-secondary md:mt-3.5 md:text-[15px]">
                   {pillar.question}
                 </p>
-                <span className="mt-4 inline-flex items-center gap-1.5 font-mono text-[11px] text-[#6b7079] transition-colors group-hover:text-[#3a3f47] md:mt-5 md:text-[12px]">
+                <span className="mt-4 inline-flex items-center gap-1.5 font-mono text-[11px] text-text-tertiary transition-colors group-hover:text-text-secondary md:mt-5 md:text-[12px]">
                   /{pillar.slug}
                   <span
                     aria-hidden
