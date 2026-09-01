@@ -28,6 +28,15 @@ export async function GET(request: NextRequest) {
   // Fetch existing bookings from CRM to exclude booked slots
   const bookedTimes = await fetchBookedSlots(dateStr);
 
+  // Null means the lookup failed. Showing every slot as free in that case is
+  // how this page double-booked silently for four months — say so instead.
+  if (bookedTimes === null) {
+    return NextResponse.json(
+      { error: "Couldn't load available times. Try again in a moment." },
+      { status: 503 }
+    );
+  }
+
   // Filter out past slots if the date is today
   const now = new Date();
   const todayStr = now.toISOString().split('T')[0];
@@ -48,40 +57,37 @@ export async function GET(request: NextRequest) {
 
 /**
  * Fetch booked slots from the CRM for a given date.
- * Returns a Set of time labels that are already booked.
+ *
+ * Returns a Set of taken time labels, or `null` if the CRM couldn't be reached.
+ * The distinction matters: this function used to return an empty Set on every
+ * failure, which reads as "nothing is booked". The CRM had no /api/bookings
+ * route at all, so it redirected to /login, the catch fired every time, and
+ * every slot showed as available from April to August.
  */
-async function fetchBookedSlots(dateStr: string): Promise<Set<string>> {
+async function fetchBookedSlots(dateStr: string): Promise<Set<string> | null> {
   const crmUrl = process.env.NEXT_PUBLIC_CRM_INBOUND_URL || 'https://stray-crm.vercel.app';
   const baseUrl = crmUrl.replace('/api/leads/inbound', '');
 
   try {
-    const response = await fetch(
-      `${baseUrl}/api/bookings?date=${dateStr}`,
-      {
-        headers: { 'Content-Type': 'application/json' },
-        next: { revalidate: 30 }, // Cache for 30 seconds
-      }
-    );
+    const response = await fetch(`${baseUrl}/api/bookings?date=${dateStr}`, {
+      headers: { 'Content-Type': 'application/json' },
+      next: { revalidate: 30 },
+    });
 
-    if (!response.ok) {
-      // If CRM doesn't have a bookings endpoint yet, return empty set
-      return new Set<string>();
-    }
+    if (!response.ok) return null;
 
     const data = await response.json();
-    const bookedTimes = new Set<string>();
+    if (!Array.isArray(data.bookings)) return null;
 
-    if (Array.isArray(data.bookings)) {
-      for (const booking of data.bookings) {
-        if (typeof booking.time === 'string') {
-          bookedTimes.add(booking.time);
-        }
+    const bookedTimes = new Set<string>();
+    for (const booking of data.bookings) {
+      if (typeof booking.time === 'string') {
+        bookedTimes.add(booking.time);
       }
     }
 
     return bookedTimes;
   } catch {
-    // CRM unavailable — treat all slots as available
-    return new Set<string>();
+    return null;
   }
 }

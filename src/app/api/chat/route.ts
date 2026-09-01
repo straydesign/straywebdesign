@@ -54,32 +54,14 @@ async function sendTranscript(
   ip: string,
   hasContactInfo: boolean,
 ): Promise<void> {
-  const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? '';
   const { email, phone } = extractContactInfo(messages);
   const transcript = formatTranscript(messages);
   const userMsgCount = messages.filter((m) => m.role === 'user').length;
 
-  const subjectPrefix = hasContactInfo ? 'LEAD' : 'Chat';
-  const subject = `${subjectPrefix}: ${email || phone || `Anonymous (${userMsgCount} msgs)`}`;
-
+  // The web3forms notification that used to live here returned 403 on every
+  // call — it rejects server-side requests on the free plan, so no chat lead
+  // ever reached Tom by email. The CRM sends it now, off the transcript below.
   const sends: Promise<unknown>[] = [
-    // web3forms backup
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        access_key: WEB3FORMS_KEY,
-        from_name: 'straywebdesign.co — Chat Transcript',
-        subject,
-        email: email || 'chat-transcript@straywebdesign.co',
-        phone: phone || '',
-        source: 'Chat Widget',
-        ip_address: ip,
-        has_contact_info: hasContactInfo ? 'Yes' : 'No',
-        visitor_messages: String(userMsgCount),
-        message: `${hasContactInfo ? `CONTACT INFO DETECTED\nEmail: ${email || 'N/A'}\nPhone: ${phone || 'N/A'}\n\n` : ''}--- Full Transcript (${messages.length} messages) ---\n\n${transcript}`,
-      }),
-    }),
     // Send transcript to Stray CRM chat logs
     fetch('https://stray-crm.vercel.app/api/chat/transcript', {
       method: 'POST',

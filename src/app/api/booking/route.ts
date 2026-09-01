@@ -1,10 +1,17 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { isBookableDate, type BookingPayload } from '@/lib/booking';
-import { SITE } from '@/lib/constants';
 
 /**
  * POST /api/booking
- * Creates a booking: sends to CRM + web3forms backup.
+ *
+ * Hands the booking to the CRM, which stores the slot and sends both the
+ * confirmation and Tom's copy.
+ *
+ * There used to be a parallel web3forms call here as an email backup. It never
+ * worked: web3forms rejects server-side requests on the free plan with a 403,
+ * and because this handler only failed when *both* arms failed, the CRM arm
+ * masked it. No booking email reached Tom between April and August. Don't add
+ * it back — if it's ever wanted again it has to be called from the browser.
  */
 export async function POST(request: NextRequest) {
   const body: BookingPayload | null = await request.json().catch(() => null);
@@ -64,47 +71,40 @@ export async function POST(request: NextRequest) {
     ad_platform: body.ad_platform,
   };
 
-  // Build web3forms payload
-  const web3Payload = {
-    access_key: SITE.web3formsKey,
-    name: body.name,
-    email: body.email,
-    phone: body.phone || '',
-    business_name: body.company || '',
-    website: body.website || '',
-    booking_date: date,
-    booking_time: time || 'Not selected — needs follow-up',
-    from_name: 'straywebdesign.co',
-    subject: time
-      ? `New Booking: ${body.name} — ${time} on ${date}`
-      : `Contact Request: ${body.name} — needs scheduling`,
-  };
-
   const crmUrl =
     process.env.NEXT_PUBLIC_CRM_INBOUND_URL ||
     'https://stray-crm.vercel.app/api/leads/inbound';
 
-  // Send to both CRM and web3forms in parallel
-  const [crmRes, web3Res] = await Promise.allSettled([
-    fetch(crmUrl, {
+  let crmRes: Response;
+
+  try {
+    crmRes = await fetch(crmUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(crmPayload),
-    }),
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(web3Payload),
-    }),
-  ]);
-
-  const crmOk = crmRes.status === 'fulfilled' && crmRes.value.ok;
-  const web3Ok = web3Res.status === 'fulfilled' && web3Res.value.ok;
-
-  if (!crmOk && !web3Ok) {
+    });
+  } catch {
     return NextResponse.json(
-      { error: 'Failed to process booking. Please try again.' },
-      { status: 500 }
+      { error: "Couldn't reach the booking system. Try again, or call 814-964-0081." },
+      { status: 502 }
+    );
+  }
+
+  // Someone took the slot between this page loading and this request landing.
+  if (crmRes.status === 409) {
+    return NextResponse.json(
+      {
+        error: 'That time was just booked by someone else. Pick another one.',
+        code: 'slot_taken',
+      },
+      { status: 409 }
+    );
+  }
+
+  if (!crmRes.ok) {
+    return NextResponse.json(
+      { error: "Couldn't save the booking. Try again, or call 814-964-0081." },
+      { status: 502 }
     );
   }
 
