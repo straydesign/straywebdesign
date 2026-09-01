@@ -22,7 +22,7 @@ export const SERVICE_CARDS: readonly ServiceCard[] = [
     title: 'The basic build',
     featured: true,
     description:
-      "The most basic way to get a real website for your small business: I design and build it, then host and look after it for a small monthly. Small edits are included, things like new hours, a swapped photo, or an updated price. You send me what changed and it gets done, whether you're in Erie or three time zones away.",
+      "The most basic way to get a real website for your local business: I design and build it, then host and look after it for a small monthly. Small edits are included, things like new hours, a swapped photo, or an updated price. You send me what changed and it gets done, whether you're in Erie or three time zones away.",
     cta: { label: 'See what it costs', href: '/cost' },
   },
   {

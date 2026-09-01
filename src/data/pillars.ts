@@ -80,7 +80,7 @@ export const PILLARS: readonly Pillar[] = [
   {
     slug: 'cost',
     nav: 'What it costs',
-    question: 'What a small business website really costs',
+    question: 'What a local business website really costs',
     color: '#FFB224',
     colorInk: '#9c6500',
     queries: [
@@ -108,9 +108,9 @@ export const PILLARS: readonly Pillar[] = [
       },
     ],
     tag: 'Before You Buy',
-    metaTitle: 'What a Small Business Website Really Costs',
+    metaTitle: 'What a Local Business Website Really Costs',
     metaDescription:
-      'A small business website runs $500 to $3,000 to build, plus $20 to $100 a month to run, depending on scale. What moves the number, and how a fair quote works.',
+      'A local business website runs $500 to $3,000 to build, plus $20 to $100 a month to run, depending on scale. What moves the number, and how a fair quote works.',
   },
   {
     slug: 'diy-or-hire',
