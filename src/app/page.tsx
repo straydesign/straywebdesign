@@ -1,53 +1,42 @@
-import dynamic from 'next/dynamic';
-import Navbar from '@/components/layout/Navbar';
+import LandingPageHeader from '@/components/layout/LandingPageHeader';
 import Footer from '@/components/layout/Footer';
 import Hero from '@/components/sections/Hero';
-import QuestionsSection from '@/components/sections/QuestionsSection';
+import Survey from '@/components/sections/Survey';
+import Scarcity from '@/components/sections/Scarcity';
+import HowItWorks from '@/components/sections/HowItWorks';
+import Faq from '@/components/sections/Faq';
+import Proof from '@/components/sections/Proof';
 import About from '@/components/sections/About';
-import ProjectShowcase from '@/components/sections/ProjectShowcase';
 
-function SectionSkeleton() {
-  return (
-    <div className="section-padding" aria-hidden="true">
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <div className="max-w-2xl">
-          <div className="skeleton mb-4 h-4 w-24" />
-          <div className="skeleton h-10 w-3/4" />
-        </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          <div className="skeleton h-48" />
-          <div className="skeleton h-48" />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-const Services = dynamic(() => import('@/components/sections/Services'), {
-  loading: SectionSkeleton,
-});
-const FooterCTA = dynamic(() => import('@/components/sections/FooterCTA'), {
-  loading: SectionSkeleton,
-});
-const Faq = dynamic(() => import('@/components/sections/Faq'), {
-  loading: SectionSkeleton,
-});
-
-/* Single page, in Tom's order: honest intro up top → the work → contact on
-   the surface → the service squares at the bottom, FAQ under those. */
-
+/**
+ * One page, one action.
+ *
+ * The order is not the conventional one and that is deliberate. Two parts of
+ * it are load-bearing:
+ *
+ *  - The survey sits directly under the hero, not at the bottom. Somebody who
+ *    is convinced by the video should not have to scroll past four sections
+ *    hunting for the way in.
+ *  - The FAQ sits ABOVE the proof. Brandon Willington split-tested moving FAQs
+ *    up and it raised conversion close to every time he tried it, including on
+ *    pages where he was sure the testimonials were the stronger asset. Anybody
+ *    this far down is looking for a reason not to, and the answer has to reach
+ *    them before the reason does.
+ *
+ * There is no nav. Every nav item is an exit.
+ */
 export default function Home() {
   return (
     <>
-      <Navbar />
+      <LandingPageHeader />
       <main id="main">
         <Hero />
-        <QuestionsSection />
-        <About />
-        <ProjectShowcase />
-        <FooterCTA />
-        <Services />
+        <Survey />
+        <Scarcity />
+        <HowItWorks />
         <Faq />
+        <Proof />
+        <About />
       </main>
       <Footer />
     </>

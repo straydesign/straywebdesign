@@ -47,7 +47,7 @@ export default function BookingForm() {
                   <div>
                     <p className="font-body font-semibold text-text-primary">30-Minute Discovery Call</p>
                     <p className="font-body text-sm text-text-secondary">
-                      Quick, focused conversation about the business and what the site needs to do
+                      Quick, focused conversation about your business and what the site needs to do
                     </p>
                   </div>
                 </div>

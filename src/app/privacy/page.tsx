@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Navbar from '@/components/layout/Navbar';
+import LandingPageHeader from '@/components/layout/LandingPageHeader';
 import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
@@ -30,7 +30,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 export default function PrivacyPolicy() {
   return (
     <>
-      <Navbar />
+      <LandingPageHeader />
       <main id="main" className="min-h-[100dvh] bg-surface-page pt-28 pb-20">
         <article className="mx-auto max-w-3xl px-5 md:px-8">
           <span className="eyebrow mb-3">Legal</span>

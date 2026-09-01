@@ -10,34 +10,50 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     minimumCacheTTL: 60 * 60 * 24 * 365,
   },
-  // Old routes folded into the single page (2026-07). Blog posts still link
-  // to /services/* sub-paths, so the wildcard keeps those from 404ing.
+  /**
+   * September 2026: the site collapsed from 35 routes to four.
+   *
+   * Three months of Search Console said the other thirty-one earned 2 clicks
+   * between them, so there was no traffic to weigh against the cost of having
+   * them — and on a page whose only job is booking a call, every route is
+   * somewhere else to go. Everything retired redirects rather than 404s, so an
+   * old link or a printed QR still lands on the pitch.
+   *
+   * The four survivors are /, /book, /thank-you and /privacy. Root-level
+   * pillars have to be listed one by one: a catch-all at the root would
+   * swallow those three too.
+   */
   async redirects() {
+    const gone = (source: string) => ({ source, destination: '/', permanent: true });
+
     return [
-      { source: '/services', destination: '/#services', permanent: true },
-      { source: '/services/:path*', destination: '/#services', permanent: true },
-      { source: '/audit', destination: '/', permanent: true },
-      { source: '/lab', destination: '/', permanent: true },
-      { source: '/lab/:path*', destination: '/', permanent: true },
-      { source: '/lp/:path*', destination: '/', permanent: true },
-      // June-2026 purge left these indexed and 404ing — GSC still shows
-      // impressions on them (Erie-intent queries especially).
-      { source: '/locations/:path*', destination: '/', permanent: true },
-      { source: '/industries/:path*', destination: '/', permanent: true },
-      {
-        source:
-          '/resources/blog/:slug(ai-integration-small-business-website-2026|ai-ready-website-development-guide|ai-receptionist-for-small-business|ai-seo-optimization-how-to-show-up|content-migration-website-redesign|erie-digital-transformation-guide-2026|geo-optimization-generative-engine-service|local-seo-small-business-erie|seo-vs-geo-which-matters-more|structured-data-schema-markup-business|website-management-service-erie|wordpress-vs-nextjs-which-is-right)',
-        destination: '/resources',
-        permanent: true,
-      },
-      // July-2026 blog reset (Tom: replace the SEO-genre posts with idea
-      // essays) — retired slugs redirect to the writing index.
-      {
-        source:
-          '/resources/blog/:slug(best-bar-websites|custom-website-cost-vs-template-real-numbers|five-signs-you-need-a-website-redesign|one-time-payment-website-own-it-outright|popmenu-pricing-2026-bentobox-alternative|restaurant-website-cost|website-accessibility-wcag-compliance-guide|website-speed-optimization-guide-2026|what-to-look-for-in-a-web-designer)',
-        destination: '/resources',
-        permanent: true,
-      },
+      // The six pillar pages.
+      ...['cost', 'diy-or-hire', 'get-found', 'need-a-website', 'for-your-industry', 'get-customers'].map(
+        (slug) => gone(`/${slug}`)
+      ),
+
+      // Writing: index, 15 posts, 4 tag pages, and the feed.
+      gone('/resources'),
+      gone('/resources/:path*'),
+      gone('/feed.xml'),
+
+      // Case studies — the work still appears on the landing page, inline.
+      gone('/work'),
+      gone('/work/:path*'),
+
+      gone('/photography'),
+
+      // Retired earlier; kept because Search Console still shows impressions
+      // against them. The blog-slug lists these used to carry are covered by
+      // the /resources wildcard above now.
+      gone('/services'),
+      gone('/services/:path*'),
+      gone('/audit'),
+      gone('/lab'),
+      gone('/lab/:path*'),
+      gone('/lp/:path*'),
+      gone('/locations/:path*'),
+      gone('/industries/:path*'),
     ];
   },
 };

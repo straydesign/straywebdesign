@@ -1,117 +1,59 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
-import MacBookFrame from '@/components/ui/MacBookFrame';
+import AnimateIn from '@/components/ui/AnimateIn';
+import Vsl from '@/components/sections/Vsl';
 import { SITE } from '@/lib/constants';
-import { useClientEnv } from '@/lib/use-client-env';
 
-/* Hero — honest and forward: who I am, what I do, and the phone number +
-   email right on the surface. */
-
-function HeroBody() {
-  return (
-    <>
-      <span className="eyebrow mb-5">Freelance web designer</span>
-
-      <h1 className="text-balance font-display text-[clamp(2.2rem,5.4vw,4.1rem)] font-bold leading-[1.06] tracking-[-0.02em] text-text-primary">
-        Hi, I&apos;m Tom.
-        <br />
-        Before you pay anyone for a website,{' '}
-        <span className="text-accent">get the honest answers</span>.
-      </h1>
-
-      <div className="mt-6 max-w-xl">
-        <p className="font-body text-lg leading-relaxed text-text-secondary md:text-xl">
-          What it costs, whether you need one, why Google can&apos;t find you
-          &mdash; no sales pitch.
-        </p>
-
-        <div className="mt-7 flex flex-wrap items-center gap-x-7 gap-y-2">
-          <a
-            href="tel:+18149640081"
-            className="font-display text-lg font-bold text-text-primary transition-colors hover:text-accent md:text-xl"
-          >
-            {SITE.phone}
-          </a>
-          <a
-            href={`mailto:${SITE.email}`}
-            className="font-display text-lg font-bold text-text-primary transition-colors hover:text-accent md:text-xl"
-          >
-            {SITE.email}
-          </a>
-        </div>
-
-        <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
-          <Link
-            href="#questions"
-            className="inline-flex items-center justify-center bg-accent px-6 py-3.5 font-display text-base font-semibold text-white transition-colors hover:bg-accent/90 sm:px-9 sm:py-4.5 sm:text-lg"
-          >
-            See the questions
-          </Link>
-          <Link
-            href="#contact"
-            className="group inline-flex items-center gap-1.5 font-body text-base font-medium text-text-primary underline-offset-4 hover:underline"
-          >
-            Start a project
-            <span
-              aria-hidden
-              className="text-accent transition-transform duration-300 group-hover:translate-x-0.5"
-            >
-              →
-            </span>
-          </Link>
-        </div>
-      </div>
-    </>
-  );
-}
-
-function HeroDesktop() {
-  const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 0.3], [0, -60]);
-  const opacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
-
-  return (
-    <motion.div
-      className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-5 pt-28 pb-16 md:px-8 md:pt-36 md:pb-24 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16"
-      style={{ y, opacity }}
-    >
-      <div>
-        <HeroBody />
-      </div>
-      <div className="hidden lg:block">
-        <MacBookFrame
-          src="/images/work/andys.png"
-          alt="Andy's Ale House — a site I designed, built, host, and manage"
-          priority
-        />
-        <p className="mt-7 text-right font-mono text-[11px] text-text-tertiary">
-          <span aria-hidden className="text-accent/60">// </span>
-          live · andyspub.com
-        </p>
-      </div>
-    </motion.div>
-  );
-}
-
-function HeroMobile() {
-  return (
-    <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-28 pb-16">
-      <HeroBody />
-    </div>
-  );
-}
-
+/**
+ * Hero — the headline states the result, not the thing being sold. "A website
+ * with a product catalog" is a thing; somebody finding your item and driving
+ * over is a result, and it's the only reason anyone buys the thing.
+ *
+ * The video sits directly under it and carries the introduction, so the copy
+ * up here stays short. There is no nav above this — one message, one action.
+ */
 export default function Hero() {
-  const { mobile } = useClientEnv();
-
   return (
-    <section
-      className="relative flex min-h-[100dvh] items-center overflow-hidden bg-surface-page"
-      aria-label="Hero"
-    >
-      {mobile ? <HeroMobile /> : <HeroDesktop />}
+    <section className="border-b border-border-default bg-surface-page pt-16 pb-16 md:pt-24 md:pb-24">
+      <div className="mx-auto max-w-4xl px-5 md:px-8">
+        <AnimateIn>
+          <h1 className="text-balance font-display text-[clamp(2.2rem,5.6vw,4rem)] font-bold leading-[1.04] tracking-[-0.02em] text-text-primary">
+            Everything you sell,{' '}
+            <span className="text-accent">where people are already looking</span>.
+          </h1>
+
+          <p className="mt-6 max-w-xl font-body text-lg leading-relaxed text-text-secondary md:text-xl">
+            Somebody searches for a thing you sell. They find your item, see
+            you&apos;re two miles away, and drive over. That&apos;s the job.
+          </p>
+        </AnimateIn>
+
+        <AnimateIn delay={0.08}>
+          <div className="mt-10 md:mt-12">
+            <Vsl />
+          </div>
+        </AnimateIn>
+
+        <AnimateIn delay={0.14}>
+          {/* Reads as beginning something, not as handing over your details.
+              "Get in touch" is the version of this that doesn't work. */}
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <Link
+              href="#start"
+              className="inline-flex items-center justify-center bg-accent px-8 py-4 font-display text-base font-semibold text-white transition-colors hover:bg-accent/90 sm:px-10 sm:py-4.5 sm:text-lg"
+            >
+              Start with a few questions
+            </Link>
+            <a
+              href={`tel:${SITE.phone.replace(/\D/g, '')}`}
+              className="font-display text-lg font-bold text-text-primary transition-colors hover:text-accent"
+            >
+              {SITE.phone}
+            </a>
+          </div>
+        </AnimateIn>
+      </div>
     </section>
   );
 }

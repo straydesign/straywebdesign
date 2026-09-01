@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Navbar from '@/components/layout/Navbar';
+import LandingPageHeader from '@/components/layout/LandingPageHeader';
 import Footer from '@/components/layout/Footer';
 import BookingForm from '@/components/sections/BookingForm';
 
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default function BookPage() {
   return (
     <>
-      <Navbar />
+      <LandingPageHeader />
       <main id="main">
         <BookingForm />
       </main>

@@ -3,41 +3,12 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import AnimateIn from '@/components/ui/AnimateIn';
+import { FAQ_GROUPS, FAQ_ITEMS } from '@/data/faqs';
 
-/* Faq — the questions people actually ask before hiring a designer, answered
-   plainly in first person. Every claim here traces to real offers/prices.
-   FAQPage JSON-LD rides along for search and AI assistants. */
-
-const FAQ_ITEMS = [
-  {
-    q: 'How much does a website cost?',
-    a: 'It depends on the scale of your business and what the site needs to do. A build runs between $500 and $3,000, with a monthly between $20 and $100 that covers hosting with small edits included. Tell me what you run and you will have a real number the same day, so there is no quote dance.',
-  },
-  {
-    q: 'What does the monthly cover?',
-    a: 'Hosting and small edits. I keep the site fast and online, and when your hours change or a photo needs swapping, you send it over and I handle it. If your site ever looks the same next quarter, that should only mean nothing about your business changed.',
-  },
-  {
-    q: 'How long does it take?',
-    a: 'About a week once you send me your content and photos.',
-  },
-  {
-    q: 'Can my team update things without waiting on you?',
-    a: "When the site needs it, yes. Andy's Pub and Bullfrog both keep their own menus and daily specials current through a system I set up for them, events too, with no designer in the loop. For most sites the included small edits cover it, and bigger changes are billed by the hour.",
-  },
-  {
-    q: "What if I'm not in Erie?",
-    a: 'Everything works remotely: calls, screen shares, and the same hosting and edit service no matter where you are.',
-  },
-  {
-    q: 'Can it handle online ordering or bookings?',
-    a: "Yes. I've wired client sites into Square and PayPal for payments and ordering, and into content systems the team edits themselves. If your business runs on it, the site can talk to it.",
-  },
-  {
-    q: 'What happens to my current website?',
-    a: 'Nothing, until the new one is ready. I build your new site from scratch alongside it, we keep your domain and everything true about your business, and we switch over when you say go.',
-  },
-];
+/* Faq — twenty questions, grouped, sitting above the proof rather than at the
+   bottom of the page. Split tests on this format move FAQs up almost every
+   time: somebody this far down is looking for a reason not to, and the answer
+   has to reach them before the reason does. FAQPage JSON-LD rides along. */
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -94,7 +65,7 @@ export default function Faq() {
     <section
       id="faq"
       className="border-b border-border-default bg-surface-page py-20 md:py-28"
-      aria-label="FAQ"
+      aria-label="Questions"
     >
       <script
         type="application/ld+json"
@@ -102,18 +73,29 @@ export default function Faq() {
       />
       <div className="mx-auto max-w-4xl px-5 md:px-8">
         <AnimateIn>
-          <span className="eyebrow mb-4">Questions</span>
-          <h2 className="mt-4 font-display text-[clamp(1.9rem,4vw,2.9rem)] font-bold leading-[1.05] tracking-tight text-text-primary">
-            Questions I actually get.
+          <h2 className="font-display text-[clamp(1.9rem,4vw,2.9rem)] font-bold leading-[1.05] tracking-tight text-text-primary">
+            Everything people ask me.
           </h2>
+          <p className="mt-4 max-w-xl font-body text-base leading-relaxed text-text-secondary md:text-lg">
+            Including the awkward ones. If yours isn&apos;t here, it&apos;s a
+            good question to open the call with.
+          </p>
         </AnimateIn>
-        <AnimateIn delay={0.1}>
-          <div className="mt-10 flex flex-col gap-px overflow-hidden rounded-lg border border-border-default bg-border-default">
-            {FAQ_ITEMS.map((item) => (
-              <FaqItem key={item.q} q={item.q} a={item.a} />
-            ))}
-          </div>
-        </AnimateIn>
+
+        <div className="mt-12 flex flex-col gap-10 md:mt-16">
+          {FAQ_GROUPS.map((group, gi) => (
+            <AnimateIn key={group.label} delay={gi * 0.05}>
+              <h3 className="font-mono text-[12px] text-text-tertiary">
+                {group.label}
+              </h3>
+              <div className="mt-4 flex flex-col gap-px overflow-hidden rounded-lg border border-border-default bg-border-default">
+                {group.items.map((item) => (
+                  <FaqItem key={item.q} q={item.q} a={item.a} />
+                ))}
+              </div>
+            </AnimateIn>
+          ))}
+        </div>
       </div>
     </section>
   );
