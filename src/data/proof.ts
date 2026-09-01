@@ -25,11 +25,15 @@ export interface ProofItem {
   };
 }
 
-/* Gary's review, word for word as he wrote it. Both bars are his, so it sits
-   on Andy's and is credited across the two. */
-const GARY = {
+/* Word for word as he wrote it. Both bars are his, so it sits on Andy's and is
+   credited across the two.
+   Attributed by role rather than by name at Tom's call, 2026-09-01. The review
+   itself is public and signed, so anyone can go and check it — the source line
+   stays for exactly that reason. Naming the business and not the person is the
+   understated version, and it is the one Tom wanted. */
+const OWNER = {
   text: 'the communication and timeliness of his work is outstanding. i could not be happier with the product also. his web design was awesome. like with any ongoing project there are always changes that you want made. never any kickback on this. he listens then executes.',
-  who: 'Gary Paparelli',
+  who: 'Owner',
   role: "Andy's Ale House & Grill and Bullfrog",
   source: 'Google review, April 2026',
 } as const;
@@ -41,7 +45,7 @@ export const PROOF: readonly ProofItem[] = [
     url: 'https://andyspub.com',
     displayUrl: 'andyspub.com',
     shot: '/images/work/andys.png',
-    quote: GARY,
+    quote: OWNER,
   },
   {
     name: 'Bullfrog',

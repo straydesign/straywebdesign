@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Analytics from '@/components/layout/Analytics';
 import { JetBrains_Mono, Schibsted_Grotesk, Hanken_Grotesk } from 'next/font/google';
-import ClientShell, { ClientExtras } from '@/components/layout/ClientShell';
+import ClientShell from '@/components/layout/ClientShell';
 import './globals.css';
 import SectionKeyboardNav from '@/components/layout/SectionKeyboardNav';
 
@@ -240,7 +240,6 @@ export default function RootLayout({
         <ClientShell>
           {children}
         </ClientShell>
-        <ClientExtras />
       </body>
     </html>
   );
