@@ -2,11 +2,11 @@
  * The proof wall. Four live sites, filed by what got put into a catalog, so
  * they read as one mechanic at four scales rather than four unrelated jobs.
  *
- * `quote` only appears where a real one exists. There is one — Gary Paparelli's
- * public Google review of Stray Web Design, left 22 April 2026, which covers
- * both of his bars. Sea Cave's and Presque Isle's have been asked for and have
- * not arrived, so those two show the work without a quote. A placeholder in a
- * quote slot reads as a missing quote, which is worse than no slot at all.
+ * `quote` only appears where a real one exists. There is one: a public Google
+ * review of Stray Web Design left on 22 April 2026 by the owner of both bars.
+ * Sea Cave's and Presque Isle's have been asked for and have not arrived, so
+ * those two show the work without a quote. A placeholder in a quote slot reads
+ * as a missing quote, which is worse than no slot at all.
  */
 
 export interface ProofItem {
@@ -15,7 +15,10 @@ export interface ProofItem {
   readonly catalogued: string;
   readonly url: string;
   readonly displayUrl: string;
+  /** Desktop screenshot, 1280×800 — the size MacBookFrame expects. */
   readonly shot: string;
+  /** Phone screenshot, 390×844 — the size PhoneFrame expects. */
+  readonly phoneShot: string;
   readonly quote?: {
     /** Verbatim. Never tidied, never paraphrased. */
     readonly text: string;
@@ -45,6 +48,7 @@ export const PROOF: readonly ProofItem[] = [
     url: 'https://andyspub.com',
     displayUrl: 'andyspub.com',
     shot: '/images/work/andys.png',
+    phoneShot: '/images/work/phone/andys.png',
     quote: OWNER,
   },
   {
@@ -53,13 +57,15 @@ export const PROOF: readonly ProofItem[] = [
     url: 'https://bullfrogbarerie.com',
     displayUrl: 'bullfrogbarerie.com',
     shot: '/images/work/bullfrog.png',
+    phoneShot: '/images/work/phone/bullfrog.png',
   },
   {
     name: 'Sea Cave',
-    catalogued: '600+ products, with live stock and pricing they update themselves',
+    catalogued: '880+ products, with live stock and pricing they update themselves',
     url: 'https://seacaveinc.com',
     displayUrl: 'seacaveinc.com',
     shot: '/images/work/seacave.png',
+    phoneShot: '/images/work/phone/seacave.png',
   },
   {
     name: 'Presque Isle Fish & Farm',
@@ -67,5 +73,6 @@ export const PROOF: readonly ProofItem[] = [
     url: 'https://presqueislefishandfarm.com',
     displayUrl: 'presqueislefishandfarm.com',
     shot: '/images/work/presque-isle.png',
+    phoneShot: '/images/work/phone/presque-isle.png',
   },
 ];

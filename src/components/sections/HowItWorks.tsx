@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import AnimateIn from '@/components/ui/AnimateIn';
+import DeviceDuo from '@/components/ui/DeviceDuo';
 
 /**
  * HowItWorks — what replaced "What I do". That section was a capability menu,
@@ -10,6 +10,12 @@ import AnimateIn from '@/components/ui/AnimateIn';
  * a real screenshot of a real catalog rather than a paragraph — the pictures
  * are from Sea Cave's live store, which is why they show real prices and a
  * real stock line.
+ *
+ * SITE SHOTS ALWAYS GO IN A DEVICE FRAME (Tom, 2026-09-01). A bare screenshot
+ * reads as a picture of a page; the same shot in a laptop and a phone reads as
+ * a thing that exists and that a customer is holding. Desktop captures are
+ * 1280×800 and phone captures 390×844 because that is what MacBookFrame and
+ * PhoneFrame expect — anything else gets cropped by object-cover.
  */
 
 const STEPS = [
@@ -22,19 +28,21 @@ const STEPS = [
     n: '02',
     title: 'It becomes something people can browse',
     body: 'Categories, prices, a search box, filters that work. Somebody who lands on it can find what they came for in a few seconds, on a phone, standing in a parking lot.',
-    image: {
-      src: '/images/how/catalog-grid.png',
-      alt: "Sea Cave's online store: rows of fish with prices, category counts down the left, and price filters",
-      caption: 'The live store at seacaveinc.com',
+    device: {
+      shot: '/images/how/catalog-grid.png',
+      phoneShot: '/images/how/catalog-grid-phone.png',
+      name: "Sea Cave's shop — rows of fish, each with its own price",
+      caption: 'seacaveinc.com/shop, live',
     },
   },
   {
     n: '03',
     title: 'Every item gets its own page',
     body: 'A name, a photo, a description, a price, and whether it is in stock. All of it written out in the structure Google reads. That is the part that puts the item in search results and in Google Shopping instead of leaving it buried inside a page about your business.',
-    image: {
-      src: '/images/how/catalog-item.png',
-      alt: 'A single Sea Cave product page: photo, description, $12.99, and an in-stock line',
+    device: {
+      shot: '/images/how/catalog-item.png',
+      phoneShot: '/images/how/catalog-item-phone.png',
+      name: 'One Sea Cave item: photo, description, $39.99, and an in-stock line',
       caption: 'One item, one page, one price',
     },
   },
@@ -76,21 +84,16 @@ export default function HowItWorks() {
                     {step.body}
                   </p>
 
-                  {step.image && (
-                    <figure className="mt-7">
-                      <div className="overflow-hidden rounded-lg border border-border-default bg-surface-sunken">
-                        <Image
-                          src={step.image.src}
-                          alt={step.image.alt}
-                          width={2560}
-                          height={1640}
-                          sizes="(min-width: 1024px) 720px, 100vw"
-                          className="w-full"
-                        />
-                      </div>
-                      <figcaption className="mt-2 font-mono text-[11px] text-text-tertiary">
+                  {step.device && (
+                    <figure className="mt-9">
+                      <DeviceDuo
+                        shot={step.device.shot}
+                        phoneShot={step.device.phoneShot}
+                        name={step.device.name}
+                      />
+                      <figcaption className="mt-3 font-mono text-[11px] text-text-tertiary">
                         <span aria-hidden className="text-accent/60">{'// '}</span>
-                        {step.image.caption}
+                        {step.device.caption}
                       </figcaption>
                     </figure>
                   )}

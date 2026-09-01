@@ -1,15 +1,19 @@
-import Image from 'next/image';
 import AnimateIn from '@/components/ui/AnimateIn';
+import DeviceDuo from '@/components/ui/DeviceDuo';
 import { PROOF } from '@/data/proof';
 
 /**
  * Proof — the four live sites, filed by what got catalogued so they read as
- * one mechanic at four scales. Gary's review runs across the top because it is
+ * one mechanic at four scales. The review runs across the top because it is
  * the only real quote there is, and a real one from a bar owner beats four
  * invented ones from anybody.
  *
  * Dark band. Ink comes from the --ink-dark-* tokens, which are measured
  * against this ground rather than eyeballed.
+ *
+ * Every shot sits in a laptop-and-phone frame (Tom's standing rule, 2026-09-01)
+ * — a bare screenshot on a dark ground reads as a flat picture, and half of
+ * these sites are dark themselves so they vanish into it entirely.
  */
 
 const FEATURED = PROOF.find((p) => p.quote);
@@ -58,17 +62,12 @@ export default function Proof() {
                   rel="noopener noreferrer"
                   className="group flex h-full flex-col p-6 transition-colors hover:bg-white/[0.04] md:p-8"
                 >
-                  <div className="overflow-hidden rounded border border-white/10">
-                    <Image
-                      src={item.shot}
-                      alt={`${item.name} — the live site`}
-                      width={1280}
-                      height={800}
-                      sizes="(min-width: 768px) 520px, 100vw"
-                      className="w-full"
-                    />
-                  </div>
-                  <h3 className="mt-6 font-display text-lg font-semibold tracking-tight text-ink-dark-primary md:text-xl">
+                  <DeviceDuo
+                    shot={item.shot}
+                    phoneShot={item.phoneShot}
+                    name={item.name}
+                  />
+                  <h3 className="mt-4 font-display text-lg font-semibold tracking-tight text-ink-dark-primary md:text-xl">
                     {item.name}
                   </h3>
                   <p className="mt-2 font-body text-[15px] leading-relaxed text-ink-dark-secondary">
