@@ -3,7 +3,9 @@ import Link from 'next/link';
 import LandingPageHeader from '@/components/layout/LandingPageHeader';
 import Footer from '@/components/layout/Footer';
 import ConversionPixel from '@/components/ui/ConversionPixel';
-import { PHONE_SMS, PHONE_TEL, SITE } from '@/lib/constants';
+import Vsl from '@/components/sections/Vsl';
+import Proof from '@/components/sections/Proof';
+import { PHONE_SMS, PHONE_TEL, SITE, VSL } from '@/lib/constants';
 
 /**
  * The page after the survey. Most sites waste this one on a checkmark.
@@ -20,6 +22,12 @@ import { PHONE_SMS, PHONE_TEL, SITE } from '@/lib/constants';
  * The conversion pixel fires HERE and only here. The survey deliberately does
  * not fire it, so the disqualification route stays invisible to the ad
  * account.
+ *
+ * The video and the proof gallery repeat from the landing page on purpose.
+ * Almost nobody watched the video on the way in — they scanned the page, saw a
+ * player, gave it thirty seconds and went to the survey. Commitment is what
+ * buys attention, so the ask lands after it rather than before. Both are the
+ * same components the landing page renders, so they can never drift apart.
  */
 export const metadata: Metadata = {
   title: "What happens next — Stray Web Design",
@@ -43,11 +51,17 @@ const ANSWERS = [
 ];
 
 export default function ThankYou() {
+  /* Annotated as boolean so the empty-string literal type doesn't make
+     TypeScript read the guard below as permanently false. */
+  const hasVsl: boolean = Boolean(VSL.src);
+
   return (
     <>
       <ConversionPixel formType="catalog_survey" />
       <LandingPageHeader />
-      <main id="main" className="bg-surface-page pt-28 pb-24 md:pt-36 md:pb-32">
+      {/* No bottom padding: Proof is full-bleed and dark, and it closes the
+          page. Padding here would leave a pale band between it and the footer. */}
+      <main id="main" className="bg-surface-page pt-28 md:pt-36">
         <div className="mx-auto max-w-2xl px-5 md:px-8">
           <p className="font-mono text-[12px] text-text-tertiary">
             <span aria-hidden className="text-accent/60">{'// '}</span>
@@ -76,6 +90,24 @@ export default function ThankYou() {
               answered the same day.
             </p>
           </div>
+
+          {/* Gated on the file existing. A "watch this" heading above a player
+              that never appears is a control promising something the build
+              can't do — worse than no section at all. */}
+          {hasVsl && (
+            <div className="mt-14">
+              <h2 className="font-display text-xl font-semibold tracking-tight text-text-primary">
+                Watch this before I write back
+              </h2>
+              <p className="mt-2 font-body text-[15px] leading-relaxed text-text-secondary">
+                Six minutes on how the builds further down this page actually got
+                made. It answers most of what you were going to ask me.
+              </p>
+              <div className="mt-6">
+                <Vsl />
+              </div>
+            </div>
+          )}
 
           <h2 className="mt-14 font-display text-xl font-semibold tracking-tight text-text-primary">
             The three things people ask at this point
@@ -123,6 +155,12 @@ export default function ThankYou() {
               </a>
             </div>
           </div>
+        </div>
+
+        {/* The same gallery the landing page renders. They scrolled past it on
+            the way in; now they have a reason to actually look. */}
+        <div className="mt-20 md:mt-28">
+          <Proof />
         </div>
       </main>
       <Footer />

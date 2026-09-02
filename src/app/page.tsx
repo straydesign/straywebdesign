@@ -4,6 +4,7 @@ import Hero from '@/components/sections/Hero';
 import Survey from '@/components/sections/Survey';
 import Scarcity from '@/components/sections/Scarcity';
 import HowItWorks from '@/components/sections/HowItWorks';
+import WhoThisIsFor from '@/components/sections/WhoThisIsFor';
 import Faq from '@/components/sections/Faq';
 import Proof from '@/components/sections/Proof';
 import About from '@/components/sections/About';
@@ -22,6 +23,10 @@ import About from '@/components/sections/About';
  *    pages where he was sure the testimonials were the stronger asset. Anybody
  *    this far down is looking for a reason not to, and the answer has to reach
  *    them before the reason does.
+ *  - "Who this is for" follows HowItWorks because that is the exact moment the
+ *    question arrives: they now understand the thing, so the next thought is
+ *    whether it applies to them. Brandon found 85–90% of the questions after a
+ *    webinar were this one and nothing else.
  *
  * There is no nav. Every nav item is an exit.
  */
@@ -34,6 +39,7 @@ export default function Home() {
         <Survey />
         <Scarcity />
         <HowItWorks />
+        <WhoThisIsFor />
         <Faq />
         <Proof />
         <About />

@@ -1,12 +1,13 @@
 'use client';
 
-import { useCallback, useMemo, useState, type FormEvent } from 'react';
+import { useCallback, useEffect, useMemo, useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import AnimateIn from '@/components/ui/AnimateIn';
 import { PHONE_SMS, PHONE_TEL, SITE } from '@/lib/constants';
 import { getUtmParams } from '@/hooks/useUtmParams';
+import { trackSurveyStep } from '@/lib/tracking';
 
 /**
  * Survey — five questions, contact details on the last one.
@@ -125,19 +126,30 @@ export default function Survey() {
     [index]
   );
 
+  /* Every question reports that it was reached, so GA4 can be read as a funnel
+     rather than a single finish line. Without this, a question that quietly
+     loses half the people looks identical to one that loses nobody. */
+  useEffect(() => {
+    trackSurveyStep(step.id, index, 'view');
+  }, [step.id, index]);
+
   const choose = useCallback(
     (choice: Choice) => {
       /* The disqualifier lands here, before a single contact field has been
-         asked for. Nothing is sent and nothing is tracked. */
+         asked for. No lead is created and the CONVERSION pixel never fires —
+         the step event below is internal analytics, not an ad signal, and
+         carries nothing about who they are. */
       if (choice.disqualifies) {
+        trackSurveyStep(step.id, index, 'disqualified');
         router.push('/not-a-fit');
         return;
       }
+      trackSurveyStep(step.id, index, 'answered');
       setAnswers((prev) => ({ ...prev, [step.id]: choice.value }));
       setError(null);
       setIndex((i) => Math.min(i + 1, STEPS.length - 1));
     },
-    [router, step.id]
+    [index, router, step.id]
   );
 
   const onSubmit = useCallback(
@@ -153,6 +165,7 @@ export default function Survey() {
       }
       setSubmitting(true);
       setError(null);
+      trackSurveyStep(step.id, index, 'submitted');
 
       const transcript = STEPS.filter((s) => s.choices)
         .map((s) => `${s.question}\n  ${labelFor(s.id, answers[s.id] ?? '—')}`)
@@ -197,7 +210,7 @@ export default function Survey() {
       /* The pixel fires on /thank-you, not here. One place, one event. */
       router.push('/thank-you');
     },
-    [answers, business, email, name, phone, router, website]
+    [answers, business, email, index, name, phone, router, step.id, website]
   );
 
   return (

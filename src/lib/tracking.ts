@@ -132,3 +132,36 @@ export function trackPageEngaged(page: string, thresholdMs = 15000): () => void 
     document.removeEventListener('visibilitychange', onVisibility);
   };
 }
+
+/** How a survey step ended. `view` fires on arrival; the rest are exits. */
+export type SurveyStepOutcome = 'view' | 'answered' | 'disqualified' | 'submitted';
+
+/**
+ * Report one survey step to GA4 so drop-off can be read per question.
+ *
+ * A funnel that only reports its finish line cannot tell you which question is
+ * costing you people. Brandon Willington pulled his own per-slide report and
+ * found a single open text field losing 40% of applicants — it had helper
+ * prompts, it looked fine, and nobody would have guessed it from the total.
+ *
+ * Every step fires `view` on arrival, so the funnel in GA4 is a straight
+ * comparison of `survey_step` counts by `step_id`: whichever number falls off a
+ * cliff is the question to rewrite. `answered` separates "moved on" from
+ * "arrived and left", which the view count alone cannot distinguish.
+ *
+ * Deliberately not deduped across a session — someone using Back is re-reading
+ * the question, and that is signal too.
+ */
+export function trackSurveyStep(
+  stepId: string,
+  stepIndex: number,
+  outcome: SurveyStepOutcome
+) {
+  if (typeof window === 'undefined' || !window.gtag) return;
+  window.gtag('event', 'survey_step', {
+    step_id: stepId,
+    /* 1-based: reads the same as "question 3 of 5" in the UI. */
+    step_number: stepIndex + 1,
+    outcome,
+  });
+}
