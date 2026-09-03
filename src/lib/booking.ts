@@ -9,8 +9,19 @@ export const BOOKING_CONFIG = {
   endHour: 17,
   /** Slot duration in minutes */
   slotMinutes: 30,
-  /** How many days ahead to show */
-  daysAhead: 14,
+  /**
+   * How many days ahead the calendar opens, counting from tomorrow.
+   *
+   * Five, deliberately. Same-day means they arrive before anything has had a
+   * chance to teach them what this is and open the call with "so what do you
+   * do?" Far out means they forget and no-show. Brandon Willington runs the
+   * same window and pairs it with a line telling people to check back
+   * tomorrow, which turns the cap into scarcity that happens to be true.
+   *
+   * Weekends are filtered on top of this, so a window starting Thursday
+   * yields three bookable days, not five. That is intended.
+   */
+  daysAhead: 5,
   /** Weekend day numbers (0=Sun, 6=Sat) */
   weekendDays: [0, 6] as readonly number[],
 } as const;
@@ -135,16 +146,61 @@ export function isBookableDate(dateStr: string): boolean {
 }
 
 /**
- * Get all bookable dates from today for the next N days.
+ * Today's date in the booking timezone, as YYYY-MM-DD.
+ *
+ * `new Date().toISOString()` returns the UTC day, which after 8pm Eastern is
+ * already tomorrow. That was harmless while the window was a fortnight wide
+ * and is not harmless at five days, where one day is 20% of availability.
+ * `en-CA` is used purely because it formats as YYYY-MM-DD.
  */
-export function getBookableDates(): string[] {
-  const dates: string[] = [];
-  const now = new Date();
+export function todayInBookingTz(now: Date = new Date()): string {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: BOOKING_CONFIG.timezone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(now);
+}
 
-  for (let i = 0; i < BOOKING_CONFIG.daysAhead; i++) {
-    const date = new Date(now);
-    date.setDate(now.getDate() + i + 1); // Start from tomorrow
-    const dateStr = date.toISOString().split('T')[0];
+/** Shift a YYYY-MM-DD string by whole days. Noon UTC dodges DST edges. */
+export function addDays(dateStr: string, days: number): string {
+  const d = new Date(dateStr + 'T12:00:00Z');
+  d.setUTCDate(d.getUTCDate() + days);
+  return d.toISOString().split('T')[0];
+}
+
+/**
+ * The inclusive bounds of the booking window: tomorrow through today + N.
+ *
+ * Exported so the calendar, the slots route and the booking route all read the
+ * same two dates. Three separate implementations of "is this too far out" is
+ * how a client-side cap ends up not matching what the server accepts.
+ */
+export function bookingWindow(now: Date = new Date()): { first: string; last: string } {
+  const today = todayInBookingTz(now);
+  return { first: addDays(today, 1), last: addDays(today, BOOKING_CONFIG.daysAhead) };
+}
+
+/**
+ * Whether a date is inside the window AND a weekday.
+ *
+ * This is the whole rule. Anything that lets someone pick a date must call it,
+ * and so must anything that accepts one.
+ */
+export function isWithinBookingWindow(dateStr: string, now: Date = new Date()): boolean {
+  const { first, last } = bookingWindow(now);
+  return dateStr >= first && dateStr <= last && isBookableDate(dateStr);
+}
+
+/**
+ * Every bookable date in the current window.
+ */
+export function getBookableDates(now: Date = new Date()): string[] {
+  const dates: string[] = [];
+  const today = todayInBookingTz(now);
+
+  for (let i = 1; i <= BOOKING_CONFIG.daysAhead; i++) {
+    const dateStr = addDays(today, i);
     if (isBookableDate(dateStr)) {
       dates.push(dateStr);
     }

@@ -7,7 +7,7 @@ import CalendarPicker from './CalendarPicker';
 import TimeSlotPicker from './TimeSlotPicker';
 import BookingContactForm from './BookingContactForm';
 import BookingConfirmation from './BookingConfirmation';
-import { getBookableDates, type BookingPayload } from '@/lib/booking';
+import { BOOKING_CONFIG, getBookableDates, type BookingPayload } from '@/lib/booking';
 import { getUtmParams } from '@/hooks/useUtmParams';
 import { usePartialCapture } from '@/hooks/usePartialCapture';
 import { trackLeadConversion } from '@/lib/tracking';
@@ -329,6 +329,12 @@ export default function BookingWizard() {
                 onSelectDate={handleDateSelect}
                 bookableDates={bookableDates}
               />
+              {/* Without this line a five-day calendar reads as a broken
+                  calendar. With it, the same short list reads as a full one. */}
+              <p className="mt-3 font-body text-xs leading-relaxed text-text-tertiary">
+                Times only open {BOOKING_CONFIG.daysAhead} days out. If nothing
+                here suits, check back tomorrow — another day opens up.
+              </p>
             </div>
           )}
 

@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { isBookableDate, type BookingPayload } from '@/lib/booking';
+import { isWithinBookingWindow, type BookingPayload } from '@/lib/booking';
 
 /**
  * POST /api/booking
@@ -42,9 +42,14 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid date format' }, { status: 400 });
   }
 
-  // Only validate bookable date if a time was selected (specific booking)
-  if (time && date && !isBookableDate(date)) {
-    return NextResponse.json({ error: 'Selected date is not available' }, { status: 400 });
+  /* Only gate an actual slot booking. A contact request carries a date with no
+     time and is just "roughly when suits" — it must not be range-checked, or
+     someone asking about next month gets rejected for asking. */
+  if (time && date && !isWithinBookingWindow(date)) {
+    return NextResponse.json(
+      { error: 'That date is outside the booking window. Pick a time in the next few days.' },
+      { status: 400 }
+    );
   }
 
   // Build CRM payload

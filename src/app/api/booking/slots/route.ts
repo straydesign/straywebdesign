@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import {
   generateSlotsForDate,
-  isBookableDate,
+  isWithinBookingWindow,
   toTime24,
   type TimeSlot,
 } from '@/lib/booking';
@@ -20,7 +20,10 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  if (!isBookableDate(dateStr)) {
+  /* Weekend, in the past, or beyond the five-day window. Checked here and not
+     only in the picker, because the picker is a suggestion and this is the
+     gate. */
+  if (!isWithinBookingWindow(dateStr)) {
     return NextResponse.json(
       { error: 'Selected date is not available for booking' },
       { status: 400 }

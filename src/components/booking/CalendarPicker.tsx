@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { BOOKING_CONFIG } from '@/lib/booking';
+import { BOOKING_CONFIG, bookingWindow, todayInBookingTz } from '@/lib/booking';
 
 const DAY_LABELS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const;
 
@@ -18,10 +18,9 @@ export default function CalendarPicker({
   onSelectDate,
   bookableDates,
 }: CalendarPickerProps) {
-  const today = useMemo(() => {
-    const d = new Date();
-    return d.toISOString().split('T')[0];
-  }, []);
+  /* Eastern, not UTC. After 8pm Eastern the UTC day is already tomorrow, which
+     would grey out a date that is still bookable. */
+  const today = useMemo(() => todayInBookingTz(), []);
 
   const [viewMonth, setViewMonth] = useState(() => {
     const d = new Date();
@@ -76,13 +75,16 @@ export default function CalendarPicker({
     viewMonth.year > now.getFullYear() ||
     (viewMonth.year === now.getFullYear() && viewMonth.month > now.getMonth());
 
-  // Don't go more than 2 months ahead
-  const maxMonth = now.getMonth() + 2;
-  const maxYear = now.getFullYear() + (maxMonth > 11 ? 1 : 0);
-  const normalizedMaxMonth = maxMonth > 11 ? maxMonth - 12 : maxMonth;
+  /* Stop at the month holding the last bookable day. Paging past it used to be
+     allowed and now only ever shows a grid of dead cells — the window is five
+     days, so it spans two months at most. */
+  const lastBookable = useMemo(() => {
+    const d = new Date(bookingWindow().last + 'T12:00:00Z');
+    return { year: d.getUTCFullYear(), month: d.getUTCMonth() };
+  }, []);
   const canGoNext =
-    viewMonth.year < maxYear ||
-    (viewMonth.year === maxYear && viewMonth.month < normalizedMaxMonth);
+    viewMonth.year < lastBookable.year ||
+    (viewMonth.year === lastBookable.year && viewMonth.month < lastBookable.month);
 
   const goToPrevMonth = () => {
     if (!canGoPrev) return;
