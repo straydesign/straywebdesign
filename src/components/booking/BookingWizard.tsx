@@ -310,8 +310,12 @@ export default function BookingWizard() {
                 <p className="font-mono text-[10px] font-semibold text-accent">
                   You&apos;re in
                 </p>
+                {/* "Plan", not "audit". The heading, the four bullets beside
+                    this card and the confirmation the CRM now sends all say
+                    plan — this was the only place calling it something else,
+                    which read as a second, different deliverable. */}
                 <p className="mt-1 font-body text-sm text-text-primary">
-                  We&apos;ll email your audit within 24 hours. Want to book a call too? (Totally optional.)
+                  Your plan lands in your inbox within 24 hours. Want to book a call too? (Totally optional.)
                 </p>
               </div>
               <button
@@ -319,7 +323,7 @@ export default function BookingWizard() {
                 onClick={handleSkipDate}
                 className="mb-5 w-full bg-surface-sunken py-2.5 font-body text-sm font-semibold text-text-primary transition-colors hover:bg-border-default"
               >
-                No thanks, just email me the audit →
+                No thanks, just email me the plan →
               </button>
               <p className="mb-2 font-mono text-[10px] font-semibold text-text-tertiary">
                 Or pick a time for a 30-min call

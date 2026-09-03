@@ -15,7 +15,10 @@ export default function BookingConfirmation({
   time,
   name,
 }: BookingConfirmationProps) {
-  const firstName = name.split(' ')[0];
+  /* Name is optional on step one, so this is empty for most people and the
+     heading rendered as "Got it, ." — drop the comma-name rather than
+     substitute a stand-in, because "Got it, there." is worse than no name. */
+  const firstName = name.trim().split(/\s+/)[0] || null;
   const hasBooking = date && time;
 
   return (
@@ -25,7 +28,13 @@ export default function BookingConfirmation({
       </div>
 
       <h2 className="font-display text-xl font-bold text-text-primary">
-        {hasBooking ? `You're booked, ${firstName}.` : `Got it, ${firstName}.`}
+        {hasBooking
+          ? firstName
+            ? `You're booked, ${firstName}.`
+            : "You're booked."
+          : firstName
+            ? `Got it, ${firstName}.`
+            : 'Got it.'}
       </h2>
 
       {hasBooking ? (
@@ -41,12 +50,19 @@ export default function BookingConfirmation({
           </p>
         </div>
       ) : (
+        /* Mirrors the booked card above: label, then the one fact in the same
+           weight the date gets. This used to read "We'll be in touch shortly
+           to get the conversation started", which said nothing the two blocks
+           under it didn't already say, and said it vaguer. */
         <div className="mt-5 w-full border border-border-default bg-surface-page px-5 py-4">
           <p className="font-mono text-[10px] font-semibold text-text-tertiary">
-            What&apos;s Next
+            Your Plan
           </p>
-          <p className="mt-1 font-body text-sm text-text-primary">
-            We&apos;ll be in touch shortly to get the conversation started.
+          <p className="mt-1 font-body text-base font-semibold text-text-primary">
+            Within 24 hours
+          </p>
+          <p className="font-body text-sm text-accent">
+            Written &bull; straight to your inbox
           </p>
         </div>
       )}
@@ -55,10 +71,15 @@ export default function BookingConfirmation({
         <div className="flex h-8 w-8 shrink-0 items-center justify-center bg-accent/10">
           <Phone className="h-4 w-4 text-accent" />
         </div>
+        {/* Promises the email, because the email is what actually goes. This
+            said "a confirmation text shortly" for months while the number's
+            A2P registration was rejected and the carrier dropped every
+            message — the first thing someone was told after booking was a
+            thing that would never happen. */}
         <p className="font-body text-sm text-text-secondary">
           {hasBooking
-            ? "You'll receive a confirmation text shortly with call details. We'll reach out at your scheduled time."
-            : "You'll hear from us shortly. We'll find a time that works for both of us."}
+            ? "A confirmation is on its way to your inbox, with a calendar invite attached. We'll call you at your scheduled time."
+            : "Read it, then tell us if a call would help. We'll find a time that works for both of us."}
         </p>
       </div>
 
@@ -69,12 +90,12 @@ export default function BookingConfirmation({
         <ul className="space-y-1.5">
           {(hasBooking
             ? [
-                'Confirmation text with call details',
+                'Confirmation email with a calendar invite',
                 "A plan for what the site should actually do",
                 '30-minute discovery call at your scheduled time',
               ]
             : [
-                "We'll reach out to introduce ourselves",
+                'Confirmation email, right about now',
                 "A plan for what the site should actually do",
                 '30-minute discovery call when it works for you',
               ]
