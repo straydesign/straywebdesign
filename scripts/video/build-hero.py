@@ -1,14 +1,5 @@
 #!/usr/bin/env python3
-"""Hero video: zoom 15 %, cut the gaps, interviewer questions (ElevenLabs, Zoom-treated), burnt captions.
-
-Inputs, all beside this script (none are committed): raw.mov (the Photo Booth recording,
-2026-09-07 "Movie on 9-7-26 at 2.38 PM.mov"), q1..q8.mp3 (ElevenLabs "Matilda", the QS texts
-below), words.json (whisper-cli -ml 1 -sow), hanken-500.ttf (Hanken Grotesk SemiBold),
-fix.json (caption text fixes). Needs ffmpeg, whisper-cli + ggml-small.en, Pillow.
-  python3 build-hero.py plan    # prints the cut list and every caption cue
-  python3 build-hero.py render  # writes master.mp4 + poster.jpg
-ffmpeg here has no libass/drawtext, so captions are a 10 fps PNG strip sequence overlaid.
-"""
+"""Hero video: zoom 15 %, cut the gaps, Tom at 1.25x (pitch kept), interviewer questions (ElevenLabs via tts.py, Zoom-treated), burnt captions."""
 import json, subprocess, sys, os, math, re
 from pathlib import Path
 W = Path(__file__).parent
@@ -33,9 +24,12 @@ QS = [
  "If someone's watching this and they've never had a site, what should they do?",
 ]
 # answers in source seconds (from the silence map), internal pauses to tighten
-ANS = [(22.0,76.0),(84.4,162.9),(175.5,253.3),(276.0,307.3),(321.4,423.2),(432.9,475.3),(492.8,518.3),(530.9,546.2)]
+ANS = [(22.0,76.0),(84.4,159.7),(175.5,253.3),(276.0,307.3),(321.4,408.75),(432.9,475.3),(492.8,518.3),(530.9,546.2)]
+# A2 and A5 end early: at 159.8 and 418.4 he leans in to read the next question off the screen.
+MIRROR_FROM = 18.85   # first listening clip: he is still adjusting the desk until ~17.6, so play 18.85→a0 reversed, then forward
 CUTS = [(117.3,120.9),(192.6,196.0),(238.6,242.0),(507.2,511.8)]
 PAD_IN, PAD_OUT, KEEP, Q_LEAD, Q_TAIL = 0.30, 0.35, 0.9, 0.25, 0.30
+SPEED = 1.25   # Tom's answers only; the listening clips and the questions stay at 1x
 
 # ---------- 1. audio prep ----------
 tom = W/'tom48.wav'
@@ -47,13 +41,13 @@ if not tom.exists():
     print('tom48.wav: measured', m['input_i'], 'LUFS ->', measure_i(tom)['input_i'])
 
 ZOOM = ('aformat=channel_layouts=mono,highpass=f=160,lowpass=f=6800,'
-        'acompressor=threshold=-20dB:ratio=3:attack=8:release=150:makeup=3,aecho=0.75:0.22:14:0.10')
+        'acompressor=threshold=-20dB:ratio=3:attack=8:release=150:makeup=3')
 qdur = []
 for i in range(8):
     wav = W/f'q{i+1}.wav'
     if not wav.exists():
         op = W/f'q{i+1}.opus'
-        run(['ffmpeg','-y','-v','error','-i',str(W/f'q{i+1}.mp3'),'-af',ZOOM,'-c:a','libopus','-b:a','12k','-application','voip','-ar','48000',str(op)])
+        run(['ffmpeg','-y','-v','error','-i',str(W/f'q{i+1}.mp3'),'-af',ZOOM,'-c:a','libopus','-b:a','20k','-application','voip','-ar','48000',str(op)])
         gain = -19.0 - float(measure_i(op)['input_i'])
         run(['ffmpeg','-y','-v','error','-i',str(op),'-af',f'volume={gain:.2f}dB,afade=t=in:d=0.03','-ar','48000','-ac','1',str(wav)])
     qdur.append(probe_dur(wav))
@@ -73,11 +67,13 @@ for k,(a0,a1) in enumerate(ANS):
     for s0,s1 in pieces: segs.append(dict(kind='talk', s0=s0, s1=s1))
 t = 0.0
 for s in segs:
-    s['dur'] = round(s['s1']-s['s0'], 6); s['o0'] = t; t = round(t + s['dur'], 6)
+    s['dur'] = round(s['s1']-s['s0'], 6)
+    s['odur'] = round(s['dur']/SPEED, 6) if s['kind']=='talk' else s['dur']
+    s['o0'] = t; t = round(t + s['odur'], 6)
 TOTAL = t
 def to_out(src):
     for s in segs:
-        if s['kind']=='talk' and s['s0'] <= src <= s['s1']: return s['o0'] + (src - s['s0']), s
+        if s['kind']=='talk' and s['s0'] <= src <= s['s1']: return s['o0'] + (src - s['s0'])/SPEED, s
     return None, None
 print(f'{len(segs)} segments, output {TOTAL:.1f}s')
 
@@ -97,7 +93,7 @@ for i,s in enumerate(segs):
         txt = w['text'].strip()
         if not txt or txt.startswith('[') or txt.strip('.,!?').lower() in FILLERS: continue
         f, e = w['offsets']['from']/1000, w['offsets']['to']/1000
-        e = min(e, s['dur']); f = min(f, e)
+        e = min(e, s['dur']); f = min(f, e); e /= SPEED; f /= SPEED
         if e - f > 1.2: f = e - 0.4
         cl.append((s['o0']+f, s['o0']+e, txt, s['o0']))
 cues = []
@@ -169,8 +165,18 @@ N = len(segs)
 fc = [f"[0:v]split={N}" + ''.join(f'[v{i}]' for i in range(N)) + ';',
       f"[1:a]asplit={N}" + ''.join(f'[a{i}]' for i in range(N)) + ';']
 for i,s in enumerate(segs):
-    fc.append(f"[v{i}]trim=start={s['s0']:.4f}:end={s['s1']:.4f},setpts=PTS-STARTPTS[vs{i}];")
-    fc.append(f"[a{i}]atrim=start={s['s0']:.4f}:end={s['s1']:.4f},asetpts=PTS-STARTPTS,afade=t=in:d=0.02,afade=t=out:st={s['dur']-0.02:.4f}:d=0.02[at{i}];")
+    sp = SPEED if s['kind']=='talk' else 1.0
+    if i == 0:
+        half = s['dur']/2; m0 = s['s1']-half
+        fc.append(f"[v{i}]split[vm{i}a][vm{i}b];[vm{i}a]trim=start={m0:.4f}:end={s['s1']:.4f},setpts=PTS-STARTPTS,reverse[vr{i}];"
+                  f"[vm{i}b]trim=start={m0:.4f}:end={s['s1']:.4f},setpts=PTS-STARTPTS[vf{i}];[vr{i}][vf{i}]concat=n=2:v=1:a=0,setpts=PTS-STARTPTS[vs{i}];")
+        fc.append(f"[a{i}]asplit[am{i}a][am{i}b];[am{i}a]atrim=start={m0:.4f}:end={s['s1']:.4f},asetpts=PTS-STARTPTS,areverse[ar{i}];"
+                  f"[am{i}b]atrim=start={m0:.4f}:end={s['s1']:.4f},asetpts=PTS-STARTPTS[af{i}];[ar{i}][af{i}]concat=n=2:v=0:a=1,asetpts=PTS-STARTPTS,"
+                  f"afade=t=in:d=0.02,afade=t=out:st={s['odur']-0.02:.4f}:d=0.02[at{i}];")
+        continue_tail = True
+    else:
+        fc.append(f"[v{i}]trim=start={s['s0']:.4f}:end={s['s1']:.4f},setpts=(PTS-STARTPTS)/{sp}[vs{i}];")
+        fc.append(f"[a{i}]atrim=start={s['s0']:.4f}:end={s['s1']:.4f},asetpts=PTS-STARTPTS,atempo={sp},afade=t=in:d=0.02,afade=t=out:st={s['odur']-0.02:.4f}:d=0.02[at{i}];")
     if s['kind']=='listen':
         fc.append(f"[{2+s['q']}:a]adelay={int(Q_LEAD*1000)}:all=1[q{i}];[at{i}][q{i}]amix=inputs=2:duration=first:normalize=0[as{i}];")
     else:
