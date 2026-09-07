@@ -10,7 +10,7 @@ import BookingConfirmation from './BookingConfirmation';
 import { BOOKING_CONFIG, getBookableDates, type BookingPayload } from '@/lib/booking';
 import { getUtmParams } from '@/hooks/useUtmParams';
 import { usePartialCapture } from '@/hooks/usePartialCapture';
-import { trackLeadConversion } from '@/lib/tracking';
+import { trackLeadConversion, trackScheduleConversion } from '@/lib/tracking';
 import { SITE } from '@/lib/constants';
 
 type Step = 'contact' | 'date' | 'time' | 'confirm' | 'confirmed';
@@ -156,18 +156,24 @@ export default function BookingWizard() {
   const handleDateSelect = useCallback((date: string) => {
     setSelectedDate(date);
     setSelectedTime(null);
+    setSubmitError(null);
     setDirection(1);
     setStep('time');
   }, []);
 
   const handleTimeSelect = useCallback((time: string) => {
     setSelectedTime(time);
+    setSubmitError(null);
     setDirection(1);
     setStep('confirm');
   }, []);
 
+  /* Step 4: confirm the slot. The contact request is already saved, so the
+     only thing this call can lose is the booking itself — which is exactly
+     why the card must not say "booked" until the server has said yes. */
   const handleConfirmBooking = useCallback(async () => {
     setSubmitting(true);
+    setSubmitError(null);
 
     const utms = getUtmParams();
     const payload: BookingPayload = {
@@ -181,19 +187,45 @@ export default function BookingWizard() {
       ...utms,
     };
 
+    const fallback = "Couldn't save the booking. Try again, or call 814-964-0081.";
+    let status = 0;
+    let serverError: string | undefined;
+
     try {
-      await fetch('/api/booking', {
+      const res = await fetch('/api/booking', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
+      status = res.status;
+      if (!res.ok) {
+        const body = (await res.json().catch(() => null)) as { error?: string } | null;
+        serverError = body?.error;
+      }
     } catch {
-      // Non-blocking — lead is already saved
+      status = 0;
     }
 
     setSubmitting(false);
-    setDirection(1);
-    setStep('confirmed');
+
+    if (status >= 200 && status < 300) {
+      trackScheduleConversion({ date: selectedDate!, time: selectedTime! });
+      setDirection(1);
+      setStep('confirmed');
+      return;
+    }
+
+    if (status === 409) {
+      // Someone took the slot between the pick and the confirm. Back to the
+      // time step — TimeSlotPicker remounts and refetches, so it disappears.
+      setSubmitError(serverError ?? 'That time was just taken. Pick another.');
+      setSelectedTime(null);
+      setDirection(-1);
+      setStep('time');
+      return;
+    }
+
+    setSubmitError(serverError ?? fallback);
   }, [selectedDate, selectedTime, name, email, phone, company, website]);
 
   // Skip date — go straight to confirmed (lead already saved)
@@ -237,6 +269,7 @@ export default function BookingWizard() {
   }, [selectedDate, name, email, phone, company, website]);
 
   const handleBack = useCallback(() => {
+    setSubmitError(null);
     if (step === 'date') {
       goToStep('contact');
     } else if (step === 'time') {
@@ -343,12 +376,19 @@ export default function BookingWizard() {
           )}
 
           {step === 'time' && selectedDate && (
-            <TimeSlotPicker
-              selectedDate={selectedDate}
-              selectedTime={selectedTime}
-              onSelectTime={handleTimeSelect}
-              onSkipTime={handleSkipTime}
-            />
+            <div>
+              {submitError && (
+                <div role="alert" className="mb-4 font-body text-sm text-red-500">
+                  {submitError}
+                </div>
+              )}
+              <TimeSlotPicker
+                selectedDate={selectedDate}
+                selectedTime={selectedTime}
+                onSelectTime={handleTimeSelect}
+                onSkipTime={handleSkipTime}
+              />
+            </div>
           )}
 
           {step === 'confirm' && selectedDate && selectedTime && (
@@ -403,6 +443,11 @@ export default function BookingWizard() {
                   'Confirm Booking'
                 )}
               </button>
+              {submitError && (
+                <div role="alert" className="mt-4 font-body text-sm text-red-500">
+                  {submitError}
+                </div>
+              )}
             </div>
           )}
 

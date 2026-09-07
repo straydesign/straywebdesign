@@ -3,6 +3,8 @@
  * Fires events to Google Ads (gtag) and Meta Pixel (fbq) when configured.
  */
 
+import { todayInBookingTz } from './booking';
+
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
@@ -50,6 +52,48 @@ export function trackLeadConversion(data: ConversionData = {}) {
       currency,
       ...(form_type && { content_name: form_type }),
     });
+  }
+}
+
+/**
+ * Fire the SCHEDULE conversion — a call actually booked, distinct from a lead.
+ *
+ * A two-step funnel has two finish lines. `trackLeadConversion` fires when
+ * someone asks for the written plan; this fires only after `/api/booking`
+ * has said yes to a specific slot. Brandon Willington's rule is to optimise
+ * for the deepest event you can get volume on, and "booked a call" is the
+ * number Tom actually watches — GA4 could not tell it apart from a lead
+ * before this existed. Never call it on a 409 or a failed save: an event
+ * that fires for a booking that did not happen teaches whoever reads the
+ * report the wrong lesson, which is the whole pixel-conditioning problem.
+ */
+export function trackScheduleConversion({ date }: { date: string; time: string }) {
+  if (typeof window === 'undefined') return;
+
+  /* Days between today (Eastern, same clock the calendar uses) and the booked
+     date. Both are YYYY-MM-DD, so UTC-midnight arithmetic is exact. */
+  const [ty, tm, td] = todayInBookingTz().split('-').map(Number);
+  const [by, bm, bd] = date.split('-').map(Number);
+  const lead_days = Math.round(
+    (Date.UTC(by, bm - 1, bd) - Date.UTC(ty, tm - 1, td)) / 86_400_000
+  );
+
+  if (window.gtag) {
+    window.gtag('event', 'schedule', { form_type: 'discovery_call', lead_days });
+
+    const label = process.env.NEXT_PUBLIC_GOOGLE_ADS_SCHEDULE_LABEL;
+    if (label) {
+      window.gtag('event', 'conversion', {
+        send_to: label,
+        value: 0,
+        currency: 'USD',
+        event_label: 'discovery_call',
+      });
+    }
+  }
+
+  if (window.fbq) {
+    window.fbq('track', 'Schedule', { content_name: 'discovery_call' });
   }
 }
 
