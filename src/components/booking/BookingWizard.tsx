@@ -134,7 +134,7 @@ export default function BookingWizard() {
     const hasEmail = email.trim().length > 0;
     const hasPhone = phone.trim().length > 0;
     if (!hasEmail && !hasPhone) {
-      setSubmitError('Please provide an email address or phone number so we can reach you.');
+      setSubmitError('Please provide an email address or phone number so I can reach you.');
       return;
     }
 

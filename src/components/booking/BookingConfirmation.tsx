@@ -78,8 +78,8 @@ export default function BookingConfirmation({
             thing that would never happen. */}
         <p className="font-body text-sm text-text-secondary">
           {hasBooking
-            ? "A confirmation is on its way to your inbox, with a calendar invite attached. We'll call you at your scheduled time."
-            : "Read it, then tell us if a call would help. We'll find a time that works for both of us."}
+            ? "A confirmation is on its way to your inbox, with a calendar invite attached. I'll call you at your scheduled time."
+            : "Read it, then tell me if a call would help. We'll find a time that works for both of us."}
         </p>
       </div>
 

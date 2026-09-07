@@ -63,7 +63,7 @@ export default function BookingContactForm({
                 at {selectedTime} EST
               </>
             ) : (
-              "We'll reach out to find a time that works"
+              "I'll reach out to find a time that works"
             )}
           </p>
         </div>
@@ -200,7 +200,7 @@ export default function BookingContactForm({
 
       {isInitialStep && (
         <p className="mt-3 text-center font-body text-xs text-text-tertiary">
-          No call required. We&apos;ll come back with a plan for your site within 24 hours.
+          No call required. I&apos;ll come back with a plan for your site within 24 hours.
         </p>
       )}
     </form>

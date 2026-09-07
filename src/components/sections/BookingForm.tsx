@@ -35,7 +35,7 @@ export default function BookingForm() {
                 Let&apos;s <GradientText>Talk</GradientText>
               </h1>
               <p className="mt-4 font-body text-lg text-text-secondary">
-                Tell us a little about your business. We&apos;ll reach out to
+                Tell me a little about your business. I&apos;ll reach out to
                 get the conversation started.
               </p>
 
