@@ -52,8 +52,8 @@ export const PHONE_SMS = `sms:+1${PHONE_DIGITS}`;
  * unmutes, so the words have to be visible without sound.
  */
 export const VSL = {
-  src: '',
-  poster: '',
+  src: '/video/hero.mp4',
+  poster: '/video/hero-poster.jpg',
   label: 'Watch this first',
 } as const;
 
