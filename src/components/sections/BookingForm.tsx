@@ -69,7 +69,7 @@ export default function BookingForm() {
                   <div>
                     <p className="font-body font-semibold text-text-primary">No Pressure, No Pitch</p>
                     <p className="font-body text-sm text-text-secondary">
-                      Honest assessment of where you stand — whether you hire us or not
+                      Honest assessment of where you stand — whether you hire me or not
                     </p>
                   </div>
                 </div>
