@@ -123,6 +123,9 @@ for a,b in zip(cues, cues[1:]):
 json.dump(dict(total=TOTAL, segs=segs, cues=cues), open(W/'plan.json','w'), indent=1)
 if sys.argv[1:] == ['plan']:
     for c in cues: print(f"{c['t0']:7.2f} {c['style']} {c['text']}")
+    print('\nchapters for lib/constants.ts VSL.chapters:')
+    for s in segs:
+        if s['kind']=='listen': print(f"    {{ t: {s['o0']:.1f}, label: '' }},  // {QS[s['q']]}")
     sys.exit()
 
 # ---------- 4. caption frames ----------

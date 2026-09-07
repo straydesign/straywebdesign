@@ -55,6 +55,21 @@ export const VSL = {
   src: '/video/hero.mp4',
   poster: '/video/hero-poster.jpg',
   label: 'Watch this first',
+  /**
+   * Chapter starts, in seconds of the rendered file — one per question the
+   * interviewer asks. `python3 scripts/video/build-hero.py plan` prints them
+   * after every re-cut; paste, don't estimate.
+   */
+  chapters: [
+    { t: 0, label: 'Before the site' },
+    { t: 49.4, label: 'What I actually do' },
+    { t: 111.9, label: 'A few months in' },
+    { t: 174.0, label: 'Who keeps it current' },
+    { t: 201.4, label: 'What people ask first' },
+    { t: 275.1, label: 'Being local' },
+    { t: 314.4, label: 'What owners say' },
+    { t: 334.7, label: 'What to do next' },
+  ],
 } as const;
 
 /**
