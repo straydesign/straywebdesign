@@ -53,7 +53,7 @@ const ANSWERS = [
 export default function ThankYou() {
   /* Annotated as boolean so the empty-string literal type doesn't make
      TypeScript read the guard below as permanently false. */
-  const hasVsl: boolean = Boolean(VSL.src);
+  const hasVsl: boolean = Boolean(VSL.src) && VSL.video;
 
   return (
     <>

@@ -35,6 +35,26 @@ export default function Vsl() {
 
   if (!VSL.src) return null;
 
+  /* Player off for now: the same slot carries the questions the video will
+     answer, blue on white, so the page reads the way the video will. */
+  if (!VSL.video) {
+    return (
+      <div className="rounded-xl border border-border-default bg-white px-6 py-8 shadow-[0_20px_60px_rgba(16,18,22,0.10)] md:px-12 md:py-12">
+        <ol className="grid gap-x-10 gap-y-4 md:grid-cols-2">
+          {VSL.questions.map((q, i) => (
+            <li
+              key={q}
+              className="flex gap-3 font-display text-lg font-medium leading-snug text-accent md:text-xl"
+            >
+              <span className="w-6 shrink-0 font-normal tabular-nums">{i + 1}</span>
+              <span>{q}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    );
+  }
+
   function start(at = 0) {
     const el = videoRef.current;
     if (!el) return;

@@ -52,6 +52,25 @@ export const PHONE_SMS = `sms:+1${PHONE_DIGITS}`;
  * unmutes, so the words have to be visible without sound.
  */
 export const VSL = {
+  /**
+   * false = the player stays off and the slot shows the questions as text,
+   * blue on white. Flip to true when the re-record is cut in.
+   */
+  video: false as boolean,
+  /** The questions the video answers, in the order they're asked. */
+  questions: [
+    'Tell me about this shop. Before the site, how were people finding them?',
+    'What actually happens when you take a shop like that on?',
+    'What happens to a site like this after a few months?',
+    'So who keeps it current?',
+    'How does someone trust a stranger online with this?',
+    'What does it cost? People want the number.',
+    "Who's this for? Who do you like working with?",
+    'What do people usually ask you before they say yes?',
+    "You're the local guy for these shops. What does that actually mean for them?",
+    'What do owners say afterward?',
+    "If someone's watching this and they've never had a site, what should they do?",
+  ],
   src: '/video/hero.mp4',
   poster: '/video/hero-poster.jpg',
   label: 'Watch this first',
