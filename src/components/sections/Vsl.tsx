@@ -1,59 +1,144 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import { Play } from 'lucide-react';
+import { useRef, useState, type KeyboardEvent } from 'react';
+import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import { VSL } from '@/lib/constants';
 
 /**
- * The video at the top of the page — Tom answering eight questions about what
- * he'd do for you, not a pitch.
+ * The slot at the top of the page — Tom answering the questions people ask
+ * before they say yes, not a pitch.
  *
- * Until the file exists, this renders NOTHING. No placeholder frame, no
- * "coming soon", no play button that does nothing when pressed. A control that
- * promises something the build can't do is worse than an absent section, and
- * the page reads fine without it.
+ * Two modes, switched by VSL.video:
+ *  - player off: one slide per question, his answers as text, blue on white.
+ *    Arrows, the chip row and the keyboard all move between them.
+ *  - player on: the video, autoplay muted with burnt-in captions, and a chip
+ *    per chapter that unmutes and seeks.
  *
- * Captions are burned into the video itself rather than served as a track,
- * because the player autoplays muted and almost nobody unmutes — people read
- * along instead.
- *
- * Under the player: one chip per question. Tapping one unmutes, jumps there
- * and shows the controls, so someone who only cares about price or upkeep
- * gets that answer without sitting through the rest. The chip for the part
- * currently playing is filled, so the row doubles as a progress read.
+ * Until the video file exists the player mode renders NOTHING. A control that
+ * promises something the build can't do is worse than an absent section.
  */
+export default function Vsl() {
+  if (!VSL.video) return <Slides />;
+  if (!VSL.src) return null;
+  return <Player />;
+}
+
+const CHIP =
+  'inline-flex items-center gap-2 rounded-full border px-3 py-1.5 font-body text-[13px] leading-none transition-colors';
+const CHIP_ON = 'border-accent bg-accent text-white';
+const CHIP_OFF =
+  'border-border-default bg-surface-card text-text-secondary hover:border-accent hover:text-accent';
+
+/* ----- slides ---------------------------------------------------------- */
+
+function Slides() {
+  const [index, setIndex] = useState(0);
+  const count = VSL.slides.length;
+  const slide = VSL.slides[index];
+
+  function go(next: number) {
+    const wrapped = (next + count) % count;
+    setIndex(wrapped);
+    window.gtag?.('event', 'hero_slide', { slide: VSL.slides[wrapped].label, index: wrapped });
+  }
+
+  function onKey(e: KeyboardEvent<HTMLElement>) {
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      go(index + 1);
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      go(index - 1);
+    }
+  }
+
+  return (
+    <div>
+      <section
+        aria-roledescription="carousel"
+        aria-label="The questions people ask me before they say yes"
+        tabIndex={0}
+        onKeyDown={onKey}
+        className="rounded-xl border border-border-default bg-white px-6 py-7 shadow-[0_20px_60px_rgba(16,18,22,0.10)] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 md:px-12 md:py-10"
+      >
+        <div className="flex items-center justify-between gap-6">
+          <p className="font-body text-sm tabular-nums text-accent">
+            {index + 1} of {count}
+          </p>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => go(index - 1)}
+              aria-label="Previous question"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border-default text-accent transition-colors hover:border-accent hover:bg-accent-soft"
+            >
+              <ChevronLeft className="h-4 w-4" aria-hidden />
+            </button>
+            <button
+              type="button"
+              onClick={() => go(index + 1)}
+              aria-label="Next question"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border-default text-accent transition-colors hover:border-accent hover:bg-accent-soft"
+            >
+              <ChevronRight className="h-4 w-4" aria-hidden />
+            </button>
+          </div>
+        </div>
+
+        {/* Keyed on the index so the browser re-announces it as a new slide. */}
+        <div key={index} aria-live="polite" className="mt-5 md:min-h-[19rem]">
+          <h2 className="text-balance font-display text-2xl font-semibold leading-tight tracking-tight text-accent md:text-3xl">
+            {slide.q}
+          </h2>
+          <ul className="mt-5 flex flex-col gap-3">
+            {slide.a.map((line) => (
+              <li
+                key={line}
+                className="flex gap-3 font-body text-base leading-relaxed text-accent md:text-lg"
+              >
+                <span aria-hidden className="mt-[0.75em] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                <span>{line}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <nav aria-label="Jump to a question" className="mt-3 flex flex-wrap gap-2">
+        {VSL.slides.map((s, i) => {
+          const active = i === index;
+          return (
+            <button
+              key={s.label}
+              type="button"
+              onClick={() => go(i)}
+              aria-current={active ? 'true' : undefined}
+              className={`${CHIP} ${active ? CHIP_ON : CHIP_OFF}`}
+            >
+              <span className={`tabular-nums ${active ? 'text-white' : 'text-text-tertiary'}`}>
+                {i + 1}
+              </span>
+              {s.label}
+            </button>
+          );
+        })}
+      </nav>
+    </div>
+  );
+}
+
+/* ----- player ---------------------------------------------------------- */
+
 function stamp(seconds: number) {
   const m = Math.floor(seconds / 60);
   const s = Math.floor(seconds % 60);
   return `${m}:${s.toString().padStart(2, '0')}`;
 }
 
-export default function Vsl() {
+function Player() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const [current, setCurrent] = useState(0);
-
-  if (!VSL.src) return null;
-
-  /* Player off for now: the same slot carries the questions the video will
-     answer, blue on white, so the page reads the way the video will. */
-  if (!VSL.video) {
-    return (
-      <div className="rounded-xl border border-border-default bg-white px-6 py-8 shadow-[0_20px_60px_rgba(16,18,22,0.10)] md:px-12 md:py-12">
-        <ol className="grid gap-x-10 gap-y-4 md:grid-cols-2">
-          {VSL.questions.map((q, i) => (
-            <li
-              key={q}
-              className="flex gap-3 font-display text-lg font-medium leading-snug text-accent md:text-xl"
-            >
-              <span className="w-6 shrink-0 font-normal tabular-nums">{i + 1}</span>
-              <span>{q}</span>
-            </li>
-          ))}
-        </ol>
-      </div>
-    );
-  }
 
   function start(at = 0) {
     const el = videoRef.current;
@@ -92,6 +177,8 @@ export default function Vsl() {
   return (
     <div>
       <div className="relative overflow-hidden rounded-xl border border-border-default bg-text-primary shadow-[0_20px_60px_rgba(16,18,22,0.16)]">
+        {/* Captions are burnt into the file; the player autoplays muted and
+            almost nobody unmutes, so people read along instead. */}
         <video
           ref={videoRef}
           className="aspect-video w-full"
@@ -105,9 +192,6 @@ export default function Vsl() {
           onTimeUpdate={follow}
           onEnded={() => setPlaying(false)}
         />
-
-        {/* One tap turns it into the real thing: sound on, from the top, with
-            controls. Before that it's an ambient muted loop. */}
         {!playing && (
           <button
             type="button"
@@ -132,13 +216,9 @@ export default function Vsl() {
               type="button"
               onClick={() => jump(i)}
               aria-current={active ? 'true' : undefined}
-              className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 font-body text-[13px] leading-none transition-colors ${
-                active
-                  ? 'border-text-primary bg-text-primary text-white'
-                  : 'border-border-default bg-surface-card text-text-secondary hover:border-border-strong hover:text-text-primary'
-              }`}
+              className={`${CHIP} ${active ? CHIP_ON : CHIP_OFF}`}
             >
-              <span className={`tabular-nums ${active ? 'text-white/70' : 'text-text-tertiary'}`}>
+              <span className={`tabular-nums ${active ? 'text-white' : 'text-text-tertiary'}`}>
                 {stamp(c.t)}
               </span>
               {c.label}
