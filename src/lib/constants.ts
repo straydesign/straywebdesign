@@ -64,13 +64,13 @@ export const VSL = {
    */
   slides: [
     {
-      label: 'Before the site',
-      q: 'Before the site, how were people finding the shop?',
+      label: 'Your shop now',
+      q: 'How are people finding your shop now?',
       a: [
-        'Word of mouth was already doing really well for them. The service side was booming.',
-        "They had products in the store that people didn't really come in and buy, and that's a way to make a lot more money for the amount of work.",
-        'The owner got calls all day about the services and the prices. Nobody came in for the products. The questions were pretty repetitive.',
-        "I wondered how many people were calling, and how many weren't calling who had run into the same thing.",
+        "Word of mouth works well for you. There's a part of your business that's doing great.",
+        "There's another part of it people don't come in for.",
+        'You get calls all day about services and prices, and the questions get repetitive.',
+        "Some people don't give you a call in the first place. They find the information somewhere else before they get the chance to.",
       ],
     },
     {
