@@ -125,11 +125,9 @@ export const VSL = {
       label: "Who it's for",
       q: "Who's this for? Who do you like working with?",
       a: [
-        'Someone who works proactively for the sake of their own business.',
-        "There's a lot you can do that improves how you look. Reply to every review on Google. There are only going to be a few hundred after a few years, sometimes less than one every couple of weeks. It takes a short time to really get into the details.",
-        'Always reading, on top of it. Growing in different directions, like setting up an online store, and wanting to learn and figure it out.',
-        "Communicating with me is really important. If anything is ever confusing, or there's a direction you want to go, tell me.",
-        "Don't wait around wondering if it's going to be financially possible. I can work with you no matter what your situation is.",
+        "People who already know they need it, and have been waiting to find someone they can trust and a process that's going to be straightforward.",
+        'People who want flexibility down the road, not something set in stone.',
+        'People who want to be proactive and grow, which means the answers to some of the questions on their site are going to change over time.',
       ],
     },
     {
