@@ -116,11 +116,9 @@ export const VSL = {
       label: 'Price',
       q: 'What does it cost? People want the number.',
       a: [
-        'I give you the brass tacks off the bat. No haggling, no price hidden from you till the last minute.',
-        "The way it goes: you have around 2,000 products. I'll catalogue them, scan them and get them on for you for three grand.",
-        "I've already done this for a shop with 950 products, and I'd expect a larger catalogue to do better than that.",
-        "Monthly it's an additional $100. That's for adjusting titles and looking at how the pages perform each month, plus the hosting and upkeep.",
-        'It\'s nice to be able to text someone. "We\'re hiring, can you put that up?" Sure, same day. "Where is this on the site? We had that up before." That came down when it went out of season. Let me get on that right now.',
+        'Between $1,000 and $3,000 to build.',
+        '$20, $50 or $100 a month after that. That covers the hosting and upkeep, plus adjusting titles and looking at how the pages perform each month.',
+        'No haggling, no price hidden from you till the last minute.',
       ],
     },
     {
