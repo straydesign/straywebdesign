@@ -1,19 +1,22 @@
 #!/usr/bin/env python3
-"""Interviewer questions -> q1..q8.mp3. eleven_v3 (most natural) with a conversational voice; falls back to multilingual_v2."""
+"""Interviewer questions -> q1..q11.mp3. eleven_v3 (most natural) with a conversational voice; falls back to multilingual_v2."""
 import json, subprocess, sys, urllib.request, urllib.error
 from pathlib import Path
 W = Path(__file__).parent
 KEY = subprocess.run([str(Path.home()/'.claude/hooks/secrets-helper.sh'),'get','elevenlabs','api-key'],capture_output=True,text=True).stdout.strip()
 VOICE = 'cgSgspJ2msm6clMCkdW9'   # Jessica — expressive, conversational, American
 Q_TTS = [
- "So, tell me about this shop. Before the site, how were people finding them?",
- "Okay, so what actually happens when you take a shop like that on?",
- "And what happens to a site like this after a few months?",
- "So who keeps it current?",
- "What do people usually ask you before they say yes?",
- "You're the local guy for these shops. What does that actually mean for them?",
- "What do owners say afterward?",
- "If someone's watching this and they've never had a site... what should they do?",
+ "Okay. So, the owner watching this... how are people finding their shop right now?",
+ "And what happens when you take a shop like that on?",
+ "So what happens to a site when nobody's looking after it?",
+ "Okay, so who keeps it current?",
+ "How does someone know they can trust this?",
+ "What does it cost? People want the number.",
+ "Who is this for?",
+ "What will they want to know before they say yes?",
+ "You're local. What does that actually mean for them?",
+ "What do other owners say afterward?",
+ "And what should they do next?",
 ]
 def tts(text, model, settings):
     req = urllib.request.Request(

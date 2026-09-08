@@ -14,14 +14,17 @@ def measure_i(p, pre=''):
     return json.loads(blob[:blob.find('}')+1])
 
 QS = [
- "So tell me about this shop. Before the site, how were people finding them?",
- "So what actually happens when you take a shop like that on?",
- "And what happens to a site like this after a few months?",
+ "So, the owner watching this. How are people finding their shop right now?",
+ "What happens when you take a shop like that on?",
+ "What happens to a site when nobody's looking after it?",
  "So who keeps it current?",
- "What do people usually ask you before they say yes?",
- "You're the local guy for these shops. What does that actually mean for them?",
- "What do owners say afterward?",
- "If someone's watching this and they've never had a site, what should they do?",
+ "How does someone know they can trust this?",
+ "What does it cost? People want the number.",
+ "Who is this for?",
+ "What will they want to know before they say yes?",
+ "You're local. What does that mean for them?",
+ "What do other owners say afterward?",
+ "And what should they do next?",
 ]
 # answers in source seconds (from the silence map), internal pauses to tighten
 ANS = [(22.0,76.0),(84.4,159.7),(175.5,253.3),(276.0,307.3),(321.4,408.75),(432.9,475.3),(492.8,518.3),(530.9,546.2)]
