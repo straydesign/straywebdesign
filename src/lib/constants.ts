@@ -134,11 +134,9 @@ export const VSL = {
       label: 'What people ask',
       q: 'What do people usually ask before they say yes?',
       a: [
-        "How the hosting and pricing works. It's all wrapped into the monthly fee.",
-        'My goal is to take as little of your time as possible. The things you regularly change, you can get in and change yourself.',
-        "In the back of a lot of owners' heads they know they need to fix it and it's bugging them, but life is so busy. Most people are already ready. They just need the push.",
-        "They need to know that somebody who can really work with them isn't going to screw them over, and has the time for them.",
-        'Not "we got it set up, and it costs more if you ever want changes." It\'s "you\'re signed up, and I want to make it ideal for you going forward." It can be a headache, and I want it to be stress-free.',
+        "Whether I'm going to stay reliable for them. They need to know the person they're working with has the time for them and isn't going to screw them over.",
+        'Not "we got it set up, and it costs more if you ever want changes." It\'s "you\'re signed up, and I want to make it ideal for you going forward."',
+        'What the fee covers. Hosting, upkeep and the changes are all wrapped into the monthly. The things you regularly change, you can get in and change yourself.',
       ],
     },
     {
