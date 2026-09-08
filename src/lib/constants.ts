@@ -105,9 +105,9 @@ export const VSL = {
     },
     {
       label: 'Trust',
-      q: 'How does someone trust a stranger online with this?',
+      q: 'How does someone trust this?',
       a: [
-        "It is so hard to trust people online. It's the biggest thing. Who is this random stranger, can I trust them, is this going to suck in some way.",
+        "It is so hard to trust people online. It's the biggest thing for people.",
         "Here's the resolution. If you're not happy, 90 days, no questions asked. We split ends and you get all your money back.",
         "What's worse: not giving it a chance, or giving it a chance and having 90 days?",
       ],
@@ -117,7 +117,6 @@ export const VSL = {
       q: 'What does it cost? People want the number.',
       a: [
         'I give you the brass tacks off the bat. No haggling, no price hidden from you till the last minute.',
-        "I've done this up front with people a lot of times, because I walk in. I'm a little new in this space and it is hard to trust a person.",
         "The way it goes: you have around 2,000 products. I'll catalogue them, scan them and get them on for you for three grand.",
         "I've already done this for a shop with 950 products, and I'd expect a larger catalogue to do better than that.",
         "Monthly it's an additional $100. That's for adjusting titles and looking at how the pages perform each month, plus the hosting and upkeep.",
