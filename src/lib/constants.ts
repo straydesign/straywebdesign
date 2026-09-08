@@ -75,37 +75,37 @@ export const VSL = {
     },
     {
       label: 'What I do',
-      q: 'What actually happens when you take a shop like that on?',
+      q: 'What happens when I take your shop on?',
       a: [
-        "Usually it starts with photographs of all the products. A lot of shops don't have everything in stock properly catalogued, so that's the place to start.",
-        'All the photographs and all the prices go into a chart, so I can start listing them on Google for people searching.',
-        'In this case a couple hundred golf clubs. Heads and shafts, and some miscellaneous stuff.',
-        "When people search, they normally get the people who already have it figured out, like Dick's Sporting Goods. Now this shop shows up for those products too.",
-        "Somebody can just walk in and buy a club. The shop makes money on that, and it's there for the people looking for it.",
+        "Usually it starts with photographs of everything you sell. A lot of shops don't have everything in stock properly catalogued, so that's the place to start.",
+        'All the photographs and all the prices go into a chart, so I can start listing them on Google for the people searching.',
+        'For one shop that was a couple hundred golf clubs. Heads and shafts, and some miscellaneous stuff.',
+        "When people search, they normally get the ones who already have it figured out, like Dick's Sporting Goods. Now your shop shows up for those products too.",
+        "Somebody can just walk in and buy the thing. You make money on that, and you're there for the people looking for it.",
       ],
     },
     {
       label: 'Why the monthly',
-      q: "What happens to a site when nobody's looking after it?",
+      q: "What happens to your site when nobody's looking after it?",
       a: [
         "Any site nobody's looking after goes out of date. Could be a few months, could be a few years, and that's not a good source of trust for a customer who has never walked in.",
-        'The hours can be wrong. People get upset when they drive in and you closed half an hour earlier because the schedule changed.',
+        'Your hours can be wrong. People get upset when they drive in and you closed half an hour earlier because the schedule changed.',
         'Links go stale because a path changed. A service changed and the page never did.',
-        "It stops being the current version of the business. Everybody's business changes a little over time. That's what the monthly is for.",
+        "It stops being the current version of your business. Everybody's business changes a little over time. That's what the monthly is for.",
       ],
     },
     {
       label: 'Who keeps it current',
-      q: 'So who keeps it current?',
+      q: 'So who keeps your site current?',
       a: [
-        "I set up a backend where you make the changes on your own, and it's built to make that as easy as possible.",
+        "You do, for the everyday things. I set up a backend where you make those changes on your own, and it's built to make that as easy as possible.",
         'When a change is outside that, I either adjust the editor so it works better next time, or I get the change in really quick.',
-        "It's all wrapped into the monthly.",
+        "It's all wrapped into your monthly.",
       ],
     },
     {
       label: 'Trust',
-      q: 'How does someone trust this?',
+      q: 'How do you know you can trust this?',
       a: [
         "It is so hard to trust people online. It's the biggest thing for people.",
         "Here's the resolution. If you're not happy, 90 days, no questions asked. We split ends and you get all your money back.",
@@ -114,43 +114,43 @@ export const VSL = {
     },
     {
       label: 'Price',
-      q: 'What does it cost? People want the number.',
+      q: 'What does it cost? You want the number.',
       a: [
         'Between $500 and $3,000 to build.',
-        '$20, $50 or $100 a month after that. That covers the hosting and upkeep, plus adjusting titles and looking at how the pages perform each month.',
+        '$20, $50 or $100 a month after that. That covers your hosting and upkeep, plus adjusting titles and looking at how your pages perform each month.',
         'No haggling, no price hidden from you till the last minute.',
       ],
     },
     {
-      label: "Who it's for",
-      q: "Who's this for? Who do you like working with?",
+      label: 'Is this for you',
+      q: 'Is this for you?',
       a: [
-        "People who already know they need it, and have been waiting to find someone they can trust and a process that's going to be straightforward.",
-        'People who want flexibility down the road, not something set in stone.',
-        'People who want to be proactive and grow, which means the answers to some of the questions on their site are going to change over time.',
+        "You already know you need it, and you've been waiting to find someone you can trust and a process that's going to be straightforward.",
+        'You want flexibility down the road, not something set in stone.',
+        'You want to be proactive and grow, which means the answers to some of the questions on your site are going to change over time.',
       ],
     },
     {
-      label: 'What people ask',
-      q: 'What do people usually ask before they say yes?',
+      label: 'Before you say yes',
+      q: 'What will you want to know before you say yes?',
       a: [
-        "Whether I'm going to stay reliable for them. They need to know the person they're working with has the time for them and isn't going to screw them over.",
+        "Whether I'm going to stay reliable for you. You need to know the person you're working with has the time for you and isn't going to screw you over.",
         'Not "we got it set up, and it costs more if you ever want changes." It\'s "you\'re signed up, and I want to make it ideal for you going forward."',
-        'What the fee covers. Hosting, upkeep and the changes are all wrapped into the monthly. The things you regularly change, you can get in and change yourself.',
+        'What the fee covers. Hosting, upkeep and the changes are all wrapped into your monthly. The things you regularly change, you can get in and change yourself.',
       ],
     },
     {
       label: 'Local',
-      q: "You're the local guy for these shops. What does that mean for them?",
+      q: "What does it mean for you that I'm local?",
       a: [
-        "In this case I'm local. That's not always the case, but I'm always very accountable.",
+        "For most of the shops I work with, I'm local. When I'm not, I'm still very accountable to you.",
         "I like the human connection to be in person. That's real to me, and we're losing that so much.",
-        "Walking in and getting to know the people and the place. There are things you don't realize about a business and what makes it special without walking in.",
+        "Walking in and getting to know you and the place. There are things you don't realize about a business and what makes it special without walking in.",
       ],
     },
     {
       label: 'What owners say',
-      q: 'What do owners say afterward?',
+      q: 'What do other owners say afterward?',
       a: [
         "They're happy I paid attention to detail and went beyond the expectations I set at the start.",
         '"Never any kickback on this. He listens, then executes." That was a restaurant owner, locally.',
@@ -158,7 +158,7 @@ export const VSL = {
     },
     {
       label: 'What to do',
-      q: "If you've never had a site, what should you do?",
+      q: 'What should you do next?',
       a: [
         "Call my number. I'm pretty available right now. I'm early on and looking to onboard some more clients.",
         "Or fill out the form and we'll set up a meeting. Start with a few questions.",
