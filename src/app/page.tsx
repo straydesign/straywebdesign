@@ -8,23 +8,16 @@ import Proof from '@/components/sections/Proof';
 import About from '@/components/sections/About';
 
 /**
- * One page, one action.
- *
- * The order is not the conventional one and that is deliberate. Two parts of
- * it are load-bearing:
+ * One page, one action, in the order of Brandon Willington's own landing page
+ * (ahoy.whereu.com.au/withu, read 2026-09-08): headline → the letter → the
+ * next step → how it works → testimonials and proof → FAQ → the founder.
  *
  *  - The survey sits directly under the hero, not at the bottom. Somebody who
- *    is convinced by the video should not have to scroll past four sections
+ *    is convinced by the letter should not have to scroll past four sections
  *    hunting for the way in.
- *  - The FAQ sits ABOVE the proof. Brandon Willington split-tested moving FAQs
- *    up and it raised conversion close to every time he tried it, including on
- *    pages where he was sure the testimonials were the stronger asset. Anybody
- *    this far down is looking for a reason not to, and the answer has to reach
- *    them before the reason does.
- *  - "Who this is for" follows HowItWorks because that is the exact moment the
- *    question arrives: they now understand the thing, so the next thought is
- *    whether it applies to them. Brandon found 85–90% of the questions after a
- *    webinar were this one and nothing else.
+ *  - Proof sits above the FAQ, the way his page runs it: the sites first, then
+ *    "still not sure?" and the eighteen questions, then who he is.
+ *  - His dates block (scarcity) has no Stray equivalent and was cut 2026-09-08.
  *
  * There is no nav. Every nav item is an exit.
  */
@@ -36,8 +29,8 @@ export default function Home() {
         <Hero />
         <Survey />
         <HowItWorks />
-        <Faq />
         <Proof />
+        <Faq />
         <About />
       </main>
       <Footer />
