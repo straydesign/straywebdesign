@@ -108,7 +108,7 @@ export const VSL = {
       q: 'How do you know you can trust this?',
       a: [
         "It is so hard to trust people online. It's the biggest thing for people.",
-        "Here's the resolution. If you're not happy, 90 days, no questions asked. We split ends and you get all your money back.",
+        "Here's the resolution. If you're not happy, 90 days, no questions asked. We split ends and you get all your money back. That's the Stray Success Guarantee.",
         "What's worse: not giving it a chance, or giving it a chance and having 90 days?",
       ],
     },
