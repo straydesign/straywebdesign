@@ -25,7 +25,6 @@ QS = [
  "You're local. What does that mean for them?",
  "How do they know you'll stay reliable for them?",
  "What do other owners say afterward?",
- "What does it cost? People want the number.",
  "Last one. What should they do next?",
 ]
 # answers in source seconds (from the silence map), internal pauses to tighten

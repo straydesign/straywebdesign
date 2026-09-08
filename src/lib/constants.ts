@@ -173,15 +173,6 @@ export const VSL = {
       ],
     },
     {
-      label: 'Price',
-      q: 'What does it cost? You want the number.',
-      a: [
-        'Between $500 and $3,000 to build.',
-        '$20, $50 or $100 a month after that. That covers your hosting and upkeep, plus adjusting titles and looking at how your pages perform each month.',
-        'No haggling, no price hidden from you till the last minute.',
-      ],
-    },
-    {
       label: 'What to do',
       q: 'What should you do next?',
       a: [
