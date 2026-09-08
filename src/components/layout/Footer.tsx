@@ -18,17 +18,13 @@ export default function Footer() {
     <footer className="border-t border-border-default bg-surface-card">
       <div className="mx-auto max-w-4xl px-5 py-12 md:px-8">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
-          <div className="max-w-sm">
+          <div>
             <Link
               href="/"
               className="font-mono text-lg font-bold text-text-primary"
             >
               stray<span className="text-accent">web</span>design
             </Link>
-            <p className="mt-3 font-body text-sm leading-relaxed text-text-tertiary">
-              I&apos;m Tom, a web designer in Erie. I put what a business sells
-              online, one page per item, then host it and keep it current.
-            </p>
           </div>
 
           <div className="flex flex-col gap-2">
