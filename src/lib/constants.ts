@@ -116,7 +116,7 @@ export const VSL = {
       label: 'Price',
       q: 'What does it cost? People want the number.',
       a: [
-        'Between $1,000 and $3,000 to build.',
+        'Between $500 and $3,000 to build.',
         '$20, $50 or $100 a month after that. That covers the hosting and upkeep, plus adjusting titles and looking at how the pages perform each month.',
         'No haggling, no price hidden from you till the last minute.',
       ],
