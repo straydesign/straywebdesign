@@ -184,20 +184,6 @@ export const VSL = {
     { t: 334.7, label: 'What to do next' },
   ],
 } as const;
-
-/**
- * The availability strip. `spots: null` means the Scarcity section renders
- * nothing at all — see the note in components/sections/Scarcity.tsx.
- *
- * Only ever set this to a number Tom has actually decided, and update
- * `checked` in the same edit. A stale date is its own kind of lie.
- */
-export const SCARCITY = {
-  spots: null as number | null,
-  period: 'this month',
-  checked: '',
-} as const;
-
 /* NAV_LINKS is gone with the nav. The page is a landing page now: one message,
    one action, and nowhere else to click. */
 

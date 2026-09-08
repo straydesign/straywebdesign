@@ -2,32 +2,36 @@ import AnimateIn from '@/components/ui/AnimateIn';
 import DeviceDuo from '@/components/ui/DeviceDuo';
 
 /**
- * HowItWorks — what replaced "What I do". That section was a capability menu,
- * and a capability menu invites price-shopping: nobody running a fish market
- * wants "APIs & integrations", they want their fish on Google.
+ * HowItWorks — the whole offer in one row: the list as it arrived, the list
+ * as something people can browse, one item on its own page. One line per
+ * step; the pictures do the explaining.
  *
- * Three beats, in order, because it genuinely is a sequence. Two of them carry
- * a real screenshot of a real catalog rather than a paragraph — the pictures
- * are from Sea Cave's live store, which is why they show real prices and a
- * real stock line.
+ * Every shot is real. Step 1 is the Presque Isle sheet, built by reading the
+ * handwritten signs in 396 photographs taken in the shop on 21 August 2026,
+ * with one of those signs in the phone. Steps 2 and 3 are Sea Cave's live
+ * store, which is why they show real prices and a real stock line.
  *
- * SITE SHOTS ALWAYS GO IN A DEVICE FRAME (Tom, 2026-09-01). A bare screenshot
- * reads as a picture of a page; the same shot in a laptop and a phone reads as
- * a thing that exists and that a customer is holding. Desktop captures are
- * 1280×800 and phone captures 390×844 because that is what MacBookFrame and
- * PhoneFrame expect — anything else gets cropped by object-cover.
+ * SITE SHOTS ALWAYS GO IN A DEVICE FRAME (Tom, 2026-09-01). Desktop captures
+ * are 1280×800 and phone captures 390×844 (or 2× either), because that is
+ * what MacBookFrame and PhoneFrame expect — anything else gets cropped.
  */
 
 const STEPS = [
   {
     n: '01',
     title: 'You hand over the list',
-    body: "Whatever shape it's in. A spreadsheet, a supplier PDF, photos of a whiteboard, or a walk around your place with me writing it down. Getting it into a usable shape is my job.",
+    body: 'A spreadsheet, a supplier PDF, or I walk your place and read the signs.',
+    device: {
+      shot: '/images/how/item-list.png',
+      phoneShot: '/images/how/item-list-phone.jpg',
+      name: "Presque Isle Fish & Farm's list, read off the signs in the shop",
+      caption: 'Presque Isle, 396 signs read on 21 August',
+    },
   },
   {
     n: '02',
-    title: 'It becomes something people can browse',
-    body: 'Categories, prices, a search box, filters that work. Somebody who lands on it can find what they came for in a few seconds, on a phone, standing in a parking lot.',
+    title: 'Something people can browse',
+    body: 'Categories, prices, a search box. Found on a phone in a few seconds.',
     device: {
       shot: '/images/how/catalog-grid.png',
       phoneShot: '/images/how/catalog-grid-phone.png',
@@ -38,7 +42,7 @@ const STEPS = [
   {
     n: '03',
     title: 'Every item gets its own page',
-    body: 'A name, a photo, a description, a price, and whether it is in stock. All of it written out in the structure Google reads. That is the part that puts the item in search results and in Google Shopping instead of leaving it buried inside a page about your business.',
+    body: 'Name, photo, price, in stock or not, in the structure Google reads.',
     device: {
       shot: '/images/how/catalog-item.png',
       phoneShot: '/images/how/catalog-item-phone.png',
@@ -55,53 +59,45 @@ export default function HowItWorks() {
       className="border-b border-border-default bg-surface-card py-20 md:py-28"
       aria-label="How it works"
     >
-      <div className="mx-auto max-w-5xl px-5 md:px-8">
+      <div className="mx-auto max-w-6xl px-5 md:px-8">
         <AnimateIn>
           <h2 className="max-w-2xl font-display text-[clamp(1.9rem,4vw,2.9rem)] font-bold leading-[1.05] tracking-tight text-text-primary">
             Your whole list, online, one page per thing.
           </h2>
-          <p className="mt-4 max-w-xl font-body text-base leading-relaxed text-text-secondary md:text-lg">
-            Menus, stock, counters, shows. If you can list it, it can go up
-            and be found. Three steps, and two of them are mine.
-          </p>
         </AnimateIn>
 
-        <div className="mt-14 flex flex-col gap-14 md:mt-20 md:gap-20">
+        <ol className="mt-12 grid gap-12 md:mt-16 md:grid-cols-3 md:gap-8">
           {STEPS.map((step, i) => (
-            <AnimateIn key={step.n} delay={i * 0.06}>
-              <div className="grid gap-6 md:grid-cols-[auto_1fr] md:gap-8">
-                <span
-                  aria-hidden
-                  className="font-mono text-[13px] font-medium text-accent md:pt-1.5"
-                >
-                  {step.n}
-                </span>
-                <div>
-                  <h3 className="font-display text-xl font-semibold tracking-tight text-text-primary md:text-2xl">
-                    {step.title}
-                  </h3>
-                  <p className="mt-3 max-w-xl font-body text-[15px] leading-relaxed text-text-secondary md:text-base">
-                    {step.body}
-                  </p>
-
-                  {step.device && (
-                    <figure className="mt-9">
-                      <DeviceDuo
-                        shot={step.device.shot}
-                        phoneShot={step.device.phoneShot}
-                        name={step.device.name}
-                      />
-                      <figcaption className="mt-3 font-mono text-[11px] text-text-tertiary">
-                        <span aria-hidden className="text-accent/60">{'// '}</span>
-                        {step.device.caption}
-                      </figcaption>
-                    </figure>
-                  )}
+            <li key={step.n}>
+              <AnimateIn delay={i * 0.06}>
+                <figure>
+                  <DeviceDuo
+                    shot={step.device.shot}
+                    phoneShot={step.device.phoneShot}
+                    name={step.device.name}
+                  />
+                  <figcaption className="mt-2 font-mono text-[11px] text-text-tertiary">
+                    <span aria-hidden className="text-accent/60">{'// '}</span>
+                    {step.device.caption}
+                  </figcaption>
+                </figure>
+                <div className="mt-6 flex gap-4">
+                  <span aria-hidden className="font-mono text-[13px] font-medium text-accent md:pt-1">
+                    {step.n}
+                  </span>
+                  <div>
+                    <h3 className="font-display text-lg font-semibold tracking-tight text-text-primary md:text-xl">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 font-body text-[15px] leading-relaxed text-text-secondary">
+                      {step.body}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </AnimateIn>
+              </AnimateIn>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

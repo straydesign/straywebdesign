@@ -2,9 +2,7 @@ import LandingPageHeader from '@/components/layout/LandingPageHeader';
 import Footer from '@/components/layout/Footer';
 import Hero from '@/components/sections/Hero';
 import Survey from '@/components/sections/Survey';
-import Scarcity from '@/components/sections/Scarcity';
 import HowItWorks from '@/components/sections/HowItWorks';
-import WhoThisIsFor from '@/components/sections/WhoThisIsFor';
 import Faq from '@/components/sections/Faq';
 import Proof from '@/components/sections/Proof';
 import About from '@/components/sections/About';
@@ -37,9 +35,7 @@ export default function Home() {
       <main id="main">
         <Hero />
         <Survey />
-        <Scarcity />
         <HowItWorks />
-        <WhoThisIsFor />
         <Faq />
         <Proof />
         <About />

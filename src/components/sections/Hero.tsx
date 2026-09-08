@@ -23,10 +23,6 @@ export default function Hero() {
             <span className="text-accent">where people are already looking</span>.
           </h1>
 
-          <p className="mt-6 max-w-xl font-body text-lg leading-relaxed text-text-secondary md:text-xl">
-            Somebody searches for a thing you sell. They find your item, see
-            you&apos;re two miles away, and drive over. That&apos;s the job.
-          </p>
         </AnimateIn>
 
         <AnimateIn delay={0.08}>
