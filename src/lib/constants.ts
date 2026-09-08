@@ -71,6 +71,17 @@ export const VSL = {
         "There's another part of it people don't come in for.",
         'You get calls all day about services and prices, and the questions get repetitive.',
         "Some people don't give you a call in the first place. They find the information somewhere else before they get the chance to.",
+        "Your shop can show up for those searches too, and somebody can walk in and buy the thing. Here's how that happens.",
+      ],
+    },
+    {
+      label: 'Why I do this',
+      q: 'Why do you do this?',
+      a: [
+        'I got my first clients by walking in and pitching cold.',
+        'Most of them had spent years getting good at one thing and never had a way to show it to the people already searching for it.',
+        "I like the human connection to be in person. That's real to me, and we're losing that so much.",
+        "There are things you don't realize about a business and what makes it special without walking in.",
       ],
     },
     {
@@ -81,7 +92,7 @@ export const VSL = {
         'All the photographs and all the prices go into a chart, so I can start listing them on Google for the people searching.',
         'For one shop that was a couple hundred golf clubs. Heads and shafts, and some miscellaneous stuff.',
         "When people search, they normally get the ones who already have it figured out, like Dick's Sporting Goods. Now your shop shows up for those products too.",
-        "Somebody can just walk in and buy the thing. You make money on that, and you're there for the people looking for it.",
+        'About a week from the day your photos and details reach me. A catalog takes longer, and how much longer comes down to how many items you have.',
       ],
     },
     {
@@ -100,16 +111,65 @@ export const VSL = {
       a: [
         "You do, for the everyday things. I set up a backend where you make those changes on your own, and it's built to make that as easy as possible.",
         'When a change is outside that, I either adjust the editor so it works better next time, or I get the change in really quick.',
-        "It's all wrapped into your monthly.",
+        'Hosting, upkeep and the changes are all wrapped into your monthly, plus adjusting titles and looking at how your pages perform each month.',
+        'Not "we got it set up, and it costs more if you ever want changes." It\'s "you\'re signed up, and I want to make it ideal for you going forward."',
+      ],
+    },
+    {
+      label: 'How it starts',
+      q: 'What actually happens if you say yes?',
+      a: [
+        'Start with a few questions on the form. Then we talk about your business, the photos you already have, and your list of what you sell.',
+        "If that list only exists on a whiteboard or in your head, that's normal, and we work from that.",
+        'I walk your place and photograph everything on the shelves. If you already have a list, that works too.',
+        'If you have a site now, it stays up and keeps working. I build the new one alongside it, your domain stays yours, and we switch when you say go.',
+      ],
+    },
+    {
+      label: 'Is this for you',
+      q: 'Is this for you?',
+      a: [
+        "You already know you need it, and you've been waiting to find someone you can trust and a process that's going to be straightforward.",
+        'You want flexibility down the road, not something set in stone.',
+        'You want to be proactive and grow, which means the answers to some of the questions on your site are going to change over time.',
+        "If you already have a site that loads fast, says the right things, and people are finding you, keep it. Give me the address on the call and I'll tell you straight if there's nothing here worth doing.",
+      ],
+    },
+    {
+      label: 'Your time',
+      q: 'How much of your time does this take?',
+      a: [
+        'I take the photos. If you already have good ones, we use those.',
+        "I write the words and you correct me. You know your business and I don't, so the first draft is mine to get wrong and yours to fix.",
+        "If you're not technical, that describes most of the people I work with. If something needs doing on the site and you'd rather not touch it, send it to me and it's handled.",
+        'New hours, a swapped photo, a price that moved: you send it over and I do it.',
+      ],
+    },
+    {
+      label: 'Local',
+      q: "What does it mean for you that I'm local?",
+      a: [
+        "For most of the shops I work with, I'm local. When I'm not, I'm still very accountable to you.",
+        'Walking in and getting to know you and the place. You can walk in on me the same way.',
+        "If you're not in Erie, calls and screen shares do the job, and the hosting and the edits are the same wherever you are. The only thing that changes is that I can't come and take the photos myself.",
       ],
     },
     {
       label: 'Trust',
-      q: 'How do you know you can trust this?',
+      q: "How do you know I'll stay reliable for you?",
       a: [
-        "It is so hard to trust people online. It's the biggest thing for people.",
-        "Here's the resolution. If you're not happy, 90 days, no questions asked. We split ends and you get all your money back. That's the Stray Success Guarantee.",
+        "You need to know the person you're working with has the time for you and isn't going to screw you over.",
+        "You own the site. It isn't sitting on a platform you have to keep paying to keep the lights on, and if you ever want to take it somewhere else, it goes with you.",
+        "If you're not happy, 90 days, no questions asked. We split ends and you get all your money back. That's the Stray Success Guarantee.",
         "What's worse: not giving it a chance, or giving it a chance and having 90 days?",
+      ],
+    },
+    {
+      label: 'What owners say',
+      q: 'What do other owners say afterward?',
+      a: [
+        "They're happy I paid attention to detail and went beyond the expectations I set at the start.",
+        '"Never any kickback on this. He listens, then executes." That was a restaurant owner, locally.',
       ],
     },
     {
@@ -122,44 +182,11 @@ export const VSL = {
       ],
     },
     {
-      label: 'Is this for you',
-      q: 'Is this for you?',
-      a: [
-        "You already know you need it, and you've been waiting to find someone you can trust and a process that's going to be straightforward.",
-        'You want flexibility down the road, not something set in stone.',
-        'You want to be proactive and grow, which means the answers to some of the questions on your site are going to change over time.',
-      ],
-    },
-    {
-      label: 'Before you say yes',
-      q: 'What will you want to know before you say yes?',
-      a: [
-        "Whether I'm going to stay reliable for you. You need to know the person you're working with has the time for you and isn't going to screw you over.",
-        'Not "we got it set up, and it costs more if you ever want changes." It\'s "you\'re signed up, and I want to make it ideal for you going forward."',
-        'What the fee covers. Hosting, upkeep and the changes are all wrapped into your monthly. The things you regularly change, you can get in and change yourself.',
-      ],
-    },
-    {
-      label: 'Local',
-      q: "What does it mean for you that I'm local?",
-      a: [
-        "For most of the shops I work with, I'm local. When I'm not, I'm still very accountable to you.",
-        "I like the human connection to be in person. That's real to me, and we're losing that so much.",
-        "Walking in and getting to know you and the place. There are things you don't realize about a business and what makes it special without walking in.",
-      ],
-    },
-    {
-      label: 'What owners say',
-      q: 'What do other owners say afterward?',
-      a: [
-        "They're happy I paid attention to detail and went beyond the expectations I set at the start.",
-        '"Never any kickback on this. He listens, then executes." That was a restaurant owner, locally.',
-      ],
-    },
-    {
       label: 'What to do',
       q: 'What should you do next?',
       a: [
+        "You've spent years getting good at one thing and never had a way to show it to the people already searching for it.",
+        "Word of mouth carries the part that's doing great. The people searching for the rest are finding it somewhere else.",
         "Call my number. I'm pretty available right now. I'm early on and looking to onboard some more clients.",
         "Or fill out the form and we'll set up a meeting. Start with a few questions.",
       ],

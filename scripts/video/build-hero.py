@@ -14,17 +14,19 @@ def measure_i(p, pre=''):
     return json.loads(blob[:blob.find('}')+1])
 
 QS = [
- "So, the owner watching this. How are people finding their shop right now?",
- "What happens when you take a shop like that on?",
- "What happens to a site when nobody's looking after it?",
- "So who keeps it current?",
- "How does someone know they can trust this?",
- "What does it cost? People want the number.",
- "Who is this for?",
- "What will they want to know before they say yes?",
+ "So, the owner watching this. How are people finding your shop right now?",
+ "Before the how. Why do you do this?",
+ "Okay. So what happens when you take a shop on?",
+ "So what happens to a site when nobody's looking after it?",
+ "Okay, so who keeps it current?",
+ "Say they're in. What actually happens next?",
+ "Who is this for? And who isn't it for?",
+ "The one everybody asks. How much of their time does this take?",
  "You're local. What does that mean for them?",
+ "How do they know you'll stay reliable for them?",
  "What do other owners say afterward?",
- "And what should they do next?",
+ "What does it cost? People want the number.",
+ "Last one. What should they do next?",
 ]
 # answers in source seconds (from the silence map), internal pauses to tighten
 ANS = [(22.0,76.0),(84.4,159.7),(175.5,253.3),(276.0,307.3),(321.4,408.75),(432.9,475.3),(492.8,518.3),(530.9,546.2)]
@@ -46,7 +48,7 @@ if not tom.exists():
 ZOOM = ('aformat=channel_layouts=mono,highpass=f=160,lowpass=f=6800,'
         'acompressor=threshold=-20dB:ratio=3:attack=8:release=150:makeup=3')
 qdur = []
-for i in range(8):
+for i in range(len(QS)):
     wav = W/f'q{i+1}.wav'
     if not wav.exists():
         op = W/f'q{i+1}.opus'
@@ -193,7 +195,7 @@ fc.append(f"[vz][10:v]overlay=0:{720-SH}:eof_action=pass:format=auto,fade=t=in:d
 fc.append(f"[ac]afade=t=out:st={TOTAL-0.6:.3f}:d=0.6,alimiter=limit=0.95:level=false[aout]")
 (W/'graph.txt').write_text('\n'.join(fc))
 cmd = ['ffmpeg','-y','-hide_banner','-loglevel','warning','-stats','-i',str(W/'raw.mov'),'-i',str(tom)]
-for i in range(8): cmd += ['-i', str(W/f'q{i+1}.wav')]
+for i in range(len(QS)): cmd += ['-i', str(W/f'q{i+1}.wav')]
 cmd += ['-framerate',str(CFPS),'-i',str(cap/'c%05d.png'),'-filter_complex_script',str(W/'graph.txt'),
         '-map','[vout]','-map','[aout]','-c:v','libx264','-preset','slow','-crf','24','-profile:v','high','-g','60',
         '-c:a','aac','-b:a','96k','-ac','1','-movflags','+faststart','-t',f'{TOTAL:.3f}',str(W/'master.mp4')]
