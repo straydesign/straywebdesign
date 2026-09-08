@@ -1,0 +1,271 @@
+{
+ "keeps": [
+  [
+   2.935,
+   6.001
+  ],
+  [
+   6.519,
+   17.67
+  ],
+  [
+   18.355,
+   19.625
+  ],
+  [
+   20.248,
+   28.981
+  ],
+  [
+   29.635,
+   40.985
+  ],
+  [
+   41.594,
+   46.539
+  ],
+  [
+   47.228,
+   57.747
+  ],
+  [
+   58.363,
+   74.979
+  ],
+  [
+   75.623,
+   87.509
+  ],
+  [
+   88.867,
+   93.102
+  ],
+  [
+   93.889,
+   98.601
+  ],
+  [
+   100.323,
+   106.988
+  ],
+  [
+   108.439,
+   112.681
+  ],
+  [
+   113.194,
+   114.0
+  ],
+  [
+   127.9,
+   129.218
+  ],
+  [
+   130.012,
+   140.1
+  ],
+  [
+   149.2,
+   168.084
+  ],
+  [
+   207.2,
+   212.186
+  ],
+  [
+   213.324,
+   221.283
+  ],
+  [
+   222.811,
+   242.501
+  ],
+  [
+   243.668,
+   245.602
+  ],
+  [
+   248.768,
+   265.392
+  ],
+  [
+   266.956,
+   275.236
+  ],
+  [
+   276.405,
+   278.498
+  ],
+  [
+   279.765,
+   290.579
+  ],
+  [
+   291.062,
+   306.275
+  ],
+  [
+   307.324,
+   313.784
+  ],
+  [
+   314.892,
+   321.012
+  ],
+  [
+   322.083,
+   329.212
+  ],
+  [
+   331.645,
+   353.255
+  ],
+  [
+   353.936,
+   356.233
+  ],
+  [
+   356.799,
+   363.139
+  ],
+  [
+   365.047,
+   372.834
+  ],
+  [
+   403.5,
+   410.317
+  ],
+  [
+   411.24,
+   419.763
+  ],
+  [
+   420.932,
+   423.179
+  ],
+  [
+   424.523,
+   432.412
+  ],
+  [
+   435.224,
+   437.393
+  ],
+  [
+   438.947,
+   445.017
+  ],
+  [
+   445.55,
+   446.293
+  ],
+  [
+   446.754,
+   448.955
+  ],
+  [
+   449.629,
+   453.41
+  ]
+ ],
+ "paras": [
+  {
+   "i": 1,
+   "label": "Your shop now",
+   "src": 2.935
+  },
+  {
+   "i": 2,
+   "label": "Why I do this",
+   "src": 30.24
+  },
+  {
+   "i": 3,
+   "label": "What I do",
+   "src": 48.4
+  },
+  {
+   "i": 4,
+   "label": "Why the monthly",
+   "src": 109.06
+  },
+  {
+   "i": 5,
+   "label": "Who keeps it current",
+   "src": 149.28
+  },
+  {
+   "i": 6,
+   "label": "How it starts",
+   "src": 223.2
+  },
+  {
+   "i": 7,
+   "label": "Is this for you",
+   "src": 249.08
+  },
+  {
+   "i": 8,
+   "label": "Your time",
+   "src": 276.64
+  },
+  {
+   "i": 9,
+   "label": "Local",
+   "src": 315.16
+  },
+  {
+   "i": 10,
+   "label": "Trust",
+   "src": 331.88
+  },
+  {
+   "i": 11,
+   "label": "What owners say",
+   "src": 365.32
+  },
+  {
+   "i": 12,
+   "label": "What to do",
+   "src": 424.88
+  }
+ ],
+ "fix": {
+  "dicks sporting goods": "Dick's Sporting Goods",
+  "Dicks sporting goods": "Dick's Sporting Goods",
+  "stray success guarantee": "Stray Success Guarantee",
+  "Out of mouth": "Word of mouth",
+  "your clothes": "you're closed",
+  "pitch and cold": "pitching cold",
+  "you're on the site.": "you own the site.",
+  "He listens, that executes": "He listens, then executes",
+  "in the place": "and the place",
+  "a back end": "a backend",
+  "The back end": "The backend",
+  "Erie": "Erie",
+  "in looking to onboard": "and looking to onboard",
+  "or... if": "Or if",
+  "it shows up with how many people walk in": "it shows up in how many people walk in",
+  "walking in Pigeon": "walking in, pitching",
+  "Cold. Some of them": "cold. Some of them",
+  "doing relationship with": "building relationships with",
+  "And, the first part": "The first part",
+  "Bye. nobody's looking after.": "A site that nobody's looking after,",
+  "you know your hours": "your hours",
+  "drives in in your clothes": "drives in and you're closed",
+  "same. the monthly you make": "same. Then the monthly, you make",
+  "upGeek and the chains": "Hosting, upkeep and the changes",
+  "I built. Got found": "I built got found",
+  "straight forwardly": "straightforwardly",
+  "might put.": "might put",
+  "product also.": "product also.",
+  "in store so": "in store, so",
+  "walk in This": "walk in. This",
+  "that happens I got": "that happens. I got",
+  "said, The communication": "said: The communication",
+  "on the site fill out": "on the site, fill out"
+ },
+ "crop_y": 900,
+ "poster_src": 62.0
+}

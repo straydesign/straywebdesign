@@ -56,7 +56,7 @@ export const VSL = {
    * false = the player stays off and the slot shows the questions as text,
    * blue on white. Flip to true when the re-record is cut in.
    */
-  video: false as boolean,
+  video: true as boolean,
   /**
    * One slide per question, shown in the slot while the player is off.
    * Tom's answers from HERO-VIDEO-QA.md, de-looped only. Only the one quote
@@ -168,8 +168,8 @@ export const VSL = {
       label: 'What owners say',
       q: 'What do other owners say afterward?',
       a: [
-        "They're happy I paid attention to detail and went beyond the expectations I set at the start.",
-        '"Never any kickback on this. He listens, then executes." That was a restaurant owner, locally.',
+        "They're happy I paid attention to detail and went beyond what I said at the start.",
+        '"The communication and timeliness of his work is outstanding. I could not be happier with the product also. His web design was awesome. He listens, then executes." A restaurant owner here in Erie.',
       ],
     },
     {
@@ -187,19 +187,23 @@ export const VSL = {
   poster: '/video/hero-poster.jpg',
   label: 'Watch this first',
   /**
-   * Chapter starts, in seconds of the rendered file — one per question the
-   * interviewer asks. `python3 scripts/video/build-hero.py plan` prints them
+   * Chapter starts, in seconds of the rendered file — one per slide of the
+   * spoken piece. `python3 scripts/video/build-hero2.py plan` prints them
    * after every re-cut; paste, don't estimate.
    */
   chapters: [
-    { t: 0, label: 'Before the site' },
-    { t: 49.4, label: 'What I actually do' },
-    { t: 111.9, label: 'A few months in' },
-    { t: 174.0, label: 'Who keeps it current' },
-    { t: 201.4, label: 'What people ask first' },
-    { t: 275.1, label: 'Being local' },
-    { t: 314.4, label: 'What owners say' },
-    { t: 334.7, label: 'What to do next' },
+    { t: 0.0, label: 'Your shop now' },
+    { t: 19.8, label: 'Why I do this' },
+    { t: 33.3, label: 'What I do' },
+    { t: 76.6, label: 'Why the monthly' },
+    { t: 89.3, label: 'Who keeps it current' },
+    { t: 115.0, label: 'How it starts' },
+    { t: 132.3, label: 'Is this for you' },
+    { t: 152.1, label: 'Your time' },
+    { t: 179.8, label: 'Local' },
+    { t: 190.4, label: 'Trust' },
+    { t: 214.6, label: 'What owners say' },
+    { t: 235.0, label: 'What to do' },
   ],
 } as const;
 /* NAV_LINKS is gone with the nav. The page is a landing page now: one message,

@@ -58,3 +58,14 @@ audit-clip.mjs
 audit-mob2.mjs
 
 audit2-*.mjs
+
+# hero-video cut artefacts (scripts/video): sources, whisper passes, caption frames, renders
+scripts/video/*.wav
+scripts/video/*.mp3
+scripts/video/*.mp4
+scripts/video/*.log
+scripts/video/graph*.txt
+scripts/video/poster*.jpg
+scripts/video/take*-words.json
+scripts/video/segs*/
+scripts/video/cap*/

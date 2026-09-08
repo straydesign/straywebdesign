@@ -100,7 +100,7 @@ export default function ThankYou() {
                 Watch this before I write back
               </h2>
               <p className="mt-2 font-body text-[15px] leading-relaxed text-text-secondary">
-                Six minutes on how the builds further down this page actually got
+                Four minutes on how the builds further down this page actually got
                 made. It answers most of what you were going to ask me.
               </p>
               <div className="mt-6">

@@ -1,0 +1,821 @@
+{
+ "total": 252.986664,
+ "segs": [
+  {
+   "s0": 2.933333333333333,
+   "s1": 6.0,
+   "dur": 3.066667,
+   "odur": 2.453334,
+   "o0": 0.0
+  },
+  {
+   "s0": 6.533333333333333,
+   "s1": 17.666666666666668,
+   "dur": 11.133333,
+   "odur": 8.906666,
+   "o0": 2.453334
+  },
+  {
+   "s0": 18.366666666666667,
+   "s1": 19.633333333333333,
+   "dur": 1.266667,
+   "odur": 1.013334,
+   "o0": 11.36
+  },
+  {
+   "s0": 20.233333333333334,
+   "s1": 28.966666666666665,
+   "dur": 8.733333,
+   "odur": 6.986666,
+   "o0": 12.373334
+  },
+  {
+   "s0": 29.633333333333333,
+   "s1": 41.0,
+   "dur": 11.366667,
+   "odur": 9.093334,
+   "o0": 19.36
+  },
+  {
+   "s0": 41.6,
+   "s1": 46.53333333333333,
+   "dur": 4.933333,
+   "odur": 3.946666,
+   "o0": 28.453334
+  },
+  {
+   "s0": 47.233333333333334,
+   "s1": 57.733333333333334,
+   "dur": 10.5,
+   "odur": 8.4,
+   "o0": 32.4
+  },
+  {
+   "s0": 58.36666666666667,
+   "s1": 74.96666666666667,
+   "dur": 16.6,
+   "odur": 13.28,
+   "o0": 40.8
+  },
+  {
+   "s0": 75.63333333333334,
+   "s1": 87.5,
+   "dur": 11.866667,
+   "odur": 9.493334,
+   "o0": 54.08
+  },
+  {
+   "s0": 88.86666666666666,
+   "s1": 93.1,
+   "dur": 4.233333,
+   "odur": 3.386666,
+   "o0": 63.573334
+  },
+  {
+   "s0": 93.9,
+   "s1": 98.6,
+   "dur": 4.7,
+   "odur": 3.76,
+   "o0": 66.96
+  },
+  {
+   "s0": 100.33333333333333,
+   "s1": 107.0,
+   "dur": 6.666667,
+   "odur": 5.333334,
+   "o0": 70.72
+  },
+  {
+   "s0": 108.43333333333334,
+   "s1": 112.66666666666667,
+   "dur": 4.233333,
+   "odur": 3.386666,
+   "o0": 76.053334
+  },
+  {
+   "s0": 113.2,
+   "s1": 114.0,
+   "dur": 0.8,
+   "odur": 0.64,
+   "o0": 79.44
+  },
+  {
+   "s0": 127.9,
+   "s1": 129.23333333333332,
+   "dur": 1.333333,
+   "odur": 1.066666,
+   "o0": 80.08
+  },
+  {
+   "s0": 130.0,
+   "s1": 140.1,
+   "dur": 10.1,
+   "odur": 8.08,
+   "o0": 81.146666
+  },
+  {
+   "s0": 149.2,
+   "s1": 168.1,
+   "dur": 18.9,
+   "odur": 15.12,
+   "o0": 89.226666
+  },
+  {
+   "s0": 207.2,
+   "s1": 212.2,
+   "dur": 5.0,
+   "odur": 4.0,
+   "o0": 104.346666
+  },
+  {
+   "s0": 213.33333333333334,
+   "s1": 221.26666666666668,
+   "dur": 7.933333,
+   "odur": 6.346666,
+   "o0": 108.346666
+  },
+  {
+   "s0": 222.8,
+   "s1": 242.5,
+   "dur": 19.7,
+   "odur": 15.76,
+   "o0": 114.693332
+  },
+  {
+   "s0": 243.66666666666666,
+   "s1": 245.6,
+   "dur": 1.933333,
+   "odur": 1.546666,
+   "o0": 130.453332
+  },
+  {
+   "s0": 248.76666666666668,
+   "s1": 265.4,
+   "dur": 16.633333,
+   "odur": 13.306666,
+   "o0": 131.999998
+  },
+  {
+   "s0": 266.96666666666664,
+   "s1": 275.23333333333335,
+   "dur": 8.266667,
+   "odur": 6.613334,
+   "o0": 145.306664
+  },
+  {
+   "s0": 276.4,
+   "s1": 278.5,
+   "dur": 2.1,
+   "odur": 1.68,
+   "o0": 151.919998
+  },
+  {
+   "s0": 279.76666666666665,
+   "s1": 290.56666666666666,
+   "dur": 10.8,
+   "odur": 8.64,
+   "o0": 153.599998
+  },
+  {
+   "s0": 291.06666666666666,
+   "s1": 306.26666666666665,
+   "dur": 15.2,
+   "odur": 12.16,
+   "o0": 162.239998
+  },
+  {
+   "s0": 307.3333333333333,
+   "s1": 313.8,
+   "dur": 6.466667,
+   "odur": 5.173334,
+   "o0": 174.399998
+  },
+  {
+   "s0": 314.9,
+   "s1": 321.0,
+   "dur": 6.1,
+   "odur": 4.88,
+   "o0": 179.573332
+  },
+  {
+   "s0": 322.06666666666666,
+   "s1": 329.2,
+   "dur": 7.133333,
+   "odur": 5.706666,
+   "o0": 184.453332
+  },
+  {
+   "s0": 331.6333333333333,
+   "s1": 353.26666666666665,
+   "dur": 21.633333,
+   "odur": 17.306666,
+   "o0": 190.159998
+  },
+  {
+   "s0": 353.93333333333334,
+   "s1": 356.23333333333335,
+   "dur": 2.3,
+   "odur": 1.84,
+   "o0": 207.466664
+  },
+  {
+   "s0": 356.8,
+   "s1": 363.1333333333333,
+   "dur": 6.333333,
+   "odur": 5.066666,
+   "o0": 209.306664
+  },
+  {
+   "s0": 365.03333333333336,
+   "s1": 372.8333333333333,
+   "dur": 7.8,
+   "odur": 6.24,
+   "o0": 214.37333
+  },
+  {
+   "s0": 403.5,
+   "s1": 410.3333333333333,
+   "dur": 6.833333,
+   "odur": 5.466666,
+   "o0": 220.61333
+  },
+  {
+   "s0": 411.23333333333335,
+   "s1": 419.76666666666665,
+   "dur": 8.533333,
+   "odur": 6.826666,
+   "o0": 226.079996
+  },
+  {
+   "s0": 420.93333333333334,
+   "s1": 423.1666666666667,
+   "dur": 2.233333,
+   "odur": 1.786666,
+   "o0": 232.906662
+  },
+  {
+   "s0": 424.53333333333336,
+   "s1": 432.4,
+   "dur": 7.866667,
+   "odur": 6.293334,
+   "o0": 234.693328
+  },
+  {
+   "s0": 435.23333333333335,
+   "s1": 437.4,
+   "dur": 2.166667,
+   "odur": 1.733334,
+   "o0": 240.986662
+  },
+  {
+   "s0": 438.93333333333334,
+   "s1": 445.03333333333336,
+   "dur": 6.1,
+   "odur": 4.88,
+   "o0": 242.719996
+  },
+  {
+   "s0": 445.53333333333336,
+   "s1": 446.3,
+   "dur": 0.766667,
+   "odur": 0.613334,
+   "o0": 247.599996
+  },
+  {
+   "s0": 446.76666666666665,
+   "s1": 448.96666666666664,
+   "dur": 2.2,
+   "odur": 1.76,
+   "o0": 248.21333
+  },
+  {
+   "s0": 449.6333333333333,
+   "s1": 453.4,
+   "dur": 3.766667,
+   "odur": 3.013334,
+   "o0": 249.97333
+  }
+ ],
+ "cues": [
+  {
+   "t0": 0.16,
+   "t1": 2.554,
+   "text": "The shops I work with do great with word of mouth."
+  },
+  {
+   "t0": 2.613334,
+   "t1": 4.9653339999999995,
+   "text": "There's a part of the business that people don't come in for."
+  },
+  {
+   "t0": 5.0053339999999995,
+   "t1": 7.941334,
+   "text": "They get calls about services and prices and some people never"
+  },
+  {
+   "t0": 7.981334,
+   "t1": 11.471334,
+   "text": "call because they found the answer somewhere else online first."
+  },
+  {
+   "t0": 11.52,
+   "t1": 14.221334,
+   "text": "The shops I built got found by the people already looking for"
+  },
+  {
+   "t0": 14.261334,
+   "t1": 17.957334000000003,
+   "text": "what they sell and it shows up in how many people walk in. This"
+  },
+  {
+   "t0": 17.997334000000002,
+   "t1": 21.904,
+   "text": "is how that happens. I got my first clients by walking in, pitching"
+  },
+  {
+   "t0": 21.944,
+   "t1": 25.584,
+   "text": "cold. Some of them had spent years getting good at one thing and"
+  },
+  {
+   "t0": 25.624,
+   "t1": 28.437334000000003,
+   "text": "never had a way to really show people searching for it."
+  },
+  {
+   "t0": 28.477334000000003,
+   "t1": 31.229334,
+   "text": "I like the in-person part a lot, walking in and doing"
+  },
+  {
+   "t0": 31.269334,
+   "t1": 32.479334,
+   "text": "relationship with people."
+  },
+  {
+   "t0": 32.559999999999995,
+   "t1": 36.04,
+   "text": "The first part of what I build is photographs of everything"
+  },
+  {
+   "t0": 36.08,
+   "t1": 40.906,
+   "text": "you sell, then the shop gets fully cataloged, a lot of places."
+  },
+  {
+   "t0": 40.967999999999996,
+   "t1": 43.936,
+   "text": "Have maybe a rough catalog but it's good to be really thorough up"
+  },
+  {
+   "t0": 43.976,
+   "t1": 46.623999999999995,
+   "text": "front because what we're going to do is move forward and have a"
+  },
+  {
+   "t0": 46.663999999999994,
+   "t1": 50.224,
+   "text": "page on Google for every product in store, so that everyone"
+  },
+  {
+   "t0": 50.263999999999996,
+   "t1": 53.535999999999994,
+   "text": "searching can find all those things for example a couple hundred"
+  },
+  {
+   "t0": 53.57599999999999,
+   "t1": 56.304,
+   "text": "golf clubs. When someone searches for that, they normally get"
+  },
+  {
+   "t0": 56.344,
+   "t1": 58.744,
+   "text": "Dick's Sporting Goods because those guys already know how to"
+  },
+  {
+   "t0": 58.784,
+   "t1": 61.562,
+   "text": "structure the data for that stuff to come up with consumers."
+  },
+  {
+   "t0": 63.709334000000005,
+   "t1": 66.421334,
+   "text": "The clubs are showing up right alongside the big players in that"
+  },
+  {
+   "t0": 66.46133400000001,
+   "t1": 69.43199999999999,
+   "text": "space. You'd be surprised how easy it is to match the online"
+  },
+  {
+   "t0": 69.472,
+   "t1": 70.752,
+   "text": "presence of a big retailer."
+  },
+  {
+   "t0": 70.792,
+   "t1": 74.67999999999999,
+   "text": "A catalog can take a week from the day we start or longer"
+  },
+  {
+   "t0": 74.72,
+   "t1": 77.69333400000001,
+   "text": "depending on the size. Then there's another part that people"
+  },
+  {
+   "t0": 77.73333400000001,
+   "t1": 81.28266599999999,
+   "text": "don't plan for. A site that nobody's looking after,"
+  },
+  {
+   "t0": 81.322666,
+   "t1": 83.79466599999999,
+   "text": "your hours can change and someone drives in in your"
+  },
+  {
+   "t0": 83.834666,
+   "t1": 85.13866599999999,
+   "text": "clothes and that hurts trust."
+  },
+  {
+   "t0": 85.17866599999999,
+   "t1": 88.658666,
+   "text": "Service also can change over time and the page will stay the"
+  },
+  {
+   "t0": 88.698666,
+   "t1": 92.59466599999999,
+   "text": "same. Then the monthly, you make everyday changes yourself in a back"
+  },
+  {
+   "t0": 92.634666,
+   "t1": 95.33866599999999,
+   "text": "end built to make that easy for you and then stuff outside of"
+  },
+  {
+   "t0": 95.378666,
+   "t1": 99.41866599999999,
+   "text": "that I'll get in quickly make a change for you when it's needed"
+  },
+  {
+   "t0": 99.458666,
+   "t1": 102.38666599999999,
+   "text": "and I can even change the editor so that you can make those"
+  },
+  {
+   "t0": 102.426666,
+   "t1": 104.30666599999999,
+   "text": "changes more easily going forward."
+  },
+  {
+   "t0": 104.346666,
+   "t1": 107.38666599999999,
+   "text": "Hosting, upkeep and the changes are all in the monthly, plus looking at how"
+  },
+  {
+   "t0": 107.426666,
+   "t1": 108.43466599999999,
+   "text": "your pages perform each month."
+  },
+  {
+   "t0": 108.474666,
+   "t1": 110.890666,
+   "text": "It's not we get set up and it costs more than you want if you"
+  },
+  {
+   "t0": 110.930666,
+   "t1": 113.80266599999999,
+   "text": "ever want changes. If you're signed up, we make it ideal for you"
+  },
+  {
+   "t0": 113.842666,
+   "t1": 116.94133199999999,
+   "text": "going forward. Getting started is a few questions on the form,"
+  },
+  {
+   "t0": 116.981332,
+   "t1": 119.341332,
+   "text": "then we talk about your business, photos you have, and the list"
+  },
+  {
+   "t0": 119.381332,
+   "t1": 123.29333199999999,
+   "text": "of what you sell. If that's only in your head, that's okay."
+  },
+  {
+   "t0": 123.333332,
+   "t1": 126.17333199999999,
+   "text": "I can walk through and photograph everything on the shelves and"
+  },
+  {
+   "t0": 126.213332,
+   "t1": 127.389332,
+   "text": "get that all cataloged."
+  },
+  {
+   "t0": 127.429332,
+   "t1": 129.933332,
+   "text": "If you already have a website, it'll stay up until we switch it"
+  },
+  {
+   "t0": 129.973332,
+   "t1": 132.119998,
+   "text": "over. which is a lot easier than you'd think."
+  },
+  {
+   "t0": 132.159998,
+   "t1": 134.463998,
+   "text": "This is for people who already know they need it and waiting for"
+  },
+  {
+   "t0": 134.503998,
+   "t1": 136.487998,
+   "text": "somebody that they can trust and a process that's"
+  },
+  {
+   "t0": 136.527998,
+   "t1": 140.087998,
+   "text": "straightforward. If you want flexibility down the road, you want"
+  },
+  {
+   "t0": 140.127998,
+   "t1": 143.159998,
+   "text": "to grow, you want to be able to change the answers on your site"
+  },
+  {
+   "t0": 143.199998,
+   "t1": 145.34666400000003,
+   "text": "because they will change over time."
+  },
+  {
+   "t0": 145.38666400000002,
+   "t1": 146.26666400000002,
+   "text": "It's not for everybody."
+  },
+  {
+   "t0": 146.306664,
+   "t1": 148.59466400000002,
+   "text": "If your site loads fast and says the right things and people are"
+  },
+  {
+   "t0": 148.63466400000001,
+   "t1": 151.08266400000002,
+   "text": "finding you, keep it. I can tell you straightforwardly if you"
+  },
+  {
+   "t0": 151.12266400000001,
+   "t1": 153.66399800000002,
+   "text": "need this or not. How much time is this going to take though?"
+  },
+  {
+   "t0": 153.703998,
+   "t1": 155.215998,
+   "text": "It kind of depends on the person."
+  },
+  {
+   "t0": 155.255998,
+   "t1": 158.023998,
+   "text": "Some people have more time to put towards it and that's great for"
+  },
+  {
+   "t0": 158.063998,
+   "t1": 160.911998,
+   "text": "improving performance but other people are really busy already"
+  },
+  {
+   "t0": 160.951998,
+   "t1": 162.31999800000003,
+   "text": "doing what they do best."
+  },
+  {
+   "t0": 162.35999800000002,
+   "t1": 166.29599800000003,
+   "text": "So it comes down to the owner specifically, but it could be just"
+  },
+  {
+   "t0": 166.33599800000002,
+   "t1": 169.215998,
+   "text": "the time we set up it upfront and then your small changes going"
+  },
+  {
+   "t0": 169.255998,
+   "t1": 172.02599800000002,
+   "text": "forward. You just log on and do that in like 30 seconds."
+  },
+  {
+   "t0": 173.05599800000002,
+   "t1": 174.393998,
+   "text": "Or other people might put"
+  },
+  {
+   "t0": 174.559998,
+   "t1": 177.191998,
+   "text": "More time like a couple hours a week say if they started doing"
+  },
+  {
+   "t0": 177.231998,
+   "t1": 182.085332,
+   "text": "shipping online. For most of the shops I work with, I am local."
+  },
+  {
+   "t0": 182.125332,
+   "t1": 184.597332,
+   "text": "I'd rather walk in and get to know you and the place."
+  },
+  {
+   "t0": 184.637332,
+   "t1": 188.413332,
+   "text": "And if you're not from Erie, calls and screen shares do the job."
+  },
+  {
+   "t0": 188.453332,
+   "t1": 190.207998,
+   "text": "I just can't take the photos myself."
+  },
+  {
+   "t0": 190.247998,
+   "t1": 192.35999800000002,
+   "text": "You need to know the person you're working with has time for you"
+  },
+  {
+   "t0": 192.399998,
+   "t1": 193.47999800000002,
+   "text": "and it isn't going to screw you over."
+  },
+  {
+   "t0": 193.51999800000002,
+   "t1": 196.00799800000001,
+   "text": "So you own the site. If you ever want to take it somewhere"
+  },
+  {
+   "t0": 196.047998,
+   "t1": 197.159998,
+   "text": "else, it goes with you."
+  },
+  {
+   "t0": 197.199998,
+   "t1": 199.399998,
+   "text": "There's no price hidden from you until the last minute."
+  },
+  {
+   "t0": 199.439998,
+   "t1": 202.135998,
+   "text": "Anything bigger than the monthly, I'll quote before I start."
+  },
+  {
+   "t0": 202.175998,
+   "t1": 205.655998,
+   "text": "And if you're not happy, 90 days, no questions asked, full"
+  },
+  {
+   "t0": 205.695998,
+   "t1": 207.56199800000002,
+   "text": "refund. You get all your money back."
+  },
+  {
+   "t0": 207.63466400000001,
+   "t1": 209.316664,
+   "text": "That's the Stray Success Guarantee."
+  },
+  {
+   "t0": 209.47466400000002,
+   "t1": 211.698664,
+   "text": "What's worse, not giving it a chance or giving it a chance and"
+  },
+  {
+   "t0": 211.738664,
+   "t1": 214.50933,
+   "text": "having 90 days to see if it succeeds for you."
+  },
+  {
+   "t0": 214.54933,
+   "t1": 216.76533,
+   "text": "The owners I've worked with are all happy."
+  },
+  {
+   "t0": 216.80533,
+   "t1": 220.34933,
+   "text": "I paid attention to details and went beyond what I said at the"
+  },
+  {
+   "t0": 220.38933,
+   "t1": 222.50332999999998,
+   "text": "start. One of"
+  },
+  {
+   "t0": 223.86132999999998,
+   "t1": 226.735996,
+   "text": "them, a restaurant owner here in Erie, said: The communication"
+  },
+  {
+   "t0": 226.775996,
+   "t1": 228.407996,
+   "text": "and timeliness of his work is outstanding."
+  },
+  {
+   "t0": 228.447996,
+   "t1": 230.455996,
+   "text": "I could not be happier with the product also."
+  },
+  {
+   "t0": 230.495996,
+   "t1": 232.985996,
+   "text": "His web design was awesome."
+  },
+  {
+   "t0": 233.02666200000002,
+   "t1": 234.756662,
+   "text": "He listens, then executes."
+  },
+  {
+   "t0": 234.813328,
+   "t1": 237.05332800000002,
+   "text": "You've spent years getting good at one thing and never had a way"
+  },
+  {
+   "t0": 237.093328,
+   "t1": 238.74932800000002,
+   "text": "to show it to people already searching for it."
+  },
+  {
+   "t0": 238.789328,
+   "t1": 241.087328,
+   "text": "Word of mouth carries that part that's doing great."
+  },
+  {
+   "t0": 241.130662,
+   "t1": 242.67999600000002,
+   "text": "The rest are finding it somewhere else."
+  },
+  {
+   "t0": 242.719996,
+   "t1": 245.23999600000002,
+   "text": "If you want them finding your shop, call my number."
+  },
+  {
+   "t0": 245.279996,
+   "t1": 247.743996,
+   "text": "I'm early on and looking to onboard more clients."
+  },
+  {
+   "t0": 247.783996,
+   "t1": 250.10133000000002,
+   "text": "Or if you're on the site, fill out the form."
+  },
+  {
+   "t0": 250.14133,
+   "t1": 252.62333,
+   "text": "Start with just answering a few questions."
+  }
+ ],
+ "chapters": [
+  {
+   "t": 0.0,
+   "label": "Your shop now"
+  },
+  {
+   "t": 19.8,
+   "label": "Why I do this"
+  },
+  {
+   "t": 33.3,
+   "label": "What I do"
+  },
+  {
+   "t": 76.6,
+   "label": "Why the monthly"
+  },
+  {
+   "t": 89.3,
+   "label": "Who keeps it current"
+  },
+  {
+   "t": 115.0,
+   "label": "How it starts"
+  },
+  {
+   "t": 132.3,
+   "label": "Is this for you"
+  },
+  {
+   "t": 152.1,
+   "label": "Your time"
+  },
+  {
+   "t": 179.8,
+   "label": "Local"
+  },
+  {
+   "t": 190.4,
+   "label": "Trust"
+  },
+  {
+   "t": 214.6,
+   "label": "What owners say"
+  },
+  {
+   "t": 235.0,
+   "label": "What to do"
+  }
+ ]
+}
