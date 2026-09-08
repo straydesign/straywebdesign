@@ -85,13 +85,13 @@ export const VSL = {
       ],
     },
     {
-      label: 'A few months in',
-      q: 'What happens to a site like this after a few months?',
+      label: 'Why the monthly',
+      q: "What happens to a site when nobody's looking after it?",
       a: [
-        "Could be a few months, could be a few years. Slowly things go out of date, and that's not a good source of trust for a customer who has never walked in.",
+        "Any site nobody's looking after goes out of date. Could be a few months, could be a few years, and that's not a good source of trust for a customer who has never walked in.",
         'The hours can be wrong. People get upset when they drive in and you closed half an hour earlier because the schedule changed.',
         'Links go stale because a path changed. A service changed and the page never did.',
-        "It stops being the current version of the business. Everybody's business changes a little over time.",
+        "It stops being the current version of the business. Everybody's business changes a little over time. That's what the monthly is for.",
       ],
     },
     {
