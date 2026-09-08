@@ -19,8 +19,8 @@ import DeviceDuo from '@/components/ui/DeviceDuo';
 const STEPS = [
   {
     n: '01',
-    title: 'You hand over the list',
-    body: 'A spreadsheet, a supplier PDF, or I walk your place and read the signs.',
+    title: 'I catalogue your inventory',
+    body: 'I walk your place and photograph everything on the shelves. If you already have a list, that works too.',
     device: {
       shot: '/images/how/item-list.png',
       phoneShot: '/images/how/item-list-phone.jpg',
