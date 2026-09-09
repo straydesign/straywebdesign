@@ -193,7 +193,7 @@ export const VSL = {
    */
   chapters: [
     { t: 0.0, label: 'Your shop now' },
-    { t: 19.8, label: 'Why I do this' },
+    { t: 19.4, label: 'Why I do this' },
     { t: 33.3, label: 'What I do' },
     { t: 76.6, label: 'Why the monthly' },
     { t: 89.3, label: 'Who keeps it current' },
