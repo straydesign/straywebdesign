@@ -18,9 +18,17 @@ import { VSL } from '@/lib/constants';
  * promises something the build can't do is worse than an absent section.
  */
 export default function Vsl() {
-  if (!VSL.video) return <Slides />;
-  if (!VSL.src) return null;
-  return <Player />;
+  /* Its own band since 2026-09-17. It used to sit inside the hero, between the
+     headline and the button, which is the slot the work now leads with. At
+     page level it has to bring its own width and padding — it was relying on
+     the hero's container for both. */
+  const inner = !VSL.video ? <Slides /> : VSL.src ? <Player /> : null;
+  if (!inner) return null;
+  return (
+    <section className="border-b border-border-default bg-surface-page py-16 md:py-20">
+      <div className="mx-auto max-w-3xl px-5 md:px-8">{inner}</div>
+    </section>
+  );
 }
 
 const CHIP =
@@ -56,7 +64,7 @@ function Slides() {
     <div>
       <section
         aria-roledescription="carousel"
-        aria-label="The questions people ask me before they say yes"
+        aria-label="Questions people ask me before they say yes"
         tabIndex={0}
         onKeyDown={onKey}
         className="rounded-xl border border-border-default bg-white px-6 py-7 shadow-[0_20px_60px_rgba(16,18,22,0.10)] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 md:px-12 md:py-10"

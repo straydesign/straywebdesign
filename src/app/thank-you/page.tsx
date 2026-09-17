@@ -4,7 +4,8 @@ import LandingPageHeader from '@/components/layout/LandingPageHeader';
 import Footer from '@/components/layout/Footer';
 import ConversionPixel from '@/components/ui/ConversionPixel';
 import Vsl from '@/components/sections/Vsl';
-import Proof from '@/components/sections/Proof';
+import Work from '@/components/sections/Work';
+import KindWords from '@/components/sections/KindWords';
 import { PHONE_SMS, PHONE_TEL, SITE, VSL } from '@/lib/constants';
 
 /**
@@ -59,8 +60,8 @@ export default function ThankYou() {
     <>
       <ConversionPixel formType="catalog_survey" />
       <LandingPageHeader />
-      {/* No bottom padding: Proof is full-bleed and dark, and it closes the
-          page. Padding here would leave a pale band between it and the footer. */}
+      {/* No bottom padding: KindWords is full-bleed and dark, and it closes
+          the page. Padding here would leave a pale band before the footer. */}
       <main id="main" className="bg-surface-page pt-28 md:pt-36">
         <div className="mx-auto max-w-2xl px-5 md:px-8">
           <p className="font-mono text-[12px] text-text-tertiary">
@@ -157,10 +158,13 @@ export default function ThankYou() {
           </div>
         </div>
 
-        {/* The same gallery the landing page renders. They scrolled past it on
-            the way in; now they have a reason to actually look. */}
+        {/* The same work the landing page leads with. They scrolled past it on
+            the way in; now they have a reason to actually look. Proof used to
+            render both halves; it was split into Work and KindWords 2026-09-17
+            so the quote is not welded to the gallery. */}
         <div className="mt-20 md:mt-28">
-          <Proof />
+          <Work />
+          <KindWords />
         </div>
       </main>
       <Footer />

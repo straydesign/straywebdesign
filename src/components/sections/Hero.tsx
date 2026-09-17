@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import AnimateIn from '@/components/ui/AnimateIn';
-import Vsl from '@/components/sections/Vsl';
 import { PHONE_SMS, PHONE_TEL, SITE } from '@/lib/constants';
 
 /**
@@ -27,7 +26,6 @@ export default function Hero() {
 
         <AnimateIn delay={0.08}>
           <div className="mt-10 md:mt-12">
-            <Vsl />
           </div>
         </AnimateIn>
 

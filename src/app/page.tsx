@@ -4,21 +4,28 @@ import Hero from '@/components/sections/Hero';
 import Start from '@/components/sections/Start';
 import HowItWorks from '@/components/sections/HowItWorks';
 import Faq from '@/components/sections/Faq';
-import Proof from '@/components/sections/Proof';
+import Work from '@/components/sections/Work';
+import Vsl from '@/components/sections/Vsl';
+import KindWords from '@/components/sections/KindWords';
 import About from '@/components/sections/About';
 
 /**
- * One page, one action, in the order of Brandon Willington's own landing page
- * (ahoy.whereu.com.au/withu, read 2026-09-08): headline → the letter → the
- * next step → how it works → testimonials and proof → FAQ → the founder.
+ * One page, leading with the work.
  *
- *  - The booker sits directly under the hero, not at the bottom. Somebody who
- *    is convinced by the letter should not have to scroll past four sections
- *    hunting for the way in. It was a five-question survey until 2026-09-17;
- *    Tom cut it to contact details and a time.
- *  - Proof sits above the FAQ, the way his page runs it: the sites first, then
- *    "still not sure?" and the eighteen questions, then who he is.
- *  - His dates block (scarcity) has no Stray equivalent and was cut 2026-09-08.
+ * Reordered 2026-09-17 on Tom's call — "I do wanna actually mirror the non-web
+ * design version more closely... that means it just leads with the four sites
+ * that I've done." So the shape now follows straydesign.co: the work first,
+ * then the words, then the way in.
+ *
+ *  - Work is the first thing under the headline. The question slides moved out
+ *    of the hero to make room; they were sitting between the headline and the
+ *    button.
+ *  - The one real quote got its own section (KindWords) instead of running
+ *    across the top of the work, which is how the portfolio does it.
+ *  - Start moved to the bottom. It sat under the hero so nobody had to hunt
+ *    for the way in, and that still holds: the hero button anchors to #start,
+ *    so a convinced visitor is one click from it wherever it lives.
+ *  - FAQ stays, on Tom's word.
  *
  * There is no nav. Every nav item is an exit.
  */
@@ -28,11 +35,13 @@ export default function Home() {
       <LandingPageHeader />
       <main id="main">
         <Hero />
-        <Start />
+        <Work />
+        <Vsl />
         <HowItWorks />
-        <Proof />
+        <KindWords />
         <Faq />
         <About />
+        <Start />
       </main>
       <Footer />
     </>
