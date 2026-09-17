@@ -29,10 +29,23 @@ export default function Start() {
     <section id="start" className="scroll-mt-16 bg-surface-page py-20 md:py-28" aria-label="Start">
       <div className="mx-auto max-w-2xl px-5 md:px-8">
         <AnimateIn>
-          <h2 className="font-display text-[clamp(1.7rem,3.6vw,2.5rem)] font-bold leading-[1.08] tracking-tight text-text-primary">
-            Leave your details and pick a time.
+          <p
+            className="mb-4 text-[15px] italic md:text-base"
+            style={{ color: 'var(--ink-2)', fontFamily: 'var(--font-display)' }}
+          >
+            Leave your details and pick a time
+          </p>
+          <h2
+            className="mb-4 font-black leading-none tracking-wide"
+            style={{
+              fontFamily: 'var(--font-display)',
+              color: 'var(--ink)',
+              fontSize: 'clamp(1.6rem, 3.4vw, 2.5rem)',
+            }}
+          >
+            GET IN TOUCH
           </h2>
-          <p className="mt-4 font-body text-base leading-relaxed text-text-secondary">
+          <p className="font-body text-base leading-relaxed" style={{ color: 'var(--ink-2)' }}>
             Thirty minutes on the phone. You get a plan for what the site should
             do whether you hire me or not.
           </p>

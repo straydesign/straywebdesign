@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import AnimateIn from '@/components/ui/AnimateIn';
 import { FAQ_GROUPS, FAQ_ITEMS } from '@/data/faqs';
+import SectionHeading from '@/components/sections/SectionHeading';
 
 /* Faq — twenty questions, grouped, sitting above the proof rather than at the
    bottom of the page. Split tests on this format move FAQs up almost every
@@ -72,10 +73,8 @@ export default function Faq() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <div className="mx-auto max-w-4xl px-5 md:px-8">
+        <SectionHeading kicker="Everything people ask me" title="QUESTIONS" className="mb-2" />
         <AnimateIn>
-          <h2 className="font-display text-[clamp(1.9rem,4vw,2.9rem)] font-bold leading-[1.05] tracking-tight text-text-primary">
-            Everything people ask me.
-          </h2>
           <p className="mt-4 max-w-xl font-body text-base leading-relaxed text-text-secondary md:text-lg">
             Including the awkward ones. If yours isn&apos;t here, it&apos;s a
             good question to open the call with.

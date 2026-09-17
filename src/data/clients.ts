@@ -1,7 +1,8 @@
 /* clients.ts — the work shown on the homepage: real, running sites I built,
    host, and manage for a business. Single source of truth for the showcase.
-   Desktop shots live in public/images/work/ (1280×800), phone shots
-   (390×844) in public/images/work/phone/. Palettes, typefaces, and stacks
+   Device RENDERS live in public/images/devices/ — a macOS Safari window and a
+   photoreal handset, shared with straydesign.co rather than re-captured.
+   Palettes, typefaces, and stacks
    are pulled from each project's actual code — never invented. */
 
 export type PaletteSwatch = {
@@ -25,9 +26,9 @@ export type Project = {
   url: string;
   /** Domain shown in captions and links. */
   displayUrl: string;
-  /** Desktop screenshot in public/images/work/. */
+  /** Laptop render — a macOS Safari window, not a bare capture. */
   shot: string;
-  /** Mobile screenshot in public/images/work/phone/. */
+  /** Photoreal handset render. */
   phoneShot: string;
   /** Real tech/feature chips — only what's genuinely in the build. */
   stack: string[];
@@ -61,8 +62,8 @@ export const PROJECTS: Project[] = [
       'A full site with menus, daily specials, and an events calendar the team updates themselves. Designed, built, hosted, and managed end to end.',
     url: 'https://andyspub.com',
     displayUrl: 'andyspub.com',
-    shot: '/images/work/andys.png',
-    phoneShot: '/images/work/phone/andys.png',
+    shot: '/images/devices/laptop-andys.webp',
+    phoneShot: '/images/devices/phone-andys.webp',
     stack: ['Next.js', 'Sanity CMS', 'Framer Motion', 'Team-edited menus'],
     palette: [
       { label: 'charcoal', hex: '#0C0A09' },
@@ -95,8 +96,8 @@ export const PROJECTS: Project[] = [
       'A live-music venue site built around the calendar — shows up front, easy for the team to keep current, and quick to load on a phone at the door.',
     url: 'https://bullfrogbarerie.com',
     displayUrl: 'bullfrogbarerie.com',
-    shot: '/images/work/bullfrog.png',
-    phoneShot: '/images/work/phone/bullfrog.png',
+    shot: '/images/devices/laptop-bullfrog.webp',
+    phoneShot: '/images/devices/phone-bullfrog.webp',
     stack: ['Next.js', 'Sanity CMS', 'Lenis smooth scroll', 'Framer Motion'],
     palette: [
       { label: 'black', hex: '#0A0A0A' },
@@ -130,8 +131,8 @@ export const PROJECTS: Project[] = [
       'A store that has been on Erie tanks since 1975, now with its whole catalog online: saltwater and freshwater livestock, coral, dry goods, and build guides. I designed and built the site, and I keep the hosting and product data running.',
     url: 'https://seacaveinc.com',
     displayUrl: 'seacaveinc.com',
-    shot: '/images/work/seacave.png',
-    phoneShot: '/images/work/phone/seacave.png',
+    shot: '/images/devices/laptop-seacave.webp',
+    phoneShot: '/images/devices/phone-seacave.webp',
     stack: ['Next.js', 'Keystatic CMS', '600+ product catalog', 'Live stock & pricing'],
     palette: [
       { label: 'reef base', hex: '#06223f' },
@@ -165,8 +166,8 @@ export const PROJECTS: Project[] = [
       'A family-owned fish market on W 8th St, where the owner catches the Lake Erie half of the counter himself. The site puts every counter online — lake fish, ocean and Gulf, shellfish, the kitchen and the farm — and hands him the controls to keep it current.',
     url: 'https://presqueislefishandfarm.com',
     displayUrl: 'presqueislefishandfarm.com',
-    shot: '/images/work/presque-isle.png',
-    phoneShot: '/images/work/phone/presque-isle.png',
+    shot: '/images/devices/laptop-presqueisle.webp',
+    phoneShot: '/images/devices/phone-presqueisle.webp',
     stack: ['Next.js', 'Owner dashboard', 'Documented brand system', 'Wholesale enquiries'],
     palette: [
       { label: 'compass red', hex: '#9f2b34' },

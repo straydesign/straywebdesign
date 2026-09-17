@@ -15,9 +15,10 @@ export interface ProofItem {
   readonly catalogued: string;
   readonly url: string;
   readonly displayUrl: string;
-  /** Desktop screenshot, 1280×800 — the size MacBookFrame expects. */
+  /** Laptop RENDER — a macOS Safari window, not a bare capture. Built by
+   *  the portfolio's scripts/compose-device-screens.mjs. */
   readonly shot: string;
-  /** Phone screenshot, 390×844 — the size PhoneFrame expects. */
+  /** Photoreal handset render, through the Envato kit's smart object. */
   readonly phoneShot: string;
   readonly quote?: {
     /** Verbatim. Never tidied, never paraphrased. */
@@ -47,8 +48,8 @@ export const PROOF: readonly ProofItem[] = [
     catalogued: 'Full menus and the daily specials, edited by the team',
     url: 'https://andyspub.com',
     displayUrl: 'andyspub.com',
-    shot: '/images/work/andys.png',
-    phoneShot: '/images/work/phone/andys.png',
+    shot: '/images/devices/laptop-andys.webp',
+    phoneShot: '/images/devices/phone-andys.webp',
     quote: OWNER,
   },
   {
@@ -56,23 +57,23 @@ export const PROOF: readonly ProofItem[] = [
     catalogued: 'Every show on the calendar, up before the doors open',
     url: 'https://bullfrogbarerie.com',
     displayUrl: 'bullfrogbarerie.com',
-    shot: '/images/work/bullfrog.png',
-    phoneShot: '/images/work/phone/bullfrog.png',
+    shot: '/images/devices/laptop-bullfrog.webp',
+    phoneShot: '/images/devices/phone-bullfrog.webp',
   },
   {
     name: 'Sea Cave',
     catalogued: '880+ products, with live stock and pricing they update themselves',
     url: 'https://seacaveinc.com',
     displayUrl: 'seacaveinc.com',
-    shot: '/images/work/seacave.png',
-    phoneShot: '/images/work/phone/seacave.png',
+    shot: '/images/devices/laptop-seacave.webp',
+    phoneShot: '/images/devices/phone-seacave.webp',
   },
   {
     name: 'Presque Isle Fish & Farm',
     catalogued: 'Every counter — lake fish, ocean and Gulf, shellfish, kitchen, farm',
     url: 'https://presqueislefishandfarm.com',
     displayUrl: 'presqueislefishandfarm.com',
-    shot: '/images/work/presque-isle.png',
-    phoneShot: '/images/work/phone/presque-isle.png',
+    shot: '/images/devices/laptop-presqueisle.webp',
+    phoneShot: '/images/devices/phone-presqueisle.webp',
   },
 ];

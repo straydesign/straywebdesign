@@ -1,13 +1,15 @@
 import MacBookFrame from '@/components/ui/MacBookFrame';
 import PhoneFrame from '@/components/ui/PhoneFrame';
 
-/* DeviceDuo — a laptop with the phone build overlapping its lower-LEFT corner,
-   so each project shows both screens at a glance.
+/* DeviceDuo — a laptop with the phone build overlapping its lower-left corner.
+   Both captures are real. A responsive site shown on one screen is a claim;
+   shown on two it is the evidence.
 
-   Left, and outside the lid, since 2026-09-17. It used to sit bottom-right at
-   `pr-[10%]`, which landed the handset ON the laptop screen and covered the
-   part of the page the shot exists to show. The padding opens the gutter the
-   phone hangs in; `bottom-0 left-0` puts it there. Mirrors straydesign.co.
+   The phone is a photoreal render now, and it carries 60px of margin around
+   the handset plus a taller screen, so its outer proportion went from roughly
+   2.31:1 to 1.96:1 — at the old 22% width it stood 15% shorter and stopped
+   overlapping the laptop. 26% restores the height it had, which is what the
+   overlap was composed around.
 
    `z-20` because MacBookFrame paints its lid and deck at `z-10`: without it
    the laptop covers the half of the phone it is supposed to sit behind. */
@@ -15,24 +17,26 @@ import PhoneFrame from '@/components/ui/PhoneFrame';
 export default function DeviceDuo({
   shot,
   phoneShot,
-  name,
+  alt,
+  phoneAlt,
   priority = false,
 }: {
   shot: string;
   phoneShot: string;
-  name: string;
+  alt: string;
+  phoneAlt: string;
   priority?: boolean;
 }) {
   return (
     <div className="relative w-full pb-[9%] pl-[12%]">
-      <MacBookFrame
-        src={shot}
-        alt={`${name} — desktop view`}
+      <MacBookFrame src={shot} alt={alt} priority={priority} />
+      <PhoneFrame
+        src={phoneShot}
+        alt={phoneAlt}
         priority={priority}
+        className="absolute bottom-0 left-0 z-20 w-[26%]"
+        sizes="(min-width: 1024px) 14vw, 32vw"
       />
-      <div className="absolute bottom-0 left-0 z-20 w-[22%] min-w-[92px] max-w-[150px]">
-        <PhoneFrame src={phoneShot} alt={`${name} — phone view`} priority={priority} />
-      </div>
     </div>
   );
 }

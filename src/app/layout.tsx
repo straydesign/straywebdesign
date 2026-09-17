@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Analytics from '@/components/layout/Analytics';
-import { JetBrains_Mono, Schibsted_Grotesk, Hanken_Grotesk } from 'next/font/google';
+import { JetBrains_Mono, Schibsted_Grotesk, Hanken_Grotesk, Instrument_Serif, IBM_Plex_Sans } from 'next/font/google';
 import ClientShell from '@/components/layout/ClientShell';
 import './globals.css';
 import SectionKeyboardNav from '@/components/layout/SectionKeyboardNav';
@@ -28,6 +28,26 @@ const hanken = Hanken_Grotesk({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-family-hanken',
+  weight: ['400', '500', '600', '700'],
+  adjustFontFallback: true,
+});
+
+/* The straydesign.co pair, ported 2026-09-17 so this site mirrors the
+   portfolio rather than resembling it. Instrument Serif carries every heading;
+   IBM Plex Sans carries the body. Schibsted and Hanken stay loaded because the
+   FAQ, resources and legal routes still reference them. */
+const instrument = Instrument_Serif({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-family-instrument',
+  weight: ['400'],
+  adjustFontFallback: true,
+});
+
+const plex = IBM_Plex_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-family-plex',
   weight: ['400', '500', '600', '700'],
   adjustFontFallback: true,
 });
@@ -196,7 +216,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jetbrains.variable} ${schibsted.variable} ${hanken.variable}`}
+      className={`${jetbrains.variable} ${schibsted.variable} ${hanken.variable} ${instrument.variable} ${plex.variable}`}
     >
       <head>
         <link

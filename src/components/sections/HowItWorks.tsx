@@ -1,5 +1,6 @@
 import AnimateIn from '@/components/ui/AnimateIn';
 import DeviceDuo from '@/components/ui/DeviceDuo';
+import SectionHeading from '@/components/sections/SectionHeading';
 
 /**
  * HowItWorks — the whole offer in one row: the list as it arrived, the list
@@ -60,11 +61,11 @@ export default function HowItWorks() {
       aria-label="How it works"
     >
       <div className="mx-auto max-w-6xl px-5 md:px-8">
-        <AnimateIn>
-          <h2 className="max-w-2xl font-display text-[clamp(1.9rem,4vw,2.9rem)] font-bold leading-[1.05] tracking-tight text-text-primary">
-            Your whole list, online, one page per thing.
-          </h2>
-        </AnimateIn>
+        <SectionHeading
+          kicker="Your whole list, online, one page per thing"
+          title="HOW IT WORKS"
+          className="mb-2"
+        />
 
         <ol className="mt-12 grid gap-12 md:mt-16 md:grid-cols-3 md:gap-8">
           {STEPS.map((step, i) => (
@@ -74,7 +75,8 @@ export default function HowItWorks() {
                   <DeviceDuo
                     shot={step.device.shot}
                     phoneShot={step.device.phoneShot}
-                    name={step.device.name}
+                    alt={`${step.device.name} — desktop`}
+                    phoneAlt={`${step.device.name} on a phone`}
                   />
                   <figcaption className="mt-2 font-mono text-[11px] text-text-tertiary">
                     <span aria-hidden className="text-accent/60">{'// '}</span>
