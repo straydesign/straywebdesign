@@ -17,9 +17,10 @@ import About from '@/components/sections/About';
  * that I've done." So the shape now follows straydesign.co: the work first,
  * then the words, then the way in.
  *
- *  - Work is the first thing under the headline. The question slides moved out
- *    of the hero to make room; they were sitting between the headline and the
- *    button.
+ *  - Tom's picture and the short version of who he is sit directly under the
+ *    headline, on his call 2026-09-17. Work follows it. The question slides
+ *    moved out of the hero to make room; they were between the headline and
+ *    the button.
  *  - The one real quote got its own section (KindWords) instead of running
  *    across the top of the work, which is how the portfolio does it.
  *  - Start moved to the bottom. It sat under the hero so nobody had to hunt
@@ -35,12 +36,12 @@ export default function Home() {
       <LandingPageHeader />
       <main id="main">
         <Hero />
+        <About />
         <Work />
         <Vsl />
         <HowItWorks />
         <KindWords />
         <Faq />
-        <About />
         <Start />
       </main>
       <Footer />
