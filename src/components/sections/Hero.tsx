@@ -33,13 +33,18 @@ export default function Hero() {
 
         <AnimateIn delay={0.14}>
           {/* Reads as beginning something, not as handing over your details.
-              "Get in touch" is the version of this that doesn't work. */}
+              "Get in touch" is the version of this that doesn't work.
+
+              Was "Start with a few questions" until 2026-09-17, which pointed
+              at a five-question survey that no longer exists. A button naming
+              a step the build does not have is the worst kind of dead control:
+              it still works, it just lies about where it goes. */}
           <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
             <Link
               href="#start"
               className="inline-flex items-center justify-center bg-accent px-8 py-4 font-display text-base font-semibold text-white transition-colors hover:bg-accent/90 sm:px-10 sm:py-4.5 sm:text-lg"
             >
-              Start with a few questions
+              Pick a time
             </Link>
             {/* Call and text sit side by side because plenty of people will
                 not ring a stranger but will send four words. The number is the

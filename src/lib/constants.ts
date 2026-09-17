@@ -124,7 +124,7 @@ export const VSL = {
       label: 'How it starts',
       q: 'What actually happens if you say yes?',
       a: [
-        'Start with a few questions on the form. Then we talk about your business, the photos you already have, and your list of what you sell.',
+        'Fill out the form and book a slot. Then we talk about your business, the photos you already have, and your list of what you sell.',
         "If that list only exists on a whiteboard or in your head, that's normal, and we work from that.",
         'I walk your place and photograph everything on the shelves. If you already have a list, that works too.',
         'If you have a site now, it stays up and keeps working. I build the new one alongside it, your domain stays yours, and we switch when you say go.',
@@ -184,7 +184,7 @@ export const VSL = {
         "You've spent years getting good at one thing and never had a way to show it to the people already searching for it.",
         "Word of mouth carries the part that's doing great. The people searching for the rest are finding it somewhere else.",
         "Call my number. I'm pretty available right now. I'm early on and looking to onboard some more clients.",
-        "Or fill out the form and we'll set up a meeting. Start with a few questions.",
+        "Or fill out the form and we'll set up a meeting.",
       ],
     },
   ],

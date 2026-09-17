@@ -9,7 +9,7 @@ export default function NotFound() {
 
       <div className="relative z-10 mx-auto flex max-w-lg flex-col items-center text-center">
         <Link href="/" aria-label="Go to homepage">
-          <StrayLogo color="#2563EB" width={64} height={32} />
+          <StrayLogo width={64} height={32} />
         </Link>
 
         <p className="mt-8 font-display text-8xl font-bold text-accent/20 md:text-9xl">
