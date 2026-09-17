@@ -54,9 +54,14 @@ export const PHONE_SMS = `sms:+1${PHONE_DIGITS}`;
 export const VSL = {
   /**
    * false = the player stays off and the slot shows the questions as text,
-   * blue on white. Flip to true when the re-record is cut in.
+   * blue on white.
+   *
+   * OFF since 2026-09-17 on Tom's call — "let's take the video off for now,
+   * I do not like it." That is a judgement on take two, not on the slot, so
+   * the slides carry it until a recording he likes exists. Do not flip this
+   * back because a file is present; it goes back on when he says so.
    */
-  video: true as boolean,
+  video: false as boolean,
   /**
    * One slide per question, shown in the slot while the player is off.
    * Tom's answers from HERO-VIDEO-QA.md, de-looped only. Only the one quote
