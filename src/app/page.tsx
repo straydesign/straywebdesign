@@ -5,7 +5,6 @@ import Start from '@/components/sections/Start';
 import HowItWorks from '@/components/sections/HowItWorks';
 import Faq from '@/components/sections/Faq';
 import Work from '@/components/sections/Work';
-import Vsl from '@/components/sections/Vsl';
 import KindWords from '@/components/sections/KindWords';
 import About from '@/components/sections/About';
 
@@ -18,9 +17,12 @@ import About from '@/components/sections/About';
  * then the words, then the way in.
  *
  *  - Tom's picture and the short version of who he is sit directly under the
- *    headline, on his call 2026-09-17. Work follows it. The question slides
- *    moved out of the hero to make room; they were between the headline and
- *    the button.
+ *    headline, on his call 2026-09-17. Work follows it.
+ *  - The twelve question slides are OFF since 2026-09-18, Tom's call. They
+ *    were the VSL's text mode — the deck that kept carrying the pitch after
+ *    he turned the video off the day before. Vsl.tsx stays on disk and stays
+ *    wired into /thank-you, where it is gated on VSL.video and so renders
+ *    nothing today. Do not remount it here because the file is still present.
  *  - The one real quote got its own section (KindWords) instead of running
  *    across the top of the work, which is how the portfolio does it.
  *  - Start moved to the bottom. It sat under the hero so nobody had to hunt
@@ -38,7 +40,6 @@ export default function Home() {
         <Hero />
         <About />
         <Work />
-        <Vsl />
         <HowItWorks />
         <KindWords />
         <Faq />
