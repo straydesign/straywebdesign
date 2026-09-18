@@ -18,6 +18,8 @@ export const SEACAVE: CaseStudy = {
   cover: ['seacave/cover-home', 'seacave/cover-catalogue', 'seacave/cover-species', 'seacave/cover-guides'],
   summary:
     'Sea Cave has sold saltwater fish at 660 East 14th Street in Erie since 1975, and nothing leaves the building by post. The site had to work as a reference rather than a store, so a species page carries the phone number where a basket would be.',
+  metaDescription:
+    'Sea Cave has sold saltwater fish in Erie since 1975. Nine hundred pages built as a reference, and every species page carries the phone number.',
   topics: [
     {
       label: 'Two catalogues',

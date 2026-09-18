@@ -16,6 +16,8 @@ export const ANDYS: CaseStudy = {
   cover: ['andys/cover-home', 'andys/cover-menu', 'andys/cover-dish', 'andys/cover-gallery'],
   summary:
     "Andy's has run a Peach Street kitchen to midnight since '85, under forty-plus TVs and a twenty-one-foot laser screen. It is built for the phone somebody opens at nine at night, so the day's specials and the hours each one runs are the first thing on the screen.",
+  metaDescription:
+    "Andy's has run a Peach Street kitchen to midnight since '85. Built for the phone somebody opens at nine at night, so the specials come first.",
   topics: [
     {
       label: 'Today',

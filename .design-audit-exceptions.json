@@ -3,5 +3,20 @@
     "reason": "False positive from client case-study DATA, not this site's fonts: src/data/clients.ts records the typefaces each client site actually uses (Andy's = Playfair Display, Sea Cave = Inter) for the /work type panels. This site's own stack is JetBrains Mono + Schibsted Grotesk + Hanken Grotesk (src/app/layout.tsx).",
     "approvedBy": "design retrofit session (charter-authorized workstream, Tom-approved 2026-07-13)",
     "date": "2026-07-19"
+  },
+  "SHOT-NEEDS-DEVICE-FRAME": {
+    "reason": "The file flagged IS the device frame. src/components/ui/SafariPhone.tsx draws an iPhone 16 Pro in Safari around a capture — bezel, corner radius, Dynamic Island, toolbars — so the check fires on the one file that exists to satisfy it. Every bare capture on this site goes through it or through DeviceDuo.",
+    "approvedBy": "pre-ship pass before the case-study deploy",
+    "date": "2026-09-18"
+  },
+  "A11Y-OPACITY-DIMS-TEXT": {
+    "reason": "Not text. src/app/globals.css:182 is the page's film grain — `position: fixed; inset: 0; pointer-events: none` with a fractalNoise SVG at opacity 0.025. It has no glyphs in it and nothing reads through it as type, so the blended-contrast rule the check enforces has no subject. The site's actual text contrast is unaffected by this layer.",
+    "approvedBy": "pre-ship pass before the case-study deploy",
+    "date": "2026-09-18"
+  },
+  "TITLE-LEADING-ARTICLE": {
+    "reason": "Both remaining hits are in src/components/sections/Survey.tsx, which nothing imports — it is the five-question funnel Tom replaced on 2026-09-17 with Start.tsx + BookingWizard, kept on disk unmounted the way Bookshelf.tsx and Vsl.tsx are. The strings are answer OPTIONS, not titles ('A site somebody built years ago', 'A site I pay for now'), where the article is ordinary English rather than the tic. The one real hit this pass found — 'The things people ask last' in src/data/faqs.ts — was fixed, not excepted.",
+    "approvedBy": "pre-ship pass before the case-study deploy",
+    "date": "2026-09-18"
   }
 }

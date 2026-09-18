@@ -15,6 +15,8 @@ export const BULLFROG: CaseStudy = {
   cover: ['bullfrog/cover-home', 'bullfrog/cover-lineup', 'bullfrog/cover-events', 'bullfrog/cover-venue'],
   summary:
     "Bullfrog is upstairs at Andy's on Peach Street, a room with a stage, a dance floor and a band every Friday. The question the room gets asked is who is playing, so the next act runs the home page and a date that has passed drops off on its own.",
+  metaDescription:
+    "Bullfrog is a room with a stage upstairs at Andy's on Peach Street. The next act runs the home page, and a date that has passed drops off itself.",
   topics: [
     {
       label: 'Up next',

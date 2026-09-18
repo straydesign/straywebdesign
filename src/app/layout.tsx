@@ -54,8 +54,14 @@ const plex = IBM_Plex_Sans({
 
 export const metadata: Metadata = {
   title: "Stray Web Design — Web Designer in Erie, PA | Tom Sesler",
+  /* 155 characters. A result snippet is cut around 158, so everything past
+     that is written for nobody — the old one ran 167 and lost the phone
+     number, which is the only line here that asks for anything. Trimmed by
+     dropping "Hi, ", shortening "websites" to "sites" and "host them or hand
+     them off" to "host or hand them off"; nothing was cut that carried a
+     fact. Keep any rewrite under 158 and keep the number last. */
   description:
-    "Hi, I'm Tom, a web designer in Erie, PA. I design and build custom websites for consumer-facing businesses, then host them or hand them off. Call or text 814-964-0081.",
+    "I'm Tom, a web designer in Erie, PA. I design and build custom sites for consumer-facing businesses, then host or hand them off. Call or text 814-964-0081.",
   keywords: [
     'freelance web designer',
     'web designer',

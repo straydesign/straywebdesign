@@ -892,6 +892,18 @@
   padding-top: calc(var(--cs-header) + 1.25rem);
 }
 
+/* The next-study strip is this site's own — straydesign.co ends a study with a
+   two-column centred NextProject whose content never reaches the left gutter,
+   so it never had to think about the rail. This one is a three-column grid
+   that starts at the container edge, and the rail is fixed over that edge.
+   Taking the padding from --cs-pad is what keeps the two in step: the rail's
+   width and this clearance then move together instead of being two numbers
+   that agree until one of them is edited. */
+.cs-next {
+  padding-left: var(--cs-pad);
+  padding-right: var(--cs-pad);
+}
+
 @media (min-width: 768px) {
   .cs { --cs-header: 3.6rem; }
 }

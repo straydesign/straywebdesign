@@ -98,9 +98,17 @@ export interface CaseStudy {
   /** Title wall: handset captures running off the right edge. Manifest ids. */
   readonly cover: readonly string[];
   /** Why this was the thing to build, in two sentences, directly under the
-   *  title. Framing only — it carries no claim that needs a picture, and it is
-   *  the route's meta description, so it stays inside ~158 characters. */
+   *  title. Framing only — it carries no claim that needs a picture. */
   readonly summary: string;
+  /** The route's meta description, inside the ~158 characters a result snippet
+   *  actually shows, differentiator first.
+   *
+   *  This used to be `summary`, and the two jobs pull apart: on the page the
+   *  summary wants two full sentences of framing, and all four ran 237–276
+   *  characters — 79 to 118 of them past the point a snippet is cut, which is
+   *  where the differentiator was sitting. Same facts, compressed; nothing
+   *  here says anything the summary does not. */
+  readonly metaDescription: string;
   readonly topics: readonly Topic[];
   readonly flow?: Flow;
   readonly impact: {

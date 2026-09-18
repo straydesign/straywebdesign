@@ -20,6 +20,8 @@ export const PRESQUEISLE: CaseStudy = {
   ],
   summary:
     "Presque Isle works out of the old Arby's on W 8th, and the counter carries whatever the lake and the boats bring in. Prices live on stickers and change with the catch, so every price on the site is printed beside the number to call.",
+  metaDescription:
+    "Presque Isle's counter carries whatever the lake and the boats bring in. Prices change with the catch, so each one is printed beside a number to call.",
   topics: [
     {
       label: 'Their own',

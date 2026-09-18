@@ -94,7 +94,7 @@ export const FAQ_GROUPS: readonly FaqGroup[] = [
     ],
   },
   {
-    label: 'The things people ask last',
+    label: 'What people ask last',
     items: [
       {
         q: "I'm not technical. Is that going to be a problem?",

@@ -26,11 +26,11 @@ export async function generateMetadata({
   if (!study) return {};
   return {
     title: `${study.client} — ${study.title} | Stray Web Design`,
-    description: study.summary,
+    description: study.metaDescription,
     alternates: { canonical: `/work/${slug}` },
     openGraph: {
       title: `${study.client} — ${study.title}`,
-      description: study.summary,
+      description: study.metaDescription,
       url: `https://straywebdesign.co/work/${slug}`,
       type: 'article',
     },
