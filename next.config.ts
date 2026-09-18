@@ -37,9 +37,11 @@ const nextConfig: NextConfig = {
       gone('/resources/:path*'),
       gone('/feed.xml'),
 
-      // Case studies — the work still appears on the landing page, inline.
-      gone('/work'),
-      gone('/work/:path*'),
+      /* /work and /work/:slug are LIVE again as of 2026-09-17 — the four client
+         case studies were ported from straydesign.co. The redirects that used
+         to sit here sent both to the homepage, which silently 308'd every new
+         study route until it was caught in testing. Do not restore them
+         without deleting src/app/work first. */
 
       gone('/photography'),
 

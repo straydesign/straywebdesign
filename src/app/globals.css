@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./case-study.css";
 
 :root {
   /* Clean neutral palette, blue accent — "evolve the technical DNA" */
