@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "verify:studies": "node scripts/verify-case-studies.mjs",
+    "verify:caption": "node scripts/verify-topic-caption.mjs",
     "test": "npx playwright test",
     "test:ui": "npx playwright test --ui",
     "test:headed": "npx playwright test --headed"
