@@ -94,6 +94,9 @@ export default function Menu() {
                       phoneShot={panel.phoneShot}
                       alt={`${panel.alt} — desktop`}
                       phoneAlt={`${panel.alt} on a phone`}
+                      /* Both captures put their page heading top left, which
+                         is where the phone sits by default. */
+                      phoneSide="right"
                     />
                     <figcaption className="mt-2 font-mono text-[11px] text-text-tertiary">
                       <span aria-hidden className="text-accent/60">{'// '}</span>
