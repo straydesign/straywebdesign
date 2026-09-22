@@ -16,6 +16,21 @@ export function generateStaticParams() {
   return CASE_STUDIES.map((c) => ({ slug: c.slug }));
 }
 
+/**
+ * A slug that is not one of the four must 404, not stream.
+ *
+ * `notFound()` below is correct and still ran, but with dynamicParams on, an
+ * unknown slug renders on demand — and the response has already committed
+ * 200 and flushed the loading shell by the time it throws. /work/sea-cave
+ * (the real slug is `seacave`) answered 200 with the word "Loading…" on it:
+ * a soft 404, which is the kind Search Console counts as a live page and
+ * indexes against the site.
+ *
+ * The studies are a fixed array in src/data, so there is nothing to generate
+ * on demand. Closing the door is both the fix and the truth.
+ */
+export const dynamicParams = false;
+
 export async function generateMetadata({
   params,
 }: {
