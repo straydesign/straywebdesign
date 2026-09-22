@@ -1,9 +1,10 @@
 import { headers } from 'next/headers';
 import { ImageResponse } from 'next/og';
-import { CARD_BRANDS, SocialCard, assetBase, loadCardFonts } from '@/lib/social-cards';
+import { STRAY_BRAND, SocialCard, assetBase, loadCardFonts } from '@/lib/social-cards';
 
 export const runtime = 'edge';
-export const alt = 'Stray Web Design — engaging sites for strong brands with passionate owners.';
+export const alt =
+  'Stray Web Design — four live client sites, and the line: your customers see how much you care before they walk in.';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -13,9 +14,11 @@ export const contentType = 'image/png';
    whichever brand the build happened to land on, and a link preview that
    changes between shares is a link preview nobody trusts.
 
-   Sea Cave carries it. Deep ground, one hot accent, and the highest contrast
-   of the four at the size a preview actually gets seen. */
-const BRAND = CARD_BRANDS.find((b) => b.slug === 'seacave')!;
+   It used to be pinned to Sea Cave, which meant sharing straywebdesign.co
+   unfurled as "Sea Cave", in Sea Cave's navy, over seacaveinc.com — the only
+   Stray thing on it was the wordmark. A link preview is the one image that
+   has to say whose link it is. */
+const BRAND = STRAY_BRAND;
 
 /* The origin comes off the incoming request, the same way the /og/social
    routes take it off `request.url`.

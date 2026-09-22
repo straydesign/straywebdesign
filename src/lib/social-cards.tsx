@@ -105,6 +105,34 @@ export const CARD_BRANDS: CardBrand[] = [
  * Which brand a request asked for. `?client=bullfrog`, or a rotation keyed to
  * the day so a card fetched without a parameter is not always Andy's.
  */
+/**
+ * The site's own card.
+ *
+ * Deliberately NOT in CARD_BRANDS: that array is the rotation the /og/social
+ * routes cycle, and Stray is not one of the four clients. It lives here so the
+ * home page's link preview stops borrowing a client's identity — before this,
+ * sharing straywebdesign.co unfurled as "Sea Cave", in Sea Cave's colours,
+ * over seacaveinc.com. The wordmark was the only Stray thing on it.
+ *
+ * Paper ground and ink type, which is what the site itself is. The `face` is
+ * Schibsted Grotesk, the same display face the pages use, so the card and the
+ * page it points at are visibly one thing.
+ */
+export const STRAY_BRAND: CardBrand = {
+  slug: 'stray',
+  name: ['Stray Web', 'Design'],
+  line: 'four live sites, built and run by one person',
+  domain: 'straywebdesign.co',
+  ground: '#f7f7f7',
+  accent: '#2563EB',
+  ink: '#111111',
+  face: 'Schibsted Grotesk',
+  faceUrl:
+    'https://cdn.jsdelivr.net/fontsource/fonts/schibsted-grotesk@latest/latin-700-normal.ttf',
+  faceWeight: 700,
+  faceTracking: '-0.03em',
+};
+
 export function pickBrand(param?: string | null): CardBrand {
   if (param) {
     const found = CARD_BRANDS.find((b) => b.slug === param.toLowerCase());
@@ -168,6 +196,65 @@ export async function loadCardFonts(brand: CardBrand) {
       style: 'normal' as const,
     },
   ];
+}
+
+/**
+ * Four laptops on four planes — the hero stack, flattened onto a card.
+ *
+ * This is the art for the site's own preview, where a single client's laptop
+ * would be the wrong claim. Back to front, the same order the hero fans them
+ * in, so the newest work is the one nearest the viewer.
+ *
+ * Each card steps right and down and turns a little further, which is what
+ * reads as depth without a perspective transform — satori has no 3D, and it
+ * does not need one at this size.
+ */
+function LaptopFan({ base, boxWidth }: { base: string; boxWidth: number }) {
+  const SLUGS = ['andys', 'bullfrog', 'seacave', 'presqueisle'];
+  /* The fan is 1.42 laptops wide at a 14% step, so the laptop has to come
+     down to fit the same box the single-laptop pair was given. */
+  const w = Math.round(boxWidth / 1.42);
+  const h = Math.round(w * 0.625);
+  const stepX = Math.round(w * 0.14);
+  const stepY = Math.round(h * 0.075);
+  const boxH = Math.round(h + stepY * 3 + h * 0.16);
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        position: 'relative',
+        width: `${boxWidth}px`,
+        height: `${boxH}px`,
+      }}
+    >
+      {SLUGS.map((slug, i) => (
+        <div
+          key={slug}
+          style={{
+            display: 'flex',
+            position: 'absolute',
+            left: `${i * stepX}px`,
+            top: `${Math.round(h * 0.09) + i * stepY}px`,
+            transform: `rotate(${-5 + i * 0.6}deg)`,
+            borderRadius: `${Math.round(w * 0.012)}px`,
+            boxShadow: '0 26px 60px rgba(0,0,0,0.28)',
+          }}
+        >
+          <img
+            src={`${base}/images/social/laptop-${slug}.jpg`}
+            width={w}
+            height={h}
+            style={{
+              display: 'flex',
+              borderRadius: `${Math.round(w * 0.012)}px`,
+              objectFit: 'cover',
+            }}
+          />
+        </div>
+      ))}
+    </div>
+  );
 }
 
 /**
@@ -387,7 +474,15 @@ export function SocialCard({
           fontWeight: 600,
           color: brand.ink,
           opacity: 0.72,
-          ...(stacked ? { maxWidth: `${Math.round(900 * s)}px` } : {}),
+          /* The four clients' lines fit the wide column on one line, so
+             capping it there would break what already works. Stray's is the
+             long one — uncapped it set "four live sites, built and run by one"
+             and dropped "person" alone underneath. */
+          ...(stacked
+            ? { maxWidth: `${Math.round(900 * s)}px` }
+            : brand.slug === 'stray'
+              ? { maxWidth: `${Math.round(380 * s)}px` }
+              : {}),
           lineHeight: 1.3,
         }}
       >
@@ -396,9 +491,16 @@ export function SocialCard({
     </div>
   );
 
+  /* The four clients get their own laptop and phone; the site itself gets all
+     four laptops, because "one of my clients" is not what straywebdesign.co
+     is offering. Same footprint either way. */
   const devices = (
     <div style={{ display: 'flex', flexShrink: 0 }}>
-      <DevicePair brand={brand} base={base} width={deviceWidth} />
+      {brand.slug === 'stray' ? (
+        <LaptopFan base={base} boxWidth={Math.round(deviceWidth * 1.18)} />
+      ) : (
+        <DevicePair brand={brand} base={base} width={deviceWidth} />
+      )}
     </div>
   );
 
