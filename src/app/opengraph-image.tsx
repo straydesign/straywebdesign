@@ -1,10 +1,10 @@
 import { headers } from 'next/headers';
 import { ImageResponse } from 'next/og';
-import { STRAY_BRAND, SocialCard, assetBase, loadCardFonts } from '@/lib/social-cards';
+import { StrayHeroCard, assetBase, loadHeroFonts } from '@/lib/social-cards';
 
 export const runtime = 'edge';
 export const alt =
-  'Stray Web Design — four live client sites, and the line: your customers see how much you care before they walk in.';
+  'Engaging sites for strong brands with passionate owners — four live client sites, fanned.';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -18,7 +18,10 @@ export const contentType = 'image/png';
    unfurled as "Sea Cave", in Sea Cave's navy, over seacaveinc.com — the only
    Stray thing on it was the wordmark. A link preview is the one image that
    has to say whose link it is. */
-const BRAND = STRAY_BRAND;
+/* Tom, 2026-09-22: the preview "should basically be this", holding up the top
+   of the page. So it is the hero rather than a card about the hero — see
+   StrayHeroCard. The per-brand SocialCard template still drives the four
+   client cards on /og/social/*; only this one changed. */
 
 /* The origin comes off the incoming request, the same way the /og/social
    routes take it off `request.url`.
@@ -43,9 +46,9 @@ async function originFromRequest(): Promise<string> {
 }
 
 export default async function OGImage() {
-  const [fonts, base] = await Promise.all([loadCardFonts(BRAND), originFromRequest()]);
-  return new ImageResponse(
-    <SocialCard brand={BRAND} base={base} width={1200} height={630} layout="wide" />,
-    { ...size, fonts },
-  );
+  const [fonts, base] = await Promise.all([loadHeroFonts(), originFromRequest()]);
+  return new ImageResponse(<StrayHeroCard base={base} width={1200} height={630} />, {
+    ...size,
+    fonts,
+  });
 }

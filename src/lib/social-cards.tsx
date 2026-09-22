@@ -106,32 +106,18 @@ export const CARD_BRANDS: CardBrand[] = [
  * the day so a card fetched without a parameter is not always Andy's.
  */
 /**
- * The site's own card.
+ * The site's own palette — the three values StrayHeroCard paints with, taken
+ * off globals.css so the preview and the page cannot drift apart.
  *
- * Deliberately NOT in CARD_BRANDS: that array is the rotation the /og/social
- * routes cycle, and Stray is not one of the four clients. It lives here so the
- * home page's link preview stops borrowing a client's identity — before this,
- * sharing straywebdesign.co unfurled as "Sea Cave", in Sea Cave's colours,
- * over seacaveinc.com. The wordmark was the only Stray thing on it.
- *
- * Paper ground and ink type, which is what the site itself is. The `face` is
- * Schibsted Grotesk, the same display face the pages use, so the card and the
- * page it points at are visibly one thing.
+ * This used to be a full CardBrand called STRAY_BRAND, fed through SocialCard
+ * alongside the four clients. It carried a name, a line, a domain and a
+ * typeface, and none of those survive on a card that is simply the hero.
  */
-export const STRAY_BRAND: CardBrand = {
-  slug: 'stray',
-  name: ['Stray Web', 'Design'],
-  line: 'four live sites, built and run by one person',
-  domain: 'straywebdesign.co',
+export const STRAY_PALETTE = {
   ground: '#f7f7f7',
   accent: '#2563EB',
   ink: '#111111',
-  face: 'Schibsted Grotesk',
-  faceUrl:
-    'https://cdn.jsdelivr.net/fontsource/fonts/schibsted-grotesk@latest/latin-700-normal.ttf',
-  faceWeight: 700,
-  faceTracking: '-0.03em',
-};
+} as const;
 
 export function pickBrand(param?: string | null): CardBrand {
   if (param) {
@@ -196,131 +182,6 @@ export async function loadCardFonts(brand: CardBrand) {
       style: 'normal' as const,
     },
   ];
-}
-
-/**
- * The work, on the devices people hold — the art for the site's own preview,
- * where one client's laptop would be the wrong claim.
- *
- * Presque Isle leads it (Tom: "Lake should basically be our hero"). That
- * capture is the strongest of the four at preview size: a photograph of the
- * lake behind three words, legible when the whole card is 500px wide in a
- * message. The other three fan out behind it and are read as "and three more",
- * which is all they have to do.
- *
- * Laptops AND phones, on Tom's second note — a responsive site shown on one
- * screen is a claim, on two it is the evidence. The phone is the hero site's,
- * overlapping its lower-left, the same pairing DeviceDuo makes on the page.
- *
- * Stepped and turned rather than perspective-projected: satori has no 3D and
- * does not need one at this size.
- */
-function WorkFan({ base, boxWidth }: { base: string; boxWidth: number }) {
-  const BACK = ['andys', 'bullfrog', 'seacave'];
-
-  /* The hero laptop sets the scale; the back three are 72% of it so the fan
-     reads as depth rather than as four things of the same size. */
-  const heroW = Math.round(boxWidth * 0.70);
-  const heroH = Math.round(heroW * 0.625);
-  const backW = Math.round(heroW * 0.72);
-  const backH = Math.round(backW * 0.625);
-  const stepX = Math.round(backW * 0.17);
-
-  const phoneW = Math.round(heroW * 0.21);
-  const phoneH = Math.round(phoneW * 1.962);
-
-  /* THE PHONE GOES ON THE WATER, NOT ON THE WORDS. Presque Isle's hero sets
-     "WE FISH LAKE ERIE OURSELVES" down the LEFT of the capture, so a phone
-     overlapping the lower-left — the default, and where it sat first — ate
-     the L and the O and left "AKE ERIE / URSELVES". The same bite DeviceDuo
-     grew a `phoneSide` prop for on the menu panel. The hero shifts left by
-     part of a phone width to make the room, so nothing runs past the box. */
-  const heroLeft = boxWidth - heroW - Math.round(phoneW * 0.45);
-  const heroTop = Math.round(heroH * 0.3);
-  const boxH = heroTop + heroH + Math.round(phoneH * 0.22);
-
-  return (
-    <div
-      style={{
-        display: 'flex',
-        position: 'relative',
-        width: `${boxWidth}px`,
-        height: `${boxH}px`,
-      }}
-    >
-      {BACK.map((slug, i) => (
-        <div
-          key={slug}
-          style={{
-            display: 'flex',
-            position: 'absolute',
-            left: `${i * stepX}px`,
-            top: `${i * Math.round(backH * 0.1)}px`,
-            transform: `rotate(${-5 + i * 0.8}deg)`,
-            borderRadius: `${Math.round(backW * 0.012)}px`,
-            boxShadow: '0 20px 44px rgba(0,0,0,0.22)',
-          }}
-        >
-          <img
-            src={`${base}/images/social/laptop-${slug}.jpg`}
-            width={backW}
-            height={backH}
-            style={{
-              display: 'flex',
-              borderRadius: `${Math.round(backW * 0.012)}px`,
-              objectFit: 'cover',
-            }}
-          />
-        </div>
-      ))}
-
-      <div
-        style={{
-          display: 'flex',
-          position: 'absolute',
-          left: `${heroLeft}px`,
-          top: `${heroTop}px`,
-          transform: 'rotate(-2deg)',
-          borderRadius: `${Math.round(heroW * 0.012)}px`,
-          boxShadow: '0 34px 70px rgba(0,0,0,0.34)',
-        }}
-      >
-        <img
-          src={`${base}/images/social/laptop-presqueisle.jpg`}
-          width={heroW}
-          height={heroH}
-          style={{
-            display: 'flex',
-            borderRadius: `${Math.round(heroW * 0.012)}px`,
-            objectFit: 'cover',
-          }}
-        />
-      </div>
-
-      <div
-        style={{
-          display: 'flex',
-          position: 'absolute',
-          left: `${heroLeft + heroW - Math.round(phoneW * 0.55)}px`,
-          top: `${heroTop + heroH - Math.round(phoneH * 0.78)}px`,
-          transform: 'rotate(-2deg)',
-          borderRadius: `${Math.round(phoneW * 0.11)}px`,
-          boxShadow: '0 26px 56px rgba(0,0,0,0.38)',
-        }}
-      >
-        <img
-          src={`${base}/images/social/phone-presqueisle.jpg`}
-          width={phoneW}
-          height={phoneH}
-          style={{
-            display: 'flex',
-            borderRadius: `${Math.round(phoneW * 0.11)}px`,
-            objectFit: 'cover',
-          }}
-        />
-      </div>
-    </div>
-  );
 }
 
 /**
@@ -418,6 +279,23 @@ function DevicePair({
   );
 }
 
+/**
+ * Bind the last two words so a wrapped line cannot strand one of them.
+ *
+ * Andy's line — "menus and daily specials, edited by the team" — set "team"
+ * alone on its own line at 2048 wide. A widow like that is the difference
+ * between a card that looks typeset and one that looks generated, and it is
+ * the only word on the card with nothing beside it.
+ *
+ * A non-breaking space is the fix rather than a maxWidth: it does nothing at
+ * all to the lines that already fit, so it cannot break the three cards that
+ * were right.
+ */
+function noOrphan(text: string): string {
+  const i = text.lastIndexOf(' ');
+  return i === -1 ? text : `${text.slice(0, i)}\u00A0${text.slice(i + 1)}`;
+}
+
 /** The wordmark, taking the brand's accent for its middle word. */
 function Wordmark({ brand, size }: { brand: CardBrand; size: number }) {
   return (
@@ -489,10 +367,7 @@ export function SocialCard({
    * addresses nobody and never says what the business does. Tom, looking at
    * it: "it needs to just say like web design for strong brands with
    * passionate owners." His words, so his words are what it says. */
-  const claim =
-    brand.slug === 'stray'
-      ? 'Web design for strong brands with passionate owners.'
-      : 'Your customers see how much you care before they walk in.';
+  const claim = 'Your customers see how much you care before they walk in.';
 
   /* The device box is 1.18x the laptop width, so a 0.42 share came to more
      than half the card and pushed the laptop off the right edge of the 16:9
@@ -565,21 +440,18 @@ export function SocialCard({
           lineHeight: 1.3,
         }}
       >
-        {brand.line}
+        {noOrphan(brand.line)}
       </div>
     </div>
   );
 
-  /* The four clients get their own laptop and phone; the site itself gets all
-     four laptops, because "one of my clients" is not what straywebdesign.co
-     is offering. Same footprint either way. */
+  /* SocialCard is now the CLIENT card and only that — the site's own preview
+     is StrayHeroCard at the bottom of this file. The `slug === 'stray'` fork
+     that used to live here went with it; a dead branch still drawing the
+     retired design is how the retired design comes back. */
   const devices = (
     <div style={{ display: 'flex', flexShrink: 0 }}>
-      {brand.slug === 'stray' ? (
-        <WorkFan base={base} boxWidth={Math.round(deviceWidth * 1.18)} />
-      ) : (
-        <DevicePair brand={brand} base={base} width={deviceWidth} />
-      )}
+      <DevicePair brand={brand} base={base} width={deviceWidth} />
     </div>
   );
 
@@ -659,6 +531,182 @@ export function SocialCard({
             {brand.domain}
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   THE SITE'S OWN CARD IS THE HERO
+   ══════════════════════════════════════════════════════════════════════════
+
+   Tom, 2026-09-22, holding up a screenshot of the top of the page: "should
+   basically be this."
+
+   So this one does not use SocialCard. That template is built for a CLIENT
+   card — their name, their face, their colours above the rule, Stray signing
+   below it — and bending it into a second shape would have cost both. The
+   file already said it: two cards, two jobs.
+
+   What the link preview has to do is show the page it points at. Someone
+   pastes straywebdesign.co into a text; the unfurl should be the first screen
+   they are about to see, so arriving is a continuation rather than a
+   different design wearing the same domain.
+
+   THE WRAP IS WRITTEN OUT, NOT MEASURED. The page balances this headline with
+   `text-balance` and lands on "Engaging sites for strong / brands with
+   passionate owners." Satori has no text-balance and no way to colour half a
+   word run mid-wrap reliably, so each line is its own flex row of coloured
+   spans. That fixes the break at the same place the browser puts it and makes
+   the accent start exactly on "strong", which is where the page starts it.
+
+   NO DOMAIN LINE. Every platform that unfurls a link prints the domain under
+   the image itself, so putting it on the art too says it twice and steals the
+   room the laptops need. */
+
+const INSTRUMENT_400 =
+  'https://cdn.jsdelivr.net/fontsource/fonts/instrument-serif@latest/latin-400-normal.ttf';
+
+let cachedInstrument: ArrayBuffer | null = null;
+
+export async function loadHeroFonts() {
+  if (!cachedInstrument) {
+    cachedInstrument = await (await fetch(INSTRUMENT_400)).arrayBuffer();
+  }
+  return [
+    {
+      name: 'Instrument Serif',
+      data: cachedInstrument,
+      weight: 400 as const,
+      style: 'normal' as const,
+    },
+  ];
+}
+
+/**
+ * The four live sites, fanned — the flat cousin of SiteStack.
+ *
+ * On the page the fan is real 3D: one `preserve-3d` stage, each card on its
+ * own translateZ, the whole thing turning under the pointer. Satori has
+ * neither perspective nor preserve-3d, so the depth is drawn instead of
+ * projected — each card forward is a little WIDER, a little lower, and a
+ * little more shadowed, which is what perspective was doing to them anyway.
+ *
+ * Front card last in source order. Satori paints in document order and has no
+ * z-index, so the near card has to be written last or the back of the fan
+ * covers the front of it.
+ */
+function HeroFan({ base, width, height }: { base: string; width: number; height: number }) {
+  /* Back to front, so the last one drawn is the one nearest the viewer — the
+     same order PROOF is in on the page. */
+  const SLUGS = ['andys', 'bullfrog', 'seacave', 'presqueisle'];
+
+  const frontW = Math.round(width * 0.46);
+  const stepX = Math.round(frontW * 0.16);
+  const spread = stepX * (SLUGS.length - 1);
+  const startX = Math.round((width - (spread + frontW)) / 2);
+
+  return (
+    <div style={{ display: 'flex', position: 'relative', width: `${width}px`, height: `${height}px` }}>
+      {SLUGS.map((slug, i) => {
+        /* 80% at the back to full size at the front. The page gets this same
+           ramp for free from the perspective divide. */
+        const scale = 0.8 + (i / (SLUGS.length - 1)) * 0.2;
+        const w = Math.round(frontW * scale);
+        /* The frame captures are 1014x620 — the MacBook's whole outline, lid
+           plus base deck, not the 16:10 screen alone. */
+        const h = Math.round(w * 0.612);
+        return (
+          <div
+            key={slug}
+            style={{
+              display: 'flex',
+              position: 'absolute',
+              left: `${startX + i * stepX}px`,
+              top: `${Math.round(i * height * 0.05)}px`,
+              filter: `drop-shadow(0 ${10 + i * 9}px ${22 + i * 14}px rgba(0,0,0,${0.13 + i * 0.045}))`,
+            }}
+          >
+            <img
+              src={`${base}/images/social/macbook-${slug}.jpg`}
+              width={w}
+              height={h}
+              style={{ display: 'flex', objectFit: 'contain' }}
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+/** The link preview: the top of the page, at the size a message unfurls it. */
+export function StrayHeroCard({
+  base,
+  width,
+  height,
+}: {
+  base: string;
+  width: number;
+  height: number;
+}) {
+  const s = width / 1200;
+  const pad = Math.round(56 * s);
+  const headSize = Math.round(64 * s);
+
+  const INK = STRAY_PALETTE.ink;
+  const ACCENT = STRAY_PALETTE.accent;
+
+  const line = (parts: { text: string; color: string }[]) => (
+    <div style={{ display: 'flex', flexDirection: 'row' }}>
+      {parts.map((p) => (
+        <span
+          key={p.text}
+          style={{ color: p.color, whiteSpace: 'pre', textShadow: `0 0 1px ${p.color}` }}
+        >
+          {p.text}
+        </span>
+      ))}
+    </div>
+  );
+
+  const headBlock = Math.round(headSize * 1.06 * 2);
+  const fanTop = pad + headBlock + Math.round(30 * s);
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        width: `${width}px`,
+        height: `${height}px`,
+        backgroundColor: STRAY_PALETTE.ground,
+        padding: `${pad}px`,
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          fontFamily: 'Instrument Serif',
+          fontWeight: 400,
+          fontSize: `${headSize}px`,
+          lineHeight: 1.06,
+          letterSpacing: '-0.02em',
+        }}
+      >
+        {line([
+          { text: 'Engaging sites for ', color: INK },
+          { text: 'strong', color: ACCENT },
+        ])}
+        {line([
+          { text: 'brands with passionate owners', color: ACCENT },
+          { text: '.', color: INK },
+        ])}
+      </div>
+
+      <div style={{ display: 'flex', position: 'absolute', left: '0px', top: `${fanTop}px` }}>
+        <HeroFan base={base} width={width} height={height - fanTop} />
       </div>
     </div>
   );
