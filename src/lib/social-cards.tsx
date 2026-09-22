@@ -68,7 +68,10 @@ export const CARD_BRANDS: CardBrand[] = [
   {
     slug: 'seacave',
     name: ['Sea Cave'],
-    line: 'saltwater and freshwater in Erie since 1975',
+    /* No town on a share card. These go out to people who are not here, and
+       geography is the thing the whole reposition took off the front of the
+       site. Fifty years is the claim; where it happened is not. */
+    line: 'saltwater and freshwater, since 1975',
     domain: 'seacaveinc.com',
     ground: '#06223f',
     accent: '#ff7a1e',
@@ -320,8 +323,17 @@ export function SocialCard({
 
   /* The device box is 1.18x the laptop width, so a 0.42 share came to more
      than half the card and pushed the laptop off the right edge of the 16:9
-     cover. Devices are fixed and the type column takes what is left. */
-  const deviceWidth = stacked ? Math.round(width * 0.62) : Math.round(width * 0.34);
+     cover. Devices are fixed and the type column takes what is left.
+
+     Stacked, the share follows the card's own proportion instead of being one
+     number for both sizes. 0.62 is right at 1:1 and left the 4:5 portrait with
+     a dead band above the wordmark — a quarter more height, same devices. The
+     cap is the inner width divided by that 1.18, so the box can never run past
+     the padding whatever the ratio asks for. */
+  const innerW = width - 2 * pad;
+  const deviceWidth = stacked
+    ? Math.round(Math.min(width * 0.62 * (height / width), innerW / 1.18))
+    : Math.round(width * 0.34);
 
   const type = (
     <div
@@ -404,7 +416,10 @@ export function SocialCard({
           justifyContent: 'space-between',
           gap: `${Math.round((stacked ? 56 : 48) * s)}px`,
           width: '100%',
-          ...(stacked ? {} : { flex: 1 }),
+          /* Grows either way. Sized to its content, a stacked card let the
+             outer space-between drop all the slack into one gap directly
+             above the wordmark, which read as a hole rather than as air. */
+          flex: 1,
         }}
       >
         {type}
