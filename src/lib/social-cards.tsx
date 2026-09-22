@@ -317,9 +317,16 @@ export function SocialCard({
   const claimSize = Math.round((stacked ? 38 : 32) * s);
   const footSize = Math.round(23 * s);
 
-  const claim = stacked
-    ? 'Engaging sites for strong brands with passionate owners.'
-    : 'Engaging sites for strong brands.';
+  /* StoryBrand, on Tom's instruction: the owner is the hero and Stray is the
+     guide. "Engaging sites for strong brands" put the service in the subject
+     of the sentence and left the owner out of it entirely.
+
+     This is his own line from the dictation — "it shows how much you care
+     before anyone walks in and sees you or the place" — with the owner as the
+     subject. Everything above the rule belongs to the client: their name in
+     their typeface, their colours, their site. The guide signs it below the
+     rule and says nothing about itself. */
+  const claim = 'Your customers see how much you care before they walk in.';
 
   /* The device box is 1.18x the laptop width, so a 0.42 share came to more
      than half the card and pushed the laptop off the right edge of the 16:9
@@ -436,7 +443,11 @@ export function SocialCard({
             letterSpacing: '-0.01em',
             color: brand.ink,
             lineHeight: 1.2,
-            maxWidth: `${Math.round(980 * s)}px`,
+            /* Stacked, the full 980 fits all but the last two words and
+               drops "walk in." onto a line of its own. 740 breaks it roughly
+               in half instead. The wide card sets the whole claim on one line
+               at 32px and keeps the room. */
+            maxWidth: `${Math.round((stacked ? 740 : 980) * s)}px`,
             marginBottom: `${Math.round(28 * s)}px`,
           }}
         >

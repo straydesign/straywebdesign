@@ -77,8 +77,13 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://straywebdesign.co'),
   openGraph: {
     title: "Stray Web Design — Engaging Sites for Strong Brands | Tom Sesler",
+    /* Same StoryBrand flip as the card image this ships beside — the owner is
+       the hero, Stray is the guide. The old line made the service the subject
+       and left the owner out of the sentence. The title tag and the search
+       snippet stay as they are: those answer "what is this", not "what do I
+       get". 146 characters, three plain statements. */
     description:
-      "Engaging sites for strong brands with passionate owners. Designed, built, hosted and run by one person you can actually call.",
+      "Your customers see how much you care before they walk in. I design, build, host and run the site that shows them. One person you can actually call.",
     url: 'https://straywebdesign.co',
     siteName: 'Stray Web Design',
     locale: 'en_US',
@@ -87,8 +92,13 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "Stray Web Design — Engaging Sites for Strong Brands | Tom Sesler",
+    /* Same StoryBrand flip as the card image this ships beside — the owner is
+       the hero, Stray is the guide. The old line made the service the subject
+       and left the owner out of the sentence. The title tag and the search
+       snippet stay as they are: those answer "what is this", not "what do I
+       get". 146 characters, three plain statements. */
     description:
-      "Engaging sites for strong brands with passionate owners. Designed, built, hosted and run by one person you can actually call.",
+      "Your customers see how much you care before they walk in. I design, build, host and run the site that shows them. One person you can actually call.",
   },
   alternates: {
     canonical: '/',
