@@ -1,6 +1,11 @@
 /**
- * The proof wall. Four live sites, filed by what got put into a catalog, so
- * they read as one mechanic at four scales rather than four unrelated jobs.
+ * The proof wall. Four live sites, each filed by what the site does for that
+ * business.
+ *
+ * The through-line used to be the catalogue — what got listed, and how much of
+ * it. That framing made four strong brands read as four sizes of the same
+ * spreadsheet. The line under each name now says what the site carries for
+ * them, which is the thing an owner recognises about their own place.
  *
  * `quote` only appears where a real one exists. There is one: a public Google
  * review of Stray Web Design left on 22 April 2026 by the owner of both bars.
@@ -11,8 +16,8 @@
 
 export interface ProofItem {
   readonly name: string;
-  /** What went into the catalog. This is the through-line of the wall. */
-  readonly catalogued: string;
+  /** What the site does for them, in one sentence. */
+  readonly does: string;
   readonly url: string;
   readonly displayUrl: string;
   /** Laptop RENDER — a macOS Safari window, not a bare capture. Built by
@@ -45,7 +50,7 @@ const OWNER = {
 export const PROOF: readonly ProofItem[] = [
   {
     name: "Andy's Ale House & Grill",
-    catalogued: 'Full menus and the daily specials, edited by the team',
+    does: 'The specials change daily, and the people at the bar are the ones who change them',
     url: 'https://andyspub.com',
     displayUrl: 'andyspub.com',
     shot: '/images/devices/laptop-andys.webp',
@@ -54,7 +59,7 @@ export const PROOF: readonly ProofItem[] = [
   },
   {
     name: 'Bullfrog',
-    catalogued: 'Every show on the calendar, up before the doors open',
+    does: 'The next band runs the home page, and a date that has passed drops off by itself',
     url: 'https://bullfrogbarerie.com',
     displayUrl: 'bullfrogbarerie.com',
     shot: '/images/devices/laptop-bullfrog.webp',
@@ -62,7 +67,7 @@ export const PROOF: readonly ProofItem[] = [
   },
   {
     name: 'Sea Cave',
-    catalogued: '880+ products, with live stock and pricing they update themselves',
+    does: 'Fifty years of standing, finally legible online, with the stock and the prices theirs to change',
     url: 'https://seacaveinc.com',
     displayUrl: 'seacaveinc.com',
     shot: '/images/devices/laptop-seacave.webp',
@@ -70,7 +75,7 @@ export const PROOF: readonly ProofItem[] = [
   },
   {
     name: 'Presque Isle Fish & Farm',
-    catalogued: 'Every counter — lake fish, ocean and Gulf, shellfish, kitchen, farm',
+    does: 'The Captain fishes Lake Erie himself, and the site says so before anyone walks in',
     url: 'https://presqueislefishandfarm.com',
     displayUrl: 'presqueislefishandfarm.com',
     shot: '/images/devices/laptop-presqueisle.webp',

@@ -1,0 +1,92 @@
+import Image from 'next/image';
+import AnimateIn from '@/components/ui/AnimateIn';
+import SectionHeading from '@/components/sections/SectionHeading';
+
+/**
+ * Editor — the back of the site, which is the part nobody selling a website
+ * ever shows you and the part you actually live in.
+ *
+ * All three are real screens of Sea Cave's store editor, captured from the
+ * live build. The product counts on them are that shop's real counts.
+ *
+ * They are shown in a plain bezel rather than the photoreal PhoneFrame render:
+ * that component takes the 1127x2210 composites the Envato smart object
+ * produces, and these are 900x1948 captures of a tool rather than of a site.
+ * A device frame is for showing somebody their own storefront.
+ */
+
+const SCREENS = [
+  {
+    src: '/images/case-studies/seacave/manage-tasks.webp',
+    title: 'Pick what you want to do',
+    body: 'Add a product, or change one you already sell. Two buttons, and nothing to learn first.',
+    alt: "Sea Cave's store editor: add a new product, or edit and turn one off",
+  },
+  {
+    src: '/images/case-studies/seacave/manage-toggle.webp',
+    title: 'Turn something off when it runs out',
+    body: 'Out of stock comes off the site. Back in stock goes back on. One tap, and the page updates itself.',
+    alt: 'The product list, with on-site and off-site counts and a toggle on each item',
+  },
+  {
+    src: '/images/case-studies/seacave/manage-check.webp',
+    title: 'Change a price or a photograph',
+    body: 'Open the listing, change the number, done. No ticket, no waiting on me, no bill for a five-second edit.',
+    alt: 'Editing one product: its photograph, its price, and whether it is on the site',
+  },
+];
+
+export default function Editor() {
+  return (
+    <section
+      id="editor"
+      className="scroll-mt-16 border-b border-border-default bg-surface-card py-20 md:py-28"
+      aria-label="Your editor"
+    >
+      <div className="mx-auto max-w-6xl px-5 md:px-8">
+        <SectionHeading kicker="And this is the back of it" title="YOUR EDITOR" className="mb-2" />
+
+        <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-text-secondary">
+          This is what you get to work with. It is set up so the everyday
+          changes are yours to make. If you later need to change something we
+          did not scope at the start, I adjust the editor so that you can.
+        </p>
+
+        <ul className="mt-12 grid gap-12 md:mt-16 md:grid-cols-3 md:gap-8">
+          {SCREENS.map((screen, i) => (
+            <li key={screen.title}>
+              <AnimateIn delay={i * 0.06}>
+                <figure className="m-0">
+                  <div className="mx-auto w-full max-w-[280px] rounded-[1.6rem] bg-[#0d0d10] p-2 shadow-[0_24px_50px_-20px_rgba(0,0,0,0.45)]">
+                    <div className="relative aspect-[900/1948] overflow-hidden rounded-[1.1rem] bg-surface-sunken">
+                      <Image
+                        src={screen.src}
+                        alt={screen.alt}
+                        fill
+                        sizes="(min-width: 768px) 280px, 80vw"
+                        className="object-cover object-top"
+                      />
+                    </div>
+                  </div>
+                </figure>
+                <div className="mt-6">
+                  <h3 className="font-display text-lg font-semibold tracking-tight text-text-primary md:text-xl">
+                    {screen.title}
+                  </h3>
+                  <p className="mt-2 font-body text-[15px] leading-relaxed text-text-secondary">
+                    {screen.body}
+                  </p>
+                </div>
+              </AnimateIn>
+            </li>
+          ))}
+        </ul>
+
+        <p className="mt-10 font-mono text-[11px] text-text-tertiary">
+          <span aria-hidden className="text-accent/60">{'// '}</span>
+          Sea Cave&apos;s own editor, and its own product counts
+        </p>
+      </div>
+    </section>
+  );
+}

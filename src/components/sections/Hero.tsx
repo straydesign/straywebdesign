@@ -2,15 +2,21 @@
 
 import Link from 'next/link';
 import AnimateIn from '@/components/ui/AnimateIn';
+import SiteStack from '@/components/ui/SiteStack';
 import { PHONE_SMS, PHONE_TEL, SITE } from '@/lib/constants';
 
 /**
- * Hero — the headline states the result, not the thing being sold. "A website
- * with a product catalog" is a thing; somebody finding your item and driving
- * over is a result, and it's the only reason anyone buys the thing.
+ * Hero — the headline names who the work is for, and the four sites underneath
+ * it are the argument.
  *
- * The video sits directly under it and carries the introduction, so the copy
- * up here stays short. There is no nav above this — one message, one action.
+ * The old headline sold one mechanism: "Everything you sell, where people are
+ * already looking." That is still what a catalogue does, and it is now a
+ * section further down instead of the thing the whole page is about.
+ *
+ * Under it sat an empty div — the slot the intro video came out of in
+ * September. A page claiming to build engaging sites cannot have a hole where
+ * the engaging part goes, so the four live builds fill it, on four depth
+ * planes, turning toward whoever is looking. There is no nav above this.
  */
 export default function Hero() {
   return (
@@ -18,14 +24,17 @@ export default function Hero() {
       <div className="mx-auto max-w-4xl px-5 md:px-8">
         <AnimateIn>
           <h1 className="text-balance font-display text-[clamp(2.2rem,5.6vw,4rem)] font-bold leading-[1.04] tracking-[-0.02em] text-text-primary">
-            Everything you sell,{' '}
-            <span className="text-accent">where people are already looking</span>.
+            Engaging sites for{' '}
+            <span className="text-accent">strong brands with passionate owners</span>.
           </h1>
-
+          <p className="mt-5 max-w-xl font-body text-lg leading-relaxed text-text-secondary">
+            Four of them are live and running right now. You are looking at all four.
+          </p>
         </AnimateIn>
 
         <AnimateIn delay={0.08}>
           <div className="mt-10 md:mt-12">
+            <SiteStack />
           </div>
         </AnimateIn>
 

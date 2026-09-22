@@ -85,7 +85,11 @@ export default function BookingContactForm({
             className={inputClasses}
             placeholder="you@business.com"
             autoComplete="email"
-            autoFocus
+            /* No autoFocus. The contact step is the wizard's INITIAL state, not
+               a step anyone navigates to, so this fired on mount — and because
+               the form sits in the last section of the home page, the browser
+               scrolled every arriving visitor straight past the hero to land on
+               it. Nobody navigated here, so nothing should take their focus. */
           />
         </div>
 

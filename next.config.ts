@@ -45,6 +45,12 @@ const nextConfig: NextConfig = {
 
       gone('/photography'),
 
+      /* /not-a-fit was the survey's disqualifier landing. The survey came off
+         on Tom's call 2026-09-17, which left the page reachable by nothing,
+         and it was deleted in the 2026-09-22 reposition. It was noindex all
+         along, so this is for anyone holding the URL rather than for Google. */
+      gone('/not-a-fit'),
+
       // Retired earlier; kept because Search Console still shows impressions
       // against them. The blog-slug lists these used to carry are covered by
       // the /resources wildcard above now.
