@@ -199,25 +199,45 @@ export async function loadCardFonts(brand: CardBrand) {
 }
 
 /**
- * Four laptops on four planes — the hero stack, flattened onto a card.
+ * The work, on the devices people hold — the art for the site's own preview,
+ * where one client's laptop would be the wrong claim.
  *
- * This is the art for the site's own preview, where a single client's laptop
- * would be the wrong claim. Back to front, the same order the hero fans them
- * in, so the newest work is the one nearest the viewer.
+ * Presque Isle leads it (Tom: "Lake should basically be our hero"). That
+ * capture is the strongest of the four at preview size: a photograph of the
+ * lake behind three words, legible when the whole card is 500px wide in a
+ * message. The other three fan out behind it and are read as "and three more",
+ * which is all they have to do.
  *
- * Each card steps right and down and turns a little further, which is what
- * reads as depth without a perspective transform — satori has no 3D, and it
+ * Laptops AND phones, on Tom's second note — a responsive site shown on one
+ * screen is a claim, on two it is the evidence. The phone is the hero site's,
+ * overlapping its lower-left, the same pairing DeviceDuo makes on the page.
+ *
+ * Stepped and turned rather than perspective-projected: satori has no 3D and
  * does not need one at this size.
  */
-function LaptopFan({ base, boxWidth }: { base: string; boxWidth: number }) {
-  const SLUGS = ['andys', 'bullfrog', 'seacave', 'presqueisle'];
-  /* The fan is 1.42 laptops wide at a 14% step, so the laptop has to come
-     down to fit the same box the single-laptop pair was given. */
-  const w = Math.round(boxWidth / 1.42);
-  const h = Math.round(w * 0.625);
-  const stepX = Math.round(w * 0.14);
-  const stepY = Math.round(h * 0.075);
-  const boxH = Math.round(h + stepY * 3 + h * 0.16);
+function WorkFan({ base, boxWidth }: { base: string; boxWidth: number }) {
+  const BACK = ['andys', 'bullfrog', 'seacave'];
+
+  /* The hero laptop sets the scale; the back three are 72% of it so the fan
+     reads as depth rather than as four things of the same size. */
+  const heroW = Math.round(boxWidth * 0.70);
+  const heroH = Math.round(heroW * 0.625);
+  const backW = Math.round(heroW * 0.72);
+  const backH = Math.round(backW * 0.625);
+  const stepX = Math.round(backW * 0.17);
+
+  const phoneW = Math.round(heroW * 0.21);
+  const phoneH = Math.round(phoneW * 1.962);
+
+  /* THE PHONE GOES ON THE WATER, NOT ON THE WORDS. Presque Isle's hero sets
+     "WE FISH LAKE ERIE OURSELVES" down the LEFT of the capture, so a phone
+     overlapping the lower-left — the default, and where it sat first — ate
+     the L and the O and left "AKE ERIE / URSELVES". The same bite DeviceDuo
+     grew a `phoneSide` prop for on the menu panel. The hero shifts left by
+     part of a phone width to make the room, so nothing runs past the box. */
+  const heroLeft = boxWidth - heroW - Math.round(phoneW * 0.45);
+  const heroTop = Math.round(heroH * 0.3);
+  const boxH = heroTop + heroH + Math.round(phoneH * 0.22);
 
   return (
     <div
@@ -228,31 +248,77 @@ function LaptopFan({ base, boxWidth }: { base: string; boxWidth: number }) {
         height: `${boxH}px`,
       }}
     >
-      {SLUGS.map((slug, i) => (
+      {BACK.map((slug, i) => (
         <div
           key={slug}
           style={{
             display: 'flex',
             position: 'absolute',
             left: `${i * stepX}px`,
-            top: `${Math.round(h * 0.09) + i * stepY}px`,
-            transform: `rotate(${-5 + i * 0.6}deg)`,
-            borderRadius: `${Math.round(w * 0.012)}px`,
-            boxShadow: '0 26px 60px rgba(0,0,0,0.28)',
+            top: `${i * Math.round(backH * 0.1)}px`,
+            transform: `rotate(${-5 + i * 0.8}deg)`,
+            borderRadius: `${Math.round(backW * 0.012)}px`,
+            boxShadow: '0 20px 44px rgba(0,0,0,0.22)',
           }}
         >
           <img
             src={`${base}/images/social/laptop-${slug}.jpg`}
-            width={w}
-            height={h}
+            width={backW}
+            height={backH}
             style={{
               display: 'flex',
-              borderRadius: `${Math.round(w * 0.012)}px`,
+              borderRadius: `${Math.round(backW * 0.012)}px`,
               objectFit: 'cover',
             }}
           />
         </div>
       ))}
+
+      <div
+        style={{
+          display: 'flex',
+          position: 'absolute',
+          left: `${heroLeft}px`,
+          top: `${heroTop}px`,
+          transform: 'rotate(-2deg)',
+          borderRadius: `${Math.round(heroW * 0.012)}px`,
+          boxShadow: '0 34px 70px rgba(0,0,0,0.34)',
+        }}
+      >
+        <img
+          src={`${base}/images/social/laptop-presqueisle.jpg`}
+          width={heroW}
+          height={heroH}
+          style={{
+            display: 'flex',
+            borderRadius: `${Math.round(heroW * 0.012)}px`,
+            objectFit: 'cover',
+          }}
+        />
+      </div>
+
+      <div
+        style={{
+          display: 'flex',
+          position: 'absolute',
+          left: `${heroLeft + heroW - Math.round(phoneW * 0.55)}px`,
+          top: `${heroTop + heroH - Math.round(phoneH * 0.78)}px`,
+          transform: 'rotate(-2deg)',
+          borderRadius: `${Math.round(phoneW * 0.11)}px`,
+          boxShadow: '0 26px 56px rgba(0,0,0,0.38)',
+        }}
+      >
+        <img
+          src={`${base}/images/social/phone-presqueisle.jpg`}
+          width={phoneW}
+          height={phoneH}
+          style={{
+            display: 'flex',
+            borderRadius: `${Math.round(phoneW * 0.11)}px`,
+            objectFit: 'cover',
+          }}
+        />
+      </div>
     </div>
   );
 }
@@ -413,7 +479,20 @@ export function SocialCard({
      subject. Everything above the rule belongs to the client: their name in
      their typeface, their colours, their site. The guide signs it below the
      rule and says nothing about itself. */
-  const claim = 'Your customers see how much you care before they walk in.';
+  /* Two cards, two jobs.
+   *
+   * A CLIENT card is that client's brand above the rule and Stray's signature
+   * below it, so the claim is free to talk to whoever is looking — the
+   * StoryBrand move Tom asked for: they are the hero, I am the guide.
+   *
+   * The SITE'S OWN card is Stray introducing itself, and there that line
+   * addresses nobody and never says what the business does. Tom, looking at
+   * it: "it needs to just say like web design for strong brands with
+   * passionate owners." His words, so his words are what it says. */
+  const claim =
+    brand.slug === 'stray'
+      ? 'Web design for strong brands with passionate owners.'
+      : 'Your customers see how much you care before they walk in.';
 
   /* The device box is 1.18x the laptop width, so a 0.42 share came to more
      than half the card and pushed the laptop off the right edge of the 16:9
@@ -497,7 +576,7 @@ export function SocialCard({
   const devices = (
     <div style={{ display: 'flex', flexShrink: 0 }}>
       {brand.slug === 'stray' ? (
-        <LaptopFan base={base} boxWidth={Math.round(deviceWidth * 1.18)} />
+        <WorkFan base={base} boxWidth={Math.round(deviceWidth * 1.18)} />
       ) : (
         <DevicePair brand={brand} base={base} width={deviceWidth} />
       )}
