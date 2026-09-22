@@ -6,8 +6,13 @@ import SectionHeading from '@/components/sections/SectionHeading';
  * Editor — the back of the site, which is the part nobody selling a website
  * ever shows you and the part you actually live in.
  *
- * All three are real screens of Sea Cave's store editor, captured from the
- * live build. The product counts on them are that shop's real counts.
+ * All four are real screens of Sea Cave's store editor, captured from the
+ * live build. The product counts on them are that shop's real counts — 969
+ * items, 884 of them on the site the day these were taken.
+ *
+ * Re-shot 2026-09-22, when that editor stopped being hub-and-spoke and got a
+ * rail. The old captures showed a tool that no longer exists, which is the
+ * quiet way a page about somebody's current work goes stale.
  *
  * They are shown in a plain bezel rather than the photoreal PhoneFrame render:
  * that component takes the 1127x2210 composites the Envato smart object
@@ -21,6 +26,12 @@ const SCREENS = [
     title: 'Pick what you want to do',
     body: 'Add a product, or change one you already sell. Two buttons, and nothing to learn first.',
     alt: "Sea Cave's store editor: add a new product, or edit and turn one off",
+  },
+  {
+    src: '/images/case-studies/seacave/manage-menu.webp',
+    title: 'Everything is one tap away',
+    body: 'The menu lists every screen and marks the one you are on. Nothing is buried two pages deep.',
+    alt: "Sea Cave's store editor menu, open, with every screen listed and the current one marked",
   },
   {
     src: '/images/case-studies/seacave/manage-toggle.webp',
@@ -52,7 +63,7 @@ export default function Editor() {
           did not scope at the start, I adjust the editor so that you can.
         </p>
 
-        <ul className="mt-12 grid gap-12 md:mt-16 md:grid-cols-3 md:gap-8">
+        <ul className="mt-12 grid gap-12 sm:grid-cols-2 md:mt-16 md:gap-8 lg:grid-cols-4">
           {SCREENS.map((screen, i) => (
             <li key={screen.title}>
               <AnimateIn delay={i * 0.06}>
@@ -63,7 +74,7 @@ export default function Editor() {
                         src={screen.src}
                         alt={screen.alt}
                         fill
-                        sizes="(min-width: 768px) 280px, 80vw"
+                        sizes="(min-width: 1024px) 260px, (min-width: 640px) 44vw, 80vw"
                         className="object-cover object-top"
                       />
                     </div>
