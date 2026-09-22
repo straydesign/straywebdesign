@@ -5,18 +5,23 @@
     "date": "2026-07-19"
   },
   "SHOT-NEEDS-DEVICE-FRAME": {
-    "reason": "The file flagged IS the device frame. src/components/ui/SafariPhone.tsx draws an iPhone 16 Pro in Safari around a capture — bezel, corner radius, Dynamic Island, toolbars — so the check fires on the one file that exists to satisfy it. Every bare capture on this site goes through it or through DeviceDuo.",
+    "reason": "The file flagged IS the device frame. src/components/ui/SafariPhone.tsx draws an iPhone 16 Pro in Safari around a capture \u2014 bezel, corner radius, Dynamic Island, toolbars \u2014 so the check fires on the one file that exists to satisfy it. Every bare capture on this site goes through it or through DeviceDuo.",
     "approvedBy": "pre-ship pass before the case-study deploy",
     "date": "2026-09-18"
   },
   "A11Y-OPACITY-DIMS-TEXT": {
-    "reason": "Not text. src/app/globals.css:182 is the page's film grain — `position: fixed; inset: 0; pointer-events: none` with a fractalNoise SVG at opacity 0.025. It has no glyphs in it and nothing reads through it as type, so the blended-contrast rule the check enforces has no subject. The site's actual text contrast is unaffected by this layer.",
+    "reason": "Not text. src/app/globals.css:182 is the page's film grain \u2014 `position: fixed; inset: 0; pointer-events: none` with a fractalNoise SVG at opacity 0.025. It has no glyphs in it and nothing reads through it as type, so the blended-contrast rule the check enforces has no subject. The site's actual text contrast is unaffected by this layer.",
     "approvedBy": "pre-ship pass before the case-study deploy",
     "date": "2026-09-18"
   },
-  "TITLE-LEADING-ARTICLE": {
-    "reason": "Both remaining hits are in src/components/sections/Survey.tsx, which nothing imports — it is the five-question funnel Tom replaced on 2026-09-17 with Start.tsx + BookingWizard, kept on disk unmounted the way Bookshelf.tsx and Vsl.tsx are. The strings are answer OPTIONS, not titles ('A site somebody built years ago', 'A site I pay for now'), where the article is ordinary English rather than the tic. The one real hit this pass found — 'The things people ask last' in src/data/faqs.ts — was fixed, not excepted.",
-    "approvedBy": "pre-ship pass before the case-study deploy",
-    "date": "2026-09-18"
+  "A11Y-FOCUS-RING-IS-A-FILL": {
+    "reason": "The ring and the fill never meet. The only place --cs-mark paints a background in src/app/case-study.css is a 0.4rem decorative dot inside .cs-flow__row (L743); the focus ring the check flags is on .cs-rail__item, a different element in a different component, sitting on --cs-ground paper where --cs-mark measures 4.22:1 and clears the 3:1 focus-indicator floor of WCAG 2.4.11. The check pattern-matches a token used as both without testing whether a ring ever lands on that fill. The real contrast failure it sat next to was fixed rather than excepted: .cs-rail__n was 10px bold at 4.21:1 and now uses --cs-mark-ink (#6b47f0, 5.18:1).",
+    "approvedBy": "repositioning restructure pre-ship pass",
+    "date": "2026-09-22"
+  },
+  "CONTROL-HEIGHT-OFF-SCALE": {
+    "reason": "Not a control. src/components/layout/LandingPageHeader.tsx:9 is the header bar's inner row \u2014 `mx-auto flex h-14 max-w-7xl items-center px-5` \u2014 a layout container holding one logo link, and h-14 is the bar's height, not a control's. The check reads `h-` plus `px-` as a padded control. This project also defines no --control-h scale in globals.css, so the prescribed fix has nothing to point at; standing up one to satisfy a false positive would be inventing a design system for a single header.",
+    "approvedBy": "repositioning restructure pre-ship pass",
+    "date": "2026-09-22"
   }
 }

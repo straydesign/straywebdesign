@@ -29,6 +29,13 @@
   /* One annotation accent across every study. No client in the set uses
      violet, so a marker can never be mistaken for part of the site it sits on. */
   --cs-mark: #7a5af8;
+  /* The same violet, darkened for TYPE. --cs-mark is a rule, a border and a
+     dot; at 4.22:1 on this paper it carries all three and clears the 3:1
+     focus-indicator floor, but it fails small text, which needs 4.5:1. The
+     rail number is 10px bold, so it was reading at 4.21:1 — axe caught it on
+     every study. Anything set in the mark colour that has glyphs in it uses
+     this token instead. */
+  --cs-mark-ink: #6b47f0;
   /* Body size. Every other size is a ratio of this one — 3.5 / 1.1 / 1 / 0.73,
      measured off the reference. Hierarchy comes from weight and colour. */
   --cs-body: clamp(1.0625rem, 1.5vw, 1.375rem);
@@ -442,7 +449,7 @@
   font-variant-numeric: tabular-nums;
   color: var(--cs-ink-2);
 }
-.cs-rail__item.is-on .cs-rail__n { color: var(--cs-mark); }
+.cs-rail__item.is-on .cs-rail__n { color: var(--cs-mark-ink); }
 
 .cs-rail__label {
   display: block;

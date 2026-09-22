@@ -81,6 +81,14 @@ export default function Work() {
                             style={{ backgroundColor: 'var(--ink)', color: 'var(--paper)' }}
                           >
                             Read the case study
+                            {/* Four rows, four links, one visible label. In a
+                                screen reader's link list that is four entries
+                                reading "Read the case study" and going to four
+                                different places. The brand goes on the end of
+                                the accessible name rather than into an
+                                aria-label, so the visible words stay inside it
+                                and voice control still hits it (WCAG 2.5.3). */}
+                            <span className="sr-only"> for {item.name}</span>
                             <span aria-hidden>→</span>
                           </Link>
                         )}

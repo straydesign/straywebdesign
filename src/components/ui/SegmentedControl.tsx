@@ -31,11 +31,19 @@ export default function SegmentedControl({
 }) {
   const refs = useRef<Record<string, HTMLButtonElement | null>>({});
 
+  /* Selection and focus move together. Automatic activation is the right
+     choice for two panels that are both already mounted — there is nothing to
+     load, so making someone press Enter after arriving is a step for its own
+     sake. */
+  const select = (seg: Segment | undefined) => {
+    if (!seg) return;
+    onChange(seg.id);
+    refs.current[seg.id]?.focus();
+  };
+
   const move = (delta: number) => {
     const i = segments.findIndex((s) => s.id === value);
-    const next = segments[(i + delta + segments.length) % segments.length];
-    onChange(next.id);
-    refs.current[next.id]?.focus();
+    select(segments[(i + delta + segments.length) % segments.length]);
   };
 
   return (
@@ -50,6 +58,12 @@ export default function SegmentedControl({
         } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
           e.preventDefault();
           move(-1);
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          select(segments[0]);
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          select(segments[segments.length - 1]);
         }
       }}
     >
