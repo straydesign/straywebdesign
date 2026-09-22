@@ -28,7 +28,7 @@ export default function Hero() {
             <span className="text-accent">strong brands with passionate owners</span>.
           </h1>
           <p className="mt-5 max-w-xl font-body text-lg leading-relaxed text-text-secondary">
-            Four of them are live and running right now. You are looking at all four.
+            Here&rsquo;s a few. Click one to explore.
           </p>
         </AnimateIn>
 
