@@ -12,7 +12,7 @@ import { type CaseStudy } from './types';
 export const SEACAVE: CaseStudy = {
   slug: 'seacave',
   client: 'Sea Cave Inc.',
-  title: 'A 900-page catalogue for an aquarium shop',
+  title: 'An aquarium shop since 1975',
   meta: 'Erie, PA · aquatics retail · design, build, CMS',
   liveUrl: 'https://seacaveinc.com',
   cover: ['seacave/cover-home', 'seacave/cover-catalogue', 'seacave/cover-species', 'seacave/cover-guides'],
@@ -125,17 +125,17 @@ export const SEACAVE: CaseStudy = {
         {
           heading: 'Task card',
           body: 'The front page is a stack of these. Each is named for the job, and the line under it says when to reach for it.',
-          shot: 'seacave/manage-tasks',
+          shot: 'seacave/manage-tasks-light',
         },
         {
           heading: 'Product card',
           body: 'Photo, name, price and the switch that takes it off the site. Anything that sells out goes off in one tap.',
-          shot: 'seacave/manage-toggle',
+          shot: 'seacave/manage-toggle-light',
         },
         {
           heading: 'Second-look rows',
           body: 'The editor checks its own catalogue. Anything live without a photo or without a price is listed here, so nobody goes looking for it.',
-          shot: 'seacave/manage-check',
+          shot: 'seacave/manage-check-light',
         },
       ],
     },

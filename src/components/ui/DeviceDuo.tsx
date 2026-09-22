@@ -12,7 +12,14 @@ import PhoneFrame from '@/components/ui/PhoneFrame';
    overlap was composed around.
 
    `z-20` because MacBookFrame paints its lid and deck at `z-10`: without it
-   the laptop covers the half of the phone it is supposed to sit behind. */
+   the laptop covers the half of the phone it is supposed to sit behind.
+
+   `phoneSide` exists because the overlap costs whatever the laptop is showing
+   underneath it. On a Work row that is hero photography and the phone reads as
+   composition; on the menu panel it landed on the word "Our Menu", so the one
+   picture arguing that every dish has its own page had its own page heading
+   bitten in half. Left stays the default — move it only when the capture puts
+   something that has to be read under the phone. */
 
 export default function DeviceDuo({
   shot,
@@ -20,21 +27,24 @@ export default function DeviceDuo({
   alt,
   phoneAlt,
   priority = false,
+  phoneSide = 'left',
 }: {
   shot: string;
   phoneShot: string;
   alt: string;
   phoneAlt: string;
   priority?: boolean;
+  phoneSide?: 'left' | 'right';
 }) {
+  const left = phoneSide === 'left';
   return (
-    <div className="relative w-full pb-[9%] pl-[12%]">
+    <div className={`relative w-full pb-[9%] ${left ? 'pl-[12%]' : 'pr-[12%]'}`}>
       <MacBookFrame src={shot} alt={alt} priority={priority} />
       <PhoneFrame
         src={phoneShot}
         alt={phoneAlt}
         priority={priority}
-        className="absolute bottom-0 left-0 z-20 w-[26%]"
+        className={`absolute bottom-0 z-20 w-[26%] ${left ? 'left-0' : 'right-0'}`}
         sizes="(min-width: 1024px) 14vw, 32vw"
       />
     </div>

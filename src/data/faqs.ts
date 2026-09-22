@@ -27,7 +27,7 @@ export const FAQ_GROUPS: readonly FaqGroup[] = [
       },
       {
         q: 'How long does it take?',
-        a: 'About a week from the day your photos and details reach me. A catalog takes longer, and how much longer comes down to how many items you have and what shape the list is in.',
+        a: 'About a week from the day your photographs and details reach me. A full menu or catalogue takes longer, and how much longer comes down to how many items you have and what shape the list is in.',
       },
       {
         q: 'What do you need from me to start?',
@@ -85,11 +85,11 @@ export const FAQ_GROUPS: readonly FaqGroup[] = [
       },
       {
         q: 'Will this put my products on Google?',
-        a: "That's what the catalog is for. Every item gets its own page, structured so Google can read what it is and what it costs. Somebody searches for the thing you sell, finds your item, sees how far away you are, and drives over.",
+        a: 'Every item gets its own page, written in the structure Google reads: what it is, what it costs, whether you have it. Somebody searches for the thing you sell, lands on your page for it, sees how far away you are, and drives over.',
       },
       {
         q: 'Do I need to run ads for this to work?',
-        a: 'No. The catalog earns its keep on its own, because it answers searches people are already typing. Ads make it faster if you decide you want that later.',
+        a: 'No. The pages earn their keep on their own, because they answer searches people are already typing. Ads make it faster if you decide you want that later.',
       },
     ],
   },
@@ -109,12 +109,12 @@ export const FAQ_GROUPS: readonly FaqGroup[] = [
         a: "That's the Stray Success Guarantee. Ninety days after your site goes live, you decide whether it worked. If it didn't, every dollar comes back, same day or the next one. There's no form to fill in and no call where I try to talk you out of it.",
       },
       {
-        q: "What if I'm not in Erie?",
-        a: "That's fine. Calls and screen shares do the job, and the hosting and the edits are the same wherever you are. The only thing that changes is that I can't come and take the photos myself.",
+        q: 'Does it matter where I am?',
+        a: "Only for the photographs. I'm in Erie, and four of the sites I run are for businesses here, so I walk in and shoot those myself. Anywhere else, calls and screen shares do the job, and the hosting and the edits are the same.",
       },
       {
         q: 'Why not just use Squarespace or Wix?',
-        a: "You can, and for some businesses that's the right call. The bill turns up in the hours you spend fighting it, and in the rebuild you pay for once you outgrow it. A catalog is where it gets hardest — those builders don't make it easy to get every item structured the way Google wants to read it.",
+        a: "You can, and for some businesses that's the right call. The bill turns up in the hours you spend fighting it, and in the rebuild you pay for once you outgrow it. A full menu or catalogue is where it gets hardest — those builders don't make it easy to get every item structured the way Google wants to read it.",
       },
     ],
   },

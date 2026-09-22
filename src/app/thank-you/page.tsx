@@ -39,15 +39,15 @@ export const metadata: Metadata = {
 const ANSWERS = [
   {
     q: 'When do I hear back?',
-    a: 'Same day, or the next morning if it comes in late. A real reply from me with what I think your catalog should look like, written by hand.',
+    a: 'Same day, or the next morning if it comes in late. A real reply from me with what I think your site should do, written by hand.',
   },
   {
     q: 'Is this a sales call?',
-    a: "It's a conversation about your list and whether putting it online is worth the money. Sometimes the answer is no and I say so.",
+    a: "It's a conversation about your business and whether a new site is worth the money to you. Sometimes the answer is no and I say so.",
   },
   {
     q: 'What should I have ready?',
-    a: 'Nothing. If you want to move faster, a rough count of what you sell and any photos you already have will save us both a week.',
+    a: 'Nothing. If you want to move faster, any photographs you already have and a rough count of what you sell will save us both a week.',
   },
 ];
 
@@ -58,7 +58,12 @@ export default function ThankYou() {
 
   return (
     <>
-      <ConversionPixel formType="catalog_survey" />
+      {/* The survey this used to be named after came off the site on Tom's
+          call 2026-09-17. Every lead that reaches this page now arrives
+          through the booking wizard, which reports itself as
+          `contact_request` in BookingWizard and in the booking API — so this
+          reported a form type nothing on the site could produce. */}
+      <ConversionPixel formType="contact_request" />
       <LandingPageHeader />
       {/* No bottom padding: KindWords is full-bleed and dark, and it closes
           the page. Padding here would leave a pale band before the footer. */}

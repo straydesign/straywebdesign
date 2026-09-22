@@ -9,7 +9,7 @@ import { type CaseStudy } from './types';
 export const PRESQUEISLE: CaseStudy = {
   slug: 'presqueisle',
   client: 'Presque Isle Fish & Farm',
-  title: 'A counter catalogue for a fish market',
+  title: 'The Captain fishes it himself',
   meta: 'Erie, PA · fish market and farm · design, build, CMS',
   liveUrl: 'https://presqueislefishandfarm.com',
   cover: [

@@ -43,9 +43,9 @@ export default function About() {
               I&apos;m Tom.
             </p>
             <p className="mt-5 max-w-md font-body text-lg leading-relaxed text-text-secondary">
-              I build websites for local businesses in Erie, and mostly for the
-              kind where somebody has spent years getting good at one thing and
-              never had a way to show it to the people already searching for it.
+              I build websites for people who have spent years getting good at
+              one thing and never had a way to show it to the ones already
+              looking for it.
             </p>
           </TextCard>
         </AnimateIn>

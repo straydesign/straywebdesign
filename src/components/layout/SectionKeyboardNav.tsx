@@ -42,13 +42,41 @@ import { useEffect } from 'react';
  *   Brand colour, with a contrast halo added ONLY when the brand colour cannot
  *   clear 3:1 against whatever is actually behind the element (WCAG 2.2 SC
  *   2.4.13), measured from computed styles at focus time. An earlier version
- *   hardcoded a white inner line behind a prefers-color-scheme query, which
- *   never matched on a site that is dark by design and painted a white haze
- *   over everything. Do not reintroduce that.
+ *   hardcoded a white inner line behind a prefers-color-scheme query. This
+ *   site is paper (--paper #f7f7f7), so that query decides nothing here and
+ *   the line painted a white haze over everything. Measure the real backdrop
+ *   instead; do not reintroduce a hardcoded one.
  */
 
 const TEXT_ENTRY = new Set(['INPUT', 'TEXTAREA', 'SELECT']);
 const INTERACTIVE = 'a[href], button:not([disabled])';
+
+/**
+ * A COMPOSITE WIDGET OWNS ITS OWN ARROW KEYS.
+ *
+ * ARIA gives a tablist, radiogroup, listbox, menu, tree, grid and the range
+ * controls an arrow-key contract of their own, and this run answers the same
+ * press from a document listener. preventDefault() in the widget cannot stop
+ * that — two listeners on the same node in the same phase both fire — so the
+ * press moved focus twice: the menu toggle selected Store, then this walked
+ * focus on into the FAQ. Home and End are the same story.
+ *
+ * So the run steps aside inside one. Everywhere else on the page there is no
+ * competing contract and the shortcut stands.
+ */
+const COMPOSITE = [
+  '[role="tablist"]',
+  '[role="radiogroup"]',
+  '[role="listbox"]',
+  '[role="menu"]',
+  '[role="menubar"]',
+  '[role="tree"]',
+  '[role="grid"]',
+  '[role="slider"]',
+  '[role="spinbutton"]',
+  'input[type="range"]',
+  'input[type="radio"]',
+].join(', ');
 
 /**
  * Where the run happens. Landmarks are included by name because the top bar
@@ -257,6 +285,7 @@ export default function SectionKeyboardNav({ root = SCOPE }: Options = {}) {
       if (!active) return;
       if (TEXT_ENTRY.has(active.tagName) || active.isContentEditable) return;
       if (e.ctrlKey || e.metaKey || e.altKey) return;
+      if (active.closest(COMPOSITE)) return;
 
       // Scoped to our own items, which is what satisfies WCAG 2.1.4 for WASD
       // and keeps arrow keys scrolling the page everywhere else.

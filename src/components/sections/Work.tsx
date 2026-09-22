@@ -30,7 +30,7 @@ export default function Work() {
   return (
     <section id="work" className="scroll-mt-16 px-4 py-12 md:px-8 md:py-16" aria-label="Work">
       <div className="mx-auto max-w-7xl">
-        <SectionHeading kicker="Live client sites" title="WORK" className="mb-10 md:mb-14" />
+        <SectionHeading kicker="Four brands, four live sites" title="WORK" className="mb-10 md:mb-14" />
 
         <div className="flex flex-col gap-16 md:gap-24">
           {PROOF.map((item, i) => {
@@ -57,7 +57,7 @@ export default function Work() {
                         className="mb-3 text-[15px] italic md:text-base"
                         style={{ color: 'var(--ink-2)', fontFamily: 'var(--font-display)' }}
                       >
-                        Client site
+                        Live and running
                       </p>
                       <h3
                         className="mb-3 font-black leading-[1.1] tracking-wide"
@@ -70,7 +70,7 @@ export default function Work() {
                         {item.name}
                       </h3>
                       <p className="text-[15px] leading-relaxed md:text-base" style={{ color: 'var(--ink-2)' }}>
-                        {item.catalogued}
+                        {item.does}
                       </p>
 
                       <div className="mt-6 flex flex-wrap gap-3">
@@ -81,6 +81,14 @@ export default function Work() {
                             style={{ backgroundColor: 'var(--ink)', color: 'var(--paper)' }}
                           >
                             Read the case study
+                            {/* Four rows, four links, one visible label. In a
+                                screen reader's link list that is four entries
+                                reading "Read the case study" and going to four
+                                different places. The brand goes on the end of
+                                the accessible name rather than into an
+                                aria-label, so the visible words stay inside it
+                                and voice control still hits it (WCAG 2.5.3). */}
+                            <span className="sr-only"> for {item.name}</span>
                             <span aria-hidden>→</span>
                           </Link>
                         )}

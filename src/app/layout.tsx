@@ -53,7 +53,7 @@ const plex = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Stray Web Design — Web Designer in Erie, PA | Tom Sesler",
+  title: "Stray Web Design — Engaging Sites for Strong Brands | Tom Sesler",
   /* 155 characters. A result snippet is cut around 158, so everything past
      that is written for nobody — the old one ran 167 and lost the phone
      number, which is the only line here that asks for anything. Trimmed by
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
      them off" to "host or hand them off"; nothing was cut that carried a
      fact. Keep any rewrite under 158 and keep the number last. */
   description:
-    "I'm Tom, a web designer in Erie, PA. I design and build custom sites for consumer-facing businesses, then host or hand them off. Call or text 814-964-0081.",
+    "I design and build engaging sites for strong brands whose owners care how the place comes across, then host and run them. Call or text 814-964-0081.",
   keywords: [
     'freelance web designer',
     'web designer',
@@ -69,16 +69,21 @@ export const metadata: Metadata = {
     'website design',
     'brand and web design',
     'business website',
+    'engaging website',
     'hand-coded website',
     'fast website',
     'accessible website',
-    'Erie web designer',
   ],
   metadataBase: new URL('https://straywebdesign.co'),
   openGraph: {
-    title: "Stray Web Design — Web Designer in Erie, PA | Tom Sesler",
+    title: "Stray Web Design — Engaging Sites for Strong Brands | Tom Sesler",
+    /* Same StoryBrand flip as the card image this ships beside — the owner is
+       the hero, Stray is the guide. The old line made the service the subject
+       and left the owner out of the sentence. The title tag and the search
+       snippet stay as they are: those answer "what is this", not "what do I
+       get". 146 characters, three plain statements. */
     description:
-      "Custom websites for consumer-facing businesses, designed and built by one person you can actually call.",
+      "Your customers see how much you care before they walk in. I design, build, host and run the site that shows them. One person you can actually call.",
     url: 'https://straywebdesign.co',
     siteName: 'Stray Web Design',
     locale: 'en_US',
@@ -86,9 +91,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Stray Web Design — Web Designer in Erie, PA | Tom Sesler",
+    title: "Stray Web Design — Engaging Sites for Strong Brands | Tom Sesler",
+    /* Same StoryBrand flip as the card image this ships beside — the owner is
+       the hero, Stray is the guide. The old line made the service the subject
+       and left the owner out of the sentence. The title tag and the search
+       snippet stay as they are: those answer "what is this", not "what do I
+       get". 146 characters, three plain statements. */
     description:
-      "Custom websites for consumer-facing businesses, designed and built by one person you can actually call.",
+      "Your customers see how much you care before they walk in. I design, build, host and run the site that shows them. One person you can actually call.",
   },
   alternates: {
     canonical: '/',
@@ -161,18 +171,18 @@ const professionalServiceSchema = {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Brand & Content',
+            name: 'Your Menu or Catalogue Online',
             description:
-              'Pulling messaging, imagery, and customer-facing copy into one coherent voice across the whole site.',
+              'Everything you sell, one page per thing, written in the structure a search engine reads.',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Showing Up on Google',
+            name: 'The Editor You Run It From',
             description:
-              'The structured-data, metadata, and performance groundwork that helps the right people find the site.',
+              'A back end built around the changes you actually make, adjusted later for the ones nobody scoped at the start.',
           },
         },
       ],
