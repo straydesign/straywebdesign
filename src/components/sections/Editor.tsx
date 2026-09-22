@@ -18,29 +18,39 @@ import SectionHeading from '@/components/sections/SectionHeading';
  * that component takes the 1127x2210 composites the Envato smart object
  * produces, and these are 900x1948 captures of a tool rather than of a site.
  * A device frame is for showing somebody their own storefront.
+ *
+ * THE `-light` IN THE FILENAMES IS LOAD-BEARING — DO NOT TIDY IT AWAY.
+ * These replaced captures of the reef-coloured editor that are live on
+ * straywebdesign.co right now under the SAME four names. Next serves the
+ * optimized variants with `max-age=31536000`, keyed on the source path, so
+ * swapping the bytes behind an unchanged name leaves every returning visitor
+ * looking at the old screens for up to a year — a page arguing for a tool
+ * the client cannot open. A new name is a new URL, and a new URL is the only
+ * thing a cache cannot serve stale. Re-shoot the editor again, change the
+ * suffix again.
  */
 
 const SCREENS = [
   {
-    src: '/images/case-studies/seacave/manage-tasks.webp',
+    src: '/images/case-studies/seacave/manage-tasks-light.webp',
     title: 'Pick what you want to do',
     body: 'Add a product, or change one you already sell. Two buttons, and nothing to learn first.',
     alt: "Sea Cave's store editor: add a new product, or edit and turn one off",
   },
   {
-    src: '/images/case-studies/seacave/manage-menu.webp',
+    src: '/images/case-studies/seacave/manage-menu-light.webp',
     title: 'Everything is one tap away',
     body: 'The menu lists every screen and marks the one you are on. Nothing is buried two pages deep.',
     alt: "Sea Cave's store editor menu, open, with every screen listed and the current one marked",
   },
   {
-    src: '/images/case-studies/seacave/manage-toggle.webp',
+    src: '/images/case-studies/seacave/manage-toggle-light.webp',
     title: 'Turn something off when it runs out',
     body: 'Out of stock comes off the site. Back in stock goes back on. One tap, and the page updates itself.',
     alt: 'The product list, with on-site and off-site counts and a toggle on each item',
   },
   {
-    src: '/images/case-studies/seacave/manage-check.webp',
+    src: '/images/case-studies/seacave/manage-check-light.webp',
     title: "See what's live, and what needs a look",
     body: 'Everything on the site, counted by category, with anything missing a photograph or a price pulled to the top. You are never guessing at what is out there.',
     alt: "Sea Cave's live count by category, with items missing a photo or a price flagged",
