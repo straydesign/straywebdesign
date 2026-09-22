@@ -30,9 +30,9 @@ const SCREENS = [
   },
   {
     src: '/images/case-studies/seacave/manage-check.webp',
-    title: 'Change a price or a photograph',
-    body: 'Open the listing, change the number, done. No ticket, no waiting on me, no bill for a five-second edit.',
-    alt: 'Editing one product: its photograph, its price, and whether it is on the site',
+    title: "See what's live, and what needs a look",
+    body: 'Everything on the site, counted by category, with anything missing a photograph or a price pulled to the top. You are never guessing at what is out there.',
+    alt: "Sea Cave's live count by category, with items missing a photo or a price flagged",
   },
 ];
 

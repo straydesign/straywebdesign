@@ -29,7 +29,7 @@ const PANELS = [
     id: 'restaurant',
     label: 'Restaurant',
     heading: 'Every dish, with its own photograph and its own price',
-    body: "Specials are tied to the day they run, so the screen and the kitchen agree. The people behind the bar change them, not me.",
+    body: 'Specials are tied to the day they run, so the screen and the kitchen agree. The people behind the bar change them.',
     shot: '/images/how/menu-restaurant.png',
     phoneShot: '/images/how/menu-restaurant-phone.png',
     caption: 'andyspub.com/menu, live',
@@ -88,7 +88,7 @@ export default function Menu() {
                 ].join(' ')}
               >
                 <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
-                  <figure className="m-0">
+                  <figure className="m-0 w-full max-w-xl justify-self-center">
                     <DeviceDuo
                       shot={panel.shot}
                       phoneShot={panel.phoneShot}

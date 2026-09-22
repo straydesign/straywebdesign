@@ -103,7 +103,7 @@ export default function SiteStack() {
     >
       {/* The aspect ratio holds the box open before the images decode, so the
           headline above never moves once they land. */}
-      <div className="relative aspect-[5/3]">
+      <div className="relative aspect-[2/1]">
         <div
           ref={stageRef}
           className="absolute inset-0 motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out"
