@@ -12,7 +12,7 @@ import { type CaseStudy } from './types';
 export const SEACAVE: CaseStudy = {
   slug: 'seacave',
   client: 'Sea Cave Inc.',
-  title: 'A 900-page catalogue for an aquarium shop',
+  title: 'An aquarium shop since 1975',
   meta: 'Erie, PA · aquatics retail · design, build, CMS',
   liveUrl: 'https://seacaveinc.com',
   cover: ['seacave/cover-home', 'seacave/cover-catalogue', 'seacave/cover-species', 'seacave/cover-guides'],

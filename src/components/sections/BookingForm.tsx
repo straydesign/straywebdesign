@@ -35,8 +35,7 @@ export default function BookingForm() {
                 Let&apos;s <GradientText>Talk</GradientText>
               </h1>
               <p className="mt-4 font-body text-lg text-text-secondary">
-                Tell me a little about your business. I&apos;ll reach out to
-                get the conversation started.
+                Tell me about the place. I&apos;ll call at the time you pick.
               </p>
 
               <div className="mt-8 space-y-5">
@@ -45,9 +44,9 @@ export default function BookingForm() {
                     <Calendar className="h-4 w-4 text-accent" />
                   </div>
                   <div>
-                    <p className="font-body font-semibold text-text-primary">30-Minute Discovery Call</p>
+                    <p className="font-body font-semibold text-text-primary">Thirty minutes on the phone</p>
                     <p className="font-body text-sm text-text-secondary">
-                      Quick, focused conversation about your business and what the site needs to do
+                      What the place is, who walks in, and what you want the site to do for them
                     </p>
                   </div>
                 </div>
@@ -56,9 +55,9 @@ export default function BookingForm() {
                     <ArrowRight className="h-4 w-4 text-accent" />
                   </div>
                   <div>
-                    <p className="font-body font-semibold text-text-primary">Written Plan</p>
+                    <p className="font-body font-semibold text-text-primary">A straight answer on price</p>
                     <p className="font-body text-sm text-text-secondary">
-                      Customer, offer, and the one action the site needs to drive
+                      What it costs to build and what it costs to run, before you decide anything
                     </p>
                   </div>
                 </div>
@@ -67,9 +66,9 @@ export default function BookingForm() {
                     <Clock className="h-4 w-4 text-accent" />
                   </div>
                   <div>
-                    <p className="font-body font-semibold text-text-primary">No Pressure, No Pitch</p>
+                    <p className="font-body font-semibold text-text-primary">No pitch</p>
                     <p className="font-body text-sm text-text-secondary">
-                      Honest assessment of where you stand — whether you hire me or not
+                      If a site is not the thing you need right now, I will tell you that
                     </p>
                   </div>
                 </div>
@@ -78,9 +77,9 @@ export default function BookingForm() {
                     <MessageSquare className="h-4 w-4 text-accent" />
                   </div>
                   <div>
-                    <p className="font-body font-semibold text-text-primary">Actionable Takeaways</p>
+                    <p className="font-body font-semibold text-text-primary">You keep what we work out</p>
                     <p className="font-body text-sm text-text-secondary">
-                      Walk away with specific recommendations you can use immediately
+                      Whatever we land on during the call is yours, whether you hire me or not
                     </p>
                   </div>
                 </div>

@@ -9,7 +9,7 @@ import { type CaseStudy } from './types';
 export const BULLFROG: CaseStudy = {
   slug: 'bullfrog',
   client: 'Bullfrog Bar',
-  title: 'A show calendar for a live-music bar',
+  title: 'A stage and a band every Friday',
   meta: 'Erie, PA · live music bar · design, build, CMS',
   liveUrl: 'https://bullfrogbarerie.com',
   cover: ['bullfrog/cover-home', 'bullfrog/cover-lineup', 'bullfrog/cover-events', 'bullfrog/cover-venue'],

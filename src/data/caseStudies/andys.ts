@@ -10,7 +10,17 @@ export const ANDYS: CaseStudy = {
   // The cover used to carry the bar's own tagline, at 75px, beside a phone
   // showing that same tagline. Two hundred pixels apart, the same six words,
   // and none of them about the work. The title is the design claim now.
-  title: 'A menu and specials site for a bar',
+  // Retitled 2026-09-22 with the reposition. All four named the deliverable
+  // — "A menu and specials site for a bar" — which is one sentence with a
+  // different noun in it four times, and it is the mechanism pitch the rest
+  // of the site just stopped making. The title says what the place is.
+  //
+  // Length is the other constraint: `title` never renders: page.tsx spends
+  // it only on `<title>` and og:title, as `${client} — ${title} | Stray Web
+  // Design`. The client name already carries the customer noun, so the title
+  // is the differentiator and nothing else, short enough that the boilerplate
+  // is what a search result truncates.
+  title: 'Open late since 1985',
   meta: 'Erie, PA · bar & grill · design, build, CMS',
   liveUrl: 'https://andyspub.com',
   cover: ['andys/cover-home', 'andys/cover-menu', 'andys/cover-dish', 'andys/cover-gallery'],
