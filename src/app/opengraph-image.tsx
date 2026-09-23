@@ -29,7 +29,7 @@ export const contentType = 'image/png';
    A metadata route gets no `request` argument, so this one called `assetBase()`
    with nothing and let the fallbacks guess. Under `next start` NODE_ENV is
    "production", so the localhost branch never fired and it reached for
-   https://straywebdesign.co — whose /images/social/*.jpg do not exist until
+   https://straywebdesign.co — whose /images/social/ captures do not exist until
    this branch ships. Satori answers a failed image fetch with an empty box and
    no error, so the one card that unfurls in every text and DM rendered as two
    blank silhouettes, at 76KB instead of 650KB, and nothing anywhere said so.

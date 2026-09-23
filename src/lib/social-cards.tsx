@@ -9,9 +9,12 @@
    Colours and typefaces are lifted from src/data/clients.ts, which pulls them
    from each project's own theme code. Nothing here is invented.
 
-   The captures live in public/images/social/ as JPEG rather than the WebP in
+   The captures live in public/images/social/, never the WebP in
    public/images/devices/: satori decodes PNG and JPEG, and hands back a blank
-   box for WebP without erroring. Regenerate them with scripts/social-shots.sh. */
+   box for WebP without erroring. The per-brand laptop and phone shots are JPEG
+   because they sit inside a coloured panel and never need an edge; the
+   macbook-*.png fan frames are PNG because they are cut out — see HeroFan.
+   Regenerate them with scripts/social-shots.sh. */
 
 export type CardBrand = {
   slug: string;
@@ -601,10 +604,19 @@ function HeroFan({ base, width, height }: { base: string; width: number; height:
      same order PROOF is in on the page. */
   const SLUGS = ['andys', 'bullfrog', 'seacave', 'presqueisle'];
 
-  const frontW = Math.round(width * 0.46);
+  const frontW = Math.round(width * 0.52);
   const stepX = Math.round(frontW * 0.16);
   const spread = stepX * (SLUGS.length - 1);
   const startX = Math.round((width - (spread + frontW)) / 2);
+  /* ONE FLOOR, NOT FOUR SHELVES. Every card's deck sits on this line.
+     The first pass stepped each card DOWN as it came forward, borrowing the
+     page's `top: i*4.5%`. The page has real perspective doing that work; flat
+     on a card the step just hangs four laptops at four heights, and each
+     one's silver deck then ends up in open ground with the lid it belongs to
+     hidden behind the next card — so it reads as a loose white lozenge rather
+     than as the base of a laptop. Bottom-aligned, the four decks land on one
+     surface and scale alone carries the depth. */
+  const baseline = height - Math.round(height * 0.025);
 
   return (
     <div style={{ display: 'flex', position: 'relative', width: `${width}px`, height: `${height}px` }}>
@@ -613,9 +625,9 @@ function HeroFan({ base, width, height }: { base: string; width: number; height:
            ramp for free from the perspective divide. */
         const scale = 0.8 + (i / (SLUGS.length - 1)) * 0.2;
         const w = Math.round(frontW * scale);
-        /* The frame captures are 1014x620 — the MacBook's whole outline, lid
+        /* The frame captures are 1014x618 — the MacBook's whole outline, lid
            plus base deck, not the 16:10 screen alone. */
-        const h = Math.round(w * 0.612);
+        const h = Math.round(w * 0.6095);
         return (
           <div
             key={slug}
@@ -623,12 +635,22 @@ function HeroFan({ base, width, height }: { base: string; width: number; height:
               display: 'flex',
               position: 'absolute',
               left: `${startX + i * stepX}px`,
-              top: `${Math.round(i * height * 0.05)}px`,
+              top: `${baseline - h}px`,
               filter: `drop-shadow(0 ${10 + i * 9}px ${22 + i * 14}px rgba(0,0,0,${0.13 + i * 0.045}))`,
             }}
           >
+            {/* PNG, AND IT HAS TO BE — THIS IS WHAT THE CARD GOT WRONG FIRST.
+                `drop-shadow` shadows the ALPHA SILHOUETTE. Fed an opaque JPEG
+                it has no silhouette to follow, so it shadowed the RECTANGLE:
+                every card sat in a faintly lit box with a hard shadow edge,
+                and four of those overlapping read as white slabs stacked
+                behind the front laptop instead of as four laptops. The
+                captures are cut out now — page ground transparent, and the
+                frame's own contact shadow hidden in the capture so this
+                filter is the only shadow in the picture. Satori takes PNG and
+                JPEG and no WebP. */}
             <img
-              src={`${base}/images/social/macbook-${slug}.jpg`}
+              src={`${base}/images/social/macbook-${slug}.png`}
               width={w}
               height={h}
               style={{ display: 'flex', objectFit: 'contain' }}
