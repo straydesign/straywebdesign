@@ -31,7 +31,7 @@ export default function Setup() {
   return (
     <section
       id="setup"
-      className="scroll-mt-16 border-b border-border-default bg-surface-card py-20 md:py-28"
+      className="scroll-mt-16 overflow-x-clip border-b border-border-default bg-surface-card py-20 md:py-28"
       aria-label="What happens from here"
     >
       <div className="mx-auto max-w-5xl px-5 md:px-8">
@@ -44,7 +44,12 @@ export default function Setup() {
         <ol className="mt-12 grid gap-10 md:mt-16 md:grid-cols-2 md:gap-14">
           {STEPS.map((step, i) => (
             <li key={step.n}>
-              <AnimateIn delay={i * 0.06}>
+              {/* The two steps close on the middle the same way the Work rows
+                  above them do. `direction` is the way a thing TRAVELS, so 01
+                  on the left travels right and 02 travels left. Stacked on a
+                  phone they still arrive from opposite sides, which is what
+                  keeps them reading as a pair. */}
+              <AnimateIn direction={i === 0 ? 'right' : 'left'}>
                 <div className="flex gap-4">
                   <span aria-hidden className="font-mono text-[13px] font-medium text-accent md:pt-1">
                     {step.n}

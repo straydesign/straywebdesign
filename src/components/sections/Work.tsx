@@ -28,7 +28,14 @@ import { CASE_STUDIES } from '@/data/caseStudies';
  */
 export default function Work() {
   return (
-    <section id="work" className="scroll-mt-16 px-4 py-12 md:px-8 md:py-16" aria-label="Work">
+    /* overflow-x-clip because each half now starts 56px outside its own
+       column. Clip contains that without making the section a scroll
+       container, which is what overflow-hidden would have done. */
+    <section
+      id="work"
+      className="scroll-mt-16 overflow-x-clip px-4 py-12 md:px-8 md:py-16"
+      aria-label="Work"
+    >
       <div className="mx-auto max-w-7xl">
         <SectionHeading kicker="Four brands, four live sites" title="WORK" className="mb-10 md:mb-14" />
 
@@ -36,80 +43,91 @@ export default function Work() {
           {PROOF.map((item, i) => {
             const flipped = i % 2 === 1;
             const study = CASE_STUDIES.find((c) => c.liveUrl === item.url);
+            /* THE TWO HALVES CONVERGE. Each one travels in from its own outer
+               edge and meets the other in the middle of the row. The value is
+               read off the column so it flips with the row rather than being
+               written out twice, and `direction` names the way a thing
+               TRAVELS — so the left column travels right. */
+            const deviceTravel = flipped ? 'left' : 'right';
+            const textTravel = flipped ? 'right' : 'left';
             return (
-              <AnimateIn key={item.name} direction="up">
-                <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
-                  <div className={`flex justify-center ${flipped ? 'lg:order-2' : ''}`}>
-                    <div className="w-full max-w-xl">
-                      <DeviceDuo
-                        shot={item.shot}
-                        phoneShot={item.phoneShot}
-                        alt={`${item.name} — desktop`}
-                        phoneAlt={`${item.name} on a phone`}
-                        priority={i === 0}
-                      />
-                    </div>
+              <div
+                key={item.name}
+                className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14"
+              >
+                <AnimateIn
+                  direction={deviceTravel}
+                  className={`flex justify-center ${flipped ? 'lg:order-2' : ''}`}
+                >
+                  <div className="w-full max-w-xl">
+                    <DeviceDuo
+                      shot={item.shot}
+                      phoneShot={item.phoneShot}
+                      alt={`${item.name} — desktop`}
+                      phoneAlt={`${item.name} on a phone`}
+                      priority={i === 0}
+                    />
                   </div>
+                </AnimateIn>
 
-                  <div className={flipped ? 'lg:order-1' : ''}>
-                    <TextCard padding="lg">
-                      <p
-                        className="mb-3 text-[15px] italic md:text-base"
-                        style={{ color: 'var(--ink-2)', fontFamily: 'var(--font-display)' }}
-                      >
-                        Live and running
-                      </p>
-                      <h3
-                        className="mb-3 font-black leading-[1.1] tracking-wide"
+                <AnimateIn direction={textTravel} className={flipped ? 'lg:order-1' : ''}>
+                  <TextCard padding="lg">
+                    <p
+                      className="mb-3 text-[15px] italic md:text-base"
+                      style={{ color: 'var(--ink-2)', fontFamily: 'var(--font-display)' }}
+                    >
+                      Live and running
+                    </p>
+                    <h3
+                      className="mb-3 font-black leading-[1.1] tracking-wide"
+                      style={{
+                        fontFamily: 'var(--font-display)',
+                        color: 'var(--ink)',
+                        fontSize: 'clamp(1.25rem, 2.4vw, 1.8rem)',
+                      }}
+                    >
+                      {item.name}
+                    </h3>
+                    <p className="text-[15px] leading-relaxed md:text-base" style={{ color: 'var(--ink-2)' }}>
+                      {item.does}
+                    </p>
+
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      {study && (
+                        <Link
+                          href={`/work/${study.slug}`}
+                          className="inline-flex items-center gap-2 px-5 py-2.5 text-[13px] font-semibold uppercase tracking-wider transition-opacity hover:opacity-85"
+                          style={{ backgroundColor: 'var(--ink)', color: 'var(--paper)' }}
+                        >
+                          Read the case study
+                          {/* Four rows, four links, one visible label. In a
+                              screen reader's link list that is four entries
+                              reading "Read the case study" and going to four
+                              different places. The brand goes on the end of
+                              the accessible name rather than into an
+                              aria-label, so the visible words stay inside it
+                              and voice control still hits it (WCAG 2.5.3). */}
+                          <span className="sr-only"> for {item.name}</span>
+                          <span aria-hidden>→</span>
+                        </Link>
+                      )}
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 text-[13px] font-semibold uppercase tracking-wider transition-colors"
                         style={{
-                          fontFamily: 'var(--font-display)',
                           color: 'var(--ink)',
-                          fontSize: 'clamp(1.25rem, 2.4vw, 1.8rem)',
+                          border: '1px solid rgba(var(--hairline),0.22)',
                         }}
                       >
-                        {item.name}
-                      </h3>
-                      <p className="text-[15px] leading-relaxed md:text-base" style={{ color: 'var(--ink-2)' }}>
-                        {item.does}
-                      </p>
-
-                      <div className="mt-6 flex flex-wrap gap-3">
-                        {study && (
-                          <Link
-                            href={`/work/${study.slug}`}
-                            className="inline-flex items-center gap-2 px-5 py-2.5 text-[13px] font-semibold uppercase tracking-wider transition-opacity hover:opacity-85"
-                            style={{ backgroundColor: 'var(--ink)', color: 'var(--paper)' }}
-                          >
-                            Read the case study
-                            {/* Four rows, four links, one visible label. In a
-                                screen reader's link list that is four entries
-                                reading "Read the case study" and going to four
-                                different places. The brand goes on the end of
-                                the accessible name rather than into an
-                                aria-label, so the visible words stay inside it
-                                and voice control still hits it (WCAG 2.5.3). */}
-                            <span className="sr-only"> for {item.name}</span>
-                            <span aria-hidden>→</span>
-                          </Link>
-                        )}
-                        <a
-                          href={item.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-5 py-2.5 text-[13px] font-semibold uppercase tracking-wider transition-colors"
-                          style={{
-                            color: 'var(--ink)',
-                            border: '1px solid rgba(var(--hairline),0.22)',
-                          }}
-                        >
-                          {item.displayUrl}
-                          <span aria-hidden>↗</span>
-                        </a>
-                      </div>
-                    </TextCard>
-                  </div>
-                </div>
-              </AnimateIn>
+                        {item.displayUrl}
+                        <span aria-hidden>↗</span>
+                      </a>
+                    </div>
+                  </TextCard>
+                </AnimateIn>
+              </div>
             );
           })}
         </div>
