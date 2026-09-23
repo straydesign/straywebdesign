@@ -177,7 +177,7 @@ export default function CalendarPicker({
                 !isCurrentMonth && 'text-text-placeholder/40',
                 isCurrentMonth && isDisabled && 'cursor-not-allowed text-text-placeholder',
                 isCurrentMonth && !isDisabled && 'cursor-pointer text-text-primary hover:bg-accent/10',
-                isSelected && 'bg-accent text-white hover:bg-accent',
+                isSelected && 'bg-accent text-accent-ink hover:bg-accent',
                 dateStr === today && !isSelected && isCurrentMonth && 'ring-1 ring-inset ring-accent/30'
               )}
               aria-label={`${isBookable ? 'Available' : 'Unavailable'}: ${dateStr}`}

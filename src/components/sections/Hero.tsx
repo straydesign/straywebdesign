@@ -49,7 +49,7 @@ export default function Hero() {
           <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
             <Link
               href="#start"
-              className="inline-flex items-center justify-center bg-accent px-8 py-4 font-display text-base font-semibold text-white transition-colors hover:bg-accent/90 sm:px-10 sm:py-4.5 sm:text-lg"
+              className="inline-flex items-center justify-center bg-accent px-8 py-4 font-display text-base font-semibold text-accent-ink transition-colors hover:bg-accent/90 sm:px-10 sm:py-4.5 sm:text-lg"
             >
               Pick a time
             </Link>

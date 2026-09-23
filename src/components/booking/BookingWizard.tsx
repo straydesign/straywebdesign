@@ -432,11 +432,11 @@ export default function BookingWizard() {
                 type="button"
                 onClick={handleConfirmBooking}
                 disabled={submitting}
-                className="mt-6 flex w-full items-center justify-center gap-2 bg-accent px-6 py-3.5 font-display font-semibold text-sm text-white transition-colors hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-50"
+                className="mt-6 flex w-full items-center justify-center gap-2 bg-accent px-6 py-3.5 font-display font-semibold text-sm text-accent-ink transition-colors hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {submitting ? (
                   <>
-                    <span className="inline-block h-4 w-4 animate-spin border-2 border-white/30 border-t-white" />
+                    <span className="inline-block h-4 w-4 animate-spin border-2 border-accent-ink/30 border-t-accent-ink" />
                     Confirming...
                   </>
                 ) : (

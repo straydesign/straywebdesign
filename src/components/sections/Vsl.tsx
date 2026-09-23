@@ -33,7 +33,7 @@ export default function Vsl() {
 
 const CHIP =
   'inline-flex items-center gap-2 rounded-full border px-3 py-1.5 font-body text-[13px] leading-none transition-colors';
-const CHIP_ON = 'border-accent bg-accent text-white';
+const CHIP_ON = 'border-accent bg-accent text-accent-ink';
 const CHIP_OFF =
   'border-border-default bg-surface-card text-text-secondary hover:border-accent hover:text-accent';
 
@@ -123,7 +123,7 @@ function Slides() {
               aria-current={active ? 'true' : undefined}
               className={`${CHIP} ${active ? CHIP_ON : CHIP_OFF}`}
             >
-              <span className={`tabular-nums ${active ? 'text-white' : 'text-text-tertiary'}`}>
+              <span className={`tabular-nums ${active ? 'text-surface-page' : 'text-text-tertiary'}`}>
                 {i + 1}
               </span>
               {s.label}
@@ -226,7 +226,7 @@ function Player() {
               aria-current={active ? 'true' : undefined}
               className={`${CHIP} ${active ? CHIP_ON : CHIP_OFF}`}
             >
-              <span className={`tabular-nums ${active ? 'text-white' : 'text-text-tertiary'}`}>
+              <span className={`tabular-nums ${active ? 'text-surface-page' : 'text-text-tertiary'}`}>
                 {stamp(c.t)}
               </span>
               {c.label}

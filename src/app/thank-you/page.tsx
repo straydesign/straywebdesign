@@ -143,7 +143,7 @@ export default function ThankYou() {
             <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
               <Link
                 href="/book"
-                className="inline-flex items-center justify-center bg-accent px-6 py-3.5 font-display text-base font-semibold text-white transition-colors hover:bg-accent/90"
+                className="inline-flex items-center justify-center bg-accent px-6 py-3.5 font-display text-base font-semibold text-accent-ink transition-colors hover:bg-accent/90"
               >
                 Pick a time
               </Link>

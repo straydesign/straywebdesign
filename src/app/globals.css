@@ -22,6 +22,11 @@
   /* Signature blue */
   --accent: #2563EB;
   --accent-soft: #e7effd;
+  /* The LABEL on an accent fill, which is not the same thing as ink. In light
+     the accent is dark enough to carry white; in dark it lightens for links
+     and headline spans, and a white label on it would fail. Same class of
+     token as the editor's --sc-action-ink over in seacave-keystatic. */
+  --accent-ink: #ffffff;
   --border-default: #e6e6ea;
   --border-strong: #d4d4d9;
 
@@ -42,6 +47,63 @@
   --medium-gray: #a1a1aa;
 }
 
+/* ──────────────────────────────────────────────────────────────────────────
+   DARK
+
+   Tom, 2026-09-21: "we should always be building with light and dark mode, it
+   usually should sync to the System Settings." No attribute and no toggle on
+   this site — it follows the machine, which is the default the rule asks for.
+
+   A token redefinition, not a second stylesheet. Every surface on the site
+   already paints from the custom properties above and the @theme block maps
+   the legacy aliases (--color-warm-white, --color-dark-navy, --color-navy)
+   onto the same semantic tokens, so they invert for free and there is not a
+   single `dark:` variant anywhere in the project.
+
+   THE ACCENT IS THE ONE THAT CANNOT SIMPLY FLIP. It is used two ways: as a
+   FILL under a white label (nine buttons) and as TEXT on the page (links, the
+   headline span, kickers). #2563EB carries white at 4.54:1 but measures only
+   3.4:1 as text on this ground, so a colour that is both has to clear the
+   harder of the two — it cannot. So it lightens for text and the label moves
+   to --accent-ink, which goes near-black. Ratios are measured against the
+   ground each token actually lands on, card included, not just the page.
+
+   What deliberately does NOT invert: the device hardware. MacBookFrame's
+   aluminium and bezel gradients and the phone bezel in Editor.tsx are objects,
+   not surfaces — a MacBook is the same colour in a dark room. Those hexes stay
+   literal on purpose. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface-page: #0e0f12;
+    --surface-card: #16181d;
+    --surface-sunken: #1c1f26;
+
+    --text-primary: #f4f5f7;   /* 16.8:1 on page */
+    --text-secondary: #c8ccd4; /* 11.3:1 */
+    --text-tertiary: #9198a3;  /*  6.0:1 on --surface-card, the darker ground it lands on */
+
+    --ink: #f4f5f7;
+    --paper: #0e0f12;
+    --ink-2: #c8ccd4;
+    --chip: #1c1f26;
+    --hairline: 255, 255, 255;
+    --text-placeholder: #8a8f98; /* 5.2:1 on --surface-card */
+
+    --accent: #7aa9ff;      /* 8.0:1 on page, 7.2:1 on card */
+    --accent-ink: #0b1220;  /* 9.9:1 as the label on --accent */
+    --accent-soft: #15233c;
+
+    --border-default: #272a31;
+    --border-strong: #3a3e47;
+
+    --navy: #f4f5f7;
+    --dark-navy: #f4f5f7;
+    --warm-white: #0e0f12;
+    --light-gray: #0e0f12;
+    --medium-gray: #8a8f98;
+  }
+}
+
 @theme inline {
   --font-mono: var(--font-family-jetbrains);
   --font-display: var(--font-family-instrument), Georgia, serif;
@@ -52,6 +114,7 @@
   --color-warm-white: var(--surface-page);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-ink: var(--accent-ink);
   --color-dark-navy: var(--text-primary);
   --color-light-gray: var(--surface-page);
   --color-medium-gray: var(--text-placeholder);
@@ -101,7 +164,9 @@ textarea {
   left: 50%;
   transform: translateX(-50%);
   background: var(--text-primary);
-  color: #fff;
+  /* Inverts with the theme. A literal #fff here is white on near-white the
+     moment --text-primary becomes the light ink. */
+  color: var(--surface-page);
   padding: 0.5rem 1rem;
   z-index: 9999;
   font-weight: 600;

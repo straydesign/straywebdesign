@@ -36,6 +36,22 @@
      every study. Anything set in the mark colour that has glyphs in it uses
      this token instead. */
   --cs-mark-ink: #6b47f0;
+
+  /* ── DARK ─────────────────────────────────────────────────────────────
+     --cs-ground and --cs-ink are aliases of --paper and --ink, so they
+     invert on their own with globals.css. These three are literals and do
+     not, and the violet is the interesting one: it is the SAME split as the
+     site's accent one file over. --cs-mark is a rule, a border and a dot —
+     a FILL, which needs only the 3:1 non-text floor — while --cs-mark-ink
+     sets 10px bold type and needs 4.5:1. On this dark ground #7a5af8
+     measures 3.7:1, which is fine for the first job and fails the second,
+     so both lighten and they lighten by different amounts. */
+  @media (prefers-color-scheme: dark) {
+    --cs-ink-2: #c3c7cf;   /* 9.9:1 on --cs-ground */
+    --cs-mark: #9b82ff;    /* 5.8:1 — rules, borders, the dot, the focus ring */
+    --cs-mark-ink: #b9a8ff; /* 8.4:1 — anything with glyphs in it */
+  }
+
   /* Body size. Every other size is a ratio of this one — 3.5 / 1.1 / 1 / 0.73,
      measured off the reference. Hierarchy comes from weight and colour. */
   --cs-body: clamp(1.0625rem, 1.5vw, 1.375rem);

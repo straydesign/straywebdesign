@@ -76,13 +76,13 @@ export default function Error({ error, reset }: ErrorProps) {
           <button
             type="button"
             onClick={reset}
-            className="inline-flex items-center justify-center bg-accent px-7 py-3.5 text-base font-semibold text-white transition-all hover:bg-accent/90"
+            className="inline-flex items-center justify-center bg-accent px-7 py-3.5 text-base font-semibold text-accent-ink transition-all hover:bg-accent/90"
           >
             Try again
           </button>
           <Link
             href="/"
-            className="inline-flex items-center justify-center border-2 border-border-strong px-7 py-3.5 text-base font-semibold text-text-tertiary transition-all hover:border-white hover:text-white"
+            className="inline-flex items-center justify-center border-2 border-border-strong px-7 py-3.5 text-base font-semibold text-text-tertiary transition-all hover:border-text-primary hover:text-text-primary"
           >
             Go home
           </Link>

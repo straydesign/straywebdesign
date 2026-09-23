@@ -87,7 +87,7 @@ export default function SegmentedControl({
             className={[
               'min-h-11 rounded-full px-6 font-display text-sm font-semibold tracking-wide transition-colors sm:text-base',
               selected
-                ? `${accentClass} text-white`
+                ? `${accentClass} text-accent-ink`
                 : 'text-text-secondary hover:text-text-primary',
             ].join(' ')}
           >

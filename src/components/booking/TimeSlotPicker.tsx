@@ -173,7 +173,7 @@ function SlotButton({
       className={cn(
         'border px-3 py-2.5 font-body text-sm transition-all duration-150',
         isSelected
-          ? 'border-accent bg-accent text-white'
+          ? 'border-accent bg-accent text-accent-ink'
           : 'border-border-strong bg-surface-page text-text-primary hover:border-accent hover:bg-accent/5'
       )}
     >
