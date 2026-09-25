@@ -2,7 +2,6 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   experimental: {
-    viewTransition: true,
     optimizePackageImports: ['framer-motion', 'lucide-react', 'lenis'],
   },
   images: {
