@@ -1,111 +1,102 @@
-import Image from 'next/image';
-import AnimateIn from '@/components/ui/AnimateIn';
 import SectionHeading from '@/components/sections/SectionHeading';
+import ProcessStage from '@/components/process/ProcessStage';
+import Still from '@/components/process/Still';
 
 /**
- * Editor — the back of the site, which is the part nobody selling a website
- * ever shows you and the part you actually live in.
+ * Editor — the back of the site, told the way "How I build your site" is told:
+ * a scroll-driven 3D stage beside plain server-rendered copy.
  *
- * All four are real screens of Sea Cave's store editor, captured from the
- * live build. The product counts on them are that shop's real counts — 969
- * items, 884 of them on the site the day these were taken.
+ * Rebuilt 2026-09-29 on Tom's call ("make it animation-based"). It used to be
+ * four phone captures of Sea Cave's store editor. It is now a simplified
+ * editor in the same matte kit as Process (process/lib/editor-story.ts): the
+ * rail folds down to icons, a price is changed and saves itself, a photo is
+ * swapped, and the site on the phone beside it follows each change.
  *
- * Re-shot 2026-09-22, when that editor stopped being hub-and-spoke and got a
- * rail. The old captures showed a tool that no longer exists, which is the
- * quiet way a page about somebody's current work goes stale.
- *
- * They are shown in a plain bezel rather than the photoreal PhoneFrame render:
- * that component takes the 1127x2210 composites the Envato smart object
- * produces, and these are 900x1948 captures of a tool rather than of a site.
- * A device frame is for showing somebody their own storefront.
- *
- * THE `-light` IN THE FILENAMES IS LOAD-BEARING — DO NOT TIDY IT AWAY.
- * These replaced captures of the reef-coloured editor that are live on
- * straywebdesign.co right now under the SAME four names. Next serves the
- * optimized variants with `max-age=31536000`, keyed on the source path, so
- * swapping the bytes behind an unchanged name leaves every returning visitor
- * looking at the old screens for up to a year — a page arguing for a tool
- * the client cannot open. A new name is a new URL, and a new URL is the only
- * thing a cache cannot serve stale. Re-shoot the editor again, change the
- * suffix again.
+ * Every claim is one the editors back today (see the note at the top of
+ * editor-story.ts): changes save as they are made, with no Save button and a
+ * small Saved tag; photos upload when picked and attach themselves; a save
+ * shows on the site within seconds, which "under a minute" clears.
  */
 
-const SCREENS = [
+type Beat = { id: string; name: string; title: string; body: string; you: string };
+
+const BEATS: Beat[] = [
   {
-    src: '/images/case-studies/seacave/manage-tasks-light.webp',
-    title: 'Pick what you want to do',
-    body: 'Add a product, or change one you already sell. Two buttons, and nothing to learn first.',
-    alt: "Sea Cave's store editor: add a new product, or edit and turn one off",
+    id: 'menu',
+    name: 'The menu',
+    title: 'Every screen is one tap away.',
+    body: 'The menu lists every screen and marks the one you’re on. Fold it down to icons when you want the room.',
+    you: 'Tap where you want to go.',
   },
   {
-    src: '/images/case-studies/seacave/manage-menu-light.webp',
-    title: 'Everything is one tap away',
-    body: 'The menu lists every screen and marks the one you are on. Nothing is buried two pages deep.',
-    alt: "Sea Cave's store editor menu, open, with every screen listed and the current one marked",
+    id: 'price',
+    name: 'A new price',
+    title: 'Type the new price.',
+    body: 'There’s no Save button. The change saves the moment you make it, and a small Saved tag tells you so.',
+    you: 'Type it.',
   },
   {
-    src: '/images/case-studies/seacave/manage-toggle-light.webp',
-    title: 'Turn something off when it runs out',
-    body: 'Out of stock comes off the site. Back in stock goes back on. One tap, and the page updates itself.',
-    alt: 'The product list, with on-site and off-site counts and a toggle on each item',
+    id: 'photo',
+    name: 'A new photo',
+    title: 'Pick a photo from your phone.',
+    body: 'It uploads when you pick it and puts itself in place. A photo straight off an iPhone works as it is.',
+    you: 'Pick the photo.',
   },
   {
-    src: '/images/case-studies/seacave/manage-check-light.webp',
-    title: "See what's live, and what needs a look",
-    body: 'Everything on the site, counted by category, with anything missing a photograph or a price pulled to the top. You are never guessing at what is out there.',
-    alt: "Sea Cave's live count by category, with items missing a photo or a price flagged",
+    id: 'live',
+    name: 'On your site',
+    title: 'It’s on your site in under a minute.',
+    body: 'There’s no rebuild, and nothing waits on me. When something runs out, one tap takes it off the site.',
+    you: 'Nothing else.',
   },
 ];
 
 export default function Editor() {
   return (
-    <section
-      id="editor"
-      className="scroll-mt-16 border-b border-border-default bg-surface-card py-20 md:py-28"
-      aria-label="Your editor"
-    >
-      <div className="mx-auto max-w-6xl px-5 md:px-8">
-        <SectionHeading kicker="And this is the back of it" title="YOUR EDITOR" className="mb-2" />
+    <section id="editor" className="process process--editor scroll-mt-16" aria-label="Your editor">
+      <div className="process__run">
+        <ProcessStage story="editor" />
 
-        <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-text-secondary">
-          This is what you get to work with. It is set up so the everyday
-          changes are yours to make. If you later need to change something we
-          did not scope at the start, I adjust the editor so that you can.
-        </p>
+        <div className="process__beat" data-poses="0">
+          <div className="process__copy">
+            <SectionHeading kicker="And this is the back of it" title="YOUR EDITOR" className="-ml-5 md:-ml-6" />
+            <p className="process__lede">
+              You make the everyday changes yourself. If you need to change something we didn’t plan for at the start, I
+              adjust the editor so you can.
+            </p>
+          </div>
+          <Still prefix="editor" pose={0} />
+        </div>
 
-        <ul className="mt-12 grid gap-12 sm:grid-cols-2 md:mt-16 md:gap-8 lg:grid-cols-4">
-          {SCREENS.map((screen, i) => (
-            <li key={screen.title}>
-              <AnimateIn delay={i * 0.06}>
-                <figure className="m-0">
-                  <div className="mx-auto w-full max-w-[280px] rounded-[1.6rem] bg-[#0d0d10] p-2 shadow-[0_24px_50px_-20px_rgba(0,0,0,0.45)]">
-                    <div className="relative aspect-[900/1948] overflow-hidden rounded-[1.1rem] bg-surface-sunken">
-                      <Image
-                        src={screen.src}
-                        alt={screen.alt}
-                        fill
-                        sizes="(min-width: 1024px) 260px, (min-width: 640px) 44vw, 80vw"
-                        className="object-cover object-top"
-                      />
-                    </div>
-                  </div>
-                </figure>
-                <div className="mt-6">
-                  <h3 className="font-display text-lg font-semibold tracking-tight text-text-primary md:text-xl">
-                    {screen.title}
-                  </h3>
-                  <p className="mt-2 font-body text-[15px] leading-relaxed text-text-secondary">
-                    {screen.body}
-                  </p>
-                </div>
-              </AnimateIn>
+        <ol className="process__beats">
+          {BEATS.map((beat, i) => (
+            <li key={beat.id} id={`editor-${beat.id}`} className="process__beat" data-poses={String(i + 1)}>
+              <div className="process__copy">
+                <p className="process__step">
+                  <span className="process__n" aria-hidden="true">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="process__name">{beat.name}</span>
+                  <span className="process__of">
+                    Step {i + 1} of {BEATS.length}
+                  </span>
+                </p>
+                <h3 className="process__title">{beat.title}</h3>
+                <p className="process__body">{beat.body}</p>
+                <p className="process__you">
+                  <span className="process__you-label">Your part</span> {beat.you}
+                </p>
+              </div>
+              <Still prefix="editor" pose={i + 1} />
             </li>
           ))}
-        </ul>
+        </ol>
 
-        <p className="mt-10 font-mono text-[11px] text-text-tertiary">
-          <span aria-hidden className="text-accent/60">{'// '}</span>
-          Sea Cave&apos;s own editor, and its own product counts
+        <p className="process__note">
+          <span aria-hidden="true" className="process__note-mark">
+            {'// '}
+          </span>
+          A simplified version of the editors my clients use today
         </p>
       </div>
     </section>

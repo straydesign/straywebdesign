@@ -4,20 +4,8 @@ import { ContactShadows, Environment, Lightformer, Text, useGLTF } from '@react-
 import { useFrame, useThree } from '@react-three/fiber';
 import { useEffect, useMemo, useRef, type RefObject } from 'react';
 import * as THREE from 'three';
-import {
-  FORMATIONS,
-  HIDDEN_SCALE,
-  LABELS,
-  LABEL_FORMATIONS,
-  LOCKS,
-  PIECES,
-  type Geo,
-  type Ink,
-  type LabelDef,
-  type LabelPose,
-  type Pose,
-  type Tone,
-} from './lib/formations';
+import { HIDDEN_SCALE, type Geo, type Ink, type LabelDef, type LabelPose, type Pose, type Tone } from './lib/kit';
+import { STORIES, type StoryKey } from './lib/stories';
 import { SAFE_DESKTOP, SAFE_PHONE, SAFE_STILL, frameFor, type Frame } from './lib/framing';
 import { ARRIVE, GLIDE, LEAVE, LOCK, TRAVEL, TRAVEL_LOCK, clamp01, smoothDamp, within } from './lib/motion';
 
@@ -91,10 +79,14 @@ function usePalette() {
 }
 
 type Props = {
+  /** Which story this stage plays. */
+  story: StoryKey;
   /** Fractional formation index the page wants to show. */
   target: RefObject<number>;
   /** Skip damping and idle motion (still captures). */
   still?: boolean;
+  /** QA capture or still: raise `window.__processReady` once the kit and type exist. */
+  qa?: boolean;
 };
 
 type TroikaText = THREE.Mesh & { fillOpacity: number; color: THREE.Color | string | number };
@@ -102,7 +94,9 @@ type TroikaText = THREE.Mesh & { fillOpacity: number; color: THREE.Color | strin
 const FLAT = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), -Math.PI / 2);
 const Y = new THREE.Vector3(0, 1, 0);
 
-function Kit({ target, still = false }: Props) {
+function Kit({ story: key, target, still = false, qa = false }: Props) {
+  const story = STORIES[key];
+  const { formations: FORMATIONS, labelFormations: LABEL_FORMATIONS, pieces: PIECES, labels: LABELS, locks: LOCKS } = story;
   const { nodes } = useGLTF(KIT) as unknown as { nodes: Record<string, THREE.Mesh> };
   const { camera, size, gl, scene } = useThree();
   const palette = usePalette();
@@ -111,17 +105,18 @@ function Kit({ target, still = false }: Props) {
   const velocity = useRef(0);
   const meshes = useRef<(THREE.Mesh | null)[]>([]);
   const texts = useRef<(TroikaText | null)[]>([]);
-  const pieceIndex = useMemo(() => new Map(PIECES.map((p, j) => [p.id, j])), []);
+  const pieceIndex = useMemo(() => new Map(PIECES.map((p, j) => [p.id, j])), [PIECES]);
 
   // QA: the capture scripts wait on this, so no frame is taken before the kit and type exist.
   useEffect(() => {
+    if (!qa) return;
     const w = window as Window & { __processReady?: boolean };
     const id = window.setTimeout(() => (w.__processReady = true), 400);
     return () => {
       window.clearTimeout(id);
       w.__processReady = false;
     };
-  }, []);
+  }, [qa]);
 
   // Neutral tone mapping keeps the accent blue at the hue the token names.
   useEffect(() => {
@@ -139,12 +134,12 @@ function Kit({ target, still = false }: Props) {
             metalness: 0,
           }),
       ),
-    [],
+    [PIECES],
   );
   // Labels are set type, not lit objects: exact ink colours, no tone mapping.
   const textMaterials = useMemo(
     () => LABELS.map(() => new THREE.MeshBasicMaterial({ toneMapped: false, transparent: true, depthWrite: false })),
-    [],
+    [LABELS],
   );
   useEffect(
     () => () => {
@@ -158,8 +153,8 @@ function Kit({ target, still = false }: Props) {
   const frames = useMemo<Frame[]>(() => {
     const aspect = size.width / Math.max(size.height, 1);
     const safe = still ? SAFE_STILL : size.width < PHONE_MAX ? SAFE_PHONE : SAFE_DESKTOP;
-    return FORMATIONS.map((_, i) => frameFor(i, aspect, VFOV, safe));
-  }, [size.width, size.height, still]);
+    return FORMATIONS.map((_, i) => frameFor(story, i, aspect, VFOV, safe));
+  }, [story, FORMATIONS, size.width, size.height, still]);
 
   const tmp = useMemo(
     () => ({
@@ -200,7 +195,7 @@ function Kit({ target, still = false }: Props) {
     const A = FORMATIONS[i];
     const B = FORMATIONS[i + 1];
     const locks = LOCKS[i + 1];
-    const introWeight = still ? 0 : 1 - THREE.MathUtils.smoothstep(f, 0, 0.34);
+    const introWeight = still || !story.drift ? 0 : 1 - THREE.MathUtils.smoothstep(f, 0, 0.34);
     const time = still ? 0 : state.clock.elapsedTime;
 
     PIECES.forEach((piece, j) => {

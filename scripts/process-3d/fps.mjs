@@ -1,9 +1,10 @@
 // Real-time frame pacing while the process section scrolls top to bottom
 // (live render loop, not the capture clock). Mean fps, p95 frame time, long frames.
-//   node scripts/process-3d/fps.mjs [width] [seconds] [scheme] [baseUrl]
+//   node scripts/process-3d/fps.mjs [width] [seconds] [scheme] [baseUrl] [story=process|editor]
 import { chromium } from '@playwright/test';
 
-const [widthArg = '1440', secArg = '14', scheme = 'light', BASE = 'http://localhost:4790'] = process.argv.slice(2);
+const [widthArg = '1440', secArg = '14', scheme = 'light', BASE = 'http://localhost:4790', STORY = 'process'] = process.argv.slice(2);
+const SEL = `#${STORY}`;
 const width = Number(widthArg);
 const phone = width < 820;
 const browser = await chromium.launch({ channel: 'chrome', headless: false, args: ['--use-angle=metal', '--enable-gpu', '--ignore-gpu-blocklist'] });
@@ -17,14 +18,13 @@ const ctx = await browser.newContext({
 const page = await ctx.newPage();
 await page.goto(BASE, { waitUntil: 'load' });
 await page.waitForFunction(() => document.querySelector('#process, #setup')?.getBoundingClientRect().top > 0, null, { timeout: 20000 });
-const top = await page.evaluate(() => document.querySelector('#process').getBoundingClientRect().top + scrollY);
+const top = await page.evaluate((sel) => document.querySelector(sel).getBoundingClientRect().top + scrollY, SEL);
 await page.evaluate((y) => window.scrollTo(0, y - innerHeight), top);
-await page.waitForSelector('.process__canvas canvas', { timeout: 20000 });
-await page.waitForFunction(() => window.__processReady === true, null, { timeout: 20000 });
+await page.waitForSelector(`${SEL} .process__canvas canvas`, { timeout: 20000 });
 await page.waitForTimeout(2000);
 
-const stats = await page.evaluate(async (seconds) => {
-  const s = document.querySelector('#process');
+const stats = await page.evaluate(async ({ seconds, sel }) => {
+  const s = document.querySelector(sel);
   const y0 = s.getBoundingClientRect().top + scrollY - innerHeight * 0.5;
   const y1 = y0 + s.offsetHeight;
   const deltas = [];
@@ -44,7 +44,7 @@ const stats = await page.evaluate(async (seconds) => {
   deltas.shift();
   const sorted = [...deltas].sort((a, b) => a - b);
   const mean = deltas.reduce((a, b) => a + b, 0) / deltas.length;
-  const c = document.querySelector('.process__canvas canvas');
+  const c = s.querySelector('.process__canvas canvas');
   return {
     frames: deltas.length,
     fps: +(1000 / mean).toFixed(1),
@@ -54,6 +54,6 @@ const stats = await page.evaluate(async (seconds) => {
     dpr: devicePixelRatio,
     canvas: `${c.width}x${c.height}`,
   };
-}, Number(secArg));
-console.log(`${width}px ${scheme}`, JSON.stringify(stats));
+}, { seconds: Number(secArg), sel: SEL });
+console.log(`${STORY} ${width}px ${scheme}`, JSON.stringify(stats));
 await browser.close();

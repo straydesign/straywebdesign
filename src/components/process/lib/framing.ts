@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { EXTENTS, FORMATIONS, LABELS, LABEL_FORMATIONS, PIECES, VIEWS, labelFootprint } from './formations';
+import { EXTENTS, labelFootprint, type Story } from './kit';
 
 /**
  * Frames each formation for the canvas it is drawn in. The camera is solved,
@@ -29,41 +29,48 @@ const box = new THREE.Box3();
 const at = new THREE.Vector3();
 const hq = new THREE.Quaternion();
 const off = new THREE.Vector3();
-const geoById = new Map(PIECES.map((p) => [p.id, p.geo]));
-const labelById = new Map(LABELS.map((l) => [l.id, l]));
+/** World-space points that must stay in frame, per formation. Built once per story. */
+const pointsCache = new WeakMap<Story, THREE.Vector3[][]>();
 
-/** World-space points that must stay in frame, per formation. Static, built once. */
-const POINTS: THREE.Vector3[][] = FORMATIONS.map((f, i) => {
-  const out: THREE.Vector3[] = [];
-  Object.entries(f).forEach(([id, pose]) => {
-    if (!pose) return;
-    const [lo, hi] = EXTENTS[geoById.get(id)!];
-    box.min.fromArray(lo);
-    box.max.fromArray(hi);
-    m.compose(at.fromArray(pose.p), hq.fromArray(pose.q), new THREE.Vector3().fromArray(pose.s));
-    for (let k = 0; k < 8; k++) {
-      out.push(
-        new THREE.Vector3(k & 1 ? box.max.x : box.min.x, k & 2 ? box.max.y : box.min.y, k & 4 ? box.max.z : box.min.z).applyMatrix4(m),
-      );
-    }
+function pointsFor(story: Story): THREE.Vector3[][] {
+  const cached = pointsCache.get(story);
+  if (cached) return cached;
+  const geoById = new Map(story.pieces.map((p) => [p.id, p.geo]));
+  const labelById = new Map(story.labels.map((l) => [l.id, l]));
+  const built = story.formations.map((f, i) => {
+    const out: THREE.Vector3[] = [];
+    Object.entries(f).forEach(([id, pose]) => {
+      if (!pose) return;
+      const [lo, hi] = EXTENTS[geoById.get(id)!];
+      box.min.fromArray(lo);
+      box.max.fromArray(hi);
+      m.compose(at.fromArray(pose.p), hq.fromArray(pose.q), new THREE.Vector3().fromArray(pose.s));
+      for (let k = 0; k < 8; k++) {
+        out.push(
+          new THREE.Vector3(k & 1 ? box.max.x : box.min.x, k & 2 ? box.max.y : box.min.y, k & 4 ? box.max.z : box.min.z).applyMatrix4(m),
+        );
+      }
+    });
+    Object.entries(story.labelFormations[i]).forEach(([id, lp]) => {
+      if (!lp) return;
+      const def = labelById.get(id)!;
+      const host = lp.on ? f[lp.on] : undefined;
+      const base = new THREE.Vector3().fromArray(lp.p);
+      if (host) {
+        hq.fromArray(host.q);
+        base.applyQuaternion(hq).add(at.fromArray(host.p));
+      }
+      const [x0, z0, x1, z1] = labelFootprint(def);
+      const turn = host ? hq : new THREE.Quaternion();
+      for (const [x, z] of [[x0, z0], [x1, z0], [x0, z1], [x1, z1]]) {
+        out.push(off.set(x, 0, z).applyQuaternion(turn).add(base).clone());
+      }
+    });
+    return out;
   });
-  Object.entries(LABEL_FORMATIONS[i]).forEach(([id, lp]) => {
-    if (!lp) return;
-    const def = labelById.get(id)!;
-    const host = lp.on ? f[lp.on] : undefined;
-    const base = new THREE.Vector3().fromArray(lp.p);
-    if (host) {
-      hq.fromArray(host.q);
-      base.applyQuaternion(hq).add(at.fromArray(host.p));
-    }
-    const [x0, z0, x1, z1] = labelFootprint(def);
-    const turn = host ? hq : new THREE.Quaternion();
-    for (const [x, z] of [[x0, z0], [x1, z0], [x0, z1], [x1, z1]]) {
-      out.push(off.set(x, 0, z).applyQuaternion(turn).add(base).clone());
-    }
-  });
-  return out;
-});
+  pointsCache.set(story, built);
+  return built;
+}
 
 export function viewDir(az: number, el: number, out = new THREE.Vector3()) {
   const a = THREE.MathUtils.degToRad(az);
@@ -76,16 +83,16 @@ const r = new THREE.Vector3();
 const u = new THREE.Vector3();
 const v = new THREE.Vector3();
 
-/** Solve the camera for formation `i` on a canvas of this aspect ratio. */
-export function frameFor(i: number, aspect: number, vfov: number, safe: Safe): Frame {
-  const { az, el } = VIEWS[i];
+/** Solve the camera for formation `i` of a story on a canvas of this aspect ratio. */
+export function frameFor(story: Story, i: number, aspect: number, vfov: number, safe: Safe): Frame {
+  const { az, el } = story.views[i];
   const dir = viewDir(az, el);
   f.copy(dir).negate();
   r.crossVectors(f, UP).normalize();
   u.crossVectors(r, f).normalize();
   const tanV = Math.tan(THREE.MathUtils.degToRad(vfov / 2));
   const tanH = tanV * aspect;
-  const pts = POINTS[i];
+  const pts = pointsFor(story)[i];
 
   const c = new THREE.Vector3();
   pts.forEach((p) => c.add(p));

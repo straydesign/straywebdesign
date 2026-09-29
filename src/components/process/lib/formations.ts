@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import { Build, H, S, XS, assemble, rand, registry, type Geo, type Story, type Tone, type V3, type View } from './kit';
 
 /**
  * Every beat of "How I build your site" is a FORMATION: where each piece of the
@@ -23,151 +23,15 @@ import * as THREE from 'three';
  *   9  launch     on your domain; speed, phone and search checks turn green
  *  10  after      your editor, a week-one check-in, day 90
  *
- * World: metres, Y up, ground at y = 0. Labels lie flat and read along +x, the
- * top of each line pointing away from the camera (-z).
+ * The kit, the builder and the types are shared with the editor story: see kit.ts.
  */
 
-export type Geo = 'Tile' | 'Plate' | 'Bar' | 'Node' | 'Block' | 'Rod' | 'Pin' | 'Tick' | 'Phone';
-export type Tone = 'base' | 'paper' | 'lane' | 'accent' | 'soft' | 'done' | 'warn' | 'device';
-export type Ink = 'ink' | 'ink2' | 'onFill' | 'accentInk';
-export type V3 = [number, number, number];
-export type Pose = {
-  p: V3;
-  q: [number, number, number, number];
-  s: V3;
-  c: Tone;
-  /** Arrival slot in [0, 1] inside the transition into this formation. */
-  at: number;
-  /** Arrive in the previous (or base) tone and change to `c` from this point of the transition. */
-  tint?: number;
-  /** Radians per second of slow turn about Y while resting (the motion layer). */
-  spin?: number;
-};
-export type Formation = Partial<Record<string, Pose>>;
-export type Piece = { id: string; geo: Geo };
-
-export type LabelDef = {
-  id: string;
-  text: string;
-  size: number;
-  font: 'text' | 'strong' | 'display' | 'italic';
-  ink: Ink;
-  anchorX: 'left' | 'center' | 'right';
-  anchorY: 'top' | 'middle' | 'bottom';
-  maxWidth?: number;
-};
-export type LabelPose = {
-  /** Absolute position, or an offset in the frame of the piece it rides on. */
-  p: V3;
-  on?: string;
-  at: number;
-};
-export type LabelFormation = Partial<Record<string, LabelPose>>;
-
-/** Local bounding box of each piece at scale 1, [min, max]. */
-export const EXTENTS: Record<Geo, [V3, V3]> = {
-  Tile: [[-0.22, -0.025, -0.15], [0.22, 0.025, 0.15]],
-  Plate: [[-0.5, -0.015, -0.5], [0.5, 0.015, 0.5]],
-  Bar: [[0, -0.07, -0.1], [1, 0.07, 0.1]],
-  Node: [[-0.13, -0.06, -0.13], [0.13, 0.06, 0.13]],
-  Block: [[-0.1, -0.1, -0.1], [0.1, 0.1, 0.1]],
-  Rod: [[0, -0.016, -0.016], [1, 0.016, 0.016]],
-  Pin: [[-0.075, 0, -0.075], [0.075, 0.36, 0.075]],
-  Tick: [[-0.16, -0.02, -0.13], [0.18, 0.02, 0.1]],
-  Phone: [[-0.18, -0.02, -0.37], [0.18, 0.02, 0.37]],
-};
-
-/** How a hidden piece collapses, per geometry: bars and rods along their length. */
-export const HIDDEN_SCALE: Record<Geo, V3> = {
-  Tile: [0, 0, 0],
-  Plate: [0, 1, 0],
-  Bar: [0, 1, 1],
-  Node: [0, 0, 0],
-  Block: [0, 0, 0],
-  Rod: [0, 1, 1],
-  Pin: [1, 1, 1],
-  Tick: [0, 0, 0],
-  Phone: [0, 0, 0],
-};
-
-// ---------- builders ----------
-
-const PIECE_GEO = new Map<string, Geo>();
-const LABEL_DEFS = new Map<string, LabelDef>();
-
-const euler = new THREE.Euler();
-const quatTmp = new THREE.Quaternion();
-const quat = (x = 0, y = 0, z = 0): Pose['q'] => {
-  quatTmp.setFromEuler(euler.set(x, y, z));
-  return [quatTmp.x, quatTmp.y, quatTmp.z, quatTmp.w];
-};
-
-type Opts = { c?: Tone; s?: V3; r?: V3; at?: number; tint?: number; spin?: number };
-type TextOpts = Partial<Omit<LabelDef, 'id' | 'text'>> & { on?: string; at?: number };
-
-class Build {
-  pieces: Formation = {};
-  labels: LabelFormation = {};
-  private next: Partial<Record<Geo, number>> = {};
-
-  put(geo: Geo, p: V3, o: Opts = {}): string {
-    const n = this.next[geo] ?? 0;
-    this.next[geo] = n + 1;
-    const id = `${geo}${n}`;
-    PIECE_GEO.set(id, geo);
-    this.pieces[id] = {
-      p,
-      q: o.r ? quat(...o.r) : quat(),
-      s: o.s ?? [1, 1, 1],
-      c: o.c ?? 'base',
-      at: o.at ?? 0,
-      tint: o.tint,
-      spin: o.spin,
-    };
-    return id;
-  }
-
-  /** A connector from a to b on the ground plane, lying at height y. */
-  rod(a: [number, number], b: [number, number], y: number, o: Opts = {}): string {
-    const dx = b[0] - a[0];
-    const dz = b[1] - a[1];
-    return this.put('Rod', [a[0], y, a[1]], { ...o, s: [Math.hypot(dx, dz), 1, 1], r: [0, Math.atan2(-dz, dx), 0] });
-  }
-
-  text(id: string, text: string, p: V3, d: TextOpts = {}) {
-    const { on, at, ...def } = d;
-    const full: LabelDef = {
-      id,
-      text,
-      size: S,
-      font: 'text',
-      ink: 'ink',
-      anchorX: 'left',
-      anchorY: 'middle',
-      ...def,
-    };
-    const prev = LABEL_DEFS.get(id);
-    if (prev && JSON.stringify(prev) !== JSON.stringify(full)) throw new Error(`label ${id} set two ways`);
-    LABEL_DEFS.set(id, full);
-    this.labels[id] = { p, on, at: at ?? 0.5 };
-  }
-}
-
-/** Deterministic scatter, so every visit (and every still) shows the same intro. */
-function rand(seed: number) {
-  const x = Math.sin(seed * 127.1 + 311.7) * 43758.5453;
-  return x - Math.floor(x);
-}
-
-// Text sizes (metres). The smallest reads at ~11px on a 390px phone.
-const H = 0.1;
-const S = 0.085;
-const XS = 0.08;
+const REG = registry();
 
 // ---------- 0 · intro: the kit, undecided ----------
 
 function intro(): Build {
-  const f = new Build();
+  const f = new Build(REG);
   const geos: Geo[] = ['Tile', 'Block', 'Tile', 'Node', 'Pin', 'Tile', 'Bar', 'Tick', 'Phone', 'Block', 'Tile', 'Node', 'Plate', 'Tile', 'Pin', 'Block', 'Tile', 'Bar'];
   geos.forEach((geo, i) => {
     const k = i + 5;
@@ -193,7 +57,7 @@ function phoneOnCall(f: Build, at = 0) {
 }
 
 function call(): Build {
-  const f = new Build();
+  const f = new Build(REG);
   phoneOnCall(f);
   const spots: [number, number, number][] = [
     [0.36, -0.82, 0.06],
@@ -211,7 +75,7 @@ function call(): Build {
 }
 
 function brief(): Build {
-  const f = new Build();
+  const f = new Build(REG);
   phoneOnCall(f);
   const sheet = f.put('Plate', [0.42, 0.015, 0.06], { c: 'paper', s: [1.62, 1, 2.36], at: 0 });
   f.text('brief', 'Your brief', [-0.68, 0.02, -0.92], { on: sheet, font: 'display', size: 0.17, at: 0.55 });
@@ -233,7 +97,7 @@ const LANE_X = [-0.74, 0.74];
 const laneZ = (r: number) => -0.44 + r * 0.38;
 
 function research(sorted: boolean): Build {
-  const f = new Build();
+  const f = new Build(REG);
   LANE_X.forEach((x, l) => {
     f.put('Plate', [x, 0.015, 0.15], { c: 'lane', s: [1.38, 1, 1.72], at: l * 0.1 });
   });
@@ -334,13 +198,13 @@ function counter(f: Build, round: 1 | 2 | 3) {
 }
 
 function draft(): Build {
-  const f = new Build();
+  const f = new Build(REG);
   page(f, 0);
   return f;
 }
 
 function round1(): Build {
-  const f = new Build();
+  const f = new Build(REG);
   page(f, 1);
   counter(f, 1);
   pin(f, 'like', PX - 0.3, -0.46, 1, 0.3);
@@ -350,7 +214,7 @@ function round1(): Build {
 }
 
 function round2(): Build {
-  const f = new Build();
+  const f = new Build(REG);
   page(f, 2);
   counter(f, 2);
   pin(f, 'like', PX - 0.3, -0.46, 1, 0);
@@ -367,7 +231,7 @@ function ticks(f: Build, from: number) {
 }
 
 function round3(): Build {
-  const f = new Build();
+  const f = new Build(REG);
   page(f, 3);
   counter(f, 3);
   ticks(f, 0.5);
@@ -377,7 +241,7 @@ function round3(): Build {
 const CHECKS = ['Speed', 'Phone', 'Search'];
 
 function launch(): Build {
-  const f = new Build();
+  const f = new Build(REG);
   page(f, 3, true);
   CHECKS.forEach((name, i) => {
     const z = -0.3 + i * 0.42;
@@ -393,7 +257,7 @@ function launch(): Build {
 const FIELDS = ['Prices', 'Photos', 'Hours'];
 
 function after(): Build {
-  const f = new Build();
+  const f = new Build(REG);
   const PHX = -1.0;
   f.put('Phone', [PHX, 0.02, 0.2], { c: 'device', s: [1.4, 1, 1.4], at: 0 });
   const screen = f.put('Plate', [PHX, 0.043, 0.2], { c: 'paper', s: [0.43, 1, 0.9], at: 0.08 });
@@ -430,20 +294,12 @@ function after(): Build {
 
 const builds = [intro(), call(), brief(), research(false), research(true), draft(), round1(), round2(), round3(), launch(), after()];
 
-export const FORMATIONS: Formation[] = builds.map((b) => b.pieces);
-export const LABEL_FORMATIONS: LabelFormation[] = builds.map((b) => b.labels);
-export const PIECES: Piece[] = [...PIECE_GEO.entries()].map(([id, geo]) => ({ id, geo }));
-export const LABELS: LabelDef[] = [...LABEL_DEFS.values()];
-
-/** Which arrivals lock in (a small overshoot and settle) rather than simply land. */
-export const LOCKS: boolean[] = [false, false, true, false, true, true, true, true, true, true, false];
-
 /**
  * The camera's quarter per formation: azimuth (degrees right of front) and
  * elevation (degrees above the horizon). High enough that the set labels read,
  * with a small alternating turn so the table never feels flat.
  */
-export const VIEWS: { az: number; el: number }[] = [
+const VIEWS: View[] = [
   { az: 20, el: 32 },
   { az: -6, el: 55 },
   { az: 5, el: 60 },
@@ -457,13 +313,9 @@ export const VIEWS: { az: number; el: number }[] = [
   { az: -4, el: 58 },
 ];
 
-/** Rough footprint of a label on the ground, for framing: [x0, z0, x1, z1] relative to its anchor. */
-export function labelFootprint(def: LabelDef): [number, number, number, number] {
-  const wide = def.text.length * def.size * (def.font === 'display' || def.font === 'italic' ? 0.46 : 0.56);
-  const w = def.maxWidth ? Math.min(def.maxWidth, wide) : wide;
-  const lines = def.maxWidth ? Math.ceil(wide / def.maxWidth) : 1;
-  const h = lines * def.size * 1.25;
-  const x0 = def.anchorX === 'left' ? 0 : def.anchorX === 'center' ? -w / 2 : -w;
-  const z0 = def.anchorY === 'top' ? 0 : def.anchorY === 'middle' ? -h / 2 : -h;
-  return [x0, z0, x0 + w, z0 + h];
-}
+export const PROCESS: Story = assemble(
+  REG,
+  builds,
+  [false, false, true, false, true, true, true, true, true, true, false],
+  VIEWS,
+);

@@ -3,11 +3,13 @@
 import { Canvas, useThree } from '@react-three/fiber';
 import dynamic from 'next/dynamic';
 import { Suspense, useEffect, useRef, useState, type RefObject } from 'react';
+import type { StoryKey } from './lib/stories';
 
 /*
- * The 3D stage behind "How I build your site". Decoration only: every word of
- * the process is in the server-rendered copy beside it, so this is aria-hidden
- * and a reader without it loses nothing but the demonstration.
+ * The 3D stage behind a scroll-told section: "How I build your site" and
+ * "Your editor" each mount one with their own story. Decoration only: every
+ * word is in the server-rendered copy beside it, so this is aria-hidden and a
+ * reader without it loses nothing but the demonstration.
  *
  * Nothing heavy loads until the section is a screen away. Under reduced motion
  * the library is never imported at all and the beats show their stills; the
@@ -97,7 +99,12 @@ function webglAvailable() {
 
 type Mode = 'idle' | 'live' | 'capture' | 'still';
 
-export default function ProcessStage() {
+/**
+ * QA params name the story they drive: `?capture` or `?still=N` drive the
+ * process (the scripts' original contract), `?capture=editor` and
+ * `?still=N&story=editor` drive the editor. Every other stage runs normally.
+ */
+export default function ProcessStage({ story = 'process' }: { story?: StoryKey }) {
   const stage = useRef<HTMLDivElement>(null);
   const [mode, setMode] = useState<Mode>('idle');
   const [inView, setInView] = useState(false);
@@ -114,13 +121,13 @@ export default function ProcessStage() {
 
     const params = new URLSearchParams(window.location.search);
     const pose = params.get('still');
-    if (pose !== null) {
+    if (pose !== null && (params.get('story') ?? 'process') === story) {
       stillTarget.current = Number(pose);
       setStill(Number(pose));
       setMode('still');
       return;
     }
-    const capture = params.has('capture');
+    const capture = params.has('capture') && (params.get('capture') || 'process') === story;
 
     // Load once the section is a screen away; render only while it is on screen.
     const near = new IntersectionObserver(
@@ -138,7 +145,7 @@ export default function ProcessStage() {
       near.disconnect();
       seen.disconnect();
     };
-  }, []);
+  }, [story]);
 
   const onCreated = ({ gl }: { gl: { domElement: HTMLCanvasElement } }) => {
     gl.domElement.addEventListener('webglcontextlost', () => stage.current?.closest('section')?.classList.add('process--static'));
@@ -146,10 +153,10 @@ export default function ProcessStage() {
 
   if (mode === 'still') {
     return (
-      <div ref={stage} id="process-still" style={{ position: 'fixed', inset: '0 auto auto 0', width: 1200, height: 900, zIndex: 100 }} aria-hidden="true">
+      <div ref={stage} id={`${story}-still`} style={{ position: 'fixed', inset: '0 auto auto 0', width: 1200, height: 900, zIndex: 100 }} aria-hidden="true">
         <Canvas shadows dpr={1} camera={{ fov: 26, near: 0.1, far: 80 }} gl={{ antialias: true, alpha: true, preserveDrawingBuffer: true }}>
           <Suspense fallback={null}>
-            <Scene key={still} target={stillTarget} still />
+            <Scene key={still} story={story} target={stillTarget} still qa />
           </Suspense>
         </Canvas>
       </div>
@@ -170,7 +177,7 @@ export default function ProcessStage() {
           >
             {mode === 'capture' && <CaptureClock />}
             <Suspense fallback={null}>
-              <Scene target={target} />
+              <Scene story={story} target={target} qa={mode === 'capture'} />
             </Suspense>
           </Canvas>
         </div>

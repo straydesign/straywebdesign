@@ -5,6 +5,7 @@
 // Playwright's recordVideo, which judders at ~25 fps).
 //
 //   node scripts/process-3d/capture.mjs <label> [width] [scheme] [selector] [baseUrl]
+//   (selector #editor drives the editor story and writes to qa/editor-3d/)
 //
 // Writes qa/process-3d/<label>-<width>[-dark].mp4 and keeps the PNG frames in
 // qa/process-3d/frames/<label>-<width>-<scheme>/ for reading.
@@ -21,7 +22,8 @@ const vp = phone
   ? { width, height: 844, deviceScaleFactor: 2, isMobile: true, hasTouch: true }
   : { width, height: 900, deviceScaleFactor: 1, isMobile: false };
 
-const ROOT = new URL('../../qa/process-3d/', import.meta.url).pathname;
+const STORY = selector === '#editor' ? 'editor' : 'process';
+const ROOT = new URL(`../../qa/${STORY}-3d/`, import.meta.url).pathname;
 const FRAMES = join(ROOT, 'frames', `${label}-${width}-${scheme}`);
 await rm(FRAMES, { recursive: true, force: true });
 await mkdir(FRAMES, { recursive: true });
@@ -33,7 +35,7 @@ const HOLD = 0.8; // seconds resting on each beat
 const browser = await chromium.launch({ channel: 'chrome', args: ['--use-angle=metal', '--enable-gpu', '--ignore-gpu-blocklist'] });
 const ctx = await browser.newContext({ viewport: { width: vp.width, height: vp.height }, ...vp, colorScheme: scheme });
 const page = await ctx.newPage();
-await page.goto(`${BASE}/?capture`, { waitUntil: 'load' });
+await page.goto(`${BASE}/${STORY === 'process' ? '?capture' : `?capture=${STORY}`}`, { waitUntil: 'load' });
 await page.waitForFunction(() => document.querySelector('#process, #setup')?.getBoundingClientRect().top > 0, null, { timeout: 20000 });
 await page.addStyleTag({ content: 'nextjs-portal{display:none!important} html{scroll-behavior:auto!important}' });
 

@@ -1,5 +1,6 @@
 import SectionHeading from '@/components/sections/SectionHeading';
 import ProcessStage from '@/components/process/ProcessStage';
+import Still from '@/components/process/Still';
 
 /**
  * Process — how I build your site, as a scroll-driven 3D demonstration.
@@ -121,17 +122,6 @@ const BEATS: Beat[] = [
     you: 'Keep running the shop.',
   },
 ];
-
-function Still({ pose }: { pose: number }) {
-  return (
-    <figure className="process__still" aria-hidden="true">
-      <picture>
-        <source srcSet={`/process-3d/stills/pose-${pose}-dark.webp`} media="(prefers-color-scheme: dark)" />
-        <img src={`/process-3d/stills/pose-${pose}-light.webp`} alt="" width={1200} height={900} loading="lazy" decoding="async" />
-      </picture>
-    </figure>
-  );
-}
 
 export default function Process() {
   return (

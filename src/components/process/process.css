@@ -59,6 +59,27 @@
   position: relative;
 }
 
+/* "Your editor" plays its own story on the same stage, one ground lighter so
+   the two runs read as two sections where they meet. */
+.process--editor {
+  background: var(--surface-page);
+}
+
+.process__note {
+  position: relative;
+  z-index: 1;
+  width: min(72rem, 100%);
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+  font-family: var(--font-family-plex), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.process__note-mark {
+  color: var(--accent);
+}
+
 .process__stage {
   position: sticky;
   z-index: 0;
@@ -227,6 +248,10 @@
     background: color-mix(in srgb, var(--surface-card) 90%, transparent);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+  }
+
+  .process__note {
+    padding: 0 1rem 3rem;
   }
 
   .process__beat[data-poses='0'] .process__copy {
