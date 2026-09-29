@@ -556,12 +556,11 @@ export function SocialCard({
    they are about to see, so arriving is a continuation rather than a
    different design wearing the same domain.
 
-   THE WRAP IS WRITTEN OUT, NOT MEASURED. The page balances this headline with
-   `text-balance` and lands on "Engaging sites for strong / brands with
-   passionate owners." Satori has no text-balance and no way to colour half a
-   word run mid-wrap reliably, so each line is its own flex row of coloured
-   spans. That fixes the break at the same place the browser puts it and makes
-   the accent start exactly on "strong", which is where the page starts it.
+   THE WRAP IS WRITTEN OUT, NOT MEASURED. Satori has no text-balance and no
+   way to colour half a word run mid-wrap reliably, so each line is its own
+   flex row of coloured spans. Since 2026-09-29 the headline is two sentences,
+   "I build your site. / You keep running the shop.", one per row, and the
+   accent starts on the second, which is where the page starts it.
 
    NO DOMAIN LINE. Every platform that unfurls a link prints the domain under
    the image itself, so putting it on the art too says it twice and steals the
@@ -717,14 +716,8 @@ export function StrayHeroCard({
           letterSpacing: '-0.02em',
         }}
       >
-        {line([
-          { text: 'Engaging sites for ', color: INK },
-          { text: 'strong', color: ACCENT },
-        ])}
-        {line([
-          { text: 'brands with passionate owners', color: ACCENT },
-          { text: '.', color: INK },
-        ])}
+        {line([{ text: 'I build your site.', color: INK }])}
+        {line([{ text: 'You keep running the shop.', color: ACCENT }])}
       </div>
 
       <div style={{ display: 'flex', position: 'absolute', left: '0px', top: `${fanTop}px` }}>

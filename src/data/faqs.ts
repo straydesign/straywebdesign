@@ -23,15 +23,15 @@ export const FAQ_GROUPS: readonly FaqGroup[] = [
     items: [
       {
         q: 'How much does a website cost?',
-        a: "Between $500 and $3,000 to build, plus $20 to $100 a month to run it. Where you land depends on how much you sell and how much the site has to do. Tell me what you run and you'll have a real number the same day.",
+        a: "Between $500 and $3,000 to build, plus $20 to $100 a month to run it. Where you land depends on how many pages you need and what the site has to do. Tell me what you run and you'll have a real number the same day.",
       },
       {
         q: 'How long does it take?',
-        a: 'About a week from the day your photographs and details reach me. A full menu or catalogue takes longer, and how much longer comes down to how many items you have and what shape the list is in.',
+        a: 'You see a first version about a week after your photos and details reach me. A bigger site takes longer, and I tell you how much longer before we start.',
       },
       {
         q: 'What do you need from me to start?',
-        a: "A conversation about your business, whatever photos you already have, and your list of what you sell. If that list only exists on a whiteboard or in your head, that's normal, and we work from that.",
+        a: "A conversation about your business, whatever photos you already have, and what you want the site to say. If that only exists in your head, that's normal. We work from the call.",
       },
       {
         q: 'What does the monthly cover?',
@@ -47,12 +47,16 @@ export const FAQ_GROUPS: readonly FaqGroup[] = [
     label: 'While it gets built',
     items: [
       {
+        q: 'How do I reach you?',
+        a: "Call or text 814-964-0081. That's my own phone, and I'm the one who answers.",
+      },
+      {
         q: 'What happens to my current website in the meantime?',
         a: 'Nothing. It stays up and keeps working. I build the new one alongside it, your domain stays yours, and we switch when you say go.',
       },
       {
         q: 'Can I update it myself, or do I come back to you every time?',
-        a: "On the sites that need it, you update it yourself. Andy's and Bullfrog change their own menus and daily specials. Sea Cave runs its own stock and pricing across six hundred products. Presque Isle updates its counters. Nobody waits on me for any of that.",
+        a: "On the sites that need it, you update it yourself. Andy's and Bullfrog change their own menus and daily specials. Sea Cave changes its own prices and photos. Presque Isle updates its counters. Nobody waits on me for any of that.",
       },
       {
         q: 'What if I need something changed after it goes live?',
@@ -73,7 +77,7 @@ export const FAQ_GROUPS: readonly FaqGroup[] = [
     items: [
       {
         q: 'What actually changes for my business?',
-        a: 'People who were already looking for what you sell can find you. It shows up as phone calls, and as people walking in who mention they saw it online.',
+        a: 'People who were already looking for what you do can find you. It shows up as phone calls, and as people who mention they saw you online.',
       },
       {
         q: 'How will I know if it worked?',
@@ -82,10 +86,6 @@ export const FAQ_GROUPS: readonly FaqGroup[] = [
       {
         q: 'How long before I see anything?',
         a: 'A few weeks. Google has to find the pages and index them first, and that takes as long as it takes. Anyone promising you next week is guessing.',
-      },
-      {
-        q: 'Will this put my products on Google?',
-        a: 'Every item gets its own page, written in the structure Google reads: what it is, what it costs, whether you have it. Somebody searches for the thing you sell, lands on your page for it, sees how far away you are, and drives over.',
       },
       {
         q: 'Do I need to run ads for this to work?',
@@ -114,7 +114,7 @@ export const FAQ_GROUPS: readonly FaqGroup[] = [
       },
       {
         q: 'Why not just use Squarespace or Wix?',
-        a: "You can, and for some businesses that's the right call. The bill turns up in the hours you spend fighting it, and in the rebuild you pay for once you outgrow it. A full menu or catalogue is where it gets hardest — those builders don't make it easy to get every item structured the way Google wants to read it.",
+        a: "You can, and for some businesses that's the right call. The bill turns up in the hours you spend fighting it, and in the rebuild you pay for once you outgrow it.",
       },
     ],
   },

@@ -41,6 +41,11 @@ const nextConfig: NextConfig = {
          to sit here sent both to the homepage, which silently 308'd every new
          study route until it was caught in testing. Do not restore them
          without deleting src/app/work first. */
+      /* The two work URLs Search Console still shows impressions for
+         (2026-09-29, Playbook/stray-general-web-plan.md §3): the bare index,
+         which never existed, and the study's old slug. */
+      { source: '/work', destination: '/#work', permanent: true },
+      { source: '/work/sea-cave', destination: '/work/seacave', permanent: true },
 
       gone('/photography'),
 

@@ -76,8 +76,8 @@ export default function Faq() {
         <SectionHeading kicker="Everything people ask me" title="QUESTIONS" className="mb-2" />
         <AnimateIn>
           <p className="mt-4 max-w-xl font-body text-base leading-relaxed text-text-secondary md:text-lg">
-            Including the awkward ones. If yours isn&apos;t here, it&apos;s a
-            good question to open the call with.
+            Plain answers, including the awkward ones. If yours isn&apos;t
+            here, open the call with it.
           </p>
         </AnimateIn>
 

@@ -80,7 +80,7 @@ const BEATS: Beat[] = [
       'The page goes together section by section.',
       'The motion goes on last, once the words are right.',
     ],
-    you: 'Send your photos and the details you already have, like your menu or price list.',
+    you: 'Send your photos and the details you already have, like your logo or the words you already use.',
   },
   {
     id: 'review',
@@ -119,7 +119,7 @@ const BEATS: Beat[] = [
       'Ninety days after launch, you decide whether it worked.',
       'If it didn’t, every dollar comes back.',
     ],
-    you: 'Keep running the shop.',
+    you: 'Keep running your business.',
   },
 ];
 

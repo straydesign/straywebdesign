@@ -23,9 +23,9 @@ import About from '@/components/sections/About';
  * your inventory so Google can find it — from the headline down. On
  * 2026-09-29 the last of it, the Menu section, came off the page (Tom): the
  * catalogue pitch moves to a separate site, and this one is general web
- * design. What the page is about is engaging sites for strong brands with
- * passionate owners, and the four live builds in the hero are the argument
- * for it.
+ * design. What the page leads with now is what owners thank a web designer for:
+ * someone who answers, listens and is on time. The four live builds in the
+ * hero are the argument for it.
  *
  * The middle of the page is the run Tom dictated, in his order:
  *  - Process, how he builds your site, as a scroll-driven 3D demonstration.

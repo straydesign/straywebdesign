@@ -53,15 +53,14 @@ const plex = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Stray Web Design — Engaging Sites for Strong Brands | Tom Sesler",
-  /* 155 characters. A result snippet is cut around 158, so everything past
-     that is written for nobody — the old one ran 167 and lost the phone
-     number, which is the only line here that asks for anything. Trimmed by
-     dropping "Hi, ", shortening "websites" to "sites" and "host them or hand
-     them off" to "host or hand them off"; nothing was cut that carried a
-     fact. Keep any rewrite under 158 and keep the number last. */
+  title: "Stray Web Design — Web Designer in Erie, PA | Tom Sesler",
+  /* Title and description rewritten 2026-09-29 for general web design (plan:
+     Playbook/stray-general-web-plan.md). The title names the customer noun and
+     the place, which is what every query the site shows for already contains.
+     A result snippet is cut around 158 characters, so keep any rewrite under
+     158 and keep the number last. */
   description:
-    "I design and build engaging sites for strong brands whose owners care how the place comes across, then host and run them. Call or text 814-964-0081.",
+    "I design, build, host and run websites. You see a first version in about a week. Ninety days after launch, you decide if it worked. Call 814-964-0081.",
   keywords: [
     'freelance web designer',
     'web designer',
@@ -76,14 +75,14 @@ export const metadata: Metadata = {
   ],
   metadataBase: new URL('https://straywebdesign.co'),
   openGraph: {
-    title: "Stray Web Design — Engaging Sites for Strong Brands | Tom Sesler",
+    title: "Stray Web Design — Web Designer in Erie, PA | Tom Sesler",
     /* Same StoryBrand flip as the card image this ships beside — the owner is
        the hero, Stray is the guide. The old line made the service the subject
        and left the owner out of the sentence. The title tag and the search
        snippet stay as they are: those answer "what is this", not "what do I
        get". 146 characters, three plain statements. */
     description:
-      "Your customers see how much you care before they walk in. I design, build, host and run the site that shows them. One person you can actually call.",
+      "Your customers see how much you care before they ever meet you. I design, build, host and run the site that shows them. One person you can actually call.",
     url: 'https://straywebdesign.co',
     siteName: 'Stray Web Design',
     locale: 'en_US',
@@ -91,14 +90,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Stray Web Design — Engaging Sites for Strong Brands | Tom Sesler",
+    title: "Stray Web Design — Web Designer in Erie, PA | Tom Sesler",
     /* Same StoryBrand flip as the card image this ships beside — the owner is
        the hero, Stray is the guide. The old line made the service the subject
        and left the owner out of the sentence. The title tag and the search
        snippet stay as they are: those answer "what is this", not "what do I
        get". 146 characters, three plain statements. */
     description:
-      "Your customers see how much you care before they walk in. I design, build, host and run the site that shows them. One person you can actually call.",
+      "Your customers see how much you care before they ever meet you. I design, build, host and run the site that shows them. One person you can actually call.",
   },
   alternates: {
     canonical: '/',
@@ -171,9 +170,9 @@ const professionalServiceSchema = {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Your Menu or Catalogue Online',
+            name: 'Launch and After-Launch Check-ins',
             description:
-              'Everything you sell, one page per thing, written in the structure a search engine reads.',
+              'The site goes live on your domain when you say go. A week later I check in on what needs adjusting.',
           },
         },
         {
@@ -235,12 +234,6 @@ export default function RootLayout({
       className={`${jetbrains.variable} ${schibsted.variable} ${hanken.variable} ${instrument.variable} ${plex.variable}`}
     >
       <head>
-        <link
-          rel="alternate"
-          type="application/rss+xml"
-          title="Stray Web Design — Resources"
-          href="/feed.xml"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

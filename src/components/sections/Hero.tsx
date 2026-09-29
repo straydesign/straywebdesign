@@ -9,6 +9,12 @@ import { PHONE_SMS, PHONE_TEL, SITE } from '@/lib/constants';
  * Hero — the headline names who the work is for, and the four sites underneath
  * it are the argument.
  *
+ * 2026-09-29: the line is the best fit from Playbook/buyer-language-local-websites.md
+ * (what owners thank a web designer for in reviews: they answer, they listen,
+ * they're on time). "I build your site. You keep running the shop." is the one
+ * allowed contrast, because the contrast is the argument. Tom can swap it; the
+ * link preview (StrayHeroCard) carries the same two lines.
+ *
  * The old headline sold one mechanism: "Everything you sell, where people are
  * already looking." That is still what a catalogue does, and it is now a
  * section further down instead of the thing the whole page is about.
@@ -24,11 +30,14 @@ export default function Hero() {
       <div className="mx-auto max-w-4xl px-5 md:px-8">
         <AnimateIn>
           <h1 className="text-balance font-display text-[clamp(2.2rem,5.6vw,4rem)] font-bold leading-[1.04] tracking-[-0.02em] text-text-primary">
-            Engaging sites for{' '}
-            <span className="text-accent">strong brands with passionate owners</span>.
+            I build your site.{' '}
+            <span className="text-accent sm:block">You keep running the shop.</span>
           </h1>
           <p className="mt-5 max-w-xl font-body text-lg leading-relaxed text-text-secondary">
-            Here&rsquo;s a few. Click one to explore.
+            I answer my own phone. You see a first version in about a week.
+          </p>
+          <p className="mt-2 max-w-xl font-body text-base leading-relaxed text-text-tertiary">
+            Here&rsquo;s a few I built. Click one to explore.
           </p>
         </AnimateIn>
 

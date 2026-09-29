@@ -44,8 +44,8 @@ export default function About() {
             </p>
             <p className="mt-5 max-w-md font-body text-lg leading-relaxed text-text-secondary">
               I build websites for people who have spent years getting good at
-              one thing and never had a way to show it to the ones already
-              looking for it.
+              one thing. We start with a call where you do most of the talking,
+              and I build from what you tell me.
             </p>
           </TextCard>
         </AnimateIn>

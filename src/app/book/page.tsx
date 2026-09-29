@@ -9,12 +9,12 @@ export const metadata: Metadata = {
      Tom retired months ago. This page books a thirty-minute call and nothing
      else, so that is what it says. 150 characters, differentiator first. */
   description:
-    'Pick a time and tell me about the place. Thirty minutes on what the site needs to do, what it costs, and how fast you can be live. 814-964-0081.',
+    'Pick a time and tell me about your business. Thirty minutes on what the site needs to do, what it costs, and how fast you can be live. 814-964-0081.',
   alternates: { canonical: '/book' },
   openGraph: {
     title: "Let's Talk — Stray Web Design",
     description:
-      'Pick a time and tell me about the place. Thirty minutes on what the site needs to do, what it costs, and how fast you can be live.',
+      'Pick a time and tell me about your business. Thirty minutes on what the site needs to do, what it costs, and how fast you can be live.',
     url: 'https://straywebdesign.co/book',
     type: 'website',
   },
