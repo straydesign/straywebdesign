@@ -4,7 +4,7 @@ import { StrayHeroCard, assetBase, loadHeroFonts } from '@/lib/social-cards';
 
 export const runtime = 'edge';
 export const alt =
-  'I build your site. You keep running the shop. Four live client sites, fanned.';
+  'I build your site. You keep doing what you do best. Four live client sites, fanned.';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 

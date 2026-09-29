@@ -11,7 +11,7 @@ import { PHONE_SMS, PHONE_TEL, SITE } from '@/lib/constants';
  *
  * 2026-09-29: the line is the best fit from Playbook/buyer-language-local-websites.md
  * (what owners thank a web designer for in reviews: they answer, they listen,
- * they're on time). "I build your site. You keep running the shop." is the one
+ * they're on time). "I build your site. You keep doing what you do best." is the one
  * allowed contrast, because the contrast is the argument. Tom can swap it; the
  * link preview (StrayHeroCard) carries the same two lines.
  *
@@ -31,7 +31,7 @@ export default function Hero() {
         <AnimateIn>
           <h1 className="text-balance font-display text-[clamp(2.2rem,5.6vw,4rem)] font-bold leading-[1.04] tracking-[-0.02em] text-text-primary">
             I build your site.{' '}
-            <span className="text-accent sm:block">You keep running the shop.</span>
+            <span className="text-accent sm:block">You keep doing what you do best.</span>
           </h1>
           <p className="mt-5 max-w-xl font-body text-lg leading-relaxed text-text-secondary">
             I answer my own phone. You see a first version in about a week.

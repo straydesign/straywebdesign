@@ -406,3 +406,8 @@ textarea {
     scroll-behavior: auto;
   }
 }
+
+/* Instrument Serif ships one weight (400). A bold class made the browser fake the
+   bold by smearing each glyph sideways, which read as doubled, fuzzy headings.
+   Never synthesize a weight the font does not have. Tom 2026-09-29. */
+.font-display { font-synthesis-weight: none; }

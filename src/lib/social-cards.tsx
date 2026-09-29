@@ -559,7 +559,7 @@ export function SocialCard({
    THE WRAP IS WRITTEN OUT, NOT MEASURED. Satori has no text-balance and no
    way to colour half a word run mid-wrap reliably, so each line is its own
    flex row of coloured spans. Since 2026-09-29 the headline is two sentences,
-   "I build your site. / You keep running the shop.", one per row, and the
+   "I build your site. / You keep doing what you do best.", one per row, and the
    accent starts on the second, which is where the page starts it.
 
    NO DOMAIN LINE. Every platform that unfurls a link prints the domain under
@@ -717,7 +717,7 @@ export function StrayHeroCard({
         }}
       >
         {line([{ text: 'I build your site.', color: INK }])}
-        {line([{ text: 'You keep running the shop.', color: ACCENT }])}
+        {line([{ text: 'You keep doing what you do best.', color: ACCENT }])}
       </div>
 
       <div style={{ display: 'flex', position: 'absolute', left: '0px', top: `${fanTop}px` }}>
