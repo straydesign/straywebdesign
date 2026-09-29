@@ -1,0 +1,327 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   PROCESS — "How I build your site", the scroll-driven 3D demonstration.
+
+   The stage is sticky for the length of the run and pulled back under the
+   beats by a negative margin of its own height, so the words scroll over a
+   stage that stays put. Each beat's copy is sticky inside its own beat: it
+   holds while the stage changes, then leaves with the beat.
+
+   The 3D palette lives here as tokens, light and dark, read by Scene.tsx off
+   the root. --p-accent is the FILL blue; --p-accent-ink is the same blue as
+   type, which lightens in dark exactly the way --accent does for text.
+   ────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --p-base: #d9dbe1;
+  --p-paper: #f6f6f8;
+  --p-lane: #e9eaee;
+  --p-accent: #2563eb;
+  --p-soft: #cddbf8;
+  --p-done: #3f9468;
+  --p-warn: #d8923a;
+  --p-device: #24262c;
+  --p-ink: #111111;
+  --p-ink-2: #56565a;
+  --p-on-fill: #ffffff;
+  --p-accent-ink: #2563eb;
+  --p-shadow: 0.12;
+  --p-contact: 0.4;
+  --p-env: 0.6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --p-base: #4a4e58;
+    --p-paper: #2a2d35;
+    --p-lane: #22252c;
+    --p-accent: #3a74f0;
+    --p-soft: #2a3f66;
+    --p-done: #3f9a6c;
+    --p-warn: #c98530;
+    --p-device: #0b0c0f;
+    --p-ink: #f4f5f7;
+    --p-ink-2: #c8ccd4;
+    --p-on-fill: #ffffff;
+    --p-accent-ink: #8db6ff;
+    --p-shadow: 0.34;
+    --p-contact: 0.62;
+    --p-env: 0.5;
+  }
+}
+
+.process {
+  position: relative;
+  background: var(--surface-card);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.process__run {
+  position: relative;
+}
+
+.process__stage {
+  position: sticky;
+  z-index: 0;
+  top: 0;
+  height: 100vh;
+  margin-bottom: -100vh;
+  pointer-events: none;
+}
+
+.process__canvas {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.process__canvas canvas {
+  display: block;
+}
+
+.process__beats {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.process__beat {
+  position: relative;
+  z-index: 1;
+  width: min(72rem, 100%);
+  min-height: 100vh;
+  margin-inline: auto;
+  padding: 24vh 2rem 6vh;
+}
+
+.process__beat--2 {
+  min-height: 150vh;
+}
+
+.process__beat--3 {
+  min-height: 205vh;
+}
+
+.process__copy {
+  position: sticky;
+  top: 26vh;
+  width: min(29rem, 34vw);
+  display: grid;
+  gap: 14px;
+}
+
+.process__lede {
+  margin: 0;
+  font-family: var(--font-family-plex), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.process__step {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0;
+}
+
+.process__n {
+  font-family: var(--font-family-instrument), Georgia, serif;
+  font-style: italic;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.process__name {
+  font-family: var(--font-family-plex), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+}
+
+.process__of {
+  font-family: var(--font-family-plex), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+}
+
+.process__title {
+  margin: 0;
+  font-family: var(--font-family-instrument), Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  color: var(--text-primary);
+}
+
+.process__body {
+  margin: 0;
+  font-family: var(--font-family-plex), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.process__you {
+  justify-self: start;
+  margin: 2px 0 0;
+  padding: 7px 12px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  font-family: var(--font-family-plex), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--text-primary);
+}
+
+.process__you-label {
+  /* Ink, not accent: #2563EB on --accent-soft measures under 4.5:1. */
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-right: 4px;
+}
+
+.process__still {
+  display: none;
+  margin: 0;
+}
+
+.process__still img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Phone and small tablet: the stage is the top half of the screen and the
+   words ride a card under it. */
+@media (max-width: 899px) {
+  .process__stage {
+    height: 56svh;
+    margin-bottom: -56svh;
+  }
+
+  .process__beat {
+    min-height: 100svh;
+    padding: 54svh 1rem 4svh;
+  }
+
+  .process__beat--2 {
+    min-height: 150svh;
+  }
+
+  .process__beat--3 {
+    min-height: 200svh;
+  }
+
+  .process__copy {
+    top: 55svh;
+    width: 100%;
+    gap: 10px;
+    padding: 18px 18px 20px;
+    border: 1px solid var(--border-default);
+    border-radius: 18px;
+    background: color-mix(in srgb, var(--surface-card) 90%, transparent);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+
+  .process__beat[data-poses='0'] .process__copy {
+    border: 0;
+    padding-inline: 4px;
+    background: transparent;
+    backdrop-filter: none;
+  }
+
+  .process__title {
+    font-size: 1.85rem;
+  }
+
+  .process__body,
+  .process__lede {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+}
+
+/* Reduced motion, no WebGL, or a lost context: each beat holds its still. */
+@media (prefers-reduced-motion: reduce) {
+  .process__stage {
+    display: none;
+  }
+
+  .process__beat,
+  .process__beat--2,
+  .process__beat--3 {
+    min-height: auto;
+    padding: 8vh 2rem;
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .process__copy {
+    position: static;
+    width: auto;
+    padding: 0;
+    border: 0;
+    background: none;
+    backdrop-filter: none;
+  }
+
+  .process__still {
+    display: block;
+  }
+}
+
+.process--static .process__stage {
+  display: none;
+}
+
+.process--static .process__beat,
+.process--static .process__beat--2,
+.process--static .process__beat--3 {
+  min-height: auto;
+  padding: 8vh 2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: center;
+}
+
+.process--static .process__copy {
+  position: static;
+  width: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  backdrop-filter: none;
+}
+
+.process--static .process__still {
+  display: block;
+}
+
+@media (max-width: 899px) {
+  @media (prefers-reduced-motion: reduce) {
+    .process__beat,
+    .process__beat--2,
+    .process__beat--3 {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1rem;
+      padding: 6vh 1rem;
+    }
+  }
+
+  .process--static .process__beat,
+  .process--static .process__beat--2,
+  .process--static .process__beat--3 {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    padding: 6vh 1rem;
+  }
+}
