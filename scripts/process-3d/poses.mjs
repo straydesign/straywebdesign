@@ -1,6 +1,6 @@
 // One settled screenshot per formation of the process section, for reading.
-//   node scripts/process-3d/poses.mjs [width] [scheme] [baseUrl] [story=process|editor]
-// Writes qa/<dir>/poses/<width>-<scheme>-<pose>.png and a contact sheet (dir: process-3d or editor-3d).
+//   node scripts/process-3d/poses.mjs [width] [scheme] [baseUrl] [story=process]
+// Writes qa/<dir>/poses/<width>-<scheme>-<pose>.png and a contact sheet.
 import { chromium } from '@playwright/test';
 import { mkdir } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';

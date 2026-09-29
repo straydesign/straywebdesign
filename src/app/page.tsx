@@ -3,7 +3,6 @@ import Footer from '@/components/layout/Footer';
 import Hero from '@/components/sections/Hero';
 import Start from '@/components/sections/Start';
 import Process from '@/components/sections/Process';
-import Editor from '@/components/sections/Editor';
 import Why from '@/components/sections/Why';
 import Faq from '@/components/sections/Faq';
 import Work from '@/components/sections/Work';
@@ -30,8 +29,9 @@ import About from '@/components/sections/About';
  * The middle of the page is the run Tom dictated, in his order:
  *  - Process, how he builds your site, as a scroll-driven 3D demonstration.
  *    It took Setup's slot on 2026-09-29 and carries all of Setup's facts.
- *  - Editor, the back of the site, which nobody else shows you. Since
- *    2026-09-29 it is scroll-driven 3D too, in the same kit as Process.
+ *    Its step 6 shows the editor, the back of the site, as a quick panel
+ *    (2026-09-29, Tom: "not a separate set of animations"). The Editor
+ *    section that played it on its own is gone.
  *  - Why, the argument for any of it.
  *
  * HowItWorks was deleted rather than unmounted. Its three steps live in Process
@@ -53,7 +53,6 @@ export default function Home() {
         <Work />
         <Process />
         {/* Menu ("What you sell") unmounted 2026-09-29, Tom: straywebdesign is general web design now and the catalogue pitch moves to its own site. Menu.tsx stays on disk until that site exists. */}
-        <Editor />
         <Why />
         <KindWords />
         <Faq />

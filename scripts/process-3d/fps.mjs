@@ -1,6 +1,6 @@
 // Real-time frame pacing while the process section scrolls top to bottom
 // (live render loop, not the capture clock). Mean fps, p95 frame time, long frames.
-//   node scripts/process-3d/fps.mjs [width] [seconds] [scheme] [baseUrl] [story=process|editor]
+//   node scripts/process-3d/fps.mjs [width] [seconds] [scheme] [baseUrl] [story=process]
 import { chromium } from '@playwright/test';
 
 const [widthArg = '1440', secArg = '14', scheme = 'light', BASE = 'http://localhost:4790', STORY = 'process'] = process.argv.slice(2);

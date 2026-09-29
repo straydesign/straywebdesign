@@ -6,8 +6,8 @@ import { Suspense, useEffect, useRef, useState, type RefObject } from 'react';
 import type { StoryKey } from './lib/stories';
 
 /*
- * The 3D stage behind a scroll-told section: "How I build your site" and
- * "Your editor" each mount one with their own story. Decoration only: every
+ * The 3D stage behind a scroll-told section ("How I build your site", whose
+ * step 6 carries the editor). Decoration only: every
  * word is in the server-rendered copy beside it, so this is aria-hidden and a
  * reader without it loses nothing but the demonstration.
  *
@@ -101,8 +101,7 @@ type Mode = 'idle' | 'live' | 'capture' | 'still';
 
 /**
  * QA params name the story they drive: `?capture` or `?still=N` drive the
- * process (the scripts' original contract), `?capture=editor` and
- * `?still=N&story=editor` drive the editor. Every other stage runs normally.
+ * process. `?capture=<key>` and `?still=N&story=<key>` would drive another.
  */
 export default function ProcessStage({ story = 'process' }: { story?: StoryKey }) {
   const stage = useRef<HTMLDivElement>(null);

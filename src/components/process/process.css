@@ -53,31 +53,22 @@
   position: relative;
   background: var(--surface-card);
   border-bottom: 1px solid var(--border-default);
+  /* The stage's negative margin lets its sticky box ride up to a screen past the
+     run's end, so the last pose painted over the next section. Clip, not hidden:
+     clip makes no scroll container, so the stage stays sticky. */
+  overflow: clip;
 }
 
 .process__run {
   position: relative;
 }
 
-/* "Your editor" plays its own story on the same stage, one ground lighter so
-   the two runs read as two sections where they meet. */
-.process--editor {
-  background: var(--surface-page);
-}
-
-.process__note {
-  position: relative;
-  z-index: 1;
-  width: min(72rem, 100%);
-  margin: 0 auto;
-  padding: 0 2rem 4rem;
+.process__aside {
+  margin: 0;
   font-family: var(--font-family-plex), ui-sans-serif, system-ui, sans-serif;
   font-size: 0.75rem;
+  line-height: 1.5;
   color: var(--text-tertiary);
-}
-
-.process__note-mark {
-  color: var(--accent);
 }
 
 .process__stage {
@@ -122,6 +113,12 @@
 
 .process__beat--3 {
   min-height: 205vh;
+}
+
+/* Step 6: the editor's three quick edits, then the calendar. Quicker per pose
+   than the review rounds: it is one panel moment, not a chapter. */
+.process__beat--5 {
+  min-height: 270vh;
 }
 
 .process__copy {
@@ -238,6 +235,10 @@
     min-height: 200svh;
   }
 
+  .process__beat--5 {
+    min-height: 260svh;
+  }
+
   .process__copy {
     top: 55svh;
     width: 100%;
@@ -248,10 +249,6 @@
     background: color-mix(in srgb, var(--surface-card) 90%, transparent);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-  }
-
-  .process__note {
-    padding: 0 1rem 3rem;
   }
 
   .process__beat[data-poses='0'] .process__copy {
@@ -280,7 +277,8 @@
 
   .process__beat,
   .process__beat--2,
-  .process__beat--3 {
+  .process__beat--3,
+  .process__beat--5 {
     min-height: auto;
     padding: 8vh 2rem;
     display: grid;
@@ -309,7 +307,8 @@
 
 .process--static .process__beat,
 .process--static .process__beat--2,
-.process--static .process__beat--3 {
+.process--static .process__beat--3,
+.process--static .process__beat--5 {
   min-height: auto;
   padding: 8vh 2rem;
   display: grid;
@@ -335,7 +334,8 @@
   @media (prefers-reduced-motion: reduce) {
     .process__beat,
     .process__beat--2,
-    .process__beat--3 {
+    .process__beat--3,
+    .process__beat--5 {
       grid-template-columns: minmax(0, 1fr);
       gap: 1rem;
       padding: 6vh 1rem;
@@ -344,7 +344,8 @@
 
   .process--static .process__beat,
   .process--static .process__beat--2,
-  .process--static .process__beat--3 {
+  .process--static .process__beat--3,
+  .process--static .process__beat--5 {
     grid-template-columns: minmax(0, 1fr);
     gap: 1rem;
     padding: 6vh 1rem;

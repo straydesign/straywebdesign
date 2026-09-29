@@ -5,7 +5,6 @@
 // Playwright's recordVideo, which judders at ~25 fps).
 //
 //   node scripts/process-3d/capture.mjs <label> [width] [scheme] [selector] [baseUrl]
-//   (selector #editor drives the editor story and writes to qa/editor-3d/)
 //
 // Writes qa/process-3d/<label>-<width>[-dark].mp4 and keeps the PNG frames in
 // qa/process-3d/frames/<label>-<width>-<scheme>/ for reading.
@@ -22,7 +21,7 @@ const vp = phone
   ? { width, height: 844, deviceScaleFactor: 2, isMobile: true, hasTouch: true }
   : { width, height: 900, deviceScaleFactor: 1, isMobile: false };
 
-const STORY = selector === '#editor' ? 'editor' : 'process';
+const STORY = selector.replace('#', '');
 const ROOT = new URL(`../../qa/${STORY}-3d/`, import.meta.url).pathname;
 const FRAMES = join(ROOT, 'frames', `${label}-${width}-${scheme}`);
 await rm(FRAMES, { recursive: true, force: true });

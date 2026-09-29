@@ -14,7 +14,13 @@ import Still from '@/components/process/Still';
  * that demonstrates the step with its own artefact: the questions from the
  * call organising into a brief, the field sorted into what works and what
  * everyone says, the page assembling section by section, pins on the draft
- * across three rounds, the launch checks, and the editor and calendar after.
+ * across three rounds, the launch checks, and after launch the editor as a
+ * quick panel (three edits, the site following each) and the calendar after.
+ *
+ * Step 6 absorbed the separate Editor section on 2026-09-29 (Tom). Its facts
+ * that matter moved into step 6's copy: changes save as they are made, and
+ * show on the site in under a minute (a save clears the site's cache). "I
+ * adjust the editor" lives in the FAQ.
  *
  * `data-poses` names the formations a beat scrolls through (see
  * process/lib/formations.ts). A beat with more than one pose is taller so each
@@ -33,6 +39,10 @@ type Beat = {
   body: string[];
   /** What the owner hands over or does at this step, in one plain line. */
   you: string;
+  /** The pose the reduced-motion still holds. Default: the beat's last. */
+  still?: number;
+  /** A small print line under the beat, about what the 3D shows. */
+  note?: string;
 };
 
 /*
@@ -109,12 +119,15 @@ const BEATS: Beat[] = [
   },
   {
     id: 'after-launch',
-    poses: [10],
+    poses: [10, 11, 12, 13, 14],
+    still: 13,
+    note: 'The editor shown is a simplified version of the ones my clients use today.',
     name: 'After launch',
     title: 'I’m still here after launch.',
     body: [
-      'You get an editor for the everyday changes, like prices, photos and hours.',
-      'I show you how it works, one step at a time.',
+      'You get an editor for the everyday changes, like hours, photos and specials.',
+      'Each change saves the moment you make it.',
+      'It’s on your site in under a minute.',
       'A week after launch, I check in on what needs adjusting.',
       'Ninety days after launch, you decide whether it worked.',
       'If it didn’t, every dollar comes back.',
@@ -162,11 +175,13 @@ export default function Process() {
                 <p className="process__you">
                   <span className="process__you-label">Your part</span> {beat.you}
                 </p>
+                {beat.note && <p className="process__aside">{beat.note}</p>}
               </div>
-              <Still pose={beat.poses[beat.poses.length - 1]} />
+              <Still pose={beat.still ?? beat.poses[beat.poses.length - 1]} />
             </li>
           ))}
         </ol>
+
       </div>
     </section>
   );

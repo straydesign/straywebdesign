@@ -4,9 +4,8 @@ import * as THREE from 'three';
  * The shared kit behind every scroll-driven 3D story on the page: the piece
  * geometry, the pose and label types, and the builder a story is written with.
  * A STORY is a run of formations plus the camera's quarter for each; Scene.tsx
- * plays any story it is handed. "How I build your site" is one (formations.ts),
- * "Your editor" is another (editor-story.ts). Same pieces, same motion, same
- * light, so the two sections read as one hand.
+ * plays any story it is handed. "How I build your site" is the one on the page
+ * (formations.ts, with its after-launch editor in after-launch.ts).
  *
  * World: metres, Y up, ground at y = 0. Labels lie flat and read along +x, the
  * top of each line pointing away from the camera (-z).

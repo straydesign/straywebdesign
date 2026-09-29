@@ -1,3 +1,4 @@
+import { afterLaunch } from './after-launch';
 import { Build, H, S, XS, assemble, rand, registry, type Geo, type Story, type Tone, type V3, type View } from './kit';
 
 /**
@@ -21,9 +22,11 @@ import { Build, H, S, XS, assemble, rand, registry, type Geo, type Story, type T
  *   7  round 2    a change applied, a new note
  *   8  round 3    everything applied and ticked off
  *   9  launch     on your domain; speed, phone and search checks turn green
- *  10  after      your editor, a week-one check-in, day 90
+ *  10–14 after    your editor as a quick panel: new hours, a new photo, a
+ *                 special switched on, the site following each; then the
+ *                 week-one check-in and day 90 (after-launch.ts)
  *
- * The kit, the builder and the types are shared with the editor story: see kit.ts.
+ * The kit, the builder and the types live in kit.ts.
  */
 
 const REG = registry();
@@ -252,47 +255,9 @@ function launch(): Build {
   return f;
 }
 
-// ---------- 10 · after launch: your editor, and the calendar after it ----------
-
-const FIELDS = ['Prices', 'Photos', 'Hours'];
-
-function after(): Build {
-  const f = new Build(REG);
-  const PHX = -1.0;
-  f.put('Phone', [PHX, 0.02, 0.2], { c: 'device', s: [1.4, 1, 1.4], at: 0 });
-  const screen = f.put('Plate', [PHX, 0.043, 0.2], { c: 'paper', s: [0.43, 1, 0.9], at: 0.08 });
-  f.text('editor', 'Your editor', [-0.19, 0.02, -0.33], { on: screen, font: 'strong', size: XS, at: 0.4 });
-  FIELDS.forEach((name, i) => {
-    const z = 0.02 + i * 0.2;
-    const row = f.put('Tile', [PHX, 0.07, z + 0.02], { c: 'lane', s: [0.88, 0.4, 0.55], at: 0.2 + i * 0.08 });
-    f.text(`field-${i}`, name, [-0.17, 0.02, 0], { on: row, size: XS, at: 0.45 + i * 0.06 });
-    f.put('Node', [PHX + 0.145, 0.085, z + 0.02], { c: 'accent', s: [0.34, 0.3, 0.34], at: 0.3 + i * 0.08 });
-  });
-
-  // The weeks after, running down the page: launch, the week-one check-in, day 90.
-  const TX = -0.3;
-  const ZS = [-0.42, 0.2, 0.82];
-  f.rod([TX, ZS[0]], [TX, ZS[2]], 0.02, { at: 0.1 });
-  f.put('Bar', [TX, 0.03, ZS[0]], { c: 'accent', s: [ZS[1] - ZS[0], 0.3, 0.32], r: [0, -Math.PI / 2, 0], at: 0.35 });
-  const NAMES = ['Launch', 'Check-in, week 1', 'Day 90: you decide'];
-  ZS.forEach((z, i) => {
-    f.put('Block', [TX, 0.06, z], { c: i < 2 ? 'accent' : 'base', s: [0.55, 0.55, 0.55], r: [0, Math.PI / 4, 0], at: 0.2 + i * 0.12 });
-    f.text(`when-${i}`, NAMES[i], [TX + 0.17, 0.01, z], {
-      size: i === 1 ? H : S,
-      font: i === 1 ? 'strong' : 'text',
-      ink: i === 2 ? 'ink2' : 'ink',
-      at: 0.45 + i * 0.1,
-    });
-  });
-  // The check-in itself: one card under the week-one marker.
-  const card = f.put('Tile', [TX + 0.72, 0.03, ZS[1] + 0.3], { c: 'soft', s: [2.55, 1, 1.2], at: 0.6 });
-  f.text('checkin', 'What needs adjusting?', [-0.5, 0.03, 0], { on: card, size: S, at: 0.8 });
-  return f;
-}
-
 // ---------- assembly ----------
 
-const builds = [intro(), call(), brief(), research(false), research(true), draft(), round1(), round2(), round3(), launch(), after()];
+const builds = [intro(), call(), brief(), research(false), research(true), draft(), round1(), round2(), round3(), launch(), ...afterLaunch(REG)];
 
 /**
  * The camera's quarter per formation: azimuth (degrees right of front) and
@@ -310,12 +275,17 @@ const VIEWS: View[] = [
   { az: 2, el: 58 },
   { az: -3, el: 60 },
   { az: 5, el: 57 },
+  // After launch: nearly square on and high, so the editor's fields read.
+  { az: -4, el: 62 },
+  { az: 3, el: 64 },
+  { az: -3, el: 64 },
+  { az: 3, el: 64 },
   { az: -4, el: 58 },
 ];
 
 export const PROCESS: Story = assemble(
   REG,
   builds,
-  [false, false, true, false, true, true, true, true, true, true, false],
+  [false, false, true, false, true, true, true, true, true, true, true, true, true, true, false],
   VIEWS,
 );

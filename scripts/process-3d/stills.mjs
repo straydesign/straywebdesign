@@ -1,6 +1,6 @@
 // Renders the resting pose of each beat on `/?still=N` and saves light + dark
 // webp stills for the reduced-motion and no-WebGL fallback.
-//   node scripts/process-3d/stills.mjs [baseUrl] [story=process|editor]
+//   node scripts/process-3d/stills.mjs [baseUrl] [story=process]
 import { chromium } from '@playwright/test';
 import { execFileSync } from 'node:child_process';
 import { mkdir, rm } from 'node:fs/promises';
@@ -8,8 +8,8 @@ import { mkdir, rm } from 'node:fs/promises';
 const BASE = process.argv[2] ?? 'http://localhost:4790';
 const OUT = new URL('../../public/process-3d/stills/', import.meta.url).pathname;
 const STORY = process.argv[3] ?? 'process';
-const POSES = STORY === 'editor' ? [0, 1, 2, 3, 4] : [0, 2, 4, 5, 8, 9, 10];
-const PREFIX = STORY === 'editor' ? 'editor' : 'pose';
+const POSES = [0, 2, 4, 5, 8, 9, 13];
+const PREFIX = 'pose';
 const QUERY = STORY === 'process' ? '' : `&story=${STORY}`;
 await mkdir(OUT, { recursive: true });
 
