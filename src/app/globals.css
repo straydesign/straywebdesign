@@ -409,5 +409,10 @@ textarea {
 
 /* Instrument Serif ships one weight (400). A bold class made the browser fake the
    bold by smearing each glyph sideways, which read as doubled, fuzzy headings.
-   Never synthesize a weight the font does not have. Tom 2026-09-29. */
-.font-display { font-synthesis-weight: none; }
+   Never synthesize a weight the font does not have. Tom 2026-09-29.
+   Set on the root, not on .font-display: the section headings, the work titles
+   and .eyebrow reach the face through var(--font-display) or
+   var(--font-family-instrument) directly, with font-black or 600, and never
+   carry the class. The property inherits, so this covers every path. Every
+   other face on the site ships its bold, so nothing else changes. */
+html { font-synthesis-weight: none; }

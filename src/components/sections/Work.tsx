@@ -79,11 +79,11 @@ export default function Work() {
                       Live and running
                     </p>
                     <h3
-                      className="mb-3 font-black leading-[1.1] tracking-wide"
+                      className="mb-3 font-normal leading-[1.05] tracking-[-0.01em]"
                       style={{
                         fontFamily: 'var(--font-display)',
                         color: 'var(--ink)',
-                        fontSize: 'clamp(1.25rem, 2.4vw, 1.8rem)',
+                        fontSize: 'clamp(1.5rem, 2.8vw, 2.15rem)',
                       }}
                     >
                       {item.name}

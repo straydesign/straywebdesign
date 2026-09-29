@@ -48,11 +48,11 @@ export default function NextStudy({ currentSlug }: { currentSlug: string }) {
                     />
                   )}
                   <h3
-                    className="mt-4 font-black leading-[1.15] tracking-wide"
+                    className="mt-4 font-normal leading-[1.1] tracking-[-0.01em]"
                     style={{
                       fontFamily: 'var(--font-display)',
                       color: 'var(--ink)',
-                      fontSize: 'clamp(1.05rem, 1.8vw, 1.35rem)',
+                      fontSize: 'clamp(1.25rem, 2.1vw, 1.6rem)',
                     }}
                   >
                     {c.client}
