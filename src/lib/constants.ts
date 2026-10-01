@@ -165,7 +165,7 @@ export const VSL = {
       a: [
         "You need to know the person you're working with has the time for you and isn't going to screw you over.",
         "You own the site. It isn't sitting on a platform you have to keep paying to keep the lights on, and if you ever want to take it somewhere else, it goes with you.",
-        "If you're not happy, 90 days, no questions asked. We split ends and you get all your money back. That's the Love It or Leave It Guarantee.",
+        "If you're not happy, 90 days, no questions asked. We part ways and you get all your money back. That's the Love It or Leave It Guarantee.",
         "What's worse: not giving it a chance, or giving it a chance and having 90 days?",
       ],
     },
