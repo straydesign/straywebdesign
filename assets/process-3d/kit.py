@@ -11,13 +11,19 @@ Pieces (metres, described Y-up as three.js sees them):
   Plate   1.00 x 0.03 x 1.00 slab (the page, the brief, lanes, dashboard). Centre.
   Bar     1.00 long on +X, 0.14 tall, 0.20 deep. Origin at the LEFT end, so
           scale.x draws it out from its start (text lines, progress).
+          Tile, Plate and Bar have rounded plan corners and no vertex away from
+          a corner: the site 9-slices them (src/components/process/lib/slice.ts),
+          so the radius holds at any size. The radius and bevel here must match
+          SLICE in lib/kit.ts.
   Node    puck, r 0.13, h 0.12 (the call, checks, toggles). Centre.
   Block   0.20 cube (the motion layer, the scatter). Centre.
   Rod     r 0.016, 1.00 long on +X (connectors). Origin at the left end.
   Pin     a review pin: ball head on a needle, 0.36 tall. Origin at the TIP, so
           it drops point-first onto the draft.
   Tick    a check mark lying flat, 0.30 wide, 0.04 thick. Centre.
-  Phone   0.36 x 0.04 x 0.74 slab with rounded corners (the call, the editor). Centre.
+  Phone   0.36 x 0.04 x 0.74 body with a rounded frame, a power button on the
+          right edge and two volume buttons on the left. The screen, the camera
+          island and the home bar are pieces set on it by the story. Centre.
 """
 import math
 import os
@@ -66,6 +72,23 @@ def box(name, sx, sy, sz, origin=(0, 0, 0)):
         v.co.x = v.co.x * sx - origin[0]
         v.co.y = v.co.y * sy - origin[1]
         v.co.z = v.co.z * sz - origin[2]
+    return link(name, bm)
+
+
+def slab(name, sx, sy, sz, radius, origin=(0, 0, 0)):
+    """A box with its plan corners rounded, for the pieces the site 9-slices."""
+    bm = bmesh.new()
+    bmesh.ops.create_cube(bm, size=1.0)
+    for v in bm.verts:
+        v.co.x *= sx
+        v.co.y *= sy
+        v.co.z *= sz
+    vertical = [e for e in bm.edges if abs(e.verts[0].co.z - e.verts[1].co.z) > sz * 0.5]
+    bmesh.ops.bevel(bm, geom=vertical, offset=radius, segments=8, affect="EDGES", profile=0.5)
+    for v in bm.verts:
+        v.co.x -= origin[0]
+        v.co.y -= origin[1]
+        v.co.z -= origin[2]
     return link(name, bm)
 
 
@@ -131,15 +154,29 @@ def phone():
         v.co.y *= 0.74
         v.co.z *= 0.04
     vertical = [e for e in bm.edges if abs(e.verts[0].co.z - e.verts[1].co.z) > 0.03]
-    bmesh.ops.bevel(bm, geom=vertical, offset=0.07, segments=10, affect="EDGES", profile=0.5)
+    bmesh.ops.bevel(bm, geom=vertical, offset=0.075, segments=14, affect="EDGES", profile=0.5)
+    # Buttons: separate shells sunk into the frame. (x, y, length): power on the right, volume on the left.
+    for x, y, length in ((0.18, 0.09, 0.1), (-0.18, 0.17, 0.06), (-0.18, 0.085, 0.06)):
+        button = bmesh.new()
+        bmesh.ops.create_cube(button, size=1.0)
+        for v in button.verts:
+            v.co.x = v.co.x * 0.012 + x
+            v.co.y = v.co.y * length + y
+            v.co.z *= 0.012
+        tmp = bpy.data.meshes.new("tmp")
+        button.to_mesh(tmp)
+        button.free()
+        bm.from_mesh(tmp)
+        bpy.data.meshes.remove(tmp)
     obj = link("Phone", bm)
-    return finish(obj, bevel=0.01, segments=3)
+    # A rounded frame: the bevel takes most of the edge, the way a phone's band does.
+    return finish(obj, bevel=0.014, segments=5)
 
 
 def build():
-    finish(box("Tile", 0.44, 0.30, 0.05), bevel=0.012, segments=3)
-    finish(box("Plate", 1.00, 1.00, 0.03), bevel=0.008, segments=2)
-    finish(box("Bar", 1.00, 0.20, 0.14, origin=(-0.5, 0, 0)), bevel=0.02, segments=3)
+    finish(slab("Tile", 0.44, 0.30, 0.05, 0.03), bevel=0.012, segments=3)
+    finish(slab("Plate", 1.00, 1.00, 0.03, 0.05), bevel=0.008, segments=2)
+    finish(slab("Bar", 1.00, 0.20, 0.14, 0.04, origin=(-0.5, 0, 0)), bevel=0.02, segments=3)
     finish(cylinder("Node", 0.13, 0.12), bevel=0.02, segments=3)
     finish(box("Block", 0.20, 0.20, 0.20), bevel=0.024, segments=3)
     finish(cylinder("Rod", 0.016, 1.0, verts=12, axis="X", origin_end=True))

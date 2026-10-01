@@ -53,9 +53,13 @@ const QUESTIONS = ['Who comes in?', 'What do they ask first?', 'What sells best?
 const PHONE_AT: V3 = [-1.05, 0.02, 0.02];
 
 function phoneOnCall(f: Build, at = 0) {
-  f.put('Phone', PHONE_AT, { c: 'device', r: [0, 0.1, 0], at });
-  const screen = f.put('Plate', [PHONE_AT[0], 0.043, PHONE_AT[2]], { c: 'paper', s: [0.3, 1, 0.64], r: [0, 0.1, 0], at: at + 0.1 });
-  f.put('Node', [PHONE_AT[0], 0.075, PHONE_AT[2] + 0.12], { c: 'accent', s: [0.62, 0.5, 0.62], at: at + 0.25 });
+  const turn = 0.1;
+  f.put('Phone', PHONE_AT, { c: 'device', r: [0, turn, 0], at });
+  // An even bezel, and the screen's corners concentric with the body's.
+  const screen = f.put('Plate', [PHONE_AT[0], 0.041, PHONE_AT[2]], { c: 'paper', s: [0.32, 0.3, 0.7], rad: 0.055, r: [0, turn, 0], at: at + 0.1 });
+  const up = (dz: number): V3 => [PHONE_AT[0] + dz * Math.sin(turn), 0.046, PHONE_AT[2] + dz * Math.cos(turn)];
+  f.put('Plate', up(-0.31), { id: 'call-island', c: 'device', s: [0.09, 0.2, 0.028], rad: 1, r: [0, turn, 0], at: at + 0.15 });
+  f.put('Node', [PHONE_AT[0], 0.066, PHONE_AT[2] + 0.12], { c: 'accent', s: [0.62, 0.5, 0.62], at: at + 0.25 });
   f.text('call', 'Our call', [0, 0.02, -0.14], { on: screen, font: 'strong', size: XS, anchorX: 'center', at: 0.5 });
 }
 
@@ -171,7 +175,7 @@ function page(f: Build, round: Round, launched = false) {
   // The motion layer goes on last, over the hero.
   f.put('Block', [PX + 0.52, 0.3, -0.52], { c: 'accent', s: [1.05, 1.05, 1.05], r: [0.5, 0.6, 0.2], at: 0.86, spin: 0.55 });
   f.put('Node', [PX + 0.2, 0.2, -0.42], { c: 'base', s: [0.5, 0.5, 0.5], r: [0.35, 0, 0.2], at: 0.92, spin: -0.4 });
-  f.text('motion', '3D and motion', [0.74, 0.03, 0.24], { on: hero, size: 0.068, ink: 'accentInk', anchorX: 'right', at: 0.95 });
+  f.text('motion', '3D and motion', [0.74, 0.03, 0.24], { on: hero, size: 0.068, ink: 'accentInk', anchorX: 'right', at: 0.95, late: true });
 }
 
 const PIN_LOOK: Record<'like' | 'change' | 'use', { c: Tone; word: string; w: number }> = {

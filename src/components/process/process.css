@@ -20,6 +20,7 @@
   --p-done: #3f9468;
   --p-warn: #d8923a;
   --p-device: #24262c;
+  --p-photo: #ffffff;
   --p-ink: #111111;
   --p-ink-2: #56565a;
   --p-on-fill: #ffffff;
@@ -39,6 +40,7 @@
     --p-done: #3f9a6c;
     --p-warn: #c98530;
     --p-device: #0b0c0f;
+    --p-photo: #c4c8d0;
     --p-ink: #f4f5f7;
     --p-ink-2: #c8ccd4;
     --p-on-fill: #ffffff;

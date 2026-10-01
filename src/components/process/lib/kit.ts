@@ -12,7 +12,9 @@ import * as THREE from 'three';
  */
 
 export type Geo = 'Tile' | 'Plate' | 'Bar' | 'Node' | 'Block' | 'Rod' | 'Pin' | 'Tick' | 'Phone';
-export type Tone = 'base' | 'paper' | 'lane' | 'accent' | 'soft' | 'done' | 'warn' | 'device';
+export type Tone = 'base' | 'paper' | 'lane' | 'accent' | 'soft' | 'done' | 'warn' | 'device' | 'photo';
+/** The photographs a piece can carry on its top face (public/process-3d/photos). */
+export type Img = 'wings' | 'burger' | 'pretzel';
 export type Ink = 'ink' | 'ink2' | 'onFill' | 'accentInk';
 export type V3 = [number, number, number];
 export type Pose = {
@@ -26,9 +28,11 @@ export type Pose = {
   tint?: number;
   /** Radians per second of slow turn about Y while resting (the motion layer). */
   spin?: number;
+  /** Corner radius in metres, for the slab pieces. Default: SLICE[geo].r. Clamped to fit, so 1 is a pill. */
+  rad?: number;
 };
 export type Formation = Partial<Record<string, Pose>>;
-export type Piece = { id: string; geo: Geo };
+export type Piece = { id: string; geo: Geo; img?: Img };
 
 export type LabelDef = {
   id: string;
@@ -58,7 +62,18 @@ export const EXTENTS: Record<Geo, [V3, V3]> = {
   Rod: [[0, -0.016, -0.016], [1, 0.016, 0.016]],
   Pin: [[-0.075, 0, -0.075], [0.075, 0.36, 0.075]],
   Tick: [[-0.16, -0.02, -0.13], [0.18, 0.02, 0.1]],
-  Phone: [[-0.18, -0.02, -0.37], [0.18, 0.02, 0.37]],
+  Phone: [[-0.186, -0.02, -0.37], [0.186, 0.02, 0.37]],
+};
+
+/**
+ * The slab pieces keep their corners at any size (slice.ts): `r` is the corner
+ * radius and `b` the edge bevel, in metres, exactly as kit.py models them.
+ * `r` is also the radius a piece gets when its pose names none.
+ */
+export const SLICE: Partial<Record<Geo, { r: number; b: number }>> = {
+  Tile: { r: 0.03, b: 0.012 },
+  Plate: { r: 0.05, b: 0.008 },
+  Bar: { r: 0.04, b: 0.02 },
 };
 
 /** How a hidden piece collapses, per geometry: bars and rods along their length. */
@@ -78,8 +93,8 @@ export const HIDDEN_SCALE: Record<Geo, V3> = {
 // ---------- builders ----------
 
 /** One story's pieces and labels, so two stories never share a pool. */
-export type Registry = { geo: Map<string, Geo>; labels: Map<string, LabelDef> };
-export const registry = (): Registry => ({ geo: new Map(), labels: new Map() });
+export type Registry = { geo: Map<string, Geo>; labels: Map<string, LabelDef>; img: Map<string, Img> };
+export const registry = (): Registry => ({ geo: new Map(), labels: new Map(), img: new Map() });
 
 const euler = new THREE.Euler();
 const quatTmp = new THREE.Quaternion();
@@ -95,10 +110,18 @@ export type Opts = {
   at?: number;
   tint?: number;
   spin?: number;
+  rad?: number;
+  /** A photograph on the top face. Belongs to the piece, so it needs an `id`. */
+  img?: Img;
   /** A stable name, so the same piece is the same object in every formation it appears in. Default: next from the pool. */
   id?: string;
 };
-export type TextOpts = Partial<Omit<LabelDef, 'id' | 'text'>> & { on?: string; at?: number };
+/**
+ * `on`: the piece the text sits on. Text on a piece arrives with it (Tom 10-01: words come in with the
+ * card they sit on, never after it), so `at` is capped at the piece's own arrival.
+ * `late`: the text IS the change being shown (new hours on an unchanged screen), so it keeps its own `at`.
+ */
+export type TextOpts = Partial<Omit<LabelDef, 'id' | 'text'>> & { on?: string; at?: number; late?: boolean };
 
 export class Build {
   constructor(private readonly reg: Registry) {}
@@ -116,6 +139,7 @@ export class Build {
       id = `${geo}${n}`;
     }
     this.reg.geo.set(id, geo);
+    if (o.img) this.reg.img.set(id, o.img);
     this.pieces[id] = {
       p,
       q: o.r ? quat(...o.r) : quat(),
@@ -124,6 +148,7 @@ export class Build {
       at: o.at ?? 0,
       tint: o.tint,
       spin: o.spin,
+      rad: o.rad,
     };
     return id;
   }
@@ -136,7 +161,7 @@ export class Build {
   }
 
   text(id: string, text: string, p: V3, d: TextOpts = {}) {
-    const { on, at, ...def } = d;
+    const { on, at, late, ...def } = d;
     const full: LabelDef = {
       id,
       text,
@@ -150,7 +175,9 @@ export class Build {
     const prev = this.reg.labels.get(id);
     if (prev && JSON.stringify(prev) !== JSON.stringify(full)) throw new Error(`label ${id} set two ways`);
     this.reg.labels.set(id, full);
-    this.labels[id] = { p, on, at: at ?? 0.5 };
+    const surface = on && !late ? this.pieces[on]?.at : undefined;
+    const when = at ?? 0.5;
+    this.labels[id] = { p, on, at: surface === undefined ? when : Math.min(when, surface) };
   }
 }
 
@@ -185,7 +212,7 @@ export function assemble(reg: Registry, builds: Build[], locks: boolean[], views
   return {
     formations: builds.map((b) => b.pieces),
     labelFormations: builds.map((b) => b.labels),
-    pieces: [...reg.geo.entries()].map(([id, geo]) => ({ id, geo })),
+    pieces: [...reg.geo.entries()].map(([id, geo]) => ({ id, geo, img: reg.img.get(id) })),
     labels: [...reg.labels.values()],
     locks,
     views,

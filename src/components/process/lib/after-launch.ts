@@ -1,4 +1,4 @@
-import { Build, H, S, XS, type Registry, type Tone } from './kit';
+import { Build, H, S, XS, type Opts, type Registry } from './kit';
 
 /**
  * Step 6 of "How I build your site", after launch: the editor as a quick panel
@@ -34,21 +34,62 @@ import { Build, H, S, XS, type Registry, type Tone } from './kit';
 const tw = (w: number) => w / 0.44;
 const td = (d: number) => d / 0.3;
 
-// The panel.
+/**
+ * Spacing, in metres. One inset, one gutter, and radii that nest: a piece set
+ * inside another takes the outer radius less the gap between them.
+ */
+const INSET = 0.05;
+const GUT = 0.1;
+const GAP = 0.07;
+const PANEL_RAD = 0.1;
+const RAIL_RAD = PANEL_RAD - INSET;
+
+// The panel. Its top edge is fixed; its depth follows what the screen holds.
 const PN_L = -1.57;
 const PN_R = 0.73;
 const PN_X = (PN_L + PN_R) / 2;
+const PN_T = -0.87;
+/** Where the callouts are set, above the panel and the phone. */
 const TOP = -1.02;
 
 // The menu down its left edge.
 const MENU = ['Home', 'Hours', 'Services', 'Photos', 'Specials'] as const;
 type Screen = 'Hours' | 'Photos' | 'Specials';
-const menuZ = (i: number) => -0.5 + i * 0.22;
-const RAIL_L = PN_L + 0.03;
-const ICON_X = RAIL_L + 0.1;
+const ROW = 0.19;
+const RAIL_L = PN_L + INSET;
+const RAIL_OPEN = 0.62;
+const RAIL_SHUT = 0.2;
+const ICON_X = RAIL_L + RAIL_SHUT / 2;
+const menuZ = (i: number) => PN_T + INSET + INSET + ROW / 2 + i * 0.22;
+/** The least depth the panel can have: the whole menu, with its inset. */
+const MENU_END = menuZ(MENU.length - 1) + ROW / 2 + INSET + INSET;
+
+const TITLE_Z = PN_T + 0.17;
+const FIELD = 0.17;
 
 // The site, on a phone beside it.
 const PHX = 1.5;
+const PHONE = 2.4;
+/** Screen: the body less an even bezel, its corners concentric with the body's. */
+const BEZEL = 0.04;
+const SCREEN_W = 0.36 * PHONE - BEZEL * 2;
+const SCREEN_D = 0.74 * PHONE - BEZEL * 2;
+const SCREEN_RAD = 0.075 * PHONE - BEZEL;
+const SCREEN_T = -SCREEN_D / 2;
+/** What the site shows sits in one column, the same margin either side. */
+const SITE_M = 0.05;
+const SITE_W = SCREEN_W - SITE_M * 2;
+const SITE_L = -SITE_W / 2;
+const SITE_PHOTO_D = SITE_W / 1.5;
+const SITE_PHOTO_Z = SCREEN_T + 0.245 + GAP + SITE_PHOTO_D / 2;
+// Under the photo: the place's name, its hours, today's special once one is on, and a call button.
+// The finished site is the payoff of the whole story, so it reads like a real one (Tom 10-01).
+const SITE_NAME_Z = SITE_PHOTO_Z + SITE_PHOTO_D / 2 + 0.11;
+const SITE_HOURS_Z = SITE_NAME_Z + 0.01;
+const SITE_SPECIAL_D = 0.18;
+const SITE_SPECIAL_Z = SITE_HOURS_Z + 0.13 + 0.1 + SITE_SPECIAL_D / 2;
+const SITE_CALL_D = 0.13;
+const SITE_CALL_Z = SITE_SPECIAL_Z + SITE_SPECIAL_D / 2 + 0.05 + SITE_CALL_D / 2;
 
 type Edit = 0 | 1 | 2 | 3;
 
@@ -59,84 +100,89 @@ function editor(reg: Registry, edit: Edit): Build {
   const open = edit < 2;
   const sat = edit >= 1 ? '9am – 5pm' : '9am – 3pm';
 
-  // ---- the panel and its menu ----
-  f.put('Plate', [PN_X, 0.015, -0.14], { id: 'ed-panel', c: 'paper', s: [PN_R - PN_L, 1, 1.46], at: 0 });
-  const railW = open ? 0.62 : 0.2;
+  const railW = open ? RAIL_OPEN : RAIL_SHUT;
   const railX = RAIL_L + railW / 2;
-  f.put('Plate', [railX, 0.036, -0.13], { id: 'ed-rail', c: 'lane', s: [railW, 1, 1.36], at: 0.05 });
-  const active = MENU.indexOf(screen);
-  f.put('Tile', [railX, 0.062, menuZ(active)], { id: 'ed-row-on', c: 'soft', s: [tw(railW - 0.05), 0.5, td(0.19)], at: 0.1 });
-  MENU.forEach((name, i) => {
-    f.put('Node', [ICON_X, 0.085, menuZ(i)], { id: `ed-icon-${i}`, c: i === active ? 'accent' : 'base', s: [0.4, 0.4, 0.4], at: 0.1 + i * 0.04 });
-    if (open) f.text(`ed-menu-${i}`, name, [ICON_X + 0.1, 0.075, menuZ(i)], { size: XS, font: i === active ? 'strong' : 'text', at: 0.2 + i * 0.04 });
-  });
-
-  // ---- the form: whatever the menu gives back, it takes ----
-  const L = railX + railW / 2 + 0.1;
-  const R = PN_R - 0.08;
+  const L = RAIL_L + railW + GUT;
+  const R = PN_R - GUT;
   const W = R - L;
   const FX = L + W / 2;
-  f.text(`ed-title-${screen}`, screen, [L, 0.035, -0.64], { size: H, font: 'strong', at: 0.3 });
-
-  if (edit >= 1) {
-    const chip = f.put('Plate', [R - 0.2, 0.036, -0.64], { id: `ed-saved-${edit}`, c: 'done', s: [0.4, 1, 0.15], at: 0.62 });
-    f.text(`ed-saved-${edit}`, 'Saved', [0, 0.02, 0], { on: chip, size: XS, font: 'strong', ink: 'onFill', anchorX: 'center', at: 0.8 });
-  }
 
   /** A labelled field: the label over it, the value set inside it. */
   const field = (slot: number, z: number, label: string, value: string, lit = false, at = 0.2) => {
-    f.text(`ed-label-${screen}-${slot}`, label, [L, 0.035, z], { size: XS, ink: 'ink2', at: 0.35 + slot * 0.05 });
-    const t = f.put('Tile', [FX, 0.055, z + 0.16], {
+    f.text(`ed-label-${screen}-${slot}`, label, [L, 0.035, z], { size: XS, ink: 'ink2', at: at + slot * 0.05 });
+    const t = f.put('Tile', [FX, 0.055, z + 0.15], {
       id: `ed-field-${slot}`,
       c: lit ? 'soft' : 'lane',
       tint: lit ? 0.3 : undefined,
-      s: [tw(W), 1, td(0.17)],
+      s: [tw(W), 1, td(FIELD)],
       at: at + slot * 0.05,
     });
     f.text(`ed-value-${screen}-${slot}-${value}`, value, [-W / 2 + 0.05, 0.03, 0], { on: t, size: S, font: 'strong', at: 0.5 + slot * 0.05 });
-    return t;
+    return z + 0.15 + FIELD / 2;
   };
 
+  // ---- the form: whatever the menu gives back, it takes ----
+  f.text(`ed-title-${screen}`, screen, [L, 0.035, TITLE_Z], { size: H, font: 'strong', at: 0.3 });
+  if (edit >= 1) {
+    const chip = f.put('Plate', [R - 0.2, 0.036, TITLE_Z], { id: `ed-saved-${edit}`, c: 'done', s: [0.4, 1, 0.15], rad: 1, at: 0.62 });
+    f.text(`ed-saved-${edit}`, 'Saved', [0, 0.02, 0], { on: chip, size: XS, font: 'strong', ink: 'onFill', anchorX: 'center', at: 0.8 });
+  }
+
+  let end = 0;
   let from: [number, number] = [R, 0];
   let to: [number, number] = [PHX, 0];
 
   if (screen === 'Hours') {
-    field(0, -0.44, 'Monday to Friday', '8am – 6pm');
-    field(1, -0.1, 'Saturday', sat, edit === 1);
-    field(2, 0.24, 'Sunday', 'Closed');
-    from = [R, 0.06];
-    to = [PHX - 0.36, 0.04];
+    const z = TITLE_Z + 0.2;
+    field(0, z, 'Monday to Friday', '8am – 6pm');
+    field(1, z + 0.35, 'Saturday', sat, edit === 1);
+    end = field(2, z + 0.7, 'Sunday', 'Closed');
+    from = [R, z + 0.5];
+    to = [PHX + SITE_L - 0.02, SITE_HOURS_Z + 0.13];
   }
 
   if (screen === 'Photos') {
-    // Three photos; the first is the new one, with a sun on it so it reads as a photo.
-    const PW = (W - 0.2) / 3;
-    [0, 1, 2].forEach((k) => {
-      const x = L + PW / 2 + k * (PW + 0.1);
-      const tone: Tone = k === 0 ? 'warn' : k === 1 ? 'soft' : 'base';
-      f.put('Tile', [x, 0.055, -0.26], { id: k === 0 ? 'ed-photo-new' : `ed-photo-${k}`, c: tone, s: [tw(PW), 1, td(0.44)], at: k === 0 ? 0.35 : 0.15 + k * 0.05 });
-      if (k === 0) f.put('Node', [x + PW / 2 - 0.12, 0.095, -0.4], { id: 'ed-photo-sun', c: 'paper', s: [0.36, 0.3, 0.36], at: 0.6 });
+    // Three photos off a real menu; the first is the new one.
+    const PW = (W - GAP * 2) / 3;
+    const PD = PW / 1.5;
+    const z = TITLE_Z + 0.13 + PD / 2;
+    (['wings', 'burger', 'pretzel'] as const).forEach((img, k) => {
+      const x = L + PW / 2 + k * (PW + GAP);
+      f.put('Tile', [x, 0.055, z], { id: `ed-photo-${img}`, img, c: 'photo', s: [tw(PW), 1, td(PD)], at: k === 0 ? 0.35 : 0.15 + k * 0.05 });
     });
-    f.text('ed-photo-tag', 'New', [L + 0.04, 0.09, -0.08], { size: XS, font: 'strong', ink: 'ink', at: 0.7 });
-    field(1, 0.1, 'Caption', 'The new sign out front');
-    from = [R, -0.3];
-    to = [PHX - 0.34, -0.4];
+    const tag = f.put('Plate', [L + 0.04 + 0.11, 0.086, z - PD / 2 + 0.04 + 0.055], { id: 'ed-photo-tag', c: 'accent', s: [0.22, 0.3, 0.11], rad: 1, at: 0.6 });
+    f.text('ed-photo-tag', 'New', [0, 0.01, 0], { on: tag, size: XS, font: 'strong', ink: 'onFill', anchorX: 'center', at: 0.7 });
+    end = field(1, z + PD / 2 + 0.14, 'Caption', 'Buffalo wings');
+    from = [R, z];
+    to = [PHX + SITE_L, SITE_PHOTO_Z];
   }
 
   if (screen === 'Specials') {
     // Two specials, each a row with a switch: soup switched on, chili left off.
+    const z0 = TITLE_Z + 0.13 + 0.11;
     ([['Soup of the day', true], ['Chili', false]] as const).forEach(([name, on], k) => {
-      const z = -0.36 + k * 0.3;
+      const z = z0 + k * (0.22 + GAP - 0.01);
       const row = f.put('Tile', [FX, 0.055, z], { id: `ed-field-${k}`, c: on ? 'soft' : 'lane', tint: on ? 0.55 : undefined, s: [tw(W), 1, td(0.22)], at: 0.2 + k * 0.05 });
       f.text(`ed-special-${k}`, name, [-W / 2 + 0.05, 0.03, 0], { on: row, size: S, font: 'strong', at: 0.5 + k * 0.05 });
-      const trackX = R - 0.2;
-      f.put('Plate', [trackX, 0.085, z], { id: `ed-switch-${k}`, c: on ? 'done' : 'base', tint: on ? 0.55 : undefined, s: [0.28, 1, 0.13], at: 0.3 + k * 0.05 });
+      const trackX = R - 0.06 - 0.14;
+      f.put('Plate', [trackX, 0.085, z], { id: `ed-switch-${k}`, c: on ? 'done' : 'base', tint: on ? 0.55 : undefined, s: [0.28, 1, 0.14], rad: 1, at: 0.3 + k * 0.05 });
       f.put('Node', [trackX + (on ? 0.07 : -0.07), 0.1, z], { id: `ed-knob-${k}`, c: 'paper', s: [0.42, 0.3, 0.42], at: 0.4 + k * 0.05 });
     });
-    field(2, 0.12, 'Price', '$6');
-    from = [R, -0.36];
-    to = [PHX - 0.36, 0.36];
+    end = field(2, z0 + 0.28 + 0.11 + 0.14, 'Price', '$6');
+    from = [R, z0];
+    to = [PHX + SITE_L, SITE_SPECIAL_Z];
   }
+
+  // ---- the panel and its menu, as deep as the screen needs ----
+  const bottom = Math.max(end + 0.12, MENU_END);
+  f.put('Plate', [PN_X, 0.015, (PN_T + bottom) / 2], { id: 'ed-panel', c: 'paper', s: [PN_R - PN_L, 1, bottom - PN_T], rad: PANEL_RAD, at: 0 });
+  f.put('Plate', [railX, 0.036, (PN_T + bottom) / 2], { id: 'ed-rail', c: 'lane', s: [railW, 1, bottom - PN_T - INSET * 2], rad: RAIL_RAD, at: 0.05 });
+  const active = MENU.indexOf(screen);
+  f.put('Tile', [railX, 0.062, menuZ(active)], { id: 'ed-row-on', c: 'soft', s: [tw(railW - 0.06), 0.5, td(ROW)], at: 0.1 });
+  MENU.forEach((name, i) => {
+    f.put('Node', [ICON_X, 0.085, menuZ(i)], { id: `ed-icon-${i}`, c: i === active ? 'accent' : 'base', s: [0.4, 0.4, 0.4], at: 0.1 + i * 0.04 });
+    if (open) f.text(`ed-menu-${i}`, name, [ICON_X + 0.1, 0.075, menuZ(i)], { size: XS, font: i === active ? 'strong' : 'text', at: 0.1 + i * 0.04 });
+  });
 
   // ---- the site, on a phone ----
   site(f, edit);
@@ -152,23 +198,32 @@ function editor(reg: Registry, edit: Edit): Build {
 
 /** The owner's site on a phone, after `edit` changes. Stays put while the editor works beside it. */
 function site(f: Build, edit: Edit) {
-  f.put('Phone', [PHX, 0.02, 0], { id: 'ed-phone', c: 'device', s: [2.4, 1, 2.45], at: 0.1 });
-  const screen = f.put('Plate', [PHX, 0.043, 0], { id: 'ed-screen', c: 'paper', s: [0.78, 1, 1.66], at: 0.15 });
+  f.put('Phone', [PHX, 0.03, 0], { id: 'ed-phone', c: 'device', s: [PHONE, 1.5, PHONE], at: 0.1 });
+  const screen = f.put('Plate', [PHX, 0.0615, 0], { id: 'ed-screen', c: 'paper', s: [SCREEN_W, 0.3, SCREEN_D], rad: SCREEN_RAD, at: 0.15 });
+  f.put('Plate', [PHX, 0.068, SCREEN_T + 0.07], { id: 'ed-island', c: 'device', s: [0.2, 0.2, 0.06], rad: 1, at: 0.2 });
+  f.put('Plate', [PHX, 0.068, -SCREEN_T - 0.055], { id: 'ed-homebar', c: 'device', s: [0.26, 0.2, 0.024], rad: 1, at: 0.2 });
   f.text('ed-site', '[ Your site ]', [PHX, 0.01, TOP], { size: S, font: 'strong', ink: 'ink2', anchorX: 'center', anchorY: 'bottom', at: 0.4 });
-  f.text('ed-url', 'yourbusiness.com', [0, 0.02, -0.72], { on: screen, size: 0.072, ink: 'ink2', anchorX: 'center', at: 0.5 });
 
-  const photoNew = edit >= 2;
-  f.put('Tile', [PHX, 0.07, -0.4], { id: 'ed-site-photo', c: photoNew ? 'warn' : 'soft', tint: edit === 2 ? 0.72 : undefined, s: [tw(0.66), 0.4, td(0.42)], at: 0.2 });
-  if (photoNew) f.put('Node', [PHX + 0.2, 0.095, -0.52], { id: 'ed-site-sun', c: 'paper', s: [0.3, 0.3, 0.3], at: edit === 2 ? 0.85 : 0 });
+  // The address bar, then the page under it.
+  const bar = f.put('Tile', [PHX, 0.072, SCREEN_T + 0.19], { id: 'ed-urlbar', c: 'lane', s: [tw(SITE_W), 0.25, td(0.11)], rad: 1, at: 0.2 });
+  f.text('ed-url', 'yourbusiness.com', [0, 0.012, 0], { on: bar, size: 0.072, ink: 'ink2', anchorX: 'center', at: 0.5 });
 
-  f.text('ed-site-hours', 'Hours', [-0.33, 0.02, -0.08], { on: screen, size: XS, font: 'strong', at: 0.55 });
+  // The photo the site leads with: the old one, until the new one is picked in the editor.
+  const photo: Opts = { c: 'photo', s: [tw(SITE_W), 0.4, td(SITE_PHOTO_D)] };
+  if (edit < 2) f.put('Tile', [PHX, 0.076, SITE_PHOTO_Z], { ...photo, id: 'ed-site-photo', img: 'burger', at: 0.2 });
+  else f.put('Tile', [PHX, 0.076, SITE_PHOTO_Z], { ...photo, id: 'ed-site-photo-new', img: 'wings', at: edit === 2 ? 0.72 : 0.2 });
+
+  f.text('ed-site-name', 'Corner Grill', [SITE_L, 0.012, SITE_NAME_Z], { on: screen, size: S, font: 'strong', at: 0.3 });
   const sat = edit >= 1 ? 'new' : 'old';
-  f.text(`ed-site-sat-${sat}`, edit >= 1 ? 'Sat 9am – 5pm' : 'Sat 9am – 3pm', [-0.33, 0.02, 0.05], { on: screen, size: XS, at: edit === 1 ? 0.8 : 0.6 });
+  f.text(`ed-site-sat-${sat}`, edit >= 1 ? 'Sat 9am – 5pm' : 'Sat 9am – 3pm', [SITE_L, 0.012, SITE_HOURS_Z + 0.13], { on: screen, size: XS, at: edit === 1 ? 0.8 : 0.6, late: edit === 1 });
 
   if (edit >= 3) {
-    const card = f.put('Tile', [PHX, 0.07, 0.36], { id: 'ed-site-special', c: 'accent', s: [tw(0.66), 0.4, td(0.26)], at: 0.8 });
-    f.text('ed-site-special', 'Soup today, $6', [0, 0.03, 0], { on: card, size: XS, font: 'strong', ink: 'onFill', anchorX: 'center', at: 0.85 });
+    const card = f.put('Tile', [PHX, 0.076, SITE_SPECIAL_Z], { id: 'ed-site-special', c: 'soft', tint: 0.55, s: [tw(SITE_W), 0.4, td(SITE_SPECIAL_D)], at: 0.8 });
+    f.text('ed-site-special', 'Soup today, $6', [0, 0.02, 0], { on: card, size: XS, font: 'strong', anchorX: 'center', at: 0.85 });
   }
+
+  const call = f.put('Tile', [PHX, 0.076, SITE_CALL_Z], { id: 'ed-site-call', c: 'accent', s: [tw(SITE_W), 0.4, td(SITE_CALL_D)], at: 0.25 });
+  f.text('ed-site-call', 'Call to order', [0, 0.02, 0], { on: call, size: XS, font: 'strong', ink: 'onFill', anchorX: 'center', at: 0.3 });
 }
 
 /** The editor folds away; the site stays, and the weeks after run down beside it. */

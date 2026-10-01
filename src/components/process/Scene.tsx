@@ -1,16 +1,26 @@
 'use client';
 
-import { ContactShadows, Environment, Lightformer, Text, useGLTF } from '@react-three/drei';
+import { ContactShadows, Environment, Lightformer, Text, useGLTF, useTexture } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
 import { useEffect, useMemo, useRef, type RefObject } from 'react';
 import * as THREE from 'three';
-import { HIDDEN_SCALE, type Geo, type Ink, type LabelDef, type LabelPose, type Pose, type Tone } from './lib/kit';
+import { HIDDEN_SCALE, SLICE, type Geo, type Img, type Ink, type LabelDef, type LabelPose, type Pose, type Tone } from './lib/kit';
+import { sliced, type Sliced } from './lib/slice';
 import { STORIES, type StoryKey } from './lib/stories';
 import { SAFE_DESKTOP, SAFE_PHONE, SAFE_STILL, frameFor, type Frame } from './lib/framing';
 import { ARRIVE, GLIDE, LEAVE, LOCK, TRAVEL, TRAVEL_LOCK, clamp01, smoothDamp, within } from './lib/motion';
 
 const KIT = '/process-3d/kit.glb';
 useGLTF.preload(KIT);
+
+/** The photographs in the editor and on the site: Andy's menu shots, cropped 3:2. */
+const PHOTOS: Record<Img, string> = {
+  wings: '/process-3d/photos/wings.webp',
+  burger: '/process-3d/photos/burger.webp',
+  pretzel: '/process-3d/photos/pretzel.webp',
+};
+const PHOTO_ASPECT = 3 / 2;
+useTexture.preload(Object.values(PHOTOS));
 
 export const VFOV = 26;
 /** Below this canvas width the story frames for a phone. */
@@ -33,7 +43,7 @@ const ROUGHNESS: Record<Geo, number> = {
   Rod: 0.6,
   Pin: 0.5,
   Tick: 0.7,
-  Phone: 0.58,
+  Phone: 0.46,
 };
 /** Hidden pieces of these shapes arrive from just above; the rest draw out along their own axis. */
 const DROPS = new Set<Geo>(['Tile', 'Node', 'Block', 'Pin', 'Tick', 'Phone']);
@@ -55,6 +65,7 @@ function readPalette(): Palette {
     done: color('--p-done'),
     warn: color('--p-warn'),
     device: color('--p-device'),
+    photo: color('--p-photo'),
     ink: color('--p-ink'),
     ink2: color('--p-ink-2'),
     onFill: color('--p-on-fill'),
@@ -98,6 +109,7 @@ function Kit({ story: key, target, still = false, qa = false }: Props) {
   const story = STORIES[key];
   const { formations: FORMATIONS, labelFormations: LABEL_FORMATIONS, pieces: PIECES, labels: LABELS, locks: LOCKS } = story;
   const { nodes } = useGLTF(KIT) as unknown as { nodes: Record<string, THREE.Mesh> };
+  const photos = useTexture(PHOTOS);
   const { camera, size, gl, scene } = useThree();
   const palette = usePalette();
   const shadowMat = useRef<THREE.ShadowMaterial>(null);
@@ -125,17 +137,27 @@ function Kit({ story: key, target, still = false, qa = false }: Props) {
     gl.outputColorSpace = THREE.SRGBColorSpace;
   }, [gl]);
 
-  const materials = useMemo(
-    () =>
-      PIECES.map(
-        (piece, j) =>
-          new THREE.MeshStandardMaterial({
-            roughness: ROUGHNESS[piece.geo] + (((j * 37) % 9) - 4) * 0.008,
-            metalness: 0,
-          }),
-      ),
-    [PIECES],
+  const materials = useMemo(() => {
+    Object.values(photos).forEach((map) => {
+      map.colorSpace = THREE.SRGBColorSpace;
+      // The photos lie nearly flat to the camera; without this they smear.
+      map.anisotropy = gl.capabilities.getMaxAnisotropy();
+    });
+    return PIECES.map(
+      (piece, j) =>
+        new THREE.MeshStandardMaterial({
+          roughness: ROUGHNESS[piece.geo] + (((j * 37) % 9) - 4) * 0.008,
+          metalness: 0,
+          map: piece.img ? photos[piece.img] : null,
+        }),
+    );
+  }, [PIECES, photos, gl]);
+  // The slab pieces each own their geometry: they are resized by moving their corners, not by scale.
+  const slices = useMemo<(Sliced | null)[]>(
+    () => PIECES.map((piece) => (SLICE[piece.geo] ? sliced(nodes[piece.geo].geometry, piece.geo, piece.img ? PHOTO_ASPECT : undefined) : null)),
+    [PIECES, nodes],
   );
+  useEffect(() => () => slices.forEach((slice) => slice?.geometry.dispose()), [slices]);
   // Labels are set type, not lit objects: exact ink colours, no tone mapping.
   const textMaterials = useMemo(
     () => LABELS.map(() => new THREE.MeshBasicMaterial({ toneMapped: false, transparent: true, depthWrite: false })),
@@ -258,7 +280,11 @@ function Kit({ story: key, target, still = false, qa = false }: Props) {
       }
 
       mesh.visible = true;
-      mesh.scale.set(sx, sy, sz);
+      const slice = slices[j];
+      if (slice) {
+        const r = SLICE[piece.geo]!.r;
+        slice.set(sx, sy, sz, THREE.MathUtils.lerp(from.rad ?? r, to.rad ?? r, clamp01(k)));
+      } else mesh.scale.set(sx, sy, sz);
       mesh.position.set(
         THREE.MathUtils.lerp(from.p[0], to.p[0], k),
         THREE.MathUtils.lerp(from.p[1], to.p[1], k) + lift + drop * (DROP_HEIGHT[piece.geo] ?? 0.42),
@@ -295,9 +321,16 @@ function Kit({ story: key, target, still = false, qa = false }: Props) {
       materials[j].color.copy(tmp.ca.lerp(tmp.cb, colorK));
     });
 
-    // Labels ride their piece (or the ground): out before the pieces move, in once they have landed.
+    // Labels ride their piece (or the ground): out before the pieces move. In on the same clock as the
+    // pieces arriving, a beat into the host's own window, so words come in with the card they sit on
+    // (Tom 10-01) instead of after everything has landed.
     const LA = LABEL_FORMATIONS[i];
     const LB = LABEL_FORMATIONS[i + 1];
+    // Text that is replaced in place (new hours over old) swaps on one clock, so the spot is never empty
+    // (Tom 10-01: "the sat hours disappear here for a second").
+    const spot = (lp: LabelPose) => `${lp.on ?? ''}|${lp.p.join(',')}`;
+    const swaps = new Map<string, number>();
+    for (const [id, lp] of Object.entries(LB)) if (lp && !LA[id]) swaps.set(spot(lp), 0.22 + lp.at * 0.52);
     LABELS.forEach((def, n) => {
       const text = texts.current[n];
       if (!text) return;
@@ -308,8 +341,8 @@ function Kit({ story: key, target, still = false, qa = false }: Props) {
         return;
       }
       let op = 1;
-      if (!lb) op = 1 - within(t, 0, 0.16);
-      else if (!la) op = within(t, 0.46 + lb.at * 0.38, 0.14);
+      if (!lb) op = 1 - within(t, swaps.get(spot(la!)) ?? 0, 0.16);
+      else if (!la) op = within(t, 0.22 + lb.at * 0.52, 0.14);
       const place = (lp: LabelPose, out: THREE.Vector3, q: THREE.Quaternion): boolean => {
         if (!lp.on) {
           out.fromArray(lp.p);
@@ -395,8 +428,9 @@ function Kit({ story: key, target, still = false, qa = false }: Props) {
           ref={(mesh) => {
             meshes.current[j] = mesh;
           }}
-          geometry={nodes[piece.geo].geometry}
+          geometry={slices[j]?.geometry ?? nodes[piece.geo].geometry}
           material={materials[j]}
+          frustumCulled={!slices[j]}
           castShadow
           receiveShadow={piece.geo === 'Plate' || piece.geo === 'Tile'}
           visible={false}
