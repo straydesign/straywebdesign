@@ -27,7 +27,7 @@ import Still from '@/components/process/Still';
  * change gets its own stretch of scroll. The still is the reduced-motion and
  * no-WebGL stand-in: that beat, held.
  *
- * The Stray Success Guarantee is named in the FAQ; it is referenced once here,
+ * The Love It or Leave It Guarantee is named in the FAQ; it is referenced once here,
  * in its own words, at the step where its clock starts.
  */
 
@@ -64,6 +64,7 @@ const BEATS: Beat[] = [
       'You tell me about your business and the people who come in.',
       'I listen, and I ask the questions a new customer would ask.',
       'My notes become the brief I build from.',
+      'The next day I send you a price and what it covers.',
     ],
     you: 'One phone call.',
   },
@@ -78,7 +79,7 @@ const BEATS: Beat[] = [
       'A lot of it is the same few words everyone uses.',
       'Your site keeps the first kind.',
     ],
-    you: 'Nothing. This step is mine.',
+    you: 'Send me a few sites or looks you like. If you need a logo or branding, we add it here.',
   },
   {
     id: 'first-version',
