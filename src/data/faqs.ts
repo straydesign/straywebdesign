@@ -106,7 +106,7 @@ export const FAQ_GROUPS: readonly FaqGroup[] = [
       },
       {
         q: "What if I don't like it?",
-        a: "That's the Stray Success Guarantee. Ninety days after your site goes live, you decide whether it worked. If it didn't, every dollar comes back, same day or the next one. There's no form to fill in and no call where I try to talk you out of it.",
+        a: "That's the Love It or Leave It Guarantee. Ninety days after your site goes live, you decide whether it worked. If it didn't, every dollar comes back, same day or the next one. There's no form to fill in and no call where I try to talk you out of it.",
       },
       {
         q: 'Does it matter where I am?',

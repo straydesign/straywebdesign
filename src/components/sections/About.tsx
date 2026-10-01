@@ -12,7 +12,7 @@ import SectionHeading from "@/components/sections/SectionHeading";
  * photo, the name, one paragraph. The three fact
  * cards that used to sit beside it (who you deal with, the photos, the
  * guarantee) are all said elsewhere now — the slides, and the FAQ, where the
- * Stray Success Guarantee is still named.
+ * Love It or Leave It Guarantee is still named.
  */
 export default function About() {
   return (
