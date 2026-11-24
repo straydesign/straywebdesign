@@ -53,14 +53,18 @@ const plex = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Stray Web Design — Web Designer in Erie, PA | Tom Sesler",
+  title: "Web Design and Development in Erie, PA | Stray Web Design",
   /* Title and description rewritten 2026-09-29 for general web design (plan:
      Playbook/stray-general-web-plan.md). The title names the customer noun and
      the place, which is what every query the site shows for already contains.
      A result snippet is cut around 158 characters, so keep any rewrite under
-     158 and keep the number last. */
+     158 and keep the number last.
+     2026-11-24: home sat at position 1.6 with 0 clicks on "what are the best
+     web development agencies in erie pa?" (165 impressions, 28 days). The
+     title and description now say "web development" and "Erie, PA" up
+     front, so the result reads as an answer to that question. */
   description:
-    "I design, build, host and run websites. You see a first version in about a week. Ninety days after launch, you decide if it worked. Call 814-964-0081.",
+    "Stray Web Design does web design and web development in Erie, PA. I build, host and run your site. You see a first version in about a week. Call 814-964-0081.",
   keywords: [
     'freelance web designer',
     'web designer',
@@ -75,7 +79,7 @@ export const metadata: Metadata = {
   ],
   metadataBase: new URL('https://straywebdesign.co'),
   openGraph: {
-    title: "Stray Web Design — Web Designer in Erie, PA | Tom Sesler",
+    title: "Web Design and Development in Erie, PA | Stray Web Design",
     /* Same StoryBrand flip as the card image this ships beside — the owner is
        the hero, Stray is the guide. The old line made the service the subject
        and left the owner out of the sentence. The title tag and the search
@@ -90,7 +94,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Stray Web Design — Web Designer in Erie, PA | Tom Sesler",
+    title: "Web Design and Development in Erie, PA | Stray Web Design",
     /* Same StoryBrand flip as the card image this ships beside — the owner is
        the hero, Stray is the guide. The old line made the service the subject
        and left the owner out of the sentence. The title tag and the search
